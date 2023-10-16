@@ -207,72 +207,72 @@ public class ComplianceParameter {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ComplianceParameter
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ComplianceParameter
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ComplianceParameter.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ComplianceParameter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ComplianceParameter is not found in the empty JSON string", ComplianceParameter.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("complianceParameterType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("complianceParameterType").getAsString();
       switch (discriminatorValue) {
         case "AddressKeyComplianceParameter":
-          AddressKeyComplianceParameter.validateJsonObject(jsonObj);
+          AddressKeyComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "AddressKeyListComplianceParameter":
-          AddressKeyListComplianceParameter.validateJsonObject(jsonObj);
+          AddressKeyListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "BoolComplianceParameter":
-          BoolComplianceParameter.validateJsonObject(jsonObj);
+          BoolComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "BoolListComplianceParameter":
-          BoolListComplianceParameter.validateJsonObject(jsonObj);
+          BoolListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "DateTimeComplianceParameter":
-          DateTimeComplianceParameter.validateJsonObject(jsonObj);
+          DateTimeComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "DateTimeListComplianceParameter":
-          DateTimeListComplianceParameter.validateJsonObject(jsonObj);
+          DateTimeListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "DecimalComplianceParameter":
-          DecimalComplianceParameter.validateJsonObject(jsonObj);
+          DecimalComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "DecimalListComplianceParameter":
-          DecimalListComplianceParameter.validateJsonObject(jsonObj);
+          DecimalListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "InstrumentListComplianceParameter":
-          InstrumentListComplianceParameter.validateJsonObject(jsonObj);
+          InstrumentListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "PortfolioGroupIdComplianceParameter":
-          PortfolioGroupIdComplianceParameter.validateJsonObject(jsonObj);
+          PortfolioGroupIdComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "PortfolioGroupIdListComplianceParameter":
-          PortfolioGroupIdListComplianceParameter.validateJsonObject(jsonObj);
+          PortfolioGroupIdListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "PortfolioIdComplianceParameter":
-          PortfolioIdComplianceParameter.validateJsonObject(jsonObj);
+          PortfolioIdComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "PortfolioIdListComplianceParameter":
-          PortfolioIdListComplianceParameter.validateJsonObject(jsonObj);
+          PortfolioIdListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "PropertyKeyComplianceParameter":
-          PropertyKeyComplianceParameter.validateJsonObject(jsonObj);
+          PropertyKeyComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "PropertyKeyListComplianceParameter":
-          PropertyKeyListComplianceParameter.validateJsonObject(jsonObj);
+          PropertyKeyListComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "StringComplianceParameter":
-          StringComplianceParameter.validateJsonObject(jsonObj);
+          StringComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "StringListComplianceParameter":
-          StringListComplianceParameter.validateJsonObject(jsonObj);
+          StringListComplianceParameter.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `complianceParameterType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

@@ -96,7 +96,7 @@ public class ApiClientBuilder {
 
         // use a proxy if given
         if (apiConfiguration.getProxyAddress() != null) {
-            InetSocketAddress proxy = new InetSocketAddress(apiConfiguration.getProxyAddress(),
+            InetSocketAddress proxy = InetSocketAddress.createUnresolved(apiConfiguration.getProxyAddress(),
                     apiConfiguration.getProxyPort());
 
             httpClientBuilder = httpClientBuilder.proxy(new Proxy(Proxy.Type.HTTP, proxy))

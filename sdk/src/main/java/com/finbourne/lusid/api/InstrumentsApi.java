@@ -92,24 +92,7 @@ public class InstrumentsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for batchUpsertInstrumentProperties
-     * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param identifierEffectiveAt The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (optional, default to Partial)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -182,93 +165,146 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties
-     * Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param identifierEffectiveAt The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (optional, default to Partial)
-     * @return BatchUpsertInstrumentPropertiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BatchUpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode) throws ApiException {
-        ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties
-     * Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param identifierEffectiveAt The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (optional, default to Partial)
-     * @return ApiResponse&lt;BatchUpsertInstrumentPropertiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode) throws ApiException {
+    private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode) throws ApiException {
         okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, null);
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties (asynchronously)
-     * Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param identifierEffectiveAt The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (optional, default to Partial)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, _callback);
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIbatchUpsertInstrumentPropertiesRequest {
+        private final Map<String, UpsertInstrumentPropertyRequest> requestBody;
+        private String scope;
+        private String identifierEffectiveAt;
+        private String successMode;
+
+        private APIbatchUpsertInstrumentPropertiesRequest(Map<String, UpsertInstrumentPropertyRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIbatchUpsertInstrumentPropertiesRequest
+         */
+        public APIbatchUpsertInstrumentPropertiesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set identifierEffectiveAt
+         * @param identifierEffectiveAt The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIbatchUpsertInstrumentPropertiesRequest
+         */
+        public APIbatchUpsertInstrumentPropertiesRequest identifierEffectiveAt(String identifierEffectiveAt) {
+            this.identifierEffectiveAt = identifierEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (optional, default to Partial)
+         * @return APIbatchUpsertInstrumentPropertiesRequest
+         */
+        public APIbatchUpsertInstrumentPropertiesRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
+        }
+
+        /**
+         * Build call for batchUpsertInstrumentProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+        }
+
+        /**
+         * Execute batchUpsertInstrumentProperties request
+         * @return BatchUpsertInstrumentPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertInstrumentPropertiesResponse execute() throws ApiException {
+            ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertInstrumentProperties request with HTTP info returned
+         * @return ApiResponse&lt;BatchUpsertInstrumentPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
+            return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode);
+        }
+
+        /**
+         * Execute batchUpsertInstrumentProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
+            return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteInstrument
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties
+     * Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
+     * @return APIbatchUpsertInstrumentPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInstrumentCall(String identifierType, String identifier, String scope, final ApiCallback _callback) throws ApiException {
+    public APIbatchUpsertInstrumentPropertiesRequest batchUpsertInstrumentProperties(Map<String, UpsertInstrumentPropertyRequest> requestBody) {
+        return new APIbatchUpsertInstrumentPropertiesRequest(requestBody);
+    }
+    private okhttp3.Call deleteInstrumentCall(String identifierType, String identifier, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -336,92 +372,127 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrument: Soft delete a single instrument
-     * Soft delete a particular instrument, as identified by a particular instrument identifier.                Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return DeleteInstrumentResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeleteInstrumentResponse deleteInstrument(String identifierType, String identifier, String scope) throws ApiException {
-        ApiResponse<DeleteInstrumentResponse> localVarResp = deleteInstrumentWithHttpInfo(identifierType, identifier, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrument: Soft delete a single instrument
-     * Soft delete a particular instrument, as identified by a particular instrument identifier.                Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;DeleteInstrumentResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeleteInstrumentResponse> deleteInstrumentWithHttpInfo(String identifierType, String identifier, String scope) throws ApiException {
+    private ApiResponse<DeleteInstrumentResponse> deleteInstrumentWithHttpInfo(String identifierType, String identifier, String scope) throws ApiException {
         okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, null);
         Type localVarReturnType = new TypeToken<DeleteInstrumentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrument: Soft delete a single instrument (asynchronously)
-     * Soft delete a particular instrument, as identified by a particular instrument identifier.                Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteInstrumentAsync(String identifierType, String identifier, String scope, final ApiCallback<DeleteInstrumentResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentAsync(String identifierType, String identifier, String scope, final ApiCallback<DeleteInstrumentResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, _callback);
         Type localVarReturnType = new TypeToken<DeleteInstrumentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteInstrumentRequest {
+        private final String identifierType;
+        private final String identifier;
+        private String scope;
+
+        private APIdeleteInstrumentRequest(String identifierType, String identifier) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIdeleteInstrumentRequest
+         */
+        public APIdeleteInstrumentRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for deleteInstrument
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInstrumentCall(identifierType, identifier, scope, _callback);
+        }
+
+        /**
+         * Execute deleteInstrument request
+         * @return DeleteInstrumentResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteInstrumentResponse execute() throws ApiException {
+            ApiResponse<DeleteInstrumentResponse> localVarResp = deleteInstrumentWithHttpInfo(identifierType, identifier, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInstrument request with HTTP info returned
+         * @return ApiResponse&lt;DeleteInstrumentResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteInstrumentResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInstrumentWithHttpInfo(identifierType, identifier, scope);
+        }
+
+        /**
+         * Execute deleteInstrument request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentResponse> _callback) throws ApiException {
+            return deleteInstrumentAsync(identifierType, identifier, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteInstrumentProperties
+     * [EARLY ACCESS] DeleteInstrument: Soft delete a single instrument
+     * Soft delete a particular instrument, as identified by a particular instrument identifier.     Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param requestBody A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIdeleteInstrumentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback) throws ApiException {
+    public APIdeleteInstrumentRequest deleteInstrument(String identifierType, String identifier) {
+        return new APIdeleteInstrumentRequest(identifierType, identifier);
+    }
+    private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -502,96 +573,141 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
-     * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param requestBody A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return DeleteInstrumentPropertiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeleteInstrumentPropertiesResponse deleteInstrumentProperties(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope) throws ApiException {
-        ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
-     * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param requestBody A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;DeleteInstrumentPropertiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope) throws ApiException {
+    private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope) throws ApiException {
         okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, null);
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties (asynchronously)
-     * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param requestBody A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteInstrumentPropertiesRequest {
+        private final String identifierType;
+        private final String identifier;
+        private final List<String> requestBody;
+        private String effectiveAt;
+        private String scope;
+
+        private APIdeleteInstrumentPropertiesRequest(String identifierType, String identifier, List<String> requestBody) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
+         * @return APIdeleteInstrumentPropertiesRequest
+         */
+        public APIdeleteInstrumentPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIdeleteInstrumentPropertiesRequest
+         */
+        public APIdeleteInstrumentPropertiesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for deleteInstrumentProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+        }
+
+        /**
+         * Execute deleteInstrumentProperties request
+         * @return DeleteInstrumentPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteInstrumentPropertiesResponse execute() throws ApiException {
+            ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInstrumentProperties request with HTTP info returned
+         * @return ApiResponse&lt;DeleteInstrumentPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope);
+        }
+
+        /**
+         * Execute deleteInstrumentProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
+            return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteInstruments
-     * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param scope The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
+     * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
+     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
+     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
+     * @param requestBody A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. (required)
+     * @return APIdeleteInstrumentPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInstrumentsCall(List<String> requestBody, String deleteMode, String scope, final ApiCallback _callback) throws ApiException {
+    public APIdeleteInstrumentPropertiesRequest deleteInstrumentProperties(String identifierType, String identifier, List<String> requestBody) {
+        return new APIdeleteInstrumentPropertiesRequest(identifierType, identifier, requestBody);
+    }
+    private okhttp3.Call deleteInstrumentsCall(List<String> requestBody, String deleteMode, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -660,88 +776,135 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstruments: Soft or hard delete multiple instruments
-     * Deletes a number of instruments identified by LusidInstrumentId.                Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.                In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.                Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
-     * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param scope The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return DeleteInstrumentsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeleteInstrumentsResponse deleteInstruments(List<String> requestBody, String deleteMode, String scope) throws ApiException {
-        ApiResponse<DeleteInstrumentsResponse> localVarResp = deleteInstrumentsWithHttpInfo(requestBody, deleteMode, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteInstruments: Soft or hard delete multiple instruments
-     * Deletes a number of instruments identified by LusidInstrumentId.                Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.                In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.                Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
-     * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param scope The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;DeleteInstrumentsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeleteInstrumentsResponse> deleteInstrumentsWithHttpInfo(List<String> requestBody, String deleteMode, String scope) throws ApiException {
+    private ApiResponse<DeleteInstrumentsResponse> deleteInstrumentsWithHttpInfo(List<String> requestBody, String deleteMode, String scope) throws ApiException {
         okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, null);
         Type localVarReturnType = new TypeToken<DeleteInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstruments: Soft or hard delete multiple instruments (asynchronously)
-     * Deletes a number of instruments identified by LusidInstrumentId.                Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.                In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.                Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
-     * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param scope The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteInstrumentsAsync(List<String> requestBody, String deleteMode, String scope, final ApiCallback<DeleteInstrumentsResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentsAsync(List<String> requestBody, String deleteMode, String scope, final ApiCallback<DeleteInstrumentsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, _callback);
         Type localVarReturnType = new TypeToken<DeleteInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteInstrumentsRequest {
+        private final List<String> requestBody;
+        private String deleteMode;
+        private String scope;
+
+        private APIdeleteInstrumentsRequest(List<String> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set deleteMode
+         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @return APIdeleteInstrumentsRequest
+         */
+        public APIdeleteInstrumentsRequest deleteMode(String deleteMode) {
+            this.deleteMode = deleteMode;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIdeleteInstrumentsRequest
+         */
+        public APIdeleteInstrumentsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for deleteInstruments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInstrumentsCall(requestBody, deleteMode, scope, _callback);
+        }
+
+        /**
+         * Execute deleteInstruments request
+         * @return DeleteInstrumentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteInstrumentsResponse execute() throws ApiException {
+            ApiResponse<DeleteInstrumentsResponse> localVarResp = deleteInstrumentsWithHttpInfo(requestBody, deleteMode, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInstruments request with HTTP info returned
+         * @return ApiResponse&lt;DeleteInstrumentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteInstrumentsResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInstrumentsWithHttpInfo(requestBody, deleteMode, scope);
+        }
+
+        /**
+         * Execute deleteInstruments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentsResponse> _callback) throws ApiException {
+            return deleteInstrumentsAsync(requestBody, deleteMode, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for getAllPossibleFeatures
-     * @param instrumentType A lusid instrument type e.g. Bond, FxOption. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteInstruments: Soft or hard delete multiple instruments
+     * Deletes a number of instruments identified by LusidInstrumentId.     Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.     In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.     Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
+     * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
+     * @return APIdeleteInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllPossibleFeaturesCall(String instrumentType, final ApiCallback _callback) throws ApiException {
+    public APIdeleteInstrumentsRequest deleteInstruments(List<String> requestBody) {
+        return new APIdeleteInstrumentsRequest(requestBody);
+    }
+    private okhttp3.Call getAllPossibleFeaturesCall(String instrumentType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -799,88 +962,113 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type.
-     * Provides all possible instrument features an instrument of a given type can provide.
-     * @param instrumentType A lusid instrument type e.g. Bond, FxOption. (required)
-     * @return Map&lt;String, List&lt;String&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<String>> getAllPossibleFeatures(String instrumentType) throws ApiException {
-        ApiResponse<Map<String, List<String>>> localVarResp = getAllPossibleFeaturesWithHttpInfo(instrumentType);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type.
-     * Provides all possible instrument features an instrument of a given type can provide.
-     * @param instrumentType A lusid instrument type e.g. Bond, FxOption. (required)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<String>>> getAllPossibleFeaturesWithHttpInfo(String instrumentType) throws ApiException {
+    private ApiResponse<Map<String, List<String>>> getAllPossibleFeaturesWithHttpInfo(String instrumentType) throws ApiException {
         okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, null);
         Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type. (asynchronously)
-     * Provides all possible instrument features an instrument of a given type can provide.
-     * @param instrumentType A lusid instrument type e.g. Bond, FxOption. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllPossibleFeaturesAsync(String instrumentType, final ApiCallback<Map<String, List<String>>> _callback) throws ApiException {
+    private okhttp3.Call getAllPossibleFeaturesAsync(String instrumentType, final ApiCallback<Map<String, List<String>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAllPossibleFeaturesRequest {
+        private final String instrumentType;
+
+        private APIgetAllPossibleFeaturesRequest(String instrumentType) {
+            this.instrumentType = instrumentType;
+        }
+
+        /**
+         * Build call for getAllPossibleFeatures
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllPossibleFeaturesCall(instrumentType, _callback);
+        }
+
+        /**
+         * Execute getAllPossibleFeatures request
+         * @return Map&lt;String, List&lt;String&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<String>> execute() throws ApiException {
+            ApiResponse<Map<String, List<String>>> localVarResp = getAllPossibleFeaturesWithHttpInfo(instrumentType);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllPossibleFeatures request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<String>>> executeWithHttpInfo() throws ApiException {
+            return getAllPossibleFeaturesWithHttpInfo(instrumentType);
+        }
+
+        /**
+         * Execute getAllPossibleFeatures request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<String>>> _callback) throws ApiException {
+            return getAllPossibleFeaturesAsync(instrumentType, _callback);
+        }
+    }
+
     /**
-     * Build call for getExistingInstrumentCapabilities
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type.
+     * Provides all possible instrument features an instrument of a given type can provide.
+     * @param instrumentType A lusid instrument type e.g. Bond, FxOption. (required)
+     * @return APIgetAllPossibleFeaturesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExistingInstrumentCapabilitiesCall(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
+    public APIgetAllPossibleFeaturesRequest getAllPossibleFeatures(String instrumentType) {
+        return new APIgetAllPossibleFeaturesRequest(instrumentType);
+    }
+    private okhttp3.Call getExistingInstrumentCapabilitiesCall(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -962,105 +1150,179 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @return InstrumentCapabilities
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstrumentCapabilities getExistingInstrumentCapabilities(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
-        ApiResponse<InstrumentCapabilities> localVarResp = getExistingInstrumentCapabilitiesWithHttpInfo(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @return ApiResponse&lt;InstrumentCapabilities&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstrumentCapabilities> getExistingInstrumentCapabilitiesWithHttpInfo(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
+    private ApiResponse<InstrumentCapabilities> getExistingInstrumentCapabilitiesWithHttpInfo(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
         okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies. (asynchronously)
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getExistingInstrumentCapabilitiesAsync(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
+    private okhttp3.Call getExistingInstrumentCapabilitiesAsync(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetExistingInstrumentCapabilitiesRequest {
+        private final String identifier;
+        private String model;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String instrumentScope;
+        private String recipeScope;
+        private String recipeCode;
+
+        private APIgetExistingInstrumentCapabilitiesRequest(String identifier) {
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set model
+         * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
+         * @return APIgetExistingInstrumentCapabilitiesRequest
+         */
+        public APIgetExistingInstrumentCapabilitiesRequest model(String model) {
+            this.model = model;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetExistingInstrumentCapabilitiesRequest
+         */
+        public APIgetExistingInstrumentCapabilitiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIgetExistingInstrumentCapabilitiesRequest
+         */
+        public APIgetExistingInstrumentCapabilitiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set instrumentScope
+         * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetExistingInstrumentCapabilitiesRequest
+         */
+        public APIgetExistingInstrumentCapabilitiesRequest instrumentScope(String instrumentScope) {
+            this.instrumentScope = instrumentScope;
+            return this;
+        }
+
+        /**
+         * Set recipeScope
+         * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetExistingInstrumentCapabilitiesRequest
+         */
+        public APIgetExistingInstrumentCapabilitiesRequest recipeScope(String recipeScope) {
+            this.recipeScope = recipeScope;
+            return this;
+        }
+
+        /**
+         * Set recipeCode
+         * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
+         * @return APIgetExistingInstrumentCapabilitiesRequest
+         */
+        public APIgetExistingInstrumentCapabilitiesRequest recipeCode(String recipeCode) {
+            this.recipeCode = recipeCode;
+            return this;
+        }
+
+        /**
+         * Build call for getExistingInstrumentCapabilities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getExistingInstrumentCapabilitiesCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        }
+
+        /**
+         * Execute getExistingInstrumentCapabilities request
+         * @return InstrumentCapabilities
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentCapabilities execute() throws ApiException {
+            ApiResponse<InstrumentCapabilities> localVarResp = getExistingInstrumentCapabilitiesWithHttpInfo(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getExistingInstrumentCapabilities request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentCapabilities&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentCapabilities> executeWithHttpInfo() throws ApiException {
+            return getExistingInstrumentCapabilitiesWithHttpInfo(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
+        }
+
+        /**
+         * Execute getExistingInstrumentCapabilities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
+            return getExistingInstrumentCapabilitiesAsync(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        }
+    }
+
     /**
-     * Build call for getExistingInstrumentModels
+     * [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
+     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
      * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetExistingInstrumentCapabilitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExistingInstrumentModelsCall(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
+    public APIgetExistingInstrumentCapabilitiesRequest getExistingInstrumentCapabilities(String identifier) {
+        return new APIgetExistingInstrumentCapabilitiesRequest(identifier);
+    }
+    private okhttp3.Call getExistingInstrumentModelsCall(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1138,103 +1400,168 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID.
-     * Get the supported pricing models of a single instrument.
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @return InstrumentModels
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstrumentModels getExistingInstrumentModels(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
-        ApiResponse<InstrumentModels> localVarResp = getExistingInstrumentModelsWithHttpInfo(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID.
-     * Get the supported pricing models of a single instrument.
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @return ApiResponse&lt;InstrumentModels&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstrumentModels> getExistingInstrumentModelsWithHttpInfo(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
+    private ApiResponse<InstrumentModels> getExistingInstrumentModelsWithHttpInfo(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
         okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null);
         Type localVarReturnType = new TypeToken<InstrumentModels>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID. (asynchronously)
-     * Get the supported pricing models of a single instrument.
-     * @param identifier A lusid instrument id identifying the instrument. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getExistingInstrumentModelsAsync(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentModels> _callback) throws ApiException {
+    private okhttp3.Call getExistingInstrumentModelsAsync(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentModels> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
         Type localVarReturnType = new TypeToken<InstrumentModels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetExistingInstrumentModelsRequest {
+        private final String identifier;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String instrumentScope;
+        private String recipeScope;
+        private String recipeCode;
+
+        private APIgetExistingInstrumentModelsRequest(String identifier) {
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetExistingInstrumentModelsRequest
+         */
+        public APIgetExistingInstrumentModelsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIgetExistingInstrumentModelsRequest
+         */
+        public APIgetExistingInstrumentModelsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set instrumentScope
+         * @param instrumentScope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetExistingInstrumentModelsRequest
+         */
+        public APIgetExistingInstrumentModelsRequest instrumentScope(String instrumentScope) {
+            this.instrumentScope = instrumentScope;
+            return this;
+        }
+
+        /**
+         * Set recipeScope
+         * @param recipeScope The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetExistingInstrumentModelsRequest
+         */
+        public APIgetExistingInstrumentModelsRequest recipeScope(String recipeScope) {
+            this.recipeScope = recipeScope;
+            return this;
+        }
+
+        /**
+         * Set recipeCode
+         * @param recipeCode A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. (optional)
+         * @return APIgetExistingInstrumentModelsRequest
+         */
+        public APIgetExistingInstrumentModelsRequest recipeCode(String recipeCode) {
+            this.recipeCode = recipeCode;
+            return this;
+        }
+
+        /**
+         * Build call for getExistingInstrumentModels
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getExistingInstrumentModelsCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        }
+
+        /**
+         * Execute getExistingInstrumentModels request
+         * @return InstrumentModels
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentModels execute() throws ApiException {
+            ApiResponse<InstrumentModels> localVarResp = getExistingInstrumentModelsWithHttpInfo(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getExistingInstrumentModels request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentModels&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentModels> executeWithHttpInfo() throws ApiException {
+            return getExistingInstrumentModelsWithHttpInfo(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
+        }
+
+        /**
+         * Execute getExistingInstrumentModels request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentModels> _callback) throws ApiException {
+            return getExistingInstrumentModelsAsync(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstrument
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto              the instrument, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID.
+     * Get the supported pricing models of a single instrument.
+     * @param identifier A lusid instrument id identifying the instrument. (required)
+     * @return APIgetExistingInstrumentModelsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetExistingInstrumentModelsRequest getExistingInstrumentModels(String identifier) {
+        return new APIgetExistingInstrumentModelsRequest(identifier);
+    }
+    private okhttp3.Call getInstrumentCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1318,98 +1645,171 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * GetInstrument: Get instrument
-     * Retrieve the definition of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto              the instrument, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return Instrument
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Instrument getInstrument(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<Instrument> localVarResp = getInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetInstrument: Get instrument
-     * Retrieve the definition of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto              the instrument, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;Instrument&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Instrument> getInstrumentWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<Instrument> getInstrumentWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetInstrument: Get instrument (asynchronously)
-     * Retrieve the definition of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto              the instrument, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<Instrument> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<Instrument> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentRequest {
+        private final String identifierType;
+        private final String identifier;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+        private String scope;
+        private List<String> relationshipDefinitionIds;
+
+        private APIgetInstrumentRequest(String identifierType, String identifier) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInstrumentRequest
+         */
+        public APIgetInstrumentRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIgetInstrumentRequest
+         */
+        public APIgetInstrumentRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   the instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @return APIgetInstrumentRequest
+         */
+        public APIgetInstrumentRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetInstrumentRequest
+         */
+        public APIgetInstrumentRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIgetInstrumentRequest
+         */
+        public APIgetInstrumentRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrument
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getInstrument request
+         * @return Instrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Instrument execute() throws ApiException {
+            ApiResponse<Instrument> localVarResp = getInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrument request with HTTP info returned
+         * @return ApiResponse&lt;Instrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Instrument> executeWithHttpInfo() throws ApiException {
+            return getInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getInstrument request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback) throws ApiException {
+            return getInstrumentAsync(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstrumentIdentifierTypes
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetInstrument: Get instrument
+     * Retrieve the definition of a particular instrument, as identified by a particular unique identifier.
+     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
+     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
+     * @return APIgetInstrumentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentIdentifierTypesCall(final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentRequest getInstrument(String identifierType, String identifier) {
+        return new APIgetInstrumentRequest(identifierType, identifier);
+    }
+    private okhttp3.Call getInstrumentIdentifierTypesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1461,82 +1861,105 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * GetInstrumentIdentifierTypes: Get instrument identifier types
-     * Retrieve a list of all valid instrument identifier types and whether they are unique or not.                An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.                An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
-     * @return ResourceListOfInstrumentIdTypeDescriptor
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifierTypes() throws ApiException {
-        ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> localVarResp = getInstrumentIdentifierTypesWithHttpInfo();
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetInstrumentIdentifierTypes: Get instrument identifier types
-     * Retrieve a list of all valid instrument identifier types and whether they are unique or not.                An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.                An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
-     * @return ApiResponse&lt;ResourceListOfInstrumentIdTypeDescriptor&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> getInstrumentIdentifierTypesWithHttpInfo() throws ApiException {
+    private ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> getInstrumentIdentifierTypesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentIdTypeDescriptor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetInstrumentIdentifierTypes: Get instrument identifier types (asynchronously)
-     * Retrieve a list of all valid instrument identifier types and whether they are unique or not.                An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.                An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentIdentifierTypesAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentIdentifierTypesAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentIdTypeDescriptor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentIdentifierTypesRequest {
+
+        private APIgetInstrumentIdentifierTypesRequest() {
+        }
+
+        /**
+         * Build call for getInstrumentIdentifierTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentIdentifierTypesCall(_callback);
+        }
+
+        /**
+         * Execute getInstrumentIdentifierTypes request
+         * @return ResourceListOfInstrumentIdTypeDescriptor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentIdTypeDescriptor execute() throws ApiException {
+            ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> localVarResp = getInstrumentIdentifierTypesWithHttpInfo();
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentIdentifierTypes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfInstrumentIdTypeDescriptor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> executeWithHttpInfo() throws ApiException {
+            return getInstrumentIdentifierTypesWithHttpInfo();
+        }
+
+        /**
+         * Execute getInstrumentIdentifierTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback) throws ApiException {
+            return getInstrumentIdentifierTypesAsync(_callback);
+        }
+    }
+
     /**
-     * Build call for getInstrumentPaymentDiary
-     * @param identifierType The identifier being supplied e.g. \&quot;Figi\&quot;. (required)
-     * @param identifier The value of the identifier for the requested instrument. (required)
-     * @param recipeScope The scope of the valuation recipe being used to generate the payment diary (required)
-     * @param recipeCode The code of the valuation recipe being used to generate the payment diary (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to return the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetInstrumentIdentifierTypes: Get instrument identifier types
+     * Retrieve a list of all valid instrument identifier types and whether they are unique or not.     An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.     An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
+     * @return APIgetInstrumentIdentifierTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentPaymentDiaryCall(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentIdentifierTypesRequest getInstrumentIdentifierTypes() {
+        return new APIgetInstrumentIdentifierTypesRequest();
+    }
+    private okhttp3.Call getInstrumentPaymentDiaryCall(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1630,104 +2053,155 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary
-     * Get the payment diary of a single instrument.
-     * @param identifierType The identifier being supplied e.g. \&quot;Figi\&quot;. (required)
-     * @param identifier The value of the identifier for the requested instrument. (required)
-     * @param recipeScope The scope of the valuation recipe being used to generate the payment diary (required)
-     * @param recipeCode The code of the valuation recipe being used to generate the payment diary (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to return the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return InstrumentPaymentDiary
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstrumentPaymentDiary getInstrumentPaymentDiary(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
-        ApiResponse<InstrumentPaymentDiary> localVarResp = getInstrumentPaymentDiaryWithHttpInfo(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary
-     * Get the payment diary of a single instrument.
-     * @param identifierType The identifier being supplied e.g. \&quot;Figi\&quot;. (required)
-     * @param identifier The value of the identifier for the requested instrument. (required)
-     * @param recipeScope The scope of the valuation recipe being used to generate the payment diary (required)
-     * @param recipeCode The code of the valuation recipe being used to generate the payment diary (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to return the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;InstrumentPaymentDiary&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstrumentPaymentDiary> getInstrumentPaymentDiaryWithHttpInfo(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
+    private ApiResponse<InstrumentPaymentDiary> getInstrumentPaymentDiaryWithHttpInfo(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, null);
         Type localVarReturnType = new TypeToken<InstrumentPaymentDiary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary (asynchronously)
-     * Get the payment diary of a single instrument.
-     * @param identifierType The identifier being supplied e.g. \&quot;Figi\&quot;. (required)
-     * @param identifier The value of the identifier for the requested instrument. (required)
-     * @param recipeScope The scope of the valuation recipe being used to generate the payment diary (required)
-     * @param recipeCode The code of the valuation recipe being used to generate the payment diary (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to return the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentPaymentDiaryAsync(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentPaymentDiary> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentPaymentDiaryAsync(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentPaymentDiary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback);
         Type localVarReturnType = new TypeToken<InstrumentPaymentDiary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentPaymentDiaryRequest {
+        private final String identifierType;
+        private final String identifier;
+        private final String recipeScope;
+        private final String recipeCode;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String scope;
+
+        private APIgetInstrumentPaymentDiaryRequest(String identifierType, String identifier, String recipeScope, String recipeCode) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+            this.recipeScope = recipeScope;
+            this.recipeCode = recipeCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInstrumentPaymentDiaryRequest
+         */
+        public APIgetInstrumentPaymentDiaryRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to return the latest version of each property if not specified. (optional)
+         * @return APIgetInstrumentPaymentDiaryRequest
+         */
+        public APIgetInstrumentPaymentDiaryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetInstrumentPaymentDiaryRequest
+         */
+        public APIgetInstrumentPaymentDiaryRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrumentPaymentDiary
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentPaymentDiaryCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentPaymentDiary request
+         * @return InstrumentPaymentDiary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentPaymentDiary execute() throws ApiException {
+            ApiResponse<InstrumentPaymentDiary> localVarResp = getInstrumentPaymentDiaryWithHttpInfo(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentPaymentDiary request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentPaymentDiary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentPaymentDiary> executeWithHttpInfo() throws ApiException {
+            return getInstrumentPaymentDiaryWithHttpInfo(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope);
+        }
+
+        /**
+         * Execute getInstrumentPaymentDiary request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentPaymentDiary> _callback) throws ApiException {
+            return getInstrumentPaymentDiaryAsync(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstrumentProperties
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary
+     * Get the payment diary of a single instrument.
+     * @param identifierType The identifier being supplied e.g. \&quot;Figi\&quot;. (required)
+     * @param identifier The value of the identifier for the requested instrument. (required)
+     * @param recipeScope The scope of the valuation recipe being used to generate the payment diary (required)
+     * @param recipeCode The code of the valuation recipe being used to generate the payment diary (required)
+     * @return APIgetInstrumentPaymentDiaryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentPaymentDiaryRequest getInstrumentPaymentDiary(String identifierType, String identifier, String recipeScope, String recipeCode) {
+        return new APIgetInstrumentPaymentDiaryRequest(identifierType, identifier, recipeScope, recipeCode);
+    }
+    private okhttp3.Call getInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1803,102 +2277,149 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentProperties: Get instrument properties
-     * List all the properties of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return InstrumentProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstrumentProperties getInstrumentProperties(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
-        ApiResponse<InstrumentProperties> localVarResp = getInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentProperties: Get instrument properties
-     * List all the properties of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;InstrumentProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstrumentProperties> getInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
+    private ApiResponse<InstrumentProperties> getInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, null);
         Type localVarReturnType = new TypeToken<InstrumentProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentProperties: Get instrument properties (asynchronously)
-     * List all the properties of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentProperties> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentProperties> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, _callback);
         Type localVarReturnType = new TypeToken<InstrumentProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentPropertiesRequest {
+        private final String identifierType;
+        private final String identifier;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String scope;
+
+        private APIgetInstrumentPropertiesRequest(String identifierType, String identifier) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInstrumentPropertiesRequest
+         */
+        public APIgetInstrumentPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning   the latest version of each property if not specified. (optional)
+         * @return APIgetInstrumentPropertiesRequest
+         */
+        public APIgetInstrumentPropertiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetInstrumentPropertiesRequest
+         */
+        public APIgetInstrumentPropertiesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrumentProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentProperties request
+         * @return InstrumentProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentProperties execute() throws ApiException {
+            ApiResponse<InstrumentProperties> localVarResp = getInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentProperties request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentProperties> executeWithHttpInfo() throws ApiException {
+            return getInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, scope);
+        }
+
+        /**
+         * Execute getInstrumentProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentProperties> _callback) throws ApiException {
+            return getInstrumentPropertiesAsync(identifierType, identifier, effectiveAt, asAt, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstrumentPropertyTimeSeries
+     * [EARLY ACCESS] GetInstrumentProperties: Get instrument properties
+     * List all the properties of a particular instrument, as identified by a particular unique identifier.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.              This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
-     * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to              returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and              &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see              https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetInstrumentPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentPropertyTimeSeriesCall(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentPropertiesRequest getInstrumentProperties(String identifierType, String identifier) {
+        return new APIgetInstrumentPropertiesRequest(identifierType, identifier);
+    }
+    private okhttp3.Call getInstrumentPropertyTimeSeriesCall(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1995,112 +2516,185 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
-     * Retrieve the complete time series (history) for a particular property of an instrument.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.              This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
-     * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to              returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and              &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see              https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ResourceListOfPropertyInterval
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPropertyInterval getInstrumentPropertyTimeSeries(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope) throws ApiException {
-        ApiResponse<ResourceListOfPropertyInterval> localVarResp = getInstrumentPropertyTimeSeriesWithHttpInfo(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
-     * Retrieve the complete time series (history) for a particular property of an instrument.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.              This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
-     * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to              returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and              &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see              https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPropertyInterval> getInstrumentPropertyTimeSeriesWithHttpInfo(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope) throws ApiException {
+    private ApiResponse<ResourceListOfPropertyInterval> getInstrumentPropertyTimeSeriesWithHttpInfo(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series (asynchronously)
-     * Retrieve the complete time series (history) for a particular property of an instrument.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.              This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
-     * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to              returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and              &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see              https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentPropertyTimeSeriesAsync(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentPropertyTimeSeriesAsync(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentPropertyTimeSeriesRequest {
+        private final String identifierType;
+        private final String identifier;
+        private final String propertyKey;
+        private String identifierEffectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String page;
+        private Integer limit;
+        private String scope;
+
+        private APIgetInstrumentPropertyTimeSeriesRequest(String identifierType, String identifier, String propertyKey) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+            this.propertyKey = propertyKey;
+        }
+
+        /**
+         * Set identifierEffectiveAt
+         * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInstrumentPropertyTimeSeriesRequest
+         */
+        public APIgetInstrumentPropertyTimeSeriesRequest identifierEffectiveAt(String identifierEffectiveAt) {
+            this.identifierEffectiveAt = identifierEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to   returning the current datetime if not supplied. (optional)
+         * @return APIgetInstrumentPropertyTimeSeriesRequest
+         */
+        public APIgetInstrumentPropertyTimeSeriesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetInstrumentPropertyTimeSeriesRequest
+         */
+        public APIgetInstrumentPropertyTimeSeriesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
+         * @return APIgetInstrumentPropertyTimeSeriesRequest
+         */
+        public APIgetInstrumentPropertyTimeSeriesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. (optional)
+         * @return APIgetInstrumentPropertyTimeSeriesRequest
+         */
+        public APIgetInstrumentPropertyTimeSeriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetInstrumentPropertyTimeSeriesRequest
+         */
+        public APIgetInstrumentPropertyTimeSeriesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrumentPropertyTimeSeries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentPropertyTimeSeriesCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentPropertyTimeSeries request
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute() throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getInstrumentPropertyTimeSeriesWithHttpInfo(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentPropertyTimeSeries request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
+            return getInstrumentPropertyTimeSeriesWithHttpInfo(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope);
+        }
+
+        /**
+         * Execute getInstrumentPropertyTimeSeries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+            return getInstrumentPropertyTimeSeriesAsync(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstrumentRelationships
-     * @param identifierType An identifier type attached to the Instrument. (required)
-     * @param identifier The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param scope The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
+     * Retrieve the complete time series (history) for a particular property of an instrument.
+     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
+     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
+     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.   This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
+     * @return APIgetInstrumentPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentRelationshipsCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentPropertyTimeSeriesRequest getInstrumentPropertyTimeSeries(String identifierType, String identifier, String propertyKey) {
+        return new APIgetInstrumentPropertyTimeSeriesRequest(identifierType, identifier, propertyKey);
+    }
+    private okhttp3.Call getInstrumentRelationshipsCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2184,106 +2778,171 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships
-     * Get relationships for a particular Instrument.
-     * @param identifierType An identifier type attached to the Instrument. (required)
-     * @param identifier The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param scope The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ResourceListOfRelationship
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelationship getInstrumentRelationships(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope) throws ApiException {
-        ApiResponse<ResourceListOfRelationship> localVarResp = getInstrumentRelationshipsWithHttpInfo(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships
-     * Get relationships for a particular Instrument.
-     * @param identifierType An identifier type attached to the Instrument. (required)
-     * @param identifier The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param scope The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;ResourceListOfRelationship&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelationship> getInstrumentRelationshipsWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope) throws ApiException {
+    private ApiResponse<ResourceListOfRelationship> getInstrumentRelationshipsWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships (asynchronously)
-     * Get relationships for a particular Instrument.
-     * @param identifierType An identifier type attached to the Instrument. (required)
-     * @param identifier The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param scope The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentRelationshipsAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentRelationshipsAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentRelationshipsRequest {
+        private final String identifierType;
+        private final String identifier;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+        private String scope;
+
+        private APIgetInstrumentRelationshipsRequest(String identifierType, String identifier) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInstrumentRelationshipsRequest
+         */
+        public APIgetInstrumentRelationshipsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetInstrumentRelationshipsRequest
+         */
+        public APIgetInstrumentRelationshipsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetInstrumentRelationshipsRequest
+         */
+        public APIgetInstrumentRelationshipsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @return APIgetInstrumentRelationshipsRequest
+         */
+        public APIgetInstrumentRelationshipsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetInstrumentRelationshipsRequest
+         */
+        public APIgetInstrumentRelationshipsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrumentRelationships
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentRelationshipsCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentRelationships request
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute() throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getInstrumentRelationshipsWithHttpInfo(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentRelationships request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
+            return getInstrumentRelationshipsWithHttpInfo(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope);
+        }
+
+        /**
+         * Execute getInstrumentRelationships request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+            return getInstrumentRelationshipsAsync(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstruments
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param requestBody A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               each instrument, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships
+     * Get relationships for a particular Instrument.
+     * @param identifierType An identifier type attached to the Instrument. (required)
+     * @param identifier The identifier value. (required)
+     * @return APIgetInstrumentRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentRelationshipsRequest getInstrumentRelationships(String identifierType, String identifier) {
+        return new APIgetInstrumentRelationshipsRequest(identifierType, identifier);
+    }
+    private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2373,106 +3032,171 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * GetInstruments: Get instruments
-     * Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.                Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param requestBody A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               each instrument, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return GetInstrumentsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetInstrumentsResponse getInstruments(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetInstruments: Get instruments
-     * Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.                Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param requestBody A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               each instrument, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;GetInstrumentsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetInstruments: Get instruments (asynchronously)
-     * Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.                Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
-     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
-     * @param requestBody A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               each instrument, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentsRequest {
+        private final String identifierType;
+        private final List<String> requestBody;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+        private String scope;
+        private List<String> relationshipDefinitionIds;
+
+        private APIgetInstrumentsRequest(String identifierType, List<String> requestBody) {
+            this.identifierType = identifierType;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument definitions.   Defaults to returning the latest version of each instrument definition if not specified. (optional)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   each instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for getInstruments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getInstruments request
+         * @return GetInstrumentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetInstrumentsResponse execute() throws ApiException {
+            ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstruments request with HTTP info returned
+         * @return ApiResponse&lt;GetInstrumentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetInstrumentsResponse> executeWithHttpInfo() throws ApiException {
+            return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getInstruments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
+            return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for listInstrumentProperties
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetInstruments: Get instruments
+     * Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.     Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
+     * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
+     * @param requestBody A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. (required)
+     * @return APIgetInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentsRequest getInstruments(String identifierType, List<String> requestBody) {
+        return new APIgetInstrumentsRequest(identifierType, requestBody);
+    }
+    private okhttp3.Call listInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2556,109 +3280,171 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination)
-     * List all the properties of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ResourceListOfProperty
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfProperty listInstrumentProperties(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope) throws ApiException {
-        ApiResponse<ResourceListOfProperty> localVarResp = listInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, page, limit, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination)
-     * List all the properties of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;ResourceListOfProperty&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfProperty> listInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope) throws ApiException {
+    private ApiResponse<ResourceListOfProperty> listInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope) throws ApiException {
         okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, null);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination) (asynchronously)
-     * List all the properties of a particular instrument, as identified by a particular unique identifier.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.              Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning              the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
+    private okhttp3.Call listInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistInstrumentPropertiesRequest {
+        private final String identifierType;
+        private final String identifier;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String scope;
+
+        private APIlistInstrumentPropertiesRequest(String identifierType, String identifier) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistInstrumentPropertiesRequest
+         */
+        public APIlistInstrumentPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning   the latest version of each property if not specified. (optional)
+         * @return APIlistInstrumentPropertiesRequest
+         */
+        public APIlistInstrumentPropertiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
+         * @return APIlistInstrumentPropertiesRequest
+         */
+        public APIlistInstrumentPropertiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results per page to this number. (optional)
+         * @return APIlistInstrumentPropertiesRequest
+         */
+        public APIlistInstrumentPropertiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIlistInstrumentPropertiesRequest
+         */
+        public APIlistInstrumentPropertiesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for listInstrumentProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback);
+        }
+
+        /**
+         * Execute listInstrumentProperties request
+         * @return ResourceListOfProperty
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProperty execute() throws ApiException {
+            ApiResponse<ResourceListOfProperty> localVarResp = listInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, page, limit, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listInstrumentProperties request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfProperty&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProperty> executeWithHttpInfo() throws ApiException {
+            return listInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, page, limit, scope);
+        }
+
+        /**
+         * Execute listInstrumentProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
+            return listInstrumentPropertiesAsync(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for listInstruments
-     * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to list instruments.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param page The pagination token to use to continue listing instruments; this value is returned from               the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and               &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. Also, a &lt;i&gt;start&lt;/i&gt; value cannot be               provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
-     * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination)
+     * List all the properties of a particular instrument, as identified by a particular unique identifier.
+     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
+     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
+     * @return APIlistInstrumentPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIlistInstrumentPropertiesRequest listInstrumentProperties(String identifierType, String identifier) {
+        return new APIlistInstrumentPropertiesRequest(identifierType, identifier);
+    }
+    private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2750,110 +3536,220 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * ListInstruments: List instruments
-     * List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
-     * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to list instruments.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param page The pagination token to use to continue listing instruments; this value is returned from               the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and               &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. Also, a &lt;i&gt;start&lt;/i&gt; value cannot be               provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
-     * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return PagedResourceListOfInstrument
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfInstrument listInstruments(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListInstruments: List instruments
-     * List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
-     * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to list instruments.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param page The pagination token to use to continue listing instruments; this value is returned from               the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and               &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. Also, a &lt;i&gt;start&lt;/i&gt; value cannot be               provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
-     * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfInstrument&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListInstruments: List instruments (asynchronously)
-     * List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
-     * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to list instruments.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param page The pagination token to use to continue listing instruments; this value is returned from               the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and               &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. Also, a &lt;i&gt;start&lt;/i&gt; value cannot be               provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
-     * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
+    private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistInstrumentsRequest {
+        private OffsetDateTime asAt;
+        private String effectiveAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> instrumentPropertyKeys;
+        private String scope;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistInstrumentsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. Also, a &lt;i&gt;start&lt;/i&gt; value cannot be   provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set instrumentPropertyKeys
+         * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest instrumentPropertyKeys(List<String> instrumentPropertyKeys) {
+            this.instrumentPropertyKeys = instrumentPropertyKeys;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listInstruments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listInstrumentsCall(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listInstruments request
+         * @return PagedResourceListOfInstrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfInstrument execute() throws ApiException {
+            ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listInstruments request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfInstrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfInstrument> executeWithHttpInfo() throws ApiException {
+            return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listInstruments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
+            return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for queryInstrumentCapabilities
-     * @param lusidInstrument The definition of the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ListInstruments: List instruments
+     * List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+     * @return APIlistInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call queryInstrumentCapabilitiesCall(LusidInstrument lusidInstrument, String model, final ApiCallback _callback) throws ApiException {
+    public APIlistInstrumentsRequest listInstruments() {
+        return new APIlistInstrumentsRequest();
+    }
+    private okhttp3.Call queryInstrumentCapabilitiesCall(LusidInstrument lusidInstrument, String model, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2918,88 +3814,124 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
-     * @param lusidInstrument The definition of the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @return InstrumentCapabilities
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstrumentCapabilities queryInstrumentCapabilities(LusidInstrument lusidInstrument, String model) throws ApiException {
-        ApiResponse<InstrumentCapabilities> localVarResp = queryInstrumentCapabilitiesWithHttpInfo(lusidInstrument, model);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
-     * @param lusidInstrument The definition of the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @return ApiResponse&lt;InstrumentCapabilities&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstrumentCapabilities> queryInstrumentCapabilitiesWithHttpInfo(LusidInstrument lusidInstrument, String model) throws ApiException {
+    private ApiResponse<InstrumentCapabilities> queryInstrumentCapabilitiesWithHttpInfo(LusidInstrument lusidInstrument, String model) throws ApiException {
         okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, null);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies. (asynchronously)
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
-     * @param lusidInstrument The definition of the instrument. (required)
-     * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call queryInstrumentCapabilitiesAsync(LusidInstrument lusidInstrument, String model, final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
+    private okhttp3.Call queryInstrumentCapabilitiesAsync(LusidInstrument lusidInstrument, String model, final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, _callback);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIqueryInstrumentCapabilitiesRequest {
+        private final LusidInstrument lusidInstrument;
+        private String model;
+
+        private APIqueryInstrumentCapabilitiesRequest(LusidInstrument lusidInstrument) {
+            this.lusidInstrument = lusidInstrument;
+        }
+
+        /**
+         * Set model
+         * @param model A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. (optional)
+         * @return APIqueryInstrumentCapabilitiesRequest
+         */
+        public APIqueryInstrumentCapabilitiesRequest model(String model) {
+            this.model = model;
+            return this;
+        }
+
+        /**
+         * Build call for queryInstrumentCapabilities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryInstrumentCapabilitiesCall(lusidInstrument, model, _callback);
+        }
+
+        /**
+         * Execute queryInstrumentCapabilities request
+         * @return InstrumentCapabilities
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentCapabilities execute() throws ApiException {
+            ApiResponse<InstrumentCapabilities> localVarResp = queryInstrumentCapabilitiesWithHttpInfo(lusidInstrument, model);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryInstrumentCapabilities request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentCapabilities&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentCapabilities> executeWithHttpInfo() throws ApiException {
+            return queryInstrumentCapabilitiesWithHttpInfo(lusidInstrument, model);
+        }
+
+        /**
+         * Execute queryInstrumentCapabilities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
+            return queryInstrumentCapabilitiesAsync(lusidInstrument, model, _callback);
+        }
+    }
+
     /**
-     * Build call for updateInstrumentIdentifier
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the               &#39;identifier&#39; parameter used to retrieve the instrument. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
+     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
+     * @param lusidInstrument The definition of the instrument. (required)
+     * @return APIqueryInstrumentCapabilitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback) throws ApiException {
+    public APIqueryInstrumentCapabilitiesRequest queryInstrumentCapabilities(LusidInstrument lusidInstrument) {
+        return new APIqueryInstrumentCapabilitiesRequest(lusidInstrument);
+    }
+    private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3076,92 +4008,130 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * UpdateInstrumentIdentifier: Update instrument identifier
-     * Create, update or delete a particular instrument identifier for an instrument.                To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the               &#39;identifier&#39; parameter used to retrieve the instrument. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return Instrument
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Instrument updateInstrumentIdentifier(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope) throws ApiException {
-        ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpdateInstrumentIdentifier: Update instrument identifier
-     * Create, update or delete a particular instrument identifier for an instrument.                To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the               &#39;identifier&#39; parameter used to retrieve the instrument. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;Instrument&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope) throws ApiException {
+    private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope) throws ApiException {
         okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, null);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * UpdateInstrumentIdentifier: Update instrument identifier (asynchronously)
-     * Create, update or delete a particular instrument identifier for an instrument.                To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
-     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
-     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the               &#39;identifier&#39; parameter used to retrieve the instrument. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback<Instrument> _callback) throws ApiException {
+    private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback<Instrument> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupdateInstrumentIdentifierRequest {
+        private final String identifierType;
+        private final String identifier;
+        private final UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest;
+        private String scope;
+
+        private APIupdateInstrumentIdentifierRequest(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+            this.updateInstrumentIdentifierRequest = updateInstrumentIdentifierRequest;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIupdateInstrumentIdentifierRequest
+         */
+        public APIupdateInstrumentIdentifierRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for updateInstrumentIdentifier
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+        }
+
+        /**
+         * Execute updateInstrumentIdentifier request
+         * @return Instrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Instrument execute() throws ApiException {
+            ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateInstrumentIdentifier request with HTTP info returned
+         * @return ApiResponse&lt;Instrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Instrument> executeWithHttpInfo() throws ApiException {
+            return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope);
+        }
+
+        /**
+         * Execute updateInstrumentIdentifier request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback) throws ApiException {
+            return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertInstruments
-     * @param requestBody The definitions of the instruments to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * UpdateInstrumentIdentifier: Update instrument identifier
+     * Create, update or delete a particular instrument identifier for an instrument.     To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
+     * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
+     * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
+     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the   &#39;identifier&#39; parameter used to retrieve the instrument. (required)
+     * @return APIupdateInstrumentIdentifierRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertInstrumentsCall(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback _callback) throws ApiException {
+    public APIupdateInstrumentIdentifierRequest updateInstrumentIdentifier(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest) {
+        return new APIupdateInstrumentIdentifierRequest(identifierType, identifier, updateInstrumentIdentifierRequest);
+    }
+    private okhttp3.Call upsertInstrumentsCall(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3226,86 +4196,124 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * UpsertInstruments: Upsert instruments
-     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.                In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.                Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.                The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
-     * @param requestBody The definitions of the instruments to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return UpsertInstrumentsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertInstrumentsResponse upsertInstruments(Map<String, InstrumentDefinition> requestBody, String scope) throws ApiException {
-        ApiResponse<UpsertInstrumentsResponse> localVarResp = upsertInstrumentsWithHttpInfo(requestBody, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertInstruments: Upsert instruments
-     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.                In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.                Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.                The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
-     * @param requestBody The definitions of the instruments to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;UpsertInstrumentsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertInstrumentsResponse> upsertInstrumentsWithHttpInfo(Map<String, InstrumentDefinition> requestBody, String scope) throws ApiException {
+    private ApiResponse<UpsertInstrumentsResponse> upsertInstrumentsWithHttpInfo(Map<String, InstrumentDefinition> requestBody, String scope) throws ApiException {
         okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, null);
         Type localVarReturnType = new TypeToken<UpsertInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * UpsertInstruments: Upsert instruments (asynchronously)
-     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.                In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.                Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.                The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
-     * @param requestBody The definitions of the instruments to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertInstrumentsAsync(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback<UpsertInstrumentsResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertInstrumentsAsync(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback<UpsertInstrumentsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, _callback);
         Type localVarReturnType = new TypeToken<UpsertInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertInstrumentsRequest {
+        private final Map<String, InstrumentDefinition> requestBody;
+        private String scope;
+
+        private APIupsertInstrumentsRequest(Map<String, InstrumentDefinition> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIupsertInstrumentsRequest
+         */
+        public APIupsertInstrumentsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for upsertInstruments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertInstrumentsCall(requestBody, scope, _callback);
+        }
+
+        /**
+         * Execute upsertInstruments request
+         * @return UpsertInstrumentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertInstrumentsResponse execute() throws ApiException {
+            ApiResponse<UpsertInstrumentsResponse> localVarResp = upsertInstrumentsWithHttpInfo(requestBody, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertInstruments request with HTTP info returned
+         * @return ApiResponse&lt;UpsertInstrumentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertInstrumentsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertInstrumentsWithHttpInfo(requestBody, scope);
+        }
+
+        /**
+         * Execute upsertInstruments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentsResponse> _callback) throws ApiException {
+            return upsertInstrumentsAsync(requestBody, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertInstrumentsProperties
-     * @param upsertInstrumentPropertyRequest A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * UpsertInstruments: Upsert instruments
+     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.     In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.     Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.     The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
+     * @param requestBody The definitions of the instruments to create or update. (required)
+     * @return APIupsertInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback) throws ApiException {
+    public APIupsertInstrumentsRequest upsertInstruments(Map<String, InstrumentDefinition> requestBody) {
+        return new APIupsertInstrumentsRequest(requestBody);
+    }
+    private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3370,55 +4378,112 @@ public class InstrumentsApi {
 
     }
 
-    /**
-     * UpsertInstrumentsProperties: Upsert instruments properties
-     * Create or update one or more properties for particular instruments.                Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param upsertInstrumentPropertyRequest A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return UpsertInstrumentPropertiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope) throws ApiException {
-        ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertInstrumentsProperties: Upsert instruments properties
-     * Create or update one or more properties for particular instruments.                Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param upsertInstrumentPropertyRequest A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;UpsertInstrumentPropertiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope) throws ApiException {
+    private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope) throws ApiException {
         okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, null);
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback);
+        Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertInstrumentsPropertiesRequest {
+        private final List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest;
+        private String scope;
+
+        private APIupsertInstrumentsPropertiesRequest(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest) {
+            this.upsertInstrumentPropertyRequest = upsertInstrumentPropertyRequest;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIupsertInstrumentsPropertiesRequest
+         */
+        public APIupsertInstrumentsPropertiesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for upsertInstrumentsProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, _callback);
+        }
+
+        /**
+         * Execute upsertInstrumentsProperties request
+         * @return UpsertInstrumentPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertInstrumentPropertiesResponse execute() throws ApiException {
+            ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertInstrumentsProperties request with HTTP info returned
+         * @return ApiResponse&lt;UpsertInstrumentPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope);
+        }
+
+        /**
+         * Execute upsertInstrumentsProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
+            return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, _callback);
+        }
+    }
+
     /**
-     * UpsertInstrumentsProperties: Upsert instruments properties (asynchronously)
-     * Create or update one or more properties for particular instruments.                Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * UpsertInstrumentsProperties: Upsert instruments properties
+     * Create or update one or more properties for particular instruments.     Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param upsertInstrumentPropertyRequest A list of instruments and associated instrument properties to create or update. (required)
-     * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertInstrumentsPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -3427,11 +4492,7 @@ public class InstrumentsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback);
-        Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertInstrumentsPropertiesRequest upsertInstrumentsProperties(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest) {
+        return new APIupsertInstrumentsPropertiesRequest(upsertInstrumentPropertyRequest);
     }
 }

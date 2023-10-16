@@ -10,11 +10,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="translateInstrumentDefinitions"></a>
 # **translateInstrumentDefinitions**
-> TranslateInstrumentDefinitionsResponse translateInstrumentDefinitions(translateInstrumentDefinitionsRequest)
+> TranslateInstrumentDefinitionsResponse translateInstrumentDefinitions(translateInstrumentDefinitionsRequest).execute();
 
 [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
 
-Translates one or more instruments into the given target dialect.                In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.                Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.                The response will return both the collection of successfully translated instruments in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.
+Translates one or more instruments into the given target dialect.     In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.     Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.     The response will return both the collection of successfully translated instruments in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.
 
 ### Example
 ```java
@@ -38,7 +38,8 @@ public class Example {
     TranslationApi apiInstance = new TranslationApi(defaultClient);
     TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest = new TranslateInstrumentDefinitionsRequest(); // TranslateInstrumentDefinitionsRequest | The definitions of the instruments to translate along with the target dialect.
     try {
-      TranslateInstrumentDefinitionsResponse result = apiInstance.translateInstrumentDefinitions(translateInstrumentDefinitionsRequest);
+      TranslateInstrumentDefinitionsResponse result = apiInstance.translateInstrumentDefinitions(translateInstrumentDefinitionsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TranslationApi#translateInstrumentDefinitions");
@@ -79,11 +80,11 @@ public class Example {
 
 <a id="translateTradeTickets"></a>
 # **translateTradeTickets**
-> TranslateTradeTicketsResponse translateTradeTickets(translateTradeTicketRequest)
+> TranslateTradeTicketsResponse translateTradeTickets(translateTradeTicketRequest).execute();
 
 [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
 
-Translates one or more trade tickets into the given target dialect.                In the request each trade ticket definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each trade ticket in the response.                The response will return both the collection of successfully translated trade tickets in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the trade ticket could not be updated or inserted.
+Translates one or more trade tickets into the given target dialect.     In the request each trade ticket definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each trade ticket in the response.     The response will return both the collection of successfully translated trade tickets in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the trade ticket could not be updated or inserted.
 
 ### Example
 ```java
@@ -107,7 +108,8 @@ public class Example {
     TranslationApi apiInstance = new TranslationApi(defaultClient);
     TranslateTradeTicketRequest translateTradeTicketRequest = new TranslateTradeTicketRequest(); // TranslateTradeTicketRequest | The definitions of the trade ticket to translate along with the target dialect.
     try {
-      TranslateTradeTicketsResponse result = apiInstance.translateTradeTickets(translateTradeTicketRequest);
+      TranslateTradeTicketsResponse result = apiInstance.translateTradeTickets(translateTradeTicketRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TranslationApi#translateTradeTickets");

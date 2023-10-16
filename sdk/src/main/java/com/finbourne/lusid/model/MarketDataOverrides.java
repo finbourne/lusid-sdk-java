@@ -189,25 +189,18 @@ public class MarketDataOverrides {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MarketDataOverrides
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MarketDataOverrides
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MarketDataOverrides.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MarketDataOverrides.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MarketDataOverrides is not found in the empty JSON string", MarketDataOverrides.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!MarketDataOverrides.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MarketDataOverrides` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("complexMarketData") != null && !jsonObj.get("complexMarketData").isJsonNull()) {
         JsonArray jsonArraycomplexMarketData = jsonObj.getAsJsonArray("complexMarketData");
         if (jsonArraycomplexMarketData != null) {
@@ -218,7 +211,7 @@ public class MarketDataOverrides {
 
           // validate the optional field `complexMarketData` (array)
           for (int i = 0; i < jsonArraycomplexMarketData.size(); i++) {
-            EconomicDependencyWithComplexMarketData.validateJsonObject(jsonArraycomplexMarketData.get(i).getAsJsonObject());
+            EconomicDependencyWithComplexMarketData.validateJsonElement(jsonArraycomplexMarketData.get(i));
           };
         }
       }
@@ -232,7 +225,7 @@ public class MarketDataOverrides {
 
           // validate the optional field `quotes` (array)
           for (int i = 0; i < jsonArrayquotes.size(); i++) {
-            EconomicDependencyWithQuote.validateJsonObject(jsonArrayquotes.get(i).getAsJsonObject());
+            EconomicDependencyWithQuote.validateJsonElement(jsonArrayquotes.get(i));
           };
         }
       }
@@ -258,9 +251,9 @@ public class MarketDataOverrides {
 
            @Override
            public MarketDataOverrides read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

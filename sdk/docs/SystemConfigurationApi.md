@@ -15,7 +15,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createConfigurationTransactionType"></a>
 # **createConfigurationTransactionType**
-> TransactionSetConfigurationData createConfigurationTransactionType(transactionConfigurationDataRequest)
+> TransactionSetConfigurationData createConfigurationTransactionType().transactionConfigurationDataRequest(transactionConfigurationDataRequest).execute();
 
 [EARLY ACCESS] CreateConfigurationTransactionType: Create transaction type
 
@@ -43,7 +43,9 @@ public class Example {
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
     TransactionConfigurationDataRequest transactionConfigurationDataRequest = new TransactionConfigurationDataRequest(); // TransactionConfigurationDataRequest | A transaction type definition.
     try {
-      TransactionSetConfigurationData result = apiInstance.createConfigurationTransactionType(transactionConfigurationDataRequest);
+      TransactionSetConfigurationData result = apiInstance.createConfigurationTransactionType()
+            .transactionConfigurationDataRequest(transactionConfigurationDataRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#createConfigurationTransactionType");
@@ -84,7 +86,7 @@ public class Example {
 
 <a id="createSideDefinition"></a>
 # **createSideDefinition**
-> TransactionSetConfigurationData createSideDefinition(sideConfigurationDataRequest)
+> TransactionSetConfigurationData createSideDefinition().sideConfigurationDataRequest(sideConfigurationDataRequest).execute();
 
 [EXPERIMENTAL] CreateSideDefinition: Create side definition
 
@@ -112,7 +114,9 @@ public class Example {
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
     SideConfigurationDataRequest sideConfigurationDataRequest = new SideConfigurationDataRequest(); // SideConfigurationDataRequest | The definition of the side.
     try {
-      TransactionSetConfigurationData result = apiInstance.createSideDefinition(sideConfigurationDataRequest);
+      TransactionSetConfigurationData result = apiInstance.createSideDefinition()
+            .sideConfigurationDataRequest(sideConfigurationDataRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#createSideDefinition");
@@ -153,7 +157,7 @@ public class Example {
 
 <a id="deleteTransactionConfigurationSource"></a>
 # **deleteTransactionConfigurationSource**
-> DeletedEntityResponse deleteTransactionConfigurationSource(source)
+> DeletedEntityResponse deleteTransactionConfigurationSource(source).execute();
 
 [EXPERIMENTAL] DeleteTransactionConfigurationSource: Delete all transaction configurations for a source
 
@@ -181,7 +185,8 @@ public class Example {
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
     String source = "source_example"; // String | The source to delete transaction configurations for
     try {
-      DeletedEntityResponse result = apiInstance.deleteTransactionConfigurationSource(source);
+      DeletedEntityResponse result = apiInstance.deleteTransactionConfigurationSource(source)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#deleteTransactionConfigurationSource");
@@ -222,7 +227,7 @@ public class Example {
 
 <a id="getTransactionConfigurationSource"></a>
 # **getTransactionConfigurationSource**
-> TransactionSetConfigurationData getTransactionConfigurationSource(source, asAt)
+> TransactionSetConfigurationData getTransactionConfigurationSource(source).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetTransactionConfigurationSource: Get all transaction configurations for a source
 
@@ -249,9 +254,11 @@ public class Example {
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
     String source = "source_example"; // String | The source for which to retrieve transaction configurations
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configurations.              Defaults to returning the latest version of the transaction configurations if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configurations.   Defaults to returning the latest version of the transaction configurations if not specified.
     try {
-      TransactionSetConfigurationData result = apiInstance.getTransactionConfigurationSource(source, asAt);
+      TransactionSetConfigurationData result = apiInstance.getTransactionConfigurationSource(source)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#getTransactionConfigurationSource");
@@ -269,7 +276,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **source** | **String**| The source for which to retrieve transaction configurations | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configurations.              Defaults to returning the latest version of the transaction configurations if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configurations.   Defaults to returning the latest version of the transaction configurations if not specified. | [optional] |
 
 ### Return type
 
@@ -293,7 +300,7 @@ public class Example {
 
 <a id="listConfigurationTransactionTypes"></a>
 # **listConfigurationTransactionTypes**
-> TransactionSetConfigurationData listConfigurationTransactionTypes(asAt)
+> TransactionSetConfigurationData listConfigurationTransactionTypes().asAt(asAt).execute();
 
 [EARLY ACCESS] ListConfigurationTransactionTypes: List transaction types
 
@@ -319,9 +326,11 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
     try {
-      TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt);
+      TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes()
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#listConfigurationTransactionTypes");
@@ -338,7 +347,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
 
 ### Return type
 
@@ -362,11 +371,11 @@ public class Example {
 
 <a id="setConfigurationTransactionTypes"></a>
 # **setConfigurationTransactionTypes**
-> TransactionSetConfigurationData setConfigurationTransactionTypes(transactionSetConfigurationDataRequest)
+> TransactionSetConfigurationData setConfigurationTransactionTypes().transactionSetConfigurationDataRequest(transactionSetConfigurationDataRequest).execute();
 
 [EXPERIMENTAL] SetConfigurationTransactionTypes: Set transaction types
 
-Configure all existing transaction types. Note it is not possible to configure a single existing transaction type on its own.                WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+Configure all existing transaction types. Note it is not possible to configure a single existing transaction type on its own.     WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 ```java
@@ -390,7 +399,9 @@ public class Example {
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
     TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest = new TransactionSetConfigurationDataRequest(); // TransactionSetConfigurationDataRequest | The complete set of transaction type definitions.
     try {
-      TransactionSetConfigurationData result = apiInstance.setConfigurationTransactionTypes(transactionSetConfigurationDataRequest);
+      TransactionSetConfigurationData result = apiInstance.setConfigurationTransactionTypes()
+            .transactionSetConfigurationDataRequest(transactionSetConfigurationDataRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#setConfigurationTransactionTypes");
@@ -431,11 +442,11 @@ public class Example {
 
 <a id="setTransactionConfigurationSource"></a>
 # **setTransactionConfigurationSource**
-> TransactionSetConfigurationData setTransactionConfigurationSource(source, setTransactionConfigurationSourceRequest)
+> TransactionSetConfigurationData setTransactionConfigurationSource(source, setTransactionConfigurationSourceRequest).execute();
 
 [EXPERIMENTAL] SetTransactionConfigurationSource: Set transaction types for a source
 
-This will replace all the existing transaction configurations for the given source                WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+This will replace all the existing transaction configurations for the given source     WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 ```java
@@ -460,7 +471,8 @@ public class Example {
     String source = "source_example"; // String | The source to set the transaction configurations for
     List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest = Arrays.asList(); // List<SetTransactionConfigurationSourceRequest> | The set of transaction configurations
     try {
-      TransactionSetConfigurationData result = apiInstance.setTransactionConfigurationSource(source, setTransactionConfigurationSourceRequest);
+      TransactionSetConfigurationData result = apiInstance.setTransactionConfigurationSource(source, setTransactionConfigurationSourceRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#setTransactionConfigurationSource");

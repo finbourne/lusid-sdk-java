@@ -77,22 +77,7 @@ public class ReferencePortfolioApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createReferencePortfolio
-     * @param scope The scope in which to create the reference portfolio. (required)
-     * @param createReferencePortfolioRequest The definition of the reference portfolio. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createReferencePortfolioCall(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createReferencePortfolioCall(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -159,89 +144,116 @@ public class ReferencePortfolioApi {
 
     }
 
-    /**
-     * CreateReferencePortfolio: Create reference portfolio
-     * Create a reference portfolio in a particular scope.
-     * @param scope The scope in which to create the reference portfolio. (required)
-     * @param createReferencePortfolioRequest The definition of the reference portfolio. (required)
-     * @return Portfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Portfolio createReferencePortfolio(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest) throws ApiException {
-        ApiResponse<Portfolio> localVarResp = createReferencePortfolioWithHttpInfo(scope, createReferencePortfolioRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * CreateReferencePortfolio: Create reference portfolio
-     * Create a reference portfolio in a particular scope.
-     * @param scope The scope in which to create the reference portfolio. (required)
-     * @param createReferencePortfolioRequest The definition of the reference portfolio. (required)
-     * @return ApiResponse&lt;Portfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Portfolio> createReferencePortfolioWithHttpInfo(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest) throws ApiException {
+    private ApiResponse<Portfolio> createReferencePortfolioWithHttpInfo(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest) throws ApiException {
         okhttp3.Call localVarCall = createReferencePortfolioValidateBeforeCall(scope, createReferencePortfolioRequest, null);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * CreateReferencePortfolio: Create reference portfolio (asynchronously)
-     * Create a reference portfolio in a particular scope.
-     * @param scope The scope in which to create the reference portfolio. (required)
-     * @param createReferencePortfolioRequest The definition of the reference portfolio. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
+    private okhttp3.Call createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createReferencePortfolioValidateBeforeCall(scope, createReferencePortfolioRequest, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateReferencePortfolioRequest {
+        private final String scope;
+        private final CreateReferencePortfolioRequest createReferencePortfolioRequest;
+
+        private APIcreateReferencePortfolioRequest(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest) {
+            this.scope = scope;
+            this.createReferencePortfolioRequest = createReferencePortfolioRequest;
+        }
+
+        /**
+         * Build call for createReferencePortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createReferencePortfolioCall(scope, createReferencePortfolioRequest, _callback);
+        }
+
+        /**
+         * Execute createReferencePortfolio request
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute() throws ApiException {
+            ApiResponse<Portfolio> localVarResp = createReferencePortfolioWithHttpInfo(scope, createReferencePortfolioRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createReferencePortfolio request with HTTP info returned
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
+            return createReferencePortfolioWithHttpInfo(scope, createReferencePortfolioRequest);
+        }
+
+        /**
+         * Execute createReferencePortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
+            return createReferencePortfolioAsync(scope, createReferencePortfolioRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getReferencePortfolioConstituents
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param effectiveAt The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * CreateReferencePortfolio: Create reference portfolio
+     * Create a reference portfolio in a particular scope.
+     * @param scope The scope in which to create the reference portfolio. (required)
+     * @param createReferencePortfolioRequest The definition of the reference portfolio. (required)
+     * @return APIcreateReferencePortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created reference portfolio, with populated id </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReferencePortfolioConstituentsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIcreateReferencePortfolioRequest createReferencePortfolio(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest) {
+        return new APIcreateReferencePortfolioRequest(scope, createReferencePortfolioRequest);
+    }
+    private okhttp3.Call getReferencePortfolioConstituentsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -317,98 +329,149 @@ public class ReferencePortfolioApi {
 
     }
 
-    /**
-     * GetReferencePortfolioConstituents: Get reference portfolio constituents
-     * Get constituents from a reference portfolio at a particular effective time.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param effectiveAt The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
-     * @return GetReferencePortfolioConstituentsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<GetReferencePortfolioConstituentsResponse> localVarResp = getReferencePortfolioConstituentsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetReferencePortfolioConstituents: Get reference portfolio constituents
-     * Get constituents from a reference portfolio at a particular effective time.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param effectiveAt The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
-     * @return ApiResponse&lt;GetReferencePortfolioConstituentsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetReferencePortfolioConstituentsResponse> getReferencePortfolioConstituentsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<GetReferencePortfolioConstituentsResponse> getReferencePortfolioConstituentsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getReferencePortfolioConstituentsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<GetReferencePortfolioConstituentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetReferencePortfolioConstituents: Get reference portfolio constituents (asynchronously)
-     * Get constituents from a reference portfolio at a particular effective time.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param effectiveAt The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getReferencePortfolioConstituentsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<GetReferencePortfolioConstituentsResponse> _callback) throws ApiException {
+    private okhttp3.Call getReferencePortfolioConstituentsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<GetReferencePortfolioConstituentsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReferencePortfolioConstituentsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<GetReferencePortfolioConstituentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetReferencePortfolioConstituentsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetReferencePortfolioConstituentsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetReferencePortfolioConstituentsRequest
+         */
+        public APIgetReferencePortfolioConstituentsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified. (optional)
+         * @return APIgetReferencePortfolioConstituentsRequest
+         */
+        public APIgetReferencePortfolioConstituentsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or   &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
+         * @return APIgetReferencePortfolioConstituentsRequest
+         */
+        public APIgetReferencePortfolioConstituentsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getReferencePortfolioConstituents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getReferencePortfolioConstituentsCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getReferencePortfolioConstituents request
+         * @return GetReferencePortfolioConstituentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetReferencePortfolioConstituentsResponse execute() throws ApiException {
+            ApiResponse<GetReferencePortfolioConstituentsResponse> localVarResp = getReferencePortfolioConstituentsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReferencePortfolioConstituents request with HTTP info returned
+         * @return ApiResponse&lt;GetReferencePortfolioConstituentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetReferencePortfolioConstituentsResponse> executeWithHttpInfo() throws ApiException {
+            return getReferencePortfolioConstituentsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getReferencePortfolioConstituents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetReferencePortfolioConstituentsResponse> _callback) throws ApiException {
+            return getReferencePortfolioConstituentsAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listConstituentsAdjustments
+     * GetReferencePortfolioConstituents: Get reference portfolio constituents
+     * Get constituents from a reference portfolio at a particular effective time.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned. (required)
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned. (required)
-     * @param asAtTime The asAt time for which the result is valid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
+     * @return APIgetReferencePortfolioConstituentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reference portfolio constituents </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listConstituentsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime, final ApiCallback _callback) throws ApiException {
+    public APIgetReferencePortfolioConstituentsRequest getReferencePortfolioConstituents(String scope, String code) {
+        return new APIgetReferencePortfolioConstituentsRequest(scope, code);
+    }
+    private okhttp3.Call listConstituentsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -494,87 +557,121 @@ public class ReferencePortfolioApi {
 
     }
 
-    /**
-     * ListConstituentsAdjustments: List constituents adjustments
-     * List adjustments made to constituents in a reference portfolio.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned. (required)
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned. (required)
-     * @param asAtTime The asAt time for which the result is valid. (optional)
-     * @return ResourceListOfConstituentsAdjustmentHeader
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfConstituentsAdjustmentHeader listConstituentsAdjustments(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime) throws ApiException {
-        ApiResponse<ResourceListOfConstituentsAdjustmentHeader> localVarResp = listConstituentsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListConstituentsAdjustments: List constituents adjustments
-     * List adjustments made to constituents in a reference portfolio.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned. (required)
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned. (required)
-     * @param asAtTime The asAt time for which the result is valid. (optional)
-     * @return ApiResponse&lt;ResourceListOfConstituentsAdjustmentHeader&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfConstituentsAdjustmentHeader> listConstituentsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime) throws ApiException {
+    private ApiResponse<ResourceListOfConstituentsAdjustmentHeader> listConstituentsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime) throws ApiException {
         okhttp3.Call localVarCall = listConstituentsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime, null);
         Type localVarReturnType = new TypeToken<ResourceListOfConstituentsAdjustmentHeader>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListConstituentsAdjustments: List constituents adjustments (asynchronously)
-     * List adjustments made to constituents in a reference portfolio.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned. (required)
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned. (required)
-     * @param asAtTime The asAt time for which the result is valid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listConstituentsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime, final ApiCallback<ResourceListOfConstituentsAdjustmentHeader> _callback) throws ApiException {
+    private okhttp3.Call listConstituentsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAtTime, final ApiCallback<ResourceListOfConstituentsAdjustmentHeader> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listConstituentsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfConstituentsAdjustmentHeader>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistConstituentsAdjustmentsRequest {
+        private final String scope;
+        private final String code;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private OffsetDateTime asAtTime;
+
+        private APIlistConstituentsAdjustmentsRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set asAtTime
+         * @param asAtTime The asAt time for which the result is valid. (optional)
+         * @return APIlistConstituentsAdjustmentsRequest
+         */
+        public APIlistConstituentsAdjustmentsRequest asAtTime(OffsetDateTime asAtTime) {
+            this.asAtTime = asAtTime;
+            return this;
+        }
+
+        /**
+         * Build call for listConstituentsAdjustments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listConstituentsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime, _callback);
+        }
+
+        /**
+         * Execute listConstituentsAdjustments request
+         * @return ResourceListOfConstituentsAdjustmentHeader
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfConstituentsAdjustmentHeader execute() throws ApiException {
+            ApiResponse<ResourceListOfConstituentsAdjustmentHeader> localVarResp = listConstituentsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listConstituentsAdjustments request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfConstituentsAdjustmentHeader&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfConstituentsAdjustmentHeader> executeWithHttpInfo() throws ApiException {
+            return listConstituentsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
+        }
+
+        /**
+         * Execute listConstituentsAdjustments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfConstituentsAdjustmentHeader> _callback) throws ApiException {
+            return listConstituentsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertReferencePortfolioConstituents
+     * ListConstituentsAdjustments: List constituents adjustments
+     * List adjustments made to constituents in a reference portfolio.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param upsertReferencePortfolioConstituentsRequest The constituents to upload to the reference portfolio. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned. (required)
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned. (required)
+     * @return APIlistConstituentsAdjustmentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -583,7 +680,10 @@ public class ReferencePortfolioApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertReferencePortfolioConstituentsCall(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistConstituentsAdjustmentsRequest listConstituentsAdjustments(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIlistConstituentsAdjustmentsRequest(scope, code, fromEffectiveAt, toEffectiveAt);
+    }
+    private okhttp3.Call upsertReferencePortfolioConstituentsCall(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -656,58 +756,107 @@ public class ReferencePortfolioApi {
 
     }
 
-    /**
-     * UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
-     * Add constituents to a reference portfolio.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param upsertReferencePortfolioConstituentsRequest The constituents to upload to the reference portfolio. (required)
-     * @return UpsertReferencePortfolioConstituentsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest) throws ApiException {
-        ApiResponse<UpsertReferencePortfolioConstituentsResponse> localVarResp = upsertReferencePortfolioConstituentsWithHttpInfo(scope, code, upsertReferencePortfolioConstituentsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
-     * Add constituents to a reference portfolio.
-     * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
-     * @param upsertReferencePortfolioConstituentsRequest The constituents to upload to the reference portfolio. (required)
-     * @return ApiResponse&lt;UpsertReferencePortfolioConstituentsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsWithHttpInfo(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest) throws ApiException {
+    private ApiResponse<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsWithHttpInfo(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertReferencePortfolioConstituentsValidateBeforeCall(scope, code, upsertReferencePortfolioConstituentsRequest, null);
         Type localVarReturnType = new TypeToken<UpsertReferencePortfolioConstituentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertReferencePortfolioConstituentsAsync(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest, final ApiCallback<UpsertReferencePortfolioConstituentsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertReferencePortfolioConstituentsValidateBeforeCall(scope, code, upsertReferencePortfolioConstituentsRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpsertReferencePortfolioConstituentsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertReferencePortfolioConstituentsRequest {
+        private final String scope;
+        private final String code;
+        private final UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest;
+
+        private APIupsertReferencePortfolioConstituentsRequest(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.upsertReferencePortfolioConstituentsRequest = upsertReferencePortfolioConstituentsRequest;
+        }
+
+        /**
+         * Build call for upsertReferencePortfolioConstituents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertReferencePortfolioConstituentsCall(scope, code, upsertReferencePortfolioConstituentsRequest, _callback);
+        }
+
+        /**
+         * Execute upsertReferencePortfolioConstituents request
+         * @return UpsertReferencePortfolioConstituentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertReferencePortfolioConstituentsResponse execute() throws ApiException {
+            ApiResponse<UpsertReferencePortfolioConstituentsResponse> localVarResp = upsertReferencePortfolioConstituentsWithHttpInfo(scope, code, upsertReferencePortfolioConstituentsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertReferencePortfolioConstituents request with HTTP info returned
+         * @return ApiResponse&lt;UpsertReferencePortfolioConstituentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertReferencePortfolioConstituentsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertReferencePortfolioConstituentsWithHttpInfo(scope, code, upsertReferencePortfolioConstituentsRequest);
+        }
+
+        /**
+         * Execute upsertReferencePortfolioConstituents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertReferencePortfolioConstituentsResponse> _callback) throws ApiException {
+            return upsertReferencePortfolioConstituentsAsync(scope, code, upsertReferencePortfolioConstituentsRequest, _callback);
+        }
+    }
+
     /**
-     * UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents (asynchronously)
+     * UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
      * Add constituents to a reference portfolio.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. (required)
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
      * @param upsertReferencePortfolioConstituentsRequest The constituents to upload to the reference portfolio. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertReferencePortfolioConstituentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -716,11 +865,7 @@ public class ReferencePortfolioApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertReferencePortfolioConstituentsAsync(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest, final ApiCallback<UpsertReferencePortfolioConstituentsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertReferencePortfolioConstituentsValidateBeforeCall(scope, code, upsertReferencePortfolioConstituentsRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpsertReferencePortfolioConstituentsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituents(String scope, String code, UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest) {
+        return new APIupsertReferencePortfolioConstituentsRequest(scope, code, upsertReferencePortfolioConstituentsRequest);
     }
 }

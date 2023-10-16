@@ -17,11 +17,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="batchUpsertCorporateActions"></a>
 # **batchUpsertCorporateActions**
-> UpsertCorporateActionsResponse batchUpsertCorporateActions(scope, code, upsertCorporateActionRequest)
+> UpsertCorporateActionsResponse batchUpsertCorporateActions(scope, code).upsertCorporateActionRequest(upsertCorporateActionRequest).execute();
 
 [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source.
 
-Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.                If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.                The maximum number of corporate actions that this method can upsert per request is 10,000.
+Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.     If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.     The maximum number of corporate actions that this method can upsert per request is 10,000.
 
 ### Example
 ```java
@@ -47,7 +47,9 @@ public class Example {
     String code = "code_example"; // String | The code of the corporate action source
     List<UpsertCorporateActionRequest> upsertCorporateActionRequest = Arrays.asList(); // List<UpsertCorporateActionRequest> | The corporate action definitions
     try {
-      UpsertCorporateActionsResponse result = apiInstance.batchUpsertCorporateActions(scope, code, upsertCorporateActionRequest);
+      UpsertCorporateActionsResponse result = apiInstance.batchUpsertCorporateActions(scope, code)
+            .upsertCorporateActionRequest(upsertCorporateActionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#batchUpsertCorporateActions");
@@ -90,7 +92,7 @@ public class Example {
 
 <a id="createCorporateActionSource"></a>
 # **createCorporateActionSource**
-> CorporateActionSource createCorporateActionSource(createCorporateActionSourceRequest)
+> CorporateActionSource createCorporateActionSource(createCorporateActionSourceRequest).execute();
 
 [EARLY ACCESS] CreateCorporateActionSource: Create corporate action source
 
@@ -118,7 +120,8 @@ public class Example {
     CorporateActionSourcesApi apiInstance = new CorporateActionSourcesApi(defaultClient);
     CreateCorporateActionSourceRequest createCorporateActionSourceRequest = new CreateCorporateActionSourceRequest(); // CreateCorporateActionSourceRequest | The corporate action source definition
     try {
-      CorporateActionSource result = apiInstance.createCorporateActionSource(createCorporateActionSourceRequest);
+      CorporateActionSource result = apiInstance.createCorporateActionSource(createCorporateActionSourceRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#createCorporateActionSource");
@@ -159,7 +162,7 @@ public class Example {
 
 <a id="deleteCorporateActionSource"></a>
 # **deleteCorporateActionSource**
-> DeletedEntityResponse deleteCorporateActionSource(scope, code)
+> DeletedEntityResponse deleteCorporateActionSource(scope, code).execute();
 
 [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source.
 
@@ -188,7 +191,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the corporate action source to be deleted
     String code = "code_example"; // String | The code of the corporate action source to be deleted
     try {
-      DeletedEntityResponse result = apiInstance.deleteCorporateActionSource(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteCorporateActionSource(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#deleteCorporateActionSource");
@@ -230,11 +234,11 @@ public class Example {
 
 <a id="deleteCorporateActions"></a>
 # **deleteCorporateActions**
-> DeletedEntityResponse deleteCorporateActions(scope, code, corporateActionIds)
+> DeletedEntityResponse deleteCorporateActions(scope, code, corporateActionIds).execute();
 
 [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions
 
-Delete one or more corporate actions from a particular corporate action source.                The maximum number of corporate actions that this method can delete per request is 1,000.
+Delete one or more corporate actions from a particular corporate action source.     The maximum number of corporate actions that this method can delete per request is 1,000.
 
 ### Example
 ```java
@@ -260,7 +264,8 @@ public class Example {
     String code = "code_example"; // String | The code of the corporate action source
     List<String> corporateActionIds = Arrays.asList(); // List<String> | The IDs of the corporate actions to delete
     try {
-      DeletedEntityResponse result = apiInstance.deleteCorporateActions(scope, code, corporateActionIds);
+      DeletedEntityResponse result = apiInstance.deleteCorporateActions(scope, code, corporateActionIds)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#deleteCorporateActions");
@@ -303,11 +308,11 @@ public class Example {
 
 <a id="deleteInstrumentEvents"></a>
 # **deleteInstrumentEvents**
-> DeletedEntityResponse deleteInstrumentEvents(scope, code, instrumentEventIds)
+> DeletedEntityResponse deleteInstrumentEvents(scope, code, instrumentEventIds).execute();
 
 [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source.
 
-Delete one or more corporate actions from a particular corporate action source.                The maximum number of instrument events that this method can delete per request is 1,000.
+Delete one or more corporate actions from a particular corporate action source.     The maximum number of instrument events that this method can delete per request is 1,000.
 
 ### Example
 ```java
@@ -333,7 +338,8 @@ public class Example {
     String code = "code_example"; // String | The code of the corporate action source
     List<String> instrumentEventIds = Arrays.asList(); // List<String> | The IDs of the instrument events to delete
     try {
-      DeletedEntityResponse result = apiInstance.deleteInstrumentEvents(scope, code, instrumentEventIds);
+      DeletedEntityResponse result = apiInstance.deleteInstrumentEvents(scope, code, instrumentEventIds)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#deleteInstrumentEvents");
@@ -376,7 +382,7 @@ public class Example {
 
 <a id="getCorporateActions"></a>
 # **getCorporateActions**
-> ResourceListOfCorporateAction getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter)
+> ResourceListOfCorporateAction getCorporateActions(scope, code).fromEffectiveAt(fromEffectiveAt).toEffectiveAt(toEffectiveAt).asAt(asAt).sortBy(sortBy).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] GetCorporateActions: List corporate actions (instrument transition events) from the corporate action source.
 
@@ -409,9 +415,16 @@ public class Example {
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data.
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
     Integer limit = 56; // Integer | Optional. When paginating, limit the results to this number.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \"announcementDate eq '2020-03-06'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Announcement Date, use \"announcementDate eq '2020-03-06'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter);
+      ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code)
+            .fromEffectiveAt(fromEffectiveAt)
+            .toEffectiveAt(toEffectiveAt)
+            .asAt(asAt)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#getCorporateActions");
@@ -435,7 +448,7 @@ public class Example {
 | **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the results to this number. | [optional] |
-| **filter** | **String**| Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -459,7 +472,7 @@ public class Example {
 
 <a id="getInstrumentEvents"></a>
 # **getInstrumentEvents**
-> PagedResourceListOfInstrumentEventHolder getInstrumentEvents(scope, code, asAt, limit, page, filter)
+> PagedResourceListOfInstrumentEventHolder getInstrumentEvents(scope, code).asAt(asAt).limit(limit).page(page).filter(filter).execute();
 
 [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source.
 
@@ -492,7 +505,12 @@ public class Example {
     String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set.
     try {
-      PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter);
+      PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code)
+            .asAt(asAt)
+            .limit(limit)
+            .page(page)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#getInstrumentEvents");
@@ -538,7 +556,7 @@ public class Example {
 
 <a id="listCorporateActionSources"></a>
 # **listCorporateActionSources**
-> PagedResourceListOfCorporateActionSource listCorporateActionSources(asAt, sortBy, limit, filter, page)
+> PagedResourceListOfCorporateActionSource listCorporateActionSources().asAt(asAt).sortBy(sortBy).limit(limit).filter(filter).page(page).execute();
 
 [EARLY ACCESS] ListCorporateActionSources: List corporate action sources
 
@@ -570,7 +588,13 @@ public class Example {
     String filter = "filter_example"; // String | Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \"displayName eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified.
     try {
-      PagedResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources(asAt, sortBy, limit, filter, page);
+      PagedResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources()
+            .asAt(asAt)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#listCorporateActionSources");
@@ -615,11 +639,11 @@ public class Example {
 
 <a id="upsertInstrumentEvents"></a>
 # **upsertInstrumentEvents**
-> UpsertInstrumentEventsResponse upsertInstrumentEvents(scope, code, upsertInstrumentEventRequest)
+> UpsertInstrumentEventsResponse upsertInstrumentEvents(scope, code).upsertInstrumentEventRequest(upsertInstrumentEventRequest).execute();
 
 [EARLY ACCESS] UpsertInstrumentEvents: Upsert instrument events to the provided corporate actions source.
 
-Batch upsert instrument events to corporate action sources.                The maximum number of instrument events that this method can upsert per request is 10,000.
+Batch upsert instrument events to corporate action sources.     The maximum number of instrument events that this method can upsert per request is 10,000.
 
 ### Example
 ```java
@@ -645,7 +669,9 @@ public class Example {
     String code = "code_example"; // String | The code of the corporate action source.
     List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest = Arrays.asList(); // List<UpsertInstrumentEventRequest> | The instrument event definitions.
     try {
-      UpsertInstrumentEventsResponse result = apiInstance.upsertInstrumentEvents(scope, code, upsertInstrumentEventRequest);
+      UpsertInstrumentEventsResponse result = apiInstance.upsertInstrumentEvents(scope, code)
+            .upsertInstrumentEventRequest(upsertInstrumentEventRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CorporateActionSourcesApi#upsertInstrumentEvents");

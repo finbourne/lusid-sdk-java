@@ -12,11 +12,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteConfigurationRecipe"></a>
 # **deleteConfigurationRecipe**
-> AnnulSingleStructuredDataResponse deleteConfigurationRecipe(scope, code)
+> AnnulSingleStructuredDataResponse deleteConfigurationRecipe(scope, code).execute();
 
 DeleteConfigurationRecipe: Delete a Configuration Recipe, assuming that it is present.
 
-Delete the specified Configuration Recipe from a single scope.                The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
+Delete the specified Configuration Recipe from a single scope.     The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
 
 ### Example
 ```java
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Configuration Recipe to delete.
     String code = "code_example"; // String | The Configuration Recipe to delete.
     try {
-      AnnulSingleStructuredDataResponse result = apiInstance.deleteConfigurationRecipe(scope, code);
+      AnnulSingleStructuredDataResponse result = apiInstance.deleteConfigurationRecipe(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConfigurationRecipeApi#deleteConfigurationRecipe");
@@ -83,11 +84,11 @@ public class Example {
 
 <a id="getConfigurationRecipe"></a>
 # **getConfigurationRecipe**
-> GetRecipeResponse getConfigurationRecipe(scope, code, asAt)
+> GetRecipeResponse getConfigurationRecipe(scope, code).asAt(asAt).execute();
 
 GetConfigurationRecipe: Get Configuration Recipe
 
-Get a Configuration Recipe from a single scope.                The response will return either the recipe that has been stored, or a failure explaining why the request was unsuccessful.                It is important to always check for any unsuccessful requests (failures).
+Get a Configuration Recipe from a single scope.     The response will return either the recipe that has been stored, or a failure explaining why the request was unsuccessful.     It is important to always check for any unsuccessful requests (failures).
 
 ### Example
 ```java
@@ -113,7 +114,9 @@ public class Example {
     String code = "code_example"; // String | The name of the recipe to retrieve the data for.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified.
     try {
-      GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt);
+      GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConfigurationRecipeApi#getConfigurationRecipe");
@@ -156,7 +159,7 @@ public class Example {
 
 <a id="listConfigurationRecipes"></a>
 # **listConfigurationRecipes**
-> ResourceListOfGetRecipeResponse listConfigurationRecipes(asAt, filter)
+> ResourceListOfGetRecipeResponse listConfigurationRecipes().asAt(asAt).filter(filter).execute();
 
 ListConfigurationRecipes: List the set of Configuration Recipes
 
@@ -183,9 +186,12 @@ public class Example {
 
     ConfigurationRecipeApi apiInstance = new ConfigurationRecipeApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter);
+      ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes()
+            .asAt(asAt)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConfigurationRecipeApi#listConfigurationRecipes");
@@ -203,7 +209,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -227,11 +233,11 @@ public class Example {
 
 <a id="upsertConfigurationRecipe"></a>
 # **upsertConfigurationRecipe**
-> UpsertSingleStructuredDataResponse upsertConfigurationRecipe(upsertRecipeRequest)
+> UpsertSingleStructuredDataResponse upsertConfigurationRecipe(upsertRecipeRequest).execute();
 
 UpsertConfigurationRecipe: Upsert a Configuration Recipe. This creates or updates the data in Lusid.
 
-Update or insert one Configuration Recipe in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Configuration Recipe or failure message if unsuccessful                It is important to always check to verify success (or failure).
+Update or insert one Configuration Recipe in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Configuration Recipe or failure message if unsuccessful     It is important to always check to verify success (or failure).
 
 ### Example
 ```java
@@ -255,7 +261,8 @@ public class Example {
     ConfigurationRecipeApi apiInstance = new ConfigurationRecipeApi(defaultClient);
     UpsertRecipeRequest upsertRecipeRequest = new UpsertRecipeRequest(); // UpsertRecipeRequest | The Configuration Recipe to update or insert
     try {
-      UpsertSingleStructuredDataResponse result = apiInstance.upsertConfigurationRecipe(upsertRecipeRequest);
+      UpsertSingleStructuredDataResponse result = apiInstance.upsertConfigurationRecipe(upsertRecipeRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConfigurationRecipeApi#upsertConfigurationRecipe");

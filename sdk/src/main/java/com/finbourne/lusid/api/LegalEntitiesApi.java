@@ -86,23 +86,7 @@ public class LegalEntitiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteLegalEntity
-     * @param idTypeScope The scope of the legal entity identifier type. (required)
-     * @param idTypeCode The code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined              identifier type uniquely identifies the legal entity to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegalEntityCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -172,93 +156,119 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
-     * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the legal entity identifier type. (required)
-     * @param idTypeCode The code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined              identifier type uniquely identifies the legal entity to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteLegalEntity(String idTypeScope, String idTypeCode, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
-     * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the legal entity identifier type. (required)
-     * @param idTypeCode The code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined              identifier type uniquely identifies the legal entity to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity (asynchronously)
-     * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the legal entity identifier type. (required)
-     * @param idTypeCode The code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined              identifier type uniquely identifies the legal entity to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegalEntityAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteLegalEntityRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+
+        private APIdeleteLegalEntityRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteLegalEntity
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteLegalEntityCall(idTypeScope, idTypeCode, code, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntity request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteLegalEntity request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code);
+        }
+
+        /**
+         * Execute deleteLegalEntity request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteLegalEntityAsync(idTypeScope, idTypeCode, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteLegalEntityAccessMetadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
+     * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param idTypeScope The scope of the legal entity identifier type. (required)
+     * @param idTypeCode The code of the legal entity identifier type. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the legal entity to delete. (required)
+     * @return APIdeleteLegalEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIdeleteLegalEntityRequest deleteLegalEntity(String idTypeScope, String idTypeCode, String code) {
+        return new APIdeleteLegalEntityRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call deleteLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -342,101 +352,144 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry
-     * Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry
-     * Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry (asynchronously)
-     * Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteLegalEntityAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String metadataKey;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIdeleteLegalEntityAccessMetadataRequest(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.metadataKey = metadataKey;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
+         * @return APIdeleteLegalEntityAccessMetadataRequest
+         */
+        public APIdeleteLegalEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIdeleteLegalEntityAccessMetadataRequest
+         */
+        public APIdeleteLegalEntityAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for deleteLegalEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntityAccessMetadata request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteLegalEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deleteLegalEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteLegalEntityIdentifiers
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry
+     * Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
+     * @param idTypeScope Scope of the Legal Entity identifier. (required)
+     * @param idTypeCode Code of the Legal Entity identifier. (required)
+     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
+     * @param metadataKey Key of the metadata entry to retrieve (required)
+     * @return APIdeleteLegalEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteLegalEntityAccessMetadataRequest deleteLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+        return new APIdeleteLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey);
+    }
+    private okhttp3.Call deleteLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,98 +572,133 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityIdentifiers: Delete Legal Entity Identifiers
-     * Delete identifiers that belong to the given property keys of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteLegalEntityIdentifiers(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityIdentifiers: Delete Legal Entity Identifiers
-     * Delete identifiers that belong to the given property keys of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityIdentifiers: Delete Legal Entity Identifiers (asynchronously)
-     * Delete identifiers that belong to the given property keys of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteLegalEntityIdentifiersRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final List<String> propertyKeys;
+        private String effectiveAt;
+
+        private APIdeleteLegalEntityIdentifiersRequest(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual. (optional)
+         * @return APIdeleteLegalEntityIdentifiersRequest
+         */
+        public APIdeleteLegalEntityIdentifiersRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteLegalEntityIdentifiers
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntityIdentifiers request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteLegalEntityIdentifiers request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deleteLegalEntityIdentifiers request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteLegalEntityIdentifiersAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteLegalEntityProperties
+     * [EARLY ACCESS] DeleteLegalEntityIdentifiers: Delete Legal Entity Identifiers
+     * Delete identifiers that belong to the given property keys of the legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param propertyKeys The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
+     * @return APIdeleteLegalEntityIdentifiersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteLegalEntityIdentifiersRequest deleteLegalEntityIdentifiers(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+        return new APIdeleteLegalEntityIdentifiersRequest(idTypeScope, idTypeCode, code, propertyKeys);
+    }
+    private okhttp3.Call deleteLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -693,98 +781,133 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityProperties: Delete Legal Entity Properties
-     * Delete all properties that belong to the given property keys of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteLegalEntityProperties(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityProperties: Delete Legal Entity Properties
-     * Delete all properties that belong to the given property keys of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteLegalEntityProperties: Delete Legal Entity Properties (asynchronously)
-     * Delete all properties that belong to the given property keys of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteLegalEntityPropertiesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final List<String> propertyKeys;
+        private String effectiveAt;
+
+        private APIdeleteLegalEntityPropertiesRequest(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
+         * @return APIdeleteLegalEntityPropertiesRequest
+         */
+        public APIdeleteLegalEntityPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteLegalEntityProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntityProperties request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteLegalEntityProperties request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deleteLegalEntityProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteLegalEntityPropertiesAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getAllLegalEntityAccessMetadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteLegalEntityProperties: Delete Legal Entity Properties
+     * Delete all properties that belong to the given property keys of the legal entity.
+     * @param idTypeScope Scope of the legal entity identifier type. (required)
+     * @param idTypeCode Code of the legal entity identifier type. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
+     * @return APIdeleteLegalEntityPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteLegalEntityPropertiesRequest deleteLegalEntityProperties(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+        return new APIdeleteLegalEntityPropertiesRequest(idTypeScope, idTypeCode, code, propertyKeys);
+    }
+    private okhttp3.Call getAllLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -862,100 +985,141 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
-     * Pass the Scope and Code of the Legal Entity identifier along with the Legal Entity code parameter to retrieve the associated Access Metadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> getAllLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
-     * Pass the Scope and Code of the Legal Entity identifier along with the Legal Entity code parameter to retrieve the associated Access Metadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> getAllLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity (asynchronously)
-     * Pass the Scope and Code of the Legal Entity identifier along with the Legal Entity code parameter to retrieve the associated Access Metadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call getAllLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAllLegalEntityAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetAllLegalEntityAccessMetadataRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetAllLegalEntityAccessMetadataRequest
+         */
+        public APIgetAllLegalEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetAllLegalEntityAccessMetadataRequest
+         */
+        public APIgetAllLegalEntityAccessMetadataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAllLegalEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllLegalEntityAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllLegalEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return getAllLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllLegalEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return getAllLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegalEntity
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
+     * Pass the Scope and Code of the Legal Entity identifier along with the Legal Entity code parameter to retrieve the associated Access Metadata
+     * @param idTypeScope Scope of the Legal Entity identifier. (required)
+     * @param idTypeCode Code of the Legal Entity identifier. (required)
+     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
+     * @return APIgetAllLegalEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalEntityCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetAllLegalEntityAccessMetadataRequest getAllLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetAllLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call getLegalEntityCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1041,105 +1205,163 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntity: Get Legal Entity
-     * Retrieve the definition of a legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return LegalEntity
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public LegalEntity getLegalEntity(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<LegalEntity> localVarResp = getLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntity: Get Legal Entity
-     * Retrieve the definition of a legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;LegalEntity&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LegalEntity> getLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<LegalEntity> getLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntity: Get Legal Entity (asynchronously)
-     * Retrieve the definition of a legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegalEntityAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<LegalEntity> _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegalEntityRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private List<String> propertyKeys;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> relationshipDefinitionIds;
+
+        private APIgetLegalEntityRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
+         * @return APIgetLegalEntityRequest
+         */
+        public APIgetLegalEntityRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetLegalEntityRequest
+         */
+        public APIgetLegalEntityRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. (optional)
+         * @return APIgetLegalEntityRequest
+         */
+        public APIgetLegalEntityRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIgetLegalEntityRequest
+         */
+        public APIgetLegalEntityRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for getLegalEntity
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegalEntityCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getLegalEntity request
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute() throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = getLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegalEntity request with HTTP info returned
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
+            return getLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getLegalEntity request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
+            return getLegalEntityAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegalEntityAccessMetadataByKey
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetLegalEntity: Get Legal Entity
+     * Retrieve the definition of a legal entity.
+     * @param idTypeScope Scope of the legal entity identifier type. (required)
+     * @param idTypeCode Code of the legal entity identifier type. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @return APIgetLegalEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalEntityAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetLegalEntityRequest getLegalEntity(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetLegalEntityRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call getLegalEntityAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1223,104 +1445,144 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity
-     * Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code                No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return List&lt;AccessMetadataValue&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<AccessMetadataValue> getLegalEntityAccessMetadataByKey(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<List<AccessMetadataValue>> localVarResp = getLegalEntityAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity
-     * Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code                No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<AccessMetadataValue>> getLegalEntityAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<List<AccessMetadataValue>> getLegalEntityAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity (asynchronously)
-     * Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code                No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegalEntityAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegalEntityAccessMetadataByKeyRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String metadataKey;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetLegalEntityAccessMetadataByKeyRequest(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.metadataKey = metadataKey;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetLegalEntityAccessMetadataByKeyRequest
+         */
+        public APIgetLegalEntityAccessMetadataByKeyRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetLegalEntityAccessMetadataByKeyRequest
+         */
+        public APIgetLegalEntityAccessMetadataByKeyRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getLegalEntityAccessMetadataByKey
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegalEntityAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityAccessMetadataByKey request
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute() throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getLegalEntityAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegalEntityAccessMetadataByKey request with HTTP info returned
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
+            return getLegalEntityAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getLegalEntityAccessMetadataByKey request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+            return getLegalEntityAccessMetadataByKeyAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegalEntityPropertyTimeSeries
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.              Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity
+     * Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code     No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
+     * @param idTypeScope Scope of the Legal Entity identifier. (required)
+     * @param idTypeCode Code of the Legal Entity identifier. (required)
+     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
+     * @param metadataKey Key of the metadata entry to retrieve (required)
+     * @return APIgetLegalEntityAccessMetadataByKeyRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalEntityPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIgetLegalEntityAccessMetadataByKeyRequest getLegalEntityAccessMetadataByKey(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+        return new APIgetLegalEntityAccessMetadataByKeyRequest(idTypeScope, idTypeCode, code, metadataKey);
+    }
+    private okhttp3.Call getLegalEntityPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1415,109 +1677,166 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
-     * List the complete time series of a legal entity property.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.              Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @return ResourceListOfPropertyInterval
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPropertyInterval getLegalEntityPropertyTimeSeries(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfPropertyInterval> localVarResp = getLegalEntityPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
-     * List the complete time series of a legal entity property.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.              Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPropertyInterval> getLegalEntityPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfPropertyInterval> getLegalEntityPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series (asynchronously)
-     * List the complete time series of a legal entity property.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.              Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegalEntityPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegalEntityPropertyTimeSeriesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String propertyKey;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String page;
+        private Integer limit;
+
+        private APIgetLegalEntityPropertyTimeSeriesRequest(String idTypeScope, String idTypeCode, String code, String propertyKey) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.propertyKey = propertyKey;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
+         * @return APIgetLegalEntityPropertyTimeSeriesRequest
+         */
+        public APIgetLegalEntityPropertyTimeSeriesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetLegalEntityPropertyTimeSeriesRequest
+         */
+        public APIgetLegalEntityPropertyTimeSeriesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. (optional)
+         * @return APIgetLegalEntityPropertyTimeSeriesRequest
+         */
+        public APIgetLegalEntityPropertyTimeSeriesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetLegalEntityPropertyTimeSeriesRequest
+         */
+        public APIgetLegalEntityPropertyTimeSeriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getLegalEntityPropertyTimeSeries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegalEntityPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityPropertyTimeSeries request
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute() throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getLegalEntityPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegalEntityPropertyTimeSeries request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
+            return getLegalEntityPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getLegalEntityPropertyTimeSeries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+            return getLegalEntityPropertyTimeSeriesAsync(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegalEntityRelations
+     * [EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
+     * List the complete time series of a legal entity property.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. (required)
+     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.   Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
+     * @return APIgetLegalEntityPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalEntityRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetLegalEntityPropertyTimeSeriesRequest getLegalEntityPropertyTimeSeries(String idTypeScope, String idTypeCode, String code, String propertyKey) {
+        return new APIgetLegalEntityPropertyTimeSeriesRequest(idTypeScope, idTypeCode, code, propertyKey);
+    }
+    private okhttp3.Call getLegalEntityRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1603,106 +1922,163 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity
-     * Get relations for the specified Legal Entity
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @return ResourceListOfRelation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelation getLegalEntityRelations(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelation> localVarResp = getLegalEntityRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity
-     * Get relations for the specified Legal Entity
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelation> getLegalEntityRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelation> getLegalEntityRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity (asynchronously)
-     * Get relations for the specified Legal Entity
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegalEntityRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegalEntityRelationsRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetLegalEntityRelationsRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetLegalEntityRelationsRequest
+         */
+        public APIgetLegalEntityRelationsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetLegalEntityRelationsRequest
+         */
+        public APIgetLegalEntityRelationsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetLegalEntityRelationsRequest
+         */
+        public APIgetLegalEntityRelationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
+         * @return APIgetLegalEntityRelationsRequest
+         */
+        public APIgetLegalEntityRelationsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getLegalEntityRelations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegalEntityRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityRelations request
+         * @return ResourceListOfRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelation execute() throws ApiException {
+            ApiResponse<ResourceListOfRelation> localVarResp = getLegalEntityRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegalEntityRelations request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelation> executeWithHttpInfo() throws ApiException {
+            return getLegalEntityRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getLegalEntityRelations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
+            return getLegalEntityRelationsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegalEntityRelationships
-     * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
-     * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity
+     * Get relations for the specified Legal Entity
+     * @param idTypeScope Scope of the legal entity identifier type. (required)
+     * @param idTypeCode Code of the legal entity identifier type. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @return APIgetLegalEntityRelationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalEntityRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetLegalEntityRelationsRequest getLegalEntityRelations(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetLegalEntityRelationsRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call getLegalEntityRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1788,107 +2164,163 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity
-     * Get Relationships for the specified Legal Entity
-     * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
-     * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @return ResourceListOfRelationship
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelationship getLegalEntityRelationships(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelationship> localVarResp = getLegalEntityRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity
-     * Get Relationships for the specified Legal Entity
-     * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
-     * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelationship&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelationship> getLegalEntityRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelationship> getLegalEntityRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity (asynchronously)
-     * Get Relationships for the specified Legal Entity
-     * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
-     * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegalEntityRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegalEntityRelationshipsRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetLegalEntityRelationshipsRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetLegalEntityRelationshipsRequest
+         */
+        public APIgetLegalEntityRelationshipsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetLegalEntityRelationshipsRequest
+         */
+        public APIgetLegalEntityRelationshipsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetLegalEntityRelationshipsRequest
+         */
+        public APIgetLegalEntityRelationshipsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @return APIgetLegalEntityRelationshipsRequest
+         */
+        public APIgetLegalEntityRelationshipsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getLegalEntityRelationships
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegalEntityRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityRelationships request
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute() throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getLegalEntityRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegalEntityRelationships request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
+            return getLegalEntityRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getLegalEntityRelationships request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+            return getLegalEntityRelationshipsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for listAllLegalEntities
-     * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version              of each legal entities if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity
+     * Get Relationships for the specified Legal Entity
+     * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
+     * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @return APIgetLegalEntityRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAllLegalEntitiesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetLegalEntityRelationshipsRequest getLegalEntityRelationships(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetLegalEntityRelationshipsRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call listAllLegalEntitiesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1972,112 +2404,198 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListAllLegalEntities: List Legal Entities
-     * List all legal entities which the user is entitled to see.
-     * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version              of each legal entities if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ResourceListOfLegalEntity
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfLegalEntity listAllLegalEntities(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<ResourceListOfLegalEntity> localVarResp = listAllLegalEntitiesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListAllLegalEntities: List Legal Entities
-     * List all legal entities which the user is entitled to see.
-     * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version              of each legal entities if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;ResourceListOfLegalEntity&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfLegalEntity> listAllLegalEntitiesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<ResourceListOfLegalEntity> listAllLegalEntitiesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<ResourceListOfLegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListAllLegalEntities: List Legal Entities (asynchronously)
-     * List all legal entities which the user is entitled to see.
-     * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version              of each legal entities if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAllLegalEntitiesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfLegalEntity> _callback) throws ApiException {
+    private okhttp3.Call listAllLegalEntitiesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfLegalEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfLegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistAllLegalEntitiesRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistAllLegalEntitiesRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version   of each legal entities if not specified. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistAllLegalEntitiesRequest
+         */
+        public APIlistAllLegalEntitiesRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listAllLegalEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAllLegalEntitiesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listAllLegalEntities request
+         * @return ResourceListOfLegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfLegalEntity execute() throws ApiException {
+            ApiResponse<ResourceListOfLegalEntity> localVarResp = listAllLegalEntitiesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAllLegalEntities request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfLegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfLegalEntity> executeWithHttpInfo() throws ApiException {
+            return listAllLegalEntitiesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listAllLegalEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfLegalEntity> _callback) throws ApiException {
+            return listAllLegalEntitiesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for listLegalEntities
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListAllLegalEntities: List Legal Entities
+     * List all legal entities which the user is entitled to see.
+     * @return APIlistAllLegalEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLegalEntitiesCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIlistAllLegalEntitiesRequest listAllLegalEntities() {
+        return new APIlistAllLegalEntitiesRequest();
+    }
+    private okhttp3.Call listLegalEntitiesCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2173,114 +2691,204 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListLegalEntities: List Legal Entities
-     * List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return PagedResourceListOfLegalEntity
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfLegalEntity listLegalEntities(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<PagedResourceListOfLegalEntity> localVarResp = listLegalEntitiesWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListLegalEntities: List Legal Entities
-     * List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfLegalEntity&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfLegalEntity> listLegalEntitiesWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<PagedResourceListOfLegalEntity> listLegalEntitiesWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfLegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListLegalEntities: List Legal Entities (asynchronously)
-     * List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listLegalEntitiesAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfLegalEntity> _callback) throws ApiException {
+    private okhttp3.Call listLegalEntitiesAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfLegalEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfLegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistLegalEntitiesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistLegalEntitiesRequest(String idTypeScope, String idTypeCode) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistLegalEntitiesRequest
+         */
+        public APIlistLegalEntitiesRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listLegalEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listLegalEntitiesCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listLegalEntities request
+         * @return PagedResourceListOfLegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfLegalEntity execute() throws ApiException {
+            ApiResponse<PagedResourceListOfLegalEntity> localVarResp = listLegalEntitiesWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listLegalEntities request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfLegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfLegalEntity> executeWithHttpInfo() throws ApiException {
+            return listLegalEntitiesWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listLegalEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfLegalEntity> _callback) throws ApiException {
+            return listLegalEntitiesAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for patchLegalEntityAccessMetadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListLegalEntities: List Legal Entities
+     * List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
+     * @param idTypeScope Scope of the legal entity identifier type. (required)
+     * @param idTypeCode Code of the legal entity identifier type. (required)
+     * @return APIlistLegalEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIlistLegalEntitiesRequest listLegalEntities(String idTypeScope, String idTypeCode) {
+        return new APIlistLegalEntitiesRequest(idTypeScope, idTypeCode);
+    }
+    private okhttp3.Call patchLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2367,100 +2975,144 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.
-     * Patch Legal Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document                The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> patchLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.
-     * Patch Legal Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document                The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> patchLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity. (asynchronously)
-     * Patch Legal Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document                The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call patchLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpatchLegalEntityAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final List<AccessMetadataOperation> accessMetadataOperation;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIpatchLegalEntityAccessMetadataRequest(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.accessMetadataOperation = accessMetadataOperation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
+         * @return APIpatchLegalEntityAccessMetadataRequest
+         */
+        public APIpatchLegalEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIpatchLegalEntityAccessMetadataRequest
+         */
+        public APIpatchLegalEntityAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for patchLegalEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchLegalEntityAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchLegalEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return patchLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchLegalEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return patchLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for setLegalEntityIdentifiers
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityIdentifiersRequest Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.
+     * Patch Legal Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * @param idTypeScope Scope of the Legal Entity identifier. (required)
+     * @param idTypeCode Code of the Legal Entity identifier. (required)
+     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
+     * @param accessMetadataOperation The Json Patch document (required)
+     * @return APIpatchLegalEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback _callback) throws ApiException {
+    public APIpatchLegalEntityAccessMetadataRequest patchLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation) {
+        return new APIpatchLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code, accessMetadataOperation);
+    }
+    private okhttp3.Call setLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2539,94 +3191,122 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers
-     * Set identifiers of the Legal Entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityIdentifiersRequest Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. (required)
-     * @return LegalEntity
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public LegalEntity setLegalEntityIdentifiers(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest) throws ApiException {
-        ApiResponse<LegalEntity> localVarResp = setLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers
-     * Set identifiers of the Legal Entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityIdentifiersRequest Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. (required)
-     * @return ApiResponse&lt;LegalEntity&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LegalEntity> setLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest) throws ApiException {
+    private ApiResponse<LegalEntity> setLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest) throws ApiException {
         okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, null);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers (asynchronously)
-     * Set identifiers of the Legal Entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityIdentifiersRequest Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
+    private okhttp3.Call setLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetLegalEntityIdentifiersRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest;
+
+        private APIsetLegalEntityIdentifiersRequest(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.setLegalEntityIdentifiersRequest = setLegalEntityIdentifiersRequest;
+        }
+
+        /**
+         * Build call for setLegalEntityIdentifiers
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback);
+        }
+
+        /**
+         * Execute setLegalEntityIdentifiers request
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute() throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = setLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setLegalEntityIdentifiers request with HTTP info returned
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
+            return setLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest);
+        }
+
+        /**
+         * Execute setLegalEntityIdentifiers request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
+            return setLegalEntityIdentifiersAsync(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for setLegalEntityProperties
+     * [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers
+     * Set identifiers of the Legal Entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityPropertiesRequest Request containing properties to set for the legal entity. Properties not specified in request will not be changed. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param setLegalEntityIdentifiersRequest Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. (required)
+     * @return APIsetLegalEntityIdentifiersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback _callback) throws ApiException {
+    public APIsetLegalEntityIdentifiersRequest setLegalEntityIdentifiers(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest) {
+        return new APIsetLegalEntityIdentifiersRequest(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest);
+    }
+    private okhttp3.Call setLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2705,92 +3385,122 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties
-     * Set properties of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityPropertiesRequest Request containing properties to set for the legal entity. Properties not specified in request will not be changed. (required)
-     * @return LegalEntity
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public LegalEntity setLegalEntityProperties(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest) throws ApiException {
-        ApiResponse<LegalEntity> localVarResp = setLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties
-     * Set properties of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityPropertiesRequest Request containing properties to set for the legal entity. Properties not specified in request will not be changed. (required)
-     * @return ApiResponse&lt;LegalEntity&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LegalEntity> setLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest) throws ApiException {
+    private ApiResponse<LegalEntity> setLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest) throws ApiException {
         okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, null);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties (asynchronously)
-     * Set properties of the legal entity.
-     * @param idTypeScope Scope of the legal entity identifier type. (required)
-     * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. (required)
-     * @param setLegalEntityPropertiesRequest Request containing properties to set for the legal entity. Properties not specified in request will not be changed. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
+    private okhttp3.Call setLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetLegalEntityPropertiesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest;
+
+        private APIsetLegalEntityPropertiesRequest(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.setLegalEntityPropertiesRequest = setLegalEntityPropertiesRequest;
+        }
+
+        /**
+         * Build call for setLegalEntityProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback);
+        }
+
+        /**
+         * Execute setLegalEntityProperties request
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute() throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = setLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setLegalEntityProperties request with HTTP info returned
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
+            return setLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest);
+        }
+
+        /**
+         * Execute setLegalEntityProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
+            return setLegalEntityPropertiesAsync(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertLegalEntities
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody A collection of requests to create or update Legal Entities. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties
+     * Set properties of the legal entity.
+     * @param idTypeScope Scope of the legal entity identifier type. (required)
+     * @param idTypeCode Code of the legal entity identifier type. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param setLegalEntityPropertiesRequest Request containing properties to set for the legal entity. Properties not specified in request will not be changed. (required)
+     * @return APIsetLegalEntityPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertLegalEntitiesCall(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIsetLegalEntityPropertiesRequest setLegalEntityProperties(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest) {
+        return new APIsetLegalEntityPropertiesRequest(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest);
+    }
+    private okhttp3.Call upsertLegalEntitiesCall(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2860,85 +3570,116 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities
-     * Creates or updates a collection of Legal Entities
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody A collection of requests to create or update Legal Entities. (required)
-     * @return UpsertLegalEntitiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertLegalEntitiesResponse upsertLegalEntities(String successMode, Map<String, UpsertLegalEntityRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertLegalEntitiesResponse> localVarResp = upsertLegalEntitiesWithHttpInfo(successMode, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities
-     * Creates or updates a collection of Legal Entities
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody A collection of requests to create or update Legal Entities. (required)
-     * @return ApiResponse&lt;UpsertLegalEntitiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertLegalEntitiesResponse> upsertLegalEntitiesWithHttpInfo(String successMode, Map<String, UpsertLegalEntityRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertLegalEntitiesResponse> upsertLegalEntitiesWithHttpInfo(String successMode, Map<String, UpsertLegalEntityRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertLegalEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities (asynchronously)
-     * Creates or updates a collection of Legal Entities
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody A collection of requests to create or update Legal Entities. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertLegalEntitiesAsync(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback<UpsertLegalEntitiesResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertLegalEntitiesAsync(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback<UpsertLegalEntitiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, _callback);
         Type localVarReturnType = new TypeToken<UpsertLegalEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertLegalEntitiesRequest {
+        private final String successMode;
+        private final Map<String, UpsertLegalEntityRequest> requestBody;
+
+        private APIupsertLegalEntitiesRequest(String successMode, Map<String, UpsertLegalEntityRequest> requestBody) {
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertLegalEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertLegalEntitiesCall(successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertLegalEntities request
+         * @return UpsertLegalEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertLegalEntitiesResponse execute() throws ApiException {
+            ApiResponse<UpsertLegalEntitiesResponse> localVarResp = upsertLegalEntitiesWithHttpInfo(successMode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertLegalEntities request with HTTP info returned
+         * @return ApiResponse&lt;UpsertLegalEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertLegalEntitiesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertLegalEntitiesWithHttpInfo(successMode, requestBody);
+        }
+
+        /**
+         * Execute upsertLegalEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertLegalEntitiesResponse> _callback) throws ApiException {
+            return upsertLegalEntitiesAsync(successMode, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertLegalEntity
-     * @param upsertLegalEntityRequest Request to create or update a legal entity. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities
+     * Creates or updates a collection of Legal Entities
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
+     * @param requestBody A collection of requests to create or update Legal Entities. (required)
+     * @return APIupsertLegalEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertLegalEntityCall(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertLegalEntitiesRequest upsertLegalEntities(String successMode, Map<String, UpsertLegalEntityRequest> requestBody) {
+        return new APIupsertLegalEntitiesRequest(successMode, requestBody);
+    }
+    private okhttp3.Call upsertLegalEntityCall(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2999,88 +3740,113 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
-     * Create or update a legal entity
-     * @param upsertLegalEntityRequest Request to create or update a legal entity. (required)
-     * @return LegalEntity
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public LegalEntity upsertLegalEntity(UpsertLegalEntityRequest upsertLegalEntityRequest) throws ApiException {
-        ApiResponse<LegalEntity> localVarResp = upsertLegalEntityWithHttpInfo(upsertLegalEntityRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
-     * Create or update a legal entity
-     * @param upsertLegalEntityRequest Request to create or update a legal entity. (required)
-     * @return ApiResponse&lt;LegalEntity&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LegalEntity> upsertLegalEntityWithHttpInfo(UpsertLegalEntityRequest upsertLegalEntityRequest) throws ApiException {
+    private ApiResponse<LegalEntity> upsertLegalEntityWithHttpInfo(UpsertLegalEntityRequest upsertLegalEntityRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, null);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity (asynchronously)
-     * Create or update a legal entity
-     * @param upsertLegalEntityRequest Request to create or update a legal entity. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertLegalEntityAsync(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
+    private okhttp3.Call upsertLegalEntityAsync(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, _callback);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertLegalEntityRequest {
+        private final UpsertLegalEntityRequest upsertLegalEntityRequest;
+
+        private APIupsertLegalEntityRequest(UpsertLegalEntityRequest upsertLegalEntityRequest) {
+            this.upsertLegalEntityRequest = upsertLegalEntityRequest;
+        }
+
+        /**
+         * Build call for upsertLegalEntity
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertLegalEntityCall(upsertLegalEntityRequest, _callback);
+        }
+
+        /**
+         * Execute upsertLegalEntity request
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute() throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = upsertLegalEntityWithHttpInfo(upsertLegalEntityRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertLegalEntity request with HTTP info returned
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
+            return upsertLegalEntityWithHttpInfo(upsertLegalEntityRequest);
+        }
+
+        /**
+         * Execute upsertLegalEntity request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
+            return upsertLegalEntityAsync(upsertLegalEntityRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertLegalEntityAccessMetadata
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param upsertLegalEntityAccessMetadataRequest The Legal Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
+     * Create or update a legal entity
+     * @param upsertLegalEntityRequest Request to create or update a legal entity. (required)
+     * @return APIupsertLegalEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIupsertLegalEntityRequest upsertLegalEntity(UpsertLegalEntityRequest upsertLegalEntityRequest) {
+        return new APIupsertLegalEntityRequest(upsertLegalEntityRequest);
+    }
+    private okhttp3.Call upsertLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3173,70 +3939,135 @@ public class LegalEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param upsertLegalEntityAccessMetadataRequest The Legal Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ResourceListOfAccessMetadataValueOf
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAccessMetadataValueOf upsertLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the Legal Entity identifier. (required)
-     * @param idTypeCode Code of the Legal Entity identifier. (required)
-     * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param upsertLegalEntityAccessMetadataRequest The Legal Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAccessMetadataValueOf> upsertLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertLegalEntityAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String metadataKey;
+        private final UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIupsertLegalEntityAccessMetadataRequest(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.metadataKey = metadataKey;
+            this.upsertLegalEntityAccessMetadataRequest = upsertLegalEntityAccessMetadataRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
+         * @return APIupsertLegalEntityAccessMetadataRequest
+         */
+        public APIupsertLegalEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIupsertLegalEntityAccessMetadataRequest
+         */
+        public APIupsertLegalEntityAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for upsertLegalEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertLegalEntityAccessMetadata request
+         * @return ResourceListOfAccessMetadataValueOf
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessMetadataValueOf execute() throws ApiException {
+            ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertLegalEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo() throws ApiException {
+            return upsertLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertLegalEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
+            return upsertLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. (asynchronously)
-     * Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * [EARLY ACCESS] UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
+     * Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param idTypeScope Scope of the Legal Entity identifier. (required)
      * @param idTypeCode Code of the Legal Entity identifier. (required)
      * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
      * @param metadataKey Key of the metadata entry to retrieve (required)
      * @param upsertLegalEntityAccessMetadataRequest The Legal Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertLegalEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -3245,11 +4076,7 @@ public class LegalEntitiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest) {
+        return new APIupsertLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest);
     }
 }

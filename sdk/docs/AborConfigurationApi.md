@@ -13,7 +13,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createAborConfiguration"></a>
 # **createAborConfiguration**
-> AborConfiguration createAborConfiguration(scope, aborConfigurationRequest)
+> AborConfiguration createAborConfiguration(scope, aborConfigurationRequest).execute();
 
 [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
 
@@ -42,7 +42,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the AborConfiguration.
     AborConfigurationRequest aborConfigurationRequest = new AborConfigurationRequest(); // AborConfigurationRequest | The definition of the AborConfiguration.
     try {
-      AborConfiguration result = apiInstance.createAborConfiguration(scope, aborConfigurationRequest);
+      AborConfiguration result = apiInstance.createAborConfiguration(scope, aborConfigurationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborConfigurationApi#createAborConfiguration");
@@ -84,7 +85,7 @@ public class Example {
 
 <a id="deleteAborConfiguration"></a>
 # **deleteAborConfiguration**
-> DeletedEntityResponse deleteAborConfiguration(scope, code)
+> DeletedEntityResponse deleteAborConfiguration(scope, code).execute();
 
 [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
 
@@ -113,7 +114,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the AborConfiguration to be deleted.
     String code = "code_example"; // String | The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration.
     try {
-      DeletedEntityResponse result = apiInstance.deleteAborConfiguration(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteAborConfiguration(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborConfigurationApi#deleteAborConfiguration");
@@ -155,7 +157,7 @@ public class Example {
 
 <a id="getAborConfiguration"></a>
 # **getAborConfiguration**
-> AborConfiguration getAborConfiguration(scope, code, effectiveAt, asAt, propertyKeys)
+> AborConfiguration getAborConfiguration(scope, code).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
 
@@ -185,9 +187,13 @@ public class Example {
     String code = "code_example"; // String | The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'. If not provided will return all the entitled properties for that AborConfiguration.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto the AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'. If not provided will return all the entitled properties for that AborConfiguration.
     try {
-      AborConfiguration result = apiInstance.getAborConfiguration(scope, code, effectiveAt, asAt, propertyKeys);
+      AborConfiguration result = apiInstance.getAborConfiguration(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborConfigurationApi#getAborConfiguration");
@@ -208,7 +214,7 @@ public class Example {
 | **code** | **String**| The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. | [optional] |
 
 ### Return type
 
@@ -232,7 +238,7 @@ public class Example {
 
 <a id="listAborConfigurations"></a>
 # **listAborConfigurations**
-> PagedResourceListOfAborConfiguration listAborConfigurations(effectiveAt, asAt, page, start, limit, filter, propertyKeys)
+> PagedResourceListOfAborConfiguration listAborConfigurations().effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
 
@@ -258,15 +264,23 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     AborConfigurationApi apiInstance = new AborConfigurationApi(defaultClient);
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \"id.Code eq 'AborConfiguration1'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'.
+    String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the AborConfiguration type, specify \"id.Code eq 'AborConfiguration1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'.
     try {
-      PagedResourceListOfAborConfiguration result = apiInstance.listAborConfigurations(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+      PagedResourceListOfAborConfiguration result = apiInstance.listAborConfigurations()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborConfigurationApi#listAborConfigurations");
@@ -283,13 +297,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -313,11 +327,11 @@ public class Example {
 
 <a id="upsertAborConfigurationProperties"></a>
 # **upsertAborConfigurationProperties**
-> AborConfigurationProperties upsertAborConfigurationProperties(scope, code, requestBody)
+> AborConfigurationProperties upsertAborConfigurationProperties(scope, code).requestBody(requestBody).execute();
 
 [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
 
-Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.     Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 ```java
@@ -341,9 +355,11 @@ public class Example {
     AborConfigurationApi apiInstance = new AborConfigurationApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the AborConfiguration to update or insert the properties onto.
     String code = "code_example"; // String | The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration.
-    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"AborConfiguration/Manager/Id\".
+    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"AborConfiguration/Manager/Id\".
     try {
-      AborConfigurationProperties result = apiInstance.upsertAborConfigurationProperties(scope, code, requestBody);
+      AborConfigurationProperties result = apiInstance.upsertAborConfigurationProperties(scope, code)
+            .requestBody(requestBody)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborConfigurationApi#upsertAborConfigurationProperties");
@@ -362,7 +378,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the AborConfiguration to update or insert the properties onto. | |
 | **code** | **String**| The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. | [optional] |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. | [optional] |
 
 ### Return type
 

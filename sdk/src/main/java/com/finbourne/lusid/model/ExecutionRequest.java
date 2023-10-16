@@ -567,36 +567,29 @@ public class ExecutionRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExecutionRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ExecutionRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ExecutionRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ExecutionRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExecutionRequest is not found in the empty JSON string", ExecutionRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ExecutionRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExecutionRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ExecutionRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      ResourceId.validateJsonElement(jsonObj.get("id"));
       // validate the required field `placementId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("placementId"));
+      ResourceId.validateJsonElement(jsonObj.get("placementId"));
       if (!jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
@@ -607,7 +600,7 @@ public class ExecutionRequest {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the required field `price`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("price"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("price"));
       if (!jsonObj.get("settlementCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `settlementCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementCurrency").toString()));
       }
@@ -636,9 +629,9 @@ public class ExecutionRequest {
 
            @Override
            public ExecutionRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

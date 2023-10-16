@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The shape and type of the returned data. The AddressSchema gives information about the requested keys,  including the return type, links to further documentation, lifecycle status and removal date if they are  deprecated.                Note: the NodeValueSchema and PropertySchema fields have been deprecated. Please use the AddressSchema instead.
+ * The shape and type of the returned data. The AddressSchema gives information about the requested keys,  including the return type, links to further documentation, lifecycle status and removal date if they are  deprecated.     Note: the NodeValueSchema and PropertySchema fields have been deprecated. Please use the AddressSchema instead.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResultDataSchema {
@@ -225,25 +225,18 @@ public class ResultDataSchema {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ResultDataSchema
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ResultDataSchema
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ResultDataSchema.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ResultDataSchema.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ResultDataSchema is not found in the empty JSON string", ResultDataSchema.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ResultDataSchema.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ResultDataSchema` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -266,9 +259,9 @@ public class ResultDataSchema {
 
            @Override
            public ResultDataSchema read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

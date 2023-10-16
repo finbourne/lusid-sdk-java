@@ -169,25 +169,18 @@ public class DescribedAddressKey {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DescribedAddressKey
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DescribedAddressKey
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DescribedAddressKey.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DescribedAddressKey.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DescribedAddressKey is not found in the empty JSON string", DescribedAddressKey.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DescribedAddressKey.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DescribedAddressKey` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("addressKey") != null && !jsonObj.get("addressKey").isJsonNull()) && !jsonObj.get("addressKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addressKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addressKey").toString()));
       }
@@ -216,9 +209,9 @@ public class DescribedAddressKey {
 
            @Override
            public DescribedAddressKey read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -54,7 +54,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * If it is desired to have multiple recipes, there is a strong likelihood that they will share various components.  A configuration recipe snippet allows a user to define a set of rules that can then be included into a parent recipe.  This allows sharing of common blocks of the recipe.                For example, a user might define a set of rules for resolving Fx and then include them into every recipe used firm-wide, thereby  enforcing consistency. As the rules can be permissioned differently using Shrine, it is possible to enable users to   read but not alter such a rule set.                The same applies to a set of pricing rules.                A configuration snippet must only contain one entry from the available set.                 Recipes are compiled from the set of snippets through a model that is analogous to inheritance.  A recipe can have a set of &#39;parent&#39; recipes from which it inherits. These are specified in the inheritance section of a recipe.  Upon loading, the recipe will fall back on these recipe components for any options or rules that are not explicitly specified in the  named recipe for the request.                This allows control of pricing to be harmonised across a set of desks within an institution. Suppose that, e.g.  there are four desks looking after products under the areas of Fx, Rates, Credit and Exotics.  The model and market data for pricing given asset types would potentially be controlled by the appropriate desk; e.g. rules for Fx market data resolution being  controlled by the Fx desk. The exotics desk would likely depend upon rules for all the other asset classes as well as, say, correlation rules of its own.  It could inherit the market data and model rules from the other desks for finding the appropriate institution-standard data and then overlay that with the correlation rules.                Note that permissioning of the store means that one could decide that only a particular desk or control function could update certain rules. That would assist the abilitiy  to ensure that pricing is performed consistently and provide an audit of changes made to it along with restricting changes to appropriate authorised functions.
+ * If it is desired to have multiple recipes, there is a strong likelihood that they will share various components.  A configuration recipe snippet allows a user to define a set of rules that can then be included into a parent recipe.  This allows sharing of common blocks of the recipe.     For example, a user might define a set of rules for resolving Fx and then include them into every recipe used firm-wide, thereby  enforcing consistency. As the rules can be permissioned differently using Shrine, it is possible to enable users to   read but not alter such a rule set.     The same applies to a set of pricing rules.     A configuration snippet must only contain one entry from the available set.      Recipes are compiled from the set of snippets through a model that is analogous to inheritance.  A recipe can have a set of &#39;parent&#39; recipes from which it inherits. These are specified in the inheritance section of a recipe.  Upon loading, the recipe will fall back on these recipe components for any options or rules that are not explicitly specified in the  named recipe for the request.     This allows control of pricing to be harmonised across a set of desks within an institution. Suppose that, e.g.  there are four desks looking after products under the areas of Fx, Rates, Credit and Exotics.  The model and market data for pricing given asset types would potentially be controlled by the appropriate desk; e.g. rules for Fx market data resolution being  controlled by the Fx desk. The exotics desk would likely depend upon rules for all the other asset classes as well as, say, correlation rules of its own.  It could inherit the market data and model rules from the other desks for finding the appropriate institution-standard data and then overlay that with the correlation rules.     Note that permissioning of the store means that one could decide that only a particular desk or control function could update certain rules. That would assist the abilitiy  to ensure that pricing is performed consistently and provide an audit of changes made to it along with restricting changes to appropriate authorised functions.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConfigurationRecipeSnippet {
@@ -363,32 +363,25 @@ public class ConfigurationRecipeSnippet {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ConfigurationRecipeSnippet
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ConfigurationRecipeSnippet
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ConfigurationRecipeSnippet.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ConfigurationRecipeSnippet.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ConfigurationRecipeSnippet is not found in the empty JSON string", ConfigurationRecipeSnippet.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ConfigurationRecipeSnippet.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConfigurationRecipeSnippet` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConfigurationRecipeSnippet.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
@@ -397,7 +390,7 @@ public class ConfigurationRecipeSnippet {
       }
       // validate the optional field `aggregationOptions`
       if (jsonObj.get("aggregationOptions") != null && !jsonObj.get("aggregationOptions").isJsonNull()) {
-        AggregationOptions.validateJsonObject(jsonObj.getAsJsonObject("aggregationOptions"));
+        AggregationOptions.validateJsonElement(jsonObj.get("aggregationOptions"));
       }
       if (jsonObj.get("modelRules") != null && !jsonObj.get("modelRules").isJsonNull()) {
         JsonArray jsonArraymodelRules = jsonObj.getAsJsonArray("modelRules");
@@ -409,13 +402,13 @@ public class ConfigurationRecipeSnippet {
 
           // validate the optional field `modelRules` (array)
           for (int i = 0; i < jsonArraymodelRules.size(); i++) {
-            VendorModelRule.validateJsonObject(jsonArraymodelRules.get(i).getAsJsonObject());
+            VendorModelRule.validateJsonElement(jsonArraymodelRules.get(i));
           };
         }
       }
       // validate the optional field `pricingOptions`
       if (jsonObj.get("pricingOptions") != null && !jsonObj.get("pricingOptions").isJsonNull()) {
-        PricingOptions.validateJsonObject(jsonObj.getAsJsonObject("pricingOptions"));
+        PricingOptions.validateJsonElement(jsonObj.get("pricingOptions"));
       }
       if (jsonObj.get("marketRules") != null && !jsonObj.get("marketRules").isJsonNull()) {
         JsonArray jsonArraymarketRules = jsonObj.getAsJsonArray("marketRules");
@@ -427,17 +420,17 @@ public class ConfigurationRecipeSnippet {
 
           // validate the optional field `marketRules` (array)
           for (int i = 0; i < jsonArraymarketRules.size(); i++) {
-            MarketDataKeyRule.validateJsonObject(jsonArraymarketRules.get(i).getAsJsonObject());
+            MarketDataKeyRule.validateJsonElement(jsonArraymarketRules.get(i));
           };
         }
       }
       // validate the optional field `marketOptions`
       if (jsonObj.get("marketOptions") != null && !jsonObj.get("marketOptions").isJsonNull()) {
-        MarketOptions.validateJsonObject(jsonObj.getAsJsonObject("marketOptions"));
+        MarketOptions.validateJsonElement(jsonObj.get("marketOptions"));
       }
       // validate the optional field `recipe`
       if (jsonObj.get("recipe") != null && !jsonObj.get("recipe").isJsonNull()) {
-        ConfigurationRecipe.validateJsonObject(jsonObj.getAsJsonObject("recipe"));
+        ConfigurationRecipe.validateJsonElement(jsonObj.get("recipe"));
       }
   }
 
@@ -461,9 +454,9 @@ public class ConfigurationRecipeSnippet {
 
            @Override
            public ConfigurationRecipeSnippet read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

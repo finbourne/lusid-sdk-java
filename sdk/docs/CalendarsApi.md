@@ -20,11 +20,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="addBusinessDaysToDate"></a>
 # **addBusinessDaysToDate**
-> AddBusinessDaysToDateResponse addBusinessDaysToDate(scope, addBusinessDaysToDateRequest)
+> AddBusinessDaysToDateResponse addBusinessDaysToDate(scope, addBusinessDaysToDateRequest).execute();
 
 [EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of Business Days to the provided date.
 
-A Business day is defined as a point in time that:      * Does not represent a day in the calendar&#39;s weekend      * Does not represent a day in the calendar&#39;s list of holidays (e.g. Christmas Day in the UK)                 All dates specified must be UTC and the upper bound of a calendar is not inclusive                 e.g. From: 2020-12-24-00-00-00:       Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday are weekends, and the 25th and 28th are holidays.       Adding -2 business days returns 2020-12-22 under the same assumptions.                If the provided number of days to add is zero, returns a failure.
+A Business day is defined as a point in time that:   generate justfile Does not represent a day in the calendar&#39;s weekend   generate justfile Does not represent a day in the calendar&#39;s list of holidays (e.g. Christmas Day in the UK)     All dates specified must be UTC and the upper bound of a calendar is not inclusive     e.g. From: 2020-12-24-00-00-00:   Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday are weekends, and the 25th and 28th are holidays.   Adding -2 business days returns 2020-12-22 under the same assumptions.     If the provided number of days to add is zero, returns a failure.
 
 ### Example
 ```java
@@ -49,7 +49,8 @@ public class Example {
     String scope = "scope_example"; // String | Scope within which to search for the calendars
     AddBusinessDaysToDateRequest addBusinessDaysToDateRequest = new AddBusinessDaysToDateRequest(); // AddBusinessDaysToDateRequest | Request Details: start date, number of days to add (which can be negative, but not zero), calendar codes and optionally an AsAt date for searching the calendar store
     try {
-      AddBusinessDaysToDateResponse result = apiInstance.addBusinessDaysToDate(scope, addBusinessDaysToDateRequest);
+      AddBusinessDaysToDateResponse result = apiInstance.addBusinessDaysToDate(scope, addBusinessDaysToDateRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#addBusinessDaysToDate");
@@ -91,7 +92,7 @@ public class Example {
 
 <a id="addDateToCalendar"></a>
 # **addDateToCalendar**
-> CalendarDate addDateToCalendar(scope, code, createDateRequest)
+> CalendarDate addDateToCalendar(scope, code, createDateRequest).execute();
 
 [EARLY ACCESS] AddDateToCalendar: Add a date to a calendar
 
@@ -121,7 +122,8 @@ public class Example {
     String code = "code_example"; // String | Code of the calendar
     CreateDateRequest createDateRequest = new CreateDateRequest(); // CreateDateRequest | Add date to calendar request
     try {
-      CalendarDate result = apiInstance.addDateToCalendar(scope, code, createDateRequest);
+      CalendarDate result = apiInstance.addDateToCalendar(scope, code, createDateRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#addDateToCalendar");
@@ -164,7 +166,7 @@ public class Example {
 
 <a id="createCalendar"></a>
 # **createCalendar**
-> Calendar createCalendar(createCalendarRequest)
+> Calendar createCalendar(createCalendarRequest).execute();
 
 [EARLY ACCESS] CreateCalendar: Create a calendar in its generic form
 
@@ -192,7 +194,8 @@ public class Example {
     CalendarsApi apiInstance = new CalendarsApi(defaultClient);
     CreateCalendarRequest createCalendarRequest = new CreateCalendarRequest(); // CreateCalendarRequest | A request to create the calendar
     try {
-      Calendar result = apiInstance.createCalendar(createCalendarRequest);
+      Calendar result = apiInstance.createCalendar(createCalendarRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#createCalendar");
@@ -233,7 +236,7 @@ public class Example {
 
 <a id="deleteCalendar"></a>
 # **deleteCalendar**
-> Calendar deleteCalendar(scope, code)
+> Calendar deleteCalendar(scope, code).execute();
 
 [EARLY ACCESS] DeleteCalendar: Delete a calendar
 
@@ -262,7 +265,8 @@ public class Example {
     String scope = "scope_example"; // String | Scope of the calendar
     String code = "code_example"; // String | Code of the calendar
     try {
-      Calendar result = apiInstance.deleteCalendar(scope, code);
+      Calendar result = apiInstance.deleteCalendar(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#deleteCalendar");
@@ -304,7 +308,7 @@ public class Example {
 
 <a id="deleteDateFromCalendar"></a>
 # **deleteDateFromCalendar**
-> CalendarDate deleteDateFromCalendar(scope, code, dateId)
+> CalendarDate deleteDateFromCalendar(scope, code, dateId).execute();
 
 [EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar
 
@@ -334,7 +338,8 @@ public class Example {
     String code = "code_example"; // String | Code of the calendar
     String dateId = "dateId_example"; // String | Identifier of the date to be removed
     try {
-      CalendarDate result = apiInstance.deleteDateFromCalendar(scope, code, dateId);
+      CalendarDate result = apiInstance.deleteDateFromCalendar(scope, code, dateId)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#deleteDateFromCalendar");
@@ -377,11 +382,11 @@ public class Example {
 
 <a id="generateSchedule"></a>
 # **generateSchedule**
-> List&lt;OffsetDateTime&gt; generateSchedule(scope, valuationSchedule, asAt)
+> List&lt;OffsetDateTime&gt; generateSchedule(scope, valuationSchedule).asAt(asAt).execute();
 
 [EARLY ACCESS] GenerateSchedule: Generate an ordered schedule of dates.
 
-Returns an ordered array of dates. The dates will only fall on business  days as defined by the scope and calendar codes in the valuation schedule.                Valuations are made at a frequency defined by the valuation schedule&#39;s tenor, e.g. every day (\&quot;1D\&quot;),  every other week (\&quot;2W\&quot;) etc. These dates will be adjusted onto business days as defined by the schedule&#39;s  rollConvention.
+Returns an ordered array of dates. The dates will only fall on business  days as defined by the scope and calendar codes in the valuation schedule.     Valuations are made at a frequency defined by the valuation schedule&#39;s tenor, e.g. every day (\&quot;1D\&quot;),  every other week (\&quot;2W\&quot;) etc. These dates will be adjusted onto business days as defined by the schedule&#39;s  rollConvention.
 
 ### Example
 ```java
@@ -407,7 +412,9 @@ public class Example {
     ValuationSchedule valuationSchedule = new ValuationSchedule(); // ValuationSchedule | The ValuationSchedule to generate schedule dates from
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional AsAt for searching the calendar store. Defaults to Latest.
     try {
-      List<OffsetDateTime> result = apiInstance.generateSchedule(scope, valuationSchedule, asAt);
+      List<OffsetDateTime> result = apiInstance.generateSchedule(scope, valuationSchedule)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#generateSchedule");
@@ -450,7 +457,7 @@ public class Example {
 
 <a id="getCalendar"></a>
 # **getCalendar**
-> Calendar getCalendar(scope, code, propertyKeys, asAt)
+> Calendar getCalendar(scope, code).propertyKeys(propertyKeys).asAt(asAt).execute();
 
 [EARLY ACCESS] GetCalendar: Get a calendar in its generic form
 
@@ -478,10 +485,13 @@ public class Example {
     CalendarsApi apiInstance = new CalendarsApi(defaultClient);
     String scope = "scope_example"; // String | Scope of the calendar identifier
     String code = "code_example"; // String | Code of the calendar identifier
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the calendar
     try {
-      Calendar result = apiInstance.getCalendar(scope, code, propertyKeys, asAt);
+      Calendar result = apiInstance.getCalendar(scope, code)
+            .propertyKeys(propertyKeys)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#getCalendar");
@@ -500,7 +510,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Scope of the calendar identifier | |
 | **code** | **String**| Code of the calendar identifier | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. | [optional] |
 | **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the calendar | [optional] |
 
 ### Return type
@@ -525,7 +535,7 @@ public class Example {
 
 <a id="getDates"></a>
 # **getDates**
-> ResourceListOfCalendarDate getDates(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter)
+> ResourceListOfCalendarDate getDates(scope, code).fromEffectiveAt(fromEffectiveAt).toEffectiveAt(toEffectiveAt).asAt(asAt).idFilter(idFilter).execute();
 
 [EARLY ACCESS] GetDates: Get dates for a specific calendar
 
@@ -558,7 +568,12 @@ public class Example {
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | AsAt the dates should be retrieved at
     List<String> idFilter = Arrays.asList(); // List<String> | An additional filter that will filter dates based on their identifer
     try {
-      ResourceListOfCalendarDate result = apiInstance.getDates(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter);
+      ResourceListOfCalendarDate result = apiInstance.getDates(scope, code)
+            .fromEffectiveAt(fromEffectiveAt)
+            .toEffectiveAt(toEffectiveAt)
+            .asAt(asAt)
+            .idFilter(idFilter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#getDates");
@@ -604,11 +619,11 @@ public class Example {
 
 <a id="isBusinessDateTime"></a>
 # **isBusinessDateTime**
-> IsBusinessDayResponse isBusinessDateTime(dateTime, scope, code, asAt)
+> IsBusinessDayResponse isBusinessDateTime(dateTime, scope, code).asAt(asAt).execute();
 
 [EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a \&quot;Business DateTime\&quot;
 
-A Business DateTime is defined as a point in time that:      * Does not represent a day that overlaps with the calendars WeekendMask      * If the calendar is a \&quot;Holiday Calendar\&quot; Does not overlap with any dates in the calendar      * If the calendar is a \&quot;TradingHours Calendar\&quot; Does overlap with a date in the calendar                All dates specified must be UTC and the upper bound of a calendar is not inclusive   e.g. From: 2020-12-25-00-00-00        To: 2020-12-26-00-00-00  IsBusinessDay(2020-12-26-00-00-00) &#x3D;&#x3D; false
+A Business DateTime is defined as a point in time that:   generate justfile Does not represent a day that overlaps with the calendars WeekendMask   generate justfile If the calendar is a \&quot;Holiday Calendar\&quot; Does not overlap with any dates in the calendar   generate justfile If the calendar is a \&quot;TradingHours Calendar\&quot; Does overlap with a date in the calendar     All dates specified must be UTC and the upper bound of a calendar is not inclusive   e.g. From: 2020-12-25-00-00-00    To: 2020-12-26-00-00-00  IsBusinessDay(2020-12-26-00-00-00) &#x3D;&#x3D; false
 
 ### Example
 ```java
@@ -635,7 +650,9 @@ public class Example {
     String code = "code_example"; // String | Code of the calendar
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | AsAt for the request
     try {
-      IsBusinessDayResponse result = apiInstance.isBusinessDateTime(dateTime, scope, code, asAt);
+      IsBusinessDayResponse result = apiInstance.isBusinessDateTime(dateTime, scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#isBusinessDateTime");
@@ -679,7 +696,7 @@ public class Example {
 
 <a id="listCalendars"></a>
 # **listCalendars**
-> PagedResourceListOfCalendar listCalendars(asAt, page, limit, propertyKeys, filter)
+> PagedResourceListOfCalendar listCalendars().asAt(asAt).page(page).limit(limit).propertyKeys(propertyKeys).filter(filter).execute();
 
 [EARLY ACCESS] ListCalendars: List Calendars
 
@@ -706,12 +723,18 @@ public class Example {
 
     CalendarsApi apiInstance = new CalendarsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the calendars
-    String page = "page_example"; // String | The pagination token to use to continue listing calendars from a previous call to list calendars.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfCalendar result = apiInstance.listCalendars(asAt, page, limit, propertyKeys, filter);
+      PagedResourceListOfCalendar result = apiInstance.listCalendars()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .propertyKeys(propertyKeys)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#listCalendars");
@@ -729,9 +752,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the calendars | [optional] |
-| **page** | **String**| The pagination token to use to continue listing calendars from a previous call to list calendars.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
@@ -756,7 +779,7 @@ public class Example {
 
 <a id="listCalendarsInScope"></a>
 # **listCalendarsInScope**
-> PagedResourceListOfCalendar listCalendarsInScope(scope, asAt, page, start, limit, propertyKeys, filter)
+> PagedResourceListOfCalendar listCalendarsInScope(scope).asAt(asAt).page(page).start(start).limit(limit).propertyKeys(propertyKeys).filter(filter).execute();
 
 [EARLY ACCESS] ListCalendarsInScope: List all calenders in a specified scope
 
@@ -784,13 +807,20 @@ public class Example {
     CalendarsApi apiInstance = new CalendarsApi(defaultClient);
     String scope = "scope_example"; // String | Scope of the calendars
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the calendars
-    String page = "page_example"; // String | The pagination token to use to continue listing calendars from a previous call to list calendars.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfCalendar result = apiInstance.listCalendarsInScope(scope, asAt, page, start, limit, propertyKeys, filter);
+      PagedResourceListOfCalendar result = apiInstance.listCalendarsInScope(scope)
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .propertyKeys(propertyKeys)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#listCalendarsInScope");
@@ -809,10 +839,10 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Scope of the calendars | |
 | **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the calendars | [optional] |
-| **page** | **String**| The pagination token to use to continue listing calendars from a previous call to list calendars.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
@@ -837,7 +867,7 @@ public class Example {
 
 <a id="updateCalendar"></a>
 # **updateCalendar**
-> Calendar updateCalendar(scope, code, updateCalendarRequest)
+> Calendar updateCalendar(scope, code, updateCalendarRequest).execute();
 
 [EARLY ACCESS] UpdateCalendar: Update a calendar
 
@@ -867,7 +897,8 @@ public class Example {
     String code = "code_example"; // String | Code of the request
     UpdateCalendarRequest updateCalendarRequest = new UpdateCalendarRequest(); // UpdateCalendarRequest | The new state of the calendar
     try {
-      Calendar result = apiInstance.updateCalendar(scope, code, updateCalendarRequest);
+      Calendar result = apiInstance.updateCalendar(scope, code, updateCalendarRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CalendarsApi#updateCalendar");

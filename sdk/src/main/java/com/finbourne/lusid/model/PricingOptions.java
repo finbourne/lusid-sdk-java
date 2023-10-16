@@ -315,7 +315,7 @@ public class PricingOptions {
   }
 
    /**
-   * When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.                Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;.
+   * When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.     Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;.
    * @return conservedQuantityForLookthroughExpansion
   **/
   @jakarta.annotation.Nullable
@@ -422,28 +422,21 @@ public class PricingOptions {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PricingOptions
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PricingOptions
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PricingOptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PricingOptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PricingOptions is not found in the empty JSON string", PricingOptions.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!PricingOptions.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PricingOptions` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `modelSelection`
       if (jsonObj.get("modelSelection") != null && !jsonObj.get("modelSelection").isJsonNull()) {
-        ModelSelection.validateJsonObject(jsonObj.getAsJsonObject("modelSelection"));
+        ModelSelection.validateJsonElement(jsonObj.get("modelSelection"));
       }
       if ((jsonObj.get("conservedQuantityForLookthroughExpansion") != null && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonNull()) && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conservedQuantityForLookthroughExpansion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conservedQuantityForLookthroughExpansion").toString()));
@@ -470,9 +463,9 @@ public class PricingOptions {
 
            @Override
            public PricingOptions read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

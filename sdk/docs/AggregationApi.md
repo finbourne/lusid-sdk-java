@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="generateConfigurationRecipe"></a>
 # **generateConfigurationRecipe**
-> ConfigurationRecipe generateConfigurationRecipe(scope, code, createRecipeRequest)
+> ConfigurationRecipe generateConfigurationRecipe(scope, code).createRecipeRequest(createRecipeRequest).execute();
 
 [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio.
 
@@ -42,7 +42,9 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio
     CreateRecipeRequest createRecipeRequest = new CreateRecipeRequest(); // CreateRecipeRequest | The request specifying the parameters to generating the recipe
     try {
-      ConfigurationRecipe result = apiInstance.generateConfigurationRecipe(scope, code, createRecipeRequest);
+      ConfigurationRecipe result = apiInstance.generateConfigurationRecipe(scope, code)
+            .createRecipeRequest(createRecipeRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AggregationApi#generateConfigurationRecipe");
@@ -85,7 +87,7 @@ public class Example {
 
 <a id="getQueryableKeys"></a>
 # **getQueryableKeys**
-> ResourceListOfAggregationQuery getQueryableKeys(page, limit, filter)
+> ResourceListOfAggregationQuery getQueryableKeys().page(page).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint.
 
@@ -111,11 +113,15 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     AggregationApi apiInstance = new AggregationApi(defaultClient);
-    String page = "page_example"; // String | The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.              This value is returned from the previous call.
+    String page = "page_example"; // String | The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.   This value is returned from the previous call.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfAggregationQuery result = apiInstance.getQueryableKeys(page, limit, filter);
+      ResourceListOfAggregationQuery result = apiInstance.getQueryableKeys()
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AggregationApi#getQueryableKeys");
@@ -132,9 +138,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **page** | **String**| The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.              This value is returned from the previous call. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.   This value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -158,7 +164,7 @@ public class Example {
 
 <a id="getValuation"></a>
 # **getValuation**
-> ListAggregationResponse getValuation(valuationRequest)
+> ListAggregationResponse getValuation().valuationRequest(valuationRequest).execute();
 
 GetValuation: Perform valuation for a list of portfolios and/or portfolio groups
 
@@ -186,7 +192,9 @@ public class Example {
     AggregationApi apiInstance = new AggregationApi(defaultClient);
     ValuationRequest valuationRequest = new ValuationRequest(); // ValuationRequest | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics
     try {
-      ListAggregationResponse result = apiInstance.getValuation(valuationRequest);
+      ListAggregationResponse result = apiInstance.getValuation()
+            .valuationRequest(valuationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AggregationApi#getValuation");
@@ -227,7 +235,7 @@ public class Example {
 
 <a id="getValuationOfWeightedInstruments"></a>
 # **getValuationOfWeightedInstruments**
-> ListAggregationResponse getValuationOfWeightedInstruments(inlineValuationRequest)
+> ListAggregationResponse getValuationOfWeightedInstruments().inlineValuationRequest(inlineValuationRequest).execute();
 
 GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio
 
@@ -255,7 +263,9 @@ public class Example {
     AggregationApi apiInstance = new AggregationApi(defaultClient);
     InlineValuationRequest inlineValuationRequest = new InlineValuationRequest(); // InlineValuationRequest | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics
     try {
-      ListAggregationResponse result = apiInstance.getValuationOfWeightedInstruments(inlineValuationRequest);
+      ListAggregationResponse result = apiInstance.getValuationOfWeightedInstruments()
+            .inlineValuationRequest(inlineValuationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AggregationApi#getValuationOfWeightedInstruments");

@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deletePlacement"></a>
 # **deletePlacement**
-> DeletedEntityResponse deletePlacement(scope, code)
+> DeletedEntityResponse deletePlacement(scope, code).execute();
 
 [EARLY ACCESS] DeletePlacement: Delete placement
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The placement scope.
     String code = "code_example"; // String | The placement's code. This, together with the scope uniquely identifies the placement to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deletePlacement(scope, code);
+      DeletedEntityResponse result = apiInstance.deletePlacement(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlacementsApi#deletePlacement");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getPlacement"></a>
 # **getPlacement**
-> Placement getPlacement(scope, code, asAt, propertyKeys)
+> Placement getPlacement(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] GetPlacement: Get Placement
 
@@ -112,9 +113,12 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the placement belongs.
     String code = "code_example"; // String | The placement's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto the placement.   These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".
     try {
-      Placement result = apiInstance.getPlacement(scope, code, asAt, propertyKeys);
+      Placement result = apiInstance.getPlacement(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlacementsApi#getPlacement");
@@ -134,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the placement belongs. | |
 | **code** | **String**| The placement&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a id="listPlacements"></a>
 # **listPlacements**
-> PagedResourceListOfPlacement listPlacements(asAt, page, sortBy, limit, filter, propertyKeys)
+> PagedResourceListOfPlacement listPlacements().asAt(asAt).page(page).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListPlacements: List Placements
 
@@ -185,13 +189,20 @@ public class Example {
 
     PlacementsApi apiInstance = new PlacementsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing placements from a previous call to list placements.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".
     try {
-      PagedResourceListOfPlacement result = apiInstance.listPlacements(asAt, page, sortBy, limit, filter, propertyKeys);
+      PagedResourceListOfPlacement result = apiInstance.listPlacements()
+            .asAt(asAt)
+            .page(page)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlacementsApi#listPlacements");
@@ -209,11 +220,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing placements from a previous call to list placements.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -237,7 +248,7 @@ public class Example {
 
 <a id="upsertPlacements"></a>
 # **upsertPlacements**
-> ResourceListOfPlacement upsertPlacements(placementSetRequest)
+> ResourceListOfPlacement upsertPlacements().placementSetRequest(placementSetRequest).execute();
 
 [EARLY ACCESS] UpsertPlacements: Upsert Placement
 
@@ -265,7 +276,9 @@ public class Example {
     PlacementsApi apiInstance = new PlacementsApi(defaultClient);
     PlacementSetRequest placementSetRequest = new PlacementSetRequest(); // PlacementSetRequest | The collection of placement requests.
     try {
-      ResourceListOfPlacement result = apiInstance.upsertPlacements(placementSetRequest);
+      ResourceListOfPlacement result = apiInstance.upsertPlacements()
+            .placementSetRequest(placementSetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlacementsApi#upsertPlacements");

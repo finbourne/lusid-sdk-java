@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteAllocation"></a>
 # **deleteAllocation**
-> DeletedEntityResponse deleteAllocation(scope, code)
+> DeletedEntityResponse deleteAllocation(scope, code).execute();
 
 [EARLY ACCESS] DeleteAllocation: Delete allocation
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The allocation scope.
     String code = "code_example"; // String | The allocation's code. This, together with the scope uniquely identifies the allocation to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deleteAllocation(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteAllocation(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AllocationsApi#deleteAllocation");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getAllocation"></a>
 # **getAllocation**
-> Allocation getAllocation(scope, code, asAt, propertyKeys)
+> Allocation getAllocation(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] GetAllocation: Get Allocation
 
@@ -112,9 +113,12 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the allocation belongs.
     String code = "code_example"; // String | The allocation's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Allocations\" domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \"Allocations/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Allocations\" domain to decorate onto the allocation.   These take the format {domain}/{scope}/{code} e.g. \"Allocations/system/Name\".
     try {
-      Allocation result = apiInstance.getAllocation(scope, code, asAt, propertyKeys);
+      Allocation result = apiInstance.getAllocation(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AllocationsApi#getAllocation");
@@ -134,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the allocation belongs. | |
 | **code** | **String**| The allocation&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a id="listAllocations"></a>
 # **listAllocations**
-> PagedResourceListOfAllocation listAllocations(asAt, page, sortBy, start, limit, filter, propertyKeys)
+> PagedResourceListOfAllocation listAllocations().asAt(asAt).page(page).sortBy(sortBy).start(start).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListAllocations: List Allocations
 
@@ -185,14 +189,22 @@ public class Example {
 
     AllocationsApi apiInstance = new AllocationsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Allocations\" domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \"Allocations/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Allocations\" domain to decorate onto each allocation.   These take the format {domain}/{scope}/{code} e.g. \"Allocations/system/Name\".
     try {
-      PagedResourceListOfAllocation result = apiInstance.listAllocations(asAt, page, sortBy, start, limit, filter, propertyKeys);
+      PagedResourceListOfAllocation result = apiInstance.listAllocations()
+            .asAt(asAt)
+            .page(page)
+            .sortBy(sortBy)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AllocationsApi#listAllocations");
@@ -210,12 +222,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -239,7 +251,7 @@ public class Example {
 
 <a id="upsertAllocations"></a>
 # **upsertAllocations**
-> ResourceListOfAllocation upsertAllocations(allocationSetRequest)
+> ResourceListOfAllocation upsertAllocations().allocationSetRequest(allocationSetRequest).execute();
 
 [EARLY ACCESS] UpsertAllocations: Upsert Allocations
 
@@ -267,7 +279,9 @@ public class Example {
     AllocationsApi apiInstance = new AllocationsApi(defaultClient);
     AllocationSetRequest allocationSetRequest = new AllocationSetRequest(); // AllocationSetRequest | The collection of allocation requests.
     try {
-      ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest);
+      ResourceListOfAllocation result = apiInstance.upsertAllocations()
+            .allocationSetRequest(allocationSetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AllocationsApi#upsertAllocations");

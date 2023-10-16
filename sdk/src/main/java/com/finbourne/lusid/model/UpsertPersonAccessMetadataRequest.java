@@ -152,25 +152,18 @@ public class UpsertPersonAccessMetadataRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UpsertPersonAccessMetadataRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to UpsertPersonAccessMetadataRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!UpsertPersonAccessMetadataRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!UpsertPersonAccessMetadataRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertPersonAccessMetadataRequest is not found in the empty JSON string", UpsertPersonAccessMetadataRequest.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!UpsertPersonAccessMetadataRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpsertPersonAccessMetadataRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
         JsonArray jsonArraymetadata = jsonObj.getAsJsonArray("metadata");
         if (jsonArraymetadata != null) {
@@ -181,7 +174,7 @@ public class UpsertPersonAccessMetadataRequest {
 
           // validate the optional field `metadata` (array)
           for (int i = 0; i < jsonArraymetadata.size(); i++) {
-            AccessMetadataValue.validateJsonObject(jsonArraymetadata.get(i).getAsJsonObject());
+            AccessMetadataValue.validateJsonElement(jsonArraymetadata.get(i));
           };
         }
       }
@@ -207,9 +200,9 @@ public class UpsertPersonAccessMetadataRequest {
 
            @Override
            public UpsertPersonAccessMetadataRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

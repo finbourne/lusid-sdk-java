@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createCustomEntityDefinition"></a>
 # **createCustomEntityDefinition**
-> CustomEntityDefinition createCustomEntityDefinition(customEntityDefinitionRequest)
+> CustomEntityDefinition createCustomEntityDefinition(customEntityDefinitionRequest).execute();
 
 [EARLY ACCESS] CreateCustomEntityDefinition: Define a new Custom Entity type.
 
@@ -40,7 +40,8 @@ public class Example {
     CustomEntityDefinitionsApi apiInstance = new CustomEntityDefinitionsApi(defaultClient);
     CustomEntityDefinitionRequest customEntityDefinitionRequest = new CustomEntityDefinitionRequest(); // CustomEntityDefinitionRequest | The payload containing the description of the Custom Entity type.
     try {
-      CustomEntityDefinition result = apiInstance.createCustomEntityDefinition(customEntityDefinitionRequest);
+      CustomEntityDefinition result = apiInstance.createCustomEntityDefinition(customEntityDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CustomEntityDefinitionsApi#createCustomEntityDefinition");
@@ -81,7 +82,7 @@ public class Example {
 
 <a id="getDefinition"></a>
 # **getDefinition**
-> CustomEntityDefinition getDefinition(entityType, asAt)
+> CustomEntityDefinition getDefinition(entityType).asAt(asAt).execute();
 
 [EARLY ACCESS] GetDefinition: Get a Custom Entity type definition.
 
@@ -110,7 +111,9 @@ public class Example {
     String entityType = "entityType_example"; // String | The identifier for the Custom Entity type, derived from the \"entityTypeName\" provided on creation.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the definition.
     try {
-      CustomEntityDefinition result = apiInstance.getDefinition(entityType, asAt);
+      CustomEntityDefinition result = apiInstance.getDefinition(entityType)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CustomEntityDefinitionsApi#getDefinition");
@@ -152,7 +155,7 @@ public class Example {
 
 <a id="listCustomEntityDefinitions"></a>
 # **listCustomEntityDefinitions**
-> PagedResourceListOfCustomEntityDefinition listCustomEntityDefinitions(asAt, limit, filter, page)
+> PagedResourceListOfCustomEntityDefinition listCustomEntityDefinitions().asAt(asAt).limit(limit).filter(filter).page(page).execute();
 
 [EARLY ACCESS] ListCustomEntityDefinitions: List the Custom Entity type definitions
 
@@ -178,12 +181,17 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CustomEntityDefinitionsApi apiInstance = new CustomEntityDefinitionsApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-    String page = "page_example"; // String | The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit              and asAt fields must not have changed since the original request.
+    String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    String page = "page_example"; // String | The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit   and asAt fields must not have changed since the original request.
     try {
-      PagedResourceListOfCustomEntityDefinition result = apiInstance.listCustomEntityDefinitions(asAt, limit, filter, page);
+      PagedResourceListOfCustomEntityDefinition result = apiInstance.listCustomEntityDefinitions()
+            .asAt(asAt)
+            .limit(limit)
+            .filter(filter)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CustomEntityDefinitionsApi#listCustomEntityDefinitions");
@@ -200,10 +208,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit              and asAt fields must not have changed since the original request. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit   and asAt fields must not have changed since the original request. | [optional] |
 
 ### Return type
 
@@ -227,7 +235,7 @@ public class Example {
 
 <a id="updateCustomEntityDefinition"></a>
 # **updateCustomEntityDefinition**
-> CustomEntityDefinition updateCustomEntityDefinition(entityType, updateCustomEntityDefinitionRequest)
+> CustomEntityDefinition updateCustomEntityDefinition(entityType, updateCustomEntityDefinitionRequest).execute();
 
 [EARLY ACCESS] UpdateCustomEntityDefinition: Modify an existing Custom Entity type.
 
@@ -256,7 +264,8 @@ public class Example {
     String entityType = "entityType_example"; // String | The identifier for the Custom Entity type, derived from the \"entityTypeName\" provided on creation.
     UpdateCustomEntityDefinitionRequest updateCustomEntityDefinitionRequest = new UpdateCustomEntityDefinitionRequest(); // UpdateCustomEntityDefinitionRequest | The payload containing the description of the Custom Entity type.
     try {
-      CustomEntityDefinition result = apiInstance.updateCustomEntityDefinition(entityType, updateCustomEntityDefinitionRequest);
+      CustomEntityDefinition result = apiInstance.updateCustomEntityDefinition(entityType, updateCustomEntityDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CustomEntityDefinitionsApi#updateCustomEntityDefinition");

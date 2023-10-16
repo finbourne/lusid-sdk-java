@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteParticipation"></a>
 # **deleteParticipation**
-> DeletedEntityResponse deleteParticipation(scope, code)
+> DeletedEntityResponse deleteParticipation(scope, code).execute();
 
 [EARLY ACCESS] DeleteParticipation: Delete participation
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The participation scope.
     String code = "code_example"; // String | The participation's code. This, together with the scope uniquely identifies the participation to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deleteParticipation(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteParticipation(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ParticipationsApi#deleteParticipation");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getParticipation"></a>
 # **getParticipation**
-> Participation getParticipation(scope, code, asAt, propertyKeys)
+> Participation getParticipation(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] GetParticipation: Get Participation
 
@@ -112,9 +113,12 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the participation belongs.
     String code = "code_example"; // String | The participation's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Participation\" domain to decorate onto the participation.              These take the format {domain}/{scope}/{code} e.g. \"Participation/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Participation\" domain to decorate onto the participation.   These take the format {domain}/{scope}/{code} e.g. \"Participation/system/Name\".
     try {
-      Participation result = apiInstance.getParticipation(scope, code, asAt, propertyKeys);
+      Participation result = apiInstance.getParticipation(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ParticipationsApi#getParticipation");
@@ -134,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the participation belongs. | |
 | **code** | **String**| The participation&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Participation\&quot; domain to decorate onto the participation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Participation\&quot; domain to decorate onto the participation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a id="listParticipations"></a>
 # **listParticipations**
-> PagedResourceListOfParticipation listParticipations(asAt, page, sortBy, limit, filter, propertyKeys)
+> PagedResourceListOfParticipation listParticipations().asAt(asAt).page(page).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListParticipations: List Participations
 
@@ -185,13 +189,20 @@ public class Example {
 
     ParticipationsApi apiInstance = new ParticipationsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing participations from a previous call to list participations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing participations from a previous call to list participations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Participation\" domain to decorate onto each participation.                  These take the format {domain}/{scope}/{code} e.g. \"Participation/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Participation\" domain to decorate onto each participation.   These take the format {domain}/{scope}/{code} e.g. \"Participation/system/Name\".
     try {
-      PagedResourceListOfParticipation result = apiInstance.listParticipations(asAt, page, sortBy, limit, filter, propertyKeys);
+      PagedResourceListOfParticipation result = apiInstance.listParticipations()
+            .asAt(asAt)
+            .page(page)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ParticipationsApi#listParticipations");
@@ -209,11 +220,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing participations from a previous call to list participations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing participations from a previous call to list participations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Participation\&quot; domain to decorate onto each participation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Participation\&quot; domain to decorate onto each participation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -237,7 +248,7 @@ public class Example {
 
 <a id="upsertParticipations"></a>
 # **upsertParticipations**
-> ResourceListOfParticipation upsertParticipations(participationSetRequest)
+> ResourceListOfParticipation upsertParticipations().participationSetRequest(participationSetRequest).execute();
 
 [EARLY ACCESS] UpsertParticipations: Upsert Participation
 
@@ -265,7 +276,9 @@ public class Example {
     ParticipationsApi apiInstance = new ParticipationsApi(defaultClient);
     ParticipationSetRequest participationSetRequest = new ParticipationSetRequest(); // ParticipationSetRequest | The collection of participation requests.
     try {
-      ResourceListOfParticipation result = apiInstance.upsertParticipations(participationSetRequest);
+      ResourceListOfParticipation result = apiInstance.upsertParticipations()
+            .participationSetRequest(participationSetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ParticipationsApi#upsertParticipations");

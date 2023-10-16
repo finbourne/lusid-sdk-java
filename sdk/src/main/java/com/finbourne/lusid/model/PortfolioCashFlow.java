@@ -598,32 +598,25 @@ public class PortfolioCashFlow {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PortfolioCashFlow
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PortfolioCashFlow
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PortfolioCashFlow.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PortfolioCashFlow.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortfolioCashFlow is not found in the empty JSON string", PortfolioCashFlow.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!PortfolioCashFlow.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PortfolioCashFlow` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PortfolioCashFlow.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
@@ -631,23 +624,23 @@ public class PortfolioCashFlow {
         throw new IllegalArgumentException(String.format("Expected the field `movementName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementName").toString()));
       }
       // validate the required field `cashflow`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("cashflow"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("cashflow"));
       // validate the required field `balance`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("balance"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("balance"));
       // validate the required field `cashflowReportingCurrency`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("cashflowReportingCurrency"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("cashflowReportingCurrency"));
       // validate the required field `balanceReportingCurrency`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("balanceReportingCurrency"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("balanceReportingCurrency"));
       // validate the required field `translationGainLoss`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("translationGainLoss"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("translationGainLoss"));
       // validate the required field `costBasisReportingCurrency`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("costBasisReportingCurrency"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("costBasisReportingCurrency"));
       // validate the optional field `transaction`
       if (jsonObj.get("transaction") != null && !jsonObj.get("transaction").isJsonNull()) {
-        Transaction.validateJsonObject(jsonObj.getAsJsonObject("transaction"));
+        Transaction.validateJsonElement(jsonObj.get("transaction"));
       }
       // validate the required field `unrealisedGainLossReportingCurrency`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("unrealisedGainLossReportingCurrency"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("unrealisedGainLossReportingCurrency"));
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {
@@ -658,7 +651,7 @@ public class PortfolioCashFlow {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -684,9 +677,9 @@ public class PortfolioCashFlow {
 
            @Override
            public PortfolioCashFlow read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

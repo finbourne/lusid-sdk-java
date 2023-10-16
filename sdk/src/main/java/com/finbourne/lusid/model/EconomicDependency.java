@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Base class for representing economic dependencies.  Economic dependencies are a way of indicating how one concept depends upon another.  For example, when pricing an instrument with a particular model,  that model will declare that it has an EconomicDependency for each bit of market data  that it needs to complete the calculation.  Concretely, a pricing an FxForward will declare a dependency on the exchange rate between the two currencies  at the forward date.                Another example is when data is included in a data-structure only by reference.  Concretely, an object depending on a FlowConvention that is referenced only semantically via a FlowConventionName  will declare a FlowConventionDependency  so that the full data-structure of the referenced FlowConvention can be retrieved.                For deserialization purposes,  this class contains a discriminator EconomicDependencyType to indicate the derived type.
+ * Base class for representing economic dependencies.  Economic dependencies are a way of indicating how one concept depends upon another.  For example, when pricing an instrument with a particular model,  that model will declare that it has an EconomicDependency for each bit of market data  that it needs to complete the calculation.  Concretely, a pricing an FxForward will declare a dependency on the exchange rate between the two currencies  at the forward date.     Another example is when data is included in a data-structure only by reference.  Concretely, an object depending on a FlowConvention that is referenced only semantically via a FlowConventionName  will declare a FlowConventionDependency  so that the full data-structure of the referenced FlowConvention can be retrieved.     For deserialization purposes,  this class contains a discriminator EconomicDependencyType to indicate the derived type.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EconomicDependency {
@@ -201,63 +201,63 @@ public class EconomicDependency {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to EconomicDependency
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to EconomicDependency
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!EconomicDependency.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!EconomicDependency.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in EconomicDependency is not found in the empty JSON string", EconomicDependency.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("dependencyType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("dependencyType").getAsString();
       switch (discriminatorValue) {
         case "CalendarDependency":
-          CalendarDependency.validateJsonObject(jsonObj);
+          CalendarDependency.validateJsonElement(jsonElement);
           break;
         case "CashDependency":
-          CashDependency.validateJsonObject(jsonObj);
+          CashDependency.validateJsonElement(jsonElement);
           break;
         case "DiscountingDependency":
-          DiscountingDependency.validateJsonObject(jsonObj);
+          DiscountingDependency.validateJsonElement(jsonElement);
           break;
         case "EquityCurveDependency":
-          EquityCurveDependency.validateJsonObject(jsonObj);
+          EquityCurveDependency.validateJsonElement(jsonElement);
           break;
         case "EquityVolDependency":
-          EquityVolDependency.validateJsonObject(jsonObj);
+          EquityVolDependency.validateJsonElement(jsonElement);
           break;
         case "FxDependency":
-          FxDependency.validateJsonObject(jsonObj);
+          FxDependency.validateJsonElement(jsonElement);
           break;
         case "FxForwardsDependency":
-          FxForwardsDependency.validateJsonObject(jsonObj);
+          FxForwardsDependency.validateJsonElement(jsonElement);
           break;
         case "FxVolDependency":
-          FxVolDependency.validateJsonObject(jsonObj);
+          FxVolDependency.validateJsonElement(jsonElement);
           break;
         case "IndexProjectionDependency":
-          IndexProjectionDependency.validateJsonObject(jsonObj);
+          IndexProjectionDependency.validateJsonElement(jsonElement);
           break;
         case "InflationFixingDependency":
-          InflationFixingDependency.validateJsonObject(jsonObj);
+          InflationFixingDependency.validateJsonElement(jsonElement);
           break;
         case "IrVolDependency":
-          IrVolDependency.validateJsonObject(jsonObj);
+          IrVolDependency.validateJsonElement(jsonElement);
           break;
         case "OpaqueDependency":
-          OpaqueDependency.validateJsonObject(jsonObj);
+          OpaqueDependency.validateJsonElement(jsonElement);
           break;
         case "QuoteDependency":
-          QuoteDependency.validateJsonObject(jsonObj);
+          QuoteDependency.validateJsonElement(jsonElement);
           break;
         case "VendorDependency":
-          VendorDependency.validateJsonObject(jsonObj);
+          VendorDependency.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `dependencyType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

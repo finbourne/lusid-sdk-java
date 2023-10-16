@@ -172,7 +172,7 @@ public class MarketDataKeyRule {
   }
 
    /**
-   * A dot-separated string that defines a pattern for matching market data dependencies.  The form of the string depends on the type of the dependency; see below for basic types and the Knowledge Base for further info.  Quote lookup: \&quot;Quote.{CodeType}.*\&quot; e.g. \&quot;Quote.RIC.*\&quot; refers to &#39;any RIC quote&#39;  Fx rates: \&quot;Fx.CurrencyPair.*\&quot;, which refers to &#39;any FX rate&#39;  Discounting curves: \&quot;Rates.{Currency}.{Currency}OIS e.g. \&quot;Rates.USD.USDOIS\&quot; refers to the OIS USD discounting curve                For non-fx and non-quote rules, trailing parameters can be replaced by the wildcard character &#39;*&#39;.  e.g. \&quot;Rates.*.*\&quot; matches any dependency on a discounting curve.
+   * A dot-separated string that defines a pattern for matching market data dependencies.  The form of the string depends on the type of the dependency; see below for basic types and the Knowledge Base for further info.  Quote lookup: \&quot;Quote.{CodeType}.*\&quot; e.g. \&quot;Quote.RIC.*\&quot; refers to &#39;any RIC quote&#39;  Fx rates: \&quot;Fx.CurrencyPair.*\&quot;, which refers to &#39;any FX rate&#39;  Discounting curves: \&quot;Rates.{Currency}.{Currency}OIS e.g. \&quot;Rates.USD.USDOIS\&quot; refers to the OIS USD discounting curve     For non-fx and non-quote rules, trailing parameters can be replaced by the wildcard character &#39;*&#39;.  e.g. \&quot;Rates.*.*\&quot; matches any dependency on a discounting curve.
    * @return key
   **/
   @jakarta.annotation.Nonnull
@@ -256,7 +256,7 @@ public class MarketDataKeyRule {
   }
 
    /**
-   * The conceptual qualification for the field, typically &#39;bid&#39;, &#39;mid&#39; (default), or &#39;ask&#39;, but can also be &#39;open&#39;, &#39;close&#39;, etc.  When resolving quotes from LUSID&#39;s database, only quotes whose Field is identical to the Field specified here  will be accepted as market data.  When resolving data from an external supplier, the Field must be one of a defined set for the given supplier.                Note: Applies to the retrieval of quotes only. Has no impact on the resolution of complex market data.
+   * The conceptual qualification for the field, typically &#39;bid&#39;, &#39;mid&#39; (default), or &#39;ask&#39;, but can also be &#39;open&#39;, &#39;close&#39;, etc.  When resolving quotes from LUSID&#39;s database, only quotes whose Field is identical to the Field specified here  will be accepted as market data.  When resolving data from an external supplier, the Field must be one of a defined set for the given supplier.     Note: Applies to the retrieval of quotes only. Has no impact on the resolution of complex market data.
    * @return field
   **/
   @jakarta.annotation.Nullable
@@ -277,7 +277,7 @@ public class MarketDataKeyRule {
   }
 
    /**
-   * Shorthand for the time interval used to select market data. This must be a dot-separated string              nominating a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago). The syntax              is &lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;.&lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;, where &lt;i&gt;char&lt;/i&gt; is one of              D(ay), Bd(business day), W(eek), M(onth) or Y(ear).              Business days are calculated using the calendars specified on the Valuation Request.              If no calendar is provided in the request, then it will default to only skipping weekends.              For example, if the valuation date is a Monday, then a quote interval of \&quot;1Bd\&quot; would behave as \&quot;3D\&quot;,              looking back to the Friday. Data with effectiveAt on the weekend will still be found in that window.
+   * Shorthand for the time interval used to select market data. This must be a dot-separated string   nominating a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago). The syntax   is &lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;.&lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;, where &lt;i&gt;char&lt;/i&gt; is one of   D(ay), Bd(business day), W(eek), M(onth) or Y(ear).   Business days are calculated using the calendars specified on the Valuation Request.   If no calendar is provided in the request, then it will default to only skipping weekends.   For example, if the valuation date is a Monday, then a quote interval of \&quot;1Bd\&quot; would behave as \&quot;3D\&quot;,   looking back to the Friday. Data with effectiveAt on the weekend will still be found in that window.
    * @return quoteInterval
   **/
   @jakarta.annotation.Nullable
@@ -361,7 +361,7 @@ public class MarketDataKeyRule {
   }
 
    /**
-   * If set, this parameter will seek an external source of market data.  Optional and, if omitted, will default to \&quot;Lusid\&quot;.  This means that data will be retrieved from the LUSID Quote Store and LUSID Complex Market Data Store.                This can be set to \&quot;MarketDataOverrides\&quot; if Supplier is set to \&quot;Client\&quot;.
+   * If set, this parameter will seek an external source of market data.  Optional and, if omitted, will default to \&quot;Lusid\&quot;.  This means that data will be retrieved from the LUSID Quote Store and LUSID Complex Market Data Store.     This can be set to \&quot;MarketDataOverrides\&quot; if Supplier is set to \&quot;Client\&quot;.
    * @return sourceSystem
   **/
   @jakarta.annotation.Nullable
@@ -469,32 +469,25 @@ public class MarketDataKeyRule {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MarketDataKeyRule
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MarketDataKeyRule
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MarketDataKeyRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MarketDataKeyRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MarketDataKeyRule is not found in the empty JSON string", MarketDataKeyRule.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!MarketDataKeyRule.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MarketDataKeyRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : MarketDataKeyRule.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
       }
@@ -544,9 +537,9 @@ public class MarketDataKeyRule {
 
            @Override
            public MarketDataKeyRule read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -19,7 +19,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteComplianceRule"></a>
 # **deleteComplianceRule**
-> DeletedEntityResponse deleteComplianceRule(scope, code)
+> DeletedEntityResponse deleteComplianceRule(scope, code).execute();
 
 [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
 
@@ -48,7 +48,8 @@ public class Example {
     String scope = "scope_example"; // String | The compliance rule's scope.
     String code = "code_example"; // String | The compliance rule's code.
     try {
-      DeletedEntityResponse result = apiInstance.deleteComplianceRule(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteComplianceRule(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#deleteComplianceRule");
@@ -90,7 +91,7 @@ public class Example {
 
 <a id="getComplianceRule"></a>
 # **getComplianceRule**
-> ComplianceRuleResponse getComplianceRule(scope, code, asAt, propertyKeys)
+> ComplianceRuleResponse getComplianceRule(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] GetComplianceRule: Get compliance rule.
 
@@ -119,9 +120,12 @@ public class Example {
     String scope = "scope_example"; // String | The compliance rule's scope.
     String code = "code_example"; // String | The compliance rule's code.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time for query.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'.
     try {
-      ComplianceRuleResponse result = apiInstance.getComplianceRule(scope, code, asAt, propertyKeys);
+      ComplianceRuleResponse result = apiInstance.getComplianceRule(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#getComplianceRule");
@@ -141,7 +145,7 @@ public class Example {
 | **scope** | **String**| The compliance rule&#39;s scope. | |
 | **code** | **String**| The compliance rule&#39;s code. | |
 | **asAt** | **OffsetDateTime**| Optional. Asat time for query. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional] |
 
 ### Return type
 
@@ -165,7 +169,7 @@ public class Example {
 
 <a id="getComplianceRunSummary"></a>
 # **getComplianceRunSummary**
-> ComplianceRunSummary getComplianceRunSummary(scope, code)
+> ComplianceRunSummary getComplianceRunSummary(scope, code).execute();
 
 [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
 
@@ -194,7 +198,8 @@ public class Example {
     String scope = "scope_example"; // String | Required: Run Scope.
     String code = "code_example"; // String | Required: Run Code.
     try {
-      ComplianceRunSummary result = apiInstance.getComplianceRunSummary(scope, code);
+      ComplianceRunSummary result = apiInstance.getComplianceRunSummary(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#getComplianceRunSummary");
@@ -236,7 +241,7 @@ public class Example {
 
 <a id="getComplianceTemplate"></a>
 # **getComplianceTemplate**
-> ComplianceTemplate getComplianceTemplate(scope, code, asAt)
+> ComplianceTemplate getComplianceTemplate(scope, code).asAt(asAt).execute();
 
 [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
 
@@ -266,7 +271,9 @@ public class Example {
     String code = "code_example"; // String | Code of TemplateID
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
     try {
-      ComplianceTemplate result = apiInstance.getComplianceTemplate(scope, code, asAt);
+      ComplianceTemplate result = apiInstance.getComplianceTemplate(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#getComplianceTemplate");
@@ -309,7 +316,7 @@ public class Example {
 
 <a id="getDecoratedComplianceRunSummary"></a>
 # **getDecoratedComplianceRunSummary**
-> DecoratedComplianceRunSummary getDecoratedComplianceRunSummary(scope, code)
+> DecoratedComplianceRunSummary getDecoratedComplianceRunSummary(scope, code).execute();
 
 [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
 
@@ -338,7 +345,8 @@ public class Example {
     String scope = "scope_example"; // String | Required: Run Scope.
     String code = "code_example"; // String | Required: Run Code.
     try {
-      DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code);
+      DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#getDecoratedComplianceRunSummary");
@@ -380,7 +388,7 @@ public class Example {
 
 <a id="listComplianceRules"></a>
 # **listComplianceRules**
-> PagedResourceListOfComplianceRuleResponse listComplianceRules(asAt, page, limit, filter, propertyKeys)
+> PagedResourceListOfComplianceRuleResponse listComplianceRules().asAt(asAt).page(page).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListComplianceRules: List compliance rules.
 
@@ -410,9 +418,15 @@ public class Example {
     String page = "page_example"; // String | Optional. Pagination token.
     Integer limit = 56; // Integer | Optional. Entries per page.
     String filter = "filter_example"; // String | Optional. Filter.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for each rule.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for each rule.
     try {
-      PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules(asAt, page, limit, filter, propertyKeys);
+      PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#listComplianceRules");
@@ -433,7 +447,7 @@ public class Example {
 | **page** | **String**| Optional. Pagination token. | [optional] |
 | **limit** | **Integer**| Optional. Entries per page. | [optional] |
 | **filter** | **String**| Optional. Filter. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional] |
 
 ### Return type
 
@@ -457,7 +471,7 @@ public class Example {
 
 <a id="listComplianceRuns"></a>
 # **listComplianceRuns**
-> PagedResourceListOfComplianceRunInfoV2 listComplianceRuns(asAt, page, limit, filter, sortBy)
+> PagedResourceListOfComplianceRunInfoV2 listComplianceRuns().asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).execute();
 
 [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
 
@@ -484,12 +498,18 @@ public class Example {
 
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. A list of field names to sort by, each suffixed by \"ASC\" or \"DESC\"
     try {
-      PagedResourceListOfComplianceRunInfoV2 result = apiInstance.listComplianceRuns(asAt, page, limit, filter, sortBy);
+      PagedResourceListOfComplianceRunInfoV2 result = apiInstance.listComplianceRuns()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .sortBy(sortBy)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#listComplianceRuns");
@@ -507,7 +527,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional] |
@@ -534,7 +554,7 @@ public class Example {
 
 <a id="listComplianceTemplates"></a>
 # **listComplianceTemplates**
-> PagedResourceListOfComplianceTemplate listComplianceTemplates(asAt, page, start, limit, filter)
+> PagedResourceListOfComplianceTemplate listComplianceTemplates().asAt(asAt).page(page).start(start).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
 
@@ -561,12 +581,18 @@ public class Example {
 
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results.
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfComplianceTemplate result = apiInstance.listComplianceTemplates(asAt, page, start, limit, filter);
+      PagedResourceListOfComplianceTemplate result = apiInstance.listComplianceTemplates()
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#listComplianceTemplates");
@@ -584,7 +610,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| Optional. When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
@@ -611,7 +637,7 @@ public class Example {
 
 <a id="runCompliance"></a>
 # **runCompliance**
-> ComplianceRunInfoV2 runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode)
+> ComplianceRunInfoV2 runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode).execute();
 
 [EARLY ACCESS] RunCompliance: Run a compliance check.
 
@@ -643,7 +669,8 @@ public class Example {
     String recipeIdScope = "recipeIdScope_example"; // String | Required: the scope of the recipe to be used
     String recipeIdCode = "recipeIdCode_example"; // String | Required: The code of the recipe to be used. If left blank, the default recipe will be used.
     try {
-      ComplianceRunInfoV2 result = apiInstance.runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
+      ComplianceRunInfoV2 result = apiInstance.runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#runCompliance");
@@ -688,7 +715,7 @@ public class Example {
 
 <a id="upsertComplianceRule"></a>
 # **upsertComplianceRule**
-> ComplianceRuleResponse upsertComplianceRule(upsertComplianceRuleRequest)
+> ComplianceRuleResponse upsertComplianceRule().upsertComplianceRuleRequest(upsertComplianceRuleRequest).execute();
 
 [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
 
@@ -716,7 +743,9 @@ public class Example {
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
     UpsertComplianceRuleRequest upsertComplianceRuleRequest = new UpsertComplianceRuleRequest(); // UpsertComplianceRuleRequest | 
     try {
-      ComplianceRuleResponse result = apiInstance.upsertComplianceRule(upsertComplianceRuleRequest);
+      ComplianceRuleResponse result = apiInstance.upsertComplianceRule()
+            .upsertComplianceRuleRequest(upsertComplianceRuleRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#upsertComplianceRule");
@@ -757,7 +786,7 @@ public class Example {
 
 <a id="upsertComplianceRunSummary"></a>
 # **upsertComplianceRunSummary**
-> ComplianceRunSummary upsertComplianceRunSummary(upsertComplianceRunSummaryRequest)
+> ComplianceRunSummary upsertComplianceRunSummary().upsertComplianceRunSummaryRequest(upsertComplianceRunSummaryRequest).execute();
 
 [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
 
@@ -785,7 +814,9 @@ public class Example {
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
     UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest = new UpsertComplianceRunSummaryRequest(); // UpsertComplianceRunSummaryRequest | 
     try {
-      ComplianceRunSummary result = apiInstance.upsertComplianceRunSummary(upsertComplianceRunSummaryRequest);
+      ComplianceRunSummary result = apiInstance.upsertComplianceRunSummary()
+            .upsertComplianceRunSummaryRequest(upsertComplianceRunSummaryRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceApi#upsertComplianceRunSummary");

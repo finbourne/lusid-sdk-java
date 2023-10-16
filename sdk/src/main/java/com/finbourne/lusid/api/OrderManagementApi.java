@@ -73,22 +73,7 @@ public class OrderManagementApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for bookTransactions
-     * @param resourceId The allocations to create transactions for (required)
-     * @param applyFeesAndCommission Whether to apply fees and commissions to transactions (default: true) (optional, default to true)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bookTransactionsCall(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsCall(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,86 +138,124 @@ public class OrderManagementApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
-     * Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
-     * @param resourceId The allocations to create transactions for (required)
-     * @param applyFeesAndCommission Whether to apply fees and commissions to transactions (default: true) (optional, default to true)
-     * @return BookTransactionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BookTransactionsResponse bookTransactions(List<ResourceId> resourceId, Boolean applyFeesAndCommission) throws ApiException {
-        ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(resourceId, applyFeesAndCommission);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
-     * Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
-     * @param resourceId The allocations to create transactions for (required)
-     * @param applyFeesAndCommission Whether to apply fees and commissions to transactions (default: true) (optional, default to true)
-     * @return ApiResponse&lt;BookTransactionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(List<ResourceId> resourceId, Boolean applyFeesAndCommission) throws ApiException {
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(List<ResourceId> resourceId, Boolean applyFeesAndCommission) throws ApiException {
         okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(resourceId, applyFeesAndCommission, null);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source. (asynchronously)
-     * Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
-     * @param resourceId The allocations to create transactions for (required)
-     * @param applyFeesAndCommission Whether to apply fees and commissions to transactions (default: true) (optional, default to true)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bookTransactionsAsync(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsAsync(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(resourceId, applyFeesAndCommission, _callback);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIbookTransactionsRequest {
+        private final List<ResourceId> resourceId;
+        private Boolean applyFeesAndCommission;
+
+        private APIbookTransactionsRequest(List<ResourceId> resourceId) {
+            this.resourceId = resourceId;
+        }
+
+        /**
+         * Set applyFeesAndCommission
+         * @param applyFeesAndCommission Whether to apply fees and commissions to transactions (default: true) (optional, default to true)
+         * @return APIbookTransactionsRequest
+         */
+        public APIbookTransactionsRequest applyFeesAndCommission(Boolean applyFeesAndCommission) {
+            this.applyFeesAndCommission = applyFeesAndCommission;
+            return this;
+        }
+
+        /**
+         * Build call for bookTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return bookTransactionsCall(resourceId, applyFeesAndCommission, _callback);
+        }
+
+        /**
+         * Execute bookTransactions request
+         * @return BookTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BookTransactionsResponse execute() throws ApiException {
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(resourceId, applyFeesAndCommission);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute bookTransactions request with HTTP info returned
+         * @return ApiResponse&lt;BookTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BookTransactionsResponse> executeWithHttpInfo() throws ApiException {
+            return bookTransactionsWithHttpInfo(resourceId, applyFeesAndCommission);
+        }
+
+        /**
+         * Execute bookTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
+            return bookTransactionsAsync(resourceId, applyFeesAndCommission, _callback);
+        }
+    }
+
     /**
-     * Build call for runAllocationService
-     * @param resourceId The List of Placement IDs for which you wish to allocate executions. (required)
-     * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
+     * Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
+     * @param resourceId The allocations to create transactions for (required)
+     * @return APIbookTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
+    public APIbookTransactionsRequest bookTransactions(List<ResourceId> resourceId) {
+        return new APIbookTransactionsRequest(resourceId);
+    }
+    private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,55 +320,112 @@ public class OrderManagementApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
-     * This will allocate executions for a given list of placements back to their originating orders.
-     * @param resourceId The List of Placement IDs for which you wish to allocate executions. (required)
-     * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)
-     * @return AllocationServiceRunResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AllocationServiceRunResponse runAllocationService(List<ResourceId> resourceId, String allocationAlgorithm) throws ApiException {
-        ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
-     * This will allocate executions for a given list of placements back to their originating orders.
-     * @param resourceId The List of Placement IDs for which you wish to allocate executions. (required)
-     * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)
-     * @return ApiResponse&lt;AllocationServiceRunResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm) throws ApiException {
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm) throws ApiException {
         okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, null);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback);
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIrunAllocationServiceRequest {
+        private final List<ResourceId> resourceId;
+        private String allocationAlgorithm;
+
+        private APIrunAllocationServiceRequest(List<ResourceId> resourceId) {
+            this.resourceId = resourceId;
+        }
+
+        /**
+         * Set allocationAlgorithm
+         * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)
+         * @return APIrunAllocationServiceRequest
+         */
+        public APIrunAllocationServiceRequest allocationAlgorithm(String allocationAlgorithm) {
+            this.allocationAlgorithm = allocationAlgorithm;
+            return this;
+        }
+
+        /**
+         * Build call for runAllocationService
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return runAllocationServiceCall(resourceId, allocationAlgorithm, _callback);
+        }
+
+        /**
+         * Execute runAllocationService request
+         * @return AllocationServiceRunResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationServiceRunResponse execute() throws ApiException {
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runAllocationService request with HTTP info returned
+         * @return ApiResponse&lt;AllocationServiceRunResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo() throws ApiException {
+            return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+        }
+
+        /**
+         * Execute runAllocationService request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
+            return runAllocationServiceAsync(resourceId, allocationAlgorithm, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service (asynchronously)
+     * [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
      * This will allocate executions for a given list of placements back to their originating orders.
      * @param resourceId The List of Placement IDs for which you wish to allocate executions. (required)
-     * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIrunAllocationServiceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -354,11 +434,7 @@ public class OrderManagementApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback);
-        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIrunAllocationServiceRequest runAllocationService(List<ResourceId> resourceId) {
+        return new APIrunAllocationServiceRequest(resourceId);
     }
 }

@@ -76,21 +76,7 @@ public class TransactionFeesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteTransactionFeeRule
-     * @param code The fee rule code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTransactionFeeRuleCall(String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeRuleCall(String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,88 +134,113 @@ public class TransactionFeesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
-     * &lt;br&gt;              Deletes the rule for all effective time.                &lt;br&gt;              The rule will remain viewable at previous as at times, but it will no longer be considered by              GetApplicableFees.                &lt;br&gt;              This cannot be undone.              
-     * @param code The fee rule code. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteTransactionFeeRule(String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeRuleWithHttpInfo(code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
-     * &lt;br&gt;              Deletes the rule for all effective time.                &lt;br&gt;              The rule will remain viewable at previous as at times, but it will no longer be considered by              GetApplicableFees.                &lt;br&gt;              This cannot be undone.              
-     * @param code The fee rule code. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteTransactionFeeRuleWithHttpInfo(String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteTransactionFeeRuleWithHttpInfo(String code) throws ApiException {
         okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule. (asynchronously)
-     * &lt;br&gt;              Deletes the rule for all effective time.                &lt;br&gt;              The rule will remain viewable at previous as at times, but it will no longer be considered by              GetApplicableFees.                &lt;br&gt;              This cannot be undone.              
-     * @param code The fee rule code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTransactionFeeRuleAsync(String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeRuleAsync(String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteTransactionFeeRuleRequest {
+        private final String code;
+
+        private APIdeleteTransactionFeeRuleRequest(String code) {
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteTransactionFeeRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTransactionFeeRuleCall(code, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionFeeRule request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeRuleWithHttpInfo(code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTransactionFeeRule request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteTransactionFeeRuleWithHttpInfo(code);
+        }
+
+        /**
+         * Execute deleteTransactionFeeRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteTransactionFeeRuleAsync(code, _callback);
+        }
+    }
+
     /**
-     * Build call for getApplicableTransactionFees
-     * @param effectiveAt The effective datetime or cut label at which to match rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to match rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param instrumentIdentifierType Optional. The unique identifier type to use, eg &#39;Figi&#39; or &#39;LusidInstrumentId&#39;. (optional)
-     * @param instrumentIdentifier Optional. The Instrument Identifier to get properties for. (optional)
-     * @param portfolioScope Optional. The scope of the portfolio to fetch properties from. (optional)
-     * @param portfolioCode Optional. The code of the portfolio to fetch properties from. (optional)
-     * @param requestBody Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
+     * &lt;br&gt;   Deletes the rule for all effective time.     &lt;br&gt;   The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.     &lt;br&gt;   This cannot be undone.   
+     * @param code The fee rule code. (required)
+     * @return APIdeleteTransactionFeeRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApplicableTransactionFeesCall(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIdeleteTransactionFeeRuleRequest deleteTransactionFeeRule(String code) {
+        return new APIdeleteTransactionFeeRuleRequest(code);
+    }
+    private okhttp3.Call getApplicableTransactionFeesCall(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -309,102 +320,187 @@ public class TransactionFeesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
-     * Additionally, matching can be based on the instrument&#39;s properties, its portfolio properties, and any additional property keys present in the data file.
-     * @param effectiveAt The effective datetime or cut label at which to match rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to match rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param instrumentIdentifierType Optional. The unique identifier type to use, eg &#39;Figi&#39; or &#39;LusidInstrumentId&#39;. (optional)
-     * @param instrumentIdentifier Optional. The Instrument Identifier to get properties for. (optional)
-     * @param portfolioScope Optional. The scope of the portfolio to fetch properties from. (optional)
-     * @param portfolioCode Optional. The code of the portfolio to fetch properties from. (optional)
-     * @param requestBody Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. (optional)
-     * @return ResourceListOfFeeRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfFeeRule getApplicableTransactionFees(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody) throws ApiException {
-        ApiResponse<ResourceListOfFeeRule> localVarResp = getApplicableTransactionFeesWithHttpInfo(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
-     * Additionally, matching can be based on the instrument&#39;s properties, its portfolio properties, and any additional property keys present in the data file.
-     * @param effectiveAt The effective datetime or cut label at which to match rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to match rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param instrumentIdentifierType Optional. The unique identifier type to use, eg &#39;Figi&#39; or &#39;LusidInstrumentId&#39;. (optional)
-     * @param instrumentIdentifier Optional. The Instrument Identifier to get properties for. (optional)
-     * @param portfolioScope Optional. The scope of the portfolio to fetch properties from. (optional)
-     * @param portfolioCode Optional. The code of the portfolio to fetch properties from. (optional)
-     * @param requestBody Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. (optional)
-     * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfFeeRule> getApplicableTransactionFeesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody) throws ApiException {
+    private ApiResponse<ResourceListOfFeeRule> getApplicableTransactionFeesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody) throws ApiException {
         okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, null);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction. (asynchronously)
-     * Additionally, matching can be based on the instrument&#39;s properties, its portfolio properties, and any additional property keys present in the data file.
-     * @param effectiveAt The effective datetime or cut label at which to match rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to match rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param instrumentIdentifierType Optional. The unique identifier type to use, eg &#39;Figi&#39; or &#39;LusidInstrumentId&#39;. (optional)
-     * @param instrumentIdentifier Optional. The Instrument Identifier to get properties for. (optional)
-     * @param portfolioScope Optional. The scope of the portfolio to fetch properties from. (optional)
-     * @param portfolioCode Optional. The code of the portfolio to fetch properties from. (optional)
-     * @param requestBody Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApplicableTransactionFeesAsync(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
+    private okhttp3.Call getApplicableTransactionFeesAsync(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetApplicableTransactionFeesRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String instrumentIdentifierType;
+        private String instrumentIdentifier;
+        private String portfolioScope;
+        private String portfolioCode;
+        private Map<String, String> requestBody;
+
+        private APIgetApplicableTransactionFeesRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to match rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to match rule definitions. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set instrumentIdentifierType
+         * @param instrumentIdentifierType Optional. The unique identifier type to use, eg &#39;Figi&#39; or &#39;LusidInstrumentId&#39;. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest instrumentIdentifierType(String instrumentIdentifierType) {
+            this.instrumentIdentifierType = instrumentIdentifierType;
+            return this;
+        }
+
+        /**
+         * Set instrumentIdentifier
+         * @param instrumentIdentifier Optional. The Instrument Identifier to get properties for. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest instrumentIdentifier(String instrumentIdentifier) {
+            this.instrumentIdentifier = instrumentIdentifier;
+            return this;
+        }
+
+        /**
+         * Set portfolioScope
+         * @param portfolioScope Optional. The scope of the portfolio to fetch properties from. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest portfolioScope(String portfolioScope) {
+            this.portfolioScope = portfolioScope;
+            return this;
+        }
+
+        /**
+         * Set portfolioCode
+         * @param portfolioCode Optional. The code of the portfolio to fetch properties from. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest portfolioCode(String portfolioCode) {
+            this.portfolioCode = portfolioCode;
+            return this;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody Any other property keys or fields, including the top-level fields of the   fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with   their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or   \&quot;AdditionalKey2&#x3D;Value2\&quot;. (optional)
+         * @return APIgetApplicableTransactionFeesRequest
+         */
+        public APIgetApplicableTransactionFeesRequest requestBody(Map<String, String> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for getApplicableTransactionFees
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getApplicableTransactionFeesCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute getApplicableTransactionFees request
+         * @return ResourceListOfFeeRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfFeeRule execute() throws ApiException {
+            ApiResponse<ResourceListOfFeeRule> localVarResp = getApplicableTransactionFeesWithHttpInfo(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getApplicableTransactionFees request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfFeeRule> executeWithHttpInfo() throws ApiException {
+            return getApplicableTransactionFeesWithHttpInfo(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody);
+        }
+
+        /**
+         * Execute getApplicableTransactionFees request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
+            return getApplicableTransactionFeesAsync(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for getTransactionFeeRule
-     * @param code The fee rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
+     * Additionally, matching can be based on the instrument&#39;s properties, its portfolio properties, and any additional property keys present in the data file.
+     * @return APIgetApplicableTransactionFeesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionFeeRuleCall(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetApplicableTransactionFeesRequest getApplicableTransactionFees() {
+        return new APIgetApplicableTransactionFeesRequest();
+    }
+    private okhttp3.Call getTransactionFeeRuleCall(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -470,92 +566,135 @@ public class TransactionFeesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule.
-     * Retrieves the fee rule definition at the given effective and as at times.
-     * @param code The fee rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @return FeeRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public FeeRule getTransactionFeeRule(String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<FeeRule> localVarResp = getTransactionFeeRuleWithHttpInfo(code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule.
-     * Retrieves the fee rule definition at the given effective and as at times.
-     * @param code The fee rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @return ApiResponse&lt;FeeRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<FeeRule> getTransactionFeeRuleWithHttpInfo(String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<FeeRule> getTransactionFeeRuleWithHttpInfo(String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<FeeRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule. (asynchronously)
-     * Retrieves the fee rule definition at the given effective and as at times.
-     * @param code The fee rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTransactionFeeRuleAsync(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<FeeRule> _callback) throws ApiException {
+    private okhttp3.Call getTransactionFeeRuleAsync(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<FeeRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<FeeRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTransactionFeeRuleRequest {
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetTransactionFeeRuleRequest(String code) {
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @return APIgetTransactionFeeRuleRequest
+         */
+        public APIgetTransactionFeeRuleRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIgetTransactionFeeRuleRequest
+         */
+        public APIgetTransactionFeeRuleRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTransactionFeeRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransactionFeeRuleCall(code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionFeeRule request
+         * @return FeeRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeRule execute() throws ApiException {
+            ApiResponse<FeeRule> localVarResp = getTransactionFeeRuleWithHttpInfo(code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactionFeeRule request with HTTP info returned
+         * @return ApiResponse&lt;FeeRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeRule> executeWithHttpInfo() throws ApiException {
+            return getTransactionFeeRuleWithHttpInfo(code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getTransactionFeeRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeRule> _callback) throws ApiException {
+            return getTransactionFeeRuleAsync(code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listTransactionFeeRules
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule.
+     * Retrieves the fee rule definition at the given effective and as at times.
+     * @param code The fee rule code. (required)
+     * @return APIgetTransactionFeeRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listTransactionFeeRulesCall(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetTransactionFeeRuleRequest getTransactionFeeRule(String code) {
+        return new APIgetTransactionFeeRuleRequest(code);
+    }
+    private okhttp3.Call listTransactionFeeRulesCall(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -627,95 +766,165 @@ public class TransactionFeesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering.
-     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @return ResourceListOfFeeRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfFeeRule listTransactionFeeRules(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
-        ApiResponse<ResourceListOfFeeRule> localVarResp = listTransactionFeeRulesWithHttpInfo(effectiveAt, asAt, limit, filter, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering.
-     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfFeeRule> listTransactionFeeRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
+    private ApiResponse<ResourceListOfFeeRule> listTransactionFeeRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
         okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, null);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering. (asynchronously)
-     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listTransactionFeeRulesAsync(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
+    private okhttp3.Call listTransactionFeeRulesAsync(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistTransactionFeeRulesRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String filter;
+        private String page;
+
+        private APIlistTransactionFeeRulesRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @return APIlistTransactionFeeRulesRequest
+         */
+        public APIlistTransactionFeeRulesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIlistTransactionFeeRulesRequest
+         */
+        public APIlistTransactionFeeRulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistTransactionFeeRulesRequest
+         */
+        public APIlistTransactionFeeRulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. (optional)
+         * @return APIlistTransactionFeeRulesRequest
+         */
+        public APIlistTransactionFeeRulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
+         * @return APIlistTransactionFeeRulesRequest
+         */
+        public APIlistTransactionFeeRulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for listTransactionFeeRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTransactionFeeRulesCall(effectiveAt, asAt, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listTransactionFeeRules request
+         * @return ResourceListOfFeeRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfFeeRule execute() throws ApiException {
+            ApiResponse<ResourceListOfFeeRule> localVarResp = listTransactionFeeRulesWithHttpInfo(effectiveAt, asAt, limit, filter, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTransactionFeeRules request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfFeeRule> executeWithHttpInfo() throws ApiException {
+            return listTransactionFeeRulesWithHttpInfo(effectiveAt, asAt, limit, filter, page);
+        }
+
+        /**
+         * Execute listTransactionFeeRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
+            return listTransactionFeeRulesAsync(effectiveAt, asAt, limit, filter, page, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertTransactionFeeRules
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering.
+     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+     * @return APIlistTransactionFeeRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTransactionFeeRulesCall(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIlistTransactionFeeRulesRequest listTransactionFeeRules() {
+        return new APIlistTransactionFeeRulesRequest();
+    }
+    private okhttp3.Call upsertTransactionFeeRulesCall(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -780,55 +989,112 @@ public class TransactionFeesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
-     * &lt;br&gt;              To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part              of the response. To update an existing rule, include the fee code. It is possible to both create and update              fee rules in the same request.                &lt;br&gt;              The upsert is transactional - either all create/update operations will succeed or none of them will.              
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @return FeeRuleUpsertResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public FeeRuleUpsertResponse upsertTransactionFeeRules(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
-        ApiResponse<FeeRuleUpsertResponse> localVarResp = upsertTransactionFeeRulesWithHttpInfo(requestBody, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
-     * &lt;br&gt;              To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part              of the response. To update an existing rule, include the fee code. It is possible to both create and update              fee rules in the same request.                &lt;br&gt;              The upsert is transactional - either all create/update operations will succeed or none of them will.              
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @return ApiResponse&lt;FeeRuleUpsertResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<FeeRuleUpsertResponse> upsertTransactionFeeRulesWithHttpInfo(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
+    private ApiResponse<FeeRuleUpsertResponse> upsertTransactionFeeRulesWithHttpInfo(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, null);
         Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertTransactionFeeRulesAsync(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<FeeRuleUpsertResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertTransactionFeeRulesRequest {
+        private final Map<String, FeeRuleUpsertRequest> requestBody;
+        private String effectiveAt;
+
+        private APIupsertTransactionFeeRulesRequest(Map<String, FeeRuleUpsertRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
+         * @return APIupsertTransactionFeeRulesRequest
+         */
+        public APIupsertTransactionFeeRulesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for upsertTransactionFeeRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTransactionFeeRulesCall(requestBody, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertTransactionFeeRules request
+         * @return FeeRuleUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeRuleUpsertResponse execute() throws ApiException {
+            ApiResponse<FeeRuleUpsertResponse> localVarResp = upsertTransactionFeeRulesWithHttpInfo(requestBody, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTransactionFeeRules request with HTTP info returned
+         * @return ApiResponse&lt;FeeRuleUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeRuleUpsertResponse> executeWithHttpInfo() throws ApiException {
+            return upsertTransactionFeeRulesWithHttpInfo(requestBody, effectiveAt);
+        }
+
+        /**
+         * Execute upsertTransactionFeeRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeRuleUpsertResponse> _callback) throws ApiException {
+            return upsertTransactionFeeRulesAsync(requestBody, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules. (asynchronously)
-     * &lt;br&gt;              To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part              of the response. To update an existing rule, include the fee code. It is possible to both create and update              fee rules in the same request.                &lt;br&gt;              The upsert is transactional - either all create/update operations will succeed or none of them will.              
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
+     * &lt;br&gt;   To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.     &lt;br&gt;   The upsert is transactional - either all create/update operations will succeed or none of them will.   
+     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a   created fee rule. (required)
+     * @return APIupsertTransactionFeeRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -837,11 +1103,7 @@ public class TransactionFeesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTransactionFeeRulesAsync(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<FeeRuleUpsertResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, _callback);
-        Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertTransactionFeeRulesRequest upsertTransactionFeeRules(Map<String, FeeRuleUpsertRequest> requestBody) {
+        return new APIupsertTransactionFeeRulesRequest(requestBody);
     }
 }

@@ -13,6 +13,7 @@ package com.finbourne.lusid;
 import java.util.Map;
 import java.util.List;
 
+
 /**
  * <p>ApiException class.</p>
  */

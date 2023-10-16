@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteOrder"></a>
 # **deleteOrder**
-> DeletedEntityResponse deleteOrder(scope, code)
+> DeletedEntityResponse deleteOrder(scope, code).execute();
 
 [EARLY ACCESS] DeleteOrder: Delete order
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The order scope.
     String code = "code_example"; // String | The order's code. This, together with the scope uniquely identifies the order to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deleteOrder(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteOrder(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrdersApi#deleteOrder");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getOrder"></a>
 # **getOrder**
-> Order getOrder(scope, code, asAt, propertyKeys)
+> Order getOrder(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] GetOrder: Get Order
 
@@ -112,9 +113,12 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the order belongs.
     String code = "code_example"; // String | The order's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto the order.              These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto the order.   These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".
     try {
-      Order result = apiInstance.getOrder(scope, code, asAt, propertyKeys);
+      Order result = apiInstance.getOrder(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrdersApi#getOrder");
@@ -134,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the order belongs. | |
 | **code** | **String**| The order&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Orders\&quot; domain to decorate onto the order.              These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Orders\&quot; domain to decorate onto the order.   These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a id="listOrders"></a>
 # **listOrders**
-> PagedResourceListOfOrder listOrders(asAt, page, sortBy, start, limit, filter, propertyKeys)
+> PagedResourceListOfOrder listOrders().asAt(asAt).page(page).sortBy(sortBy).start(start).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListOrders: List Orders
 
@@ -185,14 +189,22 @@ public class Example {
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing orders from a previous call to list orders.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing orders from a previous call to list orders.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto each order.                  These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto each order.   These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".
     try {
-      PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, start, limit, filter, propertyKeys);
+      PagedResourceListOfOrder result = apiInstance.listOrders()
+            .asAt(asAt)
+            .page(page)
+            .sortBy(sortBy)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrdersApi#listOrders");
@@ -210,12 +222,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing orders from a previous call to list orders.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing orders from a previous call to list orders.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.   These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -239,7 +251,7 @@ public class Example {
 
 <a id="upsertOrders"></a>
 # **upsertOrders**
-> ResourceListOfOrder upsertOrders(orderSetRequest)
+> ResourceListOfOrder upsertOrders().orderSetRequest(orderSetRequest).execute();
 
 [EARLY ACCESS] UpsertOrders: Upsert Order
 
@@ -267,7 +279,9 @@ public class Example {
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OrderSetRequest orderSetRequest = new OrderSetRequest(); // OrderSetRequest | The collection of order requests.
     try {
-      ResourceListOfOrder result = apiInstance.upsertOrders(orderSetRequest);
+      ResourceListOfOrder result = apiInstance.upsertOrders()
+            .orderSetRequest(orderSetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrdersApi#upsertOrders");

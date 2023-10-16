@@ -13,11 +13,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteTransactionFeeRule"></a>
 # **deleteTransactionFeeRule**
-> DeletedEntityResponse deleteTransactionFeeRule(code)
+> DeletedEntityResponse deleteTransactionFeeRule(code).execute();
 
 [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
 
-&lt;br&gt;              Deletes the rule for all effective time.                &lt;br&gt;              The rule will remain viewable at previous as at times, but it will no longer be considered by              GetApplicableFees.                &lt;br&gt;              This cannot be undone.              
+&lt;br&gt;   Deletes the rule for all effective time.     &lt;br&gt;   The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.     &lt;br&gt;   This cannot be undone.   
 
 ### Example
 ```java
@@ -41,7 +41,8 @@ public class Example {
     TransactionFeesApi apiInstance = new TransactionFeesApi(defaultClient);
     String code = "code_example"; // String | The fee rule code.
     try {
-      DeletedEntityResponse result = apiInstance.deleteTransactionFeeRule(code);
+      DeletedEntityResponse result = apiInstance.deleteTransactionFeeRule(code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionFeesApi#deleteTransactionFeeRule");
@@ -82,7 +83,7 @@ public class Example {
 
 <a id="getApplicableTransactionFees"></a>
 # **getApplicableTransactionFees**
-> ResourceListOfFeeRule getApplicableTransactionFees(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody)
+> ResourceListOfFeeRule getApplicableTransactionFees().effectiveAt(effectiveAt).asAt(asAt).instrumentIdentifierType(instrumentIdentifierType).instrumentIdentifier(instrumentIdentifier).portfolioScope(portfolioScope).portfolioCode(portfolioCode).requestBody(requestBody).execute();
 
 [EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
 
@@ -114,9 +115,17 @@ public class Example {
     String instrumentIdentifier = "instrumentIdentifier_example"; // String | Optional. The Instrument Identifier to get properties for.
     String portfolioScope = "portfolioScope_example"; // String | Optional. The scope of the portfolio to fetch properties from.
     String portfolioCode = "portfolioCode_example"; // String | Optional. The code of the portfolio to fetch properties from.
-    Map<String, String> requestBody = {"SettlementCurrency":"GBP","Country":"UK","Instrument/default/HeadOffice":"London"}; // Map<String, String> | Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \"ExecutionBroker\" and \"SettlementCurrency\" ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \"Instrument/default/Name=exampleValue\" or              \"AdditionalKey2=Value2\".
+    Map<String, String> requestBody = {"SettlementCurrency":"GBP","Country":"UK","Instrument/default/HeadOffice":"London"}; // Map<String, String> | Any other property keys or fields, including the top-level fields of the   fee rule (e.g. \"ExecutionBroker\" and \"SettlementCurrency\" ) and those defined in AdditionalKeys, along with   their corresponding values that should be matched for fees. Eg. \"Instrument/default/Name=exampleValue\" or   \"AdditionalKey2=Value2\".
     try {
-      ResourceListOfFeeRule result = apiInstance.getApplicableTransactionFees(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody);
+      ResourceListOfFeeRule result = apiInstance.getApplicableTransactionFees()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .instrumentIdentifierType(instrumentIdentifierType)
+            .instrumentIdentifier(instrumentIdentifier)
+            .portfolioScope(portfolioScope)
+            .portfolioCode(portfolioCode)
+            .requestBody(requestBody)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionFeesApi#getApplicableTransactionFees");
@@ -139,7 +148,7 @@ public class Example {
 | **instrumentIdentifier** | **String**| Optional. The Instrument Identifier to get properties for. | [optional] |
 | **portfolioScope** | **String**| Optional. The scope of the portfolio to fetch properties from. | [optional] |
 | **portfolioCode** | **String**| Optional. The code of the portfolio to fetch properties from. | [optional] |
-| **requestBody** | [**Map&lt;String, String&gt;**](String.md)| Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. | [optional] |
+| **requestBody** | [**Map&lt;String, String&gt;**](String.md)| Any other property keys or fields, including the top-level fields of the   fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with   their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or   \&quot;AdditionalKey2&#x3D;Value2\&quot;. | [optional] |
 
 ### Return type
 
@@ -163,7 +172,7 @@ public class Example {
 
 <a id="getTransactionFeeRule"></a>
 # **getTransactionFeeRule**
-> FeeRule getTransactionFeeRule(code, effectiveAt, asAt)
+> FeeRule getTransactionFeeRule(code).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule.
 
@@ -193,7 +202,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
     try {
-      FeeRule result = apiInstance.getTransactionFeeRule(code, effectiveAt, asAt);
+      FeeRule result = apiInstance.getTransactionFeeRule(code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionFeesApi#getTransactionFeeRule");
@@ -236,7 +248,7 @@ public class Example {
 
 <a id="listTransactionFeeRules"></a>
 # **listTransactionFeeRules**
-> ResourceListOfFeeRule listTransactionFeeRules(effectiveAt, asAt, limit, filter, page)
+> ResourceListOfFeeRule listTransactionFeeRules().effectiveAt(effectiveAt).asAt(asAt).limit(limit).filter(filter).page(page).execute();
 
 [EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering.
 
@@ -268,7 +280,13 @@ public class Example {
     String filter = "filter_example"; // String | Expression to filter the results.
     String page = "page_example"; // String | The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request.
     try {
-      ResourceListOfFeeRule result = apiInstance.listTransactionFeeRules(effectiveAt, asAt, limit, filter, page);
+      ResourceListOfFeeRule result = apiInstance.listTransactionFeeRules()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .limit(limit)
+            .filter(filter)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionFeesApi#listTransactionFeeRules");
@@ -313,11 +331,11 @@ public class Example {
 
 <a id="upsertTransactionFeeRules"></a>
 # **upsertTransactionFeeRules**
-> FeeRuleUpsertResponse upsertTransactionFeeRules(requestBody, effectiveAt)
+> FeeRuleUpsertResponse upsertTransactionFeeRules(requestBody).effectiveAt(effectiveAt).execute();
 
 [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
 
-&lt;br&gt;              To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part              of the response. To update an existing rule, include the fee code. It is possible to both create and update              fee rules in the same request.                &lt;br&gt;              The upsert is transactional - either all create/update operations will succeed or none of them will.              
+&lt;br&gt;   To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.     &lt;br&gt;   The upsert is transactional - either all create/update operations will succeed or none of them will.   
 
 ### Example
 ```java
@@ -339,10 +357,12 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     TransactionFeesApi apiInstance = new TransactionFeesApi(defaultClient);
-    Map<String, FeeRuleUpsertRequest> requestBody = new HashMap(); // Map<String, FeeRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule.
+    Map<String, FeeRuleUpsertRequest> requestBody = new HashMap(); // Map<String, FeeRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a   created fee rule.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition.
     try {
-      FeeRuleUpsertResponse result = apiInstance.upsertTransactionFeeRules(requestBody, effectiveAt);
+      FeeRuleUpsertResponse result = apiInstance.upsertTransactionFeeRules(requestBody)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionFeesApi#upsertTransactionFeeRules");
@@ -359,7 +379,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestBody** | [**Map&lt;String, FeeRuleUpsertRequest&gt;**](FeeRuleUpsertRequest.md)| A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. | |
+| **requestBody** | [**Map&lt;String, FeeRuleUpsertRequest&gt;**](FeeRuleUpsertRequest.md)| A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a   created fee rule. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. | [optional] |
 
 ### Return type

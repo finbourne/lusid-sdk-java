@@ -13,7 +13,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createTaxRuleSet"></a>
 # **createTaxRuleSet**
-> TaxRuleSet createTaxRuleSet(createTaxRuleSetRequest, effectiveAt)
+> TaxRuleSet createTaxRuleSet(createTaxRuleSetRequest).effectiveAt(effectiveAt).execute();
 
 [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set.
 
@@ -42,7 +42,9 @@ public class Example {
     CreateTaxRuleSetRequest createTaxRuleSetRequest = new CreateTaxRuleSetRequest(); // CreateTaxRuleSetRequest | The contents of the rule set.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified.
     try {
-      TaxRuleSet result = apiInstance.createTaxRuleSet(createTaxRuleSetRequest, effectiveAt);
+      TaxRuleSet result = apiInstance.createTaxRuleSet(createTaxRuleSetRequest)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaxRuleSetsApi#createTaxRuleSet");
@@ -84,11 +86,11 @@ public class Example {
 
 <a id="deleteTaxRuleSet"></a>
 # **deleteTaxRuleSet**
-> DeletedEntityResponse deleteTaxRuleSet(scope, code)
+> DeletedEntityResponse deleteTaxRuleSet(scope, code).execute();
 
 [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
 
-&lt;br&gt;              Deletes the rule set for all effective time.                &lt;br&gt;              The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.                &lt;br&gt;              This cannot be undone.              
+&lt;br&gt;   Deletes the rule set for all effective time.     &lt;br&gt;   The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.     &lt;br&gt;   This cannot be undone.   
 
 ### Example
 ```java
@@ -113,7 +115,8 @@ public class Example {
     String scope = "scope_example"; // String | The rule set scope.
     String code = "code_example"; // String | The rule set code.
     try {
-      DeletedEntityResponse result = apiInstance.deleteTaxRuleSet(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteTaxRuleSet(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaxRuleSetsApi#deleteTaxRuleSet");
@@ -155,7 +158,7 @@ public class Example {
 
 <a id="getTaxRuleSet"></a>
 # **getTaxRuleSet**
-> TaxRuleSet getTaxRuleSet(scope, code, effectiveAt, asAt)
+> TaxRuleSet getTaxRuleSet(scope, code).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
 
@@ -186,7 +189,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
     try {
-      TaxRuleSet result = apiInstance.getTaxRuleSet(scope, code, effectiveAt, asAt);
+      TaxRuleSet result = apiInstance.getTaxRuleSet(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaxRuleSetsApi#getTaxRuleSet");
@@ -230,7 +236,7 @@ public class Example {
 
 <a id="listTaxRuleSets"></a>
 # **listTaxRuleSets**
-> ResourceListOfTaxRuleSet listTaxRuleSets(effectiveAt, asAt)
+> ResourceListOfTaxRuleSet listTaxRuleSets().effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
 
@@ -259,7 +265,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified.
     try {
-      ResourceListOfTaxRuleSet result = apiInstance.listTaxRuleSets(effectiveAt, asAt);
+      ResourceListOfTaxRuleSet result = apiInstance.listTaxRuleSets()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaxRuleSetsApi#listTaxRuleSets");
@@ -301,7 +310,7 @@ public class Example {
 
 <a id="updateTaxRuleSet"></a>
 # **updateTaxRuleSet**
-> TaxRuleSet updateTaxRuleSet(scope, code, updateTaxRuleSetRequest, effectiveAt)
+> TaxRuleSet updateTaxRuleSet(scope, code, updateTaxRuleSetRequest).effectiveAt(effectiveAt).execute();
 
 [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
 
@@ -332,7 +341,9 @@ public class Example {
     UpdateTaxRuleSetRequest updateTaxRuleSetRequest = new UpdateTaxRuleSetRequest(); // UpdateTaxRuleSetRequest | The contents of the rule set.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified.
     try {
-      TaxRuleSet result = apiInstance.updateTaxRuleSet(scope, code, updateTaxRuleSetRequest, effectiveAt);
+      TaxRuleSet result = apiInstance.updateTaxRuleSet(scope, code, updateTaxRuleSetRequest)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaxRuleSetsApi#updateTaxRuleSet");

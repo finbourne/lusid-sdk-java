@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * When importing data from an external source there are essentially three levels of interaction with LUSID.  (1) The data is a raw document that LUSID does not understand. You can store and retrieve it but it does not full interact with other documents inside LUSID  (2) The data has a map from fields and paths to &#39;properties&#39; in LUSID. In essence, LUSID can then treat the data as weakly typed (decimal, string) data that can be returned through queries      and where various aggregation requests will then work.  (3) The data is fully translatable into LUSID and understood, in some sense, natively. This means that it can be used for context sensitive calculations such as pricing or risk calculations.  The data map object is designed to allow data to transition from step 1 to 2 and in some cases as an alternative for step 2 to 3.
+ * When importing data from an external source there are essentially three levels of interaction with LUSID.  (1) The data is a raw document that LUSID does not understand. You can store and retrieve it but it does not full interact with other documents inside LUSID  (2) The data has a map from fields and paths to &#39;properties&#39; in LUSID. In essence, LUSID can then treat the data as weakly typed (decimal, string) data that can be returned through queries   and where various aggregation requests will then work.  (3) The data is fully translatable into LUSID and understood, in some sense, natively. This means that it can be used for context sensitive calculations such as pricing or risk calculations.  The data map object is designed to allow data to transition from step 1 to 2 and in some cases as an alternative for step 2 to 3.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DataMapping {
@@ -152,25 +152,18 @@ public class DataMapping {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DataMapping
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DataMapping
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DataMapping.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DataMapping.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DataMapping is not found in the empty JSON string", DataMapping.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DataMapping.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DataMapping` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("dataDefinitions") != null && !jsonObj.get("dataDefinitions").isJsonNull()) {
         JsonArray jsonArraydataDefinitions = jsonObj.getAsJsonArray("dataDefinitions");
         if (jsonArraydataDefinitions != null) {
@@ -181,7 +174,7 @@ public class DataMapping {
 
           // validate the optional field `dataDefinitions` (array)
           for (int i = 0; i < jsonArraydataDefinitions.size(); i++) {
-            DataDefinition.validateJsonObject(jsonArraydataDefinitions.get(i).getAsJsonObject());
+            DataDefinition.validateJsonElement(jsonArraydataDefinitions.get(i));
           };
         }
       }
@@ -207,9 +200,9 @@ public class DataMapping {
 
            @Override
            public DataMapping read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

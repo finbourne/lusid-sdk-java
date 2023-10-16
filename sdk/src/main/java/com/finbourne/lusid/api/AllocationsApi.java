@@ -76,22 +76,7 @@ public class AllocationsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteAllocation
-     * @param scope The allocation scope. (required)
-     * @param code The allocation&#39;s code. This, together with the scope uniquely identifies the allocation to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteAllocationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAllocationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,88 +140,116 @@ public class AllocationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteAllocation: Delete allocation
-     * Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime.  This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The allocation scope. (required)
-     * @param code The allocation&#39;s code. This, together with the scope uniquely identifies the allocation to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteAllocation(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteAllocationWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteAllocation: Delete allocation
-     * Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime.  This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The allocation scope. (required)
-     * @param code The allocation&#39;s code. This, together with the scope uniquely identifies the allocation to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteAllocationWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteAllocationWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteAllocationValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteAllocation: Delete allocation (asynchronously)
-     * Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime.  This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The allocation scope. (required)
-     * @param code The allocation&#39;s code. This, together with the scope uniquely identifies the allocation to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteAllocationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteAllocationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAllocationValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteAllocationRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteAllocationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteAllocation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteAllocationCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteAllocation request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteAllocationWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteAllocation request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteAllocationWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteAllocation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteAllocationAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getAllocation
-     * @param scope The scope to which the allocation belongs. (required)
-     * @param code The allocation&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteAllocation: Delete allocation
+     * Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime.  This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param scope The allocation scope. (required)
+     * @param code The allocation&#39;s code. This, together with the scope uniquely identifies the allocation to delete. (required)
+     * @return APIdeleteAllocationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The response from deleting an allocation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllocationCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteAllocationRequest deleteAllocation(String scope, String code) {
+        return new APIdeleteAllocationRequest(scope, code);
+    }
+    private okhttp3.Call getAllocationCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -308,97 +321,138 @@ public class AllocationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAllocation: Get Allocation
-     * Fetch an Allocation matching the provided identifier
-     * @param scope The scope to which the allocation belongs. (required)
-     * @param code The allocation&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @return Allocation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Allocation getAllocation(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<Allocation> localVarResp = getAllocationWithHttpInfo(scope, code, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAllocation: Get Allocation
-     * Fetch an Allocation matching the provided identifier
-     * @param scope The scope to which the allocation belongs. (required)
-     * @param code The allocation&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;Allocation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Allocation> getAllocationWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<Allocation> getAllocationWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getAllocationValidateBeforeCall(scope, code, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<Allocation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAllocation: Get Allocation (asynchronously)
-     * Fetch an Allocation matching the provided identifier
-     * @param scope The scope to which the allocation belongs. (required)
-     * @param code The allocation&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllocationAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Allocation> _callback) throws ApiException {
+    private okhttp3.Call getAllocationAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Allocation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllocationValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Allocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAllocationRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetAllocationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
+         * @return APIgetAllocationRequest
+         */
+        public APIgetAllocationRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
+         * @return APIgetAllocationRequest
+         */
+        public APIgetAllocationRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getAllocation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllocationCall(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getAllocation request
+         * @return Allocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Allocation execute() throws ApiException {
+            ApiResponse<Allocation> localVarResp = getAllocationWithHttpInfo(scope, code, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllocation request with HTTP info returned
+         * @return ApiResponse&lt;Allocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Allocation> executeWithHttpInfo() throws ApiException {
+            return getAllocationWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getAllocation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Allocation> _callback) throws ApiException {
+            return getAllocationAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listAllocations
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetAllocation: Get Allocation
+     * Fetch an Allocation matching the provided identifier
+     * @param scope The scope to which the allocation belongs. (required)
+     * @param code The allocation&#39;s unique identifier. (required)
+     * @return APIgetAllocationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The allocation matching the given identifier. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAllocationsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetAllocationRequest getAllocation(String scope, String code) {
+        return new APIgetAllocationRequest(scope, code);
+    }
+    private okhttp3.Call listAllocationsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -478,100 +532,187 @@ public class AllocationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListAllocations: List Allocations
-     * Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @return PagedResourceListOfAllocation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfAllocation listAllocations(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfAllocation> localVarResp = listAllocationsWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListAllocations: List Allocations
-     * Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfAllocation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfAllocation> listAllocationsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfAllocation> listAllocationsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAllocation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListAllocations: List Allocations (asynchronously)
-     * Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
-     * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAllocationsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
+    private okhttp3.Call listAllocationsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAllocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistAllocationsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistAllocationsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
+         * @return APIlistAllocationsRequest
+         */
+        public APIlistAllocationsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listAllocations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAllocationsCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listAllocations request
+         * @return PagedResourceListOfAllocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAllocation execute() throws ApiException {
+            ApiResponse<PagedResourceListOfAllocation> localVarResp = listAllocationsWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAllocations request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfAllocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAllocation> executeWithHttpInfo() throws ApiException {
+            return listAllocationsWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listAllocations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
+            return listAllocationsAsync(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertAllocations
-     * @param allocationSetRequest The collection of allocation requests. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListAllocations: List Allocations
+     * Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
+     * @return APIlistAllocationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Allocations. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAllocationsCall(AllocationSetRequest allocationSetRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistAllocationsRequest listAllocations() {
+        return new APIlistAllocationsRequest();
+    }
+    private okhttp3.Call upsertAllocationsCall(AllocationSetRequest allocationSetRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -627,52 +768,109 @@ public class AllocationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertAllocations: Upsert Allocations
-     * Upsert; update existing allocations with given ids, or create new allocations otherwise.
-     * @param allocationSetRequest The collection of allocation requests. (optional)
-     * @return ResourceListOfAllocation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAllocation upsertAllocations(AllocationSetRequest allocationSetRequest) throws ApiException {
-        ApiResponse<ResourceListOfAllocation> localVarResp = upsertAllocationsWithHttpInfo(allocationSetRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertAllocations: Upsert Allocations
-     * Upsert; update existing allocations with given ids, or create new allocations otherwise.
-     * @param allocationSetRequest The collection of allocation requests. (optional)
-     * @return ApiResponse&lt;ResourceListOfAllocation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAllocation> upsertAllocationsWithHttpInfo(AllocationSetRequest allocationSetRequest) throws ApiException {
+    private ApiResponse<ResourceListOfAllocation> upsertAllocationsWithHttpInfo(AllocationSetRequest allocationSetRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertAllocationsRequest {
+        private AllocationSetRequest allocationSetRequest;
+
+        private APIupsertAllocationsRequest() {
+        }
+
+        /**
+         * Set allocationSetRequest
+         * @param allocationSetRequest The collection of allocation requests. (optional)
+         * @return APIupsertAllocationsRequest
+         */
+        public APIupsertAllocationsRequest allocationSetRequest(AllocationSetRequest allocationSetRequest) {
+            this.allocationSetRequest = allocationSetRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertAllocations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertAllocationsCall(allocationSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertAllocations request
+         * @return ResourceListOfAllocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAllocation execute() throws ApiException {
+            ApiResponse<ResourceListOfAllocation> localVarResp = upsertAllocationsWithHttpInfo(allocationSetRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertAllocations request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAllocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAllocation> executeWithHttpInfo() throws ApiException {
+            return upsertAllocationsWithHttpInfo(allocationSetRequest);
+        }
+
+        /**
+         * Execute upsertAllocations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of allocations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
+            return upsertAllocationsAsync(allocationSetRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertAllocations: Upsert Allocations (asynchronously)
+     * [EARLY ACCESS] UpsertAllocations: Upsert Allocations
      * Upsert; update existing allocations with given ids, or create new allocations otherwise.
-     * @param allocationSetRequest The collection of allocation requests. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertAllocationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -681,11 +879,7 @@ public class AllocationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertAllocationsRequest upsertAllocations() {
+        return new APIupsertAllocationsRequest();
     }
 }

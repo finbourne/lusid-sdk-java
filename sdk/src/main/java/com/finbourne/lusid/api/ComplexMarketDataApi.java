@@ -77,22 +77,7 @@ public class ComplexMarketDataApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteComplexMarketData
-     * @param scope The scope of the complex market data to delete. (required)
-     * @param requestBody The complex market data Ids to delete, each keyed by a unique correlation id. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -159,89 +144,116 @@ public class ComplexMarketDataApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
-     * Delete one or more specified complex market data items from a single scope. Each item is identified by a unique id which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).                In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully deleted  complex market data items, as well as those that failed.  For the failures a reason will be provided explaining why the it could not be deleted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope of the complex market data to delete. (required)
-     * @param requestBody The complex market data Ids to delete, each keyed by a unique correlation id. (required)
-     * @return AnnulStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulStructuredDataResponse deleteComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody) throws ApiException {
-        ApiResponse<AnnulStructuredDataResponse> localVarResp = deleteComplexMarketDataWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
-     * Delete one or more specified complex market data items from a single scope. Each item is identified by a unique id which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).                In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully deleted  complex market data items, as well as those that failed.  For the failures a reason will be provided explaining why the it could not be deleted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope of the complex market data to delete. (required)
-     * @param requestBody The complex market data Ids to delete, each keyed by a unique correlation id. (required)
-     * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulStructuredDataResponse> deleteComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody) throws ApiException {
+    private ApiResponse<AnnulStructuredDataResponse> deleteComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody) throws ApiException {
         okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present. (asynchronously)
-     * Delete one or more specified complex market data items from a single scope. Each item is identified by a unique id which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).                In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully deleted  complex market data items, as well as those that failed.  For the failures a reason will be provided explaining why the it could not be deleted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope of the complex market data to delete. (required)
-     * @param requestBody The complex market data Ids to delete, each keyed by a unique correlation id. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, _callback);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteComplexMarketDataRequest {
+        private final String scope;
+        private final Map<String, ComplexMarketDataId> requestBody;
+
+        private APIdeleteComplexMarketDataRequest(String scope, Map<String, ComplexMarketDataId> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for deleteComplexMarketData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteComplexMarketDataCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteComplexMarketData request
+         * @return AnnulStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulStructuredDataResponse> localVarResp = deleteComplexMarketDataWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteComplexMarketData request with HTTP info returned
+         * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteComplexMarketDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute deleteComplexMarketData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
+            return deleteComplexMarketDataAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for getComplexMarketData
-     * @param scope The scope of the complex market data to retrieve. (required)
-     * @param requestBody The time invariant set of complex data identifiers to retrieve the data for. These need to be               keyed by a unique correlation id allowing the retrieved item to be identified in the response. (required)
-     * @param effectiveAt The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. (optional)
-     * @param asAt The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
+     * Delete one or more specified complex market data items from a single scope. Each item is identified by a unique id which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).     In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return both the collection of successfully deleted complex market data items, as well as those that failed.  For the failures a reason will be provided explaining why the it could not be deleted.     It is important to always check the failed set for any unsuccessful results.
+     * @param scope The scope of the complex market data to delete. (required)
+     * @param requestBody The complex market data Ids to delete, each keyed by a unique correlation id. (required)
+     * @return APIdeleteComplexMarketDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
+    public APIdeleteComplexMarketDataRequest deleteComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody) {
+        return new APIdeleteComplexMarketDataRequest(scope, requestBody);
+    }
+    private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -320,94 +332,149 @@ public class ComplexMarketDataApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetComplexMarketData: Get complex market data
-     * Get one or more items of complex market data from a single scope.                Each item can be identified by its time invariant complex market data identifier.                For each id LUSID will return the most recent matched item with respect to the provided (or default) effective datetime.                An optional maximum age range window can be specified which defines how far back to look back for data from the specified effective datetime.  LUSID will return the most recent item within this window.                In the request each complex market data id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each item in the response.                The response will return three collections. One, the successfully retrieved complex market data. Two, those that had a  valid identifier but could not be found. Three, those that failed because LUSID could not construct a valid identifier from the request.                For the ids that failed to resolve or could not be found a reason will be provided explaining why that is the case.                It is important to always check the failed and not found sets for any unsuccessful results.
-     * @param scope The scope of the complex market data to retrieve. (required)
-     * @param requestBody The time invariant set of complex data identifiers to retrieve the data for. These need to be               keyed by a unique correlation id allowing the retrieved item to be identified in the response. (required)
-     * @param effectiveAt The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. (optional)
-     * @param asAt The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. (optional)
-     * @return GetComplexMarketDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetComplexMarketDataResponse getComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge) throws ApiException {
-        ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetComplexMarketData: Get complex market data
-     * Get one or more items of complex market data from a single scope.                Each item can be identified by its time invariant complex market data identifier.                For each id LUSID will return the most recent matched item with respect to the provided (or default) effective datetime.                An optional maximum age range window can be specified which defines how far back to look back for data from the specified effective datetime.  LUSID will return the most recent item within this window.                In the request each complex market data id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each item in the response.                The response will return three collections. One, the successfully retrieved complex market data. Two, those that had a  valid identifier but could not be found. Three, those that failed because LUSID could not construct a valid identifier from the request.                For the ids that failed to resolve or could not be found a reason will be provided explaining why that is the case.                It is important to always check the failed and not found sets for any unsuccessful results.
-     * @param scope The scope of the complex market data to retrieve. (required)
-     * @param requestBody The time invariant set of complex data identifiers to retrieve the data for. These need to be               keyed by a unique correlation id allowing the retrieved item to be identified in the response. (required)
-     * @param effectiveAt The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. (optional)
-     * @param asAt The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. (optional)
-     * @return ApiResponse&lt;GetComplexMarketDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge) throws ApiException {
+    private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge) throws ApiException {
         okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, null);
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetComplexMarketData: Get complex market data (asynchronously)
-     * Get one or more items of complex market data from a single scope.                Each item can be identified by its time invariant complex market data identifier.                For each id LUSID will return the most recent matched item with respect to the provided (or default) effective datetime.                An optional maximum age range window can be specified which defines how far back to look back for data from the specified effective datetime.  LUSID will return the most recent item within this window.                In the request each complex market data id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each item in the response.                The response will return three collections. One, the successfully retrieved complex market data. Two, those that had a  valid identifier but could not be found. Three, those that failed because LUSID could not construct a valid identifier from the request.                For the ids that failed to resolve or could not be found a reason will be provided explaining why that is the case.                It is important to always check the failed and not found sets for any unsuccessful results.
-     * @param scope The scope of the complex market data to retrieve. (required)
-     * @param requestBody The time invariant set of complex data identifiers to retrieve the data for. These need to be               keyed by a unique correlation id allowing the retrieved item to be identified in the response. (required)
-     * @param effectiveAt The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. (optional)
-     * @param asAt The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
+    private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetComplexMarketDataRequest {
+        private final String scope;
+        private final Map<String, ComplexMarketDataId> requestBody;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String maxAge;
+
+        private APIgetComplexMarketDataRequest(String scope, Map<String, ComplexMarketDataId> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the Effective at of each ComplexMarketDataId given in the request body. (optional)
+         * @return APIgetComplexMarketDataRequest
+         */
+        public APIgetComplexMarketDataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetComplexMarketDataRequest
+         */
+        public APIgetComplexMarketDataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set maxAge
+         * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. (optional)
+         * @return APIgetComplexMarketDataRequest
+         */
+        public APIgetComplexMarketDataRequest maxAge(String maxAge) {
+            this.maxAge = maxAge;
+            return this;
+        }
+
+        /**
+         * Build call for getComplexMarketData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+        }
+
+        /**
+         * Execute getComplexMarketData request
+         * @return GetComplexMarketDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetComplexMarketDataResponse execute() throws ApiException {
+            ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplexMarketData request with HTTP info returned
+         * @return ApiResponse&lt;GetComplexMarketDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetComplexMarketDataResponse> executeWithHttpInfo() throws ApiException {
+            return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
+        }
+
+        /**
+         * Execute getComplexMarketData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
+            return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+        }
+    }
+
     /**
-     * Build call for listComplexMarketData
-     * @param asAt The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetComplexMarketData: Get complex market data
+     * Get one or more items of complex market data from a single scope.     Each item can be identified by its time invariant complex market data identifier.     For each id LUSID will return the most recent matched item with respect to the provided (or default) effective datetime.     An optional maximum age range window can be specified which defines how far back to look back for data from the specified effective datetime.  LUSID will return the most recent item within this window.     In the request each complex market data id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each item in the response.     The response will return three collections. One, the successfully retrieved complex market data. Two, those that had a  valid identifier but could not be found. Three, those that failed because LUSID could not construct a valid identifier from the request.     For the ids that failed to resolve or could not be found a reason will be provided explaining why that is the case.     It is important to always check the failed and not found sets for any unsuccessful results.
+     * @param scope The scope of the complex market data to retrieve. (required)
+     * @param requestBody The time invariant set of complex data identifiers to retrieve the data for. These need to be   keyed by a unique correlation id allowing the retrieved item to be identified in the response. (required)
+     * @return APIgetComplexMarketDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetComplexMarketDataRequest getComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody) {
+        return new APIgetComplexMarketDataRequest(scope, requestBody);
+    }
+    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -463,83 +530,121 @@ public class ComplexMarketDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData
-     * List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
-     * @param asAt The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. (optional)
-     * @return ResourceListOfListComplexMarketDataWithMetaDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData
-     * List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
-     * @param asAt The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfListComplexMarketDataWithMetaDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData (asynchronously)
-     * List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
-     * @param asAt The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
+    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistComplexMarketDataRequest {
+        private OffsetDateTime asAt;
+
+        private APIlistComplexMarketDataRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listComplexMarketData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listComplexMarketDataCall(asAt, _callback);
+        }
+
+        /**
+         * Execute listComplexMarketData request
+         * @return ResourceListOfListComplexMarketDataWithMetaDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfListComplexMarketDataWithMetaDataResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listComplexMarketData request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfListComplexMarketDataWithMetaDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo() throws ApiException {
+            return listComplexMarketDataWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listComplexMarketData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
+            return listComplexMarketDataAsync(asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertComplexMarketData
-     * @param scope The scope to use when updating or inserting the complex market data. (required)
-     * @param requestBody The set of complex market data items to update or insert keyed by a unique correlation id. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData
+     * List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
+     * @return APIlistComplexMarketDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertComplexMarketDataCall(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIlistComplexMarketDataRequest listComplexMarketData() {
+        return new APIlistComplexMarketDataRequest();
+    }
+    private okhttp3.Call upsertComplexMarketDataCall(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -606,55 +711,104 @@ public class ComplexMarketDataApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid.
-     * Update or insert one or more complex market data items in a single scope. An item will be updated if it already exists  and inserted if it does not.                In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each complex market data in the response.                The response will return both the collection of successfully updated or inserted complex market data, as well as those that failed.  For the failures a reason will be provided explaining why the item could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope to use when updating or inserting the complex market data. (required)
-     * @param requestBody The set of complex market data items to update or insert keyed by a unique correlation id. (required)
-     * @return UpsertStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertStructuredDataResponse upsertComplexMarketData(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertComplexMarketDataWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid.
-     * Update or insert one or more complex market data items in a single scope. An item will be updated if it already exists  and inserted if it does not.                In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each complex market data in the response.                The response will return both the collection of successfully updated or inserted complex market data, as well as those that failed.  For the failures a reason will be provided explaining why the item could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope to use when updating or inserting the complex market data. (required)
-     * @param requestBody The set of complex market data items to update or insert keyed by a unique correlation id. (required)
-     * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertStructuredDataResponse> upsertComplexMarketDataWithHttpInfo(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertStructuredDataResponse> upsertComplexMarketDataWithHttpInfo(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertComplexMarketDataAsync(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertComplexMarketDataRequest {
+        private final String scope;
+        private final Map<String, UpsertComplexMarketDataRequest> requestBody;
+
+        private APIupsertComplexMarketDataRequest(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertComplexMarketData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertComplexMarketDataCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertComplexMarketData request
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertComplexMarketDataWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertComplexMarketData request with HTTP info returned
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertComplexMarketDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertComplexMarketData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+            return upsertComplexMarketDataAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid. (asynchronously)
-     * Update or insert one or more complex market data items in a single scope. An item will be updated if it already exists  and inserted if it does not.                In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each complex market data in the response.                The response will return both the collection of successfully updated or inserted complex market data, as well as those that failed.  For the failures a reason will be provided explaining why the item could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.
+     * [EARLY ACCESS] UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid.
+     * Update or insert one or more complex market data items in a single scope. An item will be updated if it already exists  and inserted if it does not.     In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each complex market data in the response.     The response will return both the collection of successfully updated or inserted complex market data, as well as those that failed.  For the failures a reason will be provided explaining why the item could not be updated or inserted.     It is important to always check the failed set for any unsuccessful results.
      * @param scope The scope to use when updating or inserting the complex market data. (required)
      * @param requestBody The set of complex market data items to update or insert keyed by a unique correlation id. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertComplexMarketDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -663,11 +817,7 @@ public class ComplexMarketDataApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertComplexMarketDataAsync(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertComplexMarketDataRequest upsertComplexMarketData(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody) {
+        return new APIupsertComplexMarketDataRequest(scope, requestBody);
     }
 }

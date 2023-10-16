@@ -76,22 +76,7 @@ public class TaxRuleSetsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createTaxRuleSet
-     * @param createTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createTaxRuleSetCall(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createTaxRuleSetCall(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -156,86 +141,124 @@ public class TaxRuleSetsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set.
-     * Creates a tax rule set definition at the given effective time.  The user must be entitled to read any properties specified in each rule.
-     * @param createTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return TaxRuleSet
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TaxRuleSet createTaxRuleSet(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt) throws ApiException {
-        ApiResponse<TaxRuleSet> localVarResp = createTaxRuleSetWithHttpInfo(createTaxRuleSetRequest, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set.
-     * Creates a tax rule set definition at the given effective time.  The user must be entitled to read any properties specified in each rule.
-     * @param createTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return ApiResponse&lt;TaxRuleSet&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TaxRuleSet> createTaxRuleSetWithHttpInfo(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt) throws ApiException {
+    private ApiResponse<TaxRuleSet> createTaxRuleSetWithHttpInfo(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, null);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set. (asynchronously)
-     * Creates a tax rule set definition at the given effective time.  The user must be entitled to read any properties specified in each rule.
-     * @param createTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createTaxRuleSetAsync(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
+    private okhttp3.Call createTaxRuleSetAsync(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateTaxRuleSetRequest {
+        private final CreateTaxRuleSetRequest createTaxRuleSetRequest;
+        private String effectiveAt;
+
+        private APIcreateTaxRuleSetRequest(CreateTaxRuleSetRequest createTaxRuleSetRequest) {
+            this.createTaxRuleSetRequest = createTaxRuleSetRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIcreateTaxRuleSetRequest
+         */
+        public APIcreateTaxRuleSetRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for createTaxRuleSet
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createTaxRuleSetCall(createTaxRuleSetRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute createTaxRuleSet request
+         * @return TaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxRuleSet execute() throws ApiException {
+            ApiResponse<TaxRuleSet> localVarResp = createTaxRuleSetWithHttpInfo(createTaxRuleSetRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createTaxRuleSet request with HTTP info returned
+         * @return ApiResponse&lt;TaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxRuleSet> executeWithHttpInfo() throws ApiException {
+            return createTaxRuleSetWithHttpInfo(createTaxRuleSetRequest, effectiveAt);
+        }
+
+        /**
+         * Execute createTaxRuleSet request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback) throws ApiException {
+            return createTaxRuleSetAsync(createTaxRuleSetRequest, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteTaxRuleSet
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set.
+     * Creates a tax rule set definition at the given effective time.  The user must be entitled to read any properties specified in each rule.
+     * @param createTaxRuleSetRequest The contents of the rule set. (required)
+     * @return APIcreateTaxRuleSetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTaxRuleSetCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateTaxRuleSetRequest createTaxRuleSet(CreateTaxRuleSetRequest createTaxRuleSetRequest) {
+        return new APIcreateTaxRuleSetRequest(createTaxRuleSetRequest);
+    }
+    private okhttp3.Call deleteTaxRuleSetCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -299,88 +322,116 @@ public class TaxRuleSetsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
-     * &lt;br&gt;              Deletes the rule set for all effective time.                &lt;br&gt;              The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.                &lt;br&gt;              This cannot be undone.              
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteTaxRuleSet(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteTaxRuleSetWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
-     * &lt;br&gt;              Deletes the rule set for all effective time.                &lt;br&gt;              The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.                &lt;br&gt;              This cannot be undone.              
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteTaxRuleSetWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteTaxRuleSetWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set. (asynchronously)
-     * &lt;br&gt;              Deletes the rule set for all effective time.                &lt;br&gt;              The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.                &lt;br&gt;              This cannot be undone.              
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTaxRuleSetAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteTaxRuleSetAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteTaxRuleSetRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteTaxRuleSetRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteTaxRuleSet
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTaxRuleSetCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteTaxRuleSet request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTaxRuleSetWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTaxRuleSet request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteTaxRuleSetWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteTaxRuleSet request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteTaxRuleSetAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getTaxRuleSet
+     * [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
+     * &lt;br&gt;   Deletes the rule set for all effective time.     &lt;br&gt;   The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.     &lt;br&gt;   This cannot be undone.   
      * @param scope The rule set scope. (required)
      * @param code The rule set code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIdeleteTaxRuleSetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTaxRuleSetCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteTaxRuleSetRequest deleteTaxRuleSet(String scope, String code) {
+        return new APIdeleteTaxRuleSetRequest(scope, code);
+    }
+    private okhttp3.Call getTaxRuleSetCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -452,92 +503,138 @@ public class TaxRuleSetsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
-     * Retrieves the tax rule set definition at the given effective and as at times.
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @return TaxRuleSet
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TaxRuleSet getTaxRuleSet(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<TaxRuleSet> localVarResp = getTaxRuleSetWithHttpInfo(scope, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
-     * Retrieves the tax rule set definition at the given effective and as at times.
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @return ApiResponse&lt;TaxRuleSet&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TaxRuleSet> getTaxRuleSetWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<TaxRuleSet> getTaxRuleSetWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set. (asynchronously)
-     * Retrieves the tax rule set definition at the given effective and as at times.
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTaxRuleSetAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
+    private okhttp3.Call getTaxRuleSetAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTaxRuleSetRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetTaxRuleSetRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetTaxRuleSetRequest
+         */
+        public APIgetTaxRuleSetRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIgetTaxRuleSetRequest
+         */
+        public APIgetTaxRuleSetRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTaxRuleSet
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTaxRuleSetCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getTaxRuleSet request
+         * @return TaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxRuleSet execute() throws ApiException {
+            ApiResponse<TaxRuleSet> localVarResp = getTaxRuleSetWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTaxRuleSet request with HTTP info returned
+         * @return ApiResponse&lt;TaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxRuleSet> executeWithHttpInfo() throws ApiException {
+            return getTaxRuleSetWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getTaxRuleSet request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback) throws ApiException {
+            return getTaxRuleSetAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listTaxRuleSets
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
+     * Retrieves the tax rule set definition at the given effective and as at times.
+     * @param scope The rule set scope. (required)
+     * @param code The rule set code. (required)
+     * @return APIgetTaxRuleSetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listTaxRuleSetsCall(String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetTaxRuleSetRequest getTaxRuleSet(String scope, String code) {
+        return new APIgetTaxRuleSetRequest(scope, code);
+    }
+    private okhttp3.Call listTaxRuleSetsCall(String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -597,88 +694,132 @@ public class TaxRuleSetsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
-     * Retrieves all tax rule set definitions at the given effective and as at times
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @return ResourceListOfTaxRuleSet
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfTaxRuleSet listTaxRuleSets(String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfTaxRuleSet> localVarResp = listTaxRuleSetsWithHttpInfo(effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
-     * Retrieves all tax rule set definitions at the given effective and as at times
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfTaxRuleSet&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfTaxRuleSet> listTaxRuleSetsWithHttpInfo(String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfTaxRuleSet> listTaxRuleSetsWithHttpInfo(String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfTaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets. (asynchronously)
-     * Retrieves all tax rule set definitions at the given effective and as at times
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listTaxRuleSetsAsync(String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfTaxRuleSet> _callback) throws ApiException {
+    private okhttp3.Call listTaxRuleSetsAsync(String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfTaxRuleSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfTaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistTaxRuleSetsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIlistTaxRuleSetsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistTaxRuleSetsRequest
+         */
+        public APIlistTaxRuleSetsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIlistTaxRuleSetsRequest
+         */
+        public APIlistTaxRuleSetsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listTaxRuleSets
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTaxRuleSetsCall(effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listTaxRuleSets request
+         * @return ResourceListOfTaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTaxRuleSet execute() throws ApiException {
+            ApiResponse<ResourceListOfTaxRuleSet> localVarResp = listTaxRuleSetsWithHttpInfo(effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxRuleSets request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTaxRuleSet> executeWithHttpInfo() throws ApiException {
+            return listTaxRuleSetsWithHttpInfo(effectiveAt, asAt);
+        }
+
+        /**
+         * Execute listTaxRuleSets request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxRuleSet> _callback) throws ApiException {
+            return listTaxRuleSetsAsync(effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for updateTaxRuleSet
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param updateTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
+     * Retrieves all tax rule set definitions at the given effective and as at times
+     * @return APIlistTaxRuleSetsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTaxRuleSetCall(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIlistTaxRuleSetsRequest listTaxRuleSets() {
+        return new APIlistTaxRuleSetsRequest();
+    }
+    private okhttp3.Call updateTaxRuleSetCall(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -755,61 +896,118 @@ public class TaxRuleSetsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
-     * Updates the tax rule set definition at the given effective time.  The changes will take place from this effective time until the next effective time that the rule has been updated at.  For example, consider a rule that has been created or updated effective at the first day of the coming month.  An upsert effective from the current day will only change the definition until that day.  An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition.  The user must be entitled to read any properties specified in each rule.
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param updateTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return TaxRuleSet
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TaxRuleSet updateTaxRuleSet(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt) throws ApiException {
-        ApiResponse<TaxRuleSet> localVarResp = updateTaxRuleSetWithHttpInfo(scope, code, updateTaxRuleSetRequest, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
-     * Updates the tax rule set definition at the given effective time.  The changes will take place from this effective time until the next effective time that the rule has been updated at.  For example, consider a rule that has been created or updated effective at the first day of the coming month.  An upsert effective from the current day will only change the definition until that day.  An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition.  The user must be entitled to read any properties specified in each rule.
-     * @param scope The rule set scope. (required)
-     * @param code The rule set code. (required)
-     * @param updateTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return ApiResponse&lt;TaxRuleSet&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TaxRuleSet> updateTaxRuleSetWithHttpInfo(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt) throws ApiException {
+    private ApiResponse<TaxRuleSet> updateTaxRuleSetWithHttpInfo(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, null);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call updateTaxRuleSetAsync(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateTaxRuleSetRequest {
+        private final String scope;
+        private final String code;
+        private final UpdateTaxRuleSetRequest updateTaxRuleSetRequest;
+        private String effectiveAt;
+
+        private APIupdateTaxRuleSetRequest(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updateTaxRuleSetRequest = updateTaxRuleSetRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIupdateTaxRuleSetRequest
+         */
+        public APIupdateTaxRuleSetRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for updateTaxRuleSet
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateTaxRuleSetCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute updateTaxRuleSet request
+         * @return TaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxRuleSet execute() throws ApiException {
+            ApiResponse<TaxRuleSet> localVarResp = updateTaxRuleSetWithHttpInfo(scope, code, updateTaxRuleSetRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateTaxRuleSet request with HTTP info returned
+         * @return ApiResponse&lt;TaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxRuleSet> executeWithHttpInfo() throws ApiException {
+            return updateTaxRuleSetWithHttpInfo(scope, code, updateTaxRuleSetRequest, effectiveAt);
+        }
+
+        /**
+         * Execute updateTaxRuleSet request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback) throws ApiException {
+            return updateTaxRuleSetAsync(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set. (asynchronously)
+     * [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
      * Updates the tax rule set definition at the given effective time.  The changes will take place from this effective time until the next effective time that the rule has been updated at.  For example, consider a rule that has been created or updated effective at the first day of the coming month.  An upsert effective from the current day will only change the definition until that day.  An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition.  The user must be entitled to read any properties specified in each rule.
      * @param scope The rule set scope. (required)
      * @param code The rule set code. (required)
      * @param updateTaxRuleSetRequest The contents of the rule set. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupdateTaxRuleSetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -818,11 +1016,7 @@ public class TaxRuleSetsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTaxRuleSetAsync(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
-        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupdateTaxRuleSetRequest updateTaxRuleSet(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest) {
+        return new APIupdateTaxRuleSetRequest(scope, code, updateTaxRuleSetRequest);
     }
 }

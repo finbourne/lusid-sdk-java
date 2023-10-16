@@ -300,25 +300,18 @@ public class CompositeBreakdownRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CompositeBreakdownRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CompositeBreakdownRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CompositeBreakdownRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CompositeBreakdownRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CompositeBreakdownRequest is not found in the empty JSON string", CompositeBreakdownRequest.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CompositeBreakdownRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CompositeBreakdownRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("returnIds") != null && !jsonObj.get("returnIds").isJsonNull()) {
         JsonArray jsonArrayreturnIds = jsonObj.getAsJsonArray("returnIds");
         if (jsonArrayreturnIds != null) {
@@ -329,13 +322,13 @@ public class CompositeBreakdownRequest {
 
           // validate the optional field `returnIds` (array)
           for (int i = 0; i < jsonArrayreturnIds.size(); i++) {
-            ResourceId.validateJsonObject(jsonArrayreturnIds.get(i).getAsJsonObject());
+            ResourceId.validateJsonElement(jsonArrayreturnIds.get(i));
           };
         }
       }
       // validate the optional field `recipeId`
       if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("recipeId"));
+        ResourceId.validateJsonElement(jsonObj.get("recipeId"));
       }
       if ((jsonObj.get("compositeMethod") != null && !jsonObj.get("compositeMethod").isJsonNull()) && !jsonObj.get("compositeMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `compositeMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("compositeMethod").toString()));
@@ -344,7 +337,7 @@ public class CompositeBreakdownRequest {
         throw new IllegalArgumentException(String.format("Expected the field `period` to be a primitive type in the JSON string but got `%s`", jsonObj.get("period").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("holidayCalendars") != null && !jsonObj.get("holidayCalendars").isJsonArray()) {
+      if (jsonObj.get("holidayCalendars") != null && !jsonObj.get("holidayCalendars").isJsonNull() && !jsonObj.get("holidayCalendars").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `holidayCalendars` to be an array in the JSON string but got `%s`", jsonObj.get("holidayCalendars").toString()));
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
@@ -372,9 +365,9 @@ public class CompositeBreakdownRequest {
 
            @Override
            public CompositeBreakdownRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

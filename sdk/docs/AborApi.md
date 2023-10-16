@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="addDiaryEntry"></a>
 # **addDiaryEntry**
-> DiaryEntry addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest)
+> DiaryEntry addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest).execute();
 
 [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
 
@@ -49,7 +49,8 @@ public class Example {
     String diaryEntryCode = "diaryEntryCode_example"; // String | Diary entry code
     DiaryEntryRequest diaryEntryRequest = new DiaryEntryRequest(); // DiaryEntryRequest | The diary entry to add.
     try {
-      DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest);
+      DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#addDiaryEntry");
@@ -93,7 +94,7 @@ public class Example {
 
 <a id="createAbor"></a>
 # **createAbor**
-> Abor createAbor(scope, aborRequest)
+> Abor createAbor(scope, aborRequest).execute();
 
 [EXPERIMENTAL] CreateAbor: Create an Abor.
 
@@ -122,7 +123,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Abor.
     AborRequest aborRequest = new AborRequest(); // AborRequest | The definition of the Abor.
     try {
-      Abor result = apiInstance.createAbor(scope, aborRequest);
+      Abor result = apiInstance.createAbor(scope, aborRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#createAbor");
@@ -164,7 +166,7 @@ public class Example {
 
 <a id="deleteAbor"></a>
 # **deleteAbor**
-> DeletedEntityResponse deleteAbor(scope, code)
+> DeletedEntityResponse deleteAbor(scope, code).execute();
 
 [EXPERIMENTAL] DeleteAbor: Delete an Abor.
 
@@ -193,7 +195,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Abor to be deleted.
     String code = "code_example"; // String | The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor.
     try {
-      DeletedEntityResponse result = apiInstance.deleteAbor(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteAbor(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#deleteAbor");
@@ -235,7 +238,7 @@ public class Example {
 
 <a id="getAbor"></a>
 # **getAbor**
-> Abor getAbor(scope, code, effectiveAt, asAt, propertyKeys)
+> Abor getAbor(scope, code).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] GetAbor: Get Abor.
 
@@ -265,9 +268,13 @@ public class Example {
     String code = "code_example"; // String | The code of the Abor. Together with the scope this uniquely identifies the Abor.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'. If not provided will return all the entitled properties for that Abor.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto the Abor.   These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'. If not provided will return all the entitled properties for that Abor.
     try {
-      Abor result = apiInstance.getAbor(scope, code, effectiveAt, asAt, propertyKeys);
+      Abor result = apiInstance.getAbor(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#getAbor");
@@ -288,7 +295,7 @@ public class Example {
 | **code** | **String**| The code of the Abor. Together with the scope this uniquely identifies the Abor. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. | [optional] |
 
 ### Return type
 
@@ -312,11 +319,11 @@ public class Example {
 
 <a id="getJELines"></a>
 # **getJELines**
-> VersionedResourceListOfJournalEntryLine getJELines(scope, code, jeLinesQueryParameters, asAt, limit, page)
+> VersionedResourceListOfJournalEntryLine getJELines(scope, code, jeLinesQueryParameters).asAt(asAt).limit(limit).page(page).execute();
 
 [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
 
-DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
+DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor     The JE Lines have been generated from transactions and translated via posting rules
 
 ### Example
 ```java
@@ -341,11 +348,15 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Abor.
     String code = "code_example"; // String | The code of the Abor. Together with the scope is creating the unique identifier for the given Abor.
     JELinesQueryParameters jeLinesQueryParameters = new JELinesQueryParameters(); // JELinesQueryParameters | The query parameters used in running the generation of the JELines.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve JELines. Defaults to returning the latest version   of each transaction if not specified.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing JELines from a previous call to GetJELines.
     try {
-      VersionedResourceListOfJournalEntryLine result = apiInstance.getJELines(scope, code, jeLinesQueryParameters, asAt, limit, page);
+      VersionedResourceListOfJournalEntryLine result = apiInstance.getJELines(scope, code, jeLinesQueryParameters)
+            .asAt(asAt)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#getJELines");
@@ -365,7 +376,7 @@ public class Example {
 | **scope** | **String**| The scope of the Abor. | |
 | **code** | **String**| The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. | |
 | **jeLinesQueryParameters** | [**JELinesQueryParameters**](JELinesQueryParameters.md)| The query parameters used in running the generation of the JELines. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve JELines. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing JELines from a previous call to GetJELines. | [optional] |
 
@@ -391,11 +402,11 @@ public class Example {
 
 <a id="getJournalEntryLines"></a>
 # **getJournalEntryLines**
-> VersionedResourceListOfJournalEntryLine getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page)
+> VersionedResourceListOfJournalEntryLine getJournalEntryLines(scope, code, journalEntryLinesQueryParameters).asAt(asAt).filter(filter).limit(limit).page(page).execute();
 
 [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
 
-Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
+Gets the Journal Entry lines for the given Abor     The Journal Entry lines have been generated from transactions and translated via posting rules
 
 ### Example
 ```java
@@ -420,12 +431,17 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Abor.
     String code = "code_example"; // String | The code of the Abor. Together with the scope is creating the unique identifier for the given Abor.
     JournalEntryLinesQueryParameters journalEntryLinesQueryParameters = new JournalEntryLinesQueryParameters(); // JournalEntryLinesQueryParameters | The query parameters used in running the generation of the Journal Entry lines.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified.
     String filter = "filter_example"; // String | \"Expression to filter the result set.\"
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines.
     try {
-      VersionedResourceListOfJournalEntryLine result = apiInstance.getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page);
+      VersionedResourceListOfJournalEntryLine result = apiInstance.getJournalEntryLines(scope, code, journalEntryLinesQueryParameters)
+            .asAt(asAt)
+            .filter(filter)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#getJournalEntryLines");
@@ -445,7 +461,7 @@ public class Example {
 | **scope** | **String**| The scope of the Abor. | |
 | **code** | **String**| The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. | |
 | **journalEntryLinesQueryParameters** | [**JournalEntryLinesQueryParameters**](JournalEntryLinesQueryParameters.md)| The query parameters used in running the generation of the Journal Entry lines. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
 | **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. | [optional] |
@@ -472,7 +488,7 @@ public class Example {
 
 <a id="getTrialBalance"></a>
 # **getTrialBalance**
-> VersionedResourceListOfTrialBalance getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page)
+> VersionedResourceListOfTrialBalance getTrialBalance(scope, code, trialBalanceQueryParameters).asAt(asAt).filter(filter).limit(limit).page(page).execute();
 
 [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
 
@@ -501,12 +517,17 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Abor.
     String code = "code_example"; // String | The code of the Abor. Together with the scope is the unique identifier for the given Abor.
     TrialBalanceQueryParameters trialBalanceQueryParameters = new TrialBalanceQueryParameters(); // TrialBalanceQueryParameters | The query parameters used in running the generation of the Trial Balance.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version   of each transaction if not specified.
     String filter = "filter_example"; // String | \"Expression to filter the result set.\"
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing Trial balance from a previous call to Trial balance.
     try {
-      VersionedResourceListOfTrialBalance result = apiInstance.getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page);
+      VersionedResourceListOfTrialBalance result = apiInstance.getTrialBalance(scope, code, trialBalanceQueryParameters)
+            .asAt(asAt)
+            .filter(filter)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#getTrialBalance");
@@ -526,7 +547,7 @@ public class Example {
 | **scope** | **String**| The scope of the Abor. | |
 | **code** | **String**| The code of the Abor. Together with the scope is the unique identifier for the given Abor. | |
 | **trialBalanceQueryParameters** | [**TrialBalanceQueryParameters**](TrialBalanceQueryParameters.md)| The query parameters used in running the generation of the Trial Balance. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
 | **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Trial balance from a previous call to Trial balance. | [optional] |
@@ -553,7 +574,7 @@ public class Example {
 
 <a id="listAbors"></a>
 # **listAbors**
-> PagedResourceListOfAbor listAbors(effectiveAt, asAt, page, start, limit, filter, propertyKeys)
+> PagedResourceListOfAbor listAbors().effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListAbors: List Abors.
 
@@ -579,15 +600,23 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     AborApi apiInstance = new AborApi(defaultClient);
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID              system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID   system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the Abor type, specify \"id.Code eq 'Abor1'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'.
+    String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Abor type, specify \"id.Code eq 'Abor1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'.
     try {
-      PagedResourceListOfAbor result = apiInstance.listAbors(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+      PagedResourceListOfAbor result = apiInstance.listAbors()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#listAbors");
@@ -604,13 +633,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -634,7 +663,7 @@ public class Example {
 
 <a id="listDiaryEntries"></a>
 # **listDiaryEntries**
-> PagedResourceListOfDiaryEntry listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys)
+> PagedResourceListOfDiaryEntry listDiaryEntries(scope, code).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListDiaryEntries: List diary entries.
 
@@ -662,14 +691,21 @@ public class Example {
     AborApi apiInstance = new AborApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Abor.
     String code = "code_example"; // String | The code of the Abor.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID   system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \"type eq 'PeriodBoundary'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/Report/Id'.
+    String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the DiaryEntry type, specify \"type eq 'PeriodBoundary'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/Report/Id'.
     try {
-      PagedResourceListOfDiaryEntry result = apiInstance.listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+      PagedResourceListOfDiaryEntry result = apiInstance.listDiaryEntries(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#listDiaryEntries");
@@ -688,12 +724,12 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Abor. | |
 | **code** | **String**| The code of the Abor. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -717,11 +753,11 @@ public class Example {
 
 <a id="upsertAborProperties"></a>
 # **upsertAborProperties**
-> AborProperties upsertAborProperties(scope, code, requestBody)
+> AborProperties upsertAborProperties(scope, code).requestBody(requestBody).execute();
 
 [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
 
-Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.                Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.     Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 ```java
@@ -745,9 +781,11 @@ public class Example {
     AborApi apiInstance = new AborApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Abor to update or insert the properties onto.
     String code = "code_example"; // String | The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor.
-    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Abor/Manager/Id\".
+    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Abor. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Abor/Manager/Id\".
     try {
-      AborProperties result = apiInstance.upsertAborProperties(scope, code, requestBody);
+      AborProperties result = apiInstance.upsertAborProperties(scope, code)
+            .requestBody(requestBody)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#upsertAborProperties");
@@ -766,7 +804,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Abor to update or insert the properties onto. | |
 | **code** | **String**| The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. | [optional] |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Abor. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. | [optional] |
 
 ### Return type
 

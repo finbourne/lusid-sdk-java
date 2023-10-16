@@ -82,22 +82,7 @@ public class ComplianceApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteComplianceRule
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteComplianceRuleCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteComplianceRuleCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -161,88 +146,116 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
-     * Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteComplianceRule(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteComplianceRuleWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
-     * Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteComplianceRuleWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteComplianceRuleWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteComplianceRuleValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule. (asynchronously)
-     * Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteComplianceRuleAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteComplianceRuleAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteComplianceRuleValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteComplianceRuleRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteComplianceRuleRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteComplianceRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteComplianceRuleCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteComplianceRule request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteComplianceRuleWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteComplianceRule request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteComplianceRuleWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteComplianceRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteComplianceRuleAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getComplianceRule
+     * [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
+     * Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
      * @param scope The compliance rule&#39;s scope. (required)
      * @param code The compliance rule&#39;s code. (required)
-     * @param asAt Optional. Asat time for query. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIdeleteComplianceRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceRuleCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteComplianceRuleRequest deleteComplianceRule(String scope, String code) {
+        return new APIdeleteComplianceRuleRequest(scope, code);
+    }
+    private okhttp3.Call getComplianceRuleCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -314,92 +327,138 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetComplianceRule: Get compliance rule.
-     * Use this endpoint to retrieve a single compliance rule.
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @param asAt Optional. Asat time for query. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
-     * @return ComplianceRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRuleResponse getComplianceRule(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<ComplianceRuleResponse> localVarResp = getComplianceRuleWithHttpInfo(scope, code, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetComplianceRule: Get compliance rule.
-     * Use this endpoint to retrieve a single compliance rule.
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @param asAt Optional. Asat time for query. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
-     * @return ApiResponse&lt;ComplianceRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRuleResponse> getComplianceRuleWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<ComplianceRuleResponse> getComplianceRuleWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getComplianceRuleValidateBeforeCall(scope, code, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<ComplianceRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetComplianceRule: Get compliance rule. (asynchronously)
-     * Use this endpoint to retrieve a single compliance rule.
-     * @param scope The compliance rule&#39;s scope. (required)
-     * @param code The compliance rule&#39;s code. (required)
-     * @param asAt Optional. Asat time for query. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getComplianceRuleAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ComplianceRuleResponse> _callback) throws ApiException {
+    private okhttp3.Call getComplianceRuleAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ComplianceRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceRuleValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetComplianceRuleRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetComplianceRuleRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. Asat time for query. (optional)
+         * @return APIgetComplianceRuleRequest
+         */
+        public APIgetComplianceRuleRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
+         * @return APIgetComplianceRuleRequest
+         */
+        public APIgetComplianceRuleRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getComplianceRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getComplianceRuleCall(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getComplianceRule request
+         * @return ComplianceRuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleResponse execute() throws ApiException {
+            ApiResponse<ComplianceRuleResponse> localVarResp = getComplianceRuleWithHttpInfo(scope, code, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplianceRule request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleResponse> executeWithHttpInfo() throws ApiException {
+            return getComplianceRuleWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getComplianceRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleResponse> _callback) throws ApiException {
+            return getComplianceRuleAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getComplianceRunSummary
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetComplianceRule: Get compliance rule.
+     * Use this endpoint to retrieve a single compliance rule.
+     * @param scope The compliance rule&#39;s scope. (required)
+     * @param code The compliance rule&#39;s code. (required)
+     * @return APIgetComplianceRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested compliance rule. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIgetComplianceRuleRequest getComplianceRule(String scope, String code) {
+        return new APIgetComplianceRuleRequest(scope, code);
+    }
+    private okhttp3.Call getComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -463,87 +522,116 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
-     * Specify a run scope and code from a previously run compliance check to get summarised results.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @return ComplianceRunSummary
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRunSummary getComplianceRunSummary(String scope, String code) throws ApiException {
-        ApiResponse<ComplianceRunSummary> localVarResp = getComplianceRunSummaryWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
-     * Specify a run scope and code from a previously run compliance check to get summarised results.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @return ApiResponse&lt;ComplianceRunSummary&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRunSummary> getComplianceRunSummaryWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<ComplianceRunSummary> getComplianceRunSummaryWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = getComplianceRunSummaryValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run. (asynchronously)
-     * Specify a run scope and code from a previously run compliance check to get summarised results.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getComplianceRunSummaryAsync(String scope, String code, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+    private okhttp3.Call getComplianceRunSummaryAsync(String scope, String code, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceRunSummaryValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetComplianceRunSummaryRequest {
+        private final String scope;
+        private final String code;
+
+        private APIgetComplianceRunSummaryRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for getComplianceRunSummary
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getComplianceRunSummaryCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute getComplianceRunSummary request
+         * @return ComplianceRunSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunSummary execute() throws ApiException {
+            ApiResponse<ComplianceRunSummary> localVarResp = getComplianceRunSummaryWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplianceRunSummary request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunSummary> executeWithHttpInfo() throws ApiException {
+            return getComplianceRunSummaryWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute getComplianceRunSummary request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+            return getComplianceRunSummaryAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getComplianceTemplate
-     * @param scope Scope of TemplateID (required)
-     * @param code Code of TemplateID (required)
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
+     * Specify a run scope and code from a previously run compliance check to get summarised results.
+     * @param scope Required: Run Scope. (required)
+     * @param code Required: Run Code. (required)
+     * @return APIgetComplianceRunSummaryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The requested compliance run summary. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceTemplateCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetComplianceRunSummaryRequest getComplianceRunSummary(String scope, String code) {
+        return new APIgetComplianceRunSummaryRequest(scope, code);
+    }
+    private okhttp3.Call getComplianceTemplateCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -611,89 +699,127 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
-     * Use this endpoint to fetch a specific compliance template.
-     * @param scope Scope of TemplateID (required)
-     * @param code Code of TemplateID (required)
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @return ComplianceTemplate
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceTemplate getComplianceTemplate(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ComplianceTemplate> localVarResp = getComplianceTemplateWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
-     * Use this endpoint to fetch a specific compliance template.
-     * @param scope Scope of TemplateID (required)
-     * @param code Code of TemplateID (required)
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @return ApiResponse&lt;ComplianceTemplate&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceTemplate> getComplianceTemplateWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ComplianceTemplate> getComplianceTemplateWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getComplianceTemplateValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<ComplianceTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. (asynchronously)
-     * Use this endpoint to fetch a specific compliance template.
-     * @param scope Scope of TemplateID (required)
-     * @param code Code of TemplateID (required)
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getComplianceTemplateAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ComplianceTemplate> _callback) throws ApiException {
+    private okhttp3.Call getComplianceTemplateAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ComplianceTemplate> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceTemplateValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<ComplianceTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetComplianceTemplateRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetComplianceTemplateRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The time at which to get results from. Default : latest (optional)
+         * @return APIgetComplianceTemplateRequest
+         */
+        public APIgetComplianceTemplateRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getComplianceTemplate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getComplianceTemplateCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getComplianceTemplate request
+         * @return ComplianceTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceTemplate execute() throws ApiException {
+            ApiResponse<ComplianceTemplate> localVarResp = getComplianceTemplateWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplianceTemplate request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceTemplate> executeWithHttpInfo() throws ApiException {
+            return getComplianceTemplateWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getComplianceTemplate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceTemplate> _callback) throws ApiException {
+            return getComplianceTemplateAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getDecoratedComplianceRunSummary
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
+     * Use this endpoint to fetch a specific compliance template.
+     * @param scope Scope of TemplateID (required)
+     * @param code Code of TemplateID (required)
+     * @return APIgetComplianceTemplateRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested compliance template. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDecoratedComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIgetComplianceTemplateRequest getComplianceTemplate(String scope, String code) {
+        return new APIgetComplianceTemplateRequest(scope, code);
+    }
+    private okhttp3.Call getDecoratedComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -757,89 +883,116 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
-     * Specify a run scope and code from a previously run compliance check to get an overview of result details.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @return DecoratedComplianceRunSummary
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DecoratedComplianceRunSummary getDecoratedComplianceRunSummary(String scope, String code) throws ApiException {
-        ApiResponse<DecoratedComplianceRunSummary> localVarResp = getDecoratedComplianceRunSummaryWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
-     * Specify a run scope and code from a previously run compliance check to get an overview of result details.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @return ApiResponse&lt;DecoratedComplianceRunSummary&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DecoratedComplianceRunSummary> getDecoratedComplianceRunSummaryWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DecoratedComplianceRunSummary> getDecoratedComplianceRunSummaryWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. (asynchronously)
-     * Specify a run scope and code from a previously run compliance check to get an overview of result details.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDecoratedComplianceRunSummaryAsync(String scope, String code, final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
+    private okhttp3.Call getDecoratedComplianceRunSummaryAsync(String scope, String code, final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetDecoratedComplianceRunSummaryRequest {
+        private final String scope;
+        private final String code;
+
+        private APIgetDecoratedComplianceRunSummaryRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for getDecoratedComplianceRunSummary
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getDecoratedComplianceRunSummaryCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute getDecoratedComplianceRunSummary request
+         * @return DecoratedComplianceRunSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DecoratedComplianceRunSummary execute() throws ApiException {
+            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getDecoratedComplianceRunSummaryWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getDecoratedComplianceRunSummary request with HTTP info returned
+         * @return ApiResponse&lt;DecoratedComplianceRunSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DecoratedComplianceRunSummary> executeWithHttpInfo() throws ApiException {
+            return getDecoratedComplianceRunSummaryWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute getDecoratedComplianceRunSummary request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
+            return getDecoratedComplianceRunSummaryAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for listComplianceRules
-     * @param asAt Optional. Asat time. (optional)
-     * @param page Optional. Pagination token. (optional)
-     * @param limit Optional. Entries per page. (optional)
-     * @param filter Optional. Filter. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
+     * Specify a run scope and code from a previously run compliance check to get an overview of result details.
+     * @param scope Required: Run Scope. (required)
+     * @param code Required: Run Code. (required)
+     * @return APIgetDecoratedComplianceRunSummaryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listComplianceRulesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetDecoratedComplianceRunSummaryRequest getDecoratedComplianceRunSummary(String scope, String code) {
+        return new APIgetDecoratedComplianceRunSummaryRequest(scope, code);
+    }
+    private okhttp3.Call listComplianceRulesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -911,98 +1064,165 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListComplianceRules: List compliance rules.
-     * Use this endpoint to retrieve all compliance rules, or a subset defined by an optional filter.
-     * @param asAt Optional. Asat time. (optional)
-     * @param page Optional. Pagination token. (optional)
-     * @param limit Optional. Entries per page. (optional)
-     * @param filter Optional. Filter. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
-     * @return PagedResourceListOfComplianceRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfComplianceRuleResponse listComplianceRules(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfComplianceRuleResponse> localVarResp = listComplianceRulesWithHttpInfo(asAt, page, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListComplianceRules: List compliance rules.
-     * Use this endpoint to retrieve all compliance rules, or a subset defined by an optional filter.
-     * @param asAt Optional. Asat time. (optional)
-     * @param page Optional. Pagination token. (optional)
-     * @param limit Optional. Entries per page. (optional)
-     * @param filter Optional. Filter. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfComplianceRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfComplianceRuleResponse> listComplianceRulesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfComplianceRuleResponse> listComplianceRulesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listComplianceRulesValidateBeforeCall(asAt, page, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListComplianceRules: List compliance rules. (asynchronously)
-     * Use this endpoint to retrieve all compliance rules, or a subset defined by an optional filter.
-     * @param asAt Optional. Asat time. (optional)
-     * @param page Optional. Pagination token. (optional)
-     * @param limit Optional. Entries per page. (optional)
-     * @param filter Optional. Filter. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listComplianceRulesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfComplianceRuleResponse> _callback) throws ApiException {
+    private okhttp3.Call listComplianceRulesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfComplianceRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listComplianceRulesValidateBeforeCall(asAt, page, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistComplianceRulesRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistComplianceRulesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. Asat time. (optional)
+         * @return APIlistComplianceRulesRequest
+         */
+        public APIlistComplianceRulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. Pagination token. (optional)
+         * @return APIlistComplianceRulesRequest
+         */
+        public APIlistComplianceRulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. Entries per page. (optional)
+         * @return APIlistComplianceRulesRequest
+         */
+        public APIlistComplianceRulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Filter. (optional)
+         * @return APIlistComplianceRulesRequest
+         */
+        public APIlistComplianceRulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
+         * @return APIlistComplianceRulesRequest
+         */
+        public APIlistComplianceRulesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listComplianceRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listComplianceRulesCall(asAt, page, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listComplianceRules request
+         * @return PagedResourceListOfComplianceRuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfComplianceRuleResponse execute() throws ApiException {
+            ApiResponse<PagedResourceListOfComplianceRuleResponse> localVarResp = listComplianceRulesWithHttpInfo(asAt, page, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listComplianceRules request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfComplianceRuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfComplianceRuleResponse> executeWithHttpInfo() throws ApiException {
+            return listComplianceRulesWithHttpInfo(asAt, page, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listComplianceRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfComplianceRuleResponse> _callback) throws ApiException {
+            return listComplianceRulesAsync(asAt, page, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listComplianceRuns
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListComplianceRules: List compliance rules.
+     * Use this endpoint to retrieve all compliance rules, or a subset defined by an optional filter.
+     * @return APIlistComplianceRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of compliance rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listComplianceRunsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    public APIlistComplianceRulesRequest listComplianceRules() {
+        return new APIlistComplianceRulesRequest();
+    }
+    private okhttp3.Call listComplianceRunsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1074,98 +1294,165 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
-     * Lists RunIds of prior compliance runs, or a subset with a filter.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; (optional)
-     * @return PagedResourceListOfComplianceRunInfoV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfComplianceRunInfoV2 listComplianceRuns(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        ApiResponse<PagedResourceListOfComplianceRunInfoV2> localVarResp = listComplianceRunsWithHttpInfo(asAt, page, limit, filter, sortBy);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
-     * Lists RunIds of prior compliance runs, or a subset with a filter.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; (optional)
-     * @return ApiResponse&lt;PagedResourceListOfComplianceRunInfoV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfComplianceRunInfoV2> listComplianceRunsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+    private ApiResponse<PagedResourceListOfComplianceRunInfoV2> listComplianceRunsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
         okhttp3.Call localVarCall = listComplianceRunsValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceRunInfoV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. (asynchronously)
-     * Lists RunIds of prior compliance runs, or a subset with a filter.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listComplianceRunsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfComplianceRunInfoV2> _callback) throws ApiException {
+    private okhttp3.Call listComplianceRunsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfComplianceRunInfoV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listComplianceRunsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceRunInfoV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistComplianceRunsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistComplianceRunsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The time at which to get results from. Default : latest (optional)
+         * @return APIlistComplianceRunsRequest
+         */
+        public APIlistComplianceRunsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistComplianceRunsRequest
+         */
+        public APIlistComplianceRunsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistComplianceRunsRequest
+         */
+        public APIlistComplianceRunsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistComplianceRunsRequest
+         */
+        public APIlistComplianceRunsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; (optional)
+         * @return APIlistComplianceRunsRequest
+         */
+        public APIlistComplianceRunsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listComplianceRuns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listComplianceRunsCall(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listComplianceRuns request
+         * @return PagedResourceListOfComplianceRunInfoV2
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfComplianceRunInfoV2 execute() throws ApiException {
+            ApiResponse<PagedResourceListOfComplianceRunInfoV2> localVarResp = listComplianceRunsWithHttpInfo(asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listComplianceRuns request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfComplianceRunInfoV2&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfComplianceRunInfoV2> executeWithHttpInfo() throws ApiException {
+            return listComplianceRunsWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listComplianceRuns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfComplianceRunInfoV2> _callback) throws ApiException {
+            return listComplianceRunsAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+    }
+
     /**
-     * Build call for listComplianceTemplates
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start Optional. When paginating, skip this number of results. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
+     * Lists RunIds of prior compliance runs, or a subset with a filter.
+     * @return APIlistComplianceRunsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of previous compliance RunIds </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listComplianceTemplatesCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistComplianceRunsRequest listComplianceRuns() {
+        return new APIlistComplianceRunsRequest();
+    }
+    private okhttp3.Call listComplianceTemplatesCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1237,98 +1524,165 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
-     * Use this endpoint to fetch a list of all available compliance template ids, or a subset using a filter.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start Optional. When paginating, skip this number of results. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return PagedResourceListOfComplianceTemplate
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfComplianceTemplate listComplianceTemplates(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfComplianceTemplate> localVarResp = listComplianceTemplatesWithHttpInfo(asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
-     * Use this endpoint to fetch a list of all available compliance template ids, or a subset using a filter.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start Optional. When paginating, skip this number of results. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfComplianceTemplate&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfComplianceTemplate> listComplianceTemplatesWithHttpInfo(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfComplianceTemplate> listComplianceTemplatesWithHttpInfo(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listComplianceTemplatesValidateBeforeCall(asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListComplianceTemplates: List compliance templates. (asynchronously)
-     * Use this endpoint to fetch a list of all available compliance template ids, or a subset using a filter.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start Optional. When paginating, skip this number of results. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listComplianceTemplatesAsync(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfComplianceTemplate> _callback) throws ApiException {
+    private okhttp3.Call listComplianceTemplatesAsync(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfComplianceTemplate> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listComplianceTemplatesValidateBeforeCall(asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistComplianceTemplatesRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistComplianceTemplatesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The time at which to get results from. Default : latest (optional)
+         * @return APIlistComplianceTemplatesRequest
+         */
+        public APIlistComplianceTemplatesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistComplianceTemplatesRequest
+         */
+        public APIlistComplianceTemplatesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start Optional. When paginating, skip this number of results. (optional)
+         * @return APIlistComplianceTemplatesRequest
+         */
+        public APIlistComplianceTemplatesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistComplianceTemplatesRequest
+         */
+        public APIlistComplianceTemplatesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistComplianceTemplatesRequest
+         */
+        public APIlistComplianceTemplatesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listComplianceTemplates
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listComplianceTemplatesCall(asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listComplianceTemplates request
+         * @return PagedResourceListOfComplianceTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfComplianceTemplate execute() throws ApiException {
+            ApiResponse<PagedResourceListOfComplianceTemplate> localVarResp = listComplianceTemplatesWithHttpInfo(asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listComplianceTemplates request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfComplianceTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfComplianceTemplate> executeWithHttpInfo() throws ApiException {
+            return listComplianceTemplatesWithHttpInfo(asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listComplianceTemplates request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfComplianceTemplate> _callback) throws ApiException {
+            return listComplianceTemplatesAsync(asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for runCompliance
-     * @param runScope Required: Scope to save the run results in. (required)
-     * @param ruleScope Required: Scope from which to select rules to be run. (required)
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Required: The code of the recipe to be used. If left blank, the default recipe will be used. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
+     * Use this endpoint to fetch a list of all available compliance template ids, or a subset using a filter.
+     * @return APIlistComplianceTemplatesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of compliance templates available. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runComplianceCall(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
+    public APIlistComplianceTemplatesRequest listComplianceTemplates() {
+        return new APIlistComplianceTemplatesRequest();
+    }
+    private okhttp3.Call runComplianceCall(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1425,94 +1779,125 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] RunCompliance: Run a compliance check.
-     * Use this endpoint to run a compliance check using rules from a specific scope.
-     * @param runScope Required: Scope to save the run results in. (required)
-     * @param ruleScope Required: Scope from which to select rules to be run. (required)
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Required: The code of the recipe to be used. If left blank, the default recipe will be used. (required)
-     * @return ComplianceRunInfoV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRunInfoV2 runCompliance(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) throws ApiException {
-        ApiResponse<ComplianceRunInfoV2> localVarResp = runComplianceWithHttpInfo(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] RunCompliance: Run a compliance check.
-     * Use this endpoint to run a compliance check using rules from a specific scope.
-     * @param runScope Required: Scope to save the run results in. (required)
-     * @param ruleScope Required: Scope from which to select rules to be run. (required)
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Required: The code of the recipe to be used. If left blank, the default recipe will be used. (required)
-     * @return ApiResponse&lt;ComplianceRunInfoV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRunInfoV2> runComplianceWithHttpInfo(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) throws ApiException {
+    private ApiResponse<ComplianceRunInfoV2> runComplianceWithHttpInfo(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) throws ApiException {
         okhttp3.Call localVarCall = runComplianceValidateBeforeCall(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode, null);
         Type localVarReturnType = new TypeToken<ComplianceRunInfoV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] RunCompliance: Run a compliance check. (asynchronously)
-     * Use this endpoint to run a compliance check using rules from a specific scope.
-     * @param runScope Required: Scope to save the run results in. (required)
-     * @param ruleScope Required: Scope from which to select rules to be run. (required)
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Required: The code of the recipe to be used. If left blank, the default recipe will be used. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call runComplianceAsync(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode, final ApiCallback<ComplianceRunInfoV2> _callback) throws ApiException {
+    private okhttp3.Call runComplianceAsync(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode, final ApiCallback<ComplianceRunInfoV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = runComplianceValidateBeforeCall(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRunInfoV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIrunComplianceRequest {
+        private final String runScope;
+        private final String ruleScope;
+        private final Boolean isPreTrade;
+        private final String recipeIdScope;
+        private final String recipeIdCode;
+
+        private APIrunComplianceRequest(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) {
+            this.runScope = runScope;
+            this.ruleScope = ruleScope;
+            this.isPreTrade = isPreTrade;
+            this.recipeIdScope = recipeIdScope;
+            this.recipeIdCode = recipeIdCode;
+        }
+
+        /**
+         * Build call for runCompliance
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return runComplianceCall(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode, _callback);
+        }
+
+        /**
+         * Execute runCompliance request
+         * @return ComplianceRunInfoV2
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunInfoV2 execute() throws ApiException {
+            ApiResponse<ComplianceRunInfoV2> localVarResp = runComplianceWithHttpInfo(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runCompliance request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunInfoV2&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunInfoV2> executeWithHttpInfo() throws ApiException {
+            return runComplianceWithHttpInfo(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
+        }
+
+        /**
+         * Execute runCompliance request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunInfoV2> _callback) throws ApiException {
+            return runComplianceAsync(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertComplianceRule
-     * @param upsertComplianceRuleRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] RunCompliance: Run a compliance check.
+     * Use this endpoint to run a compliance check using rules from a specific scope.
+     * @param runScope Required: Scope to save the run results in. (required)
+     * @param ruleScope Required: Scope from which to select rules to be run. (required)
+     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
+     * @param recipeIdScope Required: the scope of the recipe to be used (required)
+     * @param recipeIdCode Required: The code of the recipe to be used. If left blank, the default recipe will be used. (required)
+     * @return APIrunComplianceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertComplianceRuleCall(UpsertComplianceRuleRequest upsertComplianceRuleRequest, final ApiCallback _callback) throws ApiException {
+    public APIrunComplianceRequest runCompliance(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) {
+        return new APIrunComplianceRequest(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
+    }
+    private okhttp3.Call upsertComplianceRuleCall(UpsertComplianceRuleRequest upsertComplianceRuleRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1568,82 +1953,121 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
-     * Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist, as must the portfolio group. The parameters passed must match those required by the template variation.
-     * @param upsertComplianceRuleRequest  (optional)
-     * @return ComplianceRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRuleResponse upsertComplianceRule(UpsertComplianceRuleRequest upsertComplianceRuleRequest) throws ApiException {
-        ApiResponse<ComplianceRuleResponse> localVarResp = upsertComplianceRuleWithHttpInfo(upsertComplianceRuleRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
-     * Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist, as must the portfolio group. The parameters passed must match those required by the template variation.
-     * @param upsertComplianceRuleRequest  (optional)
-     * @return ApiResponse&lt;ComplianceRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRuleResponse> upsertComplianceRuleWithHttpInfo(UpsertComplianceRuleRequest upsertComplianceRuleRequest) throws ApiException {
+    private ApiResponse<ComplianceRuleResponse> upsertComplianceRuleWithHttpInfo(UpsertComplianceRuleRequest upsertComplianceRuleRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertComplianceRuleValidateBeforeCall(upsertComplianceRuleRequest, null);
         Type localVarReturnType = new TypeToken<ComplianceRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule. (asynchronously)
-     * Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist, as must the portfolio group. The parameters passed must match those required by the template variation.
-     * @param upsertComplianceRuleRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertComplianceRuleAsync(UpsertComplianceRuleRequest upsertComplianceRuleRequest, final ApiCallback<ComplianceRuleResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertComplianceRuleAsync(UpsertComplianceRuleRequest upsertComplianceRuleRequest, final ApiCallback<ComplianceRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertComplianceRuleValidateBeforeCall(upsertComplianceRuleRequest, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertComplianceRuleRequest {
+        private UpsertComplianceRuleRequest upsertComplianceRuleRequest;
+
+        private APIupsertComplianceRuleRequest() {
+        }
+
+        /**
+         * Set upsertComplianceRuleRequest
+         * @param upsertComplianceRuleRequest  (optional)
+         * @return APIupsertComplianceRuleRequest
+         */
+        public APIupsertComplianceRuleRequest upsertComplianceRuleRequest(UpsertComplianceRuleRequest upsertComplianceRuleRequest) {
+            this.upsertComplianceRuleRequest = upsertComplianceRuleRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertComplianceRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertComplianceRuleCall(upsertComplianceRuleRequest, _callback);
+        }
+
+        /**
+         * Execute upsertComplianceRule request
+         * @return ComplianceRuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleResponse execute() throws ApiException {
+            ApiResponse<ComplianceRuleResponse> localVarResp = upsertComplianceRuleWithHttpInfo(upsertComplianceRuleRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertComplianceRule request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleResponse> executeWithHttpInfo() throws ApiException {
+            return upsertComplianceRuleWithHttpInfo(upsertComplianceRuleRequest);
+        }
+
+        /**
+         * Execute upsertComplianceRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleResponse> _callback) throws ApiException {
+            return upsertComplianceRuleAsync(upsertComplianceRuleRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertComplianceRunSummary
-     * @param upsertComplianceRunSummaryRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
+     * Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist, as must the portfolio group. The parameters passed must match those required by the template variation.
+     * @return APIupsertComplianceRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The upserted compliance rule. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertComplianceRunSummaryCall(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertComplianceRuleRequest upsertComplianceRule() {
+        return new APIupsertComplianceRuleRequest();
+    }
+    private okhttp3.Call upsertComplianceRunSummaryCall(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1699,52 +2123,109 @@ public class ComplianceApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
-     * Use this endpoint to upsert a compliance run result summary.
-     * @param upsertComplianceRunSummaryRequest  (optional)
-     * @return ComplianceRunSummary
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRunSummary upsertComplianceRunSummary(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest) throws ApiException {
-        ApiResponse<ComplianceRunSummary> localVarResp = upsertComplianceRunSummaryWithHttpInfo(upsertComplianceRunSummaryRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
-     * Use this endpoint to upsert a compliance run result summary.
-     * @param upsertComplianceRunSummaryRequest  (optional)
-     * @return ApiResponse&lt;ComplianceRunSummary&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRunSummary> upsertComplianceRunSummaryWithHttpInfo(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest) throws ApiException {
+    private ApiResponse<ComplianceRunSummary> upsertComplianceRunSummaryWithHttpInfo(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertComplianceRunSummaryValidateBeforeCall(upsertComplianceRunSummaryRequest, null);
         Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertComplianceRunSummaryAsync(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertComplianceRunSummaryValidateBeforeCall(upsertComplianceRunSummaryRequest, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertComplianceRunSummaryRequest {
+        private UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest;
+
+        private APIupsertComplianceRunSummaryRequest() {
+        }
+
+        /**
+         * Set upsertComplianceRunSummaryRequest
+         * @param upsertComplianceRunSummaryRequest  (optional)
+         * @return APIupsertComplianceRunSummaryRequest
+         */
+        public APIupsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest) {
+            this.upsertComplianceRunSummaryRequest = upsertComplianceRunSummaryRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertComplianceRunSummary
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertComplianceRunSummaryCall(upsertComplianceRunSummaryRequest, _callback);
+        }
+
+        /**
+         * Execute upsertComplianceRunSummary request
+         * @return ComplianceRunSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunSummary execute() throws ApiException {
+            ApiResponse<ComplianceRunSummary> localVarResp = upsertComplianceRunSummaryWithHttpInfo(upsertComplianceRunSummaryRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertComplianceRunSummary request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunSummary> executeWithHttpInfo() throws ApiException {
+            return upsertComplianceRunSummaryWithHttpInfo(upsertComplianceRunSummaryRequest);
+        }
+
+        /**
+         * Execute upsertComplianceRunSummary request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted compliance run summary. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+            return upsertComplianceRunSummaryAsync(upsertComplianceRunSummaryRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary. (asynchronously)
+     * [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
      * Use this endpoint to upsert a compliance run result summary.
-     * @param upsertComplianceRunSummaryRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertComplianceRunSummaryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1753,11 +2234,7 @@ public class ComplianceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertComplianceRunSummaryAsync(UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertComplianceRunSummaryValidateBeforeCall(upsertComplianceRunSummaryRequest, _callback);
-        Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertComplianceRunSummaryRequest upsertComplianceRunSummary() {
+        return new APIupsertComplianceRunSummaryRequest();
     }
 }

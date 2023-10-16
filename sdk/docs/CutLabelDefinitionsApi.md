@@ -13,7 +13,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createCutLabelDefinition"></a>
 # **createCutLabelDefinition**
-> CutLabelDefinition createCutLabelDefinition(createCutLabelDefinitionRequest)
+> CutLabelDefinition createCutLabelDefinition().createCutLabelDefinitionRequest(createCutLabelDefinitionRequest).execute();
 
 CreateCutLabelDefinition: Create a Cut Label
 
@@ -41,7 +41,9 @@ public class Example {
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = new CreateCutLabelDefinitionRequest(); // CreateCutLabelDefinitionRequest | The cut label definition
     try {
-      CutLabelDefinition result = apiInstance.createCutLabelDefinition(createCutLabelDefinitionRequest);
+      CutLabelDefinition result = apiInstance.createCutLabelDefinition()
+            .createCutLabelDefinitionRequest(createCutLabelDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#createCutLabelDefinition");
@@ -82,7 +84,7 @@ public class Example {
 
 <a id="deleteCutLabelDefinition"></a>
 # **deleteCutLabelDefinition**
-> OffsetDateTime deleteCutLabelDefinition(code)
+> OffsetDateTime deleteCutLabelDefinition(code).execute();
 
 DeleteCutLabelDefinition: Delete a Cut Label
 
@@ -110,7 +112,8 @@ public class Example {
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     String code = "code_example"; // String | The Code of the Cut Label that is being Deleted
     try {
-      OffsetDateTime result = apiInstance.deleteCutLabelDefinition(code);
+      OffsetDateTime result = apiInstance.deleteCutLabelDefinition(code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#deleteCutLabelDefinition");
@@ -151,7 +154,7 @@ public class Example {
 
 <a id="getCutLabelDefinition"></a>
 # **getCutLabelDefinition**
-> CutLabelDefinition getCutLabelDefinition(code, asAt)
+> CutLabelDefinition getCutLabelDefinition(code).asAt(asAt).execute();
 
 GetCutLabelDefinition: Get a Cut Label
 
@@ -180,7 +183,9 @@ public class Example {
     String code = "code_example"; // String | The Code of the Cut Label that is being queried
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The time at which to get the Cut Label
     try {
-      CutLabelDefinition result = apiInstance.getCutLabelDefinition(code, asAt);
+      CutLabelDefinition result = apiInstance.getCutLabelDefinition(code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#getCutLabelDefinition");
@@ -222,7 +227,7 @@ public class Example {
 
 <a id="listCutLabelDefinitions"></a>
 # **listCutLabelDefinitions**
-> PagedResourceListOfCutLabelDefinition listCutLabelDefinitions(asAt, sortBy, start, limit, filter, page)
+> PagedResourceListOfCutLabelDefinition listCutLabelDefinitions().asAt(asAt).sortBy(sortBy).start(start).limit(limit).filter(filter).page(page).execute();
 
 ListCutLabelDefinitions: List Existing Cut Labels
 
@@ -252,10 +257,17 @@ public class Example {
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set.              For example, to filter on code, use \"code eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on code, use \"code eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     String page = "page_example"; // String | The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided.
     try {
-      PagedResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, start, limit, filter, page);
+      PagedResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions()
+            .asAt(asAt)
+            .sortBy(sortBy)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#listCutLabelDefinitions");
@@ -276,7 +288,7 @@ public class Example {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **start** | **Integer**| Optional. When paginating, skip this number of results | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 
 ### Return type
@@ -301,7 +313,7 @@ public class Example {
 
 <a id="updateCutLabelDefinition"></a>
 # **updateCutLabelDefinition**
-> CutLabelDefinition updateCutLabelDefinition(code, updateCutLabelDefinitionRequest)
+> CutLabelDefinition updateCutLabelDefinition(code).updateCutLabelDefinitionRequest(updateCutLabelDefinitionRequest).execute();
 
 UpdateCutLabelDefinition: Update a Cut Label
 
@@ -330,7 +342,9 @@ public class Example {
     String code = "code_example"; // String | The Code of the Cut Label that is being updated
     UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = new UpdateCutLabelDefinitionRequest(); // UpdateCutLabelDefinitionRequest | The cut label update definition
     try {
-      CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateCutLabelDefinitionRequest);
+      CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code)
+            .updateCutLabelDefinitionRequest(updateCutLabelDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#updateCutLabelDefinition");

@@ -623,32 +623,25 @@ public class FeeRule {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to FeeRule
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to FeeRule
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!FeeRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!FeeRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in FeeRule is not found in the empty JSON string", FeeRule.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!FeeRule.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FeeRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : FeeRule.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
@@ -680,21 +673,21 @@ public class FeeRule {
         throw new IllegalArgumentException(String.format("Expected the field `exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange").toString()));
       }
       // validate the required field `fee`
-      CalculationInfo.validateJsonObject(jsonObj.getAsJsonObject("fee"));
+      CalculationInfo.validateJsonElement(jsonObj.get("fee"));
       // validate the optional field `minFee`
       if (jsonObj.get("minFee") != null && !jsonObj.get("minFee").isJsonNull()) {
-        CalculationInfo.validateJsonObject(jsonObj.getAsJsonObject("minFee"));
+        CalculationInfo.validateJsonElement(jsonObj.get("minFee"));
       }
       // validate the optional field `maxFee`
       if (jsonObj.get("maxFee") != null && !jsonObj.get("maxFee").isJsonNull()) {
-        CalculationInfo.validateJsonObject(jsonObj.getAsJsonObject("maxFee"));
+        CalculationInfo.validateJsonElement(jsonObj.get("maxFee"));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -706,7 +699,7 @@ public class FeeRule {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -732,9 +725,9 @@ public class FeeRule {
 
            @Override
            public FeeRule read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -16,11 +16,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteLegacyComplianceRule"></a>
 # **deleteLegacyComplianceRule**
-> DeletedEntityResponse deleteLegacyComplianceRule(scope, code)
+> DeletedEntityResponse deleteLegacyComplianceRule(scope, code).execute();
 
 [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
 
-Deletes the rule for all effective time.                The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.                This cannot be undone.
+Deletes the rule for all effective time.     The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.     This cannot be undone.
 
 ### Example
 ```java
@@ -45,7 +45,8 @@ public class Example {
     String scope = "scope_example"; // String | The compliance rule scope.
     String code = "code_example"; // String | The compliance rule code.
     try {
-      DeletedEntityResponse result = apiInstance.deleteLegacyComplianceRule(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteLegacyComplianceRule(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#deleteLegacyComplianceRule");
@@ -87,7 +88,7 @@ public class Example {
 
 <a id="getLegacyBreachedOrdersInfo"></a>
 # **getLegacyBreachedOrdersInfo**
-> ResourceListOfComplianceBreachedOrderInfo getLegacyBreachedOrdersInfo(runId, orderScope, orderCode, limit)
+> ResourceListOfComplianceBreachedOrderInfo getLegacyBreachedOrdersInfo(runId).orderScope(orderScope).orderCode(orderCode).limit(limit).execute();
 
 [EXPERIMENTAL] GetLegacyBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it.
 
@@ -118,7 +119,11 @@ public class Example {
     String orderCode = "orderCode_example"; // String | Optional. Find rules related to a specific order by providing an Order Scope/Code combination
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     try {
-      ResourceListOfComplianceBreachedOrderInfo result = apiInstance.getLegacyBreachedOrdersInfo(runId, orderScope, orderCode, limit);
+      ResourceListOfComplianceBreachedOrderInfo result = apiInstance.getLegacyBreachedOrdersInfo(runId)
+            .orderScope(orderScope)
+            .orderCode(orderCode)
+            .limit(limit)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#getLegacyBreachedOrdersInfo");
@@ -162,7 +167,7 @@ public class Example {
 
 <a id="getLegacyComplianceRule"></a>
 # **getLegacyComplianceRule**
-> ComplianceRule getLegacyComplianceRule(scope, code, effectiveAt, asAt)
+> ComplianceRule getLegacyComplianceRule(scope, code).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetLegacyComplianceRule: Retrieve the definition of single compliance rule.
 
@@ -193,7 +198,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
     try {
-      ComplianceRule result = apiInstance.getLegacyComplianceRule(scope, code, effectiveAt, asAt);
+      ComplianceRule result = apiInstance.getLegacyComplianceRule(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#getLegacyComplianceRule");
@@ -237,7 +245,7 @@ public class Example {
 
 <a id="getLegacyComplianceRunResults"></a>
 # **getLegacyComplianceRunResults**
-> ResourceListOfComplianceRuleResult getLegacyComplianceRunResults(runId, page, limit, filter)
+> ResourceListOfComplianceRuleResult getLegacyComplianceRunResults(runId).page(page).limit(limit).filter(filter).execute();
 
 [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run.
 
@@ -264,11 +272,15 @@ public class Example {
 
     LegacyComplianceApi apiInstance = new LegacyComplianceApi(defaultClient);
     String runId = "runId_example"; // String | The unique identifier of the compliance run requested.
-    String page = "page_example"; // String | The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfComplianceRuleResult result = apiInstance.getLegacyComplianceRunResults(runId, page, limit, filter);
+      ResourceListOfComplianceRuleResult result = apiInstance.getLegacyComplianceRunResults(runId)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#getLegacyComplianceRunResults");
@@ -286,7 +298,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **runId** | **String**| The unique identifier of the compliance run requested. | |
-| **page** | **String**| The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
@@ -312,7 +324,7 @@ public class Example {
 
 <a id="listLegacyComplianceRules"></a>
 # **listLegacyComplianceRules**
-> ResourceListOfComplianceRule listLegacyComplianceRules(effectiveAt, asAt, page, limit, filter)
+> ResourceListOfComplianceRule listLegacyComplianceRules().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
 
@@ -344,7 +356,13 @@ public class Example {
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.
     try {
-      ResourceListOfComplianceRule result = apiInstance.listLegacyComplianceRules(effectiveAt, asAt, page, limit, filter);
+      ResourceListOfComplianceRule result = apiInstance.listLegacyComplianceRules()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#listLegacyComplianceRules");
@@ -389,7 +407,7 @@ public class Example {
 
 <a id="listLegacyComplianceRunInfo"></a>
 # **listLegacyComplianceRunInfo**
-> ResourceListOfComplianceRunInfo listLegacyComplianceRunInfo(asAt, page, limit, filter)
+> ResourceListOfComplianceRunInfo listLegacyComplianceRunInfo().asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [EXPERIMENTAL] ListLegacyComplianceRunInfo: List historical compliance run ids.
 
@@ -416,11 +434,16 @@ public class Example {
 
     LegacyComplianceApi apiInstance = new LegacyComplianceApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-    String page = "page_example"; // String | The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfComplianceRunInfo result = apiInstance.listLegacyComplianceRunInfo(asAt, page, limit, filter);
+      ResourceListOfComplianceRunInfo result = apiInstance.listLegacyComplianceRunInfo()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#listLegacyComplianceRunInfo");
@@ -438,7 +461,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
@@ -464,7 +487,7 @@ public class Example {
 
 <a id="runLegacyCompliance"></a>
 # **runLegacyCompliance**
-> ComplianceRunInfo runLegacyCompliance(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots)
+> ComplianceRunInfo runLegacyCompliance(isPreTrade, recipeIdScope).recipeIdCode(recipeIdCode).byTaxlots(byTaxlots).execute();
 
 [EXPERIMENTAL] RunLegacyCompliance: Kick off the compliance check process
 
@@ -495,7 +518,10 @@ public class Example {
     String recipeIdCode = "recipeIdCode_example"; // String | Optional: The code of the recipe to be used. If left blank, the default recipe will be used.
     Boolean byTaxlots = true; // Boolean | Optional.
     try {
-      ComplianceRunInfo result = apiInstance.runLegacyCompliance(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots);
+      ComplianceRunInfo result = apiInstance.runLegacyCompliance(isPreTrade, recipeIdScope)
+            .recipeIdCode(recipeIdCode)
+            .byTaxlots(byTaxlots)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#runLegacyCompliance");
@@ -539,11 +565,11 @@ public class Example {
 
 <a id="upsertLegacyComplianceRules"></a>
 # **upsertLegacyComplianceRules**
-> ComplianceRuleUpsertResponse upsertLegacyComplianceRules(requestBody, effectiveAt)
+> ComplianceRuleUpsertResponse upsertLegacyComplianceRules(requestBody).effectiveAt(effectiveAt).execute();
 
 [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules.
 
-To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.                The upsert is transactional - either all create/update operations will succeed or none of them will.
+To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.     The upsert is transactional - either all create/update operations will succeed or none of them will.
 
 ### Example
 ```java
@@ -565,10 +591,12 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     LegacyComplianceApi apiInstance = new LegacyComplianceApi(defaultClient);
-    Map<String, ComplianceRuleUpsertRequest> requestBody = new HashMap(); // Map<String, ComplianceRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule.
+    Map<String, ComplianceRuleUpsertRequest> requestBody = new HashMap(); // Map<String, ComplianceRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition.
     try {
-      ComplianceRuleUpsertResponse result = apiInstance.upsertLegacyComplianceRules(requestBody, effectiveAt);
+      ComplianceRuleUpsertResponse result = apiInstance.upsertLegacyComplianceRules(requestBody)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LegacyComplianceApi#upsertLegacyComplianceRules");
@@ -585,7 +613,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestBody** | [**Map&lt;String, ComplianceRuleUpsertRequest&gt;**](ComplianceRuleUpsertRequest.md)| A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. | |
+| **requestBody** | [**Map&lt;String, ComplianceRuleUpsertRequest&gt;**](ComplianceRuleUpsertRequest.md)| A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. | [optional] |
 
 ### Return type

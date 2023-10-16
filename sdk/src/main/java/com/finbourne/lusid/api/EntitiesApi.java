@@ -72,23 +72,7 @@ public class EntitiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getPortfolioChanges
-     * @param scope The scope (required)
-     * @param effectiveAt The effective date of the origin. (required)
-     * @param asAt The as-at date of the origin. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioChangesCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioChangesCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -162,58 +146,115 @@ public class EntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope.
-     * Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subscriptions (e.g corporate actions).
-     * @param scope The scope (required)
-     * @param effectiveAt The effective date of the origin. (required)
-     * @param asAt The as-at date of the origin. (optional)
-     * @return ResourceListOfChange
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfChange getPortfolioChanges(String scope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfChange> localVarResp = getPortfolioChangesWithHttpInfo(scope, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope.
-     * Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subscriptions (e.g corporate actions).
-     * @param scope The scope (required)
-     * @param effectiveAt The effective date of the origin. (required)
-     * @param asAt The as-at date of the origin. (optional)
-     * @return ApiResponse&lt;ResourceListOfChange&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfChange> getPortfolioChangesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfChange> getPortfolioChangesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call getPortfolioChangesAsync(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfChange> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPortfolioChangesRequest {
+        private final String scope;
+        private final String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfolioChangesRequest(String scope, String effectiveAt) {
+            this.scope = scope;
+            this.effectiveAt = effectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The as-at date of the origin. (optional)
+         * @return APIgetPortfolioChangesRequest
+         */
+        public APIgetPortfolioChangesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioChanges
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioChangesCall(scope, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioChanges request
+         * @return ResourceListOfChange
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfChange execute() throws ApiException {
+            ApiResponse<ResourceListOfChange> localVarResp = getPortfolioChangesWithHttpInfo(scope, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioChanges request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfChange&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfChange> executeWithHttpInfo() throws ApiException {
+            return getPortfolioChangesWithHttpInfo(scope, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioChanges request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChange> _callback) throws ApiException {
+            return getPortfolioChangesAsync(scope, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope. (asynchronously)
+     * [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope.
      * Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subscriptions (e.g corporate actions).
      * @param scope The scope (required)
      * @param effectiveAt The effective date of the origin. (required)
-     * @param asAt The as-at date of the origin. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIgetPortfolioChangesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -222,11 +263,7 @@ public class EntitiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioChangesAsync(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfChange> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIgetPortfolioChangesRequest getPortfolioChanges(String scope, String effectiveAt) {
+        return new APIgetPortfolioChangesRequest(scope, effectiveAt);
     }
 }

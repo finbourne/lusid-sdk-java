@@ -78,21 +78,7 @@ public class DataTypesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createDataType
-     * @param createDataTypeRequest The definition of the new data type (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createDataTypeCall(CreateDataTypeRequest createDataTypeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDataTypeCall(CreateDataTypeRequest createDataTypeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,84 +134,121 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] CreateDataType: Create data type definition
-     * Create a new data type definition    Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
-     * @param createDataTypeRequest The definition of the new data type (optional)
-     * @return DataType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DataType createDataType(CreateDataTypeRequest createDataTypeRequest) throws ApiException {
-        ApiResponse<DataType> localVarResp = createDataTypeWithHttpInfo(createDataTypeRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] CreateDataType: Create data type definition
-     * Create a new data type definition    Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
-     * @param createDataTypeRequest The definition of the new data type (optional)
-     * @return ApiResponse&lt;DataType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DataType> createDataTypeWithHttpInfo(CreateDataTypeRequest createDataTypeRequest) throws ApiException {
+    private ApiResponse<DataType> createDataTypeWithHttpInfo(CreateDataTypeRequest createDataTypeRequest) throws ApiException {
         okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, null);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] CreateDataType: Create data type definition (asynchronously)
-     * Create a new data type definition    Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
-     * @param createDataTypeRequest The definition of the new data type (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createDataTypeAsync(CreateDataTypeRequest createDataTypeRequest, final ApiCallback<DataType> _callback) throws ApiException {
+    private okhttp3.Call createDataTypeAsync(CreateDataTypeRequest createDataTypeRequest, final ApiCallback<DataType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, _callback);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateDataTypeRequest {
+        private CreateDataTypeRequest createDataTypeRequest;
+
+        private APIcreateDataTypeRequest() {
+        }
+
+        /**
+         * Set createDataTypeRequest
+         * @param createDataTypeRequest The definition of the new data type (optional)
+         * @return APIcreateDataTypeRequest
+         */
+        public APIcreateDataTypeRequest createDataTypeRequest(CreateDataTypeRequest createDataTypeRequest) {
+            this.createDataTypeRequest = createDataTypeRequest;
+            return this;
+        }
+
+        /**
+         * Build call for createDataType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createDataTypeCall(createDataTypeRequest, _callback);
+        }
+
+        /**
+         * Execute createDataType request
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute() throws ApiException {
+            ApiResponse<DataType> localVarResp = createDataTypeWithHttpInfo(createDataTypeRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createDataType request with HTTP info returned
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
+            return createDataTypeWithHttpInfo(createDataTypeRequest);
+        }
+
+        /**
+         * Execute createDataType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
+            return createDataTypeAsync(createDataTypeRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getDataType
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to              return the latest version of the instrument definition if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] CreateDataType: Create data type definition
+     * Create a new data type definition    Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
+     * @return APIcreateDataTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIcreateDataTypeRequest createDataType() {
+        return new APIcreateDataTypeRequest();
+    }
+    private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -293,83 +316,115 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * GetDataType: Get data type definition
-     * Get the definition of a specified data type
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to              return the latest version of the instrument definition if not specified. (optional)
-     * @return DataType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DataType getDataType(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetDataType: Get data type definition
-     * Get the definition of a specified data type
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to              return the latest version of the instrument definition if not specified. (optional)
-     * @return ApiResponse&lt;DataType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetDataType: Get data type definition (asynchronously)
-     * Get the definition of a specified data type
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to              return the latest version of the instrument definition if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<DataType> _callback) throws ApiException {
+    private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<DataType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetDataTypeRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetDataTypeRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to   return the latest version of the instrument definition if not specified. (optional)
+         * @return APIgetDataTypeRequest
+         */
+        public APIgetDataTypeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getDataType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getDataTypeCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getDataType request
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute() throws ApiException {
+            ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getDataType request with HTTP info returned
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
+            return getDataTypeWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getDataType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
+            return getDataTypeAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getUnitsFromDataType
+     * GetDataType: Get data type definition
+     * Get the definition of a specified data type
      * @param scope The scope of the data type (required)
      * @param code The code of the data type (required)
-     * @param units One or more unit identifiers for which the definition is being requested (optional)
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param asAt Optional. The as at of the requested data type (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetDataTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -378,7 +433,10 @@ public class DataTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetDataTypeRequest getDataType(String scope, String code) {
+        return new APIgetDataTypeRequest(scope, code);
+    }
+    private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -454,90 +512,137 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetUnitsFromDataType: Get units from data type
-     * Get the definitions of the specified units associated bound to a specific data type
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param units One or more unit identifiers for which the definition is being requested (optional)
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param asAt Optional. The as at of the requested data type (optional)
-     * @return ResourceListOfIUnitDefinitionDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfIUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetUnitsFromDataType: Get units from data type
-     * Get the definitions of the specified units associated bound to a specific data type
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param units One or more unit identifiers for which the definition is being requested (optional)
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param asAt Optional. The as at of the requested data type (optional)
-     * @return ApiResponse&lt;ResourceListOfIUnitDefinitionDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetUnitsFromDataType: Get units from data type (asynchronously)
-     * Get the definitions of the specified units associated bound to a specific data type
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param units One or more unit identifiers for which the definition is being requested (optional)
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param asAt Optional. The as at of the requested data type (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
+    private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetUnitsFromDataTypeRequest {
+        private final String scope;
+        private final String code;
+        private List<String> units;
+        private String filter;
+        private OffsetDateTime asAt;
+
+        private APIgetUnitsFromDataTypeRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set units
+         * @param units One or more unit identifiers for which the definition is being requested (optional)
+         * @return APIgetUnitsFromDataTypeRequest
+         */
+        public APIgetUnitsFromDataTypeRequest units(List<String> units) {
+            this.units = units;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.    For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetUnitsFromDataTypeRequest
+         */
+        public APIgetUnitsFromDataTypeRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The as at of the requested data type (optional)
+         * @return APIgetUnitsFromDataTypeRequest
+         */
+        public APIgetUnitsFromDataTypeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getUnitsFromDataType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, _callback);
+        }
+
+        /**
+         * Execute getUnitsFromDataType request
+         * @return ResourceListOfIUnitDefinitionDto
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfIUnitDefinitionDto execute() throws ApiException {
+            ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getUnitsFromDataType request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfIUnitDefinitionDto&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfIUnitDefinitionDto> executeWithHttpInfo() throws ApiException {
+            return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt);
+        }
+
+        /**
+         * Execute getUnitsFromDataType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
+            return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listDataTypeSummaries
-     * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version               of each summary if not specified. (optional)
-     * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Optional. Expression to filter the result set.                For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,               to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetUnitsFromDataType: Get units from data type
+     * Get the definitions of the specified units associated bound to a specific data type
+     * @param scope The scope of the data type (required)
+     * @param code The code of the data type (required)
+     * @return APIgetUnitsFromDataTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -546,7 +651,10 @@ public class DataTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    public APIgetUnitsFromDataTypeRequest getUnitsFromDataType(String scope, String code) {
+        return new APIgetUnitsFromDataTypeRequest(scope, code);
+    }
+    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -622,94 +730,164 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
-     * List all data type summaries
-     * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version               of each summary if not specified. (optional)
-     * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Optional. Expression to filter the result set.                For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,               to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @return PagedResourceListOfDataTypeSummary
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfDataTypeSummary listDataTypeSummaries(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, start, limit, filter, sortBy);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
-     * List all data type summaries
-     * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version               of each summary if not specified. (optional)
-     * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Optional. Expression to filter the result set.                For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,               to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @return ApiResponse&lt;PagedResourceListOfDataTypeSummary&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy) throws ApiException {
+    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy) throws ApiException {
         okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, start, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data (asynchronously)
-     * List all data type summaries
-     * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version               of each summary if not specified. (optional)
-     * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Optional. Expression to filter the result set.                For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,               to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
+    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, start, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistDataTypeSummariesRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistDataTypeSummariesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version   of each summary if not specified. (optional)
+         * @return APIlistDataTypeSummariesRequest
+         */
+        public APIlistDataTypeSummariesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistDataTypeSummariesRequest
+         */
+        public APIlistDataTypeSummariesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistDataTypeSummariesRequest
+         */
+        public APIlistDataTypeSummariesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistDataTypeSummariesRequest
+         */
+        public APIlistDataTypeSummariesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.    For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,   to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistDataTypeSummariesRequest
+         */
+        public APIlistDataTypeSummariesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistDataTypeSummariesRequest
+         */
+        public APIlistDataTypeSummariesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listDataTypeSummaries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listDataTypeSummariesCall(asAt, page, start, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listDataTypeSummaries request
+         * @return PagedResourceListOfDataTypeSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfDataTypeSummary execute() throws ApiException {
+            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, start, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listDataTypeSummaries request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfDataTypeSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfDataTypeSummary> executeWithHttpInfo() throws ApiException {
+            return listDataTypeSummariesWithHttpInfo(asAt, page, start, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listDataTypeSummaries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
+            return listDataTypeSummariesAsync(asAt, page, start, limit, filter, sortBy, _callback);
+        }
+    }
+
     /**
-     * Build call for listDataTypes
-     * @param scope The requested scope of the data types (required)
-     * @param asAt The as at of the requested data types (optional)
-     * @param includeSystem Whether to additionally include those data types in the \&quot;system\&quot; scope (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
+     * List all data type summaries
+     * @return APIlistDataTypeSummariesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -718,7 +896,10 @@ public class DataTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistDataTypeSummariesRequest listDataTypeSummaries() {
+        return new APIlistDataTypeSummariesRequest();
+    }
+    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -800,93 +981,167 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * ListDataTypes: List data types
-     * List all data types in a specified scope
-     * @param scope The requested scope of the data types (required)
-     * @param asAt The as at of the requested data types (optional)
-     * @param includeSystem Whether to additionally include those data types in the \&quot;system\&quot; scope (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfDataType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfDataType listDataTypes(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListDataTypes: List data types
-     * List all data types in a specified scope
-     * @param scope The requested scope of the data types (required)
-     * @param asAt The as at of the requested data types (optional)
-     * @param includeSystem Whether to additionally include those data types in the \&quot;system\&quot; scope (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfDataType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListDataTypes: List data types (asynchronously)
-     * List all data types in a specified scope
-     * @param scope The requested scope of the data types (required)
-     * @param asAt The as at of the requested data types (optional)
-     * @param includeSystem Whether to additionally include those data types in the \&quot;system\&quot; scope (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
+    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistDataTypesRequest {
+        private final String scope;
+        private OffsetDateTime asAt;
+        private Boolean includeSystem;
+        private List<String> sortBy;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistDataTypesRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The as at of the requested data types (optional)
+         * @return APIlistDataTypesRequest
+         */
+        public APIlistDataTypesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set includeSystem
+         * @param includeSystem Whether to additionally include those data types in the \&quot;system\&quot; scope (optional)
+         * @return APIlistDataTypesRequest
+         */
+        public APIlistDataTypesRequest includeSystem(Boolean includeSystem) {
+            this.includeSystem = includeSystem;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+         * @return APIlistDataTypesRequest
+         */
+        public APIlistDataTypesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start Optional. When paginating, skip this number of results (optional)
+         * @return APIlistDataTypesRequest
+         */
+        public APIlistDataTypesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistDataTypesRequest
+         */
+        public APIlistDataTypesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistDataTypesRequest
+         */
+        public APIlistDataTypesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listDataTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listDataTypesCall(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listDataTypes request
+         * @return ResourceListOfDataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfDataType execute() throws ApiException {
+            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listDataTypes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfDataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfDataType> executeWithHttpInfo() throws ApiException {
+            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, start, limit, filter);
+        }
+
+        /**
+         * Execute listDataTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
+            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for updateDataType
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param updateDataTypeRequest The updated definition of the data type (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ListDataTypes: List data types
+     * List all data types in a specified scope
+     * @param scope The requested scope of the data types (required)
+     * @return APIlistDataTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -895,7 +1150,10 @@ public class DataTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDataTypeCall(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistDataTypesRequest listDataTypes(String scope) {
+        return new APIlistDataTypesRequest(scope);
+    }
+    private okhttp3.Call updateDataTypeCall(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -968,81 +1226,107 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpdateDataType: Update data type definition
-     * Update the definition of the specified existing data type    Not all elements within a data type definition are modifiable due to the potential implications for data  already stored against the types
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param updateDataTypeRequest The updated definition of the data type (required)
-     * @return DataType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DataType updateDataType(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) throws ApiException {
-        ApiResponse<DataType> localVarResp = updateDataTypeWithHttpInfo(scope, code, updateDataTypeRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpdateDataType: Update data type definition
-     * Update the definition of the specified existing data type    Not all elements within a data type definition are modifiable due to the potential implications for data  already stored against the types
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param updateDataTypeRequest The updated definition of the data type (required)
-     * @return ApiResponse&lt;DataType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DataType> updateDataTypeWithHttpInfo(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) throws ApiException {
+    private ApiResponse<DataType> updateDataTypeWithHttpInfo(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) throws ApiException {
         okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, null);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpdateDataType: Update data type definition (asynchronously)
-     * Update the definition of the specified existing data type    Not all elements within a data type definition are modifiable due to the potential implications for data  already stored against the types
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param updateDataTypeRequest The updated definition of the data type (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateDataTypeAsync(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback<DataType> _callback) throws ApiException {
+    private okhttp3.Call updateDataTypeAsync(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback<DataType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, _callback);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupdateDataTypeRequest {
+        private final String scope;
+        private final String code;
+        private final UpdateDataTypeRequest updateDataTypeRequest;
+
+        private APIupdateDataTypeRequest(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updateDataTypeRequest = updateDataTypeRequest;
+        }
+
+        /**
+         * Build call for updateDataType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateDataTypeCall(scope, code, updateDataTypeRequest, _callback);
+        }
+
+        /**
+         * Execute updateDataType request
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute() throws ApiException {
+            ApiResponse<DataType> localVarResp = updateDataTypeWithHttpInfo(scope, code, updateDataTypeRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateDataType request with HTTP info returned
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
+            return updateDataTypeWithHttpInfo(scope, code, updateDataTypeRequest);
+        }
+
+        /**
+         * Execute updateDataType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
+            return updateDataTypeAsync(scope, code, updateDataTypeRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for updateReferenceValues
+     * [EARLY ACCESS] UpdateDataType: Update data type definition
+     * Update the definition of the specified existing data type    Not all elements within a data type definition are modifiable due to the potential implications for data  already stored against the types
      * @param scope The scope of the data type (required)
      * @param code The code of the data type (required)
-     * @param fieldValue The updated reference values (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param updateDataTypeRequest The updated definition of the data type (required)
+     * @return APIupdateDataTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1051,7 +1335,10 @@ public class DataTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateReferenceValuesCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback) throws ApiException {
+    public APIupdateDataTypeRequest updateDataType(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) {
+        return new APIupdateDataTypeRequest(scope, code, updateDataTypeRequest);
+    }
+    private okhttp3.Call updateReferenceValuesCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1124,58 +1411,107 @@ public class DataTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpdateReferenceValues: Update reference data on a data type
-     * Replaces the whole set of reference values
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param fieldValue The updated reference values (required)
-     * @return DataType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DataType updateReferenceValues(String scope, String code, List<FieldValue> fieldValue) throws ApiException {
-        ApiResponse<DataType> localVarResp = updateReferenceValuesWithHttpInfo(scope, code, fieldValue);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpdateReferenceValues: Update reference data on a data type
-     * Replaces the whole set of reference values
-     * @param scope The scope of the data type (required)
-     * @param code The code of the data type (required)
-     * @param fieldValue The updated reference values (required)
-     * @return ApiResponse&lt;DataType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DataType> updateReferenceValuesWithHttpInfo(String scope, String code, List<FieldValue> fieldValue) throws ApiException {
+    private ApiResponse<DataType> updateReferenceValuesWithHttpInfo(String scope, String code, List<FieldValue> fieldValue) throws ApiException {
         okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, null);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call updateReferenceValuesAsync(String scope, String code, List<FieldValue> fieldValue, final ApiCallback<DataType> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, _callback);
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateReferenceValuesRequest {
+        private final String scope;
+        private final String code;
+        private final List<FieldValue> fieldValue;
+
+        private APIupdateReferenceValuesRequest(String scope, String code, List<FieldValue> fieldValue) {
+            this.scope = scope;
+            this.code = code;
+            this.fieldValue = fieldValue;
+        }
+
+        /**
+         * Build call for updateReferenceValues
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateReferenceValuesCall(scope, code, fieldValue, _callback);
+        }
+
+        /**
+         * Execute updateReferenceValues request
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute() throws ApiException {
+            ApiResponse<DataType> localVarResp = updateReferenceValuesWithHttpInfo(scope, code, fieldValue);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateReferenceValues request with HTTP info returned
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
+            return updateReferenceValuesWithHttpInfo(scope, code, fieldValue);
+        }
+
+        /**
+         * Execute updateReferenceValues request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
+            return updateReferenceValuesAsync(scope, code, fieldValue, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpdateReferenceValues: Update reference data on a data type (asynchronously)
+     * [EARLY ACCESS] UpdateReferenceValues: Update reference data on a data type
      * Replaces the whole set of reference values
      * @param scope The scope of the data type (required)
      * @param code The code of the data type (required)
      * @param fieldValue The updated reference values (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupdateReferenceValuesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1184,11 +1520,7 @@ public class DataTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateReferenceValuesAsync(String scope, String code, List<FieldValue> fieldValue, final ApiCallback<DataType> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, _callback);
-        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupdateReferenceValuesRequest updateReferenceValues(String scope, String code, List<FieldValue> fieldValue) {
+        return new APIupdateReferenceValuesRequest(scope, code, fieldValue);
     }
 }

@@ -185,39 +185,39 @@ public class ReferenceList {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReferenceList
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ReferenceList
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ReferenceList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ReferenceList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReferenceList is not found in the empty JSON string", ReferenceList.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("referenceListType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("referenceListType").getAsString();
       switch (discriminatorValue) {
         case "AddressKeyList":
-          AddressKeyList.validateJsonObject(jsonObj);
+          AddressKeyList.validateJsonElement(jsonElement);
           break;
         case "DecimalList":
-          DecimalList.validateJsonObject(jsonObj);
+          DecimalList.validateJsonElement(jsonElement);
           break;
         case "InstrumentList":
-          InstrumentList.validateJsonObject(jsonObj);
+          InstrumentList.validateJsonElement(jsonElement);
           break;
         case "PortfolioGroupIdList":
-          PortfolioGroupIdList.validateJsonObject(jsonObj);
+          PortfolioGroupIdList.validateJsonElement(jsonElement);
           break;
         case "PortfolioIdList":
-          PortfolioIdList.validateJsonObject(jsonObj);
+          PortfolioIdList.validateJsonElement(jsonElement);
           break;
         case "StringList":
-          StringList.validateJsonObject(jsonObj);
+          StringList.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `referenceListType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

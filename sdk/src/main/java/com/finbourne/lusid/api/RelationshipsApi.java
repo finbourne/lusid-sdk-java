@@ -74,23 +74,7 @@ public class RelationshipsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createRelationship
-     * @param scope The scope of the relationship (required)
-     * @param code The code of the relationship (required)
-     * @param createRelationshipRequest The details of the relationship to create. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createRelationshipCall(String scope, String code, CreateRelationshipRequest createRelationshipRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRelationshipCall(String scope, String code, CreateRelationshipRequest createRelationshipRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -163,90 +147,119 @@ public class RelationshipsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] CreateRelationship: Create Relationship
-     * Create a relationship between two entity objects by their identifiers
-     * @param scope The scope of the relationship (required)
-     * @param code The code of the relationship (required)
-     * @param createRelationshipRequest The details of the relationship to create. (required)
-     * @return CompleteRelationship
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CompleteRelationship createRelationship(String scope, String code, CreateRelationshipRequest createRelationshipRequest) throws ApiException {
-        ApiResponse<CompleteRelationship> localVarResp = createRelationshipWithHttpInfo(scope, code, createRelationshipRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] CreateRelationship: Create Relationship
-     * Create a relationship between two entity objects by their identifiers
-     * @param scope The scope of the relationship (required)
-     * @param code The code of the relationship (required)
-     * @param createRelationshipRequest The details of the relationship to create. (required)
-     * @return ApiResponse&lt;CompleteRelationship&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CompleteRelationship> createRelationshipWithHttpInfo(String scope, String code, CreateRelationshipRequest createRelationshipRequest) throws ApiException {
+    private ApiResponse<CompleteRelationship> createRelationshipWithHttpInfo(String scope, String code, CreateRelationshipRequest createRelationshipRequest) throws ApiException {
         okhttp3.Call localVarCall = createRelationshipValidateBeforeCall(scope, code, createRelationshipRequest, null);
         Type localVarReturnType = new TypeToken<CompleteRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] CreateRelationship: Create Relationship (asynchronously)
-     * Create a relationship between two entity objects by their identifiers
-     * @param scope The scope of the relationship (required)
-     * @param code The code of the relationship (required)
-     * @param createRelationshipRequest The details of the relationship to create. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createRelationshipAsync(String scope, String code, CreateRelationshipRequest createRelationshipRequest, final ApiCallback<CompleteRelationship> _callback) throws ApiException {
+    private okhttp3.Call createRelationshipAsync(String scope, String code, CreateRelationshipRequest createRelationshipRequest, final ApiCallback<CompleteRelationship> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createRelationshipValidateBeforeCall(scope, code, createRelationshipRequest, _callback);
         Type localVarReturnType = new TypeToken<CompleteRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateRelationshipRequest {
+        private final String scope;
+        private final String code;
+        private final CreateRelationshipRequest createRelationshipRequest;
+
+        private APIcreateRelationshipRequest(String scope, String code, CreateRelationshipRequest createRelationshipRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.createRelationshipRequest = createRelationshipRequest;
+        }
+
+        /**
+         * Build call for createRelationship
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createRelationshipCall(scope, code, createRelationshipRequest, _callback);
+        }
+
+        /**
+         * Execute createRelationship request
+         * @return CompleteRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompleteRelationship execute() throws ApiException {
+            ApiResponse<CompleteRelationship> localVarResp = createRelationshipWithHttpInfo(scope, code, createRelationshipRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createRelationship request with HTTP info returned
+         * @return ApiResponse&lt;CompleteRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompleteRelationship> executeWithHttpInfo() throws ApiException {
+            return createRelationshipWithHttpInfo(scope, code, createRelationshipRequest);
+        }
+
+        /**
+         * Execute createRelationship request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompleteRelationship> _callback) throws ApiException {
+            return createRelationshipAsync(scope, code, createRelationshipRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteRelationship
+     * [EARLY ACCESS] CreateRelationship: Create Relationship
+     * Create a relationship between two entity objects by their identifiers
      * @param scope The scope of the relationship (required)
      * @param code The code of the relationship (required)
-     * @param deleteRelationshipRequest The details of the relationship to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param createRelationshipRequest The details of the relationship to create. (required)
+     * @return APIcreateRelationshipRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created relationship. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRelationshipCall(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest, final ApiCallback _callback) throws ApiException {
+    public APIcreateRelationshipRequest createRelationship(String scope, String code, CreateRelationshipRequest createRelationshipRequest) {
+        return new APIcreateRelationshipRequest(scope, code, createRelationshipRequest);
+    }
+    private okhttp3.Call deleteRelationshipCall(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -319,58 +332,107 @@ public class RelationshipsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteRelationship: Delete Relationship
-     * Delete a relationship between two entity objects represented by their identifiers
-     * @param scope The scope of the relationship (required)
-     * @param code The code of the relationship (required)
-     * @param deleteRelationshipRequest The details of the relationship to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteRelationship(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationshipWithHttpInfo(scope, code, deleteRelationshipRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteRelationship: Delete Relationship
-     * Delete a relationship between two entity objects represented by their identifiers
-     * @param scope The scope of the relationship (required)
-     * @param code The code of the relationship (required)
-     * @param deleteRelationshipRequest The details of the relationship to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteRelationshipWithHttpInfo(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteRelationshipWithHttpInfo(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest) throws ApiException {
         okhttp3.Call localVarCall = deleteRelationshipValidateBeforeCall(scope, code, deleteRelationshipRequest, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call deleteRelationshipAsync(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRelationshipValidateBeforeCall(scope, code, deleteRelationshipRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteRelationshipRequest {
+        private final String scope;
+        private final String code;
+        private final DeleteRelationshipRequest deleteRelationshipRequest;
+
+        private APIdeleteRelationshipRequest(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.deleteRelationshipRequest = deleteRelationshipRequest;
+        }
+
+        /**
+         * Build call for deleteRelationship
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteRelationshipCall(scope, code, deleteRelationshipRequest, _callback);
+        }
+
+        /**
+         * Execute deleteRelationship request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationshipWithHttpInfo(scope, code, deleteRelationshipRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteRelationship request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteRelationshipWithHttpInfo(scope, code, deleteRelationshipRequest);
+        }
+
+        /**
+         * Execute deleteRelationship request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relationship is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteRelationshipAsync(scope, code, deleteRelationshipRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] DeleteRelationship: Delete Relationship (asynchronously)
+     * [EARLY ACCESS] DeleteRelationship: Delete Relationship
      * Delete a relationship between two entity objects represented by their identifiers
      * @param scope The scope of the relationship (required)
      * @param code The code of the relationship (required)
      * @param deleteRelationshipRequest The details of the relationship to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIdeleteRelationshipRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -379,11 +441,7 @@ public class RelationshipsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRelationshipAsync(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteRelationshipValidateBeforeCall(scope, code, deleteRelationshipRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIdeleteRelationshipRequest deleteRelationship(String scope, String code, DeleteRelationshipRequest deleteRelationshipRequest) {
+        return new APIdeleteRelationshipRequest(scope, code, deleteRelationshipRequest);
     }
 }

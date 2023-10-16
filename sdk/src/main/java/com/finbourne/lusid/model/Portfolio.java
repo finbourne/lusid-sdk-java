@@ -740,37 +740,30 @@ public class Portfolio {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Portfolio
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Portfolio
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Portfolio.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Portfolio.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Portfolio is not found in the empty JSON string", Portfolio.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Portfolio.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Portfolio` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Portfolio.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
       // validate the required field `id`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      ResourceId.validateJsonElement(jsonObj.get("id"));
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
@@ -782,11 +775,11 @@ public class Portfolio {
       }
       // validate the optional field `parentPortfolioId`
       if (jsonObj.get("parentPortfolioId") != null && !jsonObj.get("parentPortfolioId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("parentPortfolioId"));
+        ResourceId.validateJsonElement(jsonObj.get("parentPortfolioId"));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
@@ -801,12 +794,12 @@ public class Portfolio {
 
           // validate the optional field `relationships` (array)
           for (int i = 0; i < jsonArrayrelationships.size(); i++) {
-            Relationship.validateJsonObject(jsonArrayrelationships.get(i).getAsJsonObject());
+            Relationship.validateJsonElement(jsonArrayrelationships.get(i));
           };
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("instrumentScopes") != null && !jsonObj.get("instrumentScopes").isJsonArray()) {
+      if (jsonObj.get("instrumentScopes") != null && !jsonObj.get("instrumentScopes").isJsonNull() && !jsonObj.get("instrumentScopes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScopes` to be an array in the JSON string but got `%s`", jsonObj.get("instrumentScopes").toString()));
       }
       if ((jsonObj.get("accountingMethod") != null && !jsonObj.get("accountingMethod").isJsonNull()) && !jsonObj.get("accountingMethod").isJsonPrimitive()) {
@@ -828,7 +821,7 @@ public class Portfolio {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -854,9 +847,9 @@ public class Portfolio {
 
            @Override
            public Portfolio read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

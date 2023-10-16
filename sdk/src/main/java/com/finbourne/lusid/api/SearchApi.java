@@ -75,24 +75,7 @@ public class SearchApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for instrumentsSearch
-     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. (required)
-     * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param masteredOnly If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. (optional, default to false)
-     * @param scope The scope in which the instrument lies. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call instrumentsSearchCall(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call instrumentsSearchCall(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -165,95 +148,146 @@ public class SearchApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] InstrumentsSearch: Instruments search
-     * Search across all instruments that have been mastered in LUSID. Optionally augment the results with instruments from an external symbology service,  currently OpenFIGI.
-     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. (required)
-     * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param masteredOnly If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. (optional, default to false)
-     * @param scope The scope in which the instrument lies. (optional)
-     * @return List&lt;InstrumentMatch&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<InstrumentMatch> instrumentsSearch(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope) throws ApiException {
-        ApiResponse<List<InstrumentMatch>> localVarResp = instrumentsSearchWithHttpInfo(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] InstrumentsSearch: Instruments search
-     * Search across all instruments that have been mastered in LUSID. Optionally augment the results with instruments from an external symbology service,  currently OpenFIGI.
-     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. (required)
-     * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param masteredOnly If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. (optional, default to false)
-     * @param scope The scope in which the instrument lies. (optional)
-     * @return ApiResponse&lt;List&lt;InstrumentMatch&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<InstrumentMatch>> instrumentsSearchWithHttpInfo(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope) throws ApiException {
+    private ApiResponse<List<InstrumentMatch>> instrumentsSearchWithHttpInfo(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope) throws ApiException {
         okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, null);
         Type localVarReturnType = new TypeToken<List<InstrumentMatch>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] InstrumentsSearch: Instruments search (asynchronously)
-     * Search across all instruments that have been mastered in LUSID. Optionally augment the results with instruments from an external symbology service,  currently OpenFIGI.
-     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. (required)
-     * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param masteredOnly If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. (optional, default to false)
-     * @param scope The scope in which the instrument lies. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call instrumentsSearchAsync(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback<List<InstrumentMatch>> _callback) throws ApiException {
+    private okhttp3.Call instrumentsSearchAsync(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback<List<InstrumentMatch>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback);
         Type localVarReturnType = new TypeToken<List<InstrumentMatch>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIinstrumentsSearchRequest {
+        private final List<InstrumentSearchProperty> instrumentSearchProperty;
+        private String masteredEffectiveAt;
+        private Boolean masteredOnly;
+        private String scope;
+
+        private APIinstrumentsSearchRequest(List<InstrumentSearchProperty> instrumentSearchProperty) {
+            this.instrumentSearchProperty = instrumentSearchProperty;
+        }
+
+        /**
+         * Set masteredEffectiveAt
+         * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIinstrumentsSearchRequest
+         */
+        public APIinstrumentsSearchRequest masteredEffectiveAt(String masteredEffectiveAt) {
+            this.masteredEffectiveAt = masteredEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set masteredOnly
+         * @param masteredOnly If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. (optional, default to false)
+         * @return APIinstrumentsSearchRequest
+         */
+        public APIinstrumentsSearchRequest masteredOnly(Boolean masteredOnly) {
+            this.masteredOnly = masteredOnly;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. (optional)
+         * @return APIinstrumentsSearchRequest
+         */
+        public APIinstrumentsSearchRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for instrumentsSearch
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return instrumentsSearchCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback);
+        }
+
+        /**
+         * Execute instrumentsSearch request
+         * @return List&lt;InstrumentMatch&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<InstrumentMatch> execute() throws ApiException {
+            ApiResponse<List<InstrumentMatch>> localVarResp = instrumentsSearchWithHttpInfo(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute instrumentsSearch request with HTTP info returned
+         * @return ApiResponse&lt;List&lt;InstrumentMatch&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<InstrumentMatch>> executeWithHttpInfo() throws ApiException {
+            return instrumentsSearchWithHttpInfo(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope);
+        }
+
+        /**
+         * Execute instrumentsSearch request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<InstrumentMatch>> _callback) throws ApiException {
+            return instrumentsSearchAsync(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for searchPortfolioGroups
-     * @param search A parameter used for searching any portfolio group field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] InstrumentsSearch: Instruments search
+     * Search across all instruments that have been mastered in LUSID. Optionally augment the results with instruments from an external symbology service,  currently OpenFIGI.
+     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched   properties. (required)
+     * @return APIinstrumentsSearchRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchPortfolioGroupsCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIinstrumentsSearchRequest instrumentsSearch(List<InstrumentSearchProperty> instrumentSearchProperty) {
+        return new APIinstrumentsSearchRequest(instrumentSearchProperty);
+    }
+    private okhttp3.Call searchPortfolioGroupsCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -325,89 +359,153 @@ public class SearchApi {
 
     }
 
-    /**
-     * SearchPortfolioGroups: Search Portfolio Groups
-     * Search through all portfolio groups
-     * @param search A parameter used for searching any portfolio group field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @return PagedResourceListOfPortfolioGroupSearchResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPortfolioGroupSearchResult searchPortfolioGroups(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> localVarResp = searchPortfolioGroupsWithHttpInfo(search, filter, sortBy, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * SearchPortfolioGroups: Search Portfolio Groups
-     * Search through all portfolio groups
-     * @param search A parameter used for searching any portfolio group field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPortfolioGroupSearchResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> searchPortfolioGroupsWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> searchPortfolioGroupsWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * SearchPortfolioGroups: Search Portfolio Groups (asynchronously)
-     * Search through all portfolio groups
-     * @param search A parameter used for searching any portfolio group field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchPortfolioGroupsAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback) throws ApiException {
+    private okhttp3.Call searchPortfolioGroupsAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsearchPortfolioGroupsRequest {
+        private String search;
+        private String filter;
+        private String sortBy;
+        private Integer limit;
+        private String page;
+
+        private APIsearchPortfolioGroupsRequest() {
+        }
+
+        /**
+         * Set search
+         * @param search A parameter used for searching any portfolio group field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchPortfolioGroupsRequest
+         */
+        public APIsearchPortfolioGroupsRequest search(String search) {
+            this.search = search;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchPortfolioGroupsRequest
+         */
+        public APIsearchPortfolioGroupsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
+         * @return APIsearchPortfolioGroupsRequest
+         */
+        public APIsearchPortfolioGroupsRequest sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, only return this number of records (optional)
+         * @return APIsearchPortfolioGroupsRequest
+         */
+        public APIsearchPortfolioGroupsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
+         * @return APIsearchPortfolioGroupsRequest
+         */
+        public APIsearchPortfolioGroupsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for searchPortfolioGroups
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return searchPortfolioGroupsCall(search, filter, sortBy, limit, page, _callback);
+        }
+
+        /**
+         * Execute searchPortfolioGroups request
+         * @return PagedResourceListOfPortfolioGroupSearchResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPortfolioGroupSearchResult execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> localVarResp = searchPortfolioGroupsWithHttpInfo(search, filter, sortBy, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute searchPortfolioGroups request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPortfolioGroupSearchResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> executeWithHttpInfo() throws ApiException {
+            return searchPortfolioGroupsWithHttpInfo(search, filter, sortBy, limit, page);
+        }
+
+        /**
+         * Execute searchPortfolioGroups request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback) throws ApiException {
+            return searchPortfolioGroupsAsync(search, filter, sortBy, limit, page, _callback);
+        }
+    }
+
     /**
-     * Build call for searchPortfolios
-     * @param search A parameter used for searching any portfolio field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * SearchPortfolioGroups: Search Portfolio Groups
+     * Search through all portfolio groups
+     * @return APIsearchPortfolioGroupsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -416,7 +514,10 @@ public class SearchApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchPortfoliosCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIsearchPortfolioGroupsRequest searchPortfolioGroups() {
+        return new APIsearchPortfolioGroupsRequest();
+    }
+    private okhttp3.Call searchPortfoliosCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -488,89 +589,153 @@ public class SearchApi {
 
     }
 
-    /**
-     * SearchPortfolios: Search Portfolios
-     * Search through all portfolios
-     * @param search A parameter used for searching any portfolio field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @return PagedResourceListOfPortfolioSearchResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPortfolioSearchResult searchPortfolios(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfPortfolioSearchResult> localVarResp = searchPortfoliosWithHttpInfo(search, filter, sortBy, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * SearchPortfolios: Search Portfolios
-     * Search through all portfolios
-     * @param search A parameter used for searching any portfolio field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPortfolioSearchResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPortfolioSearchResult> searchPortfoliosWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfPortfolioSearchResult> searchPortfoliosWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * SearchPortfolios: Search Portfolios (asynchronously)
-     * Search through all portfolios
-     * @param search A parameter used for searching any portfolio field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchPortfoliosAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback) throws ApiException {
+    private okhttp3.Call searchPortfoliosAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsearchPortfoliosRequest {
+        private String search;
+        private String filter;
+        private String sortBy;
+        private Integer limit;
+        private String page;
+
+        private APIsearchPortfoliosRequest() {
+        }
+
+        /**
+         * Set search
+         * @param search A parameter used for searching any portfolio field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchPortfoliosRequest
+         */
+        public APIsearchPortfoliosRequest search(String search) {
+            this.search = search;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchPortfoliosRequest
+         */
+        public APIsearchPortfoliosRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
+         * @return APIsearchPortfoliosRequest
+         */
+        public APIsearchPortfoliosRequest sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, only return this number of records (optional)
+         * @return APIsearchPortfoliosRequest
+         */
+        public APIsearchPortfoliosRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
+         * @return APIsearchPortfoliosRequest
+         */
+        public APIsearchPortfoliosRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for searchPortfolios
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return searchPortfoliosCall(search, filter, sortBy, limit, page, _callback);
+        }
+
+        /**
+         * Execute searchPortfolios request
+         * @return PagedResourceListOfPortfolioSearchResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPortfolioSearchResult execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPortfolioSearchResult> localVarResp = searchPortfoliosWithHttpInfo(search, filter, sortBy, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute searchPortfolios request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPortfolioSearchResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPortfolioSearchResult> executeWithHttpInfo() throws ApiException {
+            return searchPortfoliosWithHttpInfo(search, filter, sortBy, limit, page);
+        }
+
+        /**
+         * Execute searchPortfolios request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback) throws ApiException {
+            return searchPortfoliosAsync(search, filter, sortBy, limit, page, _callback);
+        }
+    }
+
     /**
-     * Build call for searchProperties
-     * @param search A parameter used for searching any field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * SearchPortfolios: Search Portfolios
+     * Search through all portfolios
+     * @return APIsearchPortfoliosRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -579,7 +744,10 @@ public class SearchApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchPropertiesCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIsearchPortfoliosRequest searchPortfolios() {
+        return new APIsearchPortfoliosRequest();
+    }
+    private okhttp3.Call searchPropertiesCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -651,64 +819,153 @@ public class SearchApi {
 
     }
 
-    /**
-     * SearchProperties: Search Property Definitions
-     * Search through all Property Definitions
-     * @param search A parameter used for searching any field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @return PagedResourceListOfPropertyDefinitionSearchResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPropertyDefinitionSearchResult searchProperties(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> localVarResp = searchPropertiesWithHttpInfo(search, filter, sortBy, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * SearchProperties: Search Property Definitions
-     * Search through all Property Definitions
-     * @param search A parameter used for searching any field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPropertyDefinitionSearchResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> searchPropertiesWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> searchPropertiesWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call searchPropertiesAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsearchPropertiesRequest {
+        private String search;
+        private String filter;
+        private String sortBy;
+        private Integer limit;
+        private String page;
+
+        private APIsearchPropertiesRequest() {
+        }
+
+        /**
+         * Set search
+         * @param search A parameter used for searching any field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchPropertiesRequest
+         */
+        public APIsearchPropertiesRequest search(String search) {
+            this.search = search;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchPropertiesRequest
+         */
+        public APIsearchPropertiesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
+         * @return APIsearchPropertiesRequest
+         */
+        public APIsearchPropertiesRequest sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, only return this number of records (optional)
+         * @return APIsearchPropertiesRequest
+         */
+        public APIsearchPropertiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
+         * @return APIsearchPropertiesRequest
+         */
+        public APIsearchPropertiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for searchProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return searchPropertiesCall(search, filter, sortBy, limit, page, _callback);
+        }
+
+        /**
+         * Execute searchProperties request
+         * @return PagedResourceListOfPropertyDefinitionSearchResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPropertyDefinitionSearchResult execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> localVarResp = searchPropertiesWithHttpInfo(search, filter, sortBy, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute searchProperties request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPropertyDefinitionSearchResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> executeWithHttpInfo() throws ApiException {
+            return searchPropertiesWithHttpInfo(search, filter, sortBy, limit, page);
+        }
+
+        /**
+         * Execute searchProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback) throws ApiException {
+            return searchPropertiesAsync(search, filter, sortBy, limit, page, _callback);
+        }
+    }
+
     /**
-     * SearchProperties: Search Property Definitions (asynchronously)
+     * SearchProperties: Search Property Definitions
      * Search through all Property Definitions
-     * @param search A parameter used for searching any field. Wildcards(*) are supported at the end of words (e.g. &#39;Port*&#39;). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param filter Expression to filter the result set.   For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. Multiple fields can be denoted by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName (optional)
-     * @param limit When paginating, only return this number of records (optional)
-     * @param page Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIsearchPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -717,11 +974,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchPropertiesAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIsearchPropertiesRequest searchProperties() {
+        return new APIsearchPropertiesRequest();
     }
 }

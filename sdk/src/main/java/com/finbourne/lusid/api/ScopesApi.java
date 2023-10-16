@@ -71,21 +71,7 @@ public class ScopesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for listScopes
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listScopesCall(String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listScopesCall(String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,52 +127,109 @@ public class ScopesApi {
 
     }
 
-    /**
-     * ListScopes: List Scopes
-     * List all the scopes that contain data.
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfScopeDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfScopeDefinition listScopes(String filter) throws ApiException {
-        ApiResponse<ResourceListOfScopeDefinition> localVarResp = listScopesWithHttpInfo(filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListScopes: List Scopes
-     * List all the scopes that contain data.
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfScopeDefinition> listScopesWithHttpInfo(String filter) throws ApiException {
+    private ApiResponse<ResourceListOfScopeDefinition> listScopesWithHttpInfo(String filter) throws ApiException {
         okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call listScopesAsync(String filter, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistScopesRequest {
+        private String filter;
+
+        private APIlistScopesRequest() {
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistScopesRequest
+         */
+        public APIlistScopesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listScopes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listScopesCall(filter, _callback);
+        }
+
+        /**
+         * Execute listScopes request
+         * @return ResourceListOfScopeDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfScopeDefinition execute() throws ApiException {
+            ApiResponse<ResourceListOfScopeDefinition> localVarResp = listScopesWithHttpInfo(filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listScopes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo() throws ApiException {
+            return listScopesWithHttpInfo(filter);
+        }
+
+        /**
+         * Execute listScopes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
+            return listScopesAsync(filter, _callback);
+        }
+    }
+
     /**
-     * ListScopes: List Scopes (asynchronously)
+     * ListScopes: List Scopes
      * List all the scopes that contain data.
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIlistScopesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -195,11 +238,7 @@ public class ScopesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listScopesAsync(String filter, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIlistScopesRequest listScopes() {
+        return new APIlistScopesRequest();
     }
 }

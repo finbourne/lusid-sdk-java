@@ -11,7 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createRelationDefinition"></a>
 # **createRelationDefinition**
-> RelationDefinition createRelationDefinition(createRelationDefinitionRequest)
+> RelationDefinition createRelationDefinition(createRelationDefinitionRequest).execute();
 
 [EXPERIMENTAL] CreateRelationDefinition: Create a relation definition
 
@@ -39,7 +39,8 @@ public class Example {
     RelationDefinitionsApi apiInstance = new RelationDefinitionsApi(defaultClient);
     CreateRelationDefinitionRequest createRelationDefinitionRequest = new CreateRelationDefinitionRequest(); // CreateRelationDefinitionRequest | The definition of the new relation.
     try {
-      RelationDefinition result = apiInstance.createRelationDefinition(createRelationDefinitionRequest);
+      RelationDefinition result = apiInstance.createRelationDefinition(createRelationDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationDefinitionsApi#createRelationDefinition");
@@ -80,7 +81,7 @@ public class Example {
 
 <a id="deleteRelationDefinition"></a>
 # **deleteRelationDefinition**
-> DeletedEntityResponse deleteRelationDefinition(scope, code)
+> DeletedEntityResponse deleteRelationDefinition(scope, code).execute();
 
 [EXPERIMENTAL] DeleteRelationDefinition: Delete relation definition
 
@@ -107,9 +108,10 @@ public class Example {
 
     RelationDefinitionsApi apiInstance = new RelationDefinitionsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the relation to be deleted.
-    String code = "code_example"; // String | The code of the relation to be deleted. Together with the domain and scope this uniquely              identifies the relation.
+    String code = "code_example"; // String | The code of the relation to be deleted. Together with the domain and scope this uniquely   identifies the relation.
     try {
-      DeletedEntityResponse result = apiInstance.deleteRelationDefinition(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteRelationDefinition(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationDefinitionsApi#deleteRelationDefinition");
@@ -127,7 +129,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the relation to be deleted. | |
-| **code** | **String**| The code of the relation to be deleted. Together with the domain and scope this uniquely              identifies the relation. | |
+| **code** | **String**| The code of the relation to be deleted. Together with the domain and scope this uniquely   identifies the relation. | |
 
 ### Return type
 
@@ -151,7 +153,7 @@ public class Example {
 
 <a id="getRelationDefinition"></a>
 # **getRelationDefinition**
-> RelationDefinition getRelationDefinition(scope, code, asAt)
+> RelationDefinition getRelationDefinition(scope, code).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetRelationDefinition: Get relation definition
 
@@ -178,10 +180,12 @@ public class Example {
 
     RelationDefinitionsApi apiInstance = new RelationDefinitionsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the specified relation.
-    String code = "code_example"; // String | The code of the specified relation. Together with the domain and scope this uniquely              identifies the relation.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definition. Defaults to return              the latest version of the definition if not specified.
+    String code = "code_example"; // String | The code of the specified relation. Together with the domain and scope this uniquely   identifies the relation.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definition. Defaults to return   the latest version of the definition if not specified.
     try {
-      RelationDefinition result = apiInstance.getRelationDefinition(scope, code, asAt);
+      RelationDefinition result = apiInstance.getRelationDefinition(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationDefinitionsApi#getRelationDefinition");
@@ -199,8 +203,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified relation. | |
-| **code** | **String**| The code of the specified relation. Together with the domain and scope this uniquely              identifies the relation. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relation definition. Defaults to return              the latest version of the definition if not specified. | [optional] |
+| **code** | **String**| The code of the specified relation. Together with the domain and scope this uniquely   identifies the relation. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relation definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
 
 ### Return type
 

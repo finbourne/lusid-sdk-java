@@ -179,27 +179,27 @@ public class ResultKeyRule {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ResultKeyRule
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ResultKeyRule
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ResultKeyRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ResultKeyRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ResultKeyRule is not found in the empty JSON string", ResultKeyRule.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("resultKeyRuleType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("resultKeyRuleType").getAsString();
       switch (discriminatorValue) {
         case "PortfolioResultDataKeyRule":
-          PortfolioResultDataKeyRule.validateJsonObject(jsonObj);
+          PortfolioResultDataKeyRule.validateJsonElement(jsonElement);
           break;
         case "ResultDataKeyRule":
-          ResultDataKeyRule.validateJsonObject(jsonObj);
+          ResultDataKeyRule.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `resultKeyRuleType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

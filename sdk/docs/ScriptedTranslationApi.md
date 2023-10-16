@@ -16,7 +16,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="getTranslationDialect"></a>
 # **getTranslationDialect**
-> Dialect getTranslationDialect(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt)
+> Dialect getTranslationDialect(scope, vendor, sourceSystem, entityType, serialisationFormat, version).asAt(asAt).execute();
 
 [EARLY ACCESS] GetTranslationDialect: Get a dialect.
 
@@ -50,7 +50,9 @@ public class Example {
     String version = "version_example"; // String | The semantic version of the dialect: MAJOR.MINOR.PATCH.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified.
     try {
-      Dialect result = apiInstance.getTranslationDialect(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt);
+      Dialect result = apiInstance.getTranslationDialect(scope, vendor, sourceSystem, entityType, serialisationFormat, version)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#getTranslationDialect");
@@ -97,7 +99,7 @@ public class Example {
 
 <a id="getTranslationScript"></a>
 # **getTranslationScript**
-> TranslationScript getTranslationScript(scope, code, version, asAt)
+> TranslationScript getTranslationScript(scope, code, version).asAt(asAt).execute();
 
 [EARLY ACCESS] GetTranslationScript: Retrieve a translation script by its identifier.
 
@@ -128,7 +130,9 @@ public class Example {
     String version = "version_example"; // String | Semantic version of the translation script.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the translation script. Defaults to latest.
     try {
-      TranslationScript result = apiInstance.getTranslationScript(scope, code, version, asAt);
+      TranslationScript result = apiInstance.getTranslationScript(scope, code, version)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#getTranslationScript");
@@ -172,7 +176,7 @@ public class Example {
 
 <a id="listDialectIds"></a>
 # **listDialectIds**
-> PagedResourceListOfDialectId listDialectIds(asAt, page, limit, filter)
+> PagedResourceListOfDialectId listDialectIds().asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] ListDialectIds: List dialect identifiers matching an optional filter.
 
@@ -198,12 +202,17 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialects.              Defaults to return the latest version of the dialect if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfDialectId result = apiInstance.listDialectIds(asAt, page, limit, filter);
+      PagedResourceListOfDialectId result = apiInstance.listDialectIds()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#listDialectIds");
@@ -220,10 +229,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the dialects.              Defaults to return the latest version of the dialect if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -247,7 +256,7 @@ public class Example {
 
 <a id="listTranslationScriptIds"></a>
 # **listTranslationScriptIds**
-> PagedResourceListOfTranslationScriptId listTranslationScriptIds(asAt, limit, filter, page)
+> PagedResourceListOfTranslationScriptId listTranslationScriptIds().asAt(asAt).limit(limit).filter(filter).page(page).execute();
 
 [EARLY ACCESS] ListTranslationScriptIds: List translation script identifiers.
 
@@ -275,10 +284,15 @@ public class Example {
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the script identifiers. Defaults to latest.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1              or Id.Scope eq 'my-scripts' to list result only for a particular scope.
-    String page = "page_example"; // String | The pagination token to use to continue listing translation script IDs; this              value is returned from the previous call. If a pagination token is provided, the filter field              must not have changed since the original request.
+    String filter = "filter_example"; // String | Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq 'my-scripts' to list result only for a particular scope.
+    String page = "page_example"; // String | The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request.
     try {
-      PagedResourceListOfTranslationScriptId result = apiInstance.listTranslationScriptIds(asAt, limit, filter, page);
+      PagedResourceListOfTranslationScriptId result = apiInstance.listTranslationScriptIds()
+            .asAt(asAt)
+            .limit(limit)
+            .filter(filter)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#listTranslationScriptIds");
@@ -297,8 +311,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the script identifiers. Defaults to latest. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1              or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing translation script IDs; this              value is returned from the previous call. If a pagination token is provided, the filter field              must not have changed since the original request. | [optional] |
+| **filter** | **String**| Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request. | [optional] |
 
 ### Return type
 
@@ -322,7 +336,7 @@ public class Example {
 
 <a id="translateEntities"></a>
 # **translateEntities**
-> TranslateEntitiesResponse translateEntities(translateEntitiesRequest)
+> TranslateEntitiesResponse translateEntities(translateEntitiesRequest).execute();
 
 [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script.
 
@@ -350,7 +364,8 @@ public class Example {
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
     TranslateEntitiesRequest translateEntitiesRequest = new TranslateEntitiesRequest(); // TranslateEntitiesRequest | The entities to translate, along with identifiers for the script and (optional) dialect to use.
     try {
-      TranslateEntitiesResponse result = apiInstance.translateEntities(translateEntitiesRequest);
+      TranslateEntitiesResponse result = apiInstance.translateEntities(translateEntitiesRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#translateEntities");
@@ -391,7 +406,7 @@ public class Example {
 
 <a id="translateEntitiesInlined"></a>
 # **translateEntitiesInlined**
-> TranslateEntitiesResponse translateEntitiesInlined(translateEntitiesInlinedRequest)
+> TranslateEntitiesResponse translateEntitiesInlined(translateEntitiesInlinedRequest).execute();
 
 [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script.
 
@@ -419,7 +434,8 @@ public class Example {
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
     TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest = new TranslateEntitiesInlinedRequest(); // TranslateEntitiesInlinedRequest | The entities to translate, along with the script to use and an optional schema for validation.
     try {
-      TranslateEntitiesResponse result = apiInstance.translateEntitiesInlined(translateEntitiesInlinedRequest);
+      TranslateEntitiesResponse result = apiInstance.translateEntitiesInlined(translateEntitiesInlinedRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#translateEntitiesInlined");
@@ -460,7 +476,7 @@ public class Example {
 
 <a id="upsertTranslationDialect"></a>
 # **upsertTranslationDialect**
-> Dialect upsertTranslationDialect(dialect)
+> Dialect upsertTranslationDialect(dialect).execute();
 
 [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect.
 
@@ -488,7 +504,8 @@ public class Example {
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
     Dialect dialect = new Dialect(); // Dialect | The dialect to upsert.
     try {
-      Dialect result = apiInstance.upsertTranslationDialect(dialect);
+      Dialect result = apiInstance.upsertTranslationDialect(dialect)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#upsertTranslationDialect");
@@ -529,7 +546,7 @@ public class Example {
 
 <a id="upsertTranslationScript"></a>
 # **upsertTranslationScript**
-> TranslationScript upsertTranslationScript(translationScript)
+> TranslationScript upsertTranslationScript(translationScript).execute();
 
 [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script.
 
@@ -557,7 +574,8 @@ public class Example {
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
     TranslationScript translationScript = new TranslationScript(); // TranslationScript | The translation script to be upserted.
     try {
-      TranslationScript result = apiInstance.upsertTranslationScript(translationScript);
+      TranslationScript result = apiInstance.upsertTranslationScript(translationScript)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScriptedTranslationApi#upsertTranslationScript");

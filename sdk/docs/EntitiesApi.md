@@ -9,7 +9,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="getPortfolioChanges"></a>
 # **getPortfolioChanges**
-> ResourceListOfChange getPortfolioChanges(scope, effectiveAt, asAt)
+> ResourceListOfChange getPortfolioChanges(scope, effectiveAt).asAt(asAt).execute();
 
 [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope.
 
@@ -39,7 +39,9 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective date of the origin.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as-at date of the origin.
     try {
-      ResourceListOfChange result = apiInstance.getPortfolioChanges(scope, effectiveAt, asAt);
+      ResourceListOfChange result = apiInstance.getPortfolioChanges(scope, effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling EntitiesApi#getPortfolioChanges");

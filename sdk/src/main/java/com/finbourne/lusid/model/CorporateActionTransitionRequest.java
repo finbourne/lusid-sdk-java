@@ -180,28 +180,21 @@ public class CorporateActionTransitionRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CorporateActionTransitionRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CorporateActionTransitionRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CorporateActionTransitionRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CorporateActionTransitionRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CorporateActionTransitionRequest is not found in the empty JSON string", CorporateActionTransitionRequest.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CorporateActionTransitionRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CorporateActionTransitionRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `inputTransition`
       if (jsonObj.get("inputTransition") != null && !jsonObj.get("inputTransition").isJsonNull()) {
-        CorporateActionTransitionComponentRequest.validateJsonObject(jsonObj.getAsJsonObject("inputTransition"));
+        CorporateActionTransitionComponentRequest.validateJsonElement(jsonObj.get("inputTransition"));
       }
       if (jsonObj.get("outputTransitions") != null && !jsonObj.get("outputTransitions").isJsonNull()) {
         JsonArray jsonArrayoutputTransitions = jsonObj.getAsJsonArray("outputTransitions");
@@ -213,7 +206,7 @@ public class CorporateActionTransitionRequest {
 
           // validate the optional field `outputTransitions` (array)
           for (int i = 0; i < jsonArrayoutputTransitions.size(); i++) {
-            CorporateActionTransitionComponentRequest.validateJsonObject(jsonArrayoutputTransitions.get(i).getAsJsonObject());
+            CorporateActionTransitionComponentRequest.validateJsonElement(jsonArrayoutputTransitions.get(i));
           };
         }
       }
@@ -239,9 +232,9 @@ public class CorporateActionTransitionRequest {
 
            @Override
            public CorporateActionTransitionRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

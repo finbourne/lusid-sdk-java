@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createSequence"></a>
 # **createSequence**
-> SequenceDefinition createSequence(scope, createSequenceRequest)
+> SequenceDefinition createSequence(scope, createSequenceRequest).execute();
 
 [EARLY ACCESS] CreateSequence: Create a new sequence
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | Scope of the sequence.
     CreateSequenceRequest createSequenceRequest = new CreateSequenceRequest(); // CreateSequenceRequest | Request to create sequence
     try {
-      SequenceDefinition result = apiInstance.createSequence(scope, createSequenceRequest);
+      SequenceDefinition result = apiInstance.createSequence(scope, createSequenceRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SequencesApi#createSequence");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getSequence"></a>
 # **getSequence**
-> SequenceDefinition getSequence(scope, code)
+> SequenceDefinition getSequence(scope, code).execute();
 
 [EARLY ACCESS] GetSequence: Get a specified sequence
 
@@ -110,9 +111,10 @@ public class Example {
 
     SequencesApi apiInstance = new SequencesApi(defaultClient);
     String scope = "scope_example"; // String | Scope of the sequence.
-    String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely              identifies the sequence.
+    String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely   identifies the sequence.
     try {
-      SequenceDefinition result = apiInstance.getSequence(scope, code);
+      SequenceDefinition result = apiInstance.getSequence(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SequencesApi#getSequence");
@@ -130,7 +132,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Scope of the sequence. | |
-| **code** | **String**| Code of the sequence. This together with stated scope uniquely              identifies the sequence. | |
+| **code** | **String**| Code of the sequence. This together with stated scope uniquely   identifies the sequence. | |
 
 ### Return type
 
@@ -154,7 +156,7 @@ public class Example {
 
 <a id="listSequences"></a>
 # **listSequences**
-> PagedResourceListOfSequenceDefinition listSequences(page, limit, filter)
+> PagedResourceListOfSequenceDefinition listSequences().page(page).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] ListSequences: List Sequences
 
@@ -182,9 +184,13 @@ public class Example {
     SequencesApi apiInstance = new SequencesApi(defaultClient);
     String page = "page_example"; // String | The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 500 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfSequenceDefinition result = apiInstance.listSequences(page, limit, filter);
+      PagedResourceListOfSequenceDefinition result = apiInstance.listSequences()
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SequencesApi#listSequences");
@@ -203,7 +209,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **page** | **String**| The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 500 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -227,7 +233,7 @@ public class Example {
 
 <a id="next"></a>
 # **next**
-> NextValueInSequenceResponse next(scope, code, batch)
+> NextValueInSequenceResponse next(scope, code).batch(batch).execute();
 
 [EARLY ACCESS] Next: Get next values from sequence
 
@@ -254,10 +260,12 @@ public class Example {
 
     SequencesApi apiInstance = new SequencesApi(defaultClient);
     String scope = "scope_example"; // String | Scope of the sequence.
-    String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely              identifies the sequence.
+    String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely   identifies the sequence.
     Integer batch = 56; // Integer | Number of sequences items to return for the specified sequence. Default to 1 if not specified.
     try {
-      NextValueInSequenceResponse result = apiInstance.next(scope, code, batch);
+      NextValueInSequenceResponse result = apiInstance.next(scope, code)
+            .batch(batch)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SequencesApi#next");
@@ -275,7 +283,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Scope of the sequence. | |
-| **code** | **String**| Code of the sequence. This together with stated scope uniquely              identifies the sequence. | |
+| **code** | **String**| Code of the sequence. This together with stated scope uniquely   identifies the sequence. | |
 | **batch** | **Integer**| Number of sequences items to return for the specified sequence. Default to 1 if not specified. | [optional] |
 
 ### Return type

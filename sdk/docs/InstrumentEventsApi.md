@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="queryBucketedCashFlows"></a>
 # **queryBucketedCashFlows**
-> BucketedCashFlowResponse queryBucketedCashFlows(queryBucketedCashFlowsRequest)
+> BucketedCashFlowResponse queryBucketedCashFlows().queryBucketedCashFlowsRequest(queryBucketedCashFlowsRequest).execute();
 
 [EXPERIMENTAL] QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
 
@@ -40,7 +40,9 @@ public class Example {
     InstrumentEventsApi apiInstance = new InstrumentEventsApi(defaultClient);
     QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest = new QueryBucketedCashFlowsRequest(); // QueryBucketedCashFlowsRequest | The Query Information.
     try {
-      BucketedCashFlowResponse result = apiInstance.queryBucketedCashFlows(queryBucketedCashFlowsRequest);
+      BucketedCashFlowResponse result = apiInstance.queryBucketedCashFlows()
+            .queryBucketedCashFlowsRequest(queryBucketedCashFlowsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentEventsApi#queryBucketedCashFlows");
@@ -81,7 +83,7 @@ public class Example {
 
 <a id="queryCashFlows"></a>
 # **queryCashFlows**
-> ResourceListOfInstrumentCashFlow queryCashFlows(limit, page, queryCashFlowsRequest)
+> ResourceListOfInstrumentCashFlow queryCashFlows().limit(limit).page(page).queryCashFlowsRequest(queryCashFlowsRequest).execute();
 
 [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
 
@@ -111,7 +113,11 @@ public class Example {
     String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
     QueryCashFlowsRequest queryCashFlowsRequest = new QueryCashFlowsRequest(); // QueryCashFlowsRequest | The filter parameters used to retrieve instrument events.
     try {
-      ResourceListOfInstrumentCashFlow result = apiInstance.queryCashFlows(limit, page, queryCashFlowsRequest);
+      ResourceListOfInstrumentCashFlow result = apiInstance.queryCashFlows()
+            .limit(limit)
+            .page(page)
+            .queryCashFlowsRequest(queryCashFlowsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentEventsApi#queryCashFlows");
@@ -154,7 +160,7 @@ public class Example {
 
 <a id="queryInstrumentEvents"></a>
 # **queryInstrumentEvents**
-> ResourceListOfInstrumentEventHolder queryInstrumentEvents(limit, page, queryInstrumentEventsRequest)
+> ResourceListOfInstrumentEventHolder queryInstrumentEvents().limit(limit).page(page).queryInstrumentEventsRequest(queryInstrumentEventsRequest).execute();
 
 [EXPERIMENTAL] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
 
@@ -184,7 +190,11 @@ public class Example {
     String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
     QueryInstrumentEventsRequest queryInstrumentEventsRequest = new QueryInstrumentEventsRequest(); // QueryInstrumentEventsRequest | The filter parameters used to retrieve instrument events.
     try {
-      ResourceListOfInstrumentEventHolder result = apiInstance.queryInstrumentEvents(limit, page, queryInstrumentEventsRequest);
+      ResourceListOfInstrumentEventHolder result = apiInstance.queryInstrumentEvents()
+            .limit(limit)
+            .page(page)
+            .queryInstrumentEventsRequest(queryInstrumentEventsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentEventsApi#queryInstrumentEvents");
@@ -227,7 +237,7 @@ public class Example {
 
 <a id="queryTradeTickets"></a>
 # **queryTradeTickets**
-> ResourceListOfPortfolioTradeTicket queryTradeTickets(limit, page, queryTradeTicketsRequest)
+> ResourceListOfPortfolioTradeTicket queryTradeTickets().limit(limit).page(page).queryTradeTicketsRequest(queryTradeTicketsRequest).execute();
 
 [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
 
@@ -257,7 +267,11 @@ public class Example {
     String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
     QueryTradeTicketsRequest queryTradeTicketsRequest = new QueryTradeTicketsRequest(); // QueryTradeTicketsRequest | The filter parameters used to retrieve instrument events.
     try {
-      ResourceListOfPortfolioTradeTicket result = apiInstance.queryTradeTickets(limit, page, queryTradeTicketsRequest);
+      ResourceListOfPortfolioTradeTicket result = apiInstance.queryTradeTickets()
+            .limit(limit)
+            .page(page)
+            .queryTradeTicketsRequest(queryTradeTicketsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentEventsApi#queryTradeTickets");

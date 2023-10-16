@@ -85,24 +85,7 @@ public class AborApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for addDiaryEntry
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param diaryEntryCode Diary entry code (required)
-     * @param diaryEntryRequest The diary entry to add. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call addDiaryEntryCall(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addDiaryEntryCall(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -181,92 +164,122 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
-     * Adds a new diary entry to the specified Abor
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param diaryEntryCode Diary entry code (required)
-     * @param diaryEntryRequest The diary entry to add. (required)
-     * @return DiaryEntry
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DiaryEntry addDiaryEntry(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) throws ApiException {
-        ApiResponse<DiaryEntry> localVarResp = addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
-     * Adds a new diary entry to the specified Abor
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param diaryEntryCode Diary entry code (required)
-     * @param diaryEntryRequest The diary entry to add. (required)
-     * @return ApiResponse&lt;DiaryEntry&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DiaryEntry> addDiaryEntryWithHttpInfo(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) throws ApiException {
+    private ApiResponse<DiaryEntry> addDiaryEntryWithHttpInfo(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) throws ApiException {
         okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryCode, diaryEntryRequest, null);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. (asynchronously)
-     * Adds a new diary entry to the specified Abor
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param diaryEntryCode Diary entry code (required)
-     * @param diaryEntryRequest The diary entry to add. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call addDiaryEntryAsync(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
+    private okhttp3.Call addDiaryEntryAsync(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryCode, diaryEntryRequest, _callback);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIaddDiaryEntryRequest {
+        private final String scope;
+        private final String code;
+        private final String diaryEntryCode;
+        private final DiaryEntryRequest diaryEntryRequest;
+
+        private APIaddDiaryEntryRequest(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.diaryEntryCode = diaryEntryCode;
+            this.diaryEntryRequest = diaryEntryRequest;
+        }
+
+        /**
+         * Build call for addDiaryEntry
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return addDiaryEntryCall(scope, code, diaryEntryCode, diaryEntryRequest, _callback);
+        }
+
+        /**
+         * Execute addDiaryEntry request
+         * @return DiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DiaryEntry execute() throws ApiException {
+            ApiResponse<DiaryEntry> localVarResp = addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addDiaryEntry request with HTTP info returned
+         * @return ApiResponse&lt;DiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
+            return addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest);
+        }
+
+        /**
+         * Execute addDiaryEntry request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
+            return addDiaryEntryAsync(scope, code, diaryEntryCode, diaryEntryRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for createAbor
+     * [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
+     * Adds a new diary entry to the specified Abor
      * @param scope The scope of the Abor. (required)
-     * @param aborRequest The definition of the Abor. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Abor. (required)
+     * @param diaryEntryCode Diary entry code (required)
+     * @param diaryEntryRequest The diary entry to add. (required)
+     * @return APIaddDiaryEntryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly added diary entry. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAborCall(String scope, AborRequest aborRequest, final ApiCallback _callback) throws ApiException {
+    public APIaddDiaryEntryRequest addDiaryEntry(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) {
+        return new APIaddDiaryEntryRequest(scope, code, diaryEntryCode, diaryEntryRequest);
+    }
+    private okhttp3.Call createAborCall(String scope, AborRequest aborRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -333,86 +346,116 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateAbor: Create an Abor.
-     * Create the given Abor.
-     * @param scope The scope of the Abor. (required)
-     * @param aborRequest The definition of the Abor. (required)
-     * @return Abor
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Abor createAbor(String scope, AborRequest aborRequest) throws ApiException {
-        ApiResponse<Abor> localVarResp = createAborWithHttpInfo(scope, aborRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateAbor: Create an Abor.
-     * Create the given Abor.
-     * @param scope The scope of the Abor. (required)
-     * @param aborRequest The definition of the Abor. (required)
-     * @return ApiResponse&lt;Abor&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Abor> createAborWithHttpInfo(String scope, AborRequest aborRequest) throws ApiException {
+    private ApiResponse<Abor> createAborWithHttpInfo(String scope, AborRequest aborRequest) throws ApiException {
         okhttp3.Call localVarCall = createAborValidateBeforeCall(scope, aborRequest, null);
         Type localVarReturnType = new TypeToken<Abor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateAbor: Create an Abor. (asynchronously)
-     * Create the given Abor.
-     * @param scope The scope of the Abor. (required)
-     * @param aborRequest The definition of the Abor. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAborAsync(String scope, AborRequest aborRequest, final ApiCallback<Abor> _callback) throws ApiException {
+    private okhttp3.Call createAborAsync(String scope, AborRequest aborRequest, final ApiCallback<Abor> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAborValidateBeforeCall(scope, aborRequest, _callback);
         Type localVarReturnType = new TypeToken<Abor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateAborRequest {
+        private final String scope;
+        private final AborRequest aborRequest;
+
+        private APIcreateAborRequest(String scope, AborRequest aborRequest) {
+            this.scope = scope;
+            this.aborRequest = aborRequest;
+        }
+
+        /**
+         * Build call for createAbor
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createAborCall(scope, aborRequest, _callback);
+        }
+
+        /**
+         * Execute createAbor request
+         * @return Abor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Abor execute() throws ApiException {
+            ApiResponse<Abor> localVarResp = createAborWithHttpInfo(scope, aborRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createAbor request with HTTP info returned
+         * @return ApiResponse&lt;Abor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Abor> executeWithHttpInfo() throws ApiException {
+            return createAborWithHttpInfo(scope, aborRequest);
+        }
+
+        /**
+         * Execute createAbor request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Abor> _callback) throws ApiException {
+            return createAborAsync(scope, aborRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteAbor
-     * @param scope The scope of the Abor to be deleted. (required)
-     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] CreateAbor: Create an Abor.
+     * Create the given Abor.
+     * @param scope The scope of the Abor. (required)
+     * @param aborRequest The definition of the Abor. (required)
+     * @return APIcreateAborRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created abor. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAborCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateAborRequest createAbor(String scope, AborRequest aborRequest) {
+        return new APIcreateAborRequest(scope, aborRequest);
+    }
+    private okhttp3.Call deleteAborCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -476,89 +519,116 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteAbor: Delete an Abor.
-     * Delete the given Abor.
-     * @param scope The scope of the Abor to be deleted. (required)
-     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteAbor(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteAborWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteAbor: Delete an Abor.
-     * Delete the given Abor.
-     * @param scope The scope of the Abor to be deleted. (required)
-     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteAborWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteAborWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteAborValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteAbor: Delete an Abor. (asynchronously)
-     * Delete the given Abor.
-     * @param scope The scope of the Abor to be deleted. (required)
-     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteAborAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteAborAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAborValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteAborRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteAborRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteAbor
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteAborCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteAbor request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteAborWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteAbor request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteAborWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteAbor request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteAborAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getAbor
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteAbor: Delete an Abor.
+     * Delete the given Abor.
+     * @param scope The scope of the Abor to be deleted. (required)
+     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
+     * @return APIdeleteAborRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAborCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteAborRequest deleteAbor(String scope, String code) {
+        return new APIdeleteAborRequest(scope, code);
+    }
+    private okhttp3.Call getAborCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -634,99 +704,149 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetAbor: Get Abor.
-     * Retrieve the definition of a particular Abor.
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. (optional)
-     * @return Abor
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Abor getAbor(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<Abor> localVarResp = getAborWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetAbor: Get Abor.
-     * Retrieve the definition of a particular Abor.
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. (optional)
-     * @return ApiResponse&lt;Abor&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Abor> getAborWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<Abor> getAborWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getAborValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<Abor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetAbor: Get Abor. (asynchronously)
-     * Retrieve the definition of a particular Abor.
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAborAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Abor> _callback) throws ApiException {
+    private okhttp3.Call getAborAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Abor> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAborValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Abor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAborRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetAborRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetAborRequest
+         */
+        public APIgetAborRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. (optional)
+         * @return APIgetAborRequest
+         */
+        public APIgetAborRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. (optional)
+         * @return APIgetAborRequest
+         */
+        public APIgetAborRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getAbor
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAborCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getAbor request
+         * @return Abor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Abor execute() throws ApiException {
+            ApiResponse<Abor> localVarResp = getAborWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAbor request with HTTP info returned
+         * @return ApiResponse&lt;Abor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Abor> executeWithHttpInfo() throws ApiException {
+            return getAborWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getAbor request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Abor> _callback) throws ApiException {
+            return getAborAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getJELines
+     * [EXPERIMENTAL] GetAbor: Get Abor.
+     * Retrieve the definition of a particular Abor.
      * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
-     * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
+     * @return APIgetAborRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Abor definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getJELinesCall(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetAborRequest getAbor(String scope, String code) {
+        return new APIgetAborRequest(scope, code);
+    }
+    private okhttp3.Call getJELinesCall(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -811,103 +931,152 @@ public class AborApi {
 
     }
 
-    /**
-     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
-     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
-     * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-     * @return VersionedResourceListOfJournalEntryLine
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfJournalEntryLine getJELines(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
-        ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
-     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
-     * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfJournalEntryLine> getJELinesWithHttpInfo(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
+    private ApiResponse<VersionedResourceListOfJournalEntryLine> getJELinesWithHttpInfo(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = getJELinesValidateBeforeCall(scope, code, jeLinesQueryParameters, asAt, limit, page, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor. (asynchronously)
-     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
-     * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getJELinesAsync(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
+    private okhttp3.Call getJELinesAsync(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getJELinesValidateBeforeCall(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetJELinesRequest {
+        private final String scope;
+        private final String code;
+        private final JELinesQueryParameters jeLinesQueryParameters;
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String page;
+
+        private APIgetJELinesRequest(String scope, String code, JELinesQueryParameters jeLinesQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.jeLinesQueryParameters = jeLinesQueryParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetJELinesRequest
+         */
+        public APIgetJELinesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetJELinesRequest
+         */
+        public APIgetJELinesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
+         * @return APIgetJELinesRequest
+         */
+        public APIgetJELinesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for getJELines
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getJELinesCall(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
+        }
+
+        /**
+         * Execute getJELines request
+         * @return VersionedResourceListOfJournalEntryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfJournalEntryLine execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getJELines request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfJournalEntryLine> executeWithHttpInfo() throws ApiException {
+            return getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
+        }
+
+        /**
+         * Execute getJELines request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
+            return getJELinesAsync(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
+        }
+    }
+
     /**
-     * Build call for getJournalEntryLines
+     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
+     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor     The JE Lines have been generated from transactions and translated via posting rules
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
-     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
+     * @return APIgetJELinesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getJournalEntryLinesCall(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetJELinesRequest getJELines(String scope, String code, JELinesQueryParameters jeLinesQueryParameters) {
+        return new APIgetJELinesRequest(scope, code, jeLinesQueryParameters);
+    }
+    private okhttp3.Call getJournalEntryLinesCall(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -996,106 +1165,163 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
-     * Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
-     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
-     * @return VersionedResourceListOfJournalEntryLine
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfJournalEntryLine getJournalEntryLines(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
-        ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJournalEntryLinesWithHttpInfo(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
-     * Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
-     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfJournalEntryLine> getJournalEntryLinesWithHttpInfo(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+    private ApiResponse<VersionedResourceListOfJournalEntryLine> getJournalEntryLinesWithHttpInfo(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = getJournalEntryLinesValidateBeforeCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. (asynchronously)
-     * Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
-     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getJournalEntryLinesAsync(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
+    private okhttp3.Call getJournalEntryLinesAsync(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getJournalEntryLinesValidateBeforeCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetJournalEntryLinesRequest {
+        private final String scope;
+        private final String code;
+        private final JournalEntryLinesQueryParameters journalEntryLinesQueryParameters;
+        private OffsetDateTime asAt;
+        private String filter;
+        private Integer limit;
+        private String page;
+
+        private APIgetJournalEntryLinesRequest(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.journalEntryLinesQueryParameters = journalEntryLinesQueryParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetJournalEntryLinesRequest
+         */
+        public APIgetJournalEntryLinesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+         * @return APIgetJournalEntryLinesRequest
+         */
+        public APIgetJournalEntryLinesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetJournalEntryLinesRequest
+         */
+        public APIgetJournalEntryLinesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
+         * @return APIgetJournalEntryLinesRequest
+         */
+        public APIgetJournalEntryLinesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for getJournalEntryLines
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getJournalEntryLinesCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, _callback);
+        }
+
+        /**
+         * Execute getJournalEntryLines request
+         * @return VersionedResourceListOfJournalEntryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfJournalEntryLine execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJournalEntryLinesWithHttpInfo(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getJournalEntryLines request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfJournalEntryLine> executeWithHttpInfo() throws ApiException {
+            return getJournalEntryLinesWithHttpInfo(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page);
+        }
+
+        /**
+         * Execute getJournalEntryLines request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
+            return getJournalEntryLinesAsync(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, _callback);
+        }
+    }
+
     /**
-     * Build call for getTrialBalance
+     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+     * Gets the Journal Entry lines for the given Abor     The Journal Entry lines have been generated from transactions and translated via posting rules
      * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
-     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
-     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
+     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
+     * @return APIgetJournalEntryLinesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrialBalanceCall(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetJournalEntryLinesRequest getJournalEntryLines(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters) {
+        return new APIgetJournalEntryLinesRequest(scope, code, journalEntryLinesQueryParameters);
+    }
+    private okhttp3.Call getTrialBalanceCall(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1184,106 +1410,163 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
-     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
-     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
-     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
-     * @return VersionedResourceListOfTrialBalance
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfTrialBalance getTrialBalance(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
-        ApiResponse<VersionedResourceListOfTrialBalance> localVarResp = getTrialBalanceWithHttpInfo(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
-     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
-     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
-     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfTrialBalance&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfTrialBalance> getTrialBalanceWithHttpInfo(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+    private ApiResponse<VersionedResourceListOfTrialBalance> getTrialBalanceWithHttpInfo(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = getTrialBalanceValidateBeforeCall(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor. (asynchronously)
-     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
-     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
-     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTrialBalanceAsync(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<VersionedResourceListOfTrialBalance> _callback) throws ApiException {
+    private okhttp3.Call getTrialBalanceAsync(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<VersionedResourceListOfTrialBalance> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrialBalanceValidateBeforeCall(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTrialBalanceRequest {
+        private final String scope;
+        private final String code;
+        private final TrialBalanceQueryParameters trialBalanceQueryParameters;
+        private OffsetDateTime asAt;
+        private String filter;
+        private Integer limit;
+        private String page;
+
+        private APIgetTrialBalanceRequest(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.trialBalanceQueryParameters = trialBalanceQueryParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetTrialBalanceRequest
+         */
+        public APIgetTrialBalanceRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+         * @return APIgetTrialBalanceRequest
+         */
+        public APIgetTrialBalanceRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetTrialBalanceRequest
+         */
+        public APIgetTrialBalanceRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+         * @return APIgetTrialBalanceRequest
+         */
+        public APIgetTrialBalanceRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for getTrialBalance
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTrialBalanceCall(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, _callback);
+        }
+
+        /**
+         * Execute getTrialBalance request
+         * @return VersionedResourceListOfTrialBalance
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfTrialBalance execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfTrialBalance> localVarResp = getTrialBalanceWithHttpInfo(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTrialBalance request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfTrialBalance&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfTrialBalance> executeWithHttpInfo() throws ApiException {
+            return getTrialBalanceWithHttpInfo(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page);
+        }
+
+        /**
+         * Execute getTrialBalance request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTrialBalance> _callback) throws ApiException {
+            return getTrialBalanceAsync(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, _callback);
+        }
+    }
+
     /**
-     * Build call for listAbors
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified. (optional)
-     * @param page The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
+     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
+     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
+     * @return APIgetTrialBalanceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAborsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetTrialBalanceRequest getTrialBalance(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters) {
+        return new APIgetTrialBalanceRequest(scope, code, trialBalanceQueryParameters);
+    }
+    private okhttp3.Call listAborsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1363,107 +1646,187 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListAbors: List Abors.
-     * List all the Abors matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified. (optional)
-     * @param page The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. (optional)
-     * @return PagedResourceListOfAbor
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfAbor listAbors(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfAbor> localVarResp = listAborsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListAbors: List Abors.
-     * List all the Abors matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified. (optional)
-     * @param page The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfAbor&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfAbor> listAborsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfAbor> listAborsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAbor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListAbors: List Abors. (asynchronously)
-     * List all the Abors matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified. (optional)
-     * @param page The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAborsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
+    private okhttp3.Call listAborsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAbor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistAborsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistAborsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listAbors
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAborsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listAbors request
+         * @return PagedResourceListOfAbor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAbor execute() throws ApiException {
+            ApiResponse<PagedResourceListOfAbor> localVarResp = listAborsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAbors request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfAbor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAbor> executeWithHttpInfo() throws ApiException {
+            return listAborsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listAbors request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
+            return listAborsAsync(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listDiaryEntries
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. (optional)
-     * @param page The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListAbors: List Abors.
+     * List all the Abors matching particular criteria.
+     * @return APIlistAborsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested abors. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDiaryEntriesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIlistAborsRequest listAbors() {
+        return new APIlistAborsRequest();
+    }
+    private okhttp3.Call listDiaryEntriesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1551,105 +1914,182 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListDiaryEntries: List diary entries.
-     * List all the diary entries matching particular criteria.
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. (optional)
-     * @param page The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. (optional)
-     * @return PagedResourceListOfDiaryEntry
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfDiaryEntry listDiaryEntries(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfDiaryEntry> localVarResp = listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListDiaryEntries: List diary entries.
-     * List all the diary entries matching particular criteria.
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. (optional)
-     * @param page The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfDiaryEntry&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfDiaryEntry> listDiaryEntriesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfDiaryEntry> listDiaryEntriesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listDiaryEntriesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListDiaryEntries: List diary entries. (asynchronously)
-     * List all the diary entries matching particular criteria.
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. (optional)
-     * @param page The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listDiaryEntriesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfDiaryEntry> _callback) throws ApiException {
+    private okhttp3.Call listDiaryEntriesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfDiaryEntry> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDiaryEntriesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistDiaryEntriesRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistDiaryEntriesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listDiaryEntries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listDiaryEntriesCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listDiaryEntries request
+         * @return PagedResourceListOfDiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfDiaryEntry execute() throws ApiException {
+            ApiResponse<PagedResourceListOfDiaryEntry> localVarResp = listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listDiaryEntries request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfDiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfDiaryEntry> executeWithHttpInfo() throws ApiException {
+            return listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listDiaryEntries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDiaryEntry> _callback) throws ApiException {
+            return listDiaryEntriesAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertAborProperties
-     * @param scope The scope of the Abor to update or insert the properties onto. (required)
-     * @param code The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. (required)
-     * @param requestBody The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListDiaryEntries: List diary entries.
+     * List all the diary entries matching particular criteria.
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. (required)
+     * @return APIlistDiaryEntriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested diary entries. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAborPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIlistDiaryEntriesRequest listDiaryEntries(String scope, String code) {
+        return new APIlistDiaryEntriesRequest(scope, code);
+    }
+    private okhttp3.Call upsertAborPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1717,58 +2157,115 @@ public class AborApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
-     * Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.                Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Abor to update or insert the properties onto. (required)
-     * @param code The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. (required)
-     * @param requestBody The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. (optional)
-     * @return AborProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AborProperties upsertAborProperties(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        ApiResponse<AborProperties> localVarResp = upsertAborPropertiesWithHttpInfo(scope, code, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
-     * Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.                Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Abor to update or insert the properties onto. (required)
-     * @param code The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. (required)
-     * @param requestBody The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. (optional)
-     * @return ApiResponse&lt;AborProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AborProperties> upsertAborPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
+    private ApiResponse<AborProperties> upsertAborPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertAborPropertiesValidateBeforeCall(scope, code, requestBody, null);
         Type localVarReturnType = new TypeToken<AborProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertAborPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<AborProperties> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertAborPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<AborProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertAborPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private Map<String, Property> requestBody;
+
+        private APIupsertAborPropertiesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The properties to be updated or inserted onto the Abor. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. (optional)
+         * @return APIupsertAborPropertiesRequest
+         */
+        public APIupsertAborPropertiesRequest requestBody(Map<String, Property> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for upsertAborProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertAborPropertiesCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertAborProperties request
+         * @return AborProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborProperties execute() throws ApiException {
+            ApiResponse<AborProperties> localVarResp = upsertAborPropertiesWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertAborProperties request with HTTP info returned
+         * @return ApiResponse&lt;AborProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborProperties> executeWithHttpInfo() throws ApiException {
+            return upsertAborPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertAborProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborProperties> _callback) throws ApiException {
+            return upsertAborPropertiesAsync(scope, code, requestBody, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties (asynchronously)
-     * Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.                Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
+     * Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.     Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Abor to update or insert the properties onto. (required)
      * @param code The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. (required)
-     * @param requestBody The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertAborPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1777,11 +2274,7 @@ public class AborApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAborPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<AborProperties> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertAborPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<AborProperties>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertAborPropertiesRequest upsertAborProperties(String scope, String code) {
+        return new APIupsertAborPropertiesRequest(scope, code);
     }
 }

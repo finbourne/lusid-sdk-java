@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="bookTransactions"></a>
 # **bookTransactions**
-> BookTransactionsResponse bookTransactions(resourceId, applyFeesAndCommission)
+> BookTransactionsResponse bookTransactions(resourceId).applyFeesAndCommission(applyFeesAndCommission).execute();
 
 [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
 
@@ -39,7 +39,9 @@ public class Example {
     List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The allocations to create transactions for
     Boolean applyFeesAndCommission = true; // Boolean | Whether to apply fees and commissions to transactions (default: true)
     try {
-      BookTransactionsResponse result = apiInstance.bookTransactions(resourceId, applyFeesAndCommission);
+      BookTransactionsResponse result = apiInstance.bookTransactions(resourceId)
+            .applyFeesAndCommission(applyFeesAndCommission)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderManagementApi#bookTransactions");
@@ -81,7 +83,7 @@ public class Example {
 
 <a id="runAllocationService"></a>
 # **runAllocationService**
-> AllocationServiceRunResponse runAllocationService(resourceId, allocationAlgorithm)
+> AllocationServiceRunResponse runAllocationService(resourceId).allocationAlgorithm(allocationAlgorithm).execute();
 
 [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
 
@@ -110,7 +112,9 @@ public class Example {
     List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The List of Placement IDs for which you wish to allocate executions.
     String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-FIFO\".  This defaults to \"PR-FIFO\".
     try {
-      AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm);
+      AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId)
+            .allocationAlgorithm(allocationAlgorithm)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderManagementApi#runAllocationService");

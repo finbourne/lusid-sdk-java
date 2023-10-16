@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="instrumentsSearch"></a>
 # **instrumentsSearch**
-> List&lt;InstrumentMatch&gt; instrumentsSearch(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope)
+> List&lt;InstrumentMatch&gt; instrumentsSearch(instrumentSearchProperty).masteredEffectiveAt(masteredEffectiveAt).masteredOnly(masteredOnly).scope(scope).execute();
 
 [EARLY ACCESS] InstrumentsSearch: Instruments search
 
@@ -38,12 +38,16 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SearchApi apiInstance = new SearchApi(defaultClient);
-    List<InstrumentSearchProperty> instrumentSearchProperty = Arrays.asList(); // List<InstrumentSearchProperty> | A collection of instrument properties to search for. LUSID will return instruments for any matched              properties.
+    List<InstrumentSearchProperty> instrumentSearchProperty = Arrays.asList(); // List<InstrumentSearchProperty> | A collection of instrument properties to search for. LUSID will return instruments for any matched   properties.
     String masteredEffectiveAt = "masteredEffectiveAt_example"; // String | The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified.
     Boolean masteredOnly = false; // Boolean | If set to true, only search over instruments that have been mastered within LUSID. Defaults to false.
     String scope = "scope_example"; // String | The scope in which the instrument lies.
     try {
-      List<InstrumentMatch> result = apiInstance.instrumentsSearch(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope);
+      List<InstrumentMatch> result = apiInstance.instrumentsSearch(instrumentSearchProperty)
+            .masteredEffectiveAt(masteredEffectiveAt)
+            .masteredOnly(masteredOnly)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#instrumentsSearch");
@@ -60,7 +64,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **instrumentSearchProperty** | [**List&lt;InstrumentSearchProperty&gt;**](InstrumentSearchProperty.md)| A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. | |
+| **instrumentSearchProperty** | [**List&lt;InstrumentSearchProperty&gt;**](InstrumentSearchProperty.md)| A collection of instrument properties to search for. LUSID will return instruments for any matched   properties. | |
 | **masteredEffectiveAt** | **String**| The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **masteredOnly** | **Boolean**| If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. | [optional] [default to false] |
 | **scope** | **String**| The scope in which the instrument lies. | [optional] |
@@ -87,7 +91,7 @@ public class Example {
 
 <a id="searchPortfolioGroups"></a>
 # **searchPortfolioGroups**
-> PagedResourceListOfPortfolioGroupSearchResult searchPortfolioGroups(search, filter, sortBy, limit, page)
+> PagedResourceListOfPortfolioGroupSearchResult searchPortfolioGroups().search(search).filter(filter).sortBy(sortBy).limit(limit).page(page).execute();
 
 SearchPortfolioGroups: Search Portfolio Groups
 
@@ -119,7 +123,13 @@ public class Example {
     Integer limit = 56; // Integer | When paginating, only return this number of records
     String page = "page_example"; // String | Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied.
     try {
-      PagedResourceListOfPortfolioGroupSearchResult result = apiInstance.searchPortfolioGroups(search, filter, sortBy, limit, page);
+      PagedResourceListOfPortfolioGroupSearchResult result = apiInstance.searchPortfolioGroups()
+            .search(search)
+            .filter(filter)
+            .sortBy(sortBy)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#searchPortfolioGroups");
@@ -164,7 +174,7 @@ public class Example {
 
 <a id="searchPortfolios"></a>
 # **searchPortfolios**
-> PagedResourceListOfPortfolioSearchResult searchPortfolios(search, filter, sortBy, limit, page)
+> PagedResourceListOfPortfolioSearchResult searchPortfolios().search(search).filter(filter).sortBy(sortBy).limit(limit).page(page).execute();
 
 SearchPortfolios: Search Portfolios
 
@@ -196,7 +206,13 @@ public class Example {
     Integer limit = 56; // Integer | When paginating, only return this number of records
     String page = "page_example"; // String | Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied.
     try {
-      PagedResourceListOfPortfolioSearchResult result = apiInstance.searchPortfolios(search, filter, sortBy, limit, page);
+      PagedResourceListOfPortfolioSearchResult result = apiInstance.searchPortfolios()
+            .search(search)
+            .filter(filter)
+            .sortBy(sortBy)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#searchPortfolios");
@@ -241,7 +257,7 @@ public class Example {
 
 <a id="searchProperties"></a>
 # **searchProperties**
-> PagedResourceListOfPropertyDefinitionSearchResult searchProperties(search, filter, sortBy, limit, page)
+> PagedResourceListOfPropertyDefinitionSearchResult searchProperties().search(search).filter(filter).sortBy(sortBy).limit(limit).page(page).execute();
 
 SearchProperties: Search Property Definitions
 
@@ -273,7 +289,13 @@ public class Example {
     Integer limit = 56; // Integer | When paginating, only return this number of records
     String page = "page_example"; // String | Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied.
     try {
-      PagedResourceListOfPropertyDefinitionSearchResult result = apiInstance.searchProperties(search, filter, sortBy, limit, page);
+      PagedResourceListOfPropertyDefinitionSearchResult result = apiInstance.searchProperties()
+            .search(search)
+            .filter(filter)
+            .sortBy(sortBy)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#searchProperties");

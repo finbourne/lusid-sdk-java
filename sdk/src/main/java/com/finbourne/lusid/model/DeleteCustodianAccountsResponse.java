@@ -218,28 +218,21 @@ public class DeleteCustodianAccountsResponse {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DeleteCustodianAccountsResponse
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DeleteCustodianAccountsResponse
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DeleteCustodianAccountsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DeleteCustodianAccountsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteCustodianAccountsResponse is not found in the empty JSON string", DeleteCustodianAccountsResponse.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DeleteCustodianAccountsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteCustodianAccountsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("custodianAccountIds") != null && !jsonObj.get("custodianAccountIds").isJsonNull()) {
         JsonArray jsonArraycustodianAccountIds = jsonObj.getAsJsonArray("custodianAccountIds");
@@ -251,7 +244,7 @@ public class DeleteCustodianAccountsResponse {
 
           // validate the optional field `custodianAccountIds` (array)
           for (int i = 0; i < jsonArraycustodianAccountIds.size(); i++) {
-            ResourceId.validateJsonObject(jsonArraycustodianAccountIds.get(i).getAsJsonObject());
+            ResourceId.validateJsonElement(jsonArraycustodianAccountIds.get(i));
           };
         }
       }
@@ -265,7 +258,7 @@ public class DeleteCustodianAccountsResponse {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -291,9 +284,9 @@ public class DeleteCustodianAccountsResponse {
 
            @Override
            public DeleteCustodianAccountsResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

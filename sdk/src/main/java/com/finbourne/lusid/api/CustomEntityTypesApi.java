@@ -75,21 +75,7 @@ public class CustomEntityTypesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createCustomEntityType
-     * @param createCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCustomEntityTypeCall(CreateCustomEntityTypeRequest createCustomEntityTypeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCustomEntityTypeCall(CreateCustomEntityTypeRequest createCustomEntityTypeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -150,83 +136,113 @@ public class CustomEntityTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] CreateCustomEntityType: Define a new Custom Entity Type.
-     * The API will return a Bad Request if the Custom Entity Type already exists.
-     * @param createCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @return CustomEntityType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomEntityType createCustomEntityType(CreateCustomEntityTypeRequest createCustomEntityTypeRequest) throws ApiException {
-        ApiResponse<CustomEntityType> localVarResp = createCustomEntityTypeWithHttpInfo(createCustomEntityTypeRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] CreateCustomEntityType: Define a new Custom Entity Type.
-     * The API will return a Bad Request if the Custom Entity Type already exists.
-     * @param createCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @return ApiResponse&lt;CustomEntityType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomEntityType> createCustomEntityTypeWithHttpInfo(CreateCustomEntityTypeRequest createCustomEntityTypeRequest) throws ApiException {
+    private ApiResponse<CustomEntityType> createCustomEntityTypeWithHttpInfo(CreateCustomEntityTypeRequest createCustomEntityTypeRequest) throws ApiException {
         okhttp3.Call localVarCall = createCustomEntityTypeValidateBeforeCall(createCustomEntityTypeRequest, null);
         Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] CreateCustomEntityType: Define a new Custom Entity Type. (asynchronously)
-     * The API will return a Bad Request if the Custom Entity Type already exists.
-     * @param createCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCustomEntityTypeAsync(CreateCustomEntityTypeRequest createCustomEntityTypeRequest, final ApiCallback<CustomEntityType> _callback) throws ApiException {
+    private okhttp3.Call createCustomEntityTypeAsync(CreateCustomEntityTypeRequest createCustomEntityTypeRequest, final ApiCallback<CustomEntityType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createCustomEntityTypeValidateBeforeCall(createCustomEntityTypeRequest, _callback);
         Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateCustomEntityTypeRequest {
+        private final CreateCustomEntityTypeRequest createCustomEntityTypeRequest;
+
+        private APIcreateCustomEntityTypeRequest(CreateCustomEntityTypeRequest createCustomEntityTypeRequest) {
+            this.createCustomEntityTypeRequest = createCustomEntityTypeRequest;
+        }
+
+        /**
+         * Build call for createCustomEntityType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createCustomEntityTypeCall(createCustomEntityTypeRequest, _callback);
+        }
+
+        /**
+         * Execute createCustomEntityType request
+         * @return CustomEntityType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityType execute() throws ApiException {
+            ApiResponse<CustomEntityType> localVarResp = createCustomEntityTypeWithHttpInfo(createCustomEntityTypeRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createCustomEntityType request with HTTP info returned
+         * @return ApiResponse&lt;CustomEntityType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityType> executeWithHttpInfo() throws ApiException {
+            return createCustomEntityTypeWithHttpInfo(createCustomEntityTypeRequest);
+        }
+
+        /**
+         * Execute createCustomEntityType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityType> _callback) throws ApiException {
+            return createCustomEntityTypeAsync(createCustomEntityTypeRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getCustomEntityType
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param asAt The AsAt datetime at which to retrieve the definition. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] CreateCustomEntityType: Define a new Custom Entity Type.
+     * The API will return a Bad Request if the Custom Entity Type already exists.
+     * @param createCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
+     * @return APIcreateCustomEntityTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The created Custom Entity Type. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomEntityTypeCall(String entityType, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIcreateCustomEntityTypeRequest createCustomEntityType(CreateCustomEntityTypeRequest createCustomEntityTypeRequest) {
+        return new APIcreateCustomEntityTypeRequest(createCustomEntityTypeRequest);
+    }
+    private okhttp3.Call getCustomEntityTypeCall(String entityType, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -288,89 +304,124 @@ public class CustomEntityTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityType: Get a Custom Entity Type.
-     * Retrieve a specific Custom Entity Type at a point in AsAt time.
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param asAt The AsAt datetime at which to retrieve the definition. (optional)
-     * @return CustomEntityType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomEntityType getCustomEntityType(String entityType, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<CustomEntityType> localVarResp = getCustomEntityTypeWithHttpInfo(entityType, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityType: Get a Custom Entity Type.
-     * Retrieve a specific Custom Entity Type at a point in AsAt time.
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param asAt The AsAt datetime at which to retrieve the definition. (optional)
-     * @return ApiResponse&lt;CustomEntityType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomEntityType> getCustomEntityTypeWithHttpInfo(String entityType, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<CustomEntityType> getCustomEntityTypeWithHttpInfo(String entityType, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCustomEntityTypeValidateBeforeCall(entityType, asAt, null);
         Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityType: Get a Custom Entity Type. (asynchronously)
-     * Retrieve a specific Custom Entity Type at a point in AsAt time.
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param asAt The AsAt datetime at which to retrieve the definition. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCustomEntityTypeAsync(String entityType, OffsetDateTime asAt, final ApiCallback<CustomEntityType> _callback) throws ApiException {
+    private okhttp3.Call getCustomEntityTypeAsync(String entityType, OffsetDateTime asAt, final ApiCallback<CustomEntityType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomEntityTypeValidateBeforeCall(entityType, asAt, _callback);
         Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCustomEntityTypeRequest {
+        private final String entityType;
+        private OffsetDateTime asAt;
+
+        private APIgetCustomEntityTypeRequest(String entityType) {
+            this.entityType = entityType;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The AsAt datetime at which to retrieve the definition. (optional)
+         * @return APIgetCustomEntityTypeRequest
+         */
+        public APIgetCustomEntityTypeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCustomEntityType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCustomEntityTypeCall(entityType, asAt, _callback);
+        }
+
+        /**
+         * Execute getCustomEntityType request
+         * @return CustomEntityType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityType execute() throws ApiException {
+            ApiResponse<CustomEntityType> localVarResp = getCustomEntityTypeWithHttpInfo(entityType, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustomEntityType request with HTTP info returned
+         * @return ApiResponse&lt;CustomEntityType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityType> executeWithHttpInfo() throws ApiException {
+            return getCustomEntityTypeWithHttpInfo(entityType, asAt);
+        }
+
+        /**
+         * Execute getCustomEntityType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityType> _callback) throws ApiException {
+            return getCustomEntityTypeAsync(entityType, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listCustomEntityTypes
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetCustomEntityType: Get a Custom Entity Type.
+     * Retrieve a specific Custom Entity Type at a point in AsAt time.
+     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
+     * @return APIgetCustomEntityTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Custom Entity Type. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCustomEntityTypesCall(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetCustomEntityTypeRequest getCustomEntityType(String entityType) {
+        return new APIgetCustomEntityTypeRequest(entityType);
+    }
+    private okhttp3.Call listCustomEntityTypesCall(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -442,95 +493,165 @@ public class CustomEntityTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListCustomEntityTypes: List Custom Entity Types.
-     * List all Custom Entity Types matching particular criteria.
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. (optional)
-     * @return PagedResourceListOfCustomEntityType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfCustomEntityType listCustomEntityTypes(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfCustomEntityType> localVarResp = listCustomEntityTypesWithHttpInfo(asAt, limit, filter, sortBy, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListCustomEntityTypes: List Custom Entity Types.
-     * List all Custom Entity Types matching particular criteria.
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfCustomEntityType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfCustomEntityType> listCustomEntityTypesWithHttpInfo(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfCustomEntityType> listCustomEntityTypesWithHttpInfo(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page) throws ApiException {
         okhttp3.Call localVarCall = listCustomEntityTypesValidateBeforeCall(asAt, limit, filter, sortBy, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListCustomEntityTypes: List Custom Entity Types. (asynchronously)
-     * List all Custom Entity Types matching particular criteria.
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustomEntityTypesAsync(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, final ApiCallback<PagedResourceListOfCustomEntityType> _callback) throws ApiException {
+    private okhttp3.Call listCustomEntityTypesAsync(OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, final ApiCallback<PagedResourceListOfCustomEntityType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCustomEntityTypesValidateBeforeCall(asAt, limit, filter, sortBy, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCustomEntityTypesRequest {
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private String page;
+
+        private APIlistCustomEntityTypesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version   of each Custom Entity Type if not specified. (optional)
+         * @return APIlistCustomEntityTypesRequest
+         */
+        public APIlistCustomEntityTypesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistCustomEntityTypesRequest
+         */
+        public APIlistCustomEntityTypesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistCustomEntityTypesRequest
+         */
+        public APIlistCustomEntityTypesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistCustomEntityTypesRequest
+         */
+        public APIlistCustomEntityTypesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistCustomEntityTypesRequest
+         */
+        public APIlistCustomEntityTypesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for listCustomEntityTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCustomEntityTypesCall(asAt, limit, filter, sortBy, page, _callback);
+        }
+
+        /**
+         * Execute listCustomEntityTypes request
+         * @return PagedResourceListOfCustomEntityType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCustomEntityType execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCustomEntityType> localVarResp = listCustomEntityTypesWithHttpInfo(asAt, limit, filter, sortBy, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCustomEntityTypes request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCustomEntityType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCustomEntityType> executeWithHttpInfo() throws ApiException {
+            return listCustomEntityTypesWithHttpInfo(asAt, limit, filter, sortBy, page);
+        }
+
+        /**
+         * Execute listCustomEntityTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustomEntityType> _callback) throws ApiException {
+            return listCustomEntityTypesAsync(asAt, limit, filter, sortBy, page, _callback);
+        }
+    }
+
     /**
-     * Build call for updateCustomEntityType
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param updateCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListCustomEntityTypes: List Custom Entity Types.
+     * List all Custom Entity Types matching particular criteria.
+     * @return APIlistCustomEntityTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List Custom Entity Types. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCustomEntityTypeCall(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistCustomEntityTypesRequest listCustomEntityTypes() {
+        return new APIlistCustomEntityTypesRequest();
+    }
+    private okhttp3.Call updateCustomEntityTypeCall(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -597,55 +718,104 @@ public class CustomEntityTypesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpdateCustomEntityType: Modify an existing Custom Entity Type.
-     * The API will return a Bad Request if the Custom Entity Type does not exist.
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param updateCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @return CustomEntityType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomEntityType updateCustomEntityType(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest) throws ApiException {
-        ApiResponse<CustomEntityType> localVarResp = updateCustomEntityTypeWithHttpInfo(entityType, updateCustomEntityTypeRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpdateCustomEntityType: Modify an existing Custom Entity Type.
-     * The API will return a Bad Request if the Custom Entity Type does not exist.
-     * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
-     * @param updateCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @return ApiResponse&lt;CustomEntityType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomEntityType> updateCustomEntityTypeWithHttpInfo(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest) throws ApiException {
+    private ApiResponse<CustomEntityType> updateCustomEntityTypeWithHttpInfo(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest) throws ApiException {
         okhttp3.Call localVarCall = updateCustomEntityTypeValidateBeforeCall(entityType, updateCustomEntityTypeRequest, null);
         Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call updateCustomEntityTypeAsync(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest, final ApiCallback<CustomEntityType> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateCustomEntityTypeValidateBeforeCall(entityType, updateCustomEntityTypeRequest, _callback);
+        Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateCustomEntityTypeRequest {
+        private final String entityType;
+        private final UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest;
+
+        private APIupdateCustomEntityTypeRequest(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest) {
+            this.entityType = entityType;
+            this.updateCustomEntityTypeRequest = updateCustomEntityTypeRequest;
+        }
+
+        /**
+         * Build call for updateCustomEntityType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateCustomEntityTypeCall(entityType, updateCustomEntityTypeRequest, _callback);
+        }
+
+        /**
+         * Execute updateCustomEntityType request
+         * @return CustomEntityType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityType execute() throws ApiException {
+            ApiResponse<CustomEntityType> localVarResp = updateCustomEntityTypeWithHttpInfo(entityType, updateCustomEntityTypeRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateCustomEntityType request with HTTP info returned
+         * @return ApiResponse&lt;CustomEntityType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityType> executeWithHttpInfo() throws ApiException {
+            return updateCustomEntityTypeWithHttpInfo(entityType, updateCustomEntityTypeRequest);
+        }
+
+        /**
+         * Execute updateCustomEntityType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Custom Entity Type. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityType> _callback) throws ApiException {
+            return updateCustomEntityTypeAsync(entityType, updateCustomEntityTypeRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpdateCustomEntityType: Modify an existing Custom Entity Type. (asynchronously)
+     * [EARLY ACCESS] UpdateCustomEntityType: Modify an existing Custom Entity Type.
      * The API will return a Bad Request if the Custom Entity Type does not exist.
      * @param entityType The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. (required)
      * @param updateCustomEntityTypeRequest The payload containing the description of the Custom Entity Type. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupdateCustomEntityTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -654,11 +824,7 @@ public class CustomEntityTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCustomEntityTypeAsync(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest, final ApiCallback<CustomEntityType> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateCustomEntityTypeValidateBeforeCall(entityType, updateCustomEntityTypeRequest, _callback);
-        Type localVarReturnType = new TypeToken<CustomEntityType>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupdateCustomEntityTypeRequest updateCustomEntityType(String entityType, UpdateCustomEntityTypeRequest updateCustomEntityTypeRequest) {
+        return new APIupdateCustomEntityTypeRequest(entityType, updateCustomEntityTypeRequest);
     }
 }

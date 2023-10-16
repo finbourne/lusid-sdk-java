@@ -76,22 +76,7 @@ public class PackagesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deletePackage
-     * @param scope The package scope. (required)
-     * @param code The package&#39;s code. This, together with the scope uniquely identifies the package to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePackageCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePackageCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,88 +140,116 @@ public class PackagesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeletePackage: Delete package
-     * Delete an package. Deletion will be valid from the package&#39;s creation datetime.  This means that the package will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The package scope. (required)
-     * @param code The package&#39;s code. This, together with the scope uniquely identifies the package to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePackage(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePackageWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeletePackage: Delete package
-     * Delete an package. Deletion will be valid from the package&#39;s creation datetime.  This means that the package will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The package scope. (required)
-     * @param code The package&#39;s code. This, together with the scope uniquely identifies the package to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePackageWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePackageWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeletePackage: Delete package (asynchronously)
-     * Delete an package. Deletion will be valid from the package&#39;s creation datetime.  This means that the package will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The package scope. (required)
-     * @param code The package&#39;s code. This, together with the scope uniquely identifies the package to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePackageAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePackageAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePackageRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeletePackageRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deletePackage
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePackageCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePackage request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePackageWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePackage request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePackageWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deletePackage request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePackageAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getPackage
-     * @param scope The scope to which the package belongs. (required)
-     * @param code The package&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.              These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeletePackage: Delete package
+     * Delete an package. Deletion will be valid from the package&#39;s creation datetime.  This means that the package will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param scope The package scope. (required)
+     * @param code The package&#39;s code. This, together with the scope uniquely identifies the package to delete. (required)
+     * @return APIdeletePackageRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPackageCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeletePackageRequest deletePackage(String scope, String code) {
+        return new APIdeletePackageRequest(scope, code);
+    }
+    private okhttp3.Call getPackageCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -308,96 +321,138 @@ public class PackagesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetPackage: Get Package
-     * Fetch a Package that matches the specified identifier
-     * @param scope The scope to which the package belongs. (required)
-     * @param code The package&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.              These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @return ModelPackage
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ModelPackage getPackage(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<ModelPackage> localVarResp = getPackageWithHttpInfo(scope, code, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetPackage: Get Package
-     * Fetch a Package that matches the specified identifier
-     * @param scope The scope to which the package belongs. (required)
-     * @param code The package&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.              These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;ModelPackage&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ModelPackage> getPackageWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<ModelPackage> getPackageWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<ModelPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetPackage: Get Package (asynchronously)
-     * Fetch a Package that matches the specified identifier
-     * @param scope The scope to which the package belongs. (required)
-     * @param code The package&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.              These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPackageAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ModelPackage> _callback) throws ApiException {
+    private okhttp3.Call getPackageAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ModelPackage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ModelPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPackageRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetPackageRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
+         * @return APIgetPackageRequest
+         */
+        public APIgetPackageRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.   These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
+         * @return APIgetPackageRequest
+         */
+        public APIgetPackageRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getPackage
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPackageCall(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getPackage request
+         * @return ModelPackage
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ModelPackage execute() throws ApiException {
+            ApiResponse<ModelPackage> localVarResp = getPackageWithHttpInfo(scope, code, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPackage request with HTTP info returned
+         * @return ApiResponse&lt;ModelPackage&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ModelPackage> executeWithHttpInfo() throws ApiException {
+            return getPackageWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getPackage request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ModelPackage> _callback) throws ApiException {
+            return getPackageAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listPackages
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param page The pagination token to use to continue listing packages from a previous call to list packages.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetPackage: Get Package
+     * Fetch a Package that matches the specified identifier
+     * @param scope The scope to which the package belongs. (required)
+     * @param code The package&#39;s unique identifier. (required)
+     * @return APIgetPackageRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPackagesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetPackageRequest getPackage(String scope, String code) {
+        return new APIgetPackageRequest(scope, code);
+    }
+    private okhttp3.Call listPackagesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,97 +528,176 @@ public class PackagesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListPackages: List Packages
-     * Fetch the last pre-AsAt date version of each package in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param page The pagination token to use to continue listing packages from a previous call to list packages.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @return PagedResourceListOfPackage
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPackage listPackages(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfPackage> localVarResp = listPackagesWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListPackages: List Packages
-     * Fetch the last pre-AsAt date version of each package in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param page The pagination token to use to continue listing packages from a previous call to list packages.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPackage&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPackage> listPackagesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfPackage> listPackagesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListPackages: List Packages (asynchronously)
-     * Fetch the last pre-AsAt date version of each package in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
-     * @param page The pagination token to use to continue listing packages from a previous call to list packages.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPackagesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPackage> _callback) throws ApiException {
+    private okhttp3.Call listPackagesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPackage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPackagesRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistPackagesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. (optional)
+         * @return APIlistPackagesRequest
+         */
+        public APIlistPackagesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing packages from a previous call to list packages.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistPackagesRequest
+         */
+        public APIlistPackagesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistPackagesRequest
+         */
+        public APIlistPackagesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistPackagesRequest
+         */
+        public APIlistPackagesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistPackagesRequest
+         */
+        public APIlistPackagesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.   These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
+         * @return APIlistPackagesRequest
+         */
+        public APIlistPackagesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listPackages
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPackagesCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listPackages request
+         * @return PagedResourceListOfPackage
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPackage execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPackage> localVarResp = listPackagesWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPackages request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPackage&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPackage> executeWithHttpInfo() throws ApiException {
+            return listPackagesWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listPackages request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPackage> _callback) throws ApiException {
+            return listPackagesAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPackages
-     * @param packageSetRequest The collection of package requests. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListPackages: List Packages
+     * Fetch the last pre-AsAt date version of each package in scope (does not fetch the entire history).
+     * @return APIlistPackagesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPackagesCall(PackageSetRequest packageSetRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistPackagesRequest listPackages() {
+        return new APIlistPackagesRequest();
+    }
+    private okhttp3.Call upsertPackagesCall(PackageSetRequest packageSetRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -619,52 +753,109 @@ public class PackagesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertPackages: Upsert Package
-     * Upsert; update existing packages with given ids, or create new packages otherwise.
-     * @param packageSetRequest The collection of package requests. (optional)
-     * @return ResourceListOfPackage
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPackage upsertPackages(PackageSetRequest packageSetRequest) throws ApiException {
-        ApiResponse<ResourceListOfPackage> localVarResp = upsertPackagesWithHttpInfo(packageSetRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertPackages: Upsert Package
-     * Upsert; update existing packages with given ids, or create new packages otherwise.
-     * @param packageSetRequest The collection of package requests. (optional)
-     * @return ApiResponse&lt;ResourceListOfPackage&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPackage> upsertPackagesWithHttpInfo(PackageSetRequest packageSetRequest) throws ApiException {
+    private ApiResponse<ResourceListOfPackage> upsertPackagesWithHttpInfo(PackageSetRequest packageSetRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertPackagesAsync(PackageSetRequest packageSetRequest, final ApiCallback<ResourceListOfPackage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertPackagesRequest {
+        private PackageSetRequest packageSetRequest;
+
+        private APIupsertPackagesRequest() {
+        }
+
+        /**
+         * Set packageSetRequest
+         * @param packageSetRequest The collection of package requests. (optional)
+         * @return APIupsertPackagesRequest
+         */
+        public APIupsertPackagesRequest packageSetRequest(PackageSetRequest packageSetRequest) {
+            this.packageSetRequest = packageSetRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertPackages
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPackagesCall(packageSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertPackages request
+         * @return ResourceListOfPackage
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPackage execute() throws ApiException {
+            ApiResponse<ResourceListOfPackage> localVarResp = upsertPackagesWithHttpInfo(packageSetRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPackages request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPackage&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPackage> executeWithHttpInfo() throws ApiException {
+            return upsertPackagesWithHttpInfo(packageSetRequest);
+        }
+
+        /**
+         * Execute upsertPackages request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPackage> _callback) throws ApiException {
+            return upsertPackagesAsync(packageSetRequest, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertPackages: Upsert Package (asynchronously)
+     * [EXPERIMENTAL] UpsertPackages: Upsert Package
      * Upsert; update existing packages with given ids, or create new packages otherwise.
-     * @param packageSetRequest The collection of package requests. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertPackagesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -673,11 +864,7 @@ public class PackagesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPackagesAsync(PackageSetRequest packageSetRequest, final ApiCallback<ResourceListOfPackage> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertPackagesRequest upsertPackages() {
+        return new APIupsertPackagesRequest();
     }
 }

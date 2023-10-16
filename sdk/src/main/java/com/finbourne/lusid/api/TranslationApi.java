@@ -74,21 +74,7 @@ public class TranslationApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for translateInstrumentDefinitions
-     * @param translateInstrumentDefinitionsRequest The definitions of the instruments to translate along with the target dialect. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call translateInstrumentDefinitionsCall(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call translateInstrumentDefinitionsCall(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -149,82 +135,113 @@ public class TranslationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
-     * Translates one or more instruments into the given target dialect.                In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.                Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.                The response will return both the collection of successfully translated instruments in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.
-     * @param translateInstrumentDefinitionsRequest The definitions of the instruments to translate along with the target dialect. (required)
-     * @return TranslateInstrumentDefinitionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TranslateInstrumentDefinitionsResponse translateInstrumentDefinitions(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest) throws ApiException {
-        ApiResponse<TranslateInstrumentDefinitionsResponse> localVarResp = translateInstrumentDefinitionsWithHttpInfo(translateInstrumentDefinitionsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
-     * Translates one or more instruments into the given target dialect.                In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.                Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.                The response will return both the collection of successfully translated instruments in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.
-     * @param translateInstrumentDefinitionsRequest The definitions of the instruments to translate along with the target dialect. (required)
-     * @return ApiResponse&lt;TranslateInstrumentDefinitionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TranslateInstrumentDefinitionsResponse> translateInstrumentDefinitionsWithHttpInfo(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest) throws ApiException {
+    private ApiResponse<TranslateInstrumentDefinitionsResponse> translateInstrumentDefinitionsWithHttpInfo(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest) throws ApiException {
         okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, null);
         Type localVarReturnType = new TypeToken<TranslateInstrumentDefinitionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments (asynchronously)
-     * Translates one or more instruments into the given target dialect.                In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.                Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.                The response will return both the collection of successfully translated instruments in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.
-     * @param translateInstrumentDefinitionsRequest The definitions of the instruments to translate along with the target dialect. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call translateInstrumentDefinitionsAsync(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback) throws ApiException {
+    private okhttp3.Call translateInstrumentDefinitionsAsync(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, _callback);
         Type localVarReturnType = new TypeToken<TranslateInstrumentDefinitionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APItranslateInstrumentDefinitionsRequest {
+        private final TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest;
+
+        private APItranslateInstrumentDefinitionsRequest(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest) {
+            this.translateInstrumentDefinitionsRequest = translateInstrumentDefinitionsRequest;
+        }
+
+        /**
+         * Build call for translateInstrumentDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return translateInstrumentDefinitionsCall(translateInstrumentDefinitionsRequest, _callback);
+        }
+
+        /**
+         * Execute translateInstrumentDefinitions request
+         * @return TranslateInstrumentDefinitionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateInstrumentDefinitionsResponse execute() throws ApiException {
+            ApiResponse<TranslateInstrumentDefinitionsResponse> localVarResp = translateInstrumentDefinitionsWithHttpInfo(translateInstrumentDefinitionsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute translateInstrumentDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;TranslateInstrumentDefinitionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateInstrumentDefinitionsResponse> executeWithHttpInfo() throws ApiException {
+            return translateInstrumentDefinitionsWithHttpInfo(translateInstrumentDefinitionsRequest);
+        }
+
+        /**
+         * Execute translateInstrumentDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback) throws ApiException {
+            return translateInstrumentDefinitionsAsync(translateInstrumentDefinitionsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for translateTradeTickets
-     * @param translateTradeTicketRequest The definitions of the trade ticket to translate along with the target dialect. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
+     * Translates one or more instruments into the given target dialect.     In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.     Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.     The response will return both the collection of successfully translated instruments in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.
+     * @param translateInstrumentDefinitionsRequest The definitions of the instruments to translate along with the target dialect. (required)
+     * @return APItranslateInstrumentDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call translateTradeTicketsCall(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback _callback) throws ApiException {
+    public APItranslateInstrumentDefinitionsRequest translateInstrumentDefinitions(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest) {
+        return new APItranslateInstrumentDefinitionsRequest(translateInstrumentDefinitionsRequest);
+    }
+    private okhttp3.Call translateTradeTicketsCall(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -285,52 +302,101 @@ public class TranslationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
-     * Translates one or more trade tickets into the given target dialect.                In the request each trade ticket definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each trade ticket in the response.                The response will return both the collection of successfully translated trade tickets in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the trade ticket could not be updated or inserted.
-     * @param translateTradeTicketRequest The definitions of the trade ticket to translate along with the target dialect. (required)
-     * @return TranslateTradeTicketsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TranslateTradeTicketsResponse translateTradeTickets(TranslateTradeTicketRequest translateTradeTicketRequest) throws ApiException {
-        ApiResponse<TranslateTradeTicketsResponse> localVarResp = translateTradeTicketsWithHttpInfo(translateTradeTicketRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
-     * Translates one or more trade tickets into the given target dialect.                In the request each trade ticket definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each trade ticket in the response.                The response will return both the collection of successfully translated trade tickets in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the trade ticket could not be updated or inserted.
-     * @param translateTradeTicketRequest The definitions of the trade ticket to translate along with the target dialect. (required)
-     * @return ApiResponse&lt;TranslateTradeTicketsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TranslateTradeTicketsResponse> translateTradeTicketsWithHttpInfo(TranslateTradeTicketRequest translateTradeTicketRequest) throws ApiException {
+    private ApiResponse<TranslateTradeTicketsResponse> translateTradeTicketsWithHttpInfo(TranslateTradeTicketRequest translateTradeTicketRequest) throws ApiException {
         okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, null);
         Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call translateTradeTicketsAsync(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback<TranslateTradeTicketsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, _callback);
+        Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APItranslateTradeTicketsRequest {
+        private final TranslateTradeTicketRequest translateTradeTicketRequest;
+
+        private APItranslateTradeTicketsRequest(TranslateTradeTicketRequest translateTradeTicketRequest) {
+            this.translateTradeTicketRequest = translateTradeTicketRequest;
+        }
+
+        /**
+         * Build call for translateTradeTickets
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return translateTradeTicketsCall(translateTradeTicketRequest, _callback);
+        }
+
+        /**
+         * Execute translateTradeTickets request
+         * @return TranslateTradeTicketsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateTradeTicketsResponse execute() throws ApiException {
+            ApiResponse<TranslateTradeTicketsResponse> localVarResp = translateTradeTicketsWithHttpInfo(translateTradeTicketRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute translateTradeTickets request with HTTP info returned
+         * @return ApiResponse&lt;TranslateTradeTicketsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateTradeTicketsResponse> executeWithHttpInfo() throws ApiException {
+            return translateTradeTicketsWithHttpInfo(translateTradeTicketRequest);
+        }
+
+        /**
+         * Execute translateTradeTickets request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateTradeTicketsResponse> _callback) throws ApiException {
+            return translateTradeTicketsAsync(translateTradeTicketRequest, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket (asynchronously)
-     * Translates one or more trade tickets into the given target dialect.                In the request each trade ticket definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each trade ticket in the response.                The response will return both the collection of successfully translated trade tickets in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the trade ticket could not be updated or inserted.
+     * [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
+     * Translates one or more trade tickets into the given target dialect.     In the request each trade ticket definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each trade ticket in the response.     The response will return both the collection of successfully translated trade tickets in the target dialect,  as well as those that failed.  For the failures a reason will be provided explaining why the trade ticket could not be updated or inserted.
      * @param translateTradeTicketRequest The definitions of the trade ticket to translate along with the target dialect. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APItranslateTradeTicketsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -339,11 +405,7 @@ public class TranslationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call translateTradeTicketsAsync(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback<TranslateTradeTicketsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, _callback);
-        Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APItranslateTradeTicketsRequest translateTradeTickets(TranslateTradeTicketRequest translateTradeTicketRequest) {
+        return new APItranslateTradeTicketsRequest(translateTradeTicketRequest);
     }
 }

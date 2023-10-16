@@ -78,27 +78,7 @@ public class ScriptedTranslationApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getTranslationDialect
-     * @param scope The scope of the dialect. (required)
-     * @param vendor The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. (required)
-     * @param sourceSystem The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. (required)
-     * @param entityType The type of entity this dialect describes e.g. Instrument. (required)
-     * @param serialisationFormat The serialisation format of a document in this dialect. e.g. JSON, XML. (required)
-     * @param version The semantic version of the dialect: MAJOR.MINOR.PATCH. (required)
-     * @param asAt The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTranslationDialectCall(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTranslationDialectCall(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -190,103 +170,139 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetTranslationDialect: Get a dialect.
-     * Get the dialect with the given identifier at the specific asAt time.
-     * @param scope The scope of the dialect. (required)
-     * @param vendor The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. (required)
-     * @param sourceSystem The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. (required)
-     * @param entityType The type of entity this dialect describes e.g. Instrument. (required)
-     * @param serialisationFormat The serialisation format of a document in this dialect. e.g. JSON, XML. (required)
-     * @param version The semantic version of the dialect: MAJOR.MINOR.PATCH. (required)
-     * @param asAt The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)
-     * @return Dialect
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Dialect getTranslationDialect(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<Dialect> localVarResp = getTranslationDialectWithHttpInfo(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetTranslationDialect: Get a dialect.
-     * Get the dialect with the given identifier at the specific asAt time.
-     * @param scope The scope of the dialect. (required)
-     * @param vendor The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. (required)
-     * @param sourceSystem The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. (required)
-     * @param entityType The type of entity this dialect describes e.g. Instrument. (required)
-     * @param serialisationFormat The serialisation format of a document in this dialect. e.g. JSON, XML. (required)
-     * @param version The semantic version of the dialect: MAJOR.MINOR.PATCH. (required)
-     * @param asAt The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)
-     * @return ApiResponse&lt;Dialect&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Dialect> getTranslationDialectWithHttpInfo(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<Dialect> getTranslationDialectWithHttpInfo(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, null);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetTranslationDialect: Get a dialect. (asynchronously)
-     * Get the dialect with the given identifier at the specific asAt time.
-     * @param scope The scope of the dialect. (required)
-     * @param vendor The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. (required)
-     * @param sourceSystem The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. (required)
-     * @param entityType The type of entity this dialect describes e.g. Instrument. (required)
-     * @param serialisationFormat The serialisation format of a document in this dialect. e.g. JSON, XML. (required)
-     * @param version The semantic version of the dialect: MAJOR.MINOR.PATCH. (required)
-     * @param asAt The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTranslationDialectAsync(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback<Dialect> _callback) throws ApiException {
+    private okhttp3.Call getTranslationDialectAsync(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback<Dialect> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTranslationDialectRequest {
+        private final String scope;
+        private final String vendor;
+        private final String sourceSystem;
+        private final String entityType;
+        private final String serialisationFormat;
+        private final String version;
+        private OffsetDateTime asAt;
+
+        private APIgetTranslationDialectRequest(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version) {
+            this.scope = scope;
+            this.vendor = vendor;
+            this.sourceSystem = sourceSystem;
+            this.entityType = entityType;
+            this.serialisationFormat = serialisationFormat;
+            this.version = version;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)
+         * @return APIgetTranslationDialectRequest
+         */
+        public APIgetTranslationDialectRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTranslationDialect
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTranslationDialectCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback);
+        }
+
+        /**
+         * Execute getTranslationDialect request
+         * @return Dialect
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Dialect execute() throws ApiException {
+            ApiResponse<Dialect> localVarResp = getTranslationDialectWithHttpInfo(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTranslationDialect request with HTTP info returned
+         * @return ApiResponse&lt;Dialect&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Dialect> executeWithHttpInfo() throws ApiException {
+            return getTranslationDialectWithHttpInfo(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt);
+        }
+
+        /**
+         * Execute getTranslationDialect request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback) throws ApiException {
+            return getTranslationDialectAsync(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getTranslationScript
-     * @param scope Scope of the translation script. (required)
-     * @param code Code of the translation script. (required)
-     * @param version Semantic version of the translation script. (required)
-     * @param asAt The asAt datetime at which to retrieve the translation script. Defaults to latest. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetTranslationDialect: Get a dialect.
+     * Get the dialect with the given identifier at the specific asAt time.
+     * @param scope The scope of the dialect. (required)
+     * @param vendor The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. (required)
+     * @param sourceSystem The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. (required)
+     * @param entityType The type of entity this dialect describes e.g. Instrument. (required)
+     * @param serialisationFormat The serialisation format of a document in this dialect. e.g. JSON, XML. (required)
+     * @param version The semantic version of the dialect: MAJOR.MINOR.PATCH. (required)
+     * @return APIgetTranslationDialectRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTranslationScriptCall(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetTranslationDialectRequest getTranslationDialect(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version) {
+        return new APIgetTranslationDialectRequest(scope, vendor, sourceSystem, entityType, serialisationFormat, version);
+    }
+    private okhttp3.Call getTranslationScriptCall(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -360,94 +376,130 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetTranslationScript: Retrieve a translation script by its identifier.
-     * Retrieves a translation script to be used for translating financial entities.
-     * @param scope Scope of the translation script. (required)
-     * @param code Code of the translation script. (required)
-     * @param version Semantic version of the translation script. (required)
-     * @param asAt The asAt datetime at which to retrieve the translation script. Defaults to latest. (optional)
-     * @return TranslationScript
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TranslationScript getTranslationScript(String scope, String code, String version, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<TranslationScript> localVarResp = getTranslationScriptWithHttpInfo(scope, code, version, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetTranslationScript: Retrieve a translation script by its identifier.
-     * Retrieves a translation script to be used for translating financial entities.
-     * @param scope Scope of the translation script. (required)
-     * @param code Code of the translation script. (required)
-     * @param version Semantic version of the translation script. (required)
-     * @param asAt The asAt datetime at which to retrieve the translation script. Defaults to latest. (optional)
-     * @return ApiResponse&lt;TranslationScript&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TranslationScript> getTranslationScriptWithHttpInfo(String scope, String code, String version, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<TranslationScript> getTranslationScriptWithHttpInfo(String scope, String code, String version, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, null);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetTranslationScript: Retrieve a translation script by its identifier. (asynchronously)
-     * Retrieves a translation script to be used for translating financial entities.
-     * @param scope Scope of the translation script. (required)
-     * @param code Code of the translation script. (required)
-     * @param version Semantic version of the translation script. (required)
-     * @param asAt The asAt datetime at which to retrieve the translation script. Defaults to latest. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTranslationScriptAsync(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback<TranslationScript> _callback) throws ApiException {
+    private okhttp3.Call getTranslationScriptAsync(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback<TranslationScript> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, _callback);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTranslationScriptRequest {
+        private final String scope;
+        private final String code;
+        private final String version;
+        private OffsetDateTime asAt;
+
+        private APIgetTranslationScriptRequest(String scope, String code, String version) {
+            this.scope = scope;
+            this.code = code;
+            this.version = version;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the translation script. Defaults to latest. (optional)
+         * @return APIgetTranslationScriptRequest
+         */
+        public APIgetTranslationScriptRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTranslationScript
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTranslationScriptCall(scope, code, version, asAt, _callback);
+        }
+
+        /**
+         * Execute getTranslationScript request
+         * @return TranslationScript
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslationScript execute() throws ApiException {
+            ApiResponse<TranslationScript> localVarResp = getTranslationScriptWithHttpInfo(scope, code, version, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTranslationScript request with HTTP info returned
+         * @return ApiResponse&lt;TranslationScript&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslationScript> executeWithHttpInfo() throws ApiException {
+            return getTranslationScriptWithHttpInfo(scope, code, version, asAt);
+        }
+
+        /**
+         * Execute getTranslationScript request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback) throws ApiException {
+            return getTranslationScriptAsync(scope, code, version, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listDialectIds
-     * @param asAt The asAt datetime at which to retrieve the dialects.              Defaults to return the latest version of the dialect if not specified. (optional)
-     * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetTranslationScript: Retrieve a translation script by its identifier.
+     * Retrieves a translation script to be used for translating financial entities.
+     * @param scope Scope of the translation script. (required)
+     * @param code Code of the translation script. (required)
+     * @param version Semantic version of the translation script. (required)
+     * @return APIgetTranslationScriptRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDialectIdsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetTranslationScriptRequest getTranslationScript(String scope, String code, String version) {
+        return new APIgetTranslationScriptRequest(scope, code, version);
+    }
+    private okhttp3.Call listDialectIdsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -515,94 +567,154 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListDialectIds: List dialect identifiers matching an optional filter.
-     * List the stored dialects&#39; identifiers with pagination and filtering at the specified asAt time.
-     * @param asAt The asAt datetime at which to retrieve the dialects.              Defaults to return the latest version of the dialect if not specified. (optional)
-     * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return PagedResourceListOfDialectId
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfDialectId listDialectIds(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfDialectId> localVarResp = listDialectIdsWithHttpInfo(asAt, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListDialectIds: List dialect identifiers matching an optional filter.
-     * List the stored dialects&#39; identifiers with pagination and filtering at the specified asAt time.
-     * @param asAt The asAt datetime at which to retrieve the dialects.              Defaults to return the latest version of the dialect if not specified. (optional)
-     * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfDialectId&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfDialectId> listDialectIdsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfDialectId> listDialectIdsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDialectId>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListDialectIds: List dialect identifiers matching an optional filter. (asynchronously)
-     * List the stored dialects&#39; identifiers with pagination and filtering at the specified asAt time.
-     * @param asAt The asAt datetime at which to retrieve the dialects.              Defaults to return the latest version of the dialect if not specified. (optional)
-     * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listDialectIdsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfDialectId> _callback) throws ApiException {
+    private okhttp3.Call listDialectIdsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfDialectId> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDialectId>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistDialectIdsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistDialectIdsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified. (optional)
+         * @return APIlistDialectIdsRequest
+         */
+        public APIlistDialectIdsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistDialectIdsRequest
+         */
+        public APIlistDialectIdsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistDialectIdsRequest
+         */
+        public APIlistDialectIdsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistDialectIdsRequest
+         */
+        public APIlistDialectIdsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listDialectIds
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listDialectIdsCall(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listDialectIds request
+         * @return PagedResourceListOfDialectId
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfDialectId execute() throws ApiException {
+            ApiResponse<PagedResourceListOfDialectId> localVarResp = listDialectIdsWithHttpInfo(asAt, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listDialectIds request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfDialectId&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfDialectId> executeWithHttpInfo() throws ApiException {
+            return listDialectIdsWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listDialectIds request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDialectId> _callback) throws ApiException {
+            return listDialectIdsAsync(asAt, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listTranslationScriptIds
-     * @param asAt The asAt datetime at which to retrieve the script identifiers. Defaults to latest. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1              or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
-     * @param page The pagination token to use to continue listing translation script IDs; this              value is returned from the previous call. If a pagination token is provided, the filter field              must not have changed since the original request. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListDialectIds: List dialect identifiers matching an optional filter.
+     * List the stored dialects&#39; identifiers with pagination and filtering at the specified asAt time.
+     * @return APIlistDialectIdsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listTranslationScriptIdsCall(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+    public APIlistDialectIdsRequest listDialectIds() {
+        return new APIlistDialectIdsRequest();
+    }
+    private okhttp3.Call listTranslationScriptIdsCall(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -670,91 +782,154 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListTranslationScriptIds: List translation script identifiers.
-     * List translation script ids.
-     * @param asAt The asAt datetime at which to retrieve the script identifiers. Defaults to latest. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1              or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
-     * @param page The pagination token to use to continue listing translation script IDs; this              value is returned from the previous call. If a pagination token is provided, the filter field              must not have changed since the original request. (optional)
-     * @return PagedResourceListOfTranslationScriptId
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfTranslationScriptId listTranslationScriptIds(OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfTranslationScriptId> localVarResp = listTranslationScriptIdsWithHttpInfo(asAt, limit, filter, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListTranslationScriptIds: List translation script identifiers.
-     * List translation script ids.
-     * @param asAt The asAt datetime at which to retrieve the script identifiers. Defaults to latest. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1              or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
-     * @param page The pagination token to use to continue listing translation script IDs; this              value is returned from the previous call. If a pagination token is provided, the filter field              must not have changed since the original request. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfTranslationScriptId&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfTranslationScriptId> listTranslationScriptIdsWithHttpInfo(OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfTranslationScriptId> listTranslationScriptIdsWithHttpInfo(OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
         okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTranslationScriptId>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListTranslationScriptIds: List translation script identifiers. (asynchronously)
-     * List translation script ids.
-     * @param asAt The asAt datetime at which to retrieve the script identifiers. Defaults to latest. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1              or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
-     * @param page The pagination token to use to continue listing translation script IDs; this              value is returned from the previous call. If a pagination token is provided, the filter field              must not have changed since the original request. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listTranslationScriptIdsAsync(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfTranslationScriptId> _callback) throws ApiException {
+    private okhttp3.Call listTranslationScriptIdsAsync(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfTranslationScriptId> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTranslationScriptId>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistTranslationScriptIdsRequest {
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String filter;
+        private String page;
+
+        private APIlistTranslationScriptIdsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the script identifiers. Defaults to latest. (optional)
+         * @return APIlistTranslationScriptIdsRequest
+         */
+        public APIlistTranslationScriptIdsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistTranslationScriptIdsRequest
+         */
+        public APIlistTranslationScriptIdsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
+         * @return APIlistTranslationScriptIdsRequest
+         */
+        public APIlistTranslationScriptIdsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request. (optional)
+         * @return APIlistTranslationScriptIdsRequest
+         */
+        public APIlistTranslationScriptIdsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for listTranslationScriptIds
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTranslationScriptIdsCall(asAt, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listTranslationScriptIds request
+         * @return PagedResourceListOfTranslationScriptId
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfTranslationScriptId execute() throws ApiException {
+            ApiResponse<PagedResourceListOfTranslationScriptId> localVarResp = listTranslationScriptIdsWithHttpInfo(asAt, limit, filter, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTranslationScriptIds request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfTranslationScriptId&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfTranslationScriptId> executeWithHttpInfo() throws ApiException {
+            return listTranslationScriptIdsWithHttpInfo(asAt, limit, filter, page);
+        }
+
+        /**
+         * Execute listTranslationScriptIds request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTranslationScriptId> _callback) throws ApiException {
+            return listTranslationScriptIdsAsync(asAt, limit, filter, page, _callback);
+        }
+    }
+
     /**
-     * Build call for translateEntities
-     * @param translateEntitiesRequest The entities to translate, along with identifiers for the script and (optional) dialect to use. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListTranslationScriptIds: List translation script identifiers.
+     * List translation script ids.
+     * @return APIlistTranslationScriptIdsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call translateEntitiesCall(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistTranslationScriptIdsRequest listTranslationScriptIds() {
+        return new APIlistTranslationScriptIdsRequest();
+    }
+    private okhttp3.Call translateEntitiesCall(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -815,73 +990,101 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script.
-     * Run the provided translation request. The entities to translate are specified in the request body as a  dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate  results against are sourced from the database.
-     * @param translateEntitiesRequest The entities to translate, along with identifiers for the script and (optional) dialect to use. (required)
-     * @return TranslateEntitiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TranslateEntitiesResponse translateEntities(TranslateEntitiesRequest translateEntitiesRequest) throws ApiException {
-        ApiResponse<TranslateEntitiesResponse> localVarResp = translateEntitiesWithHttpInfo(translateEntitiesRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script.
-     * Run the provided translation request. The entities to translate are specified in the request body as a  dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate  results against are sourced from the database.
-     * @param translateEntitiesRequest The entities to translate, along with identifiers for the script and (optional) dialect to use. (required)
-     * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TranslateEntitiesResponse> translateEntitiesWithHttpInfo(TranslateEntitiesRequest translateEntitiesRequest) throws ApiException {
+    private ApiResponse<TranslateEntitiesResponse> translateEntitiesWithHttpInfo(TranslateEntitiesRequest translateEntitiesRequest) throws ApiException {
         okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, null);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script. (asynchronously)
-     * Run the provided translation request. The entities to translate are specified in the request body as a  dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate  results against are sourced from the database.
-     * @param translateEntitiesRequest The entities to translate, along with identifiers for the script and (optional) dialect to use. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call translateEntitiesAsync(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
+    private okhttp3.Call translateEntitiesAsync(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, _callback);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APItranslateEntitiesRequest {
+        private final TranslateEntitiesRequest translateEntitiesRequest;
+
+        private APItranslateEntitiesRequest(TranslateEntitiesRequest translateEntitiesRequest) {
+            this.translateEntitiesRequest = translateEntitiesRequest;
+        }
+
+        /**
+         * Build call for translateEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return translateEntitiesCall(translateEntitiesRequest, _callback);
+        }
+
+        /**
+         * Execute translateEntities request
+         * @return TranslateEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateEntitiesResponse execute() throws ApiException {
+            ApiResponse<TranslateEntitiesResponse> localVarResp = translateEntitiesWithHttpInfo(translateEntitiesRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute translateEntities request with HTTP info returned
+         * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateEntitiesResponse> executeWithHttpInfo() throws ApiException {
+            return translateEntitiesWithHttpInfo(translateEntitiesRequest);
+        }
+
+        /**
+         * Execute translateEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
+            return translateEntitiesAsync(translateEntitiesRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for translateEntitiesInlined
-     * @param translateEntitiesInlinedRequest The entities to translate, along with the script to use and an optional schema for validation. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script.
+     * Run the provided translation request. The entities to translate are specified in the request body as a  dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate  results against are sourced from the database.
+     * @param translateEntitiesRequest The entities to translate, along with identifiers for the script and (optional) dialect to use. (required)
+     * @return APItranslateEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -890,7 +1093,10 @@ public class ScriptedTranslationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call translateEntitiesInlinedCall(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback _callback) throws ApiException {
+    public APItranslateEntitiesRequest translateEntities(TranslateEntitiesRequest translateEntitiesRequest) {
+        return new APItranslateEntitiesRequest(translateEntitiesRequest);
+    }
+    private okhttp3.Call translateEntitiesInlinedCall(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -951,82 +1157,113 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script.
-     * Run the provided translation request. The entities to translate, script to use and dialect to validate results against  are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
-     * @param translateEntitiesInlinedRequest The entities to translate, along with the script to use and an optional schema for validation. (required)
-     * @return TranslateEntitiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TranslateEntitiesResponse translateEntitiesInlined(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) throws ApiException {
-        ApiResponse<TranslateEntitiesResponse> localVarResp = translateEntitiesInlinedWithHttpInfo(translateEntitiesInlinedRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script.
-     * Run the provided translation request. The entities to translate, script to use and dialect to validate results against  are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
-     * @param translateEntitiesInlinedRequest The entities to translate, along with the script to use and an optional schema for validation. (required)
-     * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TranslateEntitiesResponse> translateEntitiesInlinedWithHttpInfo(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) throws ApiException {
+    private ApiResponse<TranslateEntitiesResponse> translateEntitiesInlinedWithHttpInfo(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) throws ApiException {
         okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, null);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script. (asynchronously)
-     * Run the provided translation request. The entities to translate, script to use and dialect to validate results against  are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
-     * @param translateEntitiesInlinedRequest The entities to translate, along with the script to use and an optional schema for validation. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call translateEntitiesInlinedAsync(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
+    private okhttp3.Call translateEntitiesInlinedAsync(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, _callback);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APItranslateEntitiesInlinedRequest {
+        private final TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest;
+
+        private APItranslateEntitiesInlinedRequest(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) {
+            this.translateEntitiesInlinedRequest = translateEntitiesInlinedRequest;
+        }
+
+        /**
+         * Build call for translateEntitiesInlined
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return translateEntitiesInlinedCall(translateEntitiesInlinedRequest, _callback);
+        }
+
+        /**
+         * Execute translateEntitiesInlined request
+         * @return TranslateEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateEntitiesResponse execute() throws ApiException {
+            ApiResponse<TranslateEntitiesResponse> localVarResp = translateEntitiesInlinedWithHttpInfo(translateEntitiesInlinedRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute translateEntitiesInlined request with HTTP info returned
+         * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateEntitiesResponse> executeWithHttpInfo() throws ApiException {
+            return translateEntitiesInlinedWithHttpInfo(translateEntitiesInlinedRequest);
+        }
+
+        /**
+         * Execute translateEntitiesInlined request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
+            return translateEntitiesInlinedAsync(translateEntitiesInlinedRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertTranslationDialect
-     * @param dialect The dialect to upsert. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script.
+     * Run the provided translation request. The entities to translate, script to use and dialect to validate results against  are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
+     * @param translateEntitiesInlinedRequest The entities to translate, along with the script to use and an optional schema for validation. (required)
+     * @return APItranslateEntitiesInlinedRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTranslationDialectCall(Dialect dialect, final ApiCallback _callback) throws ApiException {
+    public APItranslateEntitiesInlinedRequest translateEntitiesInlined(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) {
+        return new APItranslateEntitiesInlinedRequest(translateEntitiesInlinedRequest);
+    }
+    private okhttp3.Call upsertTranslationDialectCall(Dialect dialect, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1087,82 +1324,113 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect.
-     * Upsert the given dialect.
-     * @param dialect The dialect to upsert. (required)
-     * @return Dialect
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Dialect upsertTranslationDialect(Dialect dialect) throws ApiException {
-        ApiResponse<Dialect> localVarResp = upsertTranslationDialectWithHttpInfo(dialect);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect.
-     * Upsert the given dialect.
-     * @param dialect The dialect to upsert. (required)
-     * @return ApiResponse&lt;Dialect&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Dialect> upsertTranslationDialectWithHttpInfo(Dialect dialect) throws ApiException {
+    private ApiResponse<Dialect> upsertTranslationDialectWithHttpInfo(Dialect dialect) throws ApiException {
         okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(dialect, null);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect. (asynchronously)
-     * Upsert the given dialect.
-     * @param dialect The dialect to upsert. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertTranslationDialectAsync(Dialect dialect, final ApiCallback<Dialect> _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationDialectAsync(Dialect dialect, final ApiCallback<Dialect> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(dialect, _callback);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertTranslationDialectRequest {
+        private final Dialect dialect;
+
+        private APIupsertTranslationDialectRequest(Dialect dialect) {
+            this.dialect = dialect;
+        }
+
+        /**
+         * Build call for upsertTranslationDialect
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTranslationDialectCall(dialect, _callback);
+        }
+
+        /**
+         * Execute upsertTranslationDialect request
+         * @return Dialect
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Dialect execute() throws ApiException {
+            ApiResponse<Dialect> localVarResp = upsertTranslationDialectWithHttpInfo(dialect);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTranslationDialect request with HTTP info returned
+         * @return ApiResponse&lt;Dialect&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Dialect> executeWithHttpInfo() throws ApiException {
+            return upsertTranslationDialectWithHttpInfo(dialect);
+        }
+
+        /**
+         * Execute upsertTranslationDialect request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback) throws ApiException {
+            return upsertTranslationDialectAsync(dialect, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertTranslationScript
-     * @param translationScript The translation script to be upserted. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect.
+     * Upsert the given dialect.
+     * @param dialect The dialect to upsert. (required)
+     * @return APIupsertTranslationDialectRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTranslationScriptCall(TranslationScript translationScript, final ApiCallback _callback) throws ApiException {
+    public APIupsertTranslationDialectRequest upsertTranslationDialect(Dialect dialect) {
+        return new APIupsertTranslationDialectRequest(dialect);
+    }
+    private okhttp3.Call upsertTranslationScriptCall(TranslationScript translationScript, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1223,52 +1491,101 @@ public class ScriptedTranslationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script.
-     * Upserts a translation script to be used for translating financial entities.
-     * @param translationScript The translation script to be upserted. (required)
-     * @return TranslationScript
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TranslationScript upsertTranslationScript(TranslationScript translationScript) throws ApiException {
-        ApiResponse<TranslationScript> localVarResp = upsertTranslationScriptWithHttpInfo(translationScript);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script.
-     * Upserts a translation script to be used for translating financial entities.
-     * @param translationScript The translation script to be upserted. (required)
-     * @return ApiResponse&lt;TranslationScript&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TranslationScript> upsertTranslationScriptWithHttpInfo(TranslationScript translationScript) throws ApiException {
+    private ApiResponse<TranslationScript> upsertTranslationScriptWithHttpInfo(TranslationScript translationScript) throws ApiException {
         okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(translationScript, null);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertTranslationScriptAsync(TranslationScript translationScript, final ApiCallback<TranslationScript> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(translationScript, _callback);
+        Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertTranslationScriptRequest {
+        private final TranslationScript translationScript;
+
+        private APIupsertTranslationScriptRequest(TranslationScript translationScript) {
+            this.translationScript = translationScript;
+        }
+
+        /**
+         * Build call for upsertTranslationScript
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTranslationScriptCall(translationScript, _callback);
+        }
+
+        /**
+         * Execute upsertTranslationScript request
+         * @return TranslationScript
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslationScript execute() throws ApiException {
+            ApiResponse<TranslationScript> localVarResp = upsertTranslationScriptWithHttpInfo(translationScript);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTranslationScript request with HTTP info returned
+         * @return ApiResponse&lt;TranslationScript&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslationScript> executeWithHttpInfo() throws ApiException {
+            return upsertTranslationScriptWithHttpInfo(translationScript);
+        }
+
+        /**
+         * Execute upsertTranslationScript request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback) throws ApiException {
+            return upsertTranslationScriptAsync(translationScript, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script. (asynchronously)
+     * [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script.
      * Upserts a translation script to be used for translating financial entities.
      * @param translationScript The translation script to be upserted. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertTranslationScriptRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1277,11 +1594,7 @@ public class ScriptedTranslationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTranslationScriptAsync(TranslationScript translationScript, final ApiCallback<TranslationScript> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(translationScript, _callback);
-        Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertTranslationScriptRequest upsertTranslationScript(TranslationScript translationScript) {
+        return new APIupsertTranslationScriptRequest(translationScript);
     }
 }

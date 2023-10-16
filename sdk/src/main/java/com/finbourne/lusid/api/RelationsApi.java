@@ -74,24 +74,7 @@ public class RelationsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createRelation
-     * @param scope The scope of the relation definition (required)
-     * @param code The code of the relation definition (required)
-     * @param createRelationRequest The details of the relation to create. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createRelationCall(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRelationCall(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -168,94 +151,130 @@ public class RelationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateRelation: Create Relation
-     * Create a relation between two entity objects by their identifiers
-     * @param scope The scope of the relation definition (required)
-     * @param code The code of the relation definition (required)
-     * @param createRelationRequest The details of the relation to create. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return CompleteRelation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CompleteRelation createRelation(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt) throws ApiException {
-        ApiResponse<CompleteRelation> localVarResp = createRelationWithHttpInfo(scope, code, createRelationRequest, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateRelation: Create Relation
-     * Create a relation between two entity objects by their identifiers
-     * @param scope The scope of the relation definition (required)
-     * @param code The code of the relation definition (required)
-     * @param createRelationRequest The details of the relation to create. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return ApiResponse&lt;CompleteRelation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CompleteRelation> createRelationWithHttpInfo(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt) throws ApiException {
+    private ApiResponse<CompleteRelation> createRelationWithHttpInfo(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, null);
         Type localVarReturnType = new TypeToken<CompleteRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateRelation: Create Relation (asynchronously)
-     * Create a relation between two entity objects by their identifiers
-     * @param scope The scope of the relation definition (required)
-     * @param code The code of the relation definition (required)
-     * @param createRelationRequest The details of the relation to create. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createRelationAsync(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback<CompleteRelation> _callback) throws ApiException {
+    private okhttp3.Call createRelationAsync(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback<CompleteRelation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<CompleteRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateRelationRequest {
+        private final String scope;
+        private final String code;
+        private final CreateRelationRequest createRelationRequest;
+        private String effectiveAt;
+
+        private APIcreateRelationRequest(String scope, String code, CreateRelationRequest createRelationRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.createRelationRequest = createRelationRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIcreateRelationRequest
+         */
+        public APIcreateRelationRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for createRelation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createRelationCall(scope, code, createRelationRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute createRelation request
+         * @return CompleteRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompleteRelation execute() throws ApiException {
+            ApiResponse<CompleteRelation> localVarResp = createRelationWithHttpInfo(scope, code, createRelationRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createRelation request with HTTP info returned
+         * @return ApiResponse&lt;CompleteRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompleteRelation> executeWithHttpInfo() throws ApiException {
+            return createRelationWithHttpInfo(scope, code, createRelationRequest, effectiveAt);
+        }
+
+        /**
+         * Execute createRelation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompleteRelation> _callback) throws ApiException {
+            return createRelationAsync(scope, code, createRelationRequest, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteRelation
+     * [EXPERIMENTAL] CreateRelation: Create Relation
+     * Create a relation between two entity objects by their identifiers
      * @param scope The scope of the relation definition (required)
      * @param code The code of the relation definition (required)
-     * @param deleteRelationRequest The details of the relation to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param createRelationRequest The details of the relation to create. (required)
+     * @return APIcreateRelationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly created relation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRelationCall(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIcreateRelationRequest createRelation(String scope, String code, CreateRelationRequest createRelationRequest) {
+        return new APIcreateRelationRequest(scope, code, createRelationRequest);
+    }
+    private okhttp3.Call deleteRelationCall(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -332,61 +351,118 @@ public class RelationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteRelation: Delete a relation
-     * Delete a relation between two entity objects represented by their identifiers
-     * @param scope The scope of the relation definition (required)
-     * @param code The code of the relation definition (required)
-     * @param deleteRelationRequest The details of the relation to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteRelation(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationWithHttpInfo(scope, code, deleteRelationRequest, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteRelation: Delete a relation
-     * Delete a relation between two entity objects represented by their identifiers
-     * @param scope The scope of the relation definition (required)
-     * @param code The code of the relation definition (required)
-     * @param deleteRelationRequest The details of the relation to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteRelationWithHttpInfo(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteRelationWithHttpInfo(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call deleteRelationAsync(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteRelationRequest {
+        private final String scope;
+        private final String code;
+        private final DeleteRelationRequest deleteRelationRequest;
+        private String effectiveAt;
+
+        private APIdeleteRelationRequest(String scope, String code, DeleteRelationRequest deleteRelationRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.deleteRelationRequest = deleteRelationRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIdeleteRelationRequest
+         */
+        public APIdeleteRelationRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteRelation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteRelationCall(scope, code, deleteRelationRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteRelation request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationWithHttpInfo(scope, code, deleteRelationRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteRelation request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteRelationWithHttpInfo(scope, code, deleteRelationRequest, effectiveAt);
+        }
+
+        /**
+         * Execute deleteRelation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteRelationAsync(scope, code, deleteRelationRequest, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] DeleteRelation: Delete a relation (asynchronously)
+     * [EXPERIMENTAL] DeleteRelation: Delete a relation
      * Delete a relation between two entity objects represented by their identifiers
      * @param scope The scope of the relation definition (required)
      * @param code The code of the relation definition (required)
      * @param deleteRelationRequest The details of the relation to delete. (required)
-     * @param effectiveAt The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIdeleteRelationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -395,11 +471,7 @@ public class RelationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRelationAsync(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, _callback);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIdeleteRelationRequest deleteRelation(String scope, String code, DeleteRelationRequest deleteRelationRequest) {
+        return new APIdeleteRelationRequest(scope, code, deleteRelationRequest);
     }
 }

@@ -308,32 +308,25 @@ public class AborRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AborRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to AborRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!AborRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!AborRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AborRequest is not found in the empty JSON string", AborRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AborRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AborRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AborRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
@@ -351,10 +344,10 @@ public class AborRequest {
       JsonArray jsonArrayportfolioIds = jsonObj.getAsJsonArray("portfolioIds");
       // validate the required field `portfolioIds` (array)
       for (int i = 0; i < jsonArrayportfolioIds.size(); i++) {
-        PortfolioEntityId.validateJsonObject(jsonArrayportfolioIds.get(i).getAsJsonObject());
+        PortfolioEntityId.validateJsonElement(jsonArrayportfolioIds.get(i));
       };
       // validate the required field `aborConfigurationId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("aborConfigurationId"));
+      ResourceId.validateJsonElement(jsonObj.get("aborConfigurationId"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -377,9 +370,9 @@ public class AborRequest {
 
            @Override
            public AborRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteOrderInstruction"></a>
 # **deleteOrderInstruction**
-> DeletedEntityResponse deleteOrderInstruction(scope, code)
+> DeletedEntityResponse deleteOrderInstruction(scope, code).execute();
 
 [EXPERIMENTAL] DeleteOrderInstruction: Delete orderInstruction
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The orderInstruction scope.
     String code = "code_example"; // String | The orderInstruction's code. This, together with the scope uniquely identifies the orderInstruction to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deleteOrderInstruction(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteOrderInstruction(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderInstructionsApi#deleteOrderInstruction");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getOrderInstruction"></a>
 # **getOrderInstruction**
-> OrderInstruction getOrderInstruction(scope, code, asAt, propertyKeys)
+> OrderInstruction getOrderInstruction(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] GetOrderInstruction: Get OrderInstruction
 
@@ -112,9 +113,12 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the orderInstruction belongs.
     String code = "code_example"; // String | The orderInstruction's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the orderInstruction. Defaults to return the latest version of the orderInstruction if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"OrderInstruction\" domain to decorate onto the orderInstruction.              These take the format {domain}/{scope}/{code} e.g. \"OrderInstruction/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"OrderInstruction\" domain to decorate onto the orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \"OrderInstruction/system/Name\".
     try {
-      OrderInstruction result = apiInstance.getOrderInstruction(scope, code, asAt, propertyKeys);
+      OrderInstruction result = apiInstance.getOrderInstruction(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderInstructionsApi#getOrderInstruction");
@@ -134,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the orderInstruction belongs. | |
 | **code** | **String**| The orderInstruction&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the orderInstruction. Defaults to return the latest version of the orderInstruction if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto the orderInstruction.              These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto the orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a id="listOrderInstructions"></a>
 # **listOrderInstructions**
-> PagedResourceListOfOrderInstruction listOrderInstructions(asAt, page, sortBy, limit, filter, propertyKeys)
+> PagedResourceListOfOrderInstruction listOrderInstructions().asAt(asAt).page(page).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListOrderInstructions: List OrderInstructions
 
@@ -185,13 +189,20 @@ public class Example {
 
     OrderInstructionsApi apiInstance = new OrderInstructionsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the orderInstruction. Defaults to return the latest version of the orderInstruction if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"OrderInstruction\" domain to decorate onto each orderInstruction.                  These take the format {domain}/{scope}/{code} e.g. \"OrderInstruction/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"OrderInstruction\" domain to decorate onto each orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \"OrderInstruction/system/Name\".
     try {
-      PagedResourceListOfOrderInstruction result = apiInstance.listOrderInstructions(asAt, page, sortBy, limit, filter, propertyKeys);
+      PagedResourceListOfOrderInstruction result = apiInstance.listOrderInstructions()
+            .asAt(asAt)
+            .page(page)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderInstructionsApi#listOrderInstructions");
@@ -209,11 +220,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the orderInstruction. Defaults to return the latest version of the orderInstruction if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.                  These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -237,7 +248,7 @@ public class Example {
 
 <a id="upsertOrderInstructions"></a>
 # **upsertOrderInstructions**
-> ResourceListOfOrderInstruction upsertOrderInstructions(orderInstructionSetRequest)
+> ResourceListOfOrderInstruction upsertOrderInstructions().orderInstructionSetRequest(orderInstructionSetRequest).execute();
 
 [EXPERIMENTAL] UpsertOrderInstructions: Upsert OrderInstruction
 
@@ -265,7 +276,9 @@ public class Example {
     OrderInstructionsApi apiInstance = new OrderInstructionsApi(defaultClient);
     OrderInstructionSetRequest orderInstructionSetRequest = new OrderInstructionSetRequest(); // OrderInstructionSetRequest | The collection of orderInstruction requests.
     try {
-      ResourceListOfOrderInstruction result = apiInstance.upsertOrderInstructions(orderInstructionSetRequest);
+      ResourceListOfOrderInstruction result = apiInstance.upsertOrderInstructions()
+            .orderInstructionSetRequest(orderInstructionSetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderInstructionsApi#upsertOrderInstructions");

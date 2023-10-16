@@ -199,60 +199,60 @@ public class ComplexMarketData {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ComplexMarketData
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ComplexMarketData
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ComplexMarketData.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ComplexMarketData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ComplexMarketData is not found in the empty JSON string", ComplexMarketData.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("marketDataType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("marketDataType").getAsString();
       switch (discriminatorValue) {
         case "CreditSpreadCurveData":
-          CreditSpreadCurveData.validateJsonObject(jsonObj);
+          CreditSpreadCurveData.validateJsonElement(jsonElement);
           break;
         case "DiscountFactorCurveData":
-          DiscountFactorCurveData.validateJsonObject(jsonObj);
+          DiscountFactorCurveData.validateJsonElement(jsonElement);
           break;
         case "EquityCurveByPricesData":
-          EquityCurveByPricesData.validateJsonObject(jsonObj);
+          EquityCurveByPricesData.validateJsonElement(jsonElement);
           break;
         case "EquityVolSurfaceData":
-          EquityVolSurfaceData.validateJsonObject(jsonObj);
+          EquityVolSurfaceData.validateJsonElement(jsonElement);
           break;
         case "FxForwardCurveByQuoteReference":
-          FxForwardCurveByQuoteReference.validateJsonObject(jsonObj);
+          FxForwardCurveByQuoteReference.validateJsonElement(jsonElement);
           break;
         case "FxForwardCurveData":
-          FxForwardCurveData.validateJsonObject(jsonObj);
+          FxForwardCurveData.validateJsonElement(jsonElement);
           break;
         case "FxForwardPipsCurveData":
-          FxForwardPipsCurveData.validateJsonObject(jsonObj);
+          FxForwardPipsCurveData.validateJsonElement(jsonElement);
           break;
         case "FxForwardTenorCurveData":
-          FxForwardTenorCurveData.validateJsonObject(jsonObj);
+          FxForwardTenorCurveData.validateJsonElement(jsonElement);
           break;
         case "FxForwardTenorPipsCurveData":
-          FxForwardTenorPipsCurveData.validateJsonObject(jsonObj);
+          FxForwardTenorPipsCurveData.validateJsonElement(jsonElement);
           break;
         case "FxVolSurfaceData":
-          FxVolSurfaceData.validateJsonObject(jsonObj);
+          FxVolSurfaceData.validateJsonElement(jsonElement);
           break;
         case "IrVolCubeData":
-          IrVolCubeData.validateJsonObject(jsonObj);
+          IrVolCubeData.validateJsonElement(jsonElement);
           break;
         case "OpaqueMarketData":
-          OpaqueMarketData.validateJsonObject(jsonObj);
+          OpaqueMarketData.validateJsonElement(jsonElement);
           break;
         case "YieldCurveData":
-          YieldCurveData.validateJsonObject(jsonObj);
+          YieldCurveData.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `marketDataType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

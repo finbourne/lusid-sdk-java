@@ -34,7 +34,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="addPortfolioToGroup"></a>
 # **addPortfolioToGroup**
-> PortfolioGroup addPortfolioToGroup(scope, code, effectiveAt, resourceId)
+> PortfolioGroup addPortfolioToGroup(scope, code).effectiveAt(effectiveAt).resourceId(resourceId).execute();
 
 [EARLY ACCESS] AddPortfolioToGroup: Add portfolio to group
 
@@ -65,7 +65,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the portfolio will be added to the group.
     ResourceId resourceId = new ResourceId(); // ResourceId | The resource identifier of the portfolio to add to the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, effectiveAt, resourceId);
+      PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code)
+            .effectiveAt(effectiveAt)
+            .resourceId(resourceId)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#addPortfolioToGroup");
@@ -109,7 +112,7 @@ public class Example {
 
 <a id="addSubGroupToGroup"></a>
 # **addSubGroupToGroup**
-> PortfolioGroup addSubGroupToGroup(scope, code, effectiveAt, resourceId)
+> PortfolioGroup addSubGroupToGroup(scope, code).effectiveAt(effectiveAt).resourceId(resourceId).execute();
 
 [EARLY ACCESS] AddSubGroupToGroup: Add sub group to group
 
@@ -140,7 +143,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the sub group will be added to the group.
     ResourceId resourceId = new ResourceId(); // ResourceId | The resource identifier of the portfolio group to add to the portfolio group as a sub group.
     try {
-      PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, effectiveAt, resourceId);
+      PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code)
+            .effectiveAt(effectiveAt)
+            .resourceId(resourceId)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#addSubGroupToGroup");
@@ -184,11 +190,11 @@ public class Example {
 
 <a id="buildTransactionsForPortfolioGroup"></a>
 # **buildTransactionsForPortfolioGroup**
-> VersionedResourceListOfOutputTransaction buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page)
+> VersionedResourceListOfOutputTransaction buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters).asAt(asAt).filter(filter).propertyKeys(propertyKeys).limit(limit).page(page).execute();
 
 BuildTransactionsForPortfolioGroup: Build transactions for transaction portfolios in a portfolio group
 
-Build transactions for transaction portfolios in a portfolio group over a given interval of effective time.                When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
+Build transactions for transaction portfolios in a portfolio group over a given interval of effective time.     When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
 
 ### Example
 ```java
@@ -211,15 +217,21 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group.
-    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies               the portfolio group.
+    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
     TransactionQueryParameters transactionQueryParameters = new TransactionQueryParameters(); // TransactionQueryParameters | The query queryParameters which control how the output transactions are built.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest               version of each transaction if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set.               For example, to filter on the Transaction Type, use \"type eq 'Buy'\"               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Transaction\" domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or               \"Transaction/strategy/quantsignal\".
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Transaction Type, use \"type eq 'Buy'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Transaction\" domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or   \"Transaction/strategy/quantsignal\".
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to BuildTransactions.
     try {
-      VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
+      VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters)
+            .asAt(asAt)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#buildTransactionsForPortfolioGroup");
@@ -237,11 +249,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group. | |
-| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies               the portfolio group. | |
+| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. | |
 | **transactionQueryParameters** | [**TransactionQueryParameters**](TransactionQueryParameters.md)| The query queryParameters which control how the output transactions are built. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest               version of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.               For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or               \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to BuildTransactions. | [optional] |
 
@@ -267,7 +279,7 @@ public class Example {
 
 <a id="createPortfolioGroup"></a>
 # **createPortfolioGroup**
-> PortfolioGroup createPortfolioGroup(scope, createPortfolioGroupRequest)
+> PortfolioGroup createPortfolioGroup(scope).createPortfolioGroupRequest(createPortfolioGroupRequest).execute();
 
 CreatePortfolioGroup: Create portfolio group
 
@@ -296,7 +308,9 @@ public class Example {
     String scope = "scope_example"; // String | The scope that the portfolio group will be created in.
     CreatePortfolioGroupRequest createPortfolioGroupRequest = new CreatePortfolioGroupRequest(); // CreatePortfolioGroupRequest | The definition and details of the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.createPortfolioGroup(scope, createPortfolioGroupRequest);
+      PortfolioGroup result = apiInstance.createPortfolioGroup(scope)
+            .createPortfolioGroupRequest(createPortfolioGroupRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#createPortfolioGroup");
@@ -338,7 +352,7 @@ public class Example {
 
 <a id="deleteGroupProperties"></a>
 # **deleteGroupProperties**
-> DeletedEntityResponse deleteGroupProperties(scope, code, requestBody, effectiveAt)
+> DeletedEntityResponse deleteGroupProperties(scope, code, requestBody).effectiveAt(effectiveAt).execute();
 
 [EARLY ACCESS] DeleteGroupProperties: Delete group properties
 
@@ -366,10 +380,12 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the group to delete properties from.
     String code = "code_example"; // String | The code of the group to delete properties from. Together with the scope this uniquely identifies the group.
-    List<String> requestBody = ["PortfolioGroup/MyScope/MyPropertyName","PortfolioGroup/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\". Each property must be from the \"PortfolioGroup\" domain.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual.
+    List<String> requestBody = ["PortfolioGroup/MyScope/MyPropertyName","PortfolioGroup/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These take the format   {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\". Each property must be from the \"PortfolioGroup\" domain.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
     try {
-      DeletedEntityResponse result = apiInstance.deleteGroupProperties(scope, code, requestBody, effectiveAt);
+      DeletedEntityResponse result = apiInstance.deleteGroupProperties(scope, code, requestBody)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deleteGroupProperties");
@@ -388,8 +404,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the group to delete properties from. | |
 | **code** | **String**| The code of the group to delete properties from. Together with the scope this uniquely identifies the group. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. | [optional] |
+| **requestBody** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -413,7 +429,7 @@ public class Example {
 
 <a id="deleteKeyFromPortfolioGroupAccessMetadata"></a>
 # **deleteKeyFromPortfolioGroupAccessMetadata**
-> DeletedEntityResponse deleteKeyFromPortfolioGroupAccessMetadata(scope, code, metadataKey, effectiveAt, effectiveUntil)
+> DeletedEntityResponse deleteKeyFromPortfolioGroupAccessMetadata(scope, code, metadataKey).effectiveAt(effectiveAt).effectiveUntil(effectiveUntil).execute();
 
 [EARLY ACCESS] DeleteKeyFromPortfolioGroupAccessMetadata: Delete a Portfolio Group Access Metadata entry
 
@@ -445,7 +461,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
     OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
     try {
-      DeletedEntityResponse result = apiInstance.deleteKeyFromPortfolioGroupAccessMetadata(scope, code, metadataKey, effectiveAt, effectiveUntil);
+      DeletedEntityResponse result = apiInstance.deleteKeyFromPortfolioGroupAccessMetadata(scope, code, metadataKey)
+            .effectiveAt(effectiveAt)
+            .effectiveUntil(effectiveUntil)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deleteKeyFromPortfolioGroupAccessMetadata");
@@ -490,7 +509,7 @@ public class Example {
 
 <a id="deletePortfolioFromGroup"></a>
 # **deletePortfolioFromGroup**
-> PortfolioGroup deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt)
+> PortfolioGroup deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode).effectiveAt(effectiveAt).execute();
 
 [EARLY ACCESS] DeletePortfolioFromGroup: Delete portfolio from group
 
@@ -522,7 +541,9 @@ public class Example {
     String portfolioCode = "portfolioCode_example"; // String | The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the portfolio will be removed from the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt);
+      PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioFromGroup");
@@ -567,7 +588,7 @@ public class Example {
 
 <a id="deletePortfolioGroup"></a>
 # **deletePortfolioGroup**
-> DeletedEntityResponse deletePortfolioGroup(scope, code)
+> DeletedEntityResponse deletePortfolioGroup(scope, code).execute();
 
 [EARLY ACCESS] DeletePortfolioGroup: Delete portfolio group
 
@@ -596,7 +617,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the portfolio group to delete.
     String code = "code_example"; // String | The code of the portfolio group to delete. Together with the scope this uniquely identifies the portfolio group to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deletePortfolioGroup(scope, code);
+      DeletedEntityResponse result = apiInstance.deletePortfolioGroup(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioGroup");
@@ -638,7 +660,7 @@ public class Example {
 
 <a id="deleteSubGroupFromGroup"></a>
 # **deleteSubGroupFromGroup**
-> PortfolioGroup deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt)
+> PortfolioGroup deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode).effectiveAt(effectiveAt).execute();
 
 [EARLY ACCESS] DeleteSubGroupFromGroup: Delete sub group from group
 
@@ -670,7 +692,9 @@ public class Example {
     String subgroupCode = "subgroupCode_example"; // String | The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the sub group will be removed from the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt);
+      PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deleteSubGroupFromGroup");
@@ -715,7 +739,7 @@ public class Example {
 
 <a id="getA2BDataForPortfolioGroup"></a>
 # **getA2BDataForPortfolioGroup**
-> VersionedResourceListOfA2BDataRecord getA2BDataForPortfolioGroup(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter)
+> VersionedResourceListOfA2BDataRecord getA2BDataForPortfolioGroup(scope, code, fromEffectiveAt, toEffectiveAt).asAt(asAt).recipeIdScope(recipeIdScope).recipeIdCode(recipeIdCode).propertyKeys(propertyKeys).filter(filter).execute();
 
 [EARLY ACCESS] GetA2BDataForPortfolioGroup: Get A2B data for a Portfolio Group
 
@@ -742,16 +766,22 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the group to retrieve the A2B report for.
-    String code = "code_example"; // String | The code of the group to retrieve the A2B report for. Together with the scope this              uniquely identifies the portfolio group.
-    String fromEffectiveAt = "fromEffectiveAt_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified.
-    String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified.
+    String code = "code_example"; // String | The code of the group to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio group.
+    String fromEffectiveAt = "fromEffectiveAt_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified.
+    String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified.
     String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
     String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeId
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
-    String filter = "filter_example"; // String | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      VersionedResourceListOfA2BDataRecord result = apiInstance.getA2BDataForPortfolioGroup(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+      VersionedResourceListOfA2BDataRecord result = apiInstance.getA2BDataForPortfolioGroup(scope, code, fromEffectiveAt, toEffectiveAt)
+            .asAt(asAt)
+            .recipeIdScope(recipeIdScope)
+            .recipeIdCode(recipeIdCode)
+            .propertyKeys(propertyKeys)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getA2BDataForPortfolioGroup");
@@ -769,14 +799,14 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the group to retrieve the A2B report for. | |
-| **code** | **String**| The code of the group to retrieve the A2B report for. Together with the scope this              uniquely identifies the portfolio group. | |
-| **fromEffectiveAt** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. | |
-| **toEffectiveAt** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. | [optional] |
+| **code** | **String**| The code of the group to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio group. | |
+| **fromEffectiveAt** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. | |
+| **toEffectiveAt** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeId | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional] |
-| **filter** | **String**| Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -800,7 +830,7 @@ public class Example {
 
 <a id="getGroupProperties"></a>
 # **getGroupProperties**
-> PortfolioGroupProperties getGroupProperties(scope, code, effectiveAt, asAt)
+> PortfolioGroupProperties getGroupProperties(scope, code).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EARLY ACCESS] GetGroupProperties: Get group properties
 
@@ -831,7 +861,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective date time or cut label at which to list the group's properties. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt date time at which to list the group's properties. Defaults to return the latest version of each property if not specified.
     try {
-      PortfolioGroupProperties result = apiInstance.getGroupProperties(scope, code, effectiveAt, asAt);
+      PortfolioGroupProperties result = apiInstance.getGroupProperties(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getGroupProperties");
@@ -875,7 +908,7 @@ public class Example {
 
 <a id="getHoldingsForPortfolioGroup"></a>
 # **getHoldingsForPortfolioGroup**
-> VersionedResourceListOfPortfolioHolding getHoldingsForPortfolioGroup(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots)
+> VersionedResourceListOfPortfolioHolding getHoldingsForPortfolioGroup(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).execute();
 
 GetHoldingsForPortfolioGroup: Get holdings for transaction portfolios in portfolio group
 
@@ -902,14 +935,20 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group.
-    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies              the portfolio group.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the holdings of transaction              portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults              to return the latest version of the holdings if not specified.
+    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the holdings of transaction   portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults   to return the latest version of the holdings if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\" or \"Portfolio\" domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/Cost\".
-    Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\" or \"Portfolio\" domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/Cost\".
+    Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
     try {
-      VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldingsForPortfolioGroup(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots);
+      VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldingsForPortfolioGroup(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .byTaxlots(byTaxlots)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getHoldingsForPortfolioGroup");
@@ -927,12 +966,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group. | |
-| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies              the portfolio group. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the holdings of transaction              portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults              to return the latest version of the holdings if not specified. | [optional] |
+| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the holdings of transaction   portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults   to return the latest version of the holdings if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
-| **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
+| **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
 
 ### Return type
 
@@ -956,7 +995,7 @@ public class Example {
 
 <a id="getPortfolioGroup"></a>
 # **getPortfolioGroup**
-> PortfolioGroup getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds)
+> PortfolioGroup getPortfolioGroup(scope, code).effectiveAt(effectiveAt).asAt(asAt).relatedEntityPropertyKeys(relatedEntityPropertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
 GetPortfolioGroup: Get portfolio group
 
@@ -983,13 +1022,18 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to retrieve the definition for.
-    String code = "code_example"; // String | The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group.
+    String code = "code_example"; // String | The code of the portfolio group to retrieve the definition for. Together with the scope   this uniquely identifies the portfolio group.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified.
-    List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities              onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return   the latest version of the portfolio group definition if not specified.
+    List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
     try {
-      PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+      PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .relatedEntityPropertyKeys(relatedEntityPropertyKeys)
+            .relationshipDefinitionIds(relationshipDefinitionIds)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroup");
@@ -1007,11 +1051,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group to retrieve the definition for. | |
-| **code** | **String**| The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group. | |
+| **code** | **String**| The code of the portfolio group to retrieve the definition for. Together with the scope   this uniquely identifies the portfolio group. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified. | [optional] |
-| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio group definition. Defaults to return   the latest version of the portfolio group definition if not specified. | [optional] |
+| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1035,11 +1079,11 @@ public class Example {
 
 <a id="getPortfolioGroupAccessMetadataByKey"></a>
 # **getPortfolioGroupAccessMetadataByKey**
-> List&lt;AccessMetadataValue&gt; getPortfolioGroupAccessMetadataByKey(scope, code, metadataKey, effectiveAt, asAt)
+> List&lt;AccessMetadataValue&gt; getPortfolioGroupAccessMetadataByKey(scope, code, metadataKey).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EARLY ACCESS] GetPortfolioGroupAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Portfolio Group
 
-Get a specific Portfolio Group access metadata by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
+Get a specific Portfolio Group access metadata by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
 
 ### Example
 ```java
@@ -1067,7 +1111,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the access metadata
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the access metadata
     try {
-      List<AccessMetadataValue> result = apiInstance.getPortfolioGroupAccessMetadataByKey(scope, code, metadataKey, effectiveAt, asAt);
+      List<AccessMetadataValue> result = apiInstance.getPortfolioGroupAccessMetadataByKey(scope, code, metadataKey)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupAccessMetadataByKey");
@@ -1112,7 +1159,7 @@ public class Example {
 
 <a id="getPortfolioGroupCommands"></a>
 # **getPortfolioGroupCommands**
-> ResourceListOfProcessedCommand getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter)
+> ResourceListOfProcessedCommand getPortfolioGroupCommands(scope, code).fromAsAt(fromAsAt).toAsAt(toAsAt).filter(filter).execute();
 
 GetPortfolioGroupCommands: Get portfolio group commands
 
@@ -1142,9 +1189,13 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio group to retrieve the commands for. Together with the scope this uniquely identifies the portfolio group.
     OffsetDateTime fromAsAt = OffsetDateTime.now(); // OffsetDateTime | The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified.
     OffsetDateTime toAsAt = OffsetDateTime.now(); // OffsetDateTime | The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set.               For example, to filter on the User ID, use \"userId.id eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the User ID, use \"userId.id eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfProcessedCommand result = apiInstance.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter);
+      ResourceListOfProcessedCommand result = apiInstance.getPortfolioGroupCommands(scope, code)
+            .fromAsAt(fromAsAt)
+            .toAsAt(toAsAt)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupCommands");
@@ -1165,7 +1216,7 @@ public class Example {
 | **code** | **String**| The code of the portfolio group to retrieve the commands for. Together with the scope this uniquely identifies the portfolio group. | |
 | **fromAsAt** | **OffsetDateTime**| The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. | [optional] |
 | **toAsAt** | **OffsetDateTime**| The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.               For example, to filter on the User ID, use \&quot;userId.id eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the User ID, use \&quot;userId.id eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -1189,7 +1240,7 @@ public class Example {
 
 <a id="getPortfolioGroupExpansion"></a>
 # **getPortfolioGroupExpansion**
-> ExpandedGroup getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter)
+> ExpandedGroup getPortfolioGroupExpansion(scope, code).effectiveAt(effectiveAt).asAt(asAt).propertyFilter(propertyFilter).execute();
 
 [EARLY ACCESS] GetPortfolioGroupExpansion: Get portfolio group expansion
 
@@ -1216,12 +1267,16 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to expand.
-    String code = "code_example"; // String | The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio              group to expand.
+    String code = "code_example"; // String | The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio   group to expand.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to expand the portfolio group. Defaults to return the latest version of each portfolio in the group if not specified.
     List<String> propertyFilter = Arrays.asList(); // List<String> | The restricted list of property keys from the \"Portfolio\" domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
-      ExpandedGroup result = apiInstance.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter);
+      ExpandedGroup result = apiInstance.getPortfolioGroupExpansion(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .propertyFilter(propertyFilter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupExpansion");
@@ -1239,7 +1294,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group to expand. | |
-| **code** | **String**| The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio              group to expand. | |
+| **code** | **String**| The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio   group to expand. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to expand the portfolio group. Defaults to return the latest version of each portfolio in the group if not specified. | [optional] |
 | **propertyFilter** | [**List&lt;String&gt;**](String.md)| The restricted list of property keys from the \&quot;Portfolio\&quot; domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional] |
@@ -1266,7 +1321,7 @@ public class Example {
 
 <a id="getPortfolioGroupMetadata"></a>
 # **getPortfolioGroupMetadata**
-> Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; getPortfolioGroupMetadata(scope, code, effectiveAt, asAt)
+> Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; getPortfolioGroupMetadata(scope, code).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EARLY ACCESS] GetPortfolioGroupMetadata: Get Access Metadata rules for Portfolio Group
 
@@ -1297,7 +1352,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
     try {
-      Map<String, List<AccessMetadataValue>> result = apiInstance.getPortfolioGroupMetadata(scope, code, effectiveAt, asAt);
+      Map<String, List<AccessMetadataValue>> result = apiInstance.getPortfolioGroupMetadata(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupMetadata");
@@ -1341,7 +1399,7 @@ public class Example {
 
 <a id="getPortfolioGroupPropertyTimeSeries"></a>
 # **getPortfolioGroupPropertyTimeSeries**
-> ResourceListOfPropertyInterval getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey, portfolioGroupEffectiveAt, asAt, filter, page, limit)
+> ResourceListOfPropertyInterval getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey).portfolioGroupEffectiveAt(portfolioGroupEffectiveAt).asAt(asAt).filter(filter).page(page).limit(limit).execute();
 
 [EARLY ACCESS] GetPortfolioGroupPropertyTimeSeries: Get the time series of a portfolio group property
 
@@ -1368,15 +1426,21 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the group.
-    String code = "code_example"; // String | The code of the group. Together with the scope this uniquely identifies              the portfolio group.
-    String propertyKey = "propertyKey_example"; // String | The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\".              Each property must be from the \"PortfolioGroup\" domain.
+    String code = "code_example"; // String | The code of the group. Together with the scope this uniquely identifies   the portfolio group.
+    String propertyKey = "propertyKey_example"; // String | The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\".   Each property must be from the \"PortfolioGroup\" domain.
     String portfolioGroupEffectiveAt = "portfolioGroupEffectiveAt_example"; // String | The effective datetime used to resolve the portfolio group. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolio group's property history. Defaults to return the current datetime if not supplied.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     try {
-      ResourceListOfPropertyInterval result = apiInstance.getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey, portfolioGroupEffectiveAt, asAt, filter, page, limit);
+      ResourceListOfPropertyInterval result = apiInstance.getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey)
+            .portfolioGroupEffectiveAt(portfolioGroupEffectiveAt)
+            .asAt(asAt)
+            .filter(filter)
+            .page(page)
+            .limit(limit)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupPropertyTimeSeries");
@@ -1394,12 +1458,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the group. | |
-| **code** | **String**| The code of the group. Together with the scope this uniquely identifies              the portfolio group. | |
-| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;.              Each property must be from the \&quot;PortfolioGroup\&quot; domain. | |
+| **code** | **String**| The code of the group. Together with the scope this uniquely identifies   the portfolio group. | |
+| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;.   Each property must be from the \&quot;PortfolioGroup\&quot; domain. | |
 | **portfolioGroupEffectiveAt** | **String**| The effective datetime used to resolve the portfolio group. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolio group&#39;s property history. Defaults to return the current datetime if not supplied. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
@@ -1424,7 +1488,7 @@ public class Example {
 
 <a id="getPortfolioGroupRelations"></a>
 # **getPortfolioGroupRelations**
-> ResourceListOfRelation getPortfolioGroupRelations(scope, code, effectiveAt, asAt, filter, identifierTypes)
+> ResourceListOfRelation getPortfolioGroupRelations(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).identifierTypes(identifierTypes).execute();
 
 [EXPERIMENTAL] GetPortfolioGroupRelations: Get Relations for Portfolio Group
 
@@ -1451,13 +1515,18 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group.
-    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies              the portfolio group.
+    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relations. Defaults to return the latest LUSID AsAt time if not specified.
     String filter = "filter_example"; // String | Expression to filter the relations. Users should provide null or empty string for this field until further notice.
-    List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
+    List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
     try {
-      ResourceListOfRelation result = apiInstance.getPortfolioGroupRelations(scope, code, effectiveAt, asAt, filter, identifierTypes);
+      ResourceListOfRelation result = apiInstance.getPortfolioGroupRelations(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .filter(filter)
+            .identifierTypes(identifierTypes)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupRelations");
@@ -1475,11 +1544,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group. | |
-| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies              the portfolio group. | |
+| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relations. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the relations. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -1503,7 +1572,7 @@ public class Example {
 
 <a id="getPortfolioGroupRelationships"></a>
 # **getPortfolioGroupRelationships**
-> ResourceListOfRelationship getPortfolioGroupRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes)
+> ResourceListOfRelationship getPortfolioGroupRelationships(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).identifierTypes(identifierTypes).execute();
 
 [EARLY ACCESS] GetPortfolioGroupRelationships: Get Relationships for Portfolio Group
 
@@ -1530,13 +1599,18 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group.
-    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies              the portfolio group.
+    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve relationship. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
     String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
-    List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example              'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+    List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
     try {
-      ResourceListOfRelationship result = apiInstance.getPortfolioGroupRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes);
+      ResourceListOfRelationship result = apiInstance.getPortfolioGroupRelationships(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .filter(filter)
+            .identifierTypes(identifierTypes)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupRelationships");
@@ -1554,11 +1628,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group. | |
-| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies              the portfolio group. | |
+| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve relationship. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
 
 ### Return type
 
@@ -1582,11 +1656,11 @@ public class Example {
 
 <a id="getTransactionsForPortfolioGroup"></a>
 # **getTransactionsForPortfolioGroup**
-> VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy)
+> VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(scope, code).fromTransactionDate(fromTransactionDate).toTransactionDate(toTransactionDate).asAt(asAt).filter(filter).propertyKeys(propertyKeys).limit(limit).page(page).showCancelledTransactions(showCancelledTransactions).sortBy(sortBy).execute();
 
 GetTransactionsForPortfolioGroup: Get transactions for transaction portfolios in a portfolio group
 
-Get transactions for transaction portfolios in a portfolio group over a given interval of effective time.                When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
+Get transactions for transaction portfolios in a portfolio group over a given interval of effective time.     When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
 
 ### Example
 ```java
@@ -1609,18 +1683,28 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group.
-    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies               the portfolio group.
-    String fromTransactionDate = "fromTransactionDate_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the transactions.               There is no lower bound if this is not specified.
-    String toTransactionDate = "toTransactionDate_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transactions. Defaults to return the latest version               of each transaction if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set.               For example, to filter on the Transaction Type, use \"type eq 'Buy'\"               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Transaction\", \"LegalEntity\" or \"CustodianAccount\" domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or               \"Transaction/strategy/quantsignal\".
+    String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
+    String fromTransactionDate = "fromTransactionDate_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the transactions.   There is no lower bound if this is not specified.
+    String toTransactionDate = "toTransactionDate_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transactions. Defaults to return the latest version   of each transaction if not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Transaction Type, use \"type eq 'Buy'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Transaction\", \"LegalEntity\" or \"CustodianAccount\" domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or   \"Transaction/strategy/quantsignal\".
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetTransactions.
-    Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified.
+    Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     try {
-      VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy);
+      VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code)
+            .fromTransactionDate(fromTransactionDate)
+            .toTransactionDate(toTransactionDate)
+            .asAt(asAt)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .limit(limit)
+            .page(page)
+            .showCancelledTransactions(showCancelledTransactions)
+            .sortBy(sortBy)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getTransactionsForPortfolioGroup");
@@ -1638,15 +1722,15 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio group. | |
-| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies               the portfolio group. | |
-| **fromTransactionDate** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the transactions.               There is no lower bound if this is not specified. | [optional] |
-| **toTransactionDate** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transactions. Defaults to return the latest version               of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.               For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Transaction\&quot;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or               \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
+| **code** | **String**| The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. | |
+| **fromTransactionDate** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the transactions.   There is no lower bound if this is not specified. | [optional] |
+| **toTransactionDate** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transactions. Defaults to return the latest version   of each transaction if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Transaction\&quot;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetTransactions. | [optional] |
-| **showCancelledTransactions** | **Boolean**| Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. | [optional] |
+| **showCancelledTransactions** | **Boolean**| Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -1671,7 +1755,7 @@ public class Example {
 
 <a id="listPortfolioGroups"></a>
 # **listPortfolioGroups**
-> PagedResourceListOfPortfolioGroup listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds)
+> PagedResourceListOfPortfolioGroup listPortfolioGroups(scope).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).relatedEntityPropertyKeys(relatedEntityPropertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
 [EARLY ACCESS] ListPortfolioGroups: List portfolio groups
 
@@ -1702,12 +1786,21 @@ public class Example {
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to no limit if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set.              For example, to filter on the Display Name, use \"displayName eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Display Name, use \"displayName eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
-    List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+    List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
     try {
-      PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+      PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .sortBy(sortBy)
+            .relatedEntityPropertyKeys(relatedEntityPropertyKeys)
+            .relationshipDefinitionIds(relationshipDefinitionIds)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#listPortfolioGroups");
@@ -1729,10 +1822,10 @@ public class Example {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1756,11 +1849,11 @@ public class Example {
 
 <a id="patchPortfolioGroupAccessMetadata"></a>
 # **patchPortfolioGroupAccessMetadata**
-> Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; patchPortfolioGroupAccessMetadata(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil)
+> Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; patchPortfolioGroupAccessMetadata(scope, code, accessMetadataOperation).effectiveAt(effectiveAt).effectiveUntil(effectiveUntil).execute();
 
 [EARLY ACCESS] PatchPortfolioGroupAccessMetadata: Patch Access Metadata rules for a Portfolio Group.
 
-Patch Portfolio Group Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.                The response will return any affected Portfolio Group Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Patch Portfolio Group Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.     The response will return any affected Portfolio Group Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 ```java
@@ -1788,7 +1881,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The date this rule will be effective from
     OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
     try {
-      Map<String, List<AccessMetadataValue>> result = apiInstance.patchPortfolioGroupAccessMetadata(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+      Map<String, List<AccessMetadataValue>> result = apiInstance.patchPortfolioGroupAccessMetadata(scope, code, accessMetadataOperation)
+            .effectiveAt(effectiveAt)
+            .effectiveUntil(effectiveUntil)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#patchPortfolioGroupAccessMetadata");
@@ -1833,7 +1929,7 @@ public class Example {
 
 <a id="updatePortfolioGroup"></a>
 # **updatePortfolioGroup**
-> PortfolioGroup updatePortfolioGroup(scope, code, effectiveAt, updatePortfolioGroupRequest)
+> PortfolioGroup updatePortfolioGroup(scope, code).effectiveAt(effectiveAt).updatePortfolioGroupRequest(updatePortfolioGroupRequest).execute();
 
 [EARLY ACCESS] UpdatePortfolioGroup: Update portfolio group
 
@@ -1864,7 +1960,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition.
     UpdatePortfolioGroupRequest updatePortfolioGroupRequest = new UpdatePortfolioGroupRequest(); // UpdatePortfolioGroupRequest | The updated portfolio group definition.
     try {
-      PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, effectiveAt, updatePortfolioGroupRequest);
+      PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code)
+            .effectiveAt(effectiveAt)
+            .updatePortfolioGroupRequest(updatePortfolioGroupRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#updatePortfolioGroup");
@@ -1908,11 +2007,11 @@ public class Example {
 
 <a id="upsertGroupProperties"></a>
 # **upsertGroupProperties**
-> PortfolioGroupProperties upsertGroupProperties(scope, code, requestBody)
+> PortfolioGroupProperties upsertGroupProperties(scope, code).requestBody(requestBody).execute();
 
 [EARLY ACCESS] UpsertGroupProperties: Upsert group properties
 
-Update or insert one or more properties onto a single group. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;PortfolioGroup&#39;.                Upserting a property that exists for a group, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Update or insert one or more properties onto a single group. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;PortfolioGroup&#39;.     Upserting a property that exists for a group, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 ```java
@@ -1936,9 +2035,11 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the group to update or insert the properties onto.
     String code = "code_example"; // String | The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group.
-    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the group. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\".
+    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the group. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\".
     try {
-      PortfolioGroupProperties result = apiInstance.upsertGroupProperties(scope, code, requestBody);
+      PortfolioGroupProperties result = apiInstance.upsertGroupProperties(scope, code)
+            .requestBody(requestBody)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#upsertGroupProperties");
@@ -1957,7 +2058,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the group to update or insert the properties onto. | |
 | **code** | **String**| The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group. | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the group. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. | [optional] |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the group. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. | [optional] |
 
 ### Return type
 
@@ -1981,11 +2082,11 @@ public class Example {
 
 <a id="upsertPortfolioGroupAccessMetadata"></a>
 # **upsertPortfolioGroupAccessMetadata**
-> ResourceListOfAccessMetadataValueOf upsertPortfolioGroupAccessMetadata(scope, code, metadataKey, upsertPortfolioGroupAccessMetadataRequest, effectiveAt, effectiveUntil)
+> ResourceListOfAccessMetadataValueOf upsertPortfolioGroupAccessMetadata(scope, code, metadataKey, upsertPortfolioGroupAccessMetadataRequest).effectiveAt(effectiveAt).effectiveUntil(effectiveUntil).execute();
 
 [EARLY ACCESS] UpsertPortfolioGroupAccessMetadata: Upsert a Portfolio Group Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
 
-Update or insert one Portfolio Group Access Metadata Entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Portfolio Group Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Update or insert one Portfolio Group Access Metadata Entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Portfolio Group Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 ```java
@@ -2014,7 +2115,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The date this rule will be effective from
     OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
     try {
-      ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPortfolioGroupAccessMetadata(scope, code, metadataKey, upsertPortfolioGroupAccessMetadataRequest, effectiveAt, effectiveUntil);
+      ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPortfolioGroupAccessMetadata(scope, code, metadataKey, upsertPortfolioGroupAccessMetadataRequest)
+            .effectiveAt(effectiveAt)
+            .effectiveUntil(effectiveUntil)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#upsertPortfolioGroupAccessMetadata");

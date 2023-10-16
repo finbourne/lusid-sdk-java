@@ -312,32 +312,25 @@ public class AccessControlledResource {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AccessControlledResource
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to AccessControlledResource
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!AccessControlledResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!AccessControlledResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AccessControlledResource is not found in the empty JSON string", AccessControlledResource.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AccessControlledResource.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AccessControlledResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AccessControlledResource.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("application") != null && !jsonObj.get("application").isJsonNull()) && !jsonObj.get("application").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `application` to be a primitive type in the JSON string but got `%s`", jsonObj.get("application").toString()));
       }
@@ -355,7 +348,7 @@ public class AccessControlledResource {
       JsonArray jsonArrayactions = jsonObj.getAsJsonArray("actions");
       // validate the required field `actions` (array)
       for (int i = 0; i < jsonArrayactions.size(); i++) {
-        AccessControlledAction.validateJsonObject(jsonArrayactions.get(i).getAsJsonObject());
+        AccessControlledAction.validateJsonElement(jsonArrayactions.get(i));
       };
       if (jsonObj.get("identifierParts") != null && !jsonObj.get("identifierParts").isJsonNull()) {
         JsonArray jsonArrayidentifierParts = jsonObj.getAsJsonArray("identifierParts");
@@ -367,7 +360,7 @@ public class AccessControlledResource {
 
           // validate the optional field `identifierParts` (array)
           for (int i = 0; i < jsonArrayidentifierParts.size(); i++) {
-            IdentifierPartSchema.validateJsonObject(jsonArrayidentifierParts.get(i).getAsJsonObject());
+            IdentifierPartSchema.validateJsonElement(jsonArrayidentifierParts.get(i));
           };
         }
       }
@@ -381,7 +374,7 @@ public class AccessControlledResource {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -407,9 +400,9 @@ public class AccessControlledResource {
 
            @Override
            public AccessControlledResource read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

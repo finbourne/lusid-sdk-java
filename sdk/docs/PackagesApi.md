@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deletePackage"></a>
 # **deletePackage**
-> DeletedEntityResponse deletePackage(scope, code)
+> DeletedEntityResponse deletePackage(scope, code).execute();
 
 [EXPERIMENTAL] DeletePackage: Delete package
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The package scope.
     String code = "code_example"; // String | The package's code. This, together with the scope uniquely identifies the package to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deletePackage(scope, code);
+      DeletedEntityResponse result = apiInstance.deletePackage(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PackagesApi#deletePackage");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getPackage"></a>
 # **getPackage**
-> ModelPackage getPackage(scope, code, asAt, propertyKeys)
+> ModelPackage getPackage(scope, code).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] GetPackage: Get Package
 
@@ -112,9 +113,12 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the package belongs.
     String code = "code_example"; // String | The package's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Package\" domain to decorate onto the package.              These take the format {domain}/{scope}/{code} e.g. \"Package/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Package\" domain to decorate onto the package.   These take the format {domain}/{scope}/{code} e.g. \"Package/system/Name\".
     try {
-      ModelPackage result = apiInstance.getPackage(scope, code, asAt, propertyKeys);
+      ModelPackage result = apiInstance.getPackage(scope, code)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PackagesApi#getPackage");
@@ -134,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the package belongs. | |
 | **code** | **String**| The package&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.              These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.   These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a id="listPackages"></a>
 # **listPackages**
-> PagedResourceListOfPackage listPackages(asAt, page, sortBy, limit, filter, propertyKeys)
+> PagedResourceListOfPackage listPackages().asAt(asAt).page(page).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListPackages: List Packages
 
@@ -185,13 +189,20 @@ public class Example {
 
     PackagesApi apiInstance = new PackagesApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing packages from a previous call to list packages.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing packages from a previous call to list packages.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Package\" domain to decorate onto each package.                  These take the format {domain}/{scope}/{code} e.g. \"Package/system/Name\".
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Package\" domain to decorate onto each package.   These take the format {domain}/{scope}/{code} e.g. \"Package/system/Name\".
     try {
-      PagedResourceListOfPackage result = apiInstance.listPackages(asAt, page, sortBy, limit, filter, propertyKeys);
+      PagedResourceListOfPackage result = apiInstance.listPackages()
+            .asAt(asAt)
+            .page(page)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PackagesApi#listPackages");
@@ -209,11 +220,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the package. Defaults to return the latest version of the package if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing packages from a previous call to list packages.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing packages from a previous call to list packages.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.   These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -237,7 +248,7 @@ public class Example {
 
 <a id="upsertPackages"></a>
 # **upsertPackages**
-> ResourceListOfPackage upsertPackages(packageSetRequest)
+> ResourceListOfPackage upsertPackages().packageSetRequest(packageSetRequest).execute();
 
 [EXPERIMENTAL] UpsertPackages: Upsert Package
 
@@ -265,7 +276,9 @@ public class Example {
     PackagesApi apiInstance = new PackagesApi(defaultClient);
     PackageSetRequest packageSetRequest = new PackageSetRequest(); // PackageSetRequest | The collection of package requests.
     try {
-      ResourceListOfPackage result = apiInstance.upsertPackages(packageSetRequest);
+      ResourceListOfPackage result = apiInstance.upsertPackages()
+            .packageSetRequest(packageSetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PackagesApi#upsertPackages");

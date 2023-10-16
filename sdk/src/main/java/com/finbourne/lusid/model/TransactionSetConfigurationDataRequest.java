@@ -190,32 +190,25 @@ public class TransactionSetConfigurationDataRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to TransactionSetConfigurationDataRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to TransactionSetConfigurationDataRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!TransactionSetConfigurationDataRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!TransactionSetConfigurationDataRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransactionSetConfigurationDataRequest is not found in the empty JSON string", TransactionSetConfigurationDataRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!TransactionSetConfigurationDataRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransactionSetConfigurationDataRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : TransactionSetConfigurationDataRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("transactionConfigRequests").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionConfigRequests` to be an array in the JSON string but got `%s`", jsonObj.get("transactionConfigRequests").toString()));
@@ -224,7 +217,7 @@ public class TransactionSetConfigurationDataRequest {
       JsonArray jsonArraytransactionConfigRequests = jsonObj.getAsJsonArray("transactionConfigRequests");
       // validate the required field `transactionConfigRequests` (array)
       for (int i = 0; i < jsonArraytransactionConfigRequests.size(); i++) {
-        TransactionConfigurationDataRequest.validateJsonObject(jsonArraytransactionConfigRequests.get(i).getAsJsonObject());
+        TransactionConfigurationDataRequest.validateJsonElement(jsonArraytransactionConfigRequests.get(i));
       };
       if (jsonObj.get("sideConfigRequests") != null && !jsonObj.get("sideConfigRequests").isJsonNull()) {
         JsonArray jsonArraysideConfigRequests = jsonObj.getAsJsonArray("sideConfigRequests");
@@ -236,7 +229,7 @@ public class TransactionSetConfigurationDataRequest {
 
           // validate the optional field `sideConfigRequests` (array)
           for (int i = 0; i < jsonArraysideConfigRequests.size(); i++) {
-            SideConfigurationDataRequest.validateJsonObject(jsonArraysideConfigRequests.get(i).getAsJsonObject());
+            SideConfigurationDataRequest.validateJsonElement(jsonArraysideConfigRequests.get(i));
           };
         }
       }
@@ -262,9 +255,9 @@ public class TransactionSetConfigurationDataRequest {
 
            @Override
            public TransactionSetConfigurationDataRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

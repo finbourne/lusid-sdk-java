@@ -2,7 +2,7 @@
 
 # InterestRateSwap
 
-LUSID representation of an Interest Rate Swap, including:      * Vanilla (single currency fixed-float non-amortising)    * CrossCurrency (>1 currency is used by the swap legs)    * Basis (single currency, floating-floating legs of different tenors)    * Amortising (the swap has 1+ leg with amortised notional)
+LUSID representation of an Interest Rate Swap, including:     generate justfile Vanilla (single currency fixed-float non-amortising)   generate justfile CrossCurrency (>1 currency is used by the swap legs)   generate justfile Basis (single currency, floating-floating legs of different tenors)   generate justfile Amortising (the swap has 1+ leg with amortised notional)
 
 ## Properties
 

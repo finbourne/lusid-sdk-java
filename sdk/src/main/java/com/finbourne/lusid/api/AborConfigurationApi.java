@@ -77,22 +77,7 @@ public class AborConfigurationApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createAborConfiguration
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param aborConfigurationRequest The definition of the AborConfiguration. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAborConfigurationCall(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAborConfigurationCall(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -159,86 +144,116 @@ public class AborConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
-     * Create the given AborConfiguration.
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param aborConfigurationRequest The definition of the AborConfiguration. (required)
-     * @return AborConfiguration
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AborConfiguration createAborConfiguration(String scope, AborConfigurationRequest aborConfigurationRequest) throws ApiException {
-        ApiResponse<AborConfiguration> localVarResp = createAborConfigurationWithHttpInfo(scope, aborConfigurationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
-     * Create the given AborConfiguration.
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param aborConfigurationRequest The definition of the AborConfiguration. (required)
-     * @return ApiResponse&lt;AborConfiguration&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AborConfiguration> createAborConfigurationWithHttpInfo(String scope, AborConfigurationRequest aborConfigurationRequest) throws ApiException {
+    private ApiResponse<AborConfiguration> createAborConfigurationWithHttpInfo(String scope, AborConfigurationRequest aborConfigurationRequest) throws ApiException {
         okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, null);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration. (asynchronously)
-     * Create the given AborConfiguration.
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param aborConfigurationRequest The definition of the AborConfiguration. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAborConfigurationAsync(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback<AborConfiguration> _callback) throws ApiException {
+    private okhttp3.Call createAborConfigurationAsync(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback<AborConfiguration> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, _callback);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateAborConfigurationRequest {
+        private final String scope;
+        private final AborConfigurationRequest aborConfigurationRequest;
+
+        private APIcreateAborConfigurationRequest(String scope, AborConfigurationRequest aborConfigurationRequest) {
+            this.scope = scope;
+            this.aborConfigurationRequest = aborConfigurationRequest;
+        }
+
+        /**
+         * Build call for createAborConfiguration
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createAborConfigurationCall(scope, aborConfigurationRequest, _callback);
+        }
+
+        /**
+         * Execute createAborConfiguration request
+         * @return AborConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborConfiguration execute() throws ApiException {
+            ApiResponse<AborConfiguration> localVarResp = createAborConfigurationWithHttpInfo(scope, aborConfigurationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createAborConfiguration request with HTTP info returned
+         * @return ApiResponse&lt;AborConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborConfiguration> executeWithHttpInfo() throws ApiException {
+            return createAborConfigurationWithHttpInfo(scope, aborConfigurationRequest);
+        }
+
+        /**
+         * Execute createAborConfiguration request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborConfiguration> _callback) throws ApiException {
+            return createAborConfigurationAsync(scope, aborConfigurationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteAborConfiguration
-     * @param scope The scope of the AborConfiguration to be deleted. (required)
-     * @param code The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
+     * Create the given AborConfiguration.
+     * @param scope The scope of the AborConfiguration. (required)
+     * @param aborConfigurationRequest The definition of the AborConfiguration. (required)
+     * @return APIcreateAborConfigurationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAborConfigurationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateAborConfigurationRequest createAborConfiguration(String scope, AborConfigurationRequest aborConfigurationRequest) {
+        return new APIcreateAborConfigurationRequest(scope, aborConfigurationRequest);
+    }
+    private okhttp3.Call deleteAborConfigurationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,89 +317,116 @@ public class AborConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
-     * Delete the given AborConfiguration.
-     * @param scope The scope of the AborConfiguration to be deleted. (required)
-     * @param code The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteAborConfiguration(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteAborConfigurationWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
-     * Delete the given AborConfiguration.
-     * @param scope The scope of the AborConfiguration to be deleted. (required)
-     * @param code The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteAborConfigurationWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteAborConfigurationWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration. (asynchronously)
-     * Delete the given AborConfiguration.
-     * @param scope The scope of the AborConfiguration to be deleted. (required)
-     * @param code The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteAborConfigurationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteAborConfigurationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteAborConfigurationRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteAborConfigurationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteAborConfiguration
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteAborConfigurationCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteAborConfiguration request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteAborConfigurationWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteAborConfiguration request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteAborConfigurationWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteAborConfiguration request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteAborConfigurationAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getAborConfiguration
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param code The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
+     * Delete the given AborConfiguration.
+     * @param scope The scope of the AborConfiguration to be deleted. (required)
+     * @param code The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration. (required)
+     * @return APIdeleteAborConfigurationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAborConfigurationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteAborConfigurationRequest deleteAborConfiguration(String scope, String code) {
+        return new APIdeleteAborConfigurationRequest(scope, code);
+    }
+    private okhttp3.Call getAborConfigurationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -460,100 +502,149 @@ public class AborConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
-     * Retrieve the definition of a particular AborConfiguration.
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param code The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. (optional)
-     * @return AborConfiguration
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AborConfiguration getAborConfiguration(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<AborConfiguration> localVarResp = getAborConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
-     * Retrieve the definition of a particular AborConfiguration.
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param code The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. (optional)
-     * @return ApiResponse&lt;AborConfiguration&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AborConfiguration> getAborConfigurationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<AborConfiguration> getAborConfigurationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration. (asynchronously)
-     * Retrieve the definition of a particular AborConfiguration.
-     * @param scope The scope of the AborConfiguration. (required)
-     * @param code The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAborConfigurationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<AborConfiguration> _callback) throws ApiException {
+    private okhttp3.Call getAborConfigurationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<AborConfiguration> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAborConfigurationRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetAborConfigurationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetAborConfigurationRequest
+         */
+        public APIgetAborConfigurationRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. (optional)
+         * @return APIgetAborConfigurationRequest
+         */
+        public APIgetAborConfigurationRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If not provided will return all the entitled properties for that AborConfiguration. (optional)
+         * @return APIgetAborConfigurationRequest
+         */
+        public APIgetAborConfigurationRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getAborConfiguration
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAborConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getAborConfiguration request
+         * @return AborConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborConfiguration execute() throws ApiException {
+            ApiResponse<AborConfiguration> localVarResp = getAborConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAborConfiguration request with HTTP info returned
+         * @return ApiResponse&lt;AborConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborConfiguration> executeWithHttpInfo() throws ApiException {
+            return getAborConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getAborConfiguration request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborConfiguration> _callback) throws ApiException {
+            return getAborConfigurationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listAborConfigurations
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. (optional)
-     * @param page The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
+     * Retrieve the definition of a particular AborConfiguration.
+     * @param scope The scope of the AborConfiguration. (required)
+     * @param code The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. (required)
+     * @return APIgetAborConfigurationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAborConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetAborConfigurationRequest getAborConfiguration(String scope, String code) {
+        return new APIgetAborConfigurationRequest(scope, code);
+    }
+    private okhttp3.Call listAborConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -633,102 +724,187 @@ public class AborConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
-     * List all the AborConfiguration matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. (optional)
-     * @param page The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
-     * @return PagedResourceListOfAborConfiguration
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfAborConfiguration listAborConfigurations(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfAborConfiguration> localVarResp = listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
-     * List all the AborConfiguration matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. (optional)
-     * @param page The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfAborConfiguration&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfAborConfiguration> listAborConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfAborConfiguration> listAborConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration. (asynchronously)
-     * List all the AborConfiguration matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. (optional)
-     * @param page The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAborConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
+    private okhttp3.Call listAborConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistAborConfigurationsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistAborConfigurationsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listAborConfigurations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAborConfigurationsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listAborConfigurations request
+         * @return PagedResourceListOfAborConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAborConfiguration execute() throws ApiException {
+            ApiResponse<PagedResourceListOfAborConfiguration> localVarResp = listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAborConfigurations request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfAborConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAborConfiguration> executeWithHttpInfo() throws ApiException {
+            return listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listAborConfigurations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
+            return listAborConfigurationsAsync(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertAborConfigurationProperties
-     * @param scope The scope of the AborConfiguration to update or insert the properties onto. (required)
-     * @param code The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
+     * List all the AborConfiguration matching particular criteria.
+     * @return APIlistAborConfigurationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAborConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIlistAborConfigurationsRequest listAborConfigurations() {
+        return new APIlistAborConfigurationsRequest();
+    }
+    private okhttp3.Call upsertAborConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -796,58 +972,115 @@ public class AborConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
-     * Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the AborConfiguration to update or insert the properties onto. (required)
-     * @param code The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
-     * @return AborConfigurationProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AborConfigurationProperties upsertAborConfigurationProperties(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        ApiResponse<AborConfigurationProperties> localVarResp = upsertAborConfigurationPropertiesWithHttpInfo(scope, code, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
-     * Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the AborConfiguration to update or insert the properties onto. (required)
-     * @param code The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
-     * @return ApiResponse&lt;AborConfigurationProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AborConfigurationProperties> upsertAborConfigurationPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
+    private ApiResponse<AborConfigurationProperties> upsertAborConfigurationPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null);
         Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertAborConfigurationPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<AborConfigurationProperties> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertAborConfigurationPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private Map<String, Property> requestBody;
+
+        private APIupsertAborConfigurationPropertiesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
+         * @return APIupsertAborConfigurationPropertiesRequest
+         */
+        public APIupsertAborConfigurationPropertiesRequest requestBody(Map<String, Property> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for upsertAborConfigurationProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertAborConfigurationPropertiesCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertAborConfigurationProperties request
+         * @return AborConfigurationProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborConfigurationProperties execute() throws ApiException {
+            ApiResponse<AborConfigurationProperties> localVarResp = upsertAborConfigurationPropertiesWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertAborConfigurationProperties request with HTTP info returned
+         * @return ApiResponse&lt;AborConfigurationProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborConfigurationProperties> executeWithHttpInfo() throws ApiException {
+            return upsertAborConfigurationPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertAborConfigurationProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborConfigurationProperties> _callback) throws ApiException {
+            return upsertAborConfigurationPropertiesAsync(scope, code, requestBody, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties (asynchronously)
-     * Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
+     * Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.     Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the AborConfiguration to update or insert the properties onto. (required)
      * @param code The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertAborConfigurationPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -856,11 +1089,7 @@ public class AborConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAborConfigurationPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<AborConfigurationProperties> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertAborConfigurationPropertiesRequest upsertAborConfigurationProperties(String scope, String code) {
+        return new APIupsertAborConfigurationPropertiesRequest(scope, code);
     }
 }

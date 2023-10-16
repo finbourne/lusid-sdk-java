@@ -179,30 +179,30 @@ public class MatchCriterion {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MatchCriterion
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MatchCriterion
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MatchCriterion.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MatchCriterion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MatchCriterion is not found in the empty JSON string", MatchCriterion.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("criterionType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("criterionType").getAsString();
       switch (discriminatorValue) {
         case "PropertyValueEquals":
-          PropertyValueEquals.validateJsonObject(jsonObj);
+          PropertyValueEquals.validateJsonElement(jsonElement);
           break;
         case "PropertyValueIn":
-          PropertyValueIn.validateJsonObject(jsonObj);
+          PropertyValueIn.validateJsonElement(jsonElement);
           break;
         case "SubHoldingKeyValueEquals":
-          SubHoldingKeyValueEquals.validateJsonObject(jsonObj);
+          SubHoldingKeyValueEquals.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `criterionType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

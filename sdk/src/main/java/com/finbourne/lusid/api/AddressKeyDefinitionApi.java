@@ -74,21 +74,7 @@ public class AddressKeyDefinitionApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createAddressKeyDefinition
-     * @param createAddressKeyDefinitionRequest The request used to create the address key definition. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAddressKeyDefinitionCall(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAddressKeyDefinitionCall(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -149,83 +135,113 @@ public class AddressKeyDefinitionApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] CreateAddressKeyDefinition: Create an AddressKeyDefinition.
-     * Create the given address key definition.
-     * @param createAddressKeyDefinitionRequest The request used to create the address key definition. (required)
-     * @return AddressKeyDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AddressKeyDefinition createAddressKeyDefinition(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest) throws ApiException {
-        ApiResponse<AddressKeyDefinition> localVarResp = createAddressKeyDefinitionWithHttpInfo(createAddressKeyDefinitionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] CreateAddressKeyDefinition: Create an AddressKeyDefinition.
-     * Create the given address key definition.
-     * @param createAddressKeyDefinitionRequest The request used to create the address key definition. (required)
-     * @return ApiResponse&lt;AddressKeyDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AddressKeyDefinition> createAddressKeyDefinitionWithHttpInfo(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest) throws ApiException {
+    private ApiResponse<AddressKeyDefinition> createAddressKeyDefinitionWithHttpInfo(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest) throws ApiException {
         okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, null);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] CreateAddressKeyDefinition: Create an AddressKeyDefinition. (asynchronously)
-     * Create the given address key definition.
-     * @param createAddressKeyDefinitionRequest The request used to create the address key definition. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAddressKeyDefinitionAsync(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
+    private okhttp3.Call createAddressKeyDefinitionAsync(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, _callback);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateAddressKeyDefinitionRequest {
+        private final CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest;
+
+        private APIcreateAddressKeyDefinitionRequest(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest) {
+            this.createAddressKeyDefinitionRequest = createAddressKeyDefinitionRequest;
+        }
+
+        /**
+         * Build call for createAddressKeyDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createAddressKeyDefinitionCall(createAddressKeyDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createAddressKeyDefinition request
+         * @return AddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddressKeyDefinition execute() throws ApiException {
+            ApiResponse<AddressKeyDefinition> localVarResp = createAddressKeyDefinitionWithHttpInfo(createAddressKeyDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createAddressKeyDefinition request with HTTP info returned
+         * @return ApiResponse&lt;AddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddressKeyDefinition> executeWithHttpInfo() throws ApiException {
+            return createAddressKeyDefinitionWithHttpInfo(createAddressKeyDefinitionRequest);
+        }
+
+        /**
+         * Execute createAddressKeyDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
+            return createAddressKeyDefinitionAsync(createAddressKeyDefinitionRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getAddressKeyDefinition
-     * @param key The address key of the address key definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] CreateAddressKeyDefinition: Create an AddressKeyDefinition.
+     * Create the given address key definition.
+     * @param createAddressKeyDefinitionRequest The request used to create the address key definition. (required)
+     * @return APIcreateAddressKeyDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAddressKeyDefinitionCall(String key, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIcreateAddressKeyDefinitionRequest createAddressKeyDefinition(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest) {
+        return new APIcreateAddressKeyDefinitionRequest(createAddressKeyDefinitionRequest);
+    }
+    private okhttp3.Call getAddressKeyDefinitionCall(String key, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -287,88 +303,124 @@ public class AddressKeyDefinitionApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAddressKeyDefinition: Get an AddressKeyDefinition.
-     * Get the address key definition with the given address key at the specific asAt time.
-     * @param key The address key of the address key definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @return AddressKeyDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AddressKeyDefinition getAddressKeyDefinition(String key, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<AddressKeyDefinition> localVarResp = getAddressKeyDefinitionWithHttpInfo(key, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAddressKeyDefinition: Get an AddressKeyDefinition.
-     * Get the address key definition with the given address key at the specific asAt time.
-     * @param key The address key of the address key definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @return ApiResponse&lt;AddressKeyDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AddressKeyDefinition> getAddressKeyDefinitionWithHttpInfo(String key, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<AddressKeyDefinition> getAddressKeyDefinitionWithHttpInfo(String key, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, null);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAddressKeyDefinition: Get an AddressKeyDefinition. (asynchronously)
-     * Get the address key definition with the given address key at the specific asAt time.
-     * @param key The address key of the address key definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAddressKeyDefinitionAsync(String key, OffsetDateTime asAt, final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
+    private okhttp3.Call getAddressKeyDefinitionAsync(String key, OffsetDateTime asAt, final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, _callback);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAddressKeyDefinitionRequest {
+        private final String key;
+        private OffsetDateTime asAt;
+
+        private APIgetAddressKeyDefinitionRequest(String key) {
+            this.key = key;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified. (optional)
+         * @return APIgetAddressKeyDefinitionRequest
+         */
+        public APIgetAddressKeyDefinitionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAddressKeyDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAddressKeyDefinitionCall(key, asAt, _callback);
+        }
+
+        /**
+         * Execute getAddressKeyDefinition request
+         * @return AddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddressKeyDefinition execute() throws ApiException {
+            ApiResponse<AddressKeyDefinition> localVarResp = getAddressKeyDefinitionWithHttpInfo(key, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAddressKeyDefinition request with HTTP info returned
+         * @return ApiResponse&lt;AddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddressKeyDefinition> executeWithHttpInfo() throws ApiException {
+            return getAddressKeyDefinitionWithHttpInfo(key, asAt);
+        }
+
+        /**
+         * Execute getAddressKeyDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
+            return getAddressKeyDefinitionAsync(key, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listAddressKeyDefinitions
-     * @param asAt The asAt datetime at which to retrieve the address key definition.              Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetAddressKeyDefinition: Get an AddressKeyDefinition.
+     * Get the address key definition with the given address key at the specific asAt time.
+     * @param key The address key of the address key definition. (required)
+     * @return APIgetAddressKeyDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAddressKeyDefinitionsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetAddressKeyDefinitionRequest getAddressKeyDefinition(String key) {
+        return new APIgetAddressKeyDefinitionRequest(key);
+    }
+    private okhttp3.Call listAddressKeyDefinitionsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -436,61 +488,142 @@ public class AddressKeyDefinitionApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListAddressKeyDefinitions: List AddressKeyDefinitions.
-     * Fetch the last pre-AsAt date version of each address key definition.
-     * @param asAt The asAt datetime at which to retrieve the address key definition.              Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return PagedResourceListOfAddressKeyDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfAddressKeyDefinition listAddressKeyDefinitions(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfAddressKeyDefinition> localVarResp = listAddressKeyDefinitionsWithHttpInfo(asAt, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListAddressKeyDefinitions: List AddressKeyDefinitions.
-     * Fetch the last pre-AsAt date version of each address key definition.
-     * @param asAt The asAt datetime at which to retrieve the address key definition.              Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfAddressKeyDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfAddressKeyDefinition> listAddressKeyDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfAddressKeyDefinition> listAddressKeyDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call listAddressKeyDefinitionsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistAddressKeyDefinitionsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistAddressKeyDefinitionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the address key definition.   Defaults to return the latest version of the address key definition if not specified. (optional)
+         * @return APIlistAddressKeyDefinitionsRequest
+         */
+        public APIlistAddressKeyDefinitionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistAddressKeyDefinitionsRequest
+         */
+        public APIlistAddressKeyDefinitionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistAddressKeyDefinitionsRequest
+         */
+        public APIlistAddressKeyDefinitionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistAddressKeyDefinitionsRequest
+         */
+        public APIlistAddressKeyDefinitionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listAddressKeyDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAddressKeyDefinitionsCall(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listAddressKeyDefinitions request
+         * @return PagedResourceListOfAddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAddressKeyDefinition execute() throws ApiException {
+            ApiResponse<PagedResourceListOfAddressKeyDefinition> localVarResp = listAddressKeyDefinitionsWithHttpInfo(asAt, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAddressKeyDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfAddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAddressKeyDefinition> executeWithHttpInfo() throws ApiException {
+            return listAddressKeyDefinitionsWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listAddressKeyDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback) throws ApiException {
+            return listAddressKeyDefinitionsAsync(asAt, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] ListAddressKeyDefinitions: List AddressKeyDefinitions. (asynchronously)
+     * [EARLY ACCESS] ListAddressKeyDefinitions: List AddressKeyDefinitions.
      * Fetch the last pre-AsAt date version of each address key definition.
-     * @param asAt The asAt datetime at which to retrieve the address key definition.              Defaults to return the latest version of the address key definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIlistAddressKeyDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -499,11 +632,7 @@ public class AddressKeyDefinitionApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAddressKeyDefinitionsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, _callback);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIlistAddressKeyDefinitionsRequest listAddressKeyDefinitions() {
+        return new APIlistAddressKeyDefinitionsRequest();
     }
 }

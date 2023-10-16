@@ -638,32 +638,25 @@ public class DataType {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DataType
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DataType
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DataType.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DataType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DataType is not found in the empty JSON string", DataType.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DataType.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DataType` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : DataType.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
@@ -671,7 +664,7 @@ public class DataType {
         throw new IllegalArgumentException(String.format("Expected the field `typeValueRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("typeValueRange").toString()));
       }
       // validate the required field `id`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      ResourceId.validateJsonElement(jsonObj.get("id"));
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
@@ -682,7 +675,7 @@ public class DataType {
         throw new IllegalArgumentException(String.format("Expected the field `valueType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueType").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("acceptableValues") != null && !jsonObj.get("acceptableValues").isJsonArray()) {
+      if (jsonObj.get("acceptableValues") != null && !jsonObj.get("acceptableValues").isJsonNull() && !jsonObj.get("acceptableValues").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `acceptableValues` to be an array in the JSON string but got `%s`", jsonObj.get("acceptableValues").toString()));
       }
       if ((jsonObj.get("unitSchema") != null && !jsonObj.get("unitSchema").isJsonNull()) && !jsonObj.get("unitSchema").isJsonPrimitive()) {
@@ -698,13 +691,13 @@ public class DataType {
 
           // validate the optional field `acceptableUnits` (array)
           for (int i = 0; i < jsonArrayacceptableUnits.size(); i++) {
-            IUnitDefinitionDto.validateJsonObject(jsonArrayacceptableUnits.get(i).getAsJsonObject());
+            IUnitDefinitionDto.validateJsonElement(jsonArrayacceptableUnits.get(i));
           };
         }
       }
       // validate the optional field `referenceData`
       if (jsonObj.get("referenceData") != null && !jsonObj.get("referenceData").isJsonNull()) {
-        ReferenceData.validateJsonObject(jsonObj.getAsJsonObject("referenceData"));
+        ReferenceData.validateJsonElement(jsonObj.get("referenceData"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -716,7 +709,7 @@ public class DataType {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -742,9 +735,9 @@ public class DataType {
 
            @Override
            public DataType read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

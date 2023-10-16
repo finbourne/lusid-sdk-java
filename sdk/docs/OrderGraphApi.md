@@ -11,7 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="listOrderGraphBlocks"></a>
 # **listOrderGraphBlocks**
-> PagedResourceListOfOrderGraphBlock listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2)
+> PagedResourceListOfOrderGraphBlock listOrderGraphBlocks().asAt(asAt).paginationToken(paginationToken).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).useComplianceV2(useComplianceV2).execute();
 
 [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
 
@@ -45,7 +45,15 @@ public class Example {
     List<String> propertyKeys = Arrays.asList(); // List<String> | Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
     Boolean useComplianceV2 = false; // Boolean | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false)
     try {
-      PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+      PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks()
+            .asAt(asAt)
+            .paginationToken(paginationToken)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .useComplianceV2(useComplianceV2)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderGraphApi#listOrderGraphBlocks");
@@ -92,7 +100,7 @@ public class Example {
 
 <a id="listOrderGraphPlacementChildren"></a>
 # **listOrderGraphPlacementChildren**
-> PagedResourceListOfOrderGraphPlacement listOrderGraphPlacementChildren(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys)
+> PagedResourceListOfOrderGraphPlacement listOrderGraphPlacementChildren(scope, code).asAt(asAt).paginationToken(paginationToken).sortBy(sortBy).limit(limit).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
 
@@ -126,7 +134,13 @@ public class Example {
     Integer limit = 56; // Integer | See https://support.lusid.com/knowledgebase/article/KA-01915/
     List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
     try {
-      PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacementChildren(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys);
+      PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacementChildren(scope, code)
+            .asAt(asAt)
+            .paginationToken(paginationToken)
+            .sortBy(sortBy)
+            .limit(limit)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderGraphApi#listOrderGraphPlacementChildren");
@@ -173,7 +187,7 @@ public class Example {
 
 <a id="listOrderGraphPlacements"></a>
 # **listOrderGraphPlacements**
-> PagedResourceListOfOrderGraphPlacement listOrderGraphPlacements(asAt, paginationToken, sortBy, limit, filter, propertyKeys)
+> PagedResourceListOfOrderGraphPlacement listOrderGraphPlacements().asAt(asAt).paginationToken(paginationToken).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
 
@@ -206,7 +220,14 @@ public class Example {
     String filter = ""; // String | See https://support.lusid.com/knowledgebase/article/KA-01914/
     List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
     try {
-      PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacements(asAt, paginationToken, sortBy, limit, filter, propertyKeys);
+      PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacements()
+            .asAt(asAt)
+            .paginationToken(paginationToken)
+            .sortBy(sortBy)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrderGraphApi#listOrderGraphPlacements");

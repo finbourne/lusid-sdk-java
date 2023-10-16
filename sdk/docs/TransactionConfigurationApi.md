@@ -19,7 +19,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteSideDefinition"></a>
 # **deleteSideDefinition**
-> DeletedEntityResponse deleteSideDefinition(side, scope)
+> DeletedEntityResponse deleteSideDefinition(side).scope(scope).execute();
 
 [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition
 
@@ -48,7 +48,9 @@ public class Example {
     String side = "side_example"; // String | The label to uniquely identify the side.
     String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
     try {
-      DeletedEntityResponse result = apiInstance.deleteSideDefinition(side, scope);
+      DeletedEntityResponse result = apiInstance.deleteSideDefinition(side)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#deleteSideDefinition");
@@ -90,7 +92,7 @@ public class Example {
 
 <a id="deleteTransactionType"></a>
 # **deleteTransactionType**
-> DeletedEntityResponse deleteTransactionType(source, type, scope)
+> DeletedEntityResponse deleteTransactionType(source, type).scope(scope).execute();
 
 [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type
 
@@ -120,7 +122,9 @@ public class Example {
     String type = "type_example"; // String | One of the type's aliases
     String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
     try {
-      DeletedEntityResponse result = apiInstance.deleteTransactionType(source, type, scope);
+      DeletedEntityResponse result = apiInstance.deleteTransactionType(source, type)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#deleteTransactionType");
@@ -163,7 +167,7 @@ public class Example {
 
 <a id="deleteTransactionTypeSource"></a>
 # **deleteTransactionTypeSource**
-> DeletedEntityResponse deleteTransactionTypeSource(source, scope)
+> DeletedEntityResponse deleteTransactionTypeSource(source).scope(scope).execute();
 
 [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
 
@@ -192,7 +196,9 @@ public class Example {
     String source = "source_example"; // String | The source to set the transaction types for.
     String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
     try {
-      DeletedEntityResponse result = apiInstance.deleteTransactionTypeSource(source, scope);
+      DeletedEntityResponse result = apiInstance.deleteTransactionTypeSource(source)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#deleteTransactionTypeSource");
@@ -234,7 +240,7 @@ public class Example {
 
 <a id="getSideDefinition"></a>
 # **getSideDefinition**
-> SideDefinition getSideDefinition(side, scope, asAt)
+> SideDefinition getSideDefinition(side).scope(scope).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label)
 
@@ -264,7 +270,10 @@ public class Example {
     String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
     try {
-      SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt);
+      SideDefinition result = apiInstance.getSideDefinition(side)
+            .scope(scope)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#getSideDefinition");
@@ -307,7 +316,7 @@ public class Example {
 
 <a id="getTransactionType"></a>
 # **getTransactionType**
-> TransactionType getTransactionType(source, type, asAt, scope)
+> TransactionType getTransactionType(source, type).asAt(asAt).scope(scope).execute();
 
 [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type
 
@@ -335,10 +344,13 @@ public class Example {
     TransactionConfigurationApi apiInstance = new TransactionConfigurationApi(defaultClient);
     String source = "source_example"; // String | The source that the type is in
     String type = "type_example"; // String | One of the type's aliases
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified
     String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
     try {
-      TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope);
+      TransactionType result = apiInstance.getTransactionType(source, type)
+            .asAt(asAt)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#getTransactionType");
@@ -357,7 +369,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **source** | **String**| The source that the type is in | |
 | **type** | **String**| One of the type&#39;s aliases | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified | [optional] |
 | **scope** | **String**| The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -382,7 +394,7 @@ public class Example {
 
 <a id="listSideDefinitions"></a>
 # **listSideDefinitions**
-> ResourceListOfSideDefinition listSideDefinitions(asAt, scope)
+> ResourceListOfSideDefinition listSideDefinitions().asAt(asAt).scope(scope).execute();
 
 [EXPERIMENTAL] ListSideDefinitions: List the side definitions
 
@@ -411,7 +423,10 @@ public class Example {
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
     String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
     try {
-      ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope);
+      ResourceListOfSideDefinition result = apiInstance.listSideDefinitions()
+            .asAt(asAt)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#listSideDefinitions");
@@ -453,7 +468,7 @@ public class Example {
 
 <a id="listTransactionTypes"></a>
 # **listTransactionTypes**
-> Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes(asAt, scope)
+> Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes().asAt(asAt).scope(scope).execute();
 
 [EXPERIMENTAL] ListTransactionTypes: List transaction types
 
@@ -479,10 +494,13 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     TransactionConfigurationApi apiInstance = new TransactionConfigurationApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
     String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
     try {
-      Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope);
+      Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes()
+            .asAt(asAt)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#listTransactionTypes");
@@ -499,7 +517,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -524,7 +542,7 @@ public class Example {
 
 <a id="setSideDefinition"></a>
 # **setSideDefinition**
-> SideDefinition setSideDefinition(side, sideDefinitionRequest, scope)
+> SideDefinition setSideDefinition(side, sideDefinitionRequest).scope(scope).execute();
 
 [EXPERIMENTAL] SetSideDefinition: Set a side definition
 
@@ -554,7 +572,9 @@ public class Example {
     SideDefinitionRequest sideDefinitionRequest = new SideDefinitionRequest(); // SideDefinitionRequest | The side definition to create or replace.
     String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
     try {
-      SideDefinition result = apiInstance.setSideDefinition(side, sideDefinitionRequest, scope);
+      SideDefinition result = apiInstance.setSideDefinition(side, sideDefinitionRequest)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#setSideDefinition");
@@ -597,7 +617,7 @@ public class Example {
 
 <a id="setSideDefinitions"></a>
 # **setSideDefinitions**
-> ResourceListOfSideDefinition setSideDefinitions(sidesDefinitionRequest, scope)
+> ResourceListOfSideDefinition setSideDefinitions(sidesDefinitionRequest).scope(scope).execute();
 
 [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions
 
@@ -626,7 +646,9 @@ public class Example {
     List<SidesDefinitionRequest> sidesDefinitionRequest = Arrays.asList(); // List<SidesDefinitionRequest> | The list of side definitions to create, or replace.
     String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
     try {
-      ResourceListOfSideDefinition result = apiInstance.setSideDefinitions(sidesDefinitionRequest, scope);
+      ResourceListOfSideDefinition result = apiInstance.setSideDefinitions(sidesDefinitionRequest)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#setSideDefinitions");
@@ -668,7 +690,7 @@ public class Example {
 
 <a id="setTransactionType"></a>
 # **setTransactionType**
-> TransactionType setTransactionType(source, type, transactionTypeRequest, scope)
+> TransactionType setTransactionType(source, type, transactionTypeRequest).scope(scope).execute();
 
 [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
 
@@ -699,7 +721,9 @@ public class Example {
     TransactionTypeRequest transactionTypeRequest = new TransactionTypeRequest(); // TransactionTypeRequest | The transaction configuration to set
     String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
     try {
-      TransactionType result = apiInstance.setTransactionType(source, type, transactionTypeRequest, scope);
+      TransactionType result = apiInstance.setTransactionType(source, type, transactionTypeRequest)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#setTransactionType");
@@ -743,7 +767,7 @@ public class Example {
 
 <a id="setTransactionTypeSource"></a>
 # **setTransactionTypeSource**
-> ResourceListOfTransactionType setTransactionTypeSource(source, transactionTypeRequest, scope)
+> ResourceListOfTransactionType setTransactionTypeSource(source, transactionTypeRequest).scope(scope).execute();
 
 [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope
 
@@ -773,7 +797,9 @@ public class Example {
     List<TransactionTypeRequest> transactionTypeRequest = Arrays.asList(); // List<TransactionTypeRequest> | The set of transaction types.
     String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
     try {
-      ResourceListOfTransactionType result = apiInstance.setTransactionTypeSource(source, transactionTypeRequest, scope);
+      ResourceListOfTransactionType result = apiInstance.setTransactionTypeSource(source, transactionTypeRequest)
+            .scope(scope)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionConfigurationApi#setTransactionTypeSource");

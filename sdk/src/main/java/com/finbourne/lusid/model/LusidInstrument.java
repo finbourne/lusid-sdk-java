@@ -245,120 +245,120 @@ public class LusidInstrument {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LusidInstrument
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to LusidInstrument
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!LusidInstrument.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!LusidInstrument.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LusidInstrument is not found in the empty JSON string", LusidInstrument.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("instrumentType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("instrumentType").getAsString();
       switch (discriminatorValue) {
         case "Basket":
-          Basket.validateJsonObject(jsonObj);
+          Basket.validateJsonElement(jsonElement);
           break;
         case "Bond":
-          Bond.validateJsonObject(jsonObj);
+          Bond.validateJsonElement(jsonElement);
           break;
         case "CapFloor":
-          CapFloor.validateJsonObject(jsonObj);
+          CapFloor.validateJsonElement(jsonElement);
           break;
         case "CashPerpetual":
-          CashPerpetual.validateJsonObject(jsonObj);
+          CashPerpetual.validateJsonElement(jsonElement);
           break;
         case "CdsIndex":
-          CdsIndex.validateJsonObject(jsonObj);
+          CdsIndex.validateJsonElement(jsonElement);
           break;
         case "ComplexBond":
-          ComplexBond.validateJsonObject(jsonObj);
+          ComplexBond.validateJsonElement(jsonElement);
           break;
         case "ContractForDifference":
-          ContractForDifference.validateJsonObject(jsonObj);
+          ContractForDifference.validateJsonElement(jsonElement);
           break;
         case "CreditDefaultSwap":
-          CreditDefaultSwap.validateJsonObject(jsonObj);
+          CreditDefaultSwap.validateJsonElement(jsonElement);
           break;
         case "Equity":
-          Equity.validateJsonObject(jsonObj);
+          Equity.validateJsonElement(jsonElement);
           break;
         case "EquityOption":
-          EquityOption.validateJsonObject(jsonObj);
+          EquityOption.validateJsonElement(jsonElement);
           break;
         case "EquitySwap":
-          EquitySwap.validateJsonObject(jsonObj);
+          EquitySwap.validateJsonElement(jsonElement);
           break;
         case "ExchangeTradedOption":
-          ExchangeTradedOption.validateJsonObject(jsonObj);
+          ExchangeTradedOption.validateJsonElement(jsonElement);
           break;
         case "ExoticInstrument":
-          ExoticInstrument.validateJsonObject(jsonObj);
+          ExoticInstrument.validateJsonElement(jsonElement);
           break;
         case "FixedLeg":
-          FixedLeg.validateJsonObject(jsonObj);
+          FixedLeg.validateJsonElement(jsonElement);
           break;
         case "FloatingLeg":
-          FloatingLeg.validateJsonObject(jsonObj);
+          FloatingLeg.validateJsonElement(jsonElement);
           break;
         case "ForwardRateAgreement":
-          ForwardRateAgreement.validateJsonObject(jsonObj);
+          ForwardRateAgreement.validateJsonElement(jsonElement);
           break;
         case "FundingLeg":
-          FundingLeg.validateJsonObject(jsonObj);
+          FundingLeg.validateJsonElement(jsonElement);
           break;
         case "Future":
-          Future.validateJsonObject(jsonObj);
+          Future.validateJsonElement(jsonElement);
           break;
         case "FxForward":
-          FxForward.validateJsonObject(jsonObj);
+          FxForward.validateJsonElement(jsonElement);
           break;
         case "FxOption":
-          FxOption.validateJsonObject(jsonObj);
+          FxOption.validateJsonElement(jsonElement);
           break;
         case "FxSwap":
-          FxSwap.validateJsonObject(jsonObj);
+          FxSwap.validateJsonElement(jsonElement);
           break;
         case "InflationLeg":
-          InflationLeg.validateJsonObject(jsonObj);
+          InflationLeg.validateJsonElement(jsonElement);
           break;
         case "InflationLinkedBond":
-          InflationLinkedBond.validateJsonObject(jsonObj);
+          InflationLinkedBond.validateJsonElement(jsonElement);
           break;
         case "InflationSwap":
-          InflationSwap.validateJsonObject(jsonObj);
+          InflationSwap.validateJsonElement(jsonElement);
           break;
         case "InstrumentLeg":
-          InstrumentLeg.validateJsonObject(jsonObj);
+          InstrumentLeg.validateJsonElement(jsonElement);
           break;
         case "InterestRateSwap":
-          InterestRateSwap.validateJsonObject(jsonObj);
+          InterestRateSwap.validateJsonElement(jsonElement);
           break;
         case "InterestRateSwaption":
-          InterestRateSwaption.validateJsonObject(jsonObj);
+          InterestRateSwaption.validateJsonElement(jsonElement);
           break;
         case "ReferenceInstrument":
-          ReferenceInstrument.validateJsonObject(jsonObj);
+          ReferenceInstrument.validateJsonElement(jsonElement);
           break;
         case "Repo":
-          Repo.validateJsonObject(jsonObj);
+          Repo.validateJsonElement(jsonElement);
           break;
         case "SimpleCashFlowLoan":
-          SimpleCashFlowLoan.validateJsonObject(jsonObj);
+          SimpleCashFlowLoan.validateJsonElement(jsonElement);
           break;
         case "SimpleInstrument":
-          SimpleInstrument.validateJsonObject(jsonObj);
+          SimpleInstrument.validateJsonElement(jsonElement);
           break;
         case "TermDeposit":
-          TermDeposit.validateJsonObject(jsonObj);
+          TermDeposit.validateJsonElement(jsonElement);
           break;
         case "TotalReturnSwap":
-          TotalReturnSwap.validateJsonObject(jsonObj);
+          TotalReturnSwap.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `instrumentType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

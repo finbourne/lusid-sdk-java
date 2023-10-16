@@ -76,22 +76,7 @@ public class PlacementsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deletePlacement
-     * @param scope The placement scope. (required)
-     * @param code The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePlacementCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlacementCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,88 +140,116 @@ public class PlacementsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeletePlacement: Delete placement
-     * Delete an placement. Deletion will be valid from the placement&#39;s creation datetime.  This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The placement scope. (required)
-     * @param code The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePlacement(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePlacementWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeletePlacement: Delete placement
-     * Delete an placement. Deletion will be valid from the placement&#39;s creation datetime.  This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The placement scope. (required)
-     * @param code The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePlacementWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePlacementWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeletePlacement: Delete placement (asynchronously)
-     * Delete an placement. Deletion will be valid from the placement&#39;s creation datetime.  This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The placement scope. (required)
-     * @param code The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePlacementAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePlacementAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePlacementRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeletePlacementRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deletePlacement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePlacementCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePlacement request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePlacementWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePlacement request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePlacementWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deletePlacement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePlacementAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getPlacement
-     * @param scope The scope to which the placement belongs. (required)
-     * @param code The placement&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeletePlacement: Delete placement
+     * Delete an placement. Deletion will be valid from the placement&#39;s creation datetime.  This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param scope The placement scope. (required)
+     * @param code The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. (required)
+     * @return APIdeletePlacementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlacementCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeletePlacementRequest deletePlacement(String scope, String code) {
+        return new APIdeletePlacementRequest(scope, code);
+    }
+    private okhttp3.Call getPlacementCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -308,96 +321,138 @@ public class PlacementsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPlacement: Get Placement
-     * Fetch a Placement that matches the specified identifier
-     * @param scope The scope to which the placement belongs. (required)
-     * @param code The placement&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @return Placement
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Placement getPlacement(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<Placement> localVarResp = getPlacementWithHttpInfo(scope, code, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPlacement: Get Placement
-     * Fetch a Placement that matches the specified identifier
-     * @param scope The scope to which the placement belongs. (required)
-     * @param code The placement&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;Placement&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Placement> getPlacementWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<Placement> getPlacementWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<Placement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPlacement: Get Placement (asynchronously)
-     * Fetch a Placement that matches the specified identifier
-     * @param scope The scope to which the placement belongs. (required)
-     * @param code The placement&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPlacementAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Placement> _callback) throws ApiException {
+    private okhttp3.Call getPlacementAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Placement> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Placement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPlacementRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetPlacementRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
+         * @return APIgetPlacementRequest
+         */
+        public APIgetPlacementRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
+         * @return APIgetPlacementRequest
+         */
+        public APIgetPlacementRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getPlacement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPlacementCall(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getPlacement request
+         * @return Placement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Placement execute() throws ApiException {
+            ApiResponse<Placement> localVarResp = getPlacementWithHttpInfo(scope, code, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPlacement request with HTTP info returned
+         * @return ApiResponse&lt;Placement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Placement> executeWithHttpInfo() throws ApiException {
+            return getPlacementWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getPlacement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Placement> _callback) throws ApiException {
+            return getPlacementAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listPlacements
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param page The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPlacement: Get Placement
+     * Fetch a Placement that matches the specified identifier
+     * @param scope The scope to which the placement belongs. (required)
+     * @param code The placement&#39;s unique identifier. (required)
+     * @return APIgetPlacementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPlacementsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetPlacementRequest getPlacement(String scope, String code) {
+        return new APIgetPlacementRequest(scope, code);
+    }
+    private okhttp3.Call listPlacementsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,97 +528,176 @@ public class PlacementsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListPlacements: List Placements
-     * Fetch the last pre-AsAt date version of each placement in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param page The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @return PagedResourceListOfPlacement
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPlacement listPlacements(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfPlacement> localVarResp = listPlacementsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListPlacements: List Placements
-     * Fetch the last pre-AsAt date version of each placement in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param page The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPlacement&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPlacement> listPlacementsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfPlacement> listPlacementsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListPlacements: List Placements (asynchronously)
-     * Fetch the last pre-AsAt date version of each placement in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
-     * @param page The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPlacementsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPlacement> _callback) throws ApiException {
+    private okhttp3.Call listPlacementsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPlacement> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPlacement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPlacementsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistPlacementsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. (optional)
+         * @return APIlistPlacementsRequest
+         */
+        public APIlistPlacementsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing placements from a previous call to list placements.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistPlacementsRequest
+         */
+        public APIlistPlacementsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistPlacementsRequest
+         */
+        public APIlistPlacementsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistPlacementsRequest
+         */
+        public APIlistPlacementsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistPlacementsRequest
+         */
+        public APIlistPlacementsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
+         * @return APIlistPlacementsRequest
+         */
+        public APIlistPlacementsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listPlacements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPlacementsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listPlacements request
+         * @return PagedResourceListOfPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPlacement execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPlacement> localVarResp = listPlacementsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPlacements request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPlacement> executeWithHttpInfo() throws ApiException {
+            return listPlacementsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listPlacements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPlacement> _callback) throws ApiException {
+            return listPlacementsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPlacements
-     * @param placementSetRequest The collection of placement requests. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListPlacements: List Placements
+     * Fetch the last pre-AsAt date version of each placement in scope (does not fetch the entire history).
+     * @return APIlistPlacementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPlacementsCall(PlacementSetRequest placementSetRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistPlacementsRequest listPlacements() {
+        return new APIlistPlacementsRequest();
+    }
+    private okhttp3.Call upsertPlacementsCall(PlacementSetRequest placementSetRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -619,52 +753,109 @@ public class PlacementsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPlacements: Upsert Placement
-     * Upsert; update existing placements with given ids, or create new placements otherwise.
-     * @param placementSetRequest The collection of placement requests. (optional)
-     * @return ResourceListOfPlacement
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPlacement upsertPlacements(PlacementSetRequest placementSetRequest) throws ApiException {
-        ApiResponse<ResourceListOfPlacement> localVarResp = upsertPlacementsWithHttpInfo(placementSetRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertPlacements: Upsert Placement
-     * Upsert; update existing placements with given ids, or create new placements otherwise.
-     * @param placementSetRequest The collection of placement requests. (optional)
-     * @return ApiResponse&lt;ResourceListOfPlacement&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPlacement> upsertPlacementsWithHttpInfo(PlacementSetRequest placementSetRequest) throws ApiException {
+    private ApiResponse<ResourceListOfPlacement> upsertPlacementsWithHttpInfo(PlacementSetRequest placementSetRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertPlacementsAsync(PlacementSetRequest placementSetRequest, final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertPlacementsRequest {
+        private PlacementSetRequest placementSetRequest;
+
+        private APIupsertPlacementsRequest() {
+        }
+
+        /**
+         * Set placementSetRequest
+         * @param placementSetRequest The collection of placement requests. (optional)
+         * @return APIupsertPlacementsRequest
+         */
+        public APIupsertPlacementsRequest placementSetRequest(PlacementSetRequest placementSetRequest) {
+            this.placementSetRequest = placementSetRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertPlacements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPlacementsCall(placementSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertPlacements request
+         * @return ResourceListOfPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPlacement execute() throws ApiException {
+            ApiResponse<ResourceListOfPlacement> localVarResp = upsertPlacementsWithHttpInfo(placementSetRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPlacements request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPlacement> executeWithHttpInfo() throws ApiException {
+            return upsertPlacementsWithHttpInfo(placementSetRequest);
+        }
+
+        /**
+         * Execute upsertPlacements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
+            return upsertPlacementsAsync(placementSetRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertPlacements: Upsert Placement (asynchronously)
+     * [EARLY ACCESS] UpsertPlacements: Upsert Placement
      * Upsert; update existing placements with given ids, or create new placements otherwise.
-     * @param placementSetRequest The collection of placement requests. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertPlacementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -673,11 +864,7 @@ public class PlacementsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPlacementsAsync(PlacementSetRequest placementSetRequest, final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertPlacementsRequest upsertPlacements() {
+        return new APIupsertPlacementsRequest();
     }
 }

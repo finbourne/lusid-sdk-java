@@ -82,22 +82,7 @@ public class ConventionsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteCdsFlowConventions
-     * @param scope The scope of the CDS Flow Conventions to delete. (required)
-     * @param code The CDS Flow Conventions to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCdsFlowConventionsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCdsFlowConventionsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -161,77 +146,104 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] DeleteCdsFlowConventions: Delete the CDS Flow Conventions of given scope and code, assuming that it is present.
-     * Delete the specified CDS Flow Conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the CDS Flow Conventions to delete. (required)
-     * @param code The CDS Flow Conventions to delete. (required)
-     * @return AnnulSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulSingleStructuredDataResponse deleteCdsFlowConventions(String scope, String code) throws ApiException {
-        ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCdsFlowConventionsWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] DeleteCdsFlowConventions: Delete the CDS Flow Conventions of given scope and code, assuming that it is present.
-     * Delete the specified CDS Flow Conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the CDS Flow Conventions to delete. (required)
-     * @param code The CDS Flow Conventions to delete. (required)
-     * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulSingleStructuredDataResponse> deleteCdsFlowConventionsWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteCdsFlowConventionsWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] DeleteCdsFlowConventions: Delete the CDS Flow Conventions of given scope and code, assuming that it is present. (asynchronously)
-     * Delete the specified CDS Flow Conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the CDS Flow Conventions to delete. (required)
-     * @param code The CDS Flow Conventions to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCdsFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCdsFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCdsFlowConventionsRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteCdsFlowConventionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteCdsFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCdsFlowConventionsCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCdsFlowConventions request
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCdsFlowConventionsWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCdsFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCdsFlowConventionsWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCdsFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+            return deleteCdsFlowConventionsAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteFlowConventions
-     * @param scope The scope of the Flow Conventions to delete. (required)
-     * @param code The Flow Conventions to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] DeleteCdsFlowConventions: Delete the CDS Flow Conventions of given scope and code, assuming that it is present.
+     * Delete the specified CDS Flow Conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
+     * @param scope The scope of the CDS Flow Conventions to delete. (required)
+     * @param code The CDS Flow Conventions to delete. (required)
+     * @return APIdeleteCdsFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -240,7 +252,10 @@ public class ConventionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteFlowConventionsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCdsFlowConventionsRequest deleteCdsFlowConventions(String scope, String code) {
+        return new APIdeleteCdsFlowConventionsRequest(scope, code);
+    }
+    private okhttp3.Call deleteFlowConventionsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -304,77 +319,104 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] DeleteFlowConventions: Delete the Flow Conventions of given scope and code, assuming that it is present.
-     * Delete the specified conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Flow Conventions to delete. (required)
-     * @param code The Flow Conventions to delete. (required)
-     * @return AnnulSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulSingleStructuredDataResponse deleteFlowConventions(String scope, String code) throws ApiException {
-        ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteFlowConventionsWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] DeleteFlowConventions: Delete the Flow Conventions of given scope and code, assuming that it is present.
-     * Delete the specified conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Flow Conventions to delete. (required)
-     * @param code The Flow Conventions to delete. (required)
-     * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulSingleStructuredDataResponse> deleteFlowConventionsWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteFlowConventionsWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] DeleteFlowConventions: Delete the Flow Conventions of given scope and code, assuming that it is present. (asynchronously)
-     * Delete the specified conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Flow Conventions to delete. (required)
-     * @param code The Flow Conventions to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteFlowConventionsRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteFlowConventionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteFlowConventionsCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteFlowConventions request
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteFlowConventionsWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteFlowConventionsWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+            return deleteFlowConventionsAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteIndexConvention
-     * @param scope The scope of the Index Convention to delete. (required)
-     * @param code The Index Convention to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] DeleteFlowConventions: Delete the Flow Conventions of given scope and code, assuming that it is present.
+     * Delete the specified conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
+     * @param scope The scope of the Flow Conventions to delete. (required)
+     * @param code The Flow Conventions to delete. (required)
+     * @return APIdeleteFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -383,7 +425,10 @@ public class ConventionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIndexConventionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIdeleteFlowConventionsRequest deleteFlowConventions(String scope, String code) {
+        return new APIdeleteFlowConventionsRequest(scope, code);
+    }
+    private okhttp3.Call deleteIndexConventionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -447,87 +492,116 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] DeleteIndexConvention: Delete the Index Convention of given scope and code, assuming that it is present.
-     * Delete the specified Index Convention from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Index Convention to delete. (required)
-     * @param code The Index Convention to delete. (required)
-     * @return AnnulSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulSingleStructuredDataResponse deleteIndexConvention(String scope, String code) throws ApiException {
-        ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteIndexConventionWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] DeleteIndexConvention: Delete the Index Convention of given scope and code, assuming that it is present.
-     * Delete the specified Index Convention from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Index Convention to delete. (required)
-     * @param code The Index Convention to delete. (required)
-     * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulSingleStructuredDataResponse> deleteIndexConventionWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteIndexConventionWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] DeleteIndexConvention: Delete the Index Convention of given scope and code, assuming that it is present. (asynchronously)
-     * Delete the specified Index Convention from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Index Convention to delete. (required)
-     * @param code The Index Convention to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteIndexConventionAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteIndexConventionAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteIndexConventionRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteIndexConventionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteIndexConvention
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteIndexConventionCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteIndexConvention request
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteIndexConventionWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteIndexConvention request with HTTP info returned
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteIndexConventionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteIndexConvention request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+            return deleteIndexConventionAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getCdsFlowConventions
-     * @param scope The scope of the CDS Flow Conventions to retrieve. (required)
-     * @param code The name of the CDS Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] DeleteIndexConvention: Delete the Index Convention of given scope and code, assuming that it is present.
+     * Delete the specified Index Convention from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
+     * @param scope The scope of the Index Convention to delete. (required)
+     * @param code The Index Convention to delete. (required)
+     * @return APIdeleteIndexConventionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCdsFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteIndexConventionRequest deleteIndexConvention(String scope, String code) {
+        return new APIdeleteIndexConventionRequest(scope, code);
+    }
+    private okhttp3.Call getCdsFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -595,90 +669,127 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] GetCdsFlowConventions: Get CDS Flow Conventions
-     * Get a CDS Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the CDS Flow Conventions to retrieve. (required)
-     * @param code The name of the CDS Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @return GetCdsFlowConventionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetCdsFlowConventionsResponse getCdsFlowConventions(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<GetCdsFlowConventionsResponse> localVarResp = getCdsFlowConventionsWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] GetCdsFlowConventions: Get CDS Flow Conventions
-     * Get a CDS Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the CDS Flow Conventions to retrieve. (required)
-     * @param code The name of the CDS Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;GetCdsFlowConventionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetCdsFlowConventionsResponse> getCdsFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<GetCdsFlowConventionsResponse> getCdsFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<GetCdsFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] GetCdsFlowConventions: Get CDS Flow Conventions (asynchronously)
-     * Get a CDS Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the CDS Flow Conventions to retrieve. (required)
-     * @param code The name of the CDS Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCdsFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCdsFlowConventionsResponse> _callback) throws ApiException {
+    private okhttp3.Call getCdsFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCdsFlowConventionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<GetCdsFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCdsFlowConventionsRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetCdsFlowConventionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetCdsFlowConventionsRequest
+         */
+        public APIgetCdsFlowConventionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCdsFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCdsFlowConventionsCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCdsFlowConventions request
+         * @return GetCdsFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetCdsFlowConventionsResponse execute() throws ApiException {
+            ApiResponse<GetCdsFlowConventionsResponse> localVarResp = getCdsFlowConventionsWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCdsFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;GetCdsFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetCdsFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
+            return getCdsFlowConventionsWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getCdsFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetCdsFlowConventionsResponse> _callback) throws ApiException {
+            return getCdsFlowConventionsAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getFlowConventions
-     * @param scope The scope of the Flow Conventions to retrieve. (required)
-     * @param code The name of the Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] GetCdsFlowConventions: Get CDS Flow Conventions
+     * Get a CDS Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
+     * @param scope The scope of the CDS Flow Conventions to retrieve. (required)
+     * @param code The name of the CDS Flow Conventions to retrieve the data for. (required)
+     * @return APIgetCdsFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetCdsFlowConventionsRequest getCdsFlowConventions(String scope, String code) {
+        return new APIgetCdsFlowConventionsRequest(scope, code);
+    }
+    private okhttp3.Call getFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -746,90 +857,127 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] GetFlowConventions: Get Flow Conventions
-     * Get a Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Flow Conventions to retrieve. (required)
-     * @param code The name of the Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @return GetFlowConventionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetFlowConventionsResponse getFlowConventions(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<GetFlowConventionsResponse> localVarResp = getFlowConventionsWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] GetFlowConventions: Get Flow Conventions
-     * Get a Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Flow Conventions to retrieve. (required)
-     * @param code The name of the Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;GetFlowConventionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetFlowConventionsResponse> getFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<GetFlowConventionsResponse> getFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<GetFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] GetFlowConventions: Get Flow Conventions (asynchronously)
-     * Get a Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Flow Conventions to retrieve. (required)
-     * @param code The name of the Flow Conventions to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetFlowConventionsResponse> _callback) throws ApiException {
+    private okhttp3.Call getFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetFlowConventionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<GetFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetFlowConventionsRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetFlowConventionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetFlowConventionsRequest
+         */
+        public APIgetFlowConventionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getFlowConventionsCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getFlowConventions request
+         * @return GetFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetFlowConventionsResponse execute() throws ApiException {
+            ApiResponse<GetFlowConventionsResponse> localVarResp = getFlowConventionsWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;GetFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
+            return getFlowConventionsWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetFlowConventionsResponse> _callback) throws ApiException {
+            return getFlowConventionsAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getIndexConvention
-     * @param scope The scope of the Index Convention to retrieve. (required)
-     * @param code The name of the Index Convention to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] GetFlowConventions: Get Flow Conventions
+     * Get a Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
+     * @param scope The scope of the Flow Conventions to retrieve. (required)
+     * @param code The name of the Flow Conventions to retrieve the data for. (required)
+     * @return APIgetFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexConventionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetFlowConventionsRequest getFlowConventions(String scope, String code) {
+        return new APIgetFlowConventionsRequest(scope, code);
+    }
+    private okhttp3.Call getIndexConventionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -897,88 +1045,127 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] GetIndexConvention: Get Index Convention
-     * Get a Index Convention from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Index Convention to retrieve. (required)
-     * @param code The name of the Index Convention to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified. (optional)
-     * @return GetIndexConventionResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetIndexConventionResponse getIndexConvention(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<GetIndexConventionResponse> localVarResp = getIndexConventionWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] GetIndexConvention: Get Index Convention
-     * Get a Index Convention from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Index Convention to retrieve. (required)
-     * @param code The name of the Index Convention to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;GetIndexConventionResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetIndexConventionResponse> getIndexConventionWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<GetIndexConventionResponse> getIndexConventionWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<GetIndexConventionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] GetIndexConvention: Get Index Convention (asynchronously)
-     * Get a Index Convention from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Index Convention to retrieve. (required)
-     * @param code The name of the Index Convention to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIndexConventionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetIndexConventionResponse> _callback) throws ApiException {
+    private okhttp3.Call getIndexConventionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetIndexConventionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<GetIndexConventionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetIndexConventionRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetIndexConventionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetIndexConventionRequest
+         */
+        public APIgetIndexConventionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getIndexConvention
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getIndexConventionCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getIndexConvention request
+         * @return GetIndexConventionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetIndexConventionResponse execute() throws ApiException {
+            ApiResponse<GetIndexConventionResponse> localVarResp = getIndexConventionWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getIndexConvention request with HTTP info returned
+         * @return ApiResponse&lt;GetIndexConventionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetIndexConventionResponse> executeWithHttpInfo() throws ApiException {
+            return getIndexConventionWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getIndexConvention request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetIndexConventionResponse> _callback) throws ApiException {
+            return getIndexConventionAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listCdsFlowConventions
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] GetIndexConvention: Get Index Convention
+     * Get a Index Convention from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
+     * @param scope The scope of the Index Convention to retrieve. (required)
+     * @param code The name of the Index Convention to retrieve the data for. (required)
+     * @return APIgetIndexConventionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCdsFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetIndexConventionRequest getIndexConvention(String scope, String code) {
+        return new APIgetIndexConventionRequest(scope, code);
+    }
+    private okhttp3.Call listCdsFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1034,82 +1221,121 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] ListCdsFlowConventions: List the set of CDS Flow Conventions
-     * List the set of CDS Flow Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @return ResourceListOfGetCdsFlowConventionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfGetCdsFlowConventionsResponse listCdsFlowConventions(OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> localVarResp = listCdsFlowConventionsWithHttpInfo(asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] ListCdsFlowConventions: List the set of CDS Flow Conventions
-     * List the set of CDS Flow Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfGetCdsFlowConventionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> listCdsFlowConventionsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> listCdsFlowConventionsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCdsFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] ListCdsFlowConventions: List the set of CDS Flow Conventions (asynchronously)
-     * List the set of CDS Flow Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCdsFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback) throws ApiException {
+    private okhttp3.Call listCdsFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCdsFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCdsFlowConventionsRequest {
+        private OffsetDateTime asAt;
+
+        private APIlistCdsFlowConventionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
+         * @return APIlistCdsFlowConventionsRequest
+         */
+        public APIlistCdsFlowConventionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listCdsFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCdsFlowConventionsCall(asAt, _callback);
+        }
+
+        /**
+         * Execute listCdsFlowConventions request
+         * @return ResourceListOfGetCdsFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetCdsFlowConventionsResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> localVarResp = listCdsFlowConventionsWithHttpInfo(asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCdsFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfGetCdsFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
+            return listCdsFlowConventionsWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listCdsFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback) throws ApiException {
+            return listCdsFlowConventionsAsync(asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listFlowConventions
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] ListCdsFlowConventions: List the set of CDS Flow Conventions
+     * List the set of CDS Flow Conventions at the specified date/time
+     * @return APIlistCdsFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIlistCdsFlowConventionsRequest listCdsFlowConventions() {
+        return new APIlistCdsFlowConventionsRequest();
+    }
+    private okhttp3.Call listFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1165,82 +1391,121 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] ListFlowConventions: List the set of Flow Conventions
-     * List the set of Flow Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @return ResourceListOfGetFlowConventionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfGetFlowConventionsResponse listFlowConventions(OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfGetFlowConventionsResponse> localVarResp = listFlowConventionsWithHttpInfo(asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] ListFlowConventions: List the set of Flow Conventions
-     * List the set of Flow Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfGetFlowConventionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfGetFlowConventionsResponse> listFlowConventionsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfGetFlowConventionsResponse> listFlowConventionsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfGetFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] ListFlowConventions: List the set of Flow Conventions (asynchronously)
-     * List the set of Flow Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback) throws ApiException {
+    private okhttp3.Call listFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfGetFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistFlowConventionsRequest {
+        private OffsetDateTime asAt;
+
+        private APIlistFlowConventionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
+         * @return APIlistFlowConventionsRequest
+         */
+        public APIlistFlowConventionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listFlowConventionsCall(asAt, _callback);
+        }
+
+        /**
+         * Execute listFlowConventions request
+         * @return ResourceListOfGetFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetFlowConventionsResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfGetFlowConventionsResponse> localVarResp = listFlowConventionsWithHttpInfo(asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfGetFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
+            return listFlowConventionsWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback) throws ApiException {
+            return listFlowConventionsAsync(asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listIndexConvention
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] ListFlowConventions: List the set of Flow Conventions
+     * List the set of Flow Conventions at the specified date/time
+     * @return APIlistFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listIndexConventionCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIlistFlowConventionsRequest listFlowConventions() {
+        return new APIlistFlowConventionsRequest();
+    }
+    private okhttp3.Call listIndexConventionCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1296,82 +1561,121 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] ListIndexConvention: List the set of Index Conventions
-     * List the set of Index Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @return ResourceListOfGetIndexConventionResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfGetIndexConventionResponse listIndexConvention(OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfGetIndexConventionResponse> localVarResp = listIndexConventionWithHttpInfo(asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] ListIndexConvention: List the set of Index Conventions
-     * List the set of Index Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfGetIndexConventionResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfGetIndexConventionResponse> listIndexConventionWithHttpInfo(OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfGetIndexConventionResponse> listIndexConventionWithHttpInfo(OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfGetIndexConventionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] ListIndexConvention: List the set of Index Conventions (asynchronously)
-     * List the set of Index Conventions at the specified date/time
-     * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listIndexConventionAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback) throws ApiException {
+    private okhttp3.Call listIndexConventionAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfGetIndexConventionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistIndexConventionRequest {
+        private OffsetDateTime asAt;
+
+        private APIlistIndexConventionRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the conventions. Defaults to latest if not specified. (optional)
+         * @return APIlistIndexConventionRequest
+         */
+        public APIlistIndexConventionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listIndexConvention
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listIndexConventionCall(asAt, _callback);
+        }
+
+        /**
+         * Execute listIndexConvention request
+         * @return ResourceListOfGetIndexConventionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetIndexConventionResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfGetIndexConventionResponse> localVarResp = listIndexConventionWithHttpInfo(asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listIndexConvention request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfGetIndexConventionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetIndexConventionResponse> executeWithHttpInfo() throws ApiException {
+            return listIndexConventionWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listIndexConvention request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback) throws ApiException {
+            return listIndexConventionAsync(asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCdsFlowConventions
-     * @param upsertCdsFlowConventionsRequest The CDS Flow Conventions to update or insert (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] ListIndexConvention: List the set of Index Conventions
+     * List the set of Index Conventions at the specified date/time
+     * @return APIlistIndexConventionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCdsFlowConventionsCall(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistIndexConventionRequest listIndexConvention() {
+        return new APIlistIndexConventionRequest();
+    }
+    private okhttp3.Call upsertCdsFlowConventionsCall(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1432,73 +1736,101 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] UpsertCdsFlowConventions: Upsert a set of CDS Flow Conventions. This creates or updates the data in Lusid.
-     * Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCdsFlowConventionsRequest The CDS Flow Conventions to update or insert (required)
-     * @return UpsertSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertSingleStructuredDataResponse upsertCdsFlowConventions(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest) throws ApiException {
-        ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCdsFlowConventionsWithHttpInfo(upsertCdsFlowConventionsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] UpsertCdsFlowConventions: Upsert a set of CDS Flow Conventions. This creates or updates the data in Lusid.
-     * Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCdsFlowConventionsRequest The CDS Flow Conventions to update or insert (required)
-     * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertSingleStructuredDataResponse> upsertCdsFlowConventionsWithHttpInfo(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest) throws ApiException {
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertCdsFlowConventionsWithHttpInfo(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, null);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] UpsertCdsFlowConventions: Upsert a set of CDS Flow Conventions. This creates or updates the data in Lusid. (asynchronously)
-     * Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCdsFlowConventionsRequest The CDS Flow Conventions to update or insert (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertCdsFlowConventionsAsync(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertCdsFlowConventionsAsync(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, _callback);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertCdsFlowConventionsRequest {
+        private final UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest;
+
+        private APIupsertCdsFlowConventionsRequest(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest) {
+            this.upsertCdsFlowConventionsRequest = upsertCdsFlowConventionsRequest;
+        }
+
+        /**
+         * Build call for upsertCdsFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCdsFlowConventionsCall(upsertCdsFlowConventionsRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCdsFlowConventions request
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCdsFlowConventionsWithHttpInfo(upsertCdsFlowConventionsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCdsFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertCdsFlowConventionsWithHttpInfo(upsertCdsFlowConventionsRequest);
+        }
+
+        /**
+         * Execute upsertCdsFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+            return upsertCdsFlowConventionsAsync(upsertCdsFlowConventionsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertFlowConventions
-     * @param upsertFlowConventionsRequest The Flow Conventions to update or insert (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] UpsertCdsFlowConventions: Upsert a set of CDS Flow Conventions. This creates or updates the data in Lusid.
+     * Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful     It is important to always check to verify success (or failure).
+     * @param upsertCdsFlowConventionsRequest The CDS Flow Conventions to update or insert (required)
+     * @return APIupsertCdsFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1507,7 +1839,10 @@ public class ConventionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertFlowConventionsCall(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertCdsFlowConventionsRequest upsertCdsFlowConventions(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest) {
+        return new APIupsertCdsFlowConventionsRequest(upsertCdsFlowConventionsRequest);
+    }
+    private okhttp3.Call upsertFlowConventionsCall(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1568,73 +1903,101 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] UpsertFlowConventions: Upsert Flow Conventions. This creates or updates the data in Lusid.
-     * Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertFlowConventionsRequest The Flow Conventions to update or insert (required)
-     * @return UpsertSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertSingleStructuredDataResponse upsertFlowConventions(UpsertFlowConventionsRequest upsertFlowConventionsRequest) throws ApiException {
-        ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertFlowConventionsWithHttpInfo(upsertFlowConventionsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] UpsertFlowConventions: Upsert Flow Conventions. This creates or updates the data in Lusid.
-     * Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertFlowConventionsRequest The Flow Conventions to update or insert (required)
-     * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertSingleStructuredDataResponse> upsertFlowConventionsWithHttpInfo(UpsertFlowConventionsRequest upsertFlowConventionsRequest) throws ApiException {
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertFlowConventionsWithHttpInfo(UpsertFlowConventionsRequest upsertFlowConventionsRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, null);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] UpsertFlowConventions: Upsert Flow Conventions. This creates or updates the data in Lusid. (asynchronously)
-     * Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertFlowConventionsRequest The Flow Conventions to update or insert (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertFlowConventionsAsync(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertFlowConventionsAsync(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, _callback);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertFlowConventionsRequest {
+        private final UpsertFlowConventionsRequest upsertFlowConventionsRequest;
+
+        private APIupsertFlowConventionsRequest(UpsertFlowConventionsRequest upsertFlowConventionsRequest) {
+            this.upsertFlowConventionsRequest = upsertFlowConventionsRequest;
+        }
+
+        /**
+         * Build call for upsertFlowConventions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertFlowConventionsCall(upsertFlowConventionsRequest, _callback);
+        }
+
+        /**
+         * Execute upsertFlowConventions request
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertFlowConventionsWithHttpInfo(upsertFlowConventionsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertFlowConventions request with HTTP info returned
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertFlowConventionsWithHttpInfo(upsertFlowConventionsRequest);
+        }
+
+        /**
+         * Execute upsertFlowConventions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+            return upsertFlowConventionsAsync(upsertFlowConventionsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertIndexConvention
-     * @param upsertIndexConventionRequest The Index Conventions to update or insert (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] UpsertFlowConventions: Upsert Flow Conventions. This creates or updates the data in Lusid.
+     * Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful     It is important to always check to verify success (or failure).
+     * @param upsertFlowConventionsRequest The Flow Conventions to update or insert (required)
+     * @return APIupsertFlowConventionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1643,7 +2006,10 @@ public class ConventionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertIndexConventionCall(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertFlowConventionsRequest upsertFlowConventions(UpsertFlowConventionsRequest upsertFlowConventionsRequest) {
+        return new APIupsertFlowConventionsRequest(upsertFlowConventionsRequest);
+    }
+    private okhttp3.Call upsertIndexConventionCall(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1704,52 +2070,101 @@ public class ConventionsApi {
 
     }
 
-    /**
-     * [BETA] UpsertIndexConvention: Upsert a set of Index Convention. This creates or updates the data in Lusid.
-     * Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertIndexConventionRequest The Index Conventions to update or insert (required)
-     * @return UpsertSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertSingleStructuredDataResponse upsertIndexConvention(UpsertIndexConventionRequest upsertIndexConventionRequest) throws ApiException {
-        ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertIndexConventionWithHttpInfo(upsertIndexConventionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] UpsertIndexConvention: Upsert a set of Index Convention. This creates or updates the data in Lusid.
-     * Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertIndexConventionRequest The Index Conventions to update or insert (required)
-     * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertSingleStructuredDataResponse> upsertIndexConventionWithHttpInfo(UpsertIndexConventionRequest upsertIndexConventionRequest) throws ApiException {
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertIndexConventionWithHttpInfo(UpsertIndexConventionRequest upsertIndexConventionRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, null);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertIndexConventionAsync(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertIndexConventionRequest {
+        private final UpsertIndexConventionRequest upsertIndexConventionRequest;
+
+        private APIupsertIndexConventionRequest(UpsertIndexConventionRequest upsertIndexConventionRequest) {
+            this.upsertIndexConventionRequest = upsertIndexConventionRequest;
+        }
+
+        /**
+         * Build call for upsertIndexConvention
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertIndexConventionCall(upsertIndexConventionRequest, _callback);
+        }
+
+        /**
+         * Execute upsertIndexConvention request
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertIndexConventionWithHttpInfo(upsertIndexConventionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertIndexConvention request with HTTP info returned
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertIndexConventionWithHttpInfo(upsertIndexConventionRequest);
+        }
+
+        /**
+         * Execute upsertIndexConvention request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+            return upsertIndexConventionAsync(upsertIndexConventionRequest, _callback);
+        }
+    }
+
     /**
-     * [BETA] UpsertIndexConvention: Upsert a set of Index Convention. This creates or updates the data in Lusid. (asynchronously)
-     * Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful                It is important to always check to verify success (or failure).
+     * [BETA] UpsertIndexConvention: Upsert a set of Index Convention. This creates or updates the data in Lusid.
+     * Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertIndexConventionRequest The Index Conventions to update or insert (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertIndexConventionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1758,11 +2173,7 @@ public class ConventionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertIndexConventionAsync(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertIndexConventionRequest upsertIndexConvention(UpsertIndexConventionRequest upsertIndexConventionRequest) {
+        return new APIupsertIndexConventionRequest(upsertIndexConventionRequest);
     }
 }

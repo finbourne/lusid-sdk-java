@@ -817,32 +817,25 @@ public class OutputTransaction {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OutputTransaction
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to OutputTransaction
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!OutputTransaction.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!OutputTransaction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OutputTransaction is not found in the empty JSON string", OutputTransaction.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!OutputTransaction.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OutputTransaction` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OutputTransaction.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("transactionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionId").toString()));
       }
@@ -860,11 +853,11 @@ public class OutputTransaction {
       }
       // validate the optional field `transactionPrice`
       if (jsonObj.get("transactionPrice") != null && !jsonObj.get("transactionPrice").isJsonNull()) {
-        TransactionPrice.validateJsonObject(jsonObj.getAsJsonObject("transactionPrice"));
+        TransactionPrice.validateJsonElement(jsonObj.get("transactionPrice"));
       }
       // validate the optional field `totalConsideration`
       if (jsonObj.get("totalConsideration") != null && !jsonObj.get("totalConsideration").isJsonNull()) {
-        CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("totalConsideration"));
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("totalConsideration"));
       }
       if ((jsonObj.get("transactionCurrency") != null && !jsonObj.get("transactionCurrency").isJsonNull()) && !jsonObj.get("transactionCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionCurrency").toString()));
@@ -888,7 +881,7 @@ public class OutputTransaction {
 
           // validate the optional field `realisedGainLoss` (array)
           for (int i = 0; i < jsonArrayrealisedGainLoss.size(); i++) {
-            RealisedGainLoss.validateJsonObject(jsonArrayrealisedGainLoss.get(i).getAsJsonObject());
+            RealisedGainLoss.validateJsonElement(jsonArrayrealisedGainLoss.get(i));
           };
         }
       }
@@ -914,9 +907,9 @@ public class OutputTransaction {
 
            @Override
            public OutputTransaction read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -73,22 +73,7 @@ public class DerivedTransactionPortfoliosApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createDerivedPortfolio
-     * @param scope The scope in which to create the derived transaction portfolio. (required)
-     * @param createDerivedTransactionPortfolioRequest The definition of the derived transaction portfolio. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createDerivedPortfolioCall(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDerivedPortfolioCall(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -150,87 +135,124 @@ public class DerivedTransactionPortfoliosApi {
 
     }
 
-    /**
-     * CreateDerivedPortfolio: Create derived portfolio
-     * Create a derived transaction portfolio from a parent transaction portfolio (which may itself be derived).
-     * @param scope The scope in which to create the derived transaction portfolio. (required)
-     * @param createDerivedTransactionPortfolioRequest The definition of the derived transaction portfolio. (optional)
-     * @return Portfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Portfolio createDerivedPortfolio(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest) throws ApiException {
-        ApiResponse<Portfolio> localVarResp = createDerivedPortfolioWithHttpInfo(scope, createDerivedTransactionPortfolioRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * CreateDerivedPortfolio: Create derived portfolio
-     * Create a derived transaction portfolio from a parent transaction portfolio (which may itself be derived).
-     * @param scope The scope in which to create the derived transaction portfolio. (required)
-     * @param createDerivedTransactionPortfolioRequest The definition of the derived transaction portfolio. (optional)
-     * @return ApiResponse&lt;Portfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Portfolio> createDerivedPortfolioWithHttpInfo(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest) throws ApiException {
+    private ApiResponse<Portfolio> createDerivedPortfolioWithHttpInfo(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest) throws ApiException {
         okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, null);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * CreateDerivedPortfolio: Create derived portfolio (asynchronously)
-     * Create a derived transaction portfolio from a parent transaction portfolio (which may itself be derived).
-     * @param scope The scope in which to create the derived transaction portfolio. (required)
-     * @param createDerivedTransactionPortfolioRequest The definition of the derived transaction portfolio. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
+    private okhttp3.Call createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateDerivedPortfolioRequest {
+        private final String scope;
+        private CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest;
+
+        private APIcreateDerivedPortfolioRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set createDerivedTransactionPortfolioRequest
+         * @param createDerivedTransactionPortfolioRequest The definition of the derived transaction portfolio. (optional)
+         * @return APIcreateDerivedPortfolioRequest
+         */
+        public APIcreateDerivedPortfolioRequest createDerivedTransactionPortfolioRequest(CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest) {
+            this.createDerivedTransactionPortfolioRequest = createDerivedTransactionPortfolioRequest;
+            return this;
+        }
+
+        /**
+         * Build call for createDerivedPortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createDerivedPortfolioCall(scope, createDerivedTransactionPortfolioRequest, _callback);
+        }
+
+        /**
+         * Execute createDerivedPortfolio request
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute() throws ApiException {
+            ApiResponse<Portfolio> localVarResp = createDerivedPortfolioWithHttpInfo(scope, createDerivedTransactionPortfolioRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createDerivedPortfolio request with HTTP info returned
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
+            return createDerivedPortfolioWithHttpInfo(scope, createDerivedTransactionPortfolioRequest);
+        }
+
+        /**
+         * Execute createDerivedPortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
+            return createDerivedPortfolioAsync(scope, createDerivedTransactionPortfolioRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteDerivedPortfolioDetails
-     * @param scope The scope of the derived transaction portfolio. (required)
-     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies              the derived transaction portfolio. (required)
-     * @param effectiveAt The effective date of the change. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * CreateDerivedPortfolio: Create derived portfolio
+     * Create a derived transaction portfolio from a parent transaction portfolio (which may itself be derived).
+     * @param scope The scope in which to create the derived transaction portfolio. (required)
+     * @return APIcreateDerivedPortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDerivedPortfolioDetailsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIcreateDerivedPortfolioRequest createDerivedPortfolio(String scope) {
+        return new APIcreateDerivedPortfolioRequest(scope);
+    }
+    private okhttp3.Call deleteDerivedPortfolioDetailsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -298,58 +320,115 @@ public class DerivedTransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
-     * Delete all the portfolio details for a derived transaction portfolio.
-     * @param scope The scope of the derived transaction portfolio. (required)
-     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies              the derived transaction portfolio. (required)
-     * @param effectiveAt The effective date of the change. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteDerivedPortfolioDetails(String scope, String code, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteDerivedPortfolioDetailsWithHttpInfo(scope, code, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
-     * Delete all the portfolio details for a derived transaction portfolio.
-     * @param scope The scope of the derived transaction portfolio. (required)
-     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies              the derived transaction portfolio. (required)
-     * @param effectiveAt The effective date of the change. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteDerivedPortfolioDetailsWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteDerivedPortfolioDetailsWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call deleteDerivedPortfolioDetailsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteDerivedPortfolioDetailsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+
+        private APIdeleteDerivedPortfolioDetailsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date of the change. (optional)
+         * @return APIdeleteDerivedPortfolioDetailsRequest
+         */
+        public APIdeleteDerivedPortfolioDetailsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteDerivedPortfolioDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteDerivedPortfolioDetailsCall(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteDerivedPortfolioDetails request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteDerivedPortfolioDetailsWithHttpInfo(scope, code, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteDerivedPortfolioDetails request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteDerivedPortfolioDetailsWithHttpInfo(scope, code, effectiveAt);
+        }
+
+        /**
+         * Execute deleteDerivedPortfolioDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteDerivedPortfolioDetailsAsync(scope, code, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details (asynchronously)
+     * [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
      * Delete all the portfolio details for a derived transaction portfolio.
      * @param scope The scope of the derived transaction portfolio. (required)
-     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies              the derived transaction portfolio. (required)
-     * @param effectiveAt The effective date of the change. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio. (required)
+     * @return APIdeleteDerivedPortfolioDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -358,11 +437,7 @@ public class DerivedTransactionPortfoliosApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDerivedPortfolioDetailsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, _callback);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIdeleteDerivedPortfolioDetailsRequest deleteDerivedPortfolioDetails(String scope, String code) {
+        return new APIdeleteDerivedPortfolioDetailsRequest(scope, code);
     }
 }

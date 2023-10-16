@@ -620,32 +620,25 @@ public class LusidTradeTicket {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LusidTradeTicket
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to LusidTradeTicket
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!LusidTradeTicket.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!LusidTradeTicket.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LusidTradeTicket is not found in the empty JSON string", LusidTradeTicket.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!LusidTradeTicket.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LusidTradeTicket` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : LusidTradeTicket.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("transactionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionId").toString()));
       }
@@ -662,7 +655,7 @@ public class LusidTradeTicket {
         throw new IllegalArgumentException(String.format("Expected the field `settlementDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementDate").toString()));
       }
       // validate the required field `totalConsideration`
-      CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("totalConsideration"));
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("totalConsideration"));
       if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
       }
@@ -671,11 +664,11 @@ public class LusidTradeTicket {
       }
       // validate the optional field `instrumentDefinition`
       if (jsonObj.get("instrumentDefinition") != null && !jsonObj.get("instrumentDefinition").isJsonNull()) {
-        LusidInstrument.validateJsonObject(jsonObj.getAsJsonObject("instrumentDefinition"));
+        LusidInstrument.validateJsonElement(jsonObj.get("instrumentDefinition"));
       }
       // validate the optional field `counterpartyAgreementId`
       if (jsonObj.get("counterpartyAgreementId") != null && !jsonObj.get("counterpartyAgreementId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("counterpartyAgreementId"));
+        ResourceId.validateJsonElement(jsonObj.get("counterpartyAgreementId"));
       }
       if (jsonObj.get("instrumentProperties") != null && !jsonObj.get("instrumentProperties").isJsonNull()) {
         JsonArray jsonArrayinstrumentProperties = jsonObj.getAsJsonArray("instrumentProperties");
@@ -687,7 +680,7 @@ public class LusidTradeTicket {
 
           // validate the optional field `instrumentProperties` (array)
           for (int i = 0; i < jsonArrayinstrumentProperties.size(); i++) {
-            Property.validateJsonObject(jsonArrayinstrumentProperties.get(i).getAsJsonObject());
+            Property.validateJsonElement(jsonArrayinstrumentProperties.get(i));
           };
         }
       }
@@ -701,7 +694,7 @@ public class LusidTradeTicket {
 
           // validate the optional field `transactionProperties` (array)
           for (int i = 0; i < jsonArraytransactionProperties.size(); i++) {
-            Property.validateJsonObject(jsonArraytransactionProperties.get(i).getAsJsonObject());
+            Property.validateJsonElement(jsonArraytransactionProperties.get(i));
           };
         }
       }
@@ -730,9 +723,9 @@ public class LusidTradeTicket {
 
            @Override
            public LusidTradeTicket read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

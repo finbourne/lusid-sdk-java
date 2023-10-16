@@ -320,25 +320,18 @@ public class MappingRule {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MappingRule
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MappingRule
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MappingRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MappingRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MappingRule is not found in the empty JSON string", MappingRule.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!MappingRule.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MappingRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("left") != null && !jsonObj.get("left").isJsonNull()) && !jsonObj.get("left").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `left` to be a primitive type in the JSON string but got `%s`", jsonObj.get("left").toString()));
       }
@@ -358,7 +351,7 @@ public class MappingRule {
 
           // validate the optional field `mappedStrings` (array)
           for (int i = 0; i < jsonArraymappedStrings.size(); i++) {
-            MappedString.validateJsonObject(jsonArraymappedStrings.get(i).getAsJsonObject());
+            MappedString.validateJsonElement(jsonArraymappedStrings.get(i));
           };
         }
       }
@@ -384,9 +377,9 @@ public class MappingRule {
 
            @Override
            public MappingRule read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

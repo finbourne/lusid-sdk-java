@@ -9,7 +9,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="listScopes"></a>
 # **listScopes**
-> ResourceListOfScopeDefinition listScopes(filter)
+> ResourceListOfScopeDefinition listScopes().filter(filter).execute();
 
 ListScopes: List Scopes
 
@@ -35,9 +35,11 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ScopesApi apiInstance = new ScopesApi(defaultClient);
-    String filter = "filter_example"; // String | Expression to filter the result set.              For example, to filter on the Scope, use \"scope eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Scope, use \"scope eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfScopeDefinition result = apiInstance.listScopes(filter);
+      ResourceListOfScopeDefinition result = apiInstance.listScopes()
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScopesApi#listScopes");
@@ -54,7 +56,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

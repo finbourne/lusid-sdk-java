@@ -697,37 +697,30 @@ public class Placement {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Placement
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Placement
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Placement.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Placement.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Placement is not found in the empty JSON string", Placement.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Placement.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Placement` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Placement.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      ResourceId.validateJsonElement(jsonObj.get("id"));
       // validate the optional field `parentPlacementId`
       if (jsonObj.get("parentPlacementId") != null && !jsonObj.get("parentPlacementId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("parentPlacementId"));
+        ResourceId.validateJsonElement(jsonObj.get("parentPlacementId"));
       }
       // ensure the json data is an array
       if (!jsonObj.get("blockIds").isJsonArray()) {
@@ -737,7 +730,7 @@ public class Placement {
       JsonArray jsonArrayblockIds = jsonObj.getAsJsonArray("blockIds");
       // validate the required field `blockIds` (array)
       for (int i = 0; i < jsonArrayblockIds.size(); i++) {
-        ResourceId.validateJsonObject(jsonArrayblockIds.get(i).getAsJsonObject());
+        ResourceId.validateJsonElement(jsonArrayblockIds.get(i));
       };
       if (!jsonObj.get("lusidInstrumentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lusidInstrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lusidInstrumentId").toString()));
@@ -756,11 +749,11 @@ public class Placement {
       }
       // validate the optional field `limitPrice`
       if (jsonObj.get("limitPrice") != null && !jsonObj.get("limitPrice").isJsonNull()) {
-        CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("limitPrice"));
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("limitPrice"));
       }
       // validate the optional field `stopPrice`
       if (jsonObj.get("stopPrice") != null && !jsonObj.get("stopPrice").isJsonNull()) {
-        CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("stopPrice"));
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("stopPrice"));
       }
       if ((jsonObj.get("counterparty") != null && !jsonObj.get("counterparty").isJsonNull()) && !jsonObj.get("counterparty").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `counterparty` to be a primitive type in the JSON string but got `%s`", jsonObj.get("counterparty").toString()));
@@ -773,7 +766,7 @@ public class Placement {
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -785,7 +778,7 @@ public class Placement {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -811,9 +804,9 @@ public class Placement {
 
            @Override
            public Placement read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

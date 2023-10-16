@@ -11,7 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="getExcelAddin"></a>
 # **getExcelAddin**
-> FileResponse getExcelAddin(version)
+> FileResponse getExcelAddin().version(version).execute();
 
 GetExcelAddin: Download Excel Addin
 
@@ -39,7 +39,9 @@ public class Example {
     ApplicationMetadataApi apiInstance = new ApplicationMetadataApi(defaultClient);
     String version = "version_example"; // String | The requested version of the Excel plugin
     try {
-      FileResponse result = apiInstance.getExcelAddin(version);
+      FileResponse result = apiInstance.getExcelAddin()
+            .version(version)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ApplicationMetadataApi#getExcelAddin");
@@ -80,7 +82,7 @@ public class Example {
 
 <a id="getLusidVersions"></a>
 # **getLusidVersions**
-> VersionSummaryDto getLusidVersions()
+> VersionSummaryDto getLusidVersions().execute();
 
 GetLusidVersions: Get LUSID versions
 
@@ -107,7 +109,8 @@ public class Example {
 
     ApplicationMetadataApi apiInstance = new ApplicationMetadataApi(defaultClient);
     try {
-      VersionSummaryDto result = apiInstance.getLusidVersions();
+      VersionSummaryDto result = apiInstance.getLusidVersions()
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ApplicationMetadataApi#getLusidVersions");
@@ -144,7 +147,7 @@ This endpoint does not need any parameter.
 
 <a id="listAccessControlledResources"></a>
 # **listAccessControlledResources**
-> ResourceListOfAccessControlledResource listAccessControlledResources(filter)
+> ResourceListOfAccessControlledResource listAccessControlledResources().filter(filter).execute();
 
 ListAccessControlledResources: Get resources available for access control
 
@@ -170,9 +173,11 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ApplicationMetadataApi apiInstance = new ApplicationMetadataApi(defaultClient);
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set.               For example, to filter on the Application, use \"application eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Application, use \"application eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter);
+      ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources()
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ApplicationMetadataApi#listAccessControlledResources");
@@ -189,7 +194,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.    For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

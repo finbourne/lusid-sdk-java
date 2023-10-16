@@ -76,21 +76,7 @@ public class RelationshipDefinitionsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createRelationshipDefinition
-     * @param createRelationshipDefinitionRequest The definition of the new relationship. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createRelationshipDefinitionCall(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRelationshipDefinitionCall(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -151,83 +137,113 @@ public class RelationshipDefinitionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition
-     * Create a new relationship definition to be used for creating relationships between entities.
-     * @param createRelationshipDefinitionRequest The definition of the new relationship. (required)
-     * @return RelationshipDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public RelationshipDefinition createRelationshipDefinition(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest) throws ApiException {
-        ApiResponse<RelationshipDefinition> localVarResp = createRelationshipDefinitionWithHttpInfo(createRelationshipDefinitionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition
-     * Create a new relationship definition to be used for creating relationships between entities.
-     * @param createRelationshipDefinitionRequest The definition of the new relationship. (required)
-     * @return ApiResponse&lt;RelationshipDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RelationshipDefinition> createRelationshipDefinitionWithHttpInfo(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest) throws ApiException {
+    private ApiResponse<RelationshipDefinition> createRelationshipDefinitionWithHttpInfo(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest) throws ApiException {
         okhttp3.Call localVarCall = createRelationshipDefinitionValidateBeforeCall(createRelationshipDefinitionRequest, null);
         Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition (asynchronously)
-     * Create a new relationship definition to be used for creating relationships between entities.
-     * @param createRelationshipDefinitionRequest The definition of the new relationship. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createRelationshipDefinitionAsync(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest, final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
+    private okhttp3.Call createRelationshipDefinitionAsync(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest, final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createRelationshipDefinitionValidateBeforeCall(createRelationshipDefinitionRequest, _callback);
         Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateRelationshipDefinitionRequest {
+        private final CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest;
+
+        private APIcreateRelationshipDefinitionRequest(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest) {
+            this.createRelationshipDefinitionRequest = createRelationshipDefinitionRequest;
+        }
+
+        /**
+         * Build call for createRelationshipDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createRelationshipDefinitionCall(createRelationshipDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createRelationshipDefinition request
+         * @return RelationshipDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationshipDefinition execute() throws ApiException {
+            ApiResponse<RelationshipDefinition> localVarResp = createRelationshipDefinitionWithHttpInfo(createRelationshipDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createRelationshipDefinition request with HTTP info returned
+         * @return ApiResponse&lt;RelationshipDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationshipDefinition> executeWithHttpInfo() throws ApiException {
+            return createRelationshipDefinitionWithHttpInfo(createRelationshipDefinitionRequest);
+        }
+
+        /**
+         * Execute createRelationshipDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
+            return createRelationshipDefinitionAsync(createRelationshipDefinitionRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteRelationshipDefinition
-     * @param scope The scope of the relationship definition to be deleted. (required)
-     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely              identifies the relationship. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition
+     * Create a new relationship definition to be used for creating relationships between entities.
+     * @param createRelationshipDefinitionRequest The definition of the new relationship. (required)
+     * @return APIcreateRelationshipDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created relationship definition </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRelationshipDefinitionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateRelationshipDefinitionRequest createRelationshipDefinition(CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest) {
+        return new APIcreateRelationshipDefinitionRequest(createRelationshipDefinitionRequest);
+    }
+    private okhttp3.Call deleteRelationshipDefinitionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -291,87 +307,116 @@ public class RelationshipDefinitionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition
-     * Delete the definition of the specified relationship.
-     * @param scope The scope of the relationship definition to be deleted. (required)
-     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely              identifies the relationship. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteRelationshipDefinition(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationshipDefinitionWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition
-     * Delete the definition of the specified relationship.
-     * @param scope The scope of the relationship definition to be deleted. (required)
-     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely              identifies the relationship. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteRelationshipDefinitionWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteRelationshipDefinitionWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteRelationshipDefinitionValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition (asynchronously)
-     * Delete the definition of the specified relationship.
-     * @param scope The scope of the relationship definition to be deleted. (required)
-     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely              identifies the relationship. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteRelationshipDefinitionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteRelationshipDefinitionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteRelationshipDefinitionValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteRelationshipDefinitionRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteRelationshipDefinitionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteRelationshipDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteRelationshipDefinitionCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteRelationshipDefinition request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationshipDefinitionWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteRelationshipDefinition request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteRelationshipDefinitionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteRelationshipDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteRelationshipDefinitionAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getRelationshipDefinition
-     * @param scope The scope of the specified relationship definition. (required)
-     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely              identifies the relationship definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return              the latest version of the definition if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition
+     * Delete the definition of the specified relationship.
+     * @param scope The scope of the relationship definition to be deleted. (required)
+     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely   identifies the relationship. (required)
+     * @return APIdeleteRelationshipDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The time that the relationship definition was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRelationshipDefinitionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteRelationshipDefinitionRequest deleteRelationshipDefinition(String scope, String code) {
+        return new APIdeleteRelationshipDefinitionRequest(scope, code);
+    }
+    private okhttp3.Call getRelationshipDefinitionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -439,92 +484,127 @@ public class RelationshipDefinitionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition
-     * Retrieve the specified relationship definition
-     * @param scope The scope of the specified relationship definition. (required)
-     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely              identifies the relationship definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return              the latest version of the definition if not specified. (optional)
-     * @return RelationshipDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public RelationshipDefinition getRelationshipDefinition(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<RelationshipDefinition> localVarResp = getRelationshipDefinitionWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition
-     * Retrieve the specified relationship definition
-     * @param scope The scope of the specified relationship definition. (required)
-     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely              identifies the relationship definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return              the latest version of the definition if not specified. (optional)
-     * @return ApiResponse&lt;RelationshipDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RelationshipDefinition> getRelationshipDefinitionWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<RelationshipDefinition> getRelationshipDefinitionWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getRelationshipDefinitionValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition (asynchronously)
-     * Retrieve the specified relationship definition
-     * @param scope The scope of the specified relationship definition. (required)
-     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely              identifies the relationship definition. (required)
-     * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return              the latest version of the definition if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRelationshipDefinitionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
+    private okhttp3.Call getRelationshipDefinitionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRelationshipDefinitionValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetRelationshipDefinitionRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetRelationshipDefinitionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return   the latest version of the definition if not specified. (optional)
+         * @return APIgetRelationshipDefinitionRequest
+         */
+        public APIgetRelationshipDefinitionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getRelationshipDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getRelationshipDefinitionCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getRelationshipDefinition request
+         * @return RelationshipDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationshipDefinition execute() throws ApiException {
+            ApiResponse<RelationshipDefinition> localVarResp = getRelationshipDefinitionWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRelationshipDefinition request with HTTP info returned
+         * @return ApiResponse&lt;RelationshipDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationshipDefinition> executeWithHttpInfo() throws ApiException {
+            return getRelationshipDefinitionWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getRelationshipDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
+            return getRelationshipDefinitionAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listRelationshipDefinitions
-     * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return              the latest version of each definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition
+     * Retrieve the specified relationship definition
+     * @param scope The scope of the specified relationship definition. (required)
+     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely   identifies the relationship definition. (required)
+     * @return APIgetRelationshipDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested relationship definition </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listRelationshipDefinitionsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    public APIgetRelationshipDefinitionRequest getRelationshipDefinition(String scope, String code) {
+        return new APIgetRelationshipDefinitionRequest(scope, code);
+    }
+    private okhttp3.Call listRelationshipDefinitionsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -596,96 +676,165 @@ public class RelationshipDefinitionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions
-     * Retrieve one or more specified relationship definitions.
-     * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return              the latest version of each definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @return PagedResourceListOfRelationshipDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfRelationshipDefinition listRelationshipDefinitions(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        ApiResponse<PagedResourceListOfRelationshipDefinition> localVarResp = listRelationshipDefinitionsWithHttpInfo(asAt, page, limit, filter, sortBy);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions
-     * Retrieve one or more specified relationship definitions.
-     * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return              the latest version of each definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @return ApiResponse&lt;PagedResourceListOfRelationshipDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfRelationshipDefinition> listRelationshipDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+    private ApiResponse<PagedResourceListOfRelationshipDefinition> listRelationshipDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
         okhttp3.Call localVarCall = listRelationshipDefinitionsValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfRelationshipDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions (asynchronously)
-     * Retrieve one or more specified relationship definitions.
-     * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return              the latest version of each definition if not specified. (optional)
-     * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listRelationshipDefinitionsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfRelationshipDefinition> _callback) throws ApiException {
+    private okhttp3.Call listRelationshipDefinitionsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfRelationshipDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listRelationshipDefinitionsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfRelationshipDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistRelationshipDefinitionsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistRelationshipDefinitionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return   the latest version of each definition if not specified. (optional)
+         * @return APIlistRelationshipDefinitionsRequest
+         */
+        public APIlistRelationshipDefinitionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. (optional)
+         * @return APIlistRelationshipDefinitionsRequest
+         */
+        public APIlistRelationshipDefinitionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIlistRelationshipDefinitionsRequest
+         */
+        public APIlistRelationshipDefinitionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistRelationshipDefinitionsRequest
+         */
+        public APIlistRelationshipDefinitionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistRelationshipDefinitionsRequest
+         */
+        public APIlistRelationshipDefinitionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listRelationshipDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listRelationshipDefinitionsCall(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listRelationshipDefinitions request
+         * @return PagedResourceListOfRelationshipDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfRelationshipDefinition execute() throws ApiException {
+            ApiResponse<PagedResourceListOfRelationshipDefinition> localVarResp = listRelationshipDefinitionsWithHttpInfo(asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listRelationshipDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfRelationshipDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfRelationshipDefinition> executeWithHttpInfo() throws ApiException {
+            return listRelationshipDefinitionsWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listRelationshipDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRelationshipDefinition> _callback) throws ApiException {
+            return listRelationshipDefinitionsAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+    }
+
     /**
-     * Build call for updateRelationshipDefinition
-     * @param scope The scope of the relationship definition being updated. (required)
-     * @param code The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. (required)
-     * @param updateRelationshipDefinitionRequest The details of relationship definition to update. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions
+     * Retrieve one or more specified relationship definitions.
+     * @return APIlistRelationshipDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested relationship definitions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateRelationshipDefinitionCall(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistRelationshipDefinitionsRequest listRelationshipDefinitions() {
+        return new APIlistRelationshipDefinitionsRequest();
+    }
+    private okhttp3.Call updateRelationshipDefinitionCall(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -758,58 +907,107 @@ public class RelationshipDefinitionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
-     * Update the definition of a specified existing relationship. Not all elements within a relationship definition  are modifiable due to the potential implications for values already stored against the relationship.
-     * @param scope The scope of the relationship definition being updated. (required)
-     * @param code The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. (required)
-     * @param updateRelationshipDefinitionRequest The details of relationship definition to update. (required)
-     * @return RelationshipDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public RelationshipDefinition updateRelationshipDefinition(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest) throws ApiException {
-        ApiResponse<RelationshipDefinition> localVarResp = updateRelationshipDefinitionWithHttpInfo(scope, code, updateRelationshipDefinitionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
-     * Update the definition of a specified existing relationship. Not all elements within a relationship definition  are modifiable due to the potential implications for values already stored against the relationship.
-     * @param scope The scope of the relationship definition being updated. (required)
-     * @param code The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. (required)
-     * @param updateRelationshipDefinitionRequest The details of relationship definition to update. (required)
-     * @return ApiResponse&lt;RelationshipDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RelationshipDefinition> updateRelationshipDefinitionWithHttpInfo(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest) throws ApiException {
+    private ApiResponse<RelationshipDefinition> updateRelationshipDefinitionWithHttpInfo(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest) throws ApiException {
         okhttp3.Call localVarCall = updateRelationshipDefinitionValidateBeforeCall(scope, code, updateRelationshipDefinitionRequest, null);
         Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call updateRelationshipDefinitionAsync(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest, final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateRelationshipDefinitionValidateBeforeCall(scope, code, updateRelationshipDefinitionRequest, _callback);
+        Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateRelationshipDefinitionRequest {
+        private final String scope;
+        private final String code;
+        private final UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest;
+
+        private APIupdateRelationshipDefinitionRequest(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updateRelationshipDefinitionRequest = updateRelationshipDefinitionRequest;
+        }
+
+        /**
+         * Build call for updateRelationshipDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateRelationshipDefinitionCall(scope, code, updateRelationshipDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute updateRelationshipDefinition request
+         * @return RelationshipDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationshipDefinition execute() throws ApiException {
+            ApiResponse<RelationshipDefinition> localVarResp = updateRelationshipDefinitionWithHttpInfo(scope, code, updateRelationshipDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateRelationshipDefinition request with HTTP info returned
+         * @return ApiResponse&lt;RelationshipDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationshipDefinition> executeWithHttpInfo() throws ApiException {
+            return updateRelationshipDefinitionWithHttpInfo(scope, code, updateRelationshipDefinitionRequest);
+        }
+
+        /**
+         * Execute updateRelationshipDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relationship definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
+            return updateRelationshipDefinitionAsync(scope, code, updateRelationshipDefinitionRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition (asynchronously)
+     * [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
      * Update the definition of a specified existing relationship. Not all elements within a relationship definition  are modifiable due to the potential implications for values already stored against the relationship.
      * @param scope The scope of the relationship definition being updated. (required)
-     * @param code The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. (required)
+     * @param code The code of the relationship definition being updated. Together with the scope this uniquely   identifies the relationship definition. (required)
      * @param updateRelationshipDefinitionRequest The details of relationship definition to update. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupdateRelationshipDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -818,11 +1016,7 @@ public class RelationshipDefinitionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateRelationshipDefinitionAsync(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest, final ApiCallback<RelationshipDefinition> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateRelationshipDefinitionValidateBeforeCall(scope, code, updateRelationshipDefinitionRequest, _callback);
-        Type localVarReturnType = new TypeToken<RelationshipDefinition>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupdateRelationshipDefinitionRequest updateRelationshipDefinition(String scope, String code, UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest) {
+        return new APIupdateRelationshipDefinitionRequest(scope, code, updateRelationshipDefinitionRequest);
     }
 }

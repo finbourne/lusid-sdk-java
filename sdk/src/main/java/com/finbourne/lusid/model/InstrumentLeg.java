@@ -108,30 +108,30 @@ public class InstrumentLeg extends LusidInstrument {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InstrumentLeg
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to InstrumentLeg
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!InstrumentLeg.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!InstrumentLeg.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstrumentLeg is not found in the empty JSON string", InstrumentLeg.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("instrumentType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("instrumentType").getAsString();
       switch (discriminatorValue) {
         case "FixedLeg":
-          FixedLeg.validateJsonObject(jsonObj);
+          FixedLeg.validateJsonElement(jsonElement);
           break;
         case "FloatingLeg":
-          FloatingLeg.validateJsonObject(jsonObj);
+          FloatingLeg.validateJsonElement(jsonElement);
           break;
         case "FundingLeg":
-          FundingLeg.validateJsonObject(jsonObj);
+          FundingLeg.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `instrumentType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

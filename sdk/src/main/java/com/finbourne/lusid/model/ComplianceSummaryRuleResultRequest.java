@@ -334,36 +334,29 @@ public class ComplianceSummaryRuleResultRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ComplianceSummaryRuleResultRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ComplianceSummaryRuleResultRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ComplianceSummaryRuleResultRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ComplianceSummaryRuleResultRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ComplianceSummaryRuleResultRequest is not found in the empty JSON string", ComplianceSummaryRuleResultRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ComplianceSummaryRuleResultRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ComplianceSummaryRuleResultRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ComplianceSummaryRuleResultRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `ruleId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("ruleId"));
+      ResourceId.validateJsonElement(jsonObj.get("ruleId"));
       // validate the required field `templateId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("templateId"));
+      ResourceId.validateJsonElement(jsonObj.get("templateId"));
       if (!jsonObj.get("variation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `variation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variation").toString()));
       }
@@ -378,7 +371,7 @@ public class ComplianceSummaryRuleResultRequest {
       JsonArray jsonArrayaffectedPortfolios = jsonObj.getAsJsonArray("affectedPortfolios");
       // validate the required field `affectedPortfolios` (array)
       for (int i = 0; i < jsonArrayaffectedPortfolios.size(); i++) {
-        ResourceId.validateJsonObject(jsonArrayaffectedPortfolios.get(i).getAsJsonObject());
+        ResourceId.validateJsonElement(jsonArrayaffectedPortfolios.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("affectedOrders").isJsonArray()) {
@@ -388,7 +381,7 @@ public class ComplianceSummaryRuleResultRequest {
       JsonArray jsonArrayaffectedOrders = jsonObj.getAsJsonArray("affectedOrders");
       // validate the required field `affectedOrders` (array)
       for (int i = 0; i < jsonArrayaffectedOrders.size(); i++) {
-        ResourceId.validateJsonObject(jsonArrayaffectedOrders.get(i).getAsJsonObject());
+        ResourceId.validateJsonElement(jsonArrayaffectedOrders.get(i));
       };
   }
 
@@ -412,9 +405,9 @@ public class ComplianceSummaryRuleResultRequest {
 
            @Override
            public ComplianceSummaryRuleResultRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

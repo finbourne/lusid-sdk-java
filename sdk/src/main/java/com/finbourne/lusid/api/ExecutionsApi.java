@@ -76,22 +76,7 @@ public class ExecutionsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteExecution
-     * @param scope The execution scope. (required)
-     * @param code The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteExecutionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteExecutionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,88 +140,116 @@ public class ExecutionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteExecution: Delete execution
-     * Delete an execution. Deletion will be valid from the execution&#39;s creation datetime.  This means that the execution will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The execution scope. (required)
-     * @param code The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteExecution(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteExecutionWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteExecution: Delete execution
-     * Delete an execution. Deletion will be valid from the execution&#39;s creation datetime.  This means that the execution will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The execution scope. (required)
-     * @param code The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteExecutionWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteExecutionWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteExecution: Delete execution (asynchronously)
-     * Delete an execution. Deletion will be valid from the execution&#39;s creation datetime.  This means that the execution will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param scope The execution scope. (required)
-     * @param code The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteExecutionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteExecutionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteExecutionRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteExecutionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteExecution
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteExecutionCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteExecution request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteExecutionWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteExecution request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteExecutionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteExecution request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteExecutionAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getExecution
-     * @param scope The scope to which the execution belongs. (required)
-     * @param code The execution&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.              These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteExecution: Delete execution
+     * Delete an execution. Deletion will be valid from the execution&#39;s creation datetime.  This means that the execution will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param scope The execution scope. (required)
+     * @param code The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. (required)
+     * @return APIdeleteExecutionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExecutionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteExecutionRequest deleteExecution(String scope, String code) {
+        return new APIdeleteExecutionRequest(scope, code);
+    }
+    private okhttp3.Call getExecutionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -308,96 +321,138 @@ public class ExecutionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetExecution: Get Execution
-     * Fetch a Execution that matches the specified identifier
-     * @param scope The scope to which the execution belongs. (required)
-     * @param code The execution&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.              These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @return Execution
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Execution getExecution(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<Execution> localVarResp = getExecutionWithHttpInfo(scope, code, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetExecution: Get Execution
-     * Fetch a Execution that matches the specified identifier
-     * @param scope The scope to which the execution belongs. (required)
-     * @param code The execution&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.              These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;Execution&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Execution> getExecutionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<Execution> getExecutionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<Execution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetExecution: Get Execution (asynchronously)
-     * Fetch a Execution that matches the specified identifier
-     * @param scope The scope to which the execution belongs. (required)
-     * @param code The execution&#39;s unique identifier. (required)
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.              These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getExecutionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Execution> _callback) throws ApiException {
+    private okhttp3.Call getExecutionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Execution> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Execution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetExecutionRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetExecutionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
+         * @return APIgetExecutionRequest
+         */
+        public APIgetExecutionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.   These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
+         * @return APIgetExecutionRequest
+         */
+        public APIgetExecutionRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getExecution
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getExecutionCall(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getExecution request
+         * @return Execution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Execution execute() throws ApiException {
+            ApiResponse<Execution> localVarResp = getExecutionWithHttpInfo(scope, code, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getExecution request with HTTP info returned
+         * @return ApiResponse&lt;Execution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Execution> executeWithHttpInfo() throws ApiException {
+            return getExecutionWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getExecution request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Execution> _callback) throws ApiException {
+            return getExecutionAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listExecutions
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param page The pagination token to use to continue listing execution from a previous call to list executions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetExecution: Get Execution
+     * Fetch a Execution that matches the specified identifier
+     * @param scope The scope to which the execution belongs. (required)
+     * @param code The execution&#39;s unique identifier. (required)
+     * @return APIgetExecutionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listExecutionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetExecutionRequest getExecution(String scope, String code) {
+        return new APIgetExecutionRequest(scope, code);
+    }
+    private okhttp3.Call listExecutionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,97 +528,176 @@ public class ExecutionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListExecutions: List Executions
-     * Fetch the last pre-AsAt date version of each execution in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param page The pagination token to use to continue listing execution from a previous call to list executions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @return PagedResourceListOfExecution
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfExecution listExecutions(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfExecution> localVarResp = listExecutionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListExecutions: List Executions
-     * Fetch the last pre-AsAt date version of each execution in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param page The pagination token to use to continue listing execution from a previous call to list executions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfExecution&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfExecution> listExecutionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfExecution> listExecutionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfExecution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListExecutions: List Executions (asynchronously)
-     * Fetch the last pre-AsAt date version of each execution in scope (does not fetch the entire history).
-     * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
-     * @param page The pagination token to use to continue listing execution from a previous call to list executions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listExecutionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfExecution> _callback) throws ApiException {
+    private okhttp3.Call listExecutionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfExecution> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfExecution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistExecutionsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistExecutionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. (optional)
+         * @return APIlistExecutionsRequest
+         */
+        public APIlistExecutionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing execution from a previous call to list executions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistExecutionsRequest
+         */
+        public APIlistExecutionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistExecutionsRequest
+         */
+        public APIlistExecutionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistExecutionsRequest
+         */
+        public APIlistExecutionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistExecutionsRequest
+         */
+        public APIlistExecutionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.   These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
+         * @return APIlistExecutionsRequest
+         */
+        public APIlistExecutionsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listExecutions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listExecutionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listExecutions request
+         * @return PagedResourceListOfExecution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfExecution execute() throws ApiException {
+            ApiResponse<PagedResourceListOfExecution> localVarResp = listExecutionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listExecutions request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfExecution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfExecution> executeWithHttpInfo() throws ApiException {
+            return listExecutionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listExecutions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfExecution> _callback) throws ApiException {
+            return listExecutionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertExecutions
-     * @param executionSetRequest The collection of execution requests. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListExecutions: List Executions
+     * Fetch the last pre-AsAt date version of each execution in scope (does not fetch the entire history).
+     * @return APIlistExecutionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertExecutionsCall(ExecutionSetRequest executionSetRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistExecutionsRequest listExecutions() {
+        return new APIlistExecutionsRequest();
+    }
+    private okhttp3.Call upsertExecutionsCall(ExecutionSetRequest executionSetRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -619,52 +753,109 @@ public class ExecutionsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertExecutions: Upsert Execution
-     * Upsert; update existing executions with given ids, or create new executions otherwise.
-     * @param executionSetRequest The collection of execution requests. (optional)
-     * @return ResourceListOfExecution
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfExecution upsertExecutions(ExecutionSetRequest executionSetRequest) throws ApiException {
-        ApiResponse<ResourceListOfExecution> localVarResp = upsertExecutionsWithHttpInfo(executionSetRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertExecutions: Upsert Execution
-     * Upsert; update existing executions with given ids, or create new executions otherwise.
-     * @param executionSetRequest The collection of execution requests. (optional)
-     * @return ApiResponse&lt;ResourceListOfExecution&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfExecution> upsertExecutionsWithHttpInfo(ExecutionSetRequest executionSetRequest) throws ApiException {
+    private ApiResponse<ResourceListOfExecution> upsertExecutionsWithHttpInfo(ExecutionSetRequest executionSetRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertExecutionsAsync(ExecutionSetRequest executionSetRequest, final ApiCallback<ResourceListOfExecution> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertExecutionsRequest {
+        private ExecutionSetRequest executionSetRequest;
+
+        private APIupsertExecutionsRequest() {
+        }
+
+        /**
+         * Set executionSetRequest
+         * @param executionSetRequest The collection of execution requests. (optional)
+         * @return APIupsertExecutionsRequest
+         */
+        public APIupsertExecutionsRequest executionSetRequest(ExecutionSetRequest executionSetRequest) {
+            this.executionSetRequest = executionSetRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertExecutions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertExecutionsCall(executionSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertExecutions request
+         * @return ResourceListOfExecution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfExecution execute() throws ApiException {
+            ApiResponse<ResourceListOfExecution> localVarResp = upsertExecutionsWithHttpInfo(executionSetRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertExecutions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfExecution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfExecution> executeWithHttpInfo() throws ApiException {
+            return upsertExecutionsWithHttpInfo(executionSetRequest);
+        }
+
+        /**
+         * Execute upsertExecutions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfExecution> _callback) throws ApiException {
+            return upsertExecutionsAsync(executionSetRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertExecutions: Upsert Execution (asynchronously)
+     * [EARLY ACCESS] UpsertExecutions: Upsert Execution
      * Upsert; update existing executions with given ids, or create new executions otherwise.
-     * @param executionSetRequest The collection of execution requests. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertExecutionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -673,11 +864,7 @@ public class ExecutionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertExecutionsAsync(ExecutionSetRequest executionSetRequest, final ApiCallback<ResourceListOfExecution> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertExecutionsRequest upsertExecutions() {
+        return new APIupsertExecutionsRequest();
     }
 }

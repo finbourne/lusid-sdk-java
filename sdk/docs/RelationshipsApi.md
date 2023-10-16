@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createRelationship"></a>
 # **createRelationship**
-> CompleteRelationship createRelationship(scope, code, createRelationshipRequest)
+> CompleteRelationship createRelationship(scope, code, createRelationshipRequest).execute();
 
 [EARLY ACCESS] CreateRelationship: Create Relationship
 
@@ -40,7 +40,8 @@ public class Example {
     String code = "code_example"; // String | The code of the relationship
     CreateRelationshipRequest createRelationshipRequest = new CreateRelationshipRequest(); // CreateRelationshipRequest | The details of the relationship to create.
     try {
-      CompleteRelationship result = apiInstance.createRelationship(scope, code, createRelationshipRequest);
+      CompleteRelationship result = apiInstance.createRelationship(scope, code, createRelationshipRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationshipsApi#createRelationship");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="deleteRelationship"></a>
 # **deleteRelationship**
-> DeletedEntityResponse deleteRelationship(scope, code, deleteRelationshipRequest)
+> DeletedEntityResponse deleteRelationship(scope, code, deleteRelationshipRequest).execute();
 
 [EARLY ACCESS] DeleteRelationship: Delete Relationship
 
@@ -113,7 +114,8 @@ public class Example {
     String code = "code_example"; // String | The code of the relationship
     DeleteRelationshipRequest deleteRelationshipRequest = new DeleteRelationshipRequest(); // DeleteRelationshipRequest | The details of the relationship to delete.
     try {
-      DeletedEntityResponse result = apiInstance.deleteRelationship(scope, code, deleteRelationshipRequest);
+      DeletedEntityResponse result = apiInstance.deleteRelationship(scope, code, deleteRelationshipRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationshipsApi#deleteRelationship");

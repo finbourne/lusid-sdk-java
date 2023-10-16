@@ -17,7 +17,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listReconciliationMappings**](ReconciliationsApi.md#listReconciliationMappings) | **GET** /api/portfolios/mapping | [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings |
 | [**listReconciliationRuns**](ReconciliationsApi.md#listReconciliationRuns) | **GET** /api/portfolios/$scheduledReconciliations/{scope}/{code}/runs | [EXPERIMENTAL] ListReconciliationRuns: List Reconciliation runs |
 | [**listReconciliations**](ReconciliationsApi.md#listReconciliations) | **GET** /api/portfolios/$scheduledReconciliations | [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations |
-| [**reconcileGeneric**](ReconciliationsApi.md#reconcileGeneric) | **POST** /api/portfolios/$reconcileGeneric | ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.                The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero. |
+| [**reconcileGeneric**](ReconciliationsApi.md#reconcileGeneric) | **POST** /api/portfolios/$reconcileGeneric | ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.     The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero. |
 | [**reconcileHoldings**](ReconciliationsApi.md#reconcileHoldings) | **POST** /api/portfolios/$reconcileholdings | [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings |
 | [**reconcileInline**](ReconciliationsApi.md#reconcileInline) | **POST** /api/portfolios/$reconcileInline | ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes. |
 | [**reconcileTransactions**](ReconciliationsApi.md#reconcileTransactions) | **POST** /api/portfolios/$reconcileTransactions | [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation. |
@@ -31,7 +31,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createScheduledReconciliation"></a>
 # **createScheduledReconciliation**
-> Reconciliation createScheduledReconciliation(scope, createReconciliationRequest)
+> Reconciliation createScheduledReconciliation(scope).createReconciliationRequest(createReconciliationRequest).execute();
 
 [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation
 
@@ -60,7 +60,9 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the reconciliation
     CreateReconciliationRequest createReconciliationRequest = new CreateReconciliationRequest(); // CreateReconciliationRequest | The definition of the reconciliation
     try {
-      Reconciliation result = apiInstance.createScheduledReconciliation(scope, createReconciliationRequest);
+      Reconciliation result = apiInstance.createScheduledReconciliation(scope)
+            .createReconciliationRequest(createReconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#createScheduledReconciliation");
@@ -102,7 +104,7 @@ public class Example {
 
 <a id="deleteReconciliation"></a>
 # **deleteReconciliation**
-> DeletedEntityResponse deleteReconciliation(scope, code)
+> DeletedEntityResponse deleteReconciliation(scope, code).execute();
 
 [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation
 
@@ -131,7 +133,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the scheduled reconciliation
     String code = "code_example"; // String | The code of the scheduled reconciliation
     try {
-      DeletedEntityResponse result = apiInstance.deleteReconciliation(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteReconciliation(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#deleteReconciliation");
@@ -173,7 +176,7 @@ public class Example {
 
 <a id="deleteReconciliationBreak"></a>
 # **deleteReconciliationBreak**
-> DeletedEntityResponse deleteReconciliationBreak(scope, code, runDate, version, breakId)
+> DeletedEntityResponse deleteReconciliationBreak(scope, code, runDate, version, breakId).execute();
 
 [EXPERIMENTAL] DeleteReconciliationBreak: Delete reconciliation break
 
@@ -205,7 +208,8 @@ public class Example {
     Integer version = 56; // Integer | The version number of the run associated with the break
     String breakId = "breakId_example"; // String | The unique identifier for the break
     try {
-      DeletedEntityResponse result = apiInstance.deleteReconciliationBreak(scope, code, runDate, version, breakId);
+      DeletedEntityResponse result = apiInstance.deleteReconciliationBreak(scope, code, runDate, version, breakId)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#deleteReconciliationBreak");
@@ -250,7 +254,7 @@ public class Example {
 
 <a id="deleteReconciliationMapping"></a>
 # **deleteReconciliationMapping**
-> String deleteReconciliationMapping(scope, code)
+> String deleteReconciliationMapping(scope, code).execute();
 
 [EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping
 
@@ -279,7 +283,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the mapping.
     String code = "code_example"; // String | The code fof the mapping.
     try {
-      String result = apiInstance.deleteReconciliationMapping(scope, code);
+      String result = apiInstance.deleteReconciliationMapping(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#deleteReconciliationMapping");
@@ -321,7 +326,7 @@ public class Example {
 
 <a id="deleteReconciliationRun"></a>
 # **deleteReconciliationRun**
-> DeletedEntityResponse deleteReconciliationRun(scope, code, runDate, version)
+> DeletedEntityResponse deleteReconciliationRun(scope, code, runDate, version).execute();
 
 [EXPERIMENTAL] DeleteReconciliationRun: Delete reconciliation run
 
@@ -352,7 +357,8 @@ public class Example {
     OffsetDateTime runDate = OffsetDateTime.now(); // OffsetDateTime | The date of the reconciliation run
     Integer version = 56; // Integer | The version number of the reconciliation run
     try {
-      DeletedEntityResponse result = apiInstance.deleteReconciliationRun(scope, code, runDate, version);
+      DeletedEntityResponse result = apiInstance.deleteReconciliationRun(scope, code, runDate, version)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#deleteReconciliationRun");
@@ -396,7 +402,7 @@ public class Example {
 
 <a id="getReconciliation"></a>
 # **getReconciliation**
-> Reconciliation getReconciliation(scope, code, effectiveAt, asAt, propertyKeys)
+> Reconciliation getReconciliation(scope, code).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] GetReconciliation: Get scheduled reconciliation
 
@@ -426,9 +432,13 @@ public class Example {
     String code = "code_example"; // String | The code of the scheduled reconciliation
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
     try {
-      Reconciliation result = apiInstance.getReconciliation(scope, code, effectiveAt, asAt, propertyKeys);
+      Reconciliation result = apiInstance.getReconciliation(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#getReconciliation");
@@ -449,7 +459,7 @@ public class Example {
 | **code** | **String**| The code of the scheduled reconciliation | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -473,7 +483,7 @@ public class Example {
 
 <a id="getReconciliationBreak"></a>
 # **getReconciliationBreak**
-> ReconciliationRunBreak getReconciliationBreak(scope, code, runDate, version, breakId, asAt)
+> ReconciliationRunBreak getReconciliationBreak(scope, code, runDate, version, breakId).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetReconciliationBreak: Get reconciliation break
 
@@ -506,7 +516,9 @@ public class Example {
     String breakId = "breakId_example"; // String | The unique identifier for the break
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the reconciliation break. Defaults to returning the latest version of the reconciliation break if not specified.
     try {
-      ReconciliationRunBreak result = apiInstance.getReconciliationBreak(scope, code, runDate, version, breakId, asAt);
+      ReconciliationRunBreak result = apiInstance.getReconciliationBreak(scope, code, runDate, version, breakId)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#getReconciliationBreak");
@@ -552,7 +564,7 @@ public class Example {
 
 <a id="getReconciliationMapping"></a>
 # **getReconciliationMapping**
-> Mapping getReconciliationMapping(scope, code)
+> Mapping getReconciliationMapping(scope, code).execute();
 
 [EARLY ACCESS] GetReconciliationMapping: Get a mapping
 
@@ -581,7 +593,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the mapping.
     String code = "code_example"; // String | The code of the mapping.
     try {
-      Mapping result = apiInstance.getReconciliationMapping(scope, code);
+      Mapping result = apiInstance.getReconciliationMapping(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#getReconciliationMapping");
@@ -623,7 +636,7 @@ public class Example {
 
 <a id="getReconciliationRun"></a>
 # **getReconciliationRun**
-> ReconciliationRun getReconciliationRun(scope, code, runDate, version, effectiveAt, asAt)
+> ReconciliationRun getReconciliationRun(scope, code, runDate, version).effectiveAt(effectiveAt).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetReconciliationRun: Get a reconciliation run
 
@@ -656,7 +669,10 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the reconciliation run. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the reconciliation run. Defaults to returning the latest version of the reconciliation run if not specified.
     try {
-      ReconciliationRun result = apiInstance.getReconciliationRun(scope, code, runDate, version, effectiveAt, asAt);
+      ReconciliationRun result = apiInstance.getReconciliationRun(scope, code, runDate, version)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#getReconciliationRun");
@@ -702,7 +718,7 @@ public class Example {
 
 <a id="listReconciliationBreaks"></a>
 # **listReconciliationBreaks**
-> PagedResourceListOfReconciliationRunBreak listReconciliationBreaks(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter)
+> PagedResourceListOfReconciliationRunBreak listReconciliationBreaks(scope, code, runDate, version).effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).execute();
 
 [EXPERIMENTAL] ListReconciliationBreaks: List reconciliation breaks
 
@@ -732,14 +748,21 @@ public class Example {
     String code = "code_example"; // String | The code of the reconciliation associated with the break
     OffsetDateTime runDate = OffsetDateTime.now(); // OffsetDateTime | The date of the run associated with the break
     Integer version = 56; // Integer | The version number of the run associated with the break
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID   system datetime if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version   of each run if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.
     try {
-      PagedResourceListOfReconciliationRunBreak result = apiInstance.listReconciliationBreaks(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter);
+      PagedResourceListOfReconciliationRunBreak result = apiInstance.listReconciliationBreaks(scope, code, runDate, version)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#listReconciliationBreaks");
@@ -760,9 +783,9 @@ public class Example {
 | **code** | **String**| The code of the reconciliation associated with the break | |
 | **runDate** | **OffsetDateTime**| The date of the run associated with the break | |
 | **version** | **Integer**| The version number of the run associated with the break | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version   of each run if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. | [optional] |
@@ -789,7 +812,7 @@ public class Example {
 
 <a id="listReconciliationMappings"></a>
 # **listReconciliationMappings**
-> ResourceListOfMapping listReconciliationMappings(reconciliationType)
+> ResourceListOfMapping listReconciliationMappings().reconciliationType(reconciliationType).execute();
 
 [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings
 
@@ -817,7 +840,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     String reconciliationType = "reconciliationType_example"; // String | Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided.
     try {
-      ResourceListOfMapping result = apiInstance.listReconciliationMappings(reconciliationType);
+      ResourceListOfMapping result = apiInstance.listReconciliationMappings()
+            .reconciliationType(reconciliationType)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#listReconciliationMappings");
@@ -858,7 +883,7 @@ public class Example {
 
 <a id="listReconciliationRuns"></a>
 # **listReconciliationRuns**
-> PagedResourceListOfReconciliationRun listReconciliationRuns(scope, code, effectiveAt, asAt, page, start, limit, filter)
+> PagedResourceListOfReconciliationRun listReconciliationRuns(scope, code).effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).execute();
 
 [EXPERIMENTAL] ListReconciliationRuns: List Reconciliation runs
 
@@ -886,14 +911,21 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the reconciliation
     String code = "code_example"; // String | The code of the reconciliation
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID   system datetime if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version   of each run if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the run date, specify \"Date eq 10/03/2018\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the run date, specify \"Date eq 10/03/2018\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
     try {
-      PagedResourceListOfReconciliationRun result = apiInstance.listReconciliationRuns(scope, code, effectiveAt, asAt, page, start, limit, filter);
+      PagedResourceListOfReconciliationRun result = apiInstance.listReconciliationRuns(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#listReconciliationRuns");
@@ -912,12 +944,12 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reconciliation | |
 | **code** | **String**| The code of the reconciliation | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version   of each run if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 
 ### Return type
 
@@ -941,7 +973,7 @@ public class Example {
 
 <a id="listReconciliations"></a>
 # **listReconciliations**
-> PagedResourceListOfReconciliation listReconciliations(effectiveAt, asAt, page, start, limit, filter, propertyKeys)
+> PagedResourceListOfReconciliation listReconciliations().effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations
 
@@ -967,15 +999,23 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID              system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation. Defaults to returning the latest version              of each reconciliation if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the reconciliation type, specify \"id.Code eq '001'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
+    String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the reconciliation type, specify \"id.Code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
     try {
-      PagedResourceListOfReconciliation result = apiInstance.listReconciliations(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+      PagedResourceListOfReconciliation result = apiInstance.listReconciliations()
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .page(page)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#listReconciliations");
@@ -992,13 +1032,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID              system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation. Defaults to returning the latest version              of each reconciliation if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -1022,9 +1062,9 @@ public class Example {
 
 <a id="reconcileGeneric"></a>
 # **reconcileGeneric**
-> ReconciliationResponse reconcileGeneric(reconciliationRequest)
+> ReconciliationResponse reconcileGeneric().reconciliationRequest(reconciliationRequest).execute();
 
-ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.                The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
+ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.     The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
 
 Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
 
@@ -1050,7 +1090,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     ReconciliationRequest reconciliationRequest = new ReconciliationRequest(); // ReconciliationRequest | The specifications of the inputs to the reconciliation
     try {
-      ReconciliationResponse result = apiInstance.reconcileGeneric(reconciliationRequest);
+      ReconciliationResponse result = apiInstance.reconcileGeneric()
+            .reconciliationRequest(reconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#reconcileGeneric");
@@ -1091,7 +1133,7 @@ public class Example {
 
 <a id="reconcileHoldings"></a>
 # **reconcileHoldings**
-> ResourceListOfReconciliationBreak reconcileHoldings(sortBy, start, limit, filter, portfoliosReconciliationRequest)
+> ResourceListOfReconciliationBreak reconcileHoldings().sortBy(sortBy).start(start).limit(limit).filter(filter).portfoliosReconciliationRequest(portfoliosReconciliationRequest).execute();
 
 [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings
 
@@ -1120,10 +1162,16 @@ public class Example {
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \"left.portfolioId.code eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \"left.portfolioId.code eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     PortfoliosReconciliationRequest portfoliosReconciliationRequest = new PortfoliosReconciliationRequest(); // PortfoliosReconciliationRequest | The specifications of the inputs to the reconciliation
     try {
-      ResourceListOfReconciliationBreak result = apiInstance.reconcileHoldings(sortBy, start, limit, filter, portfoliosReconciliationRequest);
+      ResourceListOfReconciliationBreak result = apiInstance.reconcileHoldings()
+            .sortBy(sortBy)
+            .start(start)
+            .limit(limit)
+            .filter(filter)
+            .portfoliosReconciliationRequest(portfoliosReconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#reconcileHoldings");
@@ -1143,7 +1191,7 @@ public class Example {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **start** | **Integer**| Optional. When paginating, skip this number of results | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **portfoliosReconciliationRequest** | [**PortfoliosReconciliationRequest**](PortfoliosReconciliationRequest.md)| The specifications of the inputs to the reconciliation | [optional] |
 
 ### Return type
@@ -1168,7 +1216,7 @@ public class Example {
 
 <a id="reconcileInline"></a>
 # **reconcileInline**
-> ListAggregationReconciliation reconcileInline(inlineValuationsReconciliationRequest)
+> ListAggregationReconciliation reconcileInline().inlineValuationsReconciliationRequest(inlineValuationsReconciliationRequest).execute();
 
 ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes.
 
@@ -1196,7 +1244,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest = new InlineValuationsReconciliationRequest(); // InlineValuationsReconciliationRequest | The specifications of the inputs to the reconciliation
     try {
-      ListAggregationReconciliation result = apiInstance.reconcileInline(inlineValuationsReconciliationRequest);
+      ListAggregationReconciliation result = apiInstance.reconcileInline()
+            .inlineValuationsReconciliationRequest(inlineValuationsReconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#reconcileInline");
@@ -1237,7 +1287,7 @@ public class Example {
 
 <a id="reconcileTransactions"></a>
 # **reconcileTransactions**
-> TransactionsReconciliationsResponse reconcileTransactions(transactionReconciliationRequest)
+> TransactionsReconciliationsResponse reconcileTransactions().transactionReconciliationRequest(transactionReconciliationRequest).execute();
 
 [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.
 
@@ -1265,7 +1315,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     TransactionReconciliationRequest transactionReconciliationRequest = new TransactionReconciliationRequest(); // TransactionReconciliationRequest | 
     try {
-      TransactionsReconciliationsResponse result = apiInstance.reconcileTransactions(transactionReconciliationRequest);
+      TransactionsReconciliationsResponse result = apiInstance.reconcileTransactions()
+            .transactionReconciliationRequest(transactionReconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#reconcileTransactions");
@@ -1306,7 +1358,7 @@ public class Example {
 
 <a id="reconcileTransactionsV2"></a>
 # **reconcileTransactionsV2**
-> ReconciliationResponse reconcileTransactionsV2(transactionReconciliationRequestV2)
+> ReconciliationResponse reconcileTransactionsV2().transactionReconciliationRequestV2(transactionReconciliationRequestV2).execute();
 
 [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
 
@@ -1334,7 +1386,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     TransactionReconciliationRequestV2 transactionReconciliationRequestV2 = new TransactionReconciliationRequestV2(); // TransactionReconciliationRequestV2 | 
     try {
-      ReconciliationResponse result = apiInstance.reconcileTransactionsV2(transactionReconciliationRequestV2);
+      ReconciliationResponse result = apiInstance.reconcileTransactionsV2()
+            .transactionReconciliationRequestV2(transactionReconciliationRequestV2)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#reconcileTransactionsV2");
@@ -1375,7 +1429,7 @@ public class Example {
 
 <a id="reconcileValuation"></a>
 # **reconcileValuation**
-> ListAggregationReconciliation reconcileValuation(valuationsReconciliationRequest)
+> ListAggregationReconciliation reconcileValuation().valuationsReconciliationRequest(valuationsReconciliationRequest).execute();
 
 ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
 
@@ -1403,7 +1457,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     ValuationsReconciliationRequest valuationsReconciliationRequest = new ValuationsReconciliationRequest(); // ValuationsReconciliationRequest | The specifications of the inputs to the reconciliation
     try {
-      ListAggregationReconciliation result = apiInstance.reconcileValuation(valuationsReconciliationRequest);
+      ListAggregationReconciliation result = apiInstance.reconcileValuation()
+            .valuationsReconciliationRequest(valuationsReconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#reconcileValuation");
@@ -1444,7 +1500,7 @@ public class Example {
 
 <a id="updateReconciliation"></a>
 # **updateReconciliation**
-> Reconciliation updateReconciliation(scope, code, updateReconciliationRequest)
+> Reconciliation updateReconciliation(scope, code).updateReconciliationRequest(updateReconciliationRequest).execute();
 
 [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation
 
@@ -1474,7 +1530,9 @@ public class Example {
     String code = "code_example"; // String | The code of the reconciliation to be updated
     UpdateReconciliationRequest updateReconciliationRequest = new UpdateReconciliationRequest(); // UpdateReconciliationRequest | The updated definition of the reconciliation
     try {
-      Reconciliation result = apiInstance.updateReconciliation(scope, code, updateReconciliationRequest);
+      Reconciliation result = apiInstance.updateReconciliation(scope, code)
+            .updateReconciliationRequest(updateReconciliationRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#updateReconciliation");
@@ -1517,7 +1575,7 @@ public class Example {
 
 <a id="upsertReconciliationBreak"></a>
 # **upsertReconciliationBreak**
-> ReconciliationRunBreak upsertReconciliationBreak(scope, code, runDate, version, upsertReconciliationBreakRequest)
+> ReconciliationRunBreak upsertReconciliationBreak(scope, code, runDate, version).upsertReconciliationBreakRequest(upsertReconciliationBreakRequest).execute();
 
 [EXPERIMENTAL] UpsertReconciliationBreak: Upsert a reconciliation break
 
@@ -1549,7 +1607,9 @@ public class Example {
     Integer version = 56; // Integer | The version number of the run associated with the break
     UpsertReconciliationBreakRequest upsertReconciliationBreakRequest = new UpsertReconciliationBreakRequest(); // UpsertReconciliationBreakRequest | The definition of the reconciliation break request
     try {
-      ReconciliationRunBreak result = apiInstance.upsertReconciliationBreak(scope, code, runDate, version, upsertReconciliationBreakRequest);
+      ReconciliationRunBreak result = apiInstance.upsertReconciliationBreak(scope, code, runDate, version)
+            .upsertReconciliationBreakRequest(upsertReconciliationBreakRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#upsertReconciliationBreak");
@@ -1594,7 +1654,7 @@ public class Example {
 
 <a id="upsertReconciliationMapping"></a>
 # **upsertReconciliationMapping**
-> Mapping upsertReconciliationMapping(mapping)
+> Mapping upsertReconciliationMapping().mapping(mapping).execute();
 
 [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
 
@@ -1622,7 +1682,9 @@ public class Example {
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     Mapping mapping = new Mapping(); // Mapping | The mapping to be created / updated.
     try {
-      Mapping result = apiInstance.upsertReconciliationMapping(mapping);
+      Mapping result = apiInstance.upsertReconciliationMapping()
+            .mapping(mapping)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#upsertReconciliationMapping");
@@ -1663,7 +1725,7 @@ public class Example {
 
 <a id="upsertReconciliationRun"></a>
 # **upsertReconciliationRun**
-> ReconciliationRun upsertReconciliationRun(scope, code, upsertReconciliationRunRequest)
+> ReconciliationRun upsertReconciliationRun(scope, code).upsertReconciliationRunRequest(upsertReconciliationRunRequest).execute();
 
 [EXPERIMENTAL] UpsertReconciliationRun: Update or Create a reconciliation run
 
@@ -1693,7 +1755,9 @@ public class Example {
     String code = "code_example"; // String | The code of the reconciliation associated with the run
     UpsertReconciliationRunRequest upsertReconciliationRunRequest = new UpsertReconciliationRunRequest(); // UpsertReconciliationRunRequest | The definition of the reconciliation run
     try {
-      ReconciliationRun result = apiInstance.upsertReconciliationRun(scope, code, upsertReconciliationRunRequest);
+      ReconciliationRun result = apiInstance.upsertReconciliationRun(scope, code)
+            .upsertReconciliationRunRequest(upsertReconciliationRunRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReconciliationsApi#upsertReconciliationRun");

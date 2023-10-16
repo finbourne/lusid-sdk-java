@@ -94,22 +94,7 @@ public class ReconciliationsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createScheduledReconciliation
-     * @param scope The scope of the reconciliation (required)
-     * @param createReconciliationRequest The definition of the reconciliation (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createScheduledReconciliationCall(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createScheduledReconciliationCall(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -171,86 +156,124 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation
-     * Create a scheduled reconciliation for the given request
-     * @param scope The scope of the reconciliation (required)
-     * @param createReconciliationRequest The definition of the reconciliation (optional)
-     * @return Reconciliation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Reconciliation createScheduledReconciliation(String scope, CreateReconciliationRequest createReconciliationRequest) throws ApiException {
-        ApiResponse<Reconciliation> localVarResp = createScheduledReconciliationWithHttpInfo(scope, createReconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation
-     * Create a scheduled reconciliation for the given request
-     * @param scope The scope of the reconciliation (required)
-     * @param createReconciliationRequest The definition of the reconciliation (optional)
-     * @return ApiResponse&lt;Reconciliation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Reconciliation> createScheduledReconciliationWithHttpInfo(String scope, CreateReconciliationRequest createReconciliationRequest) throws ApiException {
+    private ApiResponse<Reconciliation> createScheduledReconciliationWithHttpInfo(String scope, CreateReconciliationRequest createReconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation (asynchronously)
-     * Create a scheduled reconciliation for the given request
-     * @param scope The scope of the reconciliation (required)
-     * @param createReconciliationRequest The definition of the reconciliation (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createScheduledReconciliationAsync(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback<Reconciliation> _callback) throws ApiException {
+    private okhttp3.Call createScheduledReconciliationAsync(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback<Reconciliation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateScheduledReconciliationRequest {
+        private final String scope;
+        private CreateReconciliationRequest createReconciliationRequest;
+
+        private APIcreateScheduledReconciliationRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set createReconciliationRequest
+         * @param createReconciliationRequest The definition of the reconciliation (optional)
+         * @return APIcreateScheduledReconciliationRequest
+         */
+        public APIcreateScheduledReconciliationRequest createReconciliationRequest(CreateReconciliationRequest createReconciliationRequest) {
+            this.createReconciliationRequest = createReconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for createScheduledReconciliation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createScheduledReconciliationCall(scope, createReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute createScheduledReconciliation request
+         * @return Reconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Reconciliation execute() throws ApiException {
+            ApiResponse<Reconciliation> localVarResp = createScheduledReconciliationWithHttpInfo(scope, createReconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createScheduledReconciliation request with HTTP info returned
+         * @return ApiResponse&lt;Reconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Reconciliation> executeWithHttpInfo() throws ApiException {
+            return createScheduledReconciliationWithHttpInfo(scope, createReconciliationRequest);
+        }
+
+        /**
+         * Execute createScheduledReconciliation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback) throws ApiException {
+            return createScheduledReconciliationAsync(scope, createReconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteReconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation
+     * Create a scheduled reconciliation for the given request
+     * @param scope The scope of the reconciliation (required)
+     * @return APIcreateScheduledReconciliationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteReconciliationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateScheduledReconciliationRequest createScheduledReconciliation(String scope) {
+        return new APIcreateScheduledReconciliationRequest(scope);
+    }
+    private okhttp3.Call deleteReconciliationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -314,89 +337,116 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation
-     * Delete the given scheduled reconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteReconciliation(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation
-     * Delete the given scheduled reconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteReconciliationWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteReconciliationWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation (asynchronously)
-     * Delete the given scheduled reconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteReconciliationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteReconciliationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteReconciliationRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteReconciliationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteReconciliation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteReconciliationCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteReconciliation request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReconciliation request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteReconciliationWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteReconciliation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteReconciliationAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteReconciliationBreak
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation
+     * Delete the given scheduled reconciliation
+     * @param scope The scope of the scheduled reconciliation (required)
+     * @param code The code of the scheduled reconciliation (required)
+     * @return APIdeleteReconciliationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteReconciliationBreakCall(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, final ApiCallback _callback) throws ApiException {
+    public APIdeleteReconciliationRequest deleteReconciliation(String scope, String code) {
+        return new APIdeleteReconciliationRequest(scope, code);
+    }
+    private okhttp3.Call deleteReconciliationBreakCall(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -478,95 +528,125 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliationBreak: Delete reconciliation break
-     * Delete the given reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteReconciliationBreak(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationBreakWithHttpInfo(scope, code, runDate, version, breakId);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliationBreak: Delete reconciliation break
-     * Delete the given reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteReconciliationBreakWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteReconciliationBreakWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) throws ApiException {
         okhttp3.Call localVarCall = deleteReconciliationBreakValidateBeforeCall(scope, code, runDate, version, breakId, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliationBreak: Delete reconciliation break (asynchronously)
-     * Delete the given reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteReconciliationBreakAsync(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteReconciliationBreakAsync(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteReconciliationBreakValidateBeforeCall(scope, code, runDate, version, breakId, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteReconciliationBreakRequest {
+        private final String scope;
+        private final String code;
+        private final OffsetDateTime runDate;
+        private final Integer version;
+        private final String breakId;
+
+        private APIdeleteReconciliationBreakRequest(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) {
+            this.scope = scope;
+            this.code = code;
+            this.runDate = runDate;
+            this.version = version;
+            this.breakId = breakId;
+        }
+
+        /**
+         * Build call for deleteReconciliationBreak
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteReconciliationBreakCall(scope, code, runDate, version, breakId, _callback);
+        }
+
+        /**
+         * Execute deleteReconciliationBreak request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationBreakWithHttpInfo(scope, code, runDate, version, breakId);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReconciliationBreak request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteReconciliationBreakWithHttpInfo(scope, code, runDate, version, breakId);
+        }
+
+        /**
+         * Execute deleteReconciliationBreak request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteReconciliationBreakAsync(scope, code, runDate, version, breakId, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteReconciliationMapping
-     * @param scope The scope of the mapping. (required)
-     * @param code The code fof the mapping. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteReconciliationBreak: Delete reconciliation break
+     * Delete the given reconciliation break
+     * @param scope The scope of the reconciliation associated with the break (required)
+     * @param code The code of the reconciliation associated with the break (required)
+     * @param runDate The date of the run associated with the break (required)
+     * @param version The version number of the run associated with the break (required)
+     * @param breakId The unique identifier for the break (required)
+     * @return APIdeleteReconciliationBreakRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the reconciliation break was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteReconciliationMappingCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIdeleteReconciliationBreakRequest deleteReconciliationBreak(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) {
+        return new APIdeleteReconciliationBreakRequest(scope, code, runDate, version, breakId);
+    }
+    private okhttp3.Call deleteReconciliationMappingCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -630,88 +710,116 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping
-     * Deletes the mapping identified by the scope and code
-     * @param scope The scope of the mapping. (required)
-     * @param code The code fof the mapping. (required)
-     * @return String
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public String deleteReconciliationMapping(String scope, String code) throws ApiException {
-        ApiResponse<String> localVarResp = deleteReconciliationMappingWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping
-     * Deletes the mapping identified by the scope and code
-     * @param scope The scope of the mapping. (required)
-     * @param code The code fof the mapping. (required)
-     * @return ApiResponse&lt;String&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<String> deleteReconciliationMappingWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<String> deleteReconciliationMappingWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping (asynchronously)
-     * Deletes the mapping identified by the scope and code
-     * @param scope The scope of the mapping. (required)
-     * @param code The code fof the mapping. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteReconciliationMappingAsync(String scope, String code, final ApiCallback<String> _callback) throws ApiException {
+    private okhttp3.Call deleteReconciliationMappingAsync(String scope, String code, final ApiCallback<String> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteReconciliationMappingRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteReconciliationMappingRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteReconciliationMapping
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteReconciliationMappingCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteReconciliationMapping request
+         * @return String
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public String execute() throws ApiException {
+            ApiResponse<String> localVarResp = deleteReconciliationMappingWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReconciliationMapping request with HTTP info returned
+         * @return ApiResponse&lt;String&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<String> executeWithHttpInfo() throws ApiException {
+            return deleteReconciliationMappingWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteReconciliationMapping request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<String> _callback) throws ApiException {
+            return deleteReconciliationMappingAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteReconciliationRun
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the reconciliation run (required)
-     * @param version The version number of the reconciliation run (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping
+     * Deletes the mapping identified by the scope and code
+     * @param scope The scope of the mapping. (required)
+     * @param code The code fof the mapping. (required)
+     * @return APIdeleteReconciliationMappingRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteReconciliationRunCall(String scope, String code, OffsetDateTime runDate, Integer version, final ApiCallback _callback) throws ApiException {
+    public APIdeleteReconciliationMappingRequest deleteReconciliationMapping(String scope, String code) {
+        return new APIdeleteReconciliationMappingRequest(scope, code);
+    }
+    private okhttp3.Call deleteReconciliationRunCall(String scope, String code, OffsetDateTime runDate, Integer version, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -787,95 +895,122 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliationRun: Delete reconciliation run
-     * Delete the given reconciliation run
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the reconciliation run (required)
-     * @param version The version number of the reconciliation run (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteReconciliationRun(String scope, String code, OffsetDateTime runDate, Integer version) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationRunWithHttpInfo(scope, code, runDate, version);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliationRun: Delete reconciliation run
-     * Delete the given reconciliation run
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the reconciliation run (required)
-     * @param version The version number of the reconciliation run (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteReconciliationRunWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteReconciliationRunWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version) throws ApiException {
         okhttp3.Call localVarCall = deleteReconciliationRunValidateBeforeCall(scope, code, runDate, version, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteReconciliationRun: Delete reconciliation run (asynchronously)
-     * Delete the given reconciliation run
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the reconciliation run (required)
-     * @param version The version number of the reconciliation run (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteReconciliationRunAsync(String scope, String code, OffsetDateTime runDate, Integer version, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteReconciliationRunAsync(String scope, String code, OffsetDateTime runDate, Integer version, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteReconciliationRunValidateBeforeCall(scope, code, runDate, version, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteReconciliationRunRequest {
+        private final String scope;
+        private final String code;
+        private final OffsetDateTime runDate;
+        private final Integer version;
+
+        private APIdeleteReconciliationRunRequest(String scope, String code, OffsetDateTime runDate, Integer version) {
+            this.scope = scope;
+            this.code = code;
+            this.runDate = runDate;
+            this.version = version;
+        }
+
+        /**
+         * Build call for deleteReconciliationRun
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteReconciliationRunCall(scope, code, runDate, version, _callback);
+        }
+
+        /**
+         * Execute deleteReconciliationRun request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationRunWithHttpInfo(scope, code, runDate, version);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReconciliationRun request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteReconciliationRunWithHttpInfo(scope, code, runDate, version);
+        }
+
+        /**
+         * Execute deleteReconciliationRun request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteReconciliationRunAsync(scope, code, runDate, version, _callback);
+        }
+    }
+
     /**
-     * Build call for getReconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteReconciliationRun: Delete reconciliation run
+     * Delete the given reconciliation run
+     * @param scope The scope of the reconciliation associated with the run (required)
+     * @param code The code of the reconciliation associated with the run (required)
+     * @param runDate The date of the reconciliation run (required)
+     * @param version The version number of the reconciliation run (required)
+     * @return APIdeleteReconciliationRunRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the reconciliation run was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReconciliationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteReconciliationRunRequest deleteReconciliationRun(String scope, String code, OffsetDateTime runDate, Integer version) {
+        return new APIdeleteReconciliationRunRequest(scope, code, runDate, version);
+    }
+    private okhttp3.Call getReconciliationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -951,99 +1086,149 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliation: Get scheduled reconciliation
-     * Get the requested scheduled reconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @return Reconciliation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Reconciliation getReconciliation(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<Reconciliation> localVarResp = getReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliation: Get scheduled reconciliation
-     * Get the requested scheduled reconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @return ApiResponse&lt;Reconciliation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Reconciliation> getReconciliationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<Reconciliation> getReconciliationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliation: Get scheduled reconciliation (asynchronously)
-     * Get the requested scheduled reconciliation
-     * @param scope The scope of the scheduled reconciliation (required)
-     * @param code The code of the scheduled reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getReconciliationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Reconciliation> _callback) throws ApiException {
+    private okhttp3.Call getReconciliationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Reconciliation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetReconciliationRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetReconciliationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetReconciliationRequest
+         */
+        public APIgetReconciliationRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. (optional)
+         * @return APIgetReconciliationRequest
+         */
+        public APIgetReconciliationRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
+         * @return APIgetReconciliationRequest
+         */
+        public APIgetReconciliationRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getReconciliation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getReconciliationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getReconciliation request
+         * @return Reconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Reconciliation execute() throws ApiException {
+            ApiResponse<Reconciliation> localVarResp = getReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReconciliation request with HTTP info returned
+         * @return ApiResponse&lt;Reconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Reconciliation> executeWithHttpInfo() throws ApiException {
+            return getReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getReconciliation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback) throws ApiException {
+            return getReconciliationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getReconciliationBreak
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation break. Defaults to returning the latest version of the reconciliation break if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetReconciliation: Get scheduled reconciliation
+     * Get the requested scheduled reconciliation
+     * @param scope The scope of the scheduled reconciliation (required)
+     * @param code The code of the scheduled reconciliation (required)
+     * @return APIgetReconciliationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReconciliationBreakCall(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetReconciliationRequest getReconciliation(String scope, String code) {
+        return new APIgetReconciliationRequest(scope, code);
+    }
+    private okhttp3.Call getReconciliationBreakCall(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1129,98 +1314,136 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliationBreak: Get reconciliation break
-     * Get the requested reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation break. Defaults to returning the latest version of the reconciliation break if not specified. (optional)
-     * @return ReconciliationRunBreak
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconciliationRunBreak getReconciliationBreak(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ReconciliationRunBreak> localVarResp = getReconciliationBreakWithHttpInfo(scope, code, runDate, version, breakId, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliationBreak: Get reconciliation break
-     * Get the requested reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation break. Defaults to returning the latest version of the reconciliation break if not specified. (optional)
-     * @return ApiResponse&lt;ReconciliationRunBreak&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconciliationRunBreak> getReconciliationBreakWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ReconciliationRunBreak> getReconciliationBreakWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getReconciliationBreakValidateBeforeCall(scope, code, runDate, version, breakId, asAt, null);
         Type localVarReturnType = new TypeToken<ReconciliationRunBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliationBreak: Get reconciliation break (asynchronously)
-     * Get the requested reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param breakId The unique identifier for the break (required)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation break. Defaults to returning the latest version of the reconciliation break if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getReconciliationBreakAsync(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt, final ApiCallback<ReconciliationRunBreak> _callback) throws ApiException {
+    private okhttp3.Call getReconciliationBreakAsync(String scope, String code, OffsetDateTime runDate, Integer version, String breakId, OffsetDateTime asAt, final ApiCallback<ReconciliationRunBreak> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReconciliationBreakValidateBeforeCall(scope, code, runDate, version, breakId, asAt, _callback);
         Type localVarReturnType = new TypeToken<ReconciliationRunBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetReconciliationBreakRequest {
+        private final String scope;
+        private final String code;
+        private final OffsetDateTime runDate;
+        private final Integer version;
+        private final String breakId;
+        private OffsetDateTime asAt;
+
+        private APIgetReconciliationBreakRequest(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) {
+            this.scope = scope;
+            this.code = code;
+            this.runDate = runDate;
+            this.version = version;
+            this.breakId = breakId;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the reconciliation break. Defaults to returning the latest version of the reconciliation break if not specified. (optional)
+         * @return APIgetReconciliationBreakRequest
+         */
+        public APIgetReconciliationBreakRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getReconciliationBreak
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getReconciliationBreakCall(scope, code, runDate, version, breakId, asAt, _callback);
+        }
+
+        /**
+         * Execute getReconciliationBreak request
+         * @return ReconciliationRunBreak
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationRunBreak execute() throws ApiException {
+            ApiResponse<ReconciliationRunBreak> localVarResp = getReconciliationBreakWithHttpInfo(scope, code, runDate, version, breakId, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReconciliationBreak request with HTTP info returned
+         * @return ApiResponse&lt;ReconciliationRunBreak&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationRunBreak> executeWithHttpInfo() throws ApiException {
+            return getReconciliationBreakWithHttpInfo(scope, code, runDate, version, breakId, asAt);
+        }
+
+        /**
+         * Execute getReconciliationBreak request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationRunBreak> _callback) throws ApiException {
+            return getReconciliationBreakAsync(scope, code, runDate, version, breakId, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getReconciliationMapping
-     * @param scope The scope of the mapping. (required)
-     * @param code The code of the mapping. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetReconciliationBreak: Get reconciliation break
+     * Get the requested reconciliation break
+     * @param scope The scope of the reconciliation associated with the break (required)
+     * @param code The code of the reconciliation associated with the break (required)
+     * @param runDate The date of the run associated with the break (required)
+     * @param version The version number of the run associated with the break (required)
+     * @param breakId The unique identifier for the break (required)
+     * @return APIgetReconciliationBreakRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reconciliation break </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReconciliationMappingCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIgetReconciliationBreakRequest getReconciliationBreak(String scope, String code, OffsetDateTime runDate, Integer version, String breakId) {
+        return new APIgetReconciliationBreakRequest(scope, code, runDate, version, breakId);
+    }
+    private okhttp3.Call getReconciliationMappingCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1284,90 +1507,116 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetReconciliationMapping: Get a mapping
-     * Gets a mapping identified by the given scope and code
-     * @param scope The scope of the mapping. (required)
-     * @param code The code of the mapping. (required)
-     * @return Mapping
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Mapping getReconciliationMapping(String scope, String code) throws ApiException {
-        ApiResponse<Mapping> localVarResp = getReconciliationMappingWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetReconciliationMapping: Get a mapping
-     * Gets a mapping identified by the given scope and code
-     * @param scope The scope of the mapping. (required)
-     * @param code The code of the mapping. (required)
-     * @return ApiResponse&lt;Mapping&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Mapping> getReconciliationMappingWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<Mapping> getReconciliationMappingWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetReconciliationMapping: Get a mapping (asynchronously)
-     * Gets a mapping identified by the given scope and code
-     * @param scope The scope of the mapping. (required)
-     * @param code The code of the mapping. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getReconciliationMappingAsync(String scope, String code, final ApiCallback<Mapping> _callback) throws ApiException {
+    private okhttp3.Call getReconciliationMappingAsync(String scope, String code, final ApiCallback<Mapping> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetReconciliationMappingRequest {
+        private final String scope;
+        private final String code;
+
+        private APIgetReconciliationMappingRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for getReconciliationMapping
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getReconciliationMappingCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute getReconciliationMapping request
+         * @return Mapping
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Mapping execute() throws ApiException {
+            ApiResponse<Mapping> localVarResp = getReconciliationMappingWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReconciliationMapping request with HTTP info returned
+         * @return ApiResponse&lt;Mapping&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Mapping> executeWithHttpInfo() throws ApiException {
+            return getReconciliationMappingWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute getReconciliationMapping request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Mapping> _callback) throws ApiException {
+            return getReconciliationMappingAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getReconciliationRun
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the run (required)
-     * @param version The version number of the run (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the reconciliation run. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation run. Defaults to returning the latest version of the reconciliation run if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetReconciliationMapping: Get a mapping
+     * Gets a mapping identified by the given scope and code
+     * @param scope The scope of the mapping. (required)
+     * @param code The code of the mapping. (required)
+     * @return APIgetReconciliationMappingRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReconciliationRunCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetReconciliationMappingRequest getReconciliationMapping(String scope, String code) {
+        return new APIgetReconciliationMappingRequest(scope, code);
+    }
+    private okhttp3.Call getReconciliationRunCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1451,106 +1700,144 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliationRun: Get a reconciliation run
-     * Get the requested reconciliation run
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the run (required)
-     * @param version The version number of the run (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the reconciliation run. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation run. Defaults to returning the latest version of the reconciliation run if not specified. (optional)
-     * @return ReconciliationRun
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconciliationRun getReconciliationRun(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ReconciliationRun> localVarResp = getReconciliationRunWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliationRun: Get a reconciliation run
-     * Get the requested reconciliation run
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the run (required)
-     * @param version The version number of the run (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the reconciliation run. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation run. Defaults to returning the latest version of the reconciliation run if not specified. (optional)
-     * @return ApiResponse&lt;ReconciliationRun&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconciliationRun> getReconciliationRunWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ReconciliationRun> getReconciliationRunWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getReconciliationRunValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<ReconciliationRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetReconciliationRun: Get a reconciliation run (asynchronously)
-     * Get the requested reconciliation run
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param runDate The date of the run (required)
-     * @param version The version number of the run (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the reconciliation run. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the reconciliation run. Defaults to returning the latest version of the reconciliation run if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getReconciliationRunAsync(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ReconciliationRun> _callback) throws ApiException {
+    private okhttp3.Call getReconciliationRunAsync(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ReconciliationRun> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReconciliationRunValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<ReconciliationRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetReconciliationRunRequest {
+        private final String scope;
+        private final String code;
+        private final OffsetDateTime runDate;
+        private final Integer version;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetReconciliationRunRequest(String scope, String code, OffsetDateTime runDate, Integer version) {
+            this.scope = scope;
+            this.code = code;
+            this.runDate = runDate;
+            this.version = version;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the reconciliation run. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetReconciliationRunRequest
+         */
+        public APIgetReconciliationRunRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the reconciliation run. Defaults to returning the latest version of the reconciliation run if not specified. (optional)
+         * @return APIgetReconciliationRunRequest
+         */
+        public APIgetReconciliationRunRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getReconciliationRun
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getReconciliationRunCall(scope, code, runDate, version, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getReconciliationRun request
+         * @return ReconciliationRun
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationRun execute() throws ApiException {
+            ApiResponse<ReconciliationRun> localVarResp = getReconciliationRunWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReconciliationRun request with HTTP info returned
+         * @return ApiResponse&lt;ReconciliationRun&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationRun> executeWithHttpInfo() throws ApiException {
+            return getReconciliationRunWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getReconciliationRun request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationRun> _callback) throws ApiException {
+            return getReconciliationRunAsync(scope, code, runDate, version, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listReconciliationBreaks
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetReconciliationRun: Get a reconciliation run
+     * Get the requested reconciliation run
+     * @param scope The scope of the reconciliation associated with the run (required)
+     * @param code The code of the reconciliation associated with the run (required)
+     * @param runDate The date of the run (required)
+     * @param version The version number of the run (required)
+     * @return APIgetReconciliationRunRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reconciliation run </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listReconciliationBreaksCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetReconciliationRunRequest getReconciliationRun(String scope, String code, OffsetDateTime runDate, Integer version) {
+        return new APIgetReconciliationRunRequest(scope, code, runDate, version);
+    }
+    private okhttp3.Call listReconciliationBreaksCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1650,109 +1937,188 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliationBreaks: List reconciliation breaks
-     * List all reconciliation breaks associated with a given run
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @return PagedResourceListOfReconciliationRunBreak
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfReconciliationRunBreak listReconciliationBreaks(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfReconciliationRunBreak> localVarResp = listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliationBreaks: List reconciliation breaks
-     * List all reconciliation breaks associated with a given run
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfReconciliationRunBreak&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfReconciliationRunBreak> listReconciliationBreaksWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfReconciliationRunBreak> listReconciliationBreaksWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listReconciliationBreaksValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRunBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliationBreaks: List reconciliation breaks (asynchronously)
-     * List all reconciliation breaks associated with a given run
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listReconciliationBreaksAsync(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRunBreak> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationBreaksAsync(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRunBreak> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listReconciliationBreaksValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRunBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistReconciliationBreaksRequest {
+        private final String scope;
+        private final String code;
+        private final OffsetDateTime runDate;
+        private final Integer version;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistReconciliationBreaksRequest(String scope, String code, OffsetDateTime runDate, Integer version) {
+            this.scope = scope;
+            this.code = code;
+            this.runDate = runDate;
+            this.version = version;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistReconciliationBreaksRequest
+         */
+        public APIlistReconciliationBreaksRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version   of each run if not specified. (optional)
+         * @return APIlistReconciliationBreaksRequest
+         */
+        public APIlistReconciliationBreaksRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistReconciliationBreaksRequest
+         */
+        public APIlistReconciliationBreaksRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistReconciliationBreaksRequest
+         */
+        public APIlistReconciliationBreaksRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistReconciliationBreaksRequest
+         */
+        public APIlistReconciliationBreaksRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. (optional)
+         * @return APIlistReconciliationBreaksRequest
+         */
+        public APIlistReconciliationBreaksRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listReconciliationBreaks
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listReconciliationBreaksCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listReconciliationBreaks request
+         * @return PagedResourceListOfReconciliationRunBreak
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfReconciliationRunBreak execute() throws ApiException {
+            ApiResponse<PagedResourceListOfReconciliationRunBreak> localVarResp = listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listReconciliationBreaks request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfReconciliationRunBreak&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfReconciliationRunBreak> executeWithHttpInfo() throws ApiException {
+            return listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listReconciliationBreaks request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliationRunBreak> _callback) throws ApiException {
+            return listReconciliationBreaksAsync(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listReconciliationMappings
-     * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListReconciliationBreaks: List reconciliation breaks
+     * List all reconciliation breaks associated with a given run
+     * @param scope The scope of the reconciliation associated with the break (required)
+     * @param code The code of the reconciliation associated with the break (required)
+     * @param runDate The date of the run associated with the break (required)
+     * @param version The version number of the run associated with the break (required)
+     * @return APIlistReconciliationBreaksRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reconciliation breaks </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listReconciliationMappingsCall(String reconciliationType, final ApiCallback _callback) throws ApiException {
+    public APIlistReconciliationBreaksRequest listReconciliationBreaks(String scope, String code, OffsetDateTime runDate, Integer version) {
+        return new APIlistReconciliationBreaksRequest(scope, code, runDate, version);
+    }
+    private okhttp3.Call listReconciliationMappingsCall(String reconciliationType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1808,89 +2174,121 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings
-     * Lists all mappings this user is entitled to see
-     * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
-     * @return ResourceListOfMapping
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfMapping listReconciliationMappings(String reconciliationType) throws ApiException {
-        ApiResponse<ResourceListOfMapping> localVarResp = listReconciliationMappingsWithHttpInfo(reconciliationType);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings
-     * Lists all mappings this user is entitled to see
-     * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
-     * @return ApiResponse&lt;ResourceListOfMapping&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfMapping> listReconciliationMappingsWithHttpInfo(String reconciliationType) throws ApiException {
+    private ApiResponse<ResourceListOfMapping> listReconciliationMappingsWithHttpInfo(String reconciliationType) throws ApiException {
         okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, null);
         Type localVarReturnType = new TypeToken<ResourceListOfMapping>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings (asynchronously)
-     * Lists all mappings this user is entitled to see
-     * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listReconciliationMappingsAsync(String reconciliationType, final ApiCallback<ResourceListOfMapping> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationMappingsAsync(String reconciliationType, final ApiCallback<ResourceListOfMapping> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfMapping>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistReconciliationMappingsRequest {
+        private String reconciliationType;
+
+        private APIlistReconciliationMappingsRequest() {
+        }
+
+        /**
+         * Set reconciliationType
+         * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
+         * @return APIlistReconciliationMappingsRequest
+         */
+        public APIlistReconciliationMappingsRequest reconciliationType(String reconciliationType) {
+            this.reconciliationType = reconciliationType;
+            return this;
+        }
+
+        /**
+         * Build call for listReconciliationMappings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listReconciliationMappingsCall(reconciliationType, _callback);
+        }
+
+        /**
+         * Execute listReconciliationMappings request
+         * @return ResourceListOfMapping
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfMapping execute() throws ApiException {
+            ApiResponse<ResourceListOfMapping> localVarResp = listReconciliationMappingsWithHttpInfo(reconciliationType);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listReconciliationMappings request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfMapping&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfMapping> executeWithHttpInfo() throws ApiException {
+            return listReconciliationMappingsWithHttpInfo(reconciliationType);
+        }
+
+        /**
+         * Execute listReconciliationMappings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfMapping> _callback) throws ApiException {
+            return listReconciliationMappingsAsync(reconciliationType, _callback);
+        }
+    }
+
     /**
-     * Build call for listReconciliationRuns
-     * @param scope The scope of the reconciliation (required)
-     * @param code The code of the reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings
+     * Lists all mappings this user is entitled to see
+     * @return APIlistReconciliationMappingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listReconciliationRunsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistReconciliationMappingsRequest listReconciliationMappings() {
+        return new APIlistReconciliationMappingsRequest();
+    }
+    private okhttp3.Call listReconciliationRunsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1978,109 +2376,182 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliationRuns: List Reconciliation runs
-     * List all runs for a given reconciliation
-     * @param scope The scope of the reconciliation (required)
-     * @param code The code of the reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return PagedResourceListOfReconciliationRun
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfReconciliationRun listReconciliationRuns(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfReconciliationRun> localVarResp = listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliationRuns: List Reconciliation runs
-     * List all runs for a given reconciliation
-     * @param scope The scope of the reconciliation (required)
-     * @param code The code of the reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfReconciliationRun&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfReconciliationRun> listReconciliationRunsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfReconciliationRun> listReconciliationRunsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listReconciliationRunsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliationRuns: List Reconciliation runs (asynchronously)
-     * List all runs for a given reconciliation
-     * @param scope The scope of the reconciliation (required)
-     * @param code The code of the reconciliation (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version              of each run if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliation runs; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listReconciliationRunsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRun> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationRunsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRun> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listReconciliationRunsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistReconciliationRunsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistReconciliationRunsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the reconciliation runs. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistReconciliationRunsRequest
+         */
+        public APIlistReconciliationRunsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the reconciliation runs. Defaults to returning the latest version   of each run if not specified. (optional)
+         * @return APIlistReconciliationRunsRequest
+         */
+        public APIlistReconciliationRunsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistReconciliationRunsRequest
+         */
+        public APIlistReconciliationRunsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistReconciliationRunsRequest
+         */
+        public APIlistReconciliationRunsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistReconciliationRunsRequest
+         */
+        public APIlistReconciliationRunsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the run date, specify \&quot;Date eq 10/03/2018\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistReconciliationRunsRequest
+         */
+        public APIlistReconciliationRunsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listReconciliationRuns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listReconciliationRunsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listReconciliationRuns request
+         * @return PagedResourceListOfReconciliationRun
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfReconciliationRun execute() throws ApiException {
+            ApiResponse<PagedResourceListOfReconciliationRun> localVarResp = listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listReconciliationRuns request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfReconciliationRun&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfReconciliationRun> executeWithHttpInfo() throws ApiException {
+            return listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listReconciliationRuns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliationRun> _callback) throws ApiException {
+            return listReconciliationRunsAsync(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listReconciliations
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version              of each reconciliation if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListReconciliationRuns: List Reconciliation runs
+     * List all runs for a given reconciliation
+     * @param scope The scope of the reconciliation (required)
+     * @param code The code of the reconciliation (required)
+     * @return APIlistReconciliationRunsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reconciliation runs </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listReconciliationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIlistReconciliationRunsRequest listReconciliationRuns(String scope, String code) {
+        return new APIlistReconciliationRunsRequest(scope, code);
+    }
+    private okhttp3.Call listReconciliationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2160,100 +2631,187 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations
-     * List all the scheduled reconciliations matching particular criteria
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version              of each reconciliation if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @return PagedResourceListOfReconciliation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfReconciliation listReconciliations(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfReconciliation> localVarResp = listReconciliationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations
-     * List all the scheduled reconciliations matching particular criteria
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version              of each reconciliation if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfReconciliation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfReconciliation> listReconciliationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfReconciliation> listReconciliationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations (asynchronously)
-     * List all the scheduled reconciliations matching particular criteria
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version              of each reconciliation if not specified. (optional)
-     * @param page The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listReconciliationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistReconciliationsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistReconciliationsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
+         * @return APIlistReconciliationsRequest
+         */
+        public APIlistReconciliationsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listReconciliations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listReconciliationsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listReconciliations request
+         * @return PagedResourceListOfReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfReconciliation execute() throws ApiException {
+            ApiResponse<PagedResourceListOfReconciliation> localVarResp = listReconciliationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listReconciliations request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfReconciliation> executeWithHttpInfo() throws ApiException {
+            return listReconciliationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listReconciliations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
+            return listReconciliationsAsync(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for reconcileGeneric
-     * @param reconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations
+     * List all the scheduled reconciliations matching particular criteria
+     * @return APIlistReconciliationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reconcileGenericCall(ReconciliationRequest reconciliationRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistReconciliationsRequest listReconciliations() {
+        return new APIlistReconciliationsRequest();
+    }
+    private okhttp3.Call reconcileGenericCall(ReconciliationRequest reconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2309,77 +2867,109 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.                The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
-     * Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
-     * @param reconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ReconciliationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconciliationResponse reconcileGeneric(ReconciliationRequest reconciliationRequest) throws ApiException {
-        ApiResponse<ReconciliationResponse> localVarResp = reconcileGenericWithHttpInfo(reconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.                The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
-     * Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
-     * @param reconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ApiResponse&lt;ReconciliationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconciliationResponse> reconcileGenericWithHttpInfo(ReconciliationRequest reconciliationRequest) throws ApiException {
+    private ApiResponse<ReconciliationResponse> reconcileGenericWithHttpInfo(ReconciliationRequest reconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, null);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.                The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero. (asynchronously)
-     * Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
-     * @param reconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call reconcileGenericAsync(ReconciliationRequest reconciliationRequest, final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
+    private okhttp3.Call reconcileGenericAsync(ReconciliationRequest reconciliationRequest, final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIreconcileGenericRequest {
+        private ReconciliationRequest reconciliationRequest;
+
+        private APIreconcileGenericRequest() {
+        }
+
+        /**
+         * Set reconciliationRequest
+         * @param reconciliationRequest The specifications of the inputs to the reconciliation (optional)
+         * @return APIreconcileGenericRequest
+         */
+        public APIreconcileGenericRequest reconciliationRequest(ReconciliationRequest reconciliationRequest) {
+            this.reconciliationRequest = reconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for reconcileGeneric
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reconcileGenericCall(reconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileGeneric request
+         * @return ReconciliationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationResponse execute() throws ApiException {
+            ApiResponse<ReconciliationResponse> localVarResp = reconcileGenericWithHttpInfo(reconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reconcileGeneric request with HTTP info returned
+         * @return ApiResponse&lt;ReconciliationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationResponse> executeWithHttpInfo() throws ApiException {
+            return reconcileGenericWithHttpInfo(reconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileGeneric request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
+            return reconcileGenericAsync(reconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for reconcileHoldings
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param portfoliosReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.     The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
+     * Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
+     * @return APIreconcileGenericRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -2388,7 +2978,10 @@ public class ReconciliationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reconcileHoldingsCall(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    public APIreconcileGenericRequest reconcileGeneric() {
+        return new APIreconcileGenericRequest();
+    }
+    private okhttp3.Call reconcileHoldingsCall(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2460,85 +3053,153 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings
-     * Reconcile the holdings of two portfolios.
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param portfoliosReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ResourceListOfReconciliationBreak
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfReconciliationBreak reconcileHoldings(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest) throws ApiException {
-        ApiResponse<ResourceListOfReconciliationBreak> localVarResp = reconcileHoldingsWithHttpInfo(sortBy, start, limit, filter, portfoliosReconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings
-     * Reconcile the holdings of two portfolios.
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param portfoliosReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ApiResponse&lt;ResourceListOfReconciliationBreak&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfReconciliationBreak> reconcileHoldingsWithHttpInfo(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest) throws ApiException {
+    private ApiResponse<ResourceListOfReconciliationBreak> reconcileHoldingsWithHttpInfo(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings (asynchronously)
-     * Reconcile the holdings of two portfolios.
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param portfoliosReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call reconcileHoldingsAsync(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
+    private okhttp3.Call reconcileHoldingsAsync(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIreconcileHoldingsRequest {
+        private List<String> sortBy;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private PortfoliosReconciliationRequest portfoliosReconciliationRequest;
+
+        private APIreconcileHoldingsRequest() {
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+         * @return APIreconcileHoldingsRequest
+         */
+        public APIreconcileHoldingsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start Optional. When paginating, skip this number of results (optional)
+         * @return APIreconcileHoldingsRequest
+         */
+        public APIreconcileHoldingsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIreconcileHoldingsRequest
+         */
+        public APIreconcileHoldingsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIreconcileHoldingsRequest
+         */
+        public APIreconcileHoldingsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set portfoliosReconciliationRequest
+         * @param portfoliosReconciliationRequest The specifications of the inputs to the reconciliation (optional)
+         * @return APIreconcileHoldingsRequest
+         */
+        public APIreconcileHoldingsRequest portfoliosReconciliationRequest(PortfoliosReconciliationRequest portfoliosReconciliationRequest) {
+            this.portfoliosReconciliationRequest = portfoliosReconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for reconcileHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reconcileHoldingsCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileHoldings request
+         * @return ResourceListOfReconciliationBreak
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfReconciliationBreak execute() throws ApiException {
+            ApiResponse<ResourceListOfReconciliationBreak> localVarResp = reconcileHoldingsWithHttpInfo(sortBy, start, limit, filter, portfoliosReconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reconcileHoldings request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfReconciliationBreak&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfReconciliationBreak> executeWithHttpInfo() throws ApiException {
+            return reconcileHoldingsWithHttpInfo(sortBy, start, limit, filter, portfoliosReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
+            return reconcileHoldingsAsync(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for reconcileInline
-     * @param inlineValuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings
+     * Reconcile the holdings of two portfolios.
+     * @return APIreconcileHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -2547,7 +3208,10 @@ public class ReconciliationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reconcileInlineCall(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    public APIreconcileHoldingsRequest reconcileHoldings() {
+        return new APIreconcileHoldingsRequest();
+    }
+    private okhttp3.Call reconcileInlineCall(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2603,82 +3267,121 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes.
-     * Perform valuation of one or two set of inline instruments using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
-     * @param inlineValuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ListAggregationReconciliation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListAggregationReconciliation reconcileInline(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest) throws ApiException {
-        ApiResponse<ListAggregationReconciliation> localVarResp = reconcileInlineWithHttpInfo(inlineValuationsReconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes.
-     * Perform valuation of one or two set of inline instruments using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
-     * @param inlineValuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ApiResponse&lt;ListAggregationReconciliation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListAggregationReconciliation> reconcileInlineWithHttpInfo(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest) throws ApiException {
+    private ApiResponse<ListAggregationReconciliation> reconcileInlineWithHttpInfo(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes. (asynchronously)
-     * Perform valuation of one or two set of inline instruments using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
-     * @param inlineValuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call reconcileInlineAsync(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
+    private okhttp3.Call reconcileInlineAsync(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIreconcileInlineRequest {
+        private InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest;
+
+        private APIreconcileInlineRequest() {
+        }
+
+        /**
+         * Set inlineValuationsReconciliationRequest
+         * @param inlineValuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
+         * @return APIreconcileInlineRequest
+         */
+        public APIreconcileInlineRequest inlineValuationsReconciliationRequest(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest) {
+            this.inlineValuationsReconciliationRequest = inlineValuationsReconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for reconcileInline
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reconcileInlineCall(inlineValuationsReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileInline request
+         * @return ListAggregationReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationReconciliation execute() throws ApiException {
+            ApiResponse<ListAggregationReconciliation> localVarResp = reconcileInlineWithHttpInfo(inlineValuationsReconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reconcileInline request with HTTP info returned
+         * @return ApiResponse&lt;ListAggregationReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationReconciliation> executeWithHttpInfo() throws ApiException {
+            return reconcileInlineWithHttpInfo(inlineValuationsReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileInline request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
+            return reconcileInlineAsync(inlineValuationsReconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for reconcileTransactions
-     * @param transactionReconciliationRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes.
+     * Perform valuation of one or two set of inline instruments using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
+     * @return APIreconcileInlineRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reconcileTransactionsCall(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    public APIreconcileInlineRequest reconcileInline() {
+        return new APIreconcileInlineRequest();
+    }
+    private okhttp3.Call reconcileTransactionsCall(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2734,82 +3437,121 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
-     * @param transactionReconciliationRequest  (optional)
-     * @return TransactionsReconciliationsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TransactionsReconciliationsResponse reconcileTransactions(TransactionReconciliationRequest transactionReconciliationRequest) throws ApiException {
-        ApiResponse<TransactionsReconciliationsResponse> localVarResp = reconcileTransactionsWithHttpInfo(transactionReconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
-     * @param transactionReconciliationRequest  (optional)
-     * @return ApiResponse&lt;TransactionsReconciliationsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TransactionsReconciliationsResponse> reconcileTransactionsWithHttpInfo(TransactionReconciliationRequest transactionReconciliationRequest) throws ApiException {
+    private ApiResponse<TransactionsReconciliationsResponse> reconcileTransactionsWithHttpInfo(TransactionReconciliationRequest transactionReconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<TransactionsReconciliationsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation. (asynchronously)
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
-     * @param transactionReconciliationRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call reconcileTransactionsAsync(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback<TransactionsReconciliationsResponse> _callback) throws ApiException {
+    private okhttp3.Call reconcileTransactionsAsync(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback<TransactionsReconciliationsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<TransactionsReconciliationsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIreconcileTransactionsRequest {
+        private TransactionReconciliationRequest transactionReconciliationRequest;
+
+        private APIreconcileTransactionsRequest() {
+        }
+
+        /**
+         * Set transactionReconciliationRequest
+         * @param transactionReconciliationRequest  (optional)
+         * @return APIreconcileTransactionsRequest
+         */
+        public APIreconcileTransactionsRequest transactionReconciliationRequest(TransactionReconciliationRequest transactionReconciliationRequest) {
+            this.transactionReconciliationRequest = transactionReconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for reconcileTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reconcileTransactionsCall(transactionReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileTransactions request
+         * @return TransactionsReconciliationsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionsReconciliationsResponse execute() throws ApiException {
+            ApiResponse<TransactionsReconciliationsResponse> localVarResp = reconcileTransactionsWithHttpInfo(transactionReconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reconcileTransactions request with HTTP info returned
+         * @return ApiResponse&lt;TransactionsReconciliationsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionsReconciliationsResponse> executeWithHttpInfo() throws ApiException {
+            return reconcileTransactionsWithHttpInfo(transactionReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionsReconciliationsResponse> _callback) throws ApiException {
+            return reconcileTransactionsAsync(transactionReconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for reconcileTransactionsV2
-     * @param transactionReconciliationRequestV2  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.
+     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
+     * @return APIreconcileTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reconcileTransactionsV2Call(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback _callback) throws ApiException {
+    public APIreconcileTransactionsRequest reconcileTransactions() {
+        return new APIreconcileTransactionsRequest();
+    }
+    private okhttp3.Call reconcileTransactionsV2Call(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2865,73 +3607,109 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
-     * @param transactionReconciliationRequestV2  (optional)
-     * @return ReconciliationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconciliationResponse reconcileTransactionsV2(TransactionReconciliationRequestV2 transactionReconciliationRequestV2) throws ApiException {
-        ApiResponse<ReconciliationResponse> localVarResp = reconcileTransactionsV2WithHttpInfo(transactionReconciliationRequestV2);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
-     * @param transactionReconciliationRequestV2  (optional)
-     * @return ApiResponse&lt;ReconciliationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconciliationResponse> reconcileTransactionsV2WithHttpInfo(TransactionReconciliationRequestV2 transactionReconciliationRequestV2) throws ApiException {
+    private ApiResponse<ReconciliationResponse> reconcileTransactionsV2WithHttpInfo(TransactionReconciliationRequestV2 transactionReconciliationRequestV2) throws ApiException {
         okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, null);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation. (asynchronously)
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
-     * @param transactionReconciliationRequestV2  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call reconcileTransactionsV2Async(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
+    private okhttp3.Call reconcileTransactionsV2Async(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, _callback);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIreconcileTransactionsV2Request {
+        private TransactionReconciliationRequestV2 transactionReconciliationRequestV2;
+
+        private APIreconcileTransactionsV2Request() {
+        }
+
+        /**
+         * Set transactionReconciliationRequestV2
+         * @param transactionReconciliationRequestV2  (optional)
+         * @return APIreconcileTransactionsV2Request
+         */
+        public APIreconcileTransactionsV2Request transactionReconciliationRequestV2(TransactionReconciliationRequestV2 transactionReconciliationRequestV2) {
+            this.transactionReconciliationRequestV2 = transactionReconciliationRequestV2;
+            return this;
+        }
+
+        /**
+         * Build call for reconcileTransactionsV2
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reconcileTransactionsV2Call(transactionReconciliationRequestV2, _callback);
+        }
+
+        /**
+         * Execute reconcileTransactionsV2 request
+         * @return ReconciliationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationResponse execute() throws ApiException {
+            ApiResponse<ReconciliationResponse> localVarResp = reconcileTransactionsV2WithHttpInfo(transactionReconciliationRequestV2);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reconcileTransactionsV2 request with HTTP info returned
+         * @return ApiResponse&lt;ReconciliationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationResponse> executeWithHttpInfo() throws ApiException {
+            return reconcileTransactionsV2WithHttpInfo(transactionReconciliationRequestV2);
+        }
+
+        /**
+         * Execute reconcileTransactionsV2 request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
+            return reconcileTransactionsV2Async(transactionReconciliationRequestV2, _callback);
+        }
+    }
+
     /**
-     * Build call for reconcileValuation
-     * @param valuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
+     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
+     * @return APIreconcileTransactionsV2Request
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -2940,7 +3718,10 @@ public class ReconciliationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reconcileValuationCall(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    public APIreconcileTransactionsV2Request reconcileTransactionsV2() {
+        return new APIreconcileTransactionsV2Request();
+    }
+    private okhttp3.Call reconcileValuationCall(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2996,84 +3777,121 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
-     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
-     * @param valuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ListAggregationReconciliation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListAggregationReconciliation reconcileValuation(ValuationsReconciliationRequest valuationsReconciliationRequest) throws ApiException {
-        ApiResponse<ListAggregationReconciliation> localVarResp = reconcileValuationWithHttpInfo(valuationsReconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
-     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
-     * @param valuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @return ApiResponse&lt;ListAggregationReconciliation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListAggregationReconciliation> reconcileValuationWithHttpInfo(ValuationsReconciliationRequest valuationsReconciliationRequest) throws ApiException {
+    private ApiResponse<ListAggregationReconciliation> reconcileValuationWithHttpInfo(ValuationsReconciliationRequest valuationsReconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes. (asynchronously)
-     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
-     * @param valuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call reconcileValuationAsync(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
+    private okhttp3.Call reconcileValuationAsync(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIreconcileValuationRequest {
+        private ValuationsReconciliationRequest valuationsReconciliationRequest;
+
+        private APIreconcileValuationRequest() {
+        }
+
+        /**
+         * Set valuationsReconciliationRequest
+         * @param valuationsReconciliationRequest The specifications of the inputs to the reconciliation (optional)
+         * @return APIreconcileValuationRequest
+         */
+        public APIreconcileValuationRequest valuationsReconciliationRequest(ValuationsReconciliationRequest valuationsReconciliationRequest) {
+            this.valuationsReconciliationRequest = valuationsReconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for reconcileValuation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reconcileValuationCall(valuationsReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileValuation request
+         * @return ListAggregationReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationReconciliation execute() throws ApiException {
+            ApiResponse<ListAggregationReconciliation> localVarResp = reconcileValuationWithHttpInfo(valuationsReconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reconcileValuation request with HTTP info returned
+         * @return ApiResponse&lt;ListAggregationReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationReconciliation> executeWithHttpInfo() throws ApiException {
+            return reconcileValuationWithHttpInfo(valuationsReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileValuation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
+            return reconcileValuationAsync(valuationsReconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for updateReconciliation
-     * @param scope The scope of the reconciliation to be updated (required)
-     * @param code The code of the reconciliation to be updated (required)
-     * @param updateReconciliationRequest The updated definition of the reconciliation (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
+     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
+     * @return APIreconcileValuationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateReconciliationCall(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    public APIreconcileValuationRequest reconcileValuation() {
+        return new APIreconcileValuationRequest();
+    }
+    private okhttp3.Call updateReconciliationCall(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3141,92 +3959,127 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation
-     * Update a given scheduled reconciliation
-     * @param scope The scope of the reconciliation to be updated (required)
-     * @param code The code of the reconciliation to be updated (required)
-     * @param updateReconciliationRequest The updated definition of the reconciliation (optional)
-     * @return Reconciliation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Reconciliation updateReconciliation(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest) throws ApiException {
-        ApiResponse<Reconciliation> localVarResp = updateReconciliationWithHttpInfo(scope, code, updateReconciliationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation
-     * Update a given scheduled reconciliation
-     * @param scope The scope of the reconciliation to be updated (required)
-     * @param code The code of the reconciliation to be updated (required)
-     * @param updateReconciliationRequest The updated definition of the reconciliation (optional)
-     * @return ApiResponse&lt;Reconciliation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Reconciliation> updateReconciliationWithHttpInfo(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest) throws ApiException {
+    private ApiResponse<Reconciliation> updateReconciliationWithHttpInfo(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest) throws ApiException {
         okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation (asynchronously)
-     * Update a given scheduled reconciliation
-     * @param scope The scope of the reconciliation to be updated (required)
-     * @param code The code of the reconciliation to be updated (required)
-     * @param updateReconciliationRequest The updated definition of the reconciliation (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateReconciliationAsync(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback<Reconciliation> _callback) throws ApiException {
+    private okhttp3.Call updateReconciliationAsync(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback<Reconciliation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupdateReconciliationRequest {
+        private final String scope;
+        private final String code;
+        private UpdateReconciliationRequest updateReconciliationRequest;
+
+        private APIupdateReconciliationRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set updateReconciliationRequest
+         * @param updateReconciliationRequest The updated definition of the reconciliation (optional)
+         * @return APIupdateReconciliationRequest
+         */
+        public APIupdateReconciliationRequest updateReconciliationRequest(UpdateReconciliationRequest updateReconciliationRequest) {
+            this.updateReconciliationRequest = updateReconciliationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for updateReconciliation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateReconciliationCall(scope, code, updateReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute updateReconciliation request
+         * @return Reconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Reconciliation execute() throws ApiException {
+            ApiResponse<Reconciliation> localVarResp = updateReconciliationWithHttpInfo(scope, code, updateReconciliationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateReconciliation request with HTTP info returned
+         * @return ApiResponse&lt;Reconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Reconciliation> executeWithHttpInfo() throws ApiException {
+            return updateReconciliationWithHttpInfo(scope, code, updateReconciliationRequest);
+        }
+
+        /**
+         * Execute updateReconciliation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback) throws ApiException {
+            return updateReconciliationAsync(scope, code, updateReconciliationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertReconciliationBreak
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param upsertReconciliationBreakRequest The definition of the reconciliation break request (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation
+     * Update a given scheduled reconciliation
+     * @param scope The scope of the reconciliation to be updated (required)
+     * @param code The code of the reconciliation to be updated (required)
+     * @return APIupdateReconciliationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertReconciliationBreakCall(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest, final ApiCallback _callback) throws ApiException {
+    public APIupdateReconciliationRequest updateReconciliation(String scope, String code) {
+        return new APIupdateReconciliationRequest(scope, code);
+    }
+    private okhttp3.Call upsertReconciliationBreakCall(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3306,94 +4159,133 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertReconciliationBreak: Upsert a reconciliation break
-     * Update or create a given reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param upsertReconciliationBreakRequest The definition of the reconciliation break request (optional)
-     * @return ReconciliationRunBreak
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconciliationRunBreak upsertReconciliationBreak(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest) throws ApiException {
-        ApiResponse<ReconciliationRunBreak> localVarResp = upsertReconciliationBreakWithHttpInfo(scope, code, runDate, version, upsertReconciliationBreakRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertReconciliationBreak: Upsert a reconciliation break
-     * Update or create a given reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param upsertReconciliationBreakRequest The definition of the reconciliation break request (optional)
-     * @return ApiResponse&lt;ReconciliationRunBreak&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconciliationRunBreak> upsertReconciliationBreakWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest) throws ApiException {
+    private ApiResponse<ReconciliationRunBreak> upsertReconciliationBreakWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertReconciliationBreakValidateBeforeCall(scope, code, runDate, version, upsertReconciliationBreakRequest, null);
         Type localVarReturnType = new TypeToken<ReconciliationRunBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertReconciliationBreak: Upsert a reconciliation break (asynchronously)
-     * Update or create a given reconciliation break
-     * @param scope The scope of the reconciliation associated with the break (required)
-     * @param code The code of the reconciliation associated with the break (required)
-     * @param runDate The date of the run associated with the break (required)
-     * @param version The version number of the run associated with the break (required)
-     * @param upsertReconciliationBreakRequest The definition of the reconciliation break request (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertReconciliationBreakAsync(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest, final ApiCallback<ReconciliationRunBreak> _callback) throws ApiException {
+    private okhttp3.Call upsertReconciliationBreakAsync(String scope, String code, OffsetDateTime runDate, Integer version, UpsertReconciliationBreakRequest upsertReconciliationBreakRequest, final ApiCallback<ReconciliationRunBreak> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertReconciliationBreakValidateBeforeCall(scope, code, runDate, version, upsertReconciliationBreakRequest, _callback);
         Type localVarReturnType = new TypeToken<ReconciliationRunBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertReconciliationBreakRequest {
+        private final String scope;
+        private final String code;
+        private final OffsetDateTime runDate;
+        private final Integer version;
+        private UpsertReconciliationBreakRequest upsertReconciliationBreakRequest;
+
+        private APIupsertReconciliationBreakRequest(String scope, String code, OffsetDateTime runDate, Integer version) {
+            this.scope = scope;
+            this.code = code;
+            this.runDate = runDate;
+            this.version = version;
+        }
+
+        /**
+         * Set upsertReconciliationBreakRequest
+         * @param upsertReconciliationBreakRequest The definition of the reconciliation break request (optional)
+         * @return APIupsertReconciliationBreakRequest
+         */
+        public APIupsertReconciliationBreakRequest upsertReconciliationBreakRequest(UpsertReconciliationBreakRequest upsertReconciliationBreakRequest) {
+            this.upsertReconciliationBreakRequest = upsertReconciliationBreakRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertReconciliationBreak
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertReconciliationBreakCall(scope, code, runDate, version, upsertReconciliationBreakRequest, _callback);
+        }
+
+        /**
+         * Execute upsertReconciliationBreak request
+         * @return ReconciliationRunBreak
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationRunBreak execute() throws ApiException {
+            ApiResponse<ReconciliationRunBreak> localVarResp = upsertReconciliationBreakWithHttpInfo(scope, code, runDate, version, upsertReconciliationBreakRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertReconciliationBreak request with HTTP info returned
+         * @return ApiResponse&lt;ReconciliationRunBreak&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationRunBreak> executeWithHttpInfo() throws ApiException {
+            return upsertReconciliationBreakWithHttpInfo(scope, code, runDate, version, upsertReconciliationBreakRequest);
+        }
+
+        /**
+         * Execute upsertReconciliationBreak request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationRunBreak> _callback) throws ApiException {
+            return upsertReconciliationBreakAsync(scope, code, runDate, version, upsertReconciliationBreakRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertReconciliationMapping
-     * @param mapping The mapping to be created / updated. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertReconciliationBreak: Upsert a reconciliation break
+     * Update or create a given reconciliation break
+     * @param scope The scope of the reconciliation associated with the break (required)
+     * @param code The code of the reconciliation associated with the break (required)
+     * @param runDate The date of the run associated with the break (required)
+     * @param version The version number of the run associated with the break (required)
+     * @return APIupsertReconciliationBreakRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created reconciliation break </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertReconciliationMappingCall(Mapping mapping, final ApiCallback _callback) throws ApiException {
+    public APIupsertReconciliationBreakRequest upsertReconciliationBreak(String scope, String code, OffsetDateTime runDate, Integer version) {
+        return new APIupsertReconciliationBreakRequest(scope, code, runDate, version);
+    }
+    private okhttp3.Call upsertReconciliationMappingCall(Mapping mapping, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3449,84 +4341,121 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
-     * If no mapping exists with the specified scope and code will create a new one.  Else will update the existing mapping
-     * @param mapping The mapping to be created / updated. (optional)
-     * @return Mapping
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Mapping upsertReconciliationMapping(Mapping mapping) throws ApiException {
-        ApiResponse<Mapping> localVarResp = upsertReconciliationMappingWithHttpInfo(mapping);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
-     * If no mapping exists with the specified scope and code will create a new one.  Else will update the existing mapping
-     * @param mapping The mapping to be created / updated. (optional)
-     * @return ApiResponse&lt;Mapping&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Mapping> upsertReconciliationMappingWithHttpInfo(Mapping mapping) throws ApiException {
+    private ApiResponse<Mapping> upsertReconciliationMappingWithHttpInfo(Mapping mapping) throws ApiException {
         okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, null);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping (asynchronously)
-     * If no mapping exists with the specified scope and code will create a new one.  Else will update the existing mapping
-     * @param mapping The mapping to be created / updated. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertReconciliationMappingAsync(Mapping mapping, final ApiCallback<Mapping> _callback) throws ApiException {
+    private okhttp3.Call upsertReconciliationMappingAsync(Mapping mapping, final ApiCallback<Mapping> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, _callback);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertReconciliationMappingRequest {
+        private Mapping mapping;
+
+        private APIupsertReconciliationMappingRequest() {
+        }
+
+        /**
+         * Set mapping
+         * @param mapping The mapping to be created / updated. (optional)
+         * @return APIupsertReconciliationMappingRequest
+         */
+        public APIupsertReconciliationMappingRequest mapping(Mapping mapping) {
+            this.mapping = mapping;
+            return this;
+        }
+
+        /**
+         * Build call for upsertReconciliationMapping
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertReconciliationMappingCall(mapping, _callback);
+        }
+
+        /**
+         * Execute upsertReconciliationMapping request
+         * @return Mapping
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Mapping execute() throws ApiException {
+            ApiResponse<Mapping> localVarResp = upsertReconciliationMappingWithHttpInfo(mapping);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertReconciliationMapping request with HTTP info returned
+         * @return ApiResponse&lt;Mapping&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Mapping> executeWithHttpInfo() throws ApiException {
+            return upsertReconciliationMappingWithHttpInfo(mapping);
+        }
+
+        /**
+         * Execute upsertReconciliationMapping request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Mapping> _callback) throws ApiException {
+            return upsertReconciliationMappingAsync(mapping, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertReconciliationRun
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param upsertReconciliationRunRequest The definition of the reconciliation run (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
+     * If no mapping exists with the specified scope and code will create a new one.  Else will update the existing mapping
+     * @return APIupsertReconciliationMappingRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertReconciliationRunCall(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertReconciliationMappingRequest upsertReconciliationMapping() {
+        return new APIupsertReconciliationMappingRequest();
+    }
+    private okhttp3.Call upsertReconciliationRunCall(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3594,58 +4523,115 @@ public class ReconciliationsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertReconciliationRun: Update or Create a reconciliation run
-     * Existing reconciliations will be updated, non-existing ones will be created
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param upsertReconciliationRunRequest The definition of the reconciliation run (optional)
-     * @return ReconciliationRun
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconciliationRun upsertReconciliationRun(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest) throws ApiException {
-        ApiResponse<ReconciliationRun> localVarResp = upsertReconciliationRunWithHttpInfo(scope, code, upsertReconciliationRunRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertReconciliationRun: Update or Create a reconciliation run
-     * Existing reconciliations will be updated, non-existing ones will be created
-     * @param scope The scope of the reconciliation associated with the run (required)
-     * @param code The code of the reconciliation associated with the run (required)
-     * @param upsertReconciliationRunRequest The definition of the reconciliation run (optional)
-     * @return ApiResponse&lt;ReconciliationRun&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconciliationRun> upsertReconciliationRunWithHttpInfo(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest) throws ApiException {
+    private ApiResponse<ReconciliationRun> upsertReconciliationRunWithHttpInfo(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertReconciliationRunValidateBeforeCall(scope, code, upsertReconciliationRunRequest, null);
         Type localVarReturnType = new TypeToken<ReconciliationRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertReconciliationRunAsync(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest, final ApiCallback<ReconciliationRun> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertReconciliationRunValidateBeforeCall(scope, code, upsertReconciliationRunRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReconciliationRun>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertReconciliationRunRequest {
+        private final String scope;
+        private final String code;
+        private UpsertReconciliationRunRequest upsertReconciliationRunRequest;
+
+        private APIupsertReconciliationRunRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set upsertReconciliationRunRequest
+         * @param upsertReconciliationRunRequest The definition of the reconciliation run (optional)
+         * @return APIupsertReconciliationRunRequest
+         */
+        public APIupsertReconciliationRunRequest upsertReconciliationRunRequest(UpsertReconciliationRunRequest upsertReconciliationRunRequest) {
+            this.upsertReconciliationRunRequest = upsertReconciliationRunRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertReconciliationRun
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertReconciliationRunCall(scope, code, upsertReconciliationRunRequest, _callback);
+        }
+
+        /**
+         * Execute upsertReconciliationRun request
+         * @return ReconciliationRun
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationRun execute() throws ApiException {
+            ApiResponse<ReconciliationRun> localVarResp = upsertReconciliationRunWithHttpInfo(scope, code, upsertReconciliationRunRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertReconciliationRun request with HTTP info returned
+         * @return ApiResponse&lt;ReconciliationRun&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationRun> executeWithHttpInfo() throws ApiException {
+            return upsertReconciliationRunWithHttpInfo(scope, code, upsertReconciliationRunRequest);
+        }
+
+        /**
+         * Execute upsertReconciliationRun request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created reconciliation run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationRun> _callback) throws ApiException {
+            return upsertReconciliationRunAsync(scope, code, upsertReconciliationRunRequest, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertReconciliationRun: Update or Create a reconciliation run (asynchronously)
+     * [EXPERIMENTAL] UpsertReconciliationRun: Update or Create a reconciliation run
      * Existing reconciliations will be updated, non-existing ones will be created
      * @param scope The scope of the reconciliation associated with the run (required)
      * @param code The code of the reconciliation associated with the run (required)
-     * @param upsertReconciliationRunRequest The definition of the reconciliation run (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertReconciliationRunRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -3654,11 +4640,7 @@ public class ReconciliationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertReconciliationRunAsync(String scope, String code, UpsertReconciliationRunRequest upsertReconciliationRunRequest, final ApiCallback<ReconciliationRun> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertReconciliationRunValidateBeforeCall(scope, code, upsertReconciliationRunRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReconciliationRun>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertReconciliationRunRequest upsertReconciliationRun(String scope, String code) {
+        return new APIupsertReconciliationRunRequest(scope, code);
     }
 }

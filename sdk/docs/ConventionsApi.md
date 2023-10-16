@@ -20,7 +20,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteCdsFlowConventions"></a>
 # **deleteCdsFlowConventions**
-> AnnulSingleStructuredDataResponse deleteCdsFlowConventions(scope, code)
+> AnnulSingleStructuredDataResponse deleteCdsFlowConventions(scope, code).execute();
 
 [BETA] DeleteCdsFlowConventions: Delete the CDS Flow Conventions of given scope and code, assuming that it is present.
 
@@ -49,7 +49,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the CDS Flow Conventions to delete.
     String code = "code_example"; // String | The CDS Flow Conventions to delete.
     try {
-      AnnulSingleStructuredDataResponse result = apiInstance.deleteCdsFlowConventions(scope, code);
+      AnnulSingleStructuredDataResponse result = apiInstance.deleteCdsFlowConventions(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#deleteCdsFlowConventions");
@@ -91,7 +92,7 @@ public class Example {
 
 <a id="deleteFlowConventions"></a>
 # **deleteFlowConventions**
-> AnnulSingleStructuredDataResponse deleteFlowConventions(scope, code)
+> AnnulSingleStructuredDataResponse deleteFlowConventions(scope, code).execute();
 
 [BETA] DeleteFlowConventions: Delete the Flow Conventions of given scope and code, assuming that it is present.
 
@@ -120,7 +121,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Flow Conventions to delete.
     String code = "code_example"; // String | The Flow Conventions to delete.
     try {
-      AnnulSingleStructuredDataResponse result = apiInstance.deleteFlowConventions(scope, code);
+      AnnulSingleStructuredDataResponse result = apiInstance.deleteFlowConventions(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#deleteFlowConventions");
@@ -162,7 +164,7 @@ public class Example {
 
 <a id="deleteIndexConvention"></a>
 # **deleteIndexConvention**
-> AnnulSingleStructuredDataResponse deleteIndexConvention(scope, code)
+> AnnulSingleStructuredDataResponse deleteIndexConvention(scope, code).execute();
 
 [BETA] DeleteIndexConvention: Delete the Index Convention of given scope and code, assuming that it is present.
 
@@ -191,7 +193,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Index Convention to delete.
     String code = "code_example"; // String | The Index Convention to delete.
     try {
-      AnnulSingleStructuredDataResponse result = apiInstance.deleteIndexConvention(scope, code);
+      AnnulSingleStructuredDataResponse result = apiInstance.deleteIndexConvention(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#deleteIndexConvention");
@@ -233,7 +236,7 @@ public class Example {
 
 <a id="getCdsFlowConventions"></a>
 # **getCdsFlowConventions**
-> GetCdsFlowConventionsResponse getCdsFlowConventions(scope, code, asAt)
+> GetCdsFlowConventionsResponse getCdsFlowConventions(scope, code).asAt(asAt).execute();
 
 [BETA] GetCdsFlowConventions: Get CDS Flow Conventions
 
@@ -263,7 +266,9 @@ public class Example {
     String code = "code_example"; // String | The name of the CDS Flow Conventions to retrieve the data for.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified.
     try {
-      GetCdsFlowConventionsResponse result = apiInstance.getCdsFlowConventions(scope, code, asAt);
+      GetCdsFlowConventionsResponse result = apiInstance.getCdsFlowConventions(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#getCdsFlowConventions");
@@ -306,7 +311,7 @@ public class Example {
 
 <a id="getFlowConventions"></a>
 # **getFlowConventions**
-> GetFlowConventionsResponse getFlowConventions(scope, code, asAt)
+> GetFlowConventionsResponse getFlowConventions(scope, code).asAt(asAt).execute();
 
 [BETA] GetFlowConventions: Get Flow Conventions
 
@@ -336,7 +341,9 @@ public class Example {
     String code = "code_example"; // String | The name of the Flow Conventions to retrieve the data for.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified.
     try {
-      GetFlowConventionsResponse result = apiInstance.getFlowConventions(scope, code, asAt);
+      GetFlowConventionsResponse result = apiInstance.getFlowConventions(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#getFlowConventions");
@@ -379,7 +386,7 @@ public class Example {
 
 <a id="getIndexConvention"></a>
 # **getIndexConvention**
-> GetIndexConventionResponse getIndexConvention(scope, code, asAt)
+> GetIndexConventionResponse getIndexConvention(scope, code).asAt(asAt).execute();
 
 [BETA] GetIndexConvention: Get Index Convention
 
@@ -409,7 +416,9 @@ public class Example {
     String code = "code_example"; // String | The name of the Index Convention to retrieve the data for.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified.
     try {
-      GetIndexConventionResponse result = apiInstance.getIndexConvention(scope, code, asAt);
+      GetIndexConventionResponse result = apiInstance.getIndexConvention(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#getIndexConvention");
@@ -452,7 +461,7 @@ public class Example {
 
 <a id="listCdsFlowConventions"></a>
 # **listCdsFlowConventions**
-> ResourceListOfGetCdsFlowConventionsResponse listCdsFlowConventions(asAt)
+> ResourceListOfGetCdsFlowConventionsResponse listCdsFlowConventions().asAt(asAt).execute();
 
 [BETA] ListCdsFlowConventions: List the set of CDS Flow Conventions
 
@@ -480,7 +489,9 @@ public class Example {
     ConventionsApi apiInstance = new ConventionsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the conventions. Defaults to latest if not specified.
     try {
-      ResourceListOfGetCdsFlowConventionsResponse result = apiInstance.listCdsFlowConventions(asAt);
+      ResourceListOfGetCdsFlowConventionsResponse result = apiInstance.listCdsFlowConventions()
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#listCdsFlowConventions");
@@ -521,7 +532,7 @@ public class Example {
 
 <a id="listFlowConventions"></a>
 # **listFlowConventions**
-> ResourceListOfGetFlowConventionsResponse listFlowConventions(asAt)
+> ResourceListOfGetFlowConventionsResponse listFlowConventions().asAt(asAt).execute();
 
 [BETA] ListFlowConventions: List the set of Flow Conventions
 
@@ -549,7 +560,9 @@ public class Example {
     ConventionsApi apiInstance = new ConventionsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the conventions. Defaults to latest if not specified.
     try {
-      ResourceListOfGetFlowConventionsResponse result = apiInstance.listFlowConventions(asAt);
+      ResourceListOfGetFlowConventionsResponse result = apiInstance.listFlowConventions()
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#listFlowConventions");
@@ -590,7 +603,7 @@ public class Example {
 
 <a id="listIndexConvention"></a>
 # **listIndexConvention**
-> ResourceListOfGetIndexConventionResponse listIndexConvention(asAt)
+> ResourceListOfGetIndexConventionResponse listIndexConvention().asAt(asAt).execute();
 
 [BETA] ListIndexConvention: List the set of Index Conventions
 
@@ -618,7 +631,9 @@ public class Example {
     ConventionsApi apiInstance = new ConventionsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the conventions. Defaults to latest if not specified.
     try {
-      ResourceListOfGetIndexConventionResponse result = apiInstance.listIndexConvention(asAt);
+      ResourceListOfGetIndexConventionResponse result = apiInstance.listIndexConvention()
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#listIndexConvention");
@@ -659,11 +674,11 @@ public class Example {
 
 <a id="upsertCdsFlowConventions"></a>
 # **upsertCdsFlowConventions**
-> UpsertSingleStructuredDataResponse upsertCdsFlowConventions(upsertCdsFlowConventionsRequest)
+> UpsertSingleStructuredDataResponse upsertCdsFlowConventions(upsertCdsFlowConventionsRequest).execute();
 
 [BETA] UpsertCdsFlowConventions: Upsert a set of CDS Flow Conventions. This creates or updates the data in Lusid.
 
-Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
+Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful     It is important to always check to verify success (or failure).
 
 ### Example
 ```java
@@ -687,7 +702,8 @@ public class Example {
     ConventionsApi apiInstance = new ConventionsApi(defaultClient);
     UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest = new UpsertCdsFlowConventionsRequest(); // UpsertCdsFlowConventionsRequest | The CDS Flow Conventions to update or insert
     try {
-      UpsertSingleStructuredDataResponse result = apiInstance.upsertCdsFlowConventions(upsertCdsFlowConventionsRequest);
+      UpsertSingleStructuredDataResponse result = apiInstance.upsertCdsFlowConventions(upsertCdsFlowConventionsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#upsertCdsFlowConventions");
@@ -728,11 +744,11 @@ public class Example {
 
 <a id="upsertFlowConventions"></a>
 # **upsertFlowConventions**
-> UpsertSingleStructuredDataResponse upsertFlowConventions(upsertFlowConventionsRequest)
+> UpsertSingleStructuredDataResponse upsertFlowConventions(upsertFlowConventionsRequest).execute();
 
 [BETA] UpsertFlowConventions: Upsert Flow Conventions. This creates or updates the data in Lusid.
 
-Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful                It is important to always check to verify success (or failure).
+Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful     It is important to always check to verify success (or failure).
 
 ### Example
 ```java
@@ -756,7 +772,8 @@ public class Example {
     ConventionsApi apiInstance = new ConventionsApi(defaultClient);
     UpsertFlowConventionsRequest upsertFlowConventionsRequest = new UpsertFlowConventionsRequest(); // UpsertFlowConventionsRequest | The Flow Conventions to update or insert
     try {
-      UpsertSingleStructuredDataResponse result = apiInstance.upsertFlowConventions(upsertFlowConventionsRequest);
+      UpsertSingleStructuredDataResponse result = apiInstance.upsertFlowConventions(upsertFlowConventionsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#upsertFlowConventions");
@@ -797,11 +814,11 @@ public class Example {
 
 <a id="upsertIndexConvention"></a>
 # **upsertIndexConvention**
-> UpsertSingleStructuredDataResponse upsertIndexConvention(upsertIndexConventionRequest)
+> UpsertSingleStructuredDataResponse upsertIndexConvention(upsertIndexConventionRequest).execute();
 
 [BETA] UpsertIndexConvention: Upsert a set of Index Convention. This creates or updates the data in Lusid.
 
-Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful                It is important to always check to verify success (or failure).
+Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful     It is important to always check to verify success (or failure).
 
 ### Example
 ```java
@@ -825,7 +842,8 @@ public class Example {
     ConventionsApi apiInstance = new ConventionsApi(defaultClient);
     UpsertIndexConventionRequest upsertIndexConventionRequest = new UpsertIndexConventionRequest(); // UpsertIndexConventionRequest | The Index Conventions to update or insert
     try {
-      UpsertSingleStructuredDataResponse result = apiInstance.upsertIndexConvention(upsertIndexConventionRequest);
+      UpsertSingleStructuredDataResponse result = apiInstance.upsertIndexConvention(upsertIndexConventionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConventionsApi#upsertIndexConvention");

@@ -2,7 +2,7 @@
 
 # ResultDataSchema
 
-The shape and type of the returned data. The AddressSchema gives information about the requested keys,  including the return type, links to further documentation, lifecycle status and removal date if they are  deprecated.                Note: the NodeValueSchema and PropertySchema fields have been deprecated. Please use the AddressSchema instead.
+The shape and type of the returned data. The AddressSchema gives information about the requested keys,  including the return type, links to further documentation, lifecycle status and removal date if they are  deprecated.     Note: the NodeValueSchema and PropertySchema fields have been deprecated. Please use the AddressSchema instead.
 
 ## Properties
 

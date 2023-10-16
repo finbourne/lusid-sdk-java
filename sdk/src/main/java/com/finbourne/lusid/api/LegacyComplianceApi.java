@@ -80,22 +80,7 @@ public class LegacyComplianceApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteLegacyComplianceRule
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegacyComplianceRuleCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegacyComplianceRuleCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -159,88 +144,116 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
-     * Deletes the rule for all effective time.                The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.                This cannot be undone.
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteLegacyComplianceRule(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteLegacyComplianceRuleWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
-     * Deletes the rule for all effective time.                The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.                This cannot be undone.
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteLegacyComplianceRuleWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteLegacyComplianceRuleWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule. (asynchronously)
-     * Deletes the rule for all effective time.                The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.                This cannot be undone.
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLegacyComplianceRuleAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteLegacyComplianceRuleAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteLegacyComplianceRuleRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteLegacyComplianceRuleRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteLegacyComplianceRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteLegacyComplianceRuleCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteLegacyComplianceRule request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegacyComplianceRuleWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteLegacyComplianceRule request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteLegacyComplianceRuleWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteLegacyComplianceRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteLegacyComplianceRuleAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegacyBreachedOrdersInfo
-     * @param runId The RunId that the results should be checked for (required)
-     * @param orderScope Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param orderCode Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
+     * Deletes the rule for all effective time.     The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.     This cannot be undone.
+     * @param scope The compliance rule scope. (required)
+     * @param code The compliance rule code. (required)
+     * @return APIdeleteLegacyComplianceRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegacyBreachedOrdersInfoCall(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIdeleteLegacyComplianceRuleRequest deleteLegacyComplianceRule(String scope, String code) {
+        return new APIdeleteLegacyComplianceRuleRequest(scope, code);
+    }
+    private okhttp3.Call getLegacyBreachedOrdersInfoCall(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -310,94 +323,146 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it.
-     * Use this endpoint to get a list or breached orders and the set of rules that may have caused the breach.
-     * @param runId The RunId that the results should be checked for (required)
-     * @param orderScope Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param orderCode Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @return ResourceListOfComplianceBreachedOrderInfo
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfComplianceBreachedOrderInfo getLegacyBreachedOrdersInfo(String runId, String orderScope, String orderCode, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfComplianceBreachedOrderInfo> localVarResp = getLegacyBreachedOrdersInfoWithHttpInfo(runId, orderScope, orderCode, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it.
-     * Use this endpoint to get a list or breached orders and the set of rules that may have caused the breach.
-     * @param runId The RunId that the results should be checked for (required)
-     * @param orderScope Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param orderCode Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @return ApiResponse&lt;ResourceListOfComplianceBreachedOrderInfo&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfComplianceBreachedOrderInfo> getLegacyBreachedOrdersInfoWithHttpInfo(String runId, String orderScope, String orderCode, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfComplianceBreachedOrderInfo> getLegacyBreachedOrdersInfoWithHttpInfo(String runId, String orderScope, String orderCode, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceBreachedOrderInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it. (asynchronously)
-     * Use this endpoint to get a list or breached orders and the set of rules that may have caused the breach.
-     * @param runId The RunId that the results should be checked for (required)
-     * @param orderScope Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param orderCode Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegacyBreachedOrdersInfoAsync(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback) throws ApiException {
+    private okhttp3.Call getLegacyBreachedOrdersInfoAsync(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceBreachedOrderInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegacyBreachedOrdersInfoRequest {
+        private final String runId;
+        private String orderScope;
+        private String orderCode;
+        private Integer limit;
+
+        private APIgetLegacyBreachedOrdersInfoRequest(String runId) {
+            this.runId = runId;
+        }
+
+        /**
+         * Set orderScope
+         * @param orderScope Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
+         * @return APIgetLegacyBreachedOrdersInfoRequest
+         */
+        public APIgetLegacyBreachedOrdersInfoRequest orderScope(String orderScope) {
+            this.orderScope = orderScope;
+            return this;
+        }
+
+        /**
+         * Set orderCode
+         * @param orderCode Optional. Find rules related to a specific order by providing an Order Scope/Code combination (optional)
+         * @return APIgetLegacyBreachedOrdersInfoRequest
+         */
+        public APIgetLegacyBreachedOrdersInfoRequest orderCode(String orderCode) {
+            this.orderCode = orderCode;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetLegacyBreachedOrdersInfoRequest
+         */
+        public APIgetLegacyBreachedOrdersInfoRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getLegacyBreachedOrdersInfo
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegacyBreachedOrdersInfoCall(runId, orderScope, orderCode, limit, _callback);
+        }
+
+        /**
+         * Execute getLegacyBreachedOrdersInfo request
+         * @return ResourceListOfComplianceBreachedOrderInfo
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceBreachedOrderInfo execute() throws ApiException {
+            ApiResponse<ResourceListOfComplianceBreachedOrderInfo> localVarResp = getLegacyBreachedOrdersInfoWithHttpInfo(runId, orderScope, orderCode, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegacyBreachedOrdersInfo request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfComplianceBreachedOrderInfo&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceBreachedOrderInfo> executeWithHttpInfo() throws ApiException {
+            return getLegacyBreachedOrdersInfoWithHttpInfo(runId, orderScope, orderCode, limit);
+        }
+
+        /**
+         * Execute getLegacyBreachedOrdersInfo request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback) throws ApiException {
+            return getLegacyBreachedOrdersInfoAsync(runId, orderScope, orderCode, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegacyComplianceRule
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetLegacyBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it.
+     * Use this endpoint to get a list or breached orders and the set of rules that may have caused the breach.
+     * @param runId The RunId that the results should be checked for (required)
+     * @return APIgetLegacyBreachedOrdersInfoRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegacyComplianceRuleCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetLegacyBreachedOrdersInfoRequest getLegacyBreachedOrdersInfo(String runId) {
+        return new APIgetLegacyBreachedOrdersInfoRequest(runId);
+    }
+    private okhttp3.Call getLegacyComplianceRuleCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -469,94 +534,138 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyComplianceRule: Retrieve the definition of single compliance rule.
-     * Retrieves the compliance rule definition at the given effective and as at times.
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @return ComplianceRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRule getLegacyComplianceRule(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ComplianceRule> localVarResp = getLegacyComplianceRuleWithHttpInfo(scope, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyComplianceRule: Retrieve the definition of single compliance rule.
-     * Retrieves the compliance rule definition at the given effective and as at times.
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @return ApiResponse&lt;ComplianceRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRule> getLegacyComplianceRuleWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ComplianceRule> getLegacyComplianceRuleWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<ComplianceRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyComplianceRule: Retrieve the definition of single compliance rule. (asynchronously)
-     * Retrieves the compliance rule definition at the given effective and as at times.
-     * @param scope The compliance rule scope. (required)
-     * @param code The compliance rule code. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegacyComplianceRuleAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ComplianceRule> _callback) throws ApiException {
+    private okhttp3.Call getLegacyComplianceRuleAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ComplianceRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegacyComplianceRuleRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetLegacyComplianceRuleRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @return APIgetLegacyComplianceRuleRequest
+         */
+        public APIgetLegacyComplianceRuleRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIgetLegacyComplianceRuleRequest
+         */
+        public APIgetLegacyComplianceRuleRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getLegacyComplianceRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegacyComplianceRuleCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getLegacyComplianceRule request
+         * @return ComplianceRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRule execute() throws ApiException {
+            ApiResponse<ComplianceRule> localVarResp = getLegacyComplianceRuleWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegacyComplianceRule request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRule> executeWithHttpInfo() throws ApiException {
+            return getLegacyComplianceRuleWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getLegacyComplianceRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRule> _callback) throws ApiException {
+            return getLegacyComplianceRuleAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getLegacyComplianceRunResults
-     * @param runId The unique identifier of the compliance run requested. (required)
-     * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetLegacyComplianceRule: Retrieve the definition of single compliance rule.
+     * Retrieves the compliance rule definition at the given effective and as at times.
+     * @param scope The compliance rule scope. (required)
+     * @param code The compliance rule code. (required)
+     * @return APIgetLegacyComplianceRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegacyComplianceRunResultsCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetLegacyComplianceRuleRequest getLegacyComplianceRule(String scope, String code) {
+        return new APIgetLegacyComplianceRuleRequest(scope, code);
+    }
+    private okhttp3.Call getLegacyComplianceRunResultsCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -626,95 +735,146 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run.
-     * Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown  of the passing state of each rule, portfolio combination.
-     * @param runId The unique identifier of the compliance run requested. (required)
-     * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfComplianceRuleResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfComplianceRuleResult getLegacyComplianceRunResults(String runId, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfComplianceRuleResult> localVarResp = getLegacyComplianceRunResultsWithHttpInfo(runId, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run.
-     * Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown  of the passing state of each rule, portfolio combination.
-     * @param runId The unique identifier of the compliance run requested. (required)
-     * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfComplianceRuleResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfComplianceRuleResult> getLegacyComplianceRunResultsWithHttpInfo(String runId, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfComplianceRuleResult> getLegacyComplianceRunResultsWithHttpInfo(String runId, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRuleResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run. (asynchronously)
-     * Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown  of the passing state of each rule, portfolio combination.
-     * @param runId The unique identifier of the compliance run requested. (required)
-     * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLegacyComplianceRunResultsAsync(String runId, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRuleResult> _callback) throws ApiException {
+    private okhttp3.Call getLegacyComplianceRunResultsAsync(String runId, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRuleResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRuleResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLegacyComplianceRunResultsRequest {
+        private final String runId;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIgetLegacyComplianceRunResultsRequest(String runId) {
+            this.runId = runId;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIgetLegacyComplianceRunResultsRequest
+         */
+        public APIgetLegacyComplianceRunResultsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetLegacyComplianceRunResultsRequest
+         */
+        public APIgetLegacyComplianceRunResultsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetLegacyComplianceRunResultsRequest
+         */
+        public APIgetLegacyComplianceRunResultsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getLegacyComplianceRunResults
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLegacyComplianceRunResultsCall(runId, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getLegacyComplianceRunResults request
+         * @return ResourceListOfComplianceRuleResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceRuleResult execute() throws ApiException {
+            ApiResponse<ResourceListOfComplianceRuleResult> localVarResp = getLegacyComplianceRunResultsWithHttpInfo(runId, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLegacyComplianceRunResults request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfComplianceRuleResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceRuleResult> executeWithHttpInfo() throws ApiException {
+            return getLegacyComplianceRunResultsWithHttpInfo(runId, page, limit, filter);
+        }
+
+        /**
+         * Execute getLegacyComplianceRunResults request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRuleResult> _callback) throws ApiException {
+            return getLegacyComplianceRunResultsAsync(runId, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listLegacyComplianceRules
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run.
+     * Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown  of the passing state of each rule, portfolio combination.
+     * @param runId The unique identifier of the compliance run requested. (required)
+     * @return APIgetLegacyComplianceRunResultsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLegacyComplianceRulesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetLegacyComplianceRunResultsRequest getLegacyComplianceRunResults(String runId) {
+        return new APIgetLegacyComplianceRunResultsRequest(runId);
+    }
+    private okhttp3.Call listLegacyComplianceRulesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -786,97 +946,165 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
-     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @return ResourceListOfComplianceRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfComplianceRule listLegacyComplianceRules(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfComplianceRule> localVarResp = listLegacyComplianceRulesWithHttpInfo(effectiveAt, asAt, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
-     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @return ApiResponse&lt;ResourceListOfComplianceRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfComplianceRule> listLegacyComplianceRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfComplianceRule> listLegacyComplianceRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. (asynchronously)
-     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
-     * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listLegacyComplianceRulesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRule> _callback) throws ApiException {
+    private okhttp3.Call listLegacyComplianceRulesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistLegacyComplianceRulesRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistLegacyComplianceRulesRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @return APIlistLegacyComplianceRulesRequest
+         */
+        public APIlistLegacyComplianceRulesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIlistLegacyComplianceRulesRequest
+         */
+        public APIlistLegacyComplianceRulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
+         * @return APIlistLegacyComplianceRulesRequest
+         */
+        public APIlistLegacyComplianceRulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistLegacyComplianceRulesRequest
+         */
+        public APIlistLegacyComplianceRulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. (optional)
+         * @return APIlistLegacyComplianceRulesRequest
+         */
+        public APIlistLegacyComplianceRulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listLegacyComplianceRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listLegacyComplianceRulesCall(effectiveAt, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listLegacyComplianceRules request
+         * @return ResourceListOfComplianceRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceRule execute() throws ApiException {
+            ApiResponse<ResourceListOfComplianceRule> localVarResp = listLegacyComplianceRulesWithHttpInfo(effectiveAt, asAt, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listLegacyComplianceRules request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfComplianceRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceRule> executeWithHttpInfo() throws ApiException {
+            return listLegacyComplianceRulesWithHttpInfo(effectiveAt, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listLegacyComplianceRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRule> _callback) throws ApiException {
+            return listLegacyComplianceRulesAsync(effectiveAt, asAt, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listLegacyComplianceRunInfo
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
+     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+     * @return APIlistLegacyComplianceRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLegacyComplianceRunInfoCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistLegacyComplianceRulesRequest listLegacyComplianceRules() {
+        return new APIlistLegacyComplianceRulesRequest();
+    }
+    private okhttp3.Call listLegacyComplianceRunInfoCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -944,94 +1172,154 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListLegacyComplianceRunInfo: List historical compliance run ids.
-     * Use this endpoint to fetch a list of all historical compliance runs.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfComplianceRunInfo
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfComplianceRunInfo listLegacyComplianceRunInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfComplianceRunInfo> localVarResp = listLegacyComplianceRunInfoWithHttpInfo(asAt, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListLegacyComplianceRunInfo: List historical compliance run ids.
-     * Use this endpoint to fetch a list of all historical compliance runs.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfComplianceRunInfo&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfComplianceRunInfo> listLegacyComplianceRunInfoWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfComplianceRunInfo> listLegacyComplianceRunInfoWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRunInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListLegacyComplianceRunInfo: List historical compliance run ids. (asynchronously)
-     * Use this endpoint to fetch a list of all historical compliance runs.
-     * @param asAt Optional. The time at which to get results from. Default : latest (optional)
-     * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listLegacyComplianceRunInfoAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRunInfo> _callback) throws ApiException {
+    private okhttp3.Call listLegacyComplianceRunInfoAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRunInfo> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRunInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistLegacyComplianceRunInfoRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistLegacyComplianceRunInfoRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The time at which to get results from. Default : latest (optional)
+         * @return APIlistLegacyComplianceRunInfoRequest
+         */
+        public APIlistLegacyComplianceRunInfoRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistLegacyComplianceRunInfoRequest
+         */
+        public APIlistLegacyComplianceRunInfoRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistLegacyComplianceRunInfoRequest
+         */
+        public APIlistLegacyComplianceRunInfoRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistLegacyComplianceRunInfoRequest
+         */
+        public APIlistLegacyComplianceRunInfoRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listLegacyComplianceRunInfo
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listLegacyComplianceRunInfoCall(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listLegacyComplianceRunInfo request
+         * @return ResourceListOfComplianceRunInfo
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceRunInfo execute() throws ApiException {
+            ApiResponse<ResourceListOfComplianceRunInfo> localVarResp = listLegacyComplianceRunInfoWithHttpInfo(asAt, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listLegacyComplianceRunInfo request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfComplianceRunInfo&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceRunInfo> executeWithHttpInfo() throws ApiException {
+            return listLegacyComplianceRunInfoWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listLegacyComplianceRunInfo request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRunInfo> _callback) throws ApiException {
+            return listLegacyComplianceRunInfoAsync(asAt, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for runLegacyCompliance
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Optional: The code of the recipe to be used. If left blank, the default recipe will be used. (optional)
-     * @param byTaxlots Optional. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListLegacyComplianceRunInfo: List historical compliance run ids.
+     * Use this endpoint to fetch a list of all historical compliance runs.
+     * @return APIlistLegacyComplianceRunInfoRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runLegacyComplianceCall(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
+    public APIlistLegacyComplianceRunInfoRequest listLegacyComplianceRunInfo() {
+        return new APIlistLegacyComplianceRunInfoRequest();
+    }
+    private okhttp3.Call runLegacyComplianceCall(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1109,92 +1397,138 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] RunLegacyCompliance: Kick off the compliance check process
-     * Use this endpoint to fetch the start a compliance run, based on a pre-set mapping file.
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Optional: The code of the recipe to be used. If left blank, the default recipe will be used. (optional)
-     * @param byTaxlots Optional. (optional)
-     * @return ComplianceRunInfo
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRunInfo runLegacyCompliance(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots) throws ApiException {
-        ApiResponse<ComplianceRunInfo> localVarResp = runLegacyComplianceWithHttpInfo(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] RunLegacyCompliance: Kick off the compliance check process
-     * Use this endpoint to fetch the start a compliance run, based on a pre-set mapping file.
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Optional: The code of the recipe to be used. If left blank, the default recipe will be used. (optional)
-     * @param byTaxlots Optional. (optional)
-     * @return ApiResponse&lt;ComplianceRunInfo&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRunInfo> runLegacyComplianceWithHttpInfo(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots) throws ApiException {
+    private ApiResponse<ComplianceRunInfo> runLegacyComplianceWithHttpInfo(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots) throws ApiException {
         okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, null);
         Type localVarReturnType = new TypeToken<ComplianceRunInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] RunLegacyCompliance: Kick off the compliance check process (asynchronously)
-     * Use this endpoint to fetch the start a compliance run, based on a pre-set mapping file.
-     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
-     * @param recipeIdScope Required: the scope of the recipe to be used (required)
-     * @param recipeIdCode Optional: The code of the recipe to be used. If left blank, the default recipe will be used. (optional)
-     * @param byTaxlots Optional. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call runLegacyComplianceAsync(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback<ComplianceRunInfo> _callback) throws ApiException {
+    private okhttp3.Call runLegacyComplianceAsync(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback<ComplianceRunInfo> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRunInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIrunLegacyComplianceRequest {
+        private final Boolean isPreTrade;
+        private final String recipeIdScope;
+        private String recipeIdCode;
+        private Boolean byTaxlots;
+
+        private APIrunLegacyComplianceRequest(Boolean isPreTrade, String recipeIdScope) {
+            this.isPreTrade = isPreTrade;
+            this.recipeIdScope = recipeIdScope;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode Optional: The code of the recipe to be used. If left blank, the default recipe will be used. (optional)
+         * @return APIrunLegacyComplianceRequest
+         */
+        public APIrunLegacyComplianceRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set byTaxlots
+         * @param byTaxlots Optional. (optional)
+         * @return APIrunLegacyComplianceRequest
+         */
+        public APIrunLegacyComplianceRequest byTaxlots(Boolean byTaxlots) {
+            this.byTaxlots = byTaxlots;
+            return this;
+        }
+
+        /**
+         * Build call for runLegacyCompliance
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return runLegacyComplianceCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback);
+        }
+
+        /**
+         * Execute runLegacyCompliance request
+         * @return ComplianceRunInfo
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunInfo execute() throws ApiException {
+            ApiResponse<ComplianceRunInfo> localVarResp = runLegacyComplianceWithHttpInfo(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runLegacyCompliance request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunInfo&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunInfo> executeWithHttpInfo() throws ApiException {
+            return runLegacyComplianceWithHttpInfo(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots);
+        }
+
+        /**
+         * Execute runLegacyCompliance request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunInfo> _callback) throws ApiException {
+            return runLegacyComplianceAsync(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertLegacyComplianceRules
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] RunLegacyCompliance: Kick off the compliance check process
+     * Use this endpoint to fetch the start a compliance run, based on a pre-set mapping file.
+     * @param isPreTrade Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false (required)
+     * @param recipeIdScope Required: the scope of the recipe to be used (required)
+     * @return APIrunLegacyComplianceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertLegacyComplianceRulesCall(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIrunLegacyComplianceRequest runLegacyCompliance(Boolean isPreTrade, String recipeIdScope) {
+        return new APIrunLegacyComplianceRequest(isPreTrade, recipeIdScope);
+    }
+    private okhttp3.Call upsertLegacyComplianceRulesCall(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1259,55 +1593,112 @@ public class LegacyComplianceApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules.
-     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.                The upsert is transactional - either all create/update operations will succeed or none of them will.
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @return ComplianceRuleUpsertResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ComplianceRuleUpsertResponse upsertLegacyComplianceRules(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
-        ApiResponse<ComplianceRuleUpsertResponse> localVarResp = upsertLegacyComplianceRulesWithHttpInfo(requestBody, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules.
-     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.                The upsert is transactional - either all create/update operations will succeed or none of them will.
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @return ApiResponse&lt;ComplianceRuleUpsertResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ComplianceRuleUpsertResponse> upsertLegacyComplianceRulesWithHttpInfo(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
+    private ApiResponse<ComplianceRuleUpsertResponse> upsertLegacyComplianceRulesWithHttpInfo(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, null);
         Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertLegacyComplianceRulesAsync(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<ComplianceRuleUpsertResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertLegacyComplianceRulesRequest {
+        private final Map<String, ComplianceRuleUpsertRequest> requestBody;
+        private String effectiveAt;
+
+        private APIupsertLegacyComplianceRulesRequest(Map<String, ComplianceRuleUpsertRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
+         * @return APIupsertLegacyComplianceRulesRequest
+         */
+        public APIupsertLegacyComplianceRulesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for upsertLegacyComplianceRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertLegacyComplianceRulesCall(requestBody, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertLegacyComplianceRules request
+         * @return ComplianceRuleUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleUpsertResponse execute() throws ApiException {
+            ApiResponse<ComplianceRuleUpsertResponse> localVarResp = upsertLegacyComplianceRulesWithHttpInfo(requestBody, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertLegacyComplianceRules request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRuleUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleUpsertResponse> executeWithHttpInfo() throws ApiException {
+            return upsertLegacyComplianceRulesWithHttpInfo(requestBody, effectiveAt);
+        }
+
+        /**
+         * Execute upsertLegacyComplianceRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleUpsertResponse> _callback) throws ApiException {
+            return upsertLegacyComplianceRulesAsync(requestBody, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules. (asynchronously)
-     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.                The upsert is transactional - either all create/update operations will succeed or none of them will.
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. (required)
-     * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules.
+     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.     The upsert is transactional - either all create/update operations will succeed or none of them will.
+     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule. (required)
+     * @return APIupsertLegacyComplianceRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1316,11 +1707,7 @@ public class LegacyComplianceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertLegacyComplianceRulesAsync(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<ComplianceRuleUpsertResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, _callback);
-        Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertLegacyComplianceRulesRequest upsertLegacyComplianceRules(Map<String, ComplianceRuleUpsertRequest> requestBody) {
+        return new APIupsertLegacyComplianceRulesRequest(requestBody);
     }
 }

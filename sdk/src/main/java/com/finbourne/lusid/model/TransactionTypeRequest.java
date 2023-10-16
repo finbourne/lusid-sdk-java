@@ -267,32 +267,25 @@ public class TransactionTypeRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to TransactionTypeRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to TransactionTypeRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!TransactionTypeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!TransactionTypeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransactionTypeRequest is not found in the empty JSON string", TransactionTypeRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!TransactionTypeRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransactionTypeRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : TransactionTypeRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("aliases").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `aliases` to be an array in the JSON string but got `%s`", jsonObj.get("aliases").toString()));
@@ -301,7 +294,7 @@ public class TransactionTypeRequest {
       JsonArray jsonArrayaliases = jsonObj.getAsJsonArray("aliases");
       // validate the required field `aliases` (array)
       for (int i = 0; i < jsonArrayaliases.size(); i++) {
-        TransactionTypeAlias.validateJsonObject(jsonArrayaliases.get(i).getAsJsonObject());
+        TransactionTypeAlias.validateJsonElement(jsonArrayaliases.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("movements").isJsonArray()) {
@@ -311,7 +304,7 @@ public class TransactionTypeRequest {
       JsonArray jsonArraymovements = jsonObj.getAsJsonArray("movements");
       // validate the required field `movements` (array)
       for (int i = 0; i < jsonArraymovements.size(); i++) {
-        TransactionTypeMovement.validateJsonObject(jsonArraymovements.get(i).getAsJsonObject());
+        TransactionTypeMovement.validateJsonElement(jsonArraymovements.get(i));
       };
       if (jsonObj.get("calculations") != null && !jsonObj.get("calculations").isJsonNull()) {
         JsonArray jsonArraycalculations = jsonObj.getAsJsonArray("calculations");
@@ -323,7 +316,7 @@ public class TransactionTypeRequest {
 
           // validate the optional field `calculations` (array)
           for (int i = 0; i < jsonArraycalculations.size(); i++) {
-            TransactionTypeCalculation.validateJsonObject(jsonArraycalculations.get(i).getAsJsonObject());
+            TransactionTypeCalculation.validateJsonElement(jsonArraycalculations.get(i));
           };
         }
       }
@@ -349,9 +342,9 @@ public class TransactionTypeRequest {
 
            @Override
            public TransactionTypeRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

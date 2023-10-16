@@ -152,25 +152,18 @@ public class ParticipationSetRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ParticipationSetRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ParticipationSetRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ParticipationSetRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ParticipationSetRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ParticipationSetRequest is not found in the empty JSON string", ParticipationSetRequest.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ParticipationSetRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ParticipationSetRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("requests") != null && !jsonObj.get("requests").isJsonNull()) {
         JsonArray jsonArrayrequests = jsonObj.getAsJsonArray("requests");
         if (jsonArrayrequests != null) {
@@ -181,7 +174,7 @@ public class ParticipationSetRequest {
 
           // validate the optional field `requests` (array)
           for (int i = 0; i < jsonArrayrequests.size(); i++) {
-            ParticipationRequest.validateJsonObject(jsonArrayrequests.get(i).getAsJsonObject());
+            ParticipationRequest.validateJsonElement(jsonArrayrequests.get(i));
           };
         }
       }
@@ -207,9 +200,9 @@ public class ParticipationSetRequest {
 
            @Override
            public ParticipationSetRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

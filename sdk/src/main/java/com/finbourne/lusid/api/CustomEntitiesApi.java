@@ -80,24 +80,7 @@ public class CustomEntitiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteCustomEntity
-     * @param entityType The type of Custom Entity to remove. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -176,97 +159,122 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.
-     * Delete a Custom Entity instance by a specific entity type.
-     * @param entityType The type of Custom Entity to remove. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteCustomEntity(String entityType, String identifierType, String identifierValue, String identifierScope) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.
-     * Delete a Custom Entity instance by a specific entity type.
-     * @param entityType The type of Custom Entity to remove. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope) throws ApiException {
         okhttp3.Call localVarCall = deleteCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance. (asynchronously)
-     * Delete a Custom Entity instance by a specific entity type.
-     * @param entityType The type of Custom Entity to remove. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCustomEntityRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String identifierScope;
+
+        private APIdeleteCustomEntityRequest(String entityType, String identifierType, String identifierValue, String identifierScope) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Build call for deleteCustomEntity
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, _callback);
+        }
+
+        /**
+         * Execute deleteCustomEntity request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCustomEntity request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope);
+        }
+
+        /**
+         * Execute deleteCustomEntity request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteCustomEntityAsync(entityType, identifierType, identifierValue, identifierScope, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteCustomEntityAccessMetadata
-     * @param entityType The type of the Custom Entity. (required)
+     * [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.
+     * Delete a Custom Entity instance by a specific entity type.
+     * @param entityType The type of Custom Entity to remove. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)
      * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to delete. (required)
      * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata. (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIdeleteCustomEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delete a Custom Entity instance. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCustomEntityRequest deleteCustomEntity(String entityType, String identifierType, String identifierValue, String identifierScope) {
+        return new APIdeleteCustomEntityRequest(entityType, identifierType, identifierValue, identifierScope);
+    }
+    private okhttp3.Call deleteCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -359,96 +367,135 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry
-     * Deletes the Custom Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to delete. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata. (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry
-     * Deletes the Custom Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to delete. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata. (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = deleteCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry (asynchronously)
-     * Deletes the Custom Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to delete. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata. (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCustomEntityAccessMetadataRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String metadataKey;
+        private final String identifierScope;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIdeleteCustomEntityAccessMetadataRequest(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.metadataKey = metadataKey;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata. (optional)
+         * @return APIdeleteCustomEntityAccessMetadataRequest
+         */
+        public APIdeleteCustomEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. (optional)
+         * @return APIdeleteCustomEntityAccessMetadataRequest
+         */
+        public APIdeleteCustomEntityAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for deleteCustomEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCustomEntityAccessMetadataCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteCustomEntityAccessMetadata request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCustomEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deleteCustomEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteCustomEntityAccessMetadataAsync(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for getAllCustomEntityAccessMetadata
+     * [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry
+     * Deletes the Custom Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
      * @param entityType The type of the Custom Entity. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)
      * @param identifierValue The identifier value. (required)
+     * @param metadataKey Key of the metadata entry to delete. (required)
      * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIdeleteCustomEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -457,7 +504,10 @@ public class CustomEntitiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCustomEntityAccessMetadataRequest deleteCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope) {
+        return new APIdeleteCustomEntityAccessMetadataRequest(entityType, identifierType, identifierValue, metadataKey, identifierScope);
+    }
+    private okhttp3.Call getAllCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -544,104 +594,144 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity
-     * Get all the Custom Entity access metadata for the specified identifier scope, code and value
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> getAllCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity
-     * Get all the Custom Entity access metadata for the specified identifier scope, code and value
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> getAllCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getAllCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity (asynchronously)
-     * Get all the Custom Entity access metadata for the specified identifier scope, code and value
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call getAllCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAllCustomEntityAccessMetadataRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String identifierScope;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetAllCustomEntityAccessMetadataRequest(String entityType, String identifierType, String identifierValue, String identifierScope) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetAllCustomEntityAccessMetadataRequest
+         */
+        public APIgetAllCustomEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
+         * @return APIgetAllCustomEntityAccessMetadataRequest
+         */
+        public APIgetAllCustomEntityAccessMetadataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAllCustomEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllCustomEntityAccessMetadataCall(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllCustomEntityAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllCustomEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return getAllCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllCustomEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return getAllCustomEntityAccessMetadataAsync(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getCustomEntity
-     * @param entityType The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
+     * [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity
+     * Get all the Custom Entity access metadata for the specified identifier scope, code and value
+     * @param entityType The type of the Custom Entity. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)
      * @param identifierValue The identifier value. (required)
      * @param identifierScope The identifier scope. (required)
-     * @param asAt The AsAt datetime at which to retrieve the Custom Entity instance. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetAllCustomEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetAllCustomEntityAccessMetadataRequest getAllCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String identifierScope) {
+        return new APIgetAllCustomEntityAccessMetadataRequest(entityType, identifierType, identifierValue, identifierScope);
+    }
+    private okhttp3.Call getCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -736,109 +826,166 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.
-     * Retrieve a Custom Entity instance by a specific entity type at a point in AsAt time.
-     * @param entityType The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param asAt The AsAt datetime at which to retrieve the Custom Entity instance. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return CustomEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomEntityResponse getCustomEntity(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<CustomEntityResponse> localVarResp = getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.
-     * Retrieve a Custom Entity instance by a specific entity type at a point in AsAt time.
-     * @param entityType The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param asAt The AsAt datetime at which to retrieve the Custom Entity instance. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;CustomEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomEntityResponse> getCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<CustomEntityResponse> getCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance. (asynchronously)
-     * Retrieve a Custom Entity instance by a specific entity type at a point in AsAt time.
-     * @param entityType The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param asAt The AsAt datetime at which to retrieve the Custom Entity instance. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call getCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCustomEntityRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String identifierScope;
+        private OffsetDateTime asAt;
+        private String effectiveAt;
+        private List<String> relatedEntityPropertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIgetCustomEntityRequest(String entityType, String identifierType, String identifierValue, String identifierScope) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The AsAt datetime at which to retrieve the Custom Entity instance. (optional)
+         * @return APIgetCustomEntityRequest
+         */
+        public APIgetCustomEntityRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetCustomEntityRequest
+         */
+        public APIgetCustomEntityRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set relatedEntityPropertyKeys
+         * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @return APIgetCustomEntityRequest
+         */
+        public APIgetCustomEntityRequest relatedEntityPropertyKeys(List<String> relatedEntityPropertyKeys) {
+            this.relatedEntityPropertyKeys = relatedEntityPropertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIgetCustomEntityRequest
+         */
+        public APIgetCustomEntityRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for getCustomEntity
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getCustomEntity request
+         * @return CustomEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityResponse execute() throws ApiException {
+            ApiResponse<CustomEntityResponse> localVarResp = getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustomEntity request with HTTP info returned
+         * @return ApiResponse&lt;CustomEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityResponse> executeWithHttpInfo() throws ApiException {
+            return getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getCustomEntity request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
+            return getCustomEntityAsync(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for getCustomEntityAccessMetadataByKey
-     * @param entityType The type of the Custom Entity. (required)
+     * [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.
+     * Retrieve a Custom Entity instance by a specific entity type at a point in AsAt time.
+     * @param entityType The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)
      * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
      * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetCustomEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Get a custom entity instance. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomEntityAccessMetadataByKeyCall(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetCustomEntityRequest getCustomEntity(String entityType, String identifierType, String identifierValue, String identifierScope) {
+        return new APIgetCustomEntityRequest(entityType, identifierType, identifierValue, identifierScope);
+    }
+    private okhttp3.Call getCustomEntityAccessMetadataByKeyCall(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -931,107 +1078,147 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity
-     * Get Custom Entity access metadata for the specified metadata key
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @return List&lt;AccessMetadataValue&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<AccessMetadataValue> getCustomEntityAccessMetadataByKey(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<List<AccessMetadataValue>> localVarResp = getCustomEntityAccessMetadataByKeyWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity
-     * Get Custom Entity access metadata for the specified metadata key
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<AccessMetadataValue>> getCustomEntityAccessMetadataByKeyWithHttpInfo(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<List<AccessMetadataValue>> getCustomEntityAccessMetadataByKeyWithHttpInfo(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCustomEntityAccessMetadataByKeyValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity (asynchronously)
-     * Get Custom Entity access metadata for the specified metadata key
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCustomEntityAccessMetadataByKeyAsync(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+    private okhttp3.Call getCustomEntityAccessMetadataByKeyAsync(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomEntityAccessMetadataByKeyValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCustomEntityAccessMetadataByKeyRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String metadataKey;
+        private final String identifierScope;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetCustomEntityAccessMetadataByKeyRequest(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.metadataKey = metadataKey;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetCustomEntityAccessMetadataByKeyRequest
+         */
+        public APIgetCustomEntityAccessMetadataByKeyRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. (optional)
+         * @return APIgetCustomEntityAccessMetadataByKeyRequest
+         */
+        public APIgetCustomEntityAccessMetadataByKeyRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCustomEntityAccessMetadataByKey
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCustomEntityAccessMetadataByKeyCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getCustomEntityAccessMetadataByKey request
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute() throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getCustomEntityAccessMetadataByKeyWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustomEntityAccessMetadataByKey request with HTTP info returned
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
+            return getCustomEntityAccessMetadataByKeyWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getCustomEntityAccessMetadataByKey request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+            return getCustomEntityAccessMetadataByKeyAsync(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getCustomEntityRelationships
-     * @param entityType The type of entity get relationships for. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param identifierType An identifier type attached to the Custom Entity. (required)
+     * [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity
+     * Get Custom Entity access metadata for the specified metadata key
+     * @param entityType The type of the Custom Entity. (required)
+     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
      * @param identifierValue The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param metadataKey Key of the metadata entry to retrieve (required)
+     * @param identifierScope The identifier scope. (required)
+     * @return APIgetCustomEntityAccessMetadataByKeyRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomEntityRelationshipsCall(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetCustomEntityAccessMetadataByKeyRequest getCustomEntityAccessMetadataByKey(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope) {
+        return new APIgetCustomEntityAccessMetadataByKeyRequest(entityType, identifierType, identifierValue, metadataKey, identifierScope);
+    }
+    private okhttp3.Call getCustomEntityRelationshipsCall(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1126,111 +1313,166 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity
-     * Get relationships for the specified Custom Entity.
-     * @param entityType The type of entity get relationships for. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param identifierType An identifier type attached to the Custom Entity. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. (optional)
-     * @return ResourceListOfRelationship
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelationship getCustomEntityRelationships(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelationship> localVarResp = getCustomEntityRelationshipsWithHttpInfo(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity
-     * Get relationships for the specified Custom Entity.
-     * @param entityType The type of entity get relationships for. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param identifierType An identifier type attached to the Custom Entity. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelationship&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelationship> getCustomEntityRelationshipsWithHttpInfo(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelationship> getCustomEntityRelationshipsWithHttpInfo(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getCustomEntityRelationshipsValidateBeforeCall(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity (asynchronously)
-     * Get relationships for the specified Custom Entity.
-     * @param entityType The type of entity get relationships for. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param identifierType An identifier type attached to the Custom Entity. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCustomEntityRelationshipsAsync(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+    private okhttp3.Call getCustomEntityRelationshipsAsync(String entityType, String identifierScope, String identifierType, String identifierValue, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomEntityRelationshipsValidateBeforeCall(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCustomEntityRelationshipsRequest {
+        private final String entityType;
+        private final String identifierScope;
+        private final String identifierType;
+        private final String identifierValue;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetCustomEntityRelationshipsRequest(String entityType, String identifierScope, String identifierType, String identifierValue) {
+            this.entityType = entityType;
+            this.identifierScope = identifierScope;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetCustomEntityRelationshipsRequest
+         */
+        public APIgetCustomEntityRelationshipsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetCustomEntityRelationshipsRequest
+         */
+        public APIgetCustomEntityRelationshipsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetCustomEntityRelationshipsRequest
+         */
+        public APIgetCustomEntityRelationshipsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. (optional)
+         * @return APIgetCustomEntityRelationshipsRequest
+         */
+        public APIgetCustomEntityRelationshipsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getCustomEntityRelationships
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCustomEntityRelationshipsCall(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getCustomEntityRelationships request
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute() throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getCustomEntityRelationshipsWithHttpInfo(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustomEntityRelationships request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
+            return getCustomEntityRelationshipsWithHttpInfo(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getCustomEntityRelationships request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+            return getCustomEntityRelationshipsAsync(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for listCustomEntities
-     * @param entityType The type of Custom Entity to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity
+     * Get relationships for the specified Custom Entity.
+     * @param entityType The type of entity get relationships for. (required)
+     * @param identifierScope The identifier scope. (required)
+     * @param identifierType An identifier type attached to the Custom Entity. (required)
+     * @param identifierValue The identifier value. (required)
+     * @return APIgetCustomEntityRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relationships for the specified custom entity. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCustomEntitiesCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetCustomEntityRelationshipsRequest getCustomEntityRelationships(String entityType, String identifierScope, String identifierType, String identifierValue) {
+        return new APIgetCustomEntityRelationshipsRequest(entityType, identifierScope, identifierType, identifierValue);
+    }
+    private okhttp3.Call listCustomEntitiesCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1320,112 +1562,201 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType.
-     * List all the Custom Entities matching particular criteria.
-     * @param entityType The type of Custom Entity to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return PagedResourceListOfCustomEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfCustomEntityResponse listCustomEntities(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<PagedResourceListOfCustomEntityResponse> localVarResp = listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType.
-     * List all the Custom Entities matching particular criteria.
-     * @param entityType The type of Custom Entity to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfCustomEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfCustomEntityResponse> listCustomEntitiesWithHttpInfo(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<PagedResourceListOfCustomEntityResponse> listCustomEntitiesWithHttpInfo(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType. (asynchronously)
-     * List all the Custom Entities matching particular criteria.
-     * @param entityType The type of Custom Entity to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the entities. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param page The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. (optional)
-     * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustomEntitiesAsync(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call listCustomEntitiesAsync(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCustomEntitiesRequest {
+        private final String entityType;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private String page;
+        private List<String> relatedEntityPropertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistCustomEntitiesRequest(String entityType) {
+            this.entityType = entityType;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the entities. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set relatedEntityPropertyKeys
+         * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest relatedEntityPropertyKeys(List<String> relatedEntityPropertyKeys) {
+            this.relatedEntityPropertyKeys = relatedEntityPropertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listCustomEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listCustomEntities request
+         * @return PagedResourceListOfCustomEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCustomEntityResponse execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCustomEntityResponse> localVarResp = listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCustomEntities request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCustomEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCustomEntityResponse> executeWithHttpInfo() throws ApiException {
+            return listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listCustomEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback) throws ApiException {
+            return listCustomEntitiesAsync(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for patchCustomEntityAccessMetadata
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType.
+     * List all the Custom Entities matching particular criteria.
+     * @param entityType The type of Custom Entity to list. (required)
+     * @return APIlistCustomEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List custom entities of the specified entityType. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIlistCustomEntitiesRequest listCustomEntities(String entityType) {
+        return new APIlistCustomEntitiesRequest(entityType);
+    }
+    private okhttp3.Call patchCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1521,102 +1852,147 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity.
-     * Patch Custom Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document                The response will return any affected Custom Entity Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> patchCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity.
-     * Patch Custom Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document                The response will return any affected Custom Entity Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> patchCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = patchCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity. (asynchronously)
-     * Patch Custom Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document                The response will return any affected Custom Entity Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call patchCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpatchCustomEntityAccessMetadataRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String identifierScope;
+        private final List<AccessMetadataOperation> accessMetadataOperation;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIpatchCustomEntityAccessMetadataRequest(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.identifierScope = identifierScope;
+            this.accessMetadataOperation = accessMetadataOperation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
+         * @return APIpatchCustomEntityAccessMetadataRequest
+         */
+        public APIpatchCustomEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIpatchCustomEntityAccessMetadataRequest
+         */
+        public APIpatchCustomEntityAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for patchCustomEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchCustomEntityAccessMetadataCall(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchCustomEntityAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchCustomEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return patchCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchCustomEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return patchCustomEntityAccessMetadataAsync(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCustomEntities
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The payload describing the Custom Entity instances (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity.
+     * Patch Custom Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Custom Entity Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * @param entityType The type of the Custom Entity. (required)
+     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
+     * @param identifierValue The identifier value. (required)
+     * @param identifierScope The identifier scope. (required)
+     * @param accessMetadataOperation The Json Patch document (required)
+     * @return APIpatchCustomEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCustomEntitiesCall(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIpatchCustomEntityAccessMetadataRequest patchCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation) {
+        return new APIpatchCustomEntityAccessMetadataRequest(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation);
+    }
+    private okhttp3.Call upsertCustomEntitiesCall(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1692,80 +2068,107 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities
-     * Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The payload describing the Custom Entity instances (required)
-     * @return UpsertCustomEntitiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertCustomEntitiesResponse upsertCustomEntities(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertCustomEntitiesResponse> localVarResp = upsertCustomEntitiesWithHttpInfo(entityType, successMode, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities
-     * Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The payload describing the Custom Entity instances (required)
-     * @return ApiResponse&lt;UpsertCustomEntitiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertCustomEntitiesResponse> upsertCustomEntitiesWithHttpInfo(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertCustomEntitiesResponse> upsertCustomEntitiesWithHttpInfo(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertCustomEntitiesValidateBeforeCall(entityType, successMode, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertCustomEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities (asynchronously)
-     * Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The payload describing the Custom Entity instances (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertCustomEntitiesAsync(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody, final ApiCallback<UpsertCustomEntitiesResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertCustomEntitiesAsync(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody, final ApiCallback<UpsertCustomEntitiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertCustomEntitiesValidateBeforeCall(entityType, successMode, requestBody, _callback);
         Type localVarReturnType = new TypeToken<UpsertCustomEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertCustomEntitiesRequest {
+        private final String entityType;
+        private final String successMode;
+        private final Map<String, CustomEntityRequest> requestBody;
+
+        private APIupsertCustomEntitiesRequest(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody) {
+            this.entityType = entityType;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertCustomEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCustomEntitiesCall(entityType, successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertCustomEntities request
+         * @return UpsertCustomEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertCustomEntitiesResponse execute() throws ApiException {
+            ApiResponse<UpsertCustomEntitiesResponse> localVarResp = upsertCustomEntitiesWithHttpInfo(entityType, successMode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCustomEntities request with HTTP info returned
+         * @return ApiResponse&lt;UpsertCustomEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertCustomEntitiesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertCustomEntitiesWithHttpInfo(entityType, successMode, requestBody);
+        }
+
+        /**
+         * Execute upsertCustomEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertCustomEntitiesResponse> _callback) throws ApiException {
+            return upsertCustomEntitiesAsync(entityType, successMode, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCustomEntity
+     * [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities
+     * Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param customEntityRequest The payload describing the Custom Entity instance. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
+     * @param requestBody The payload describing the Custom Entity instances (required)
+     * @return APIupsertCustomEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1774,7 +2177,10 @@ public class CustomEntitiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCustomEntityCall(String entityType, CustomEntityRequest customEntityRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertCustomEntitiesRequest upsertCustomEntities(String entityType, String successMode, Map<String, CustomEntityRequest> requestBody) {
+        return new APIupsertCustomEntitiesRequest(entityType, successMode, requestBody);
+    }
+    private okhttp3.Call upsertCustomEntityCall(String entityType, CustomEntityRequest customEntityRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1841,92 +2247,116 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance
-     * Insert the Custom Entity if it does not exist or update the Custom Entity with the supplied state if it does exist.
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param customEntityRequest The payload describing the Custom Entity instance. (required)
-     * @return CustomEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomEntityResponse upsertCustomEntity(String entityType, CustomEntityRequest customEntityRequest) throws ApiException {
-        ApiResponse<CustomEntityResponse> localVarResp = upsertCustomEntityWithHttpInfo(entityType, customEntityRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance
-     * Insert the Custom Entity if it does not exist or update the Custom Entity with the supplied state if it does exist.
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param customEntityRequest The payload describing the Custom Entity instance. (required)
-     * @return ApiResponse&lt;CustomEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomEntityResponse> upsertCustomEntityWithHttpInfo(String entityType, CustomEntityRequest customEntityRequest) throws ApiException {
+    private ApiResponse<CustomEntityResponse> upsertCustomEntityWithHttpInfo(String entityType, CustomEntityRequest customEntityRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertCustomEntityValidateBeforeCall(entityType, customEntityRequest, null);
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance (asynchronously)
-     * Insert the Custom Entity if it does not exist or update the Custom Entity with the supplied state if it does exist.
-     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
-     * @param customEntityRequest The payload describing the Custom Entity instance. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertCustomEntityAsync(String entityType, CustomEntityRequest customEntityRequest, final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertCustomEntityAsync(String entityType, CustomEntityRequest customEntityRequest, final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertCustomEntityValidateBeforeCall(entityType, customEntityRequest, _callback);
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertCustomEntityRequest {
+        private final String entityType;
+        private final CustomEntityRequest customEntityRequest;
+
+        private APIupsertCustomEntityRequest(String entityType, CustomEntityRequest customEntityRequest) {
+            this.entityType = entityType;
+            this.customEntityRequest = customEntityRequest;
+        }
+
+        /**
+         * Build call for upsertCustomEntity
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCustomEntityCall(entityType, customEntityRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCustomEntity request
+         * @return CustomEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityResponse execute() throws ApiException {
+            ApiResponse<CustomEntityResponse> localVarResp = upsertCustomEntityWithHttpInfo(entityType, customEntityRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCustomEntity request with HTTP info returned
+         * @return ApiResponse&lt;CustomEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityResponse> executeWithHttpInfo() throws ApiException {
+            return upsertCustomEntityWithHttpInfo(entityType, customEntityRequest);
+        }
+
+        /**
+         * Execute upsertCustomEntity request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
+            return upsertCustomEntityAsync(entityType, customEntityRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCustomEntityAccessMetadata
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param upsertCustomEntityAccessMetadataRequest The Custom Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance
+     * Insert the Custom Entity if it does not exist or update the Custom Entity with the supplied state if it does exist.
+     * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
+     * @param customEntityRequest The payload describing the Custom Entity instance. (required)
+     * @return APIupsertCustomEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The upserted custom entity instance </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIupsertCustomEntityRequest upsertCustomEntity(String entityType, CustomEntityRequest customEntityRequest) {
+        return new APIupsertCustomEntityRequest(entityType, customEntityRequest);
+    }
+    private okhttp3.Call upsertCustomEntityAccessMetadataCall(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2028,73 +2458,138 @@ public class CustomEntitiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Custom Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Custom Entity Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param upsertCustomEntityAccessMetadataRequest The Custom Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return List&lt;AccessMetadataValue&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<AccessMetadataValue> upsertCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<List<AccessMetadataValue>> localVarResp = upsertCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Custom Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Custom Entity Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param entityType The type of the Custom Entity. (required)
-     * @param identifierType An identifier type attached to the Custom Entity instance. (required)
-     * @param identifierValue The identifier value. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param identifierScope The identifier scope. (required)
-     * @param upsertCustomEntityAccessMetadataRequest The Custom Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<AccessMetadataValue>> upsertCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<List<AccessMetadataValue>> upsertCustomEntityAccessMetadataWithHttpInfo(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = upsertCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertCustomEntityAccessMetadataRequest {
+        private final String entityType;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String metadataKey;
+        private final String identifierScope;
+        private final UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIupsertCustomEntityAccessMetadataRequest(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest) {
+            this.entityType = entityType;
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.metadataKey = metadataKey;
+            this.identifierScope = identifierScope;
+            this.upsertCustomEntityAccessMetadataRequest = upsertCustomEntityAccessMetadataRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
+         * @return APIupsertCustomEntityAccessMetadataRequest
+         */
+        public APIupsertCustomEntityAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIupsertCustomEntityAccessMetadataRequest
+         */
+        public APIupsertCustomEntityAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for upsertCustomEntityAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCustomEntityAccessMetadataCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertCustomEntityAccessMetadata request
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute() throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = upsertCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCustomEntityAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
+            return upsertCustomEntityAccessMetadataWithHttpInfo(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertCustomEntityAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the CustomEntity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+            return upsertCustomEntityAccessMetadataAsync(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. (asynchronously)
-     * Update or insert one Custom Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Custom Entity Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
+     * Update or insert one Custom Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Custom Entity Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param entityType The type of the Custom Entity. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)
      * @param identifierValue The identifier value. (required)
      * @param metadataKey Key of the metadata entry to retrieve (required)
      * @param identifierScope The identifier scope. (required)
      * @param upsertCustomEntityAccessMetadataRequest The Custom Entity Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which the Access Metadata will be effective from (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertCustomEntityAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -2103,11 +2598,7 @@ public class CustomEntitiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCustomEntityAccessMetadataAsync(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertCustomEntityAccessMetadataValidateBeforeCall(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
-        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String metadataKey, String identifierScope, UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest) {
+        return new APIupsertCustomEntityAccessMetadataRequest(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest);
     }
 }

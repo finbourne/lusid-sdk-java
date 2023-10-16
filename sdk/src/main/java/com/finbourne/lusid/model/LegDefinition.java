@@ -543,47 +543,40 @@ public class LegDefinition {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LegDefinition
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to LegDefinition
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!LegDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!LegDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LegDefinition is not found in the empty JSON string", LegDefinition.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!LegDefinition.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LegDefinition` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : LegDefinition.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `conventionName`
       if (jsonObj.get("conventionName") != null && !jsonObj.get("conventionName").isJsonNull()) {
-        FlowConventionName.validateJsonObject(jsonObj.getAsJsonObject("conventionName"));
+        FlowConventionName.validateJsonElement(jsonObj.get("conventionName"));
       }
       // validate the optional field `conventions`
       if (jsonObj.get("conventions") != null && !jsonObj.get("conventions").isJsonNull()) {
-        FlowConventions.validateJsonObject(jsonObj.getAsJsonObject("conventions"));
+        FlowConventions.validateJsonElement(jsonObj.get("conventions"));
       }
       // validate the optional field `indexConvention`
       if (jsonObj.get("indexConvention") != null && !jsonObj.get("indexConvention").isJsonNull()) {
-        IndexConvention.validateJsonObject(jsonObj.getAsJsonObject("indexConvention"));
+        IndexConvention.validateJsonElement(jsonObj.get("indexConvention"));
       }
       // validate the optional field `indexConventionName`
       if (jsonObj.get("indexConventionName") != null && !jsonObj.get("indexConventionName").isJsonNull()) {
-        FlowConventionName.validateJsonObject(jsonObj.getAsJsonObject("indexConventionName"));
+        FlowConventionName.validateJsonElement(jsonObj.get("indexConventionName"));
       }
       if (!jsonObj.get("notionalExchangeType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `notionalExchangeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notionalExchangeType").toString()));
@@ -599,11 +592,11 @@ public class LegDefinition {
       }
       // validate the optional field `compounding`
       if (jsonObj.get("compounding") != null && !jsonObj.get("compounding").isJsonNull()) {
-        Compounding.validateJsonObject(jsonObj.getAsJsonObject("compounding"));
+        Compounding.validateJsonElement(jsonObj.get("compounding"));
       }
       // validate the optional field `amortisation`
       if (jsonObj.get("amortisation") != null && !jsonObj.get("amortisation").isJsonNull()) {
-        StepSchedule.validateJsonObject(jsonObj.getAsJsonObject("amortisation"));
+        StepSchedule.validateJsonElement(jsonObj.get("amortisation"));
       }
       if ((jsonObj.get("firstCouponType") != null && !jsonObj.get("firstCouponType").isJsonNull()) && !jsonObj.get("firstCouponType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `firstCouponType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("firstCouponType").toString()));
@@ -633,9 +626,9 @@ public class LegDefinition {
 
            @Override
            public LegDefinition read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

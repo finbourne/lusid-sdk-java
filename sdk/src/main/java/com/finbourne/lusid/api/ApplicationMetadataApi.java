@@ -73,21 +73,7 @@ public class ApplicationMetadataApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getExcelAddin
-     * @param version The requested version of the Excel plugin (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getExcelAddinCall(String version, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getExcelAddinCall(String version, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,80 +129,121 @@ public class ApplicationMetadataApi {
 
     }
 
-    /**
-     * GetExcelAddin: Download Excel Addin
-     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned
-     * @param version The requested version of the Excel plugin (optional)
-     * @return FileResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public FileResponse getExcelAddin(String version) throws ApiException {
-        ApiResponse<FileResponse> localVarResp = getExcelAddinWithHttpInfo(version);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetExcelAddin: Download Excel Addin
-     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned
-     * @param version The requested version of the Excel plugin (optional)
-     * @return ApiResponse&lt;FileResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<FileResponse> getExcelAddinWithHttpInfo(String version) throws ApiException {
+    private ApiResponse<FileResponse> getExcelAddinWithHttpInfo(String version) throws ApiException {
         okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, null);
         Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetExcelAddin: Download Excel Addin (asynchronously)
-     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned
-     * @param version The requested version of the Excel plugin (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getExcelAddinAsync(String version, final ApiCallback<FileResponse> _callback) throws ApiException {
+    private okhttp3.Call getExcelAddinAsync(String version, final ApiCallback<FileResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, _callback);
         Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetExcelAddinRequest {
+        private String version;
+
+        private APIgetExcelAddinRequest() {
+        }
+
+        /**
+         * Set version
+         * @param version The requested version of the Excel plugin (optional)
+         * @return APIgetExcelAddinRequest
+         */
+        public APIgetExcelAddinRequest version(String version) {
+            this.version = version;
+            return this;
+        }
+
+        /**
+         * Build call for getExcelAddin
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getExcelAddinCall(version, _callback);
+        }
+
+        /**
+         * Execute getExcelAddin request
+         * @return FileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FileResponse execute() throws ApiException {
+            ApiResponse<FileResponse> localVarResp = getExcelAddinWithHttpInfo(version);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getExcelAddin request with HTTP info returned
+         * @return ApiResponse&lt;FileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FileResponse> executeWithHttpInfo() throws ApiException {
+            return getExcelAddinWithHttpInfo(version);
+        }
+
+        /**
+         * Execute getExcelAddin request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FileResponse> _callback) throws ApiException {
+            return getExcelAddinAsync(version, _callback);
+        }
+    }
+
     /**
-     * Build call for getLusidVersions
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetExcelAddin: Download Excel Addin
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned
+     * @return APIgetExcelAddinRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLusidVersionsCall(final ApiCallback _callback) throws ApiException {
+    public APIgetExcelAddinRequest getExcelAddin() {
+        return new APIgetExcelAddinRequest();
+    }
+    private okhttp3.Call getLusidVersionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,76 +295,105 @@ public class ApplicationMetadataApi {
 
     }
 
-    /**
-     * GetLusidVersions: Get LUSID versions
-     * Get the semantic versions associated with LUSID and its ecosystem
-     * @return VersionSummaryDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionSummaryDto getLusidVersions() throws ApiException {
-        ApiResponse<VersionSummaryDto> localVarResp = getLusidVersionsWithHttpInfo();
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetLusidVersions: Get LUSID versions
-     * Get the semantic versions associated with LUSID and its ecosystem
-     * @return ApiResponse&lt;VersionSummaryDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionSummaryDto> getLusidVersionsWithHttpInfo() throws ApiException {
+    private ApiResponse<VersionSummaryDto> getLusidVersionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetLusidVersions: Get LUSID versions (asynchronously)
-     * Get the semantic versions associated with LUSID and its ecosystem
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLusidVersionsAsync(final ApiCallback<VersionSummaryDto> _callback) throws ApiException {
+    private okhttp3.Call getLusidVersionsAsync(final ApiCallback<VersionSummaryDto> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetLusidVersionsRequest {
+
+        private APIgetLusidVersionsRequest() {
+        }
+
+        /**
+         * Build call for getLusidVersions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLusidVersionsCall(_callback);
+        }
+
+        /**
+         * Execute getLusidVersions request
+         * @return VersionSummaryDto
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionSummaryDto execute() throws ApiException {
+            ApiResponse<VersionSummaryDto> localVarResp = getLusidVersionsWithHttpInfo();
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLusidVersions request with HTTP info returned
+         * @return ApiResponse&lt;VersionSummaryDto&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionSummaryDto> executeWithHttpInfo() throws ApiException {
+            return getLusidVersionsWithHttpInfo();
+        }
+
+        /**
+         * Execute getLusidVersions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionSummaryDto> _callback) throws ApiException {
+            return getLusidVersionsAsync(_callback);
+        }
+    }
+
     /**
-     * Build call for listAccessControlledResources
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetLusidVersions: Get LUSID versions
+     * Get the semantic versions associated with LUSID and its ecosystem
+     * @return APIgetLusidVersionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAccessControlledResourcesCall(String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetLusidVersionsRequest getLusidVersions() {
+        return new APIgetLusidVersionsRequest();
+    }
+    private okhttp3.Call listAccessControlledResourcesCall(String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -393,52 +449,109 @@ public class ApplicationMetadataApi {
 
     }
 
-    /**
-     * ListAccessControlledResources: Get resources available for access control
-     * Get the comprehensive set of resources that are available for access control
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfAccessControlledResource
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAccessControlledResource listAccessControlledResources(String filter) throws ApiException {
-        ApiResponse<ResourceListOfAccessControlledResource> localVarResp = listAccessControlledResourcesWithHttpInfo(filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListAccessControlledResources: Get resources available for access control
-     * Get the comprehensive set of resources that are available for access control
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfAccessControlledResource&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAccessControlledResource> listAccessControlledResourcesWithHttpInfo(String filter) throws ApiException {
+    private ApiResponse<ResourceListOfAccessControlledResource> listAccessControlledResourcesWithHttpInfo(String filter) throws ApiException {
         okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call listAccessControlledResourcesAsync(String filter, final ApiCallback<ResourceListOfAccessControlledResource> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistAccessControlledResourcesRequest {
+        private String filter;
+
+        private APIlistAccessControlledResourcesRequest() {
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.    For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistAccessControlledResourcesRequest
+         */
+        public APIlistAccessControlledResourcesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listAccessControlledResources
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAccessControlledResourcesCall(filter, _callback);
+        }
+
+        /**
+         * Execute listAccessControlledResources request
+         * @return ResourceListOfAccessControlledResource
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessControlledResource execute() throws ApiException {
+            ApiResponse<ResourceListOfAccessControlledResource> localVarResp = listAccessControlledResourcesWithHttpInfo(filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAccessControlledResources request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAccessControlledResource&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessControlledResource> executeWithHttpInfo() throws ApiException {
+            return listAccessControlledResourcesWithHttpInfo(filter);
+        }
+
+        /**
+         * Execute listAccessControlledResources request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessControlledResource> _callback) throws ApiException {
+            return listAccessControlledResourcesAsync(filter, _callback);
+        }
+    }
+
     /**
-     * ListAccessControlledResources: Get resources available for access control (asynchronously)
+     * ListAccessControlledResources: Get resources available for access control
      * Get the comprehensive set of resources that are available for access control
-     * @param filter Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIlistAccessControlledResourcesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -447,11 +560,7 @@ public class ApplicationMetadataApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAccessControlledResourcesAsync(String filter, final ApiCallback<ResourceListOfAccessControlledResource> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIlistAccessControlledResourcesRequest listAccessControlledResources() {
+        return new APIlistAccessControlledResourcesRequest();
     }
 }

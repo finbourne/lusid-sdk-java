@@ -83,22 +83,7 @@ public class StructuredResultDataApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createDataMap
-     * @param scope The scope in which to create or update data maps. (required)
-     * @param requestBody Individual data map creation requests. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createDataMapCall(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDataMapCall(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -165,86 +150,116 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateDataMap: Create data map
-     * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.                In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.                The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to create or update data maps. (required)
-     * @param requestBody Individual data map creation requests. (required)
-     * @return UpsertStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertStructuredDataResponse createDataMap(String scope, Map<String, CreateDataMapRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertStructuredDataResponse> localVarResp = createDataMapWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateDataMap: Create data map
-     * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.                In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.                The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to create or update data maps. (required)
-     * @param requestBody Individual data map creation requests. (required)
-     * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertStructuredDataResponse> createDataMapWithHttpInfo(String scope, Map<String, CreateDataMapRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertStructuredDataResponse> createDataMapWithHttpInfo(String scope, Map<String, CreateDataMapRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateDataMap: Create data map (asynchronously)
-     * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.                In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.                The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to create or update data maps. (required)
-     * @param requestBody Individual data map creation requests. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createDataMapAsync(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call createDataMapAsync(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, _callback);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateDataMapRequest {
+        private final String scope;
+        private final Map<String, CreateDataMapRequest> requestBody;
+
+        private APIcreateDataMapRequest(String scope, Map<String, CreateDataMapRequest> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for createDataMap
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createDataMapCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute createDataMap request
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = createDataMapWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createDataMap request with HTTP info returned
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return createDataMapWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute createDataMap request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+            return createDataMapAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteStructuredResultData
-     * @param scope The scope from which to delete data items. (required)
-     * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] CreateDataMap: Create data map
+     * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.     The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * @param scope The scope in which to create or update data maps. (required)
+     * @param requestBody Individual data map creation requests. (required)
+     * @return APIcreateDataMapRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIcreateDataMapRequest createDataMap(String scope, Map<String, CreateDataMapRequest> requestBody) {
+        return new APIcreateDataMapRequest(scope, requestBody);
+    }
+    private okhttp3.Call deleteStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -311,90 +326,116 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteStructuredResultData: Delete structured result data
-     * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully deleted data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope from which to delete data items. (required)
-     * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
-     * @return AnnulStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulStructuredDataResponse deleteStructuredResultData(String scope, Map<String, StructuredResultDataId> requestBody) throws ApiException {
-        ApiResponse<AnnulStructuredDataResponse> localVarResp = deleteStructuredResultDataWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteStructuredResultData: Delete structured result data
-     * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully deleted data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope from which to delete data items. (required)
-     * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
-     * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulStructuredDataResponse> deleteStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody) throws ApiException {
+    private ApiResponse<AnnulStructuredDataResponse> deleteStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody) throws ApiException {
         okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteStructuredResultData: Delete structured result data (asynchronously)
-     * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully deleted data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope from which to delete data items. (required)
-     * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, _callback);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteStructuredResultDataRequest {
+        private final String scope;
+        private final Map<String, StructuredResultDataId> requestBody;
+
+        private APIdeleteStructuredResultDataRequest(String scope, Map<String, StructuredResultDataId> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for deleteStructuredResultData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteStructuredResultDataCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteStructuredResultData request
+         * @return AnnulStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulStructuredDataResponse> localVarResp = deleteStructuredResultDataWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteStructuredResultData request with HTTP info returned
+         * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteStructuredResultDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute deleteStructuredResultData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
+            return deleteStructuredResultDataAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for getAddressKeyDefinitionsForDocument
-     * @param scope The scope of the document for which address key definitions are retrieved. (required)
-     * @param code The code of the document for which address key definitions are retrieved. (required)
-     * @param source The source of the document for which address key definitions are retrieved. (required)
-     * @param resultType The result type of the document for which address key definitions are retrieved. (required)
-     * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteStructuredResultData: Delete structured result data
+     * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully deleted data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * @param scope The scope from which to delete data items. (required)
+     * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
+     * @return APIdeleteStructuredResultDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAddressKeyDefinitionsForDocumentCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteStructuredResultDataRequest deleteStructuredResultData(String scope, Map<String, StructuredResultDataId> requestBody) {
+        return new APIdeleteStructuredResultDataRequest(scope, requestBody);
+    }
+    private okhttp3.Call getAddressKeyDefinitionsForDocumentCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -478,98 +519,144 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document.
-     * For a given virtual document retrieve all the address key definitions that are in use.
-     * @param scope The scope of the document for which address key definitions are retrieved. (required)
-     * @param code The code of the document for which address key definitions are retrieved. (required)
-     * @param source The source of the document for which address key definitions are retrieved. (required)
-     * @param resultType The result type of the document for which address key definitions are retrieved. (required)
-     * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @return ResourceListOfAddressKeyDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAddressKeyDefinition getAddressKeyDefinitionsForDocument(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfAddressKeyDefinition> localVarResp = getAddressKeyDefinitionsForDocumentWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document.
-     * For a given virtual document retrieve all the address key definitions that are in use.
-     * @param scope The scope of the document for which address key definitions are retrieved. (required)
-     * @param code The code of the document for which address key definitions are retrieved. (required)
-     * @param source The source of the document for which address key definitions are retrieved. (required)
-     * @param resultType The result type of the document for which address key definitions are retrieved. (required)
-     * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfAddressKeyDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAddressKeyDefinition> getAddressKeyDefinitionsForDocumentWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfAddressKeyDefinition> getAddressKeyDefinitionsForDocumentWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document. (asynchronously)
-     * For a given virtual document retrieve all the address key definitions that are in use.
-     * @param scope The scope of the document for which address key definitions are retrieved. (required)
-     * @param code The code of the document for which address key definitions are retrieved. (required)
-     * @param source The source of the document for which address key definitions are retrieved. (required)
-     * @param resultType The result type of the document for which address key definitions are retrieved. (required)
-     * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.              Defaults to querying the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAddressKeyDefinitionsForDocumentAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfAddressKeyDefinition> _callback) throws ApiException {
+    private okhttp3.Call getAddressKeyDefinitionsForDocumentAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfAddressKeyDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfAddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAddressKeyDefinitionsForDocumentRequest {
+        private final String scope;
+        private final String code;
+        private final String source;
+        private final String resultType;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetAddressKeyDefinitionsForDocumentRequest(String scope, String code, String source, String resultType) {
+            this.scope = scope;
+            this.code = code;
+            this.source = source;
+            this.resultType = resultType;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.   Defaults to querying the latest version if not specified. (optional)
+         * @return APIgetAddressKeyDefinitionsForDocumentRequest
+         */
+        public APIgetAddressKeyDefinitionsForDocumentRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.   Defaults to querying the latest version if not specified. (optional)
+         * @return APIgetAddressKeyDefinitionsForDocumentRequest
+         */
+        public APIgetAddressKeyDefinitionsForDocumentRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAddressKeyDefinitionsForDocument
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAddressKeyDefinitionsForDocumentCall(scope, code, source, resultType, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAddressKeyDefinitionsForDocument request
+         * @return ResourceListOfAddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAddressKeyDefinition execute() throws ApiException {
+            ApiResponse<ResourceListOfAddressKeyDefinition> localVarResp = getAddressKeyDefinitionsForDocumentWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAddressKeyDefinitionsForDocument request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAddressKeyDefinition> executeWithHttpInfo() throws ApiException {
+            return getAddressKeyDefinitionsForDocumentWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAddressKeyDefinitionsForDocument request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAddressKeyDefinition> _callback) throws ApiException {
+            return getAddressKeyDefinitionsForDocumentAsync(scope, code, source, resultType, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getDataMap
-     * @param scope The scope from which to retrieve data maps. (required)
-     * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document.
+     * For a given virtual document retrieve all the address key definitions that are in use.
+     * @param scope The scope of the document for which address key definitions are retrieved. (required)
+     * @param code The code of the document for which address key definitions are retrieved. (required)
+     * @param source The source of the document for which address key definitions are retrieved. (required)
+     * @param resultType The result type of the document for which address key definitions are retrieved. (required)
+     * @return APIgetAddressKeyDefinitionsForDocumentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataMapCall(String scope, Map<String, DataMapKey> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIgetAddressKeyDefinitionsForDocumentRequest getAddressKeyDefinitionsForDocument(String scope, String code, String source, String resultType) {
+        return new APIgetAddressKeyDefinitionsForDocumentRequest(scope, code, source, resultType);
+    }
+    private okhttp3.Call getDataMapCall(String scope, Map<String, DataMapKey> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -636,88 +723,116 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetDataMap: Get data map
-     * Retrieve one or more structured result store address definition data maps from a particular scope.                Each data map can be identified by its invariant key, which can be thought of as a permanent URL.  For each ID, LUSID returns the most recently matched item.                In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map in the response.                The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.                For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope from which to retrieve data maps. (required)
-     * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
-     * @return GetDataMapResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetDataMapResponse getDataMap(String scope, Map<String, DataMapKey> requestBody) throws ApiException {
-        ApiResponse<GetDataMapResponse> localVarResp = getDataMapWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetDataMap: Get data map
-     * Retrieve one or more structured result store address definition data maps from a particular scope.                Each data map can be identified by its invariant key, which can be thought of as a permanent URL.  For each ID, LUSID returns the most recently matched item.                In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map in the response.                The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.                For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope from which to retrieve data maps. (required)
-     * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
-     * @return ApiResponse&lt;GetDataMapResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetDataMapResponse> getDataMapWithHttpInfo(String scope, Map<String, DataMapKey> requestBody) throws ApiException {
+    private ApiResponse<GetDataMapResponse> getDataMapWithHttpInfo(String scope, Map<String, DataMapKey> requestBody) throws ApiException {
         okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<GetDataMapResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetDataMap: Get data map (asynchronously)
-     * Retrieve one or more structured result store address definition data maps from a particular scope.                Each data map can be identified by its invariant key, which can be thought of as a permanent URL.  For each ID, LUSID returns the most recently matched item.                In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map in the response.                The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.                For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope from which to retrieve data maps. (required)
-     * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDataMapAsync(String scope, Map<String, DataMapKey> requestBody, final ApiCallback<GetDataMapResponse> _callback) throws ApiException {
+    private okhttp3.Call getDataMapAsync(String scope, Map<String, DataMapKey> requestBody, final ApiCallback<GetDataMapResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, _callback);
         Type localVarReturnType = new TypeToken<GetDataMapResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetDataMapRequest {
+        private final String scope;
+        private final Map<String, DataMapKey> requestBody;
+
+        private APIgetDataMapRequest(String scope, Map<String, DataMapKey> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for getDataMap
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getDataMapCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute getDataMap request
+         * @return GetDataMapResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetDataMapResponse execute() throws ApiException {
+            ApiResponse<GetDataMapResponse> localVarResp = getDataMapWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getDataMap request with HTTP info returned
+         * @return ApiResponse&lt;GetDataMapResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetDataMapResponse> executeWithHttpInfo() throws ApiException {
+            return getDataMapWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute getDataMap request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetDataMapResponse> _callback) throws ApiException {
+            return getDataMapAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for getStructuredResultData
-     * @param scope The scope from which to retrieve data items. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetDataMap: Get data map
+     * Retrieve one or more structured result store address definition data maps from a particular scope.     Each data map can be identified by its invariant key, which can be thought of as a permanent URL.  For each ID, LUSID returns the most recently matched item.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map in the response.     The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.     For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
+     * @param scope The scope from which to retrieve data maps. (required)
+     * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
+     * @return APIgetDataMapRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
+    public APIgetDataMapRequest getDataMap(String scope, Map<String, DataMapKey> requestBody) {
+        return new APIgetDataMapRequest(scope, requestBody);
+    }
+    private okhttp3.Call getStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -792,93 +907,138 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetStructuredResultData: Get structured result data
-     * Retrieve one or more structured result data items from a particular scope.                Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.                 An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope from which to retrieve data items. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
-     * @return GetStructuredResultDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetStructuredResultDataResponse getStructuredResultData(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge) throws ApiException {
-        ApiResponse<GetStructuredResultDataResponse> localVarResp = getStructuredResultDataWithHttpInfo(scope, requestBody, asAt, maxAge);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetStructuredResultData: Get structured result data
-     * Retrieve one or more structured result data items from a particular scope.                Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.                 An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope from which to retrieve data items. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
-     * @return ApiResponse&lt;GetStructuredResultDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetStructuredResultDataResponse> getStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge) throws ApiException {
+    private ApiResponse<GetStructuredResultDataResponse> getStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge) throws ApiException {
         okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, null);
         Type localVarReturnType = new TypeToken<GetStructuredResultDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetStructuredResultData: Get structured result data (asynchronously)
-     * Retrieve one or more structured result data items from a particular scope.                Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.                 An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope from which to retrieve data items. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback<GetStructuredResultDataResponse> _callback) throws ApiException {
+    private okhttp3.Call getStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback<GetStructuredResultDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, _callback);
         Type localVarReturnType = new TypeToken<GetStructuredResultDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetStructuredResultDataRequest {
+        private final String scope;
+        private final Map<String, StructuredResultDataId> requestBody;
+        private OffsetDateTime asAt;
+        private String maxAge;
+
+        private APIgetStructuredResultDataRequest(String scope, Map<String, StructuredResultDataId> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetStructuredResultDataRequest
+         */
+        public APIgetStructuredResultDataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set maxAge
+         * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
+         * @return APIgetStructuredResultDataRequest
+         */
+        public APIgetStructuredResultDataRequest maxAge(String maxAge) {
+            this.maxAge = maxAge;
+            return this;
+        }
+
+        /**
+         * Build call for getStructuredResultData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getStructuredResultDataCall(scope, requestBody, asAt, maxAge, _callback);
+        }
+
+        /**
+         * Execute getStructuredResultData request
+         * @return GetStructuredResultDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetStructuredResultDataResponse execute() throws ApiException {
+            ApiResponse<GetStructuredResultDataResponse> localVarResp = getStructuredResultDataWithHttpInfo(scope, requestBody, asAt, maxAge);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getStructuredResultData request with HTTP info returned
+         * @return ApiResponse&lt;GetStructuredResultDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetStructuredResultDataResponse> executeWithHttpInfo() throws ApiException {
+            return getStructuredResultDataWithHttpInfo(scope, requestBody, asAt, maxAge);
+        }
+
+        /**
+         * Execute getStructuredResultData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetStructuredResultDataResponse> _callback) throws ApiException {
+            return getStructuredResultDataAsync(scope, requestBody, asAt, maxAge, _callback);
+        }
+    }
+
     /**
-     * Build call for getVirtualDocument
-     * @param scope The scope in which to construct the virtual documents. (required)
+     * [EXPERIMENTAL] GetStructuredResultData: Get structured result data
+     * Retrieve one or more structured result data items from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.      An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
+     * @param scope The scope from which to retrieve data items. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetStructuredResultDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVirtualDocumentCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetStructuredResultDataRequest getStructuredResultData(String scope, Map<String, StructuredResultDataId> requestBody) {
+        return new APIgetStructuredResultDataRequest(scope, requestBody);
+    }
+    private okhttp3.Call getVirtualDocumentCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -949,96 +1109,127 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents
-     * Retrieve one or more virtual documents from a particular scope.                Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided effective datetime.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns two collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.                For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @return GetVirtualDocumentResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetVirtualDocumentResponse getVirtualDocument(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<GetVirtualDocumentResponse> localVarResp = getVirtualDocumentWithHttpInfo(scope, requestBody, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents
-     * Retrieve one or more virtual documents from a particular scope.                Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided effective datetime.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns two collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.                For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @return ApiResponse&lt;GetVirtualDocumentResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetVirtualDocumentResponse> getVirtualDocumentWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<GetVirtualDocumentResponse> getVirtualDocumentWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, null);
         Type localVarReturnType = new TypeToken<GetVirtualDocumentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents (asynchronously)
-     * Retrieve one or more virtual documents from a particular scope.                Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided effective datetime.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns two collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.                For the IDs that failed to resolve or could not be found, a reason is provided.                It is important to check the failed sets for any unsuccessful results.
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getVirtualDocumentAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback<GetVirtualDocumentResponse> _callback) throws ApiException {
+    private okhttp3.Call getVirtualDocumentAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback<GetVirtualDocumentResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, _callback);
         Type localVarReturnType = new TypeToken<GetVirtualDocumentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetVirtualDocumentRequest {
+        private final String scope;
+        private final Map<String, StructuredResultDataId> requestBody;
+        private OffsetDateTime asAt;
+
+        private APIgetVirtualDocumentRequest(String scope, Map<String, StructuredResultDataId> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetVirtualDocumentRequest
+         */
+        public APIgetVirtualDocumentRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getVirtualDocument
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getVirtualDocumentCall(scope, requestBody, asAt, _callback);
+        }
+
+        /**
+         * Execute getVirtualDocument request
+         * @return GetVirtualDocumentResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetVirtualDocumentResponse execute() throws ApiException {
+            ApiResponse<GetVirtualDocumentResponse> localVarResp = getVirtualDocumentWithHttpInfo(scope, requestBody, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getVirtualDocument request with HTTP info returned
+         * @return ApiResponse&lt;GetVirtualDocumentResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetVirtualDocumentResponse> executeWithHttpInfo() throws ApiException {
+            return getVirtualDocumentWithHttpInfo(scope, requestBody, asAt);
+        }
+
+        /**
+         * Execute getVirtualDocument request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetVirtualDocumentResponse> _callback) throws ApiException {
+            return getVirtualDocumentAsync(scope, requestBody, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getVirtualDocumentRows
-     * @param scope The scope in which to retrieve the virtual document. (required)
-     * @param code The code of the virtual document to retrieve. (required)
-     * @param source The source of the virtual document to retrieve. (required)
-     * @param resultType The result type of the virtual document to retrieve. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the virtual document. (required)
-     * @param asAt The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing virtual document rows from a previous               call to list virtual document rows. This value is returned from the previous call. If a pagination token is               provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:               https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents
+     * Retrieve one or more virtual documents from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided effective datetime.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns two collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.     For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
+     * @param scope The scope in which to construct the virtual documents. (required)
+     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
+     * @return APIgetVirtualDocumentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVirtualDocumentRowsCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetVirtualDocumentRequest getVirtualDocument(String scope, Map<String, StructuredResultDataId> requestBody) {
+        return new APIgetVirtualDocumentRequest(scope, requestBody);
+    }
+    private okhttp3.Call getVirtualDocumentRowsCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1139,107 +1330,169 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows
-     * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.                Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
-     * @param scope The scope in which to retrieve the virtual document. (required)
-     * @param code The code of the virtual document to retrieve. (required)
-     * @param source The source of the virtual document to retrieve. (required)
-     * @param resultType The result type of the virtual document to retrieve. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the virtual document. (required)
-     * @param asAt The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing virtual document rows from a previous               call to list virtual document rows. This value is returned from the previous call. If a pagination token is               provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:               https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return PagedResourceListOfVirtualRow
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfVirtualRow getVirtualDocumentRows(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfVirtualRow> localVarResp = getVirtualDocumentRowsWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows
-     * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.                Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
-     * @param scope The scope in which to retrieve the virtual document. (required)
-     * @param code The code of the virtual document to retrieve. (required)
-     * @param source The source of the virtual document to retrieve. (required)
-     * @param resultType The result type of the virtual document to retrieve. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the virtual document. (required)
-     * @param asAt The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing virtual document rows from a previous               call to list virtual document rows. This value is returned from the previous call. If a pagination token is               provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:               https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfVirtualRow&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfVirtualRow> getVirtualDocumentRowsWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfVirtualRow> getVirtualDocumentRowsWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfVirtualRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows (asynchronously)
-     * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.                Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
-     * @param scope The scope in which to retrieve the virtual document. (required)
-     * @param code The code of the virtual document to retrieve. (required)
-     * @param source The source of the virtual document to retrieve. (required)
-     * @param resultType The result type of the virtual document to retrieve. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the virtual document. (required)
-     * @param asAt The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing virtual document rows from a previous               call to list virtual document rows. This value is returned from the previous call. If a pagination token is               provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:               https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getVirtualDocumentRowsAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfVirtualRow> _callback) throws ApiException {
+    private okhttp3.Call getVirtualDocumentRowsAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfVirtualRow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfVirtualRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetVirtualDocumentRowsRequest {
+        private final String scope;
+        private final String code;
+        private final String source;
+        private final String resultType;
+        private final String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIgetVirtualDocumentRowsRequest(String scope, String code, String source, String resultType, String effectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.source = source;
+            this.resultType = resultType;
+            this.effectiveAt = effectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetVirtualDocumentRowsRequest
+         */
+        public APIgetVirtualDocumentRowsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing virtual document rows from a previous   call to list virtual document rows. This value is returned from the previous call. If a pagination token is   provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @return APIgetVirtualDocumentRowsRequest
+         */
+        public APIgetVirtualDocumentRowsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetVirtualDocumentRowsRequest
+         */
+        public APIgetVirtualDocumentRowsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetVirtualDocumentRowsRequest
+         */
+        public APIgetVirtualDocumentRowsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getVirtualDocumentRows
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getVirtualDocumentRowsCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getVirtualDocumentRows request
+         * @return PagedResourceListOfVirtualRow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfVirtualRow execute() throws ApiException {
+            ApiResponse<PagedResourceListOfVirtualRow> localVarResp = getVirtualDocumentRowsWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getVirtualDocumentRows request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfVirtualRow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfVirtualRow> executeWithHttpInfo() throws ApiException {
+            return getVirtualDocumentRowsWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute getVirtualDocumentRows request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfVirtualRow> _callback) throws ApiException {
+            return getVirtualDocumentRowsAsync(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertResultValue
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows
+     * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.     Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
+     * @param scope The scope in which to retrieve the virtual document. (required)
+     * @param code The code of the virtual document to retrieve. (required)
+     * @param source The source of the virtual document to retrieve. (required)
+     * @param resultType The result type of the virtual document to retrieve. (required)
+     * @param effectiveAt The effectiveAt datetime at which to retrieve the virtual document. (required)
+     * @return APIgetVirtualDocumentRowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertResultValueCall(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIgetVirtualDocumentRowsRequest getVirtualDocumentRows(String scope, String code, String source, String resultType, String effectiveAt) {
+        return new APIgetVirtualDocumentRowsRequest(scope, code, source, resultType, effectiveAt);
+    }
+    private okhttp3.Call upsertResultValueCall(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1306,86 +1559,116 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertResultValue: Upsert result value
-     * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists  and created if it does not.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @return UpsertStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertStructuredDataResponse upsertResultValue(String scope, Map<String, UpsertResultValuesDataRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertResultValueWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertResultValue: Upsert result value
-     * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists  and created if it does not.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertStructuredDataResponse> upsertResultValueWithHttpInfo(String scope, Map<String, UpsertResultValuesDataRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertStructuredDataResponse> upsertResultValueWithHttpInfo(String scope, Map<String, UpsertResultValuesDataRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertResultValue: Upsert result value (asynchronously)
-     * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists  and created if it does not.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to construct the virtual documents. (required)
-     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertResultValueAsync(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertResultValueAsync(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, _callback);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertResultValueRequest {
+        private final String scope;
+        private final Map<String, UpsertResultValuesDataRequest> requestBody;
+
+        private APIupsertResultValueRequest(String scope, Map<String, UpsertResultValuesDataRequest> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertResultValue
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertResultValueCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertResultValue request
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertResultValueWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertResultValue request with HTTP info returned
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertResultValueWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertResultValue request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+            return upsertResultValueAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertStructuredResultData
-     * @param scope The scope in which to create or update data items. (required)
-     * @param requestBody The set of data items to create or update, keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertResultValue: Upsert result value
+     * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * @param scope The scope in which to construct the virtual documents. (required)
+     * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
+     * @return APIupsertResultValueRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertStructuredResultDataCall(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIupsertResultValueRequest upsertResultValue(String scope, Map<String, UpsertResultValuesDataRequest> requestBody) {
+        return new APIupsertResultValueRequest(scope, requestBody);
+    }
+    private okhttp3.Call upsertStructuredResultDataCall(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1452,55 +1735,104 @@ public class StructuredResultDataApi {
 
     }
 
-    /**
-     * [BETA] UpsertStructuredResultData: Upsert structured result data
-     * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to create or update data items. (required)
-     * @param requestBody The set of data items to create or update, keyed by a unique, ephemeral correlation ID. (required)
-     * @return UpsertStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertStructuredDataResponse upsertStructuredResultData(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertStructuredResultDataWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] UpsertStructuredResultData: Upsert structured result data
-     * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
-     * @param scope The scope in which to create or update data items. (required)
-     * @param requestBody The set of data items to create or update, keyed by a unique, ephemeral correlation ID. (required)
-     * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertStructuredDataResponse> upsertStructuredResultDataWithHttpInfo(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertStructuredDataResponse> upsertStructuredResultDataWithHttpInfo(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertStructuredResultDataAsync(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertStructuredResultDataRequest {
+        private final String scope;
+        private final Map<String, UpsertStructuredResultDataRequest> requestBody;
+
+        private APIupsertStructuredResultDataRequest(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody) {
+            this.scope = scope;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertStructuredResultData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertStructuredResultDataCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertStructuredResultData request
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertStructuredResultDataWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertStructuredResultData request with HTTP info returned
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertStructuredResultDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertStructuredResultData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
+            return upsertStructuredResultDataAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * [BETA] UpsertStructuredResultData: Upsert structured result data (asynchronously)
-     * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.                In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.                The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.                It is important to check the failed set for any unsuccessful results.
+     * [BETA] UpsertStructuredResultData: Upsert structured result data
+     * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to create or update data items. (required)
      * @param requestBody The set of data items to create or update, keyed by a unique, ephemeral correlation ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertStructuredResultDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1509,11 +1841,7 @@ public class StructuredResultDataApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertStructuredResultDataAsync(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertStructuredResultDataRequest upsertStructuredResultData(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody) {
+        return new APIupsertStructuredResultDataRequest(scope, requestBody);
     }
 }

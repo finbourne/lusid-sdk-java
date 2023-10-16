@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteReferenceList"></a>
 # **deleteReferenceList**
-> DeletedEntityResponse deleteReferenceList(scope, code)
+> DeletedEntityResponse deleteReferenceList(scope, code).execute();
 
 [EARLY ACCESS] DeleteReferenceList: Delete Reference List
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the Reference List belongs.
     String code = "code_example"; // String | The Reference List's unique identifier.
     try {
-      DeletedEntityResponse result = apiInstance.deleteReferenceList(scope, code);
+      DeletedEntityResponse result = apiInstance.deleteReferenceList(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferenceListsApi#deleteReferenceList");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getReferenceList"></a>
 # **getReferenceList**
-> ReferenceListResponse getReferenceList(scope, code, asAt)
+> ReferenceListResponse getReferenceList(scope, code).asAt(asAt).execute();
 
 [EARLY ACCESS] GetReferenceList: Get Reference List
 
@@ -113,7 +114,9 @@ public class Example {
     String code = "code_example"; // String | The Reference List's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified.
     try {
-      ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt);
+      ReferenceListResponse result = apiInstance.getReferenceList(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferenceListsApi#getReferenceList");
@@ -156,7 +159,7 @@ public class Example {
 
 <a id="listReferenceLists"></a>
 # **listReferenceLists**
-> PagedResourceListOfReferenceListResponse listReferenceLists(asAt, page, limit, filter)
+> PagedResourceListOfReferenceListResponse listReferenceLists().asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] ListReferenceLists: List Reference Lists
 
@@ -183,11 +186,16 @@ public class Example {
 
     ReferenceListsApi apiInstance = new ReferenceListsApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.              This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.   This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfReferenceListResponse result = apiInstance.listReferenceLists(asAt, page, limit, filter);
+      PagedResourceListOfReferenceListResponse result = apiInstance.listReferenceLists()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferenceListsApi#listReferenceLists");
@@ -205,9 +213,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.              This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.   This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -231,7 +239,7 @@ public class Example {
 
 <a id="upsertReferenceList"></a>
 # **upsertReferenceList**
-> ReferenceListResponse upsertReferenceList(referenceListRequest)
+> ReferenceListResponse upsertReferenceList().referenceListRequest(referenceListRequest).execute();
 
 [EARLY ACCESS] UpsertReferenceList: Upsert Reference List
 
@@ -259,7 +267,9 @@ public class Example {
     ReferenceListsApi apiInstance = new ReferenceListsApi(defaultClient);
     ReferenceListRequest referenceListRequest = new ReferenceListRequest(); // ReferenceListRequest | The payload describing the Reference List instance.
     try {
-      ReferenceListResponse result = apiInstance.upsertReferenceList(referenceListRequest);
+      ReferenceListResponse result = apiInstance.upsertReferenceList()
+            .referenceListRequest(referenceListRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferenceListsApi#upsertReferenceList");

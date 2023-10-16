@@ -81,28 +81,7 @@ public class QuotesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteQuoteAccessMetadataRule
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteQuoteAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteQuoteAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -188,104 +167,190 @@ public class QuotesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
-     * Delete the Quote Access Metadata Rule that exactly matches the provided identifier parts
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @return QuoteAccessMetadataRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public QuoteAccessMetadataRule deleteQuoteAccessMetadataRule(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt) throws ApiException {
-        ApiResponse<QuoteAccessMetadataRule> localVarResp = deleteQuoteAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
-     * Delete the Quote Access Metadata Rule that exactly matches the provided identifier parts
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<QuoteAccessMetadataRule> deleteQuoteAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt) throws ApiException {
+    private ApiResponse<QuoteAccessMetadataRule> deleteQuoteAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, null);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule (asynchronously)
-     * Delete the Quote Access Metadata Rule that exactly matches the provided identifier parts
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteQuoteAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
+    private okhttp3.Call deleteQuoteAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteQuoteAccessMetadataRuleRequest {
+        private final String scope;
+        private String provider;
+        private String priceSource;
+        private String instrumentIdType;
+        private String instrumentId;
+        private String quoteType;
+        private String field;
+        private String effectiveAt;
+
+        private APIdeleteQuoteAccessMetadataRuleRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set provider
+         * @param provider The Provider of the rule (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest provider(String provider) {
+            this.provider = provider;
+            return this;
+        }
+
+        /**
+         * Set priceSource
+         * @param priceSource The PriceSource of the rule (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest priceSource(String priceSource) {
+            this.priceSource = priceSource;
+            return this;
+        }
+
+        /**
+         * Set instrumentIdType
+         * @param instrumentIdType The InstrumentIdType of the rule (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest instrumentIdType(String instrumentIdType) {
+            this.instrumentIdType = instrumentIdType;
+            return this;
+        }
+
+        /**
+         * Set instrumentId
+         * @param instrumentId The InstrumentId of the rule (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest instrumentId(String instrumentId) {
+            this.instrumentId = instrumentId;
+            return this;
+        }
+
+        /**
+         * Set quoteType
+         * @param quoteType The QuoteType of the rule (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest quoteType(String quoteType) {
+            this.quoteType = quoteType;
+            return this;
+        }
+
+        /**
+         * Set field
+         * @param field The Field of the rule (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest field(String field) {
+            this.field = field;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
+         * @return APIdeleteQuoteAccessMetadataRuleRequest
+         */
+        public APIdeleteQuoteAccessMetadataRuleRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteQuoteAccessMetadataRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteQuoteAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteQuoteAccessMetadataRule request
+         * @return QuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QuoteAccessMetadataRule execute() throws ApiException {
+            ApiResponse<QuoteAccessMetadataRule> localVarResp = deleteQuoteAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteQuoteAccessMetadataRule request with HTTP info returned
+         * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
+            return deleteQuoteAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt);
+        }
+
+        /**
+         * Execute deleteQuoteAccessMetadataRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
+            return deleteQuoteAccessMetadataRuleAsync(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteQuotes
-     * @param scope The scope of the quotes to delete. (required)
-     * @param requestBody The quotes to delete keyed by a unique correlation id. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
+     * Delete the Quote Access Metadata Rule that exactly matches the provided identifier parts
+     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
+     * @return APIdeleteQuoteAccessMetadataRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteQuotesCall(String scope, Map<String, QuoteId> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIdeleteQuoteAccessMetadataRuleRequest deleteQuoteAccessMetadataRule(String scope) {
+        return new APIdeleteQuoteAccessMetadataRuleRequest(scope);
+    }
+    private okhttp3.Call deleteQuotesCall(String scope, Map<String, QuoteId> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -347,89 +412,124 @@ public class QuotesApi {
 
     }
 
-    /**
-     * DeleteQuotes: Delete quotes
-     * Delete one or more specified quotes from a single scope. A quote is identified by its unique id which includes information about  the type of quote as well as the exact effective datetime (to the microsecond) from which it became valid.                In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully deleted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be deleted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope of the quotes to delete. (required)
-     * @param requestBody The quotes to delete keyed by a unique correlation id. (optional)
-     * @return AnnulQuotesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulQuotesResponse deleteQuotes(String scope, Map<String, QuoteId> requestBody) throws ApiException {
-        ApiResponse<AnnulQuotesResponse> localVarResp = deleteQuotesWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * DeleteQuotes: Delete quotes
-     * Delete one or more specified quotes from a single scope. A quote is identified by its unique id which includes information about  the type of quote as well as the exact effective datetime (to the microsecond) from which it became valid.                In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully deleted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be deleted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope of the quotes to delete. (required)
-     * @param requestBody The quotes to delete keyed by a unique correlation id. (optional)
-     * @return ApiResponse&lt;AnnulQuotesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulQuotesResponse> deleteQuotesWithHttpInfo(String scope, Map<String, QuoteId> requestBody) throws ApiException {
+    private ApiResponse<AnnulQuotesResponse> deleteQuotesWithHttpInfo(String scope, Map<String, QuoteId> requestBody) throws ApiException {
         okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<AnnulQuotesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * DeleteQuotes: Delete quotes (asynchronously)
-     * Delete one or more specified quotes from a single scope. A quote is identified by its unique id which includes information about  the type of quote as well as the exact effective datetime (to the microsecond) from which it became valid.                In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully deleted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be deleted.                It is important to always check the failed set for any unsuccessful results.
-     * @param scope The scope of the quotes to delete. (required)
-     * @param requestBody The quotes to delete keyed by a unique correlation id. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteQuotesAsync(String scope, Map<String, QuoteId> requestBody, final ApiCallback<AnnulQuotesResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteQuotesAsync(String scope, Map<String, QuoteId> requestBody, final ApiCallback<AnnulQuotesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, _callback);
         Type localVarReturnType = new TypeToken<AnnulQuotesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteQuotesRequest {
+        private final String scope;
+        private Map<String, QuoteId> requestBody;
+
+        private APIdeleteQuotesRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The quotes to delete keyed by a unique correlation id. (optional)
+         * @return APIdeleteQuotesRequest
+         */
+        public APIdeleteQuotesRequest requestBody(Map<String, QuoteId> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for deleteQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteQuotesCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteQuotes request
+         * @return AnnulQuotesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulQuotesResponse execute() throws ApiException {
+            ApiResponse<AnnulQuotesResponse> localVarResp = deleteQuotesWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteQuotes request with HTTP info returned
+         * @return ApiResponse&lt;AnnulQuotesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulQuotesResponse> executeWithHttpInfo() throws ApiException {
+            return deleteQuotesWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute deleteQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulQuotesResponse> _callback) throws ApiException {
+            return deleteQuotesAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for getQuotes
-     * @param scope The scope of the quotes to retrieve. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the quotes. Defaults to return the latest version of each quote if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved. (optional)
-     * @param requestBody The time invariant quote series ids of the quotes to retrieve. These need to be               keyed by a unique correlation id allowing the retrieved quote to be identified in the response. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * DeleteQuotes: Delete quotes
+     * Delete one or more specified quotes from a single scope. A quote is identified by its unique id which includes information about  the type of quote as well as the exact effective datetime (to the microsecond) from which it became valid.     In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return both the collection of successfully deleted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be deleted.     It is important to always check the failed set for any unsuccessful results.
+     * @param scope The scope of the quotes to delete. (required)
+     * @return APIdeleteQuotesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getQuotesCall(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIdeleteQuotesRequest deleteQuotes(String scope) {
+        return new APIdeleteQuotesRequest(scope);
+    }
+    private okhttp3.Call getQuotesCall(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,102 +603,157 @@ public class QuotesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetQuotes: Get quotes
-     * Get one or more quotes from a single scope.                Each quote can be identified by its time invariant quote series id.                For each quote series id LUSID will return the most recent quote with respect to the provided (or default) effective datetime.                 An optional maximum age range window can be specified which defines how far back to look back for a quote from the specified effective datetime.  LUSID will return the most recent quote within this window.                In the request each quote series id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return three collections. One, the successfully retrieved quotes. Two, those that had a  valid quote series id but could not be found. Three, those that failed because LUSID could not construct a valid quote series id from the request.    For the quotes that failed or could not be found a reason will be provided explaining why the quote could not be retrieved.                It is important to always check the failed and not found sets for any unsuccessful results.  The maximum number of quotes that this method can get per request is 2,000.
-     * @param scope The scope of the quotes to retrieve. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the quotes. Defaults to return the latest version of each quote if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved. (optional)
-     * @param requestBody The time invariant quote series ids of the quotes to retrieve. These need to be               keyed by a unique correlation id allowing the retrieved quote to be identified in the response. (optional)
-     * @return GetQuotesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetQuotesResponse getQuotes(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody) throws ApiException {
-        ApiResponse<GetQuotesResponse> localVarResp = getQuotesWithHttpInfo(scope, effectiveAt, asAt, maxAge, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetQuotes: Get quotes
-     * Get one or more quotes from a single scope.                Each quote can be identified by its time invariant quote series id.                For each quote series id LUSID will return the most recent quote with respect to the provided (or default) effective datetime.                 An optional maximum age range window can be specified which defines how far back to look back for a quote from the specified effective datetime.  LUSID will return the most recent quote within this window.                In the request each quote series id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return three collections. One, the successfully retrieved quotes. Two, those that had a  valid quote series id but could not be found. Three, those that failed because LUSID could not construct a valid quote series id from the request.    For the quotes that failed or could not be found a reason will be provided explaining why the quote could not be retrieved.                It is important to always check the failed and not found sets for any unsuccessful results.  The maximum number of quotes that this method can get per request is 2,000.
-     * @param scope The scope of the quotes to retrieve. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the quotes. Defaults to return the latest version of each quote if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved. (optional)
-     * @param requestBody The time invariant quote series ids of the quotes to retrieve. These need to be               keyed by a unique correlation id allowing the retrieved quote to be identified in the response. (optional)
-     * @return ApiResponse&lt;GetQuotesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetQuotesResponse> getQuotesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody) throws ApiException {
+    private ApiResponse<GetQuotesResponse> getQuotesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody) throws ApiException {
         okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, null);
         Type localVarReturnType = new TypeToken<GetQuotesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetQuotes: Get quotes (asynchronously)
-     * Get one or more quotes from a single scope.                Each quote can be identified by its time invariant quote series id.                For each quote series id LUSID will return the most recent quote with respect to the provided (or default) effective datetime.                 An optional maximum age range window can be specified which defines how far back to look back for a quote from the specified effective datetime.  LUSID will return the most recent quote within this window.                In the request each quote series id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return three collections. One, the successfully retrieved quotes. Two, those that had a  valid quote series id but could not be found. Three, those that failed because LUSID could not construct a valid quote series id from the request.    For the quotes that failed or could not be found a reason will be provided explaining why the quote could not be retrieved.                It is important to always check the failed and not found sets for any unsuccessful results.  The maximum number of quotes that this method can get per request is 2,000.
-     * @param scope The scope of the quotes to retrieve. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the quotes. Defaults to return the latest version of each quote if not specified. (optional)
-     * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved. (optional)
-     * @param requestBody The time invariant quote series ids of the quotes to retrieve. These need to be               keyed by a unique correlation id allowing the retrieved quote to be identified in the response. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getQuotesAsync(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback<GetQuotesResponse> _callback) throws ApiException {
+    private okhttp3.Call getQuotesAsync(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback<GetQuotesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback);
         Type localVarReturnType = new TypeToken<GetQuotesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetQuotesRequest {
+        private final String scope;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String maxAge;
+        private Map<String, QuoteSeriesId> requestBody;
+
+        private APIgetQuotesRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetQuotesRequest
+         */
+        public APIgetQuotesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the quotes. Defaults to return the latest version of each quote if not specified. (optional)
+         * @return APIgetQuotesRequest
+         */
+        public APIgetQuotesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set maxAge
+         * @param maxAge The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved. (optional)
+         * @return APIgetQuotesRequest
+         */
+        public APIgetQuotesRequest maxAge(String maxAge) {
+            this.maxAge = maxAge;
+            return this;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The time invariant quote series ids of the quotes to retrieve. These need to be   keyed by a unique correlation id allowing the retrieved quote to be identified in the response. (optional)
+         * @return APIgetQuotesRequest
+         */
+        public APIgetQuotesRequest requestBody(Map<String, QuoteSeriesId> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for getQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getQuotesCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback);
+        }
+
+        /**
+         * Execute getQuotes request
+         * @return GetQuotesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetQuotesResponse execute() throws ApiException {
+            ApiResponse<GetQuotesResponse> localVarResp = getQuotesWithHttpInfo(scope, effectiveAt, asAt, maxAge, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getQuotes request with HTTP info returned
+         * @return ApiResponse&lt;GetQuotesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetQuotesResponse> executeWithHttpInfo() throws ApiException {
+            return getQuotesWithHttpInfo(scope, effectiveAt, asAt, maxAge, requestBody);
+        }
+
+        /**
+         * Execute getQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetQuotesResponse> _callback) throws ApiException {
+            return getQuotesAsync(scope, effectiveAt, asAt, maxAge, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for getQuotesAccessMetadataRule
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetQuotes: Get quotes
+     * Get one or more quotes from a single scope.     Each quote can be identified by its time invariant quote series id.     For each quote series id LUSID will return the most recent quote with respect to the provided (or default) effective datetime.      An optional maximum age range window can be specified which defines how far back to look back for a quote from the specified effective datetime.  LUSID will return the most recent quote within this window.     In the request each quote series id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return three collections. One, the successfully retrieved quotes. Two, those that had a  valid quote series id but could not be found. Three, those that failed because LUSID could not construct a valid quote series id from the request.    For the quotes that failed or could not be found a reason will be provided explaining why the quote could not be retrieved.     It is important to always check the failed and not found sets for any unsuccessful results.  The maximum number of quotes that this method can get per request is 2,000.
+     * @param scope The scope of the quotes to retrieve. (required)
+     * @return APIgetQuotesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getQuotesAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetQuotesRequest getQuotes(String scope) {
+        return new APIgetQuotesRequest(scope);
+    }
+    private okhttp3.Call getQuotesAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -691,111 +846,201 @@ public class QuotesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule
-     * Get a specific quote access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @return QuoteAccessMetadataRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public QuoteAccessMetadataRule getQuotesAccessMetadataRule(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<QuoteAccessMetadataRule> localVarResp = getQuotesAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule
-     * Get a specific quote access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<QuoteAccessMetadataRule> getQuotesAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<QuoteAccessMetadataRule> getQuotesAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule (asynchronously)
-     * Get a specific quote access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param provider The Provider of the rule (optional)
-     * @param priceSource The PriceSource of the rule (optional)
-     * @param instrumentIdType The InstrumentIdType of the rule (optional)
-     * @param instrumentId The InstrumentId of the rule (optional)
-     * @param quoteType The QuoteType of the rule (optional)
-     * @param field The Field of the rule (optional)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getQuotesAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
+    private okhttp3.Call getQuotesAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetQuotesAccessMetadataRuleRequest {
+        private final String scope;
+        private String provider;
+        private String priceSource;
+        private String instrumentIdType;
+        private String instrumentId;
+        private String quoteType;
+        private String field;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetQuotesAccessMetadataRuleRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set provider
+         * @param provider The Provider of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest provider(String provider) {
+            this.provider = provider;
+            return this;
+        }
+
+        /**
+         * Set priceSource
+         * @param priceSource The PriceSource of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest priceSource(String priceSource) {
+            this.priceSource = priceSource;
+            return this;
+        }
+
+        /**
+         * Set instrumentIdType
+         * @param instrumentIdType The InstrumentIdType of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest instrumentIdType(String instrumentIdType) {
+            this.instrumentIdType = instrumentIdType;
+            return this;
+        }
+
+        /**
+         * Set instrumentId
+         * @param instrumentId The InstrumentId of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest instrumentId(String instrumentId) {
+            this.instrumentId = instrumentId;
+            return this;
+        }
+
+        /**
+         * Set quoteType
+         * @param quoteType The QuoteType of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest quoteType(String quoteType) {
+            this.quoteType = quoteType;
+            return this;
+        }
+
+        /**
+         * Set field
+         * @param field The Field of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest field(String field) {
+            this.field = field;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date of the rule (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetQuotesAccessMetadataRuleRequest
+         */
+        public APIgetQuotesAccessMetadataRuleRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getQuotesAccessMetadataRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getQuotesAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getQuotesAccessMetadataRule request
+         * @return QuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QuoteAccessMetadataRule execute() throws ApiException {
+            ApiResponse<QuoteAccessMetadataRule> localVarResp = getQuotesAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getQuotesAccessMetadataRule request with HTTP info returned
+         * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
+            return getQuotesAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getQuotesAccessMetadataRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
+            return getQuotesAccessMetadataRuleAsync(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listQuotes
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule
+     * Get a specific quote access metadata rule by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
+     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
+     * @return APIgetQuotesAccessMetadataRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listQuotesCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetQuotesAccessMetadataRuleRequest getQuotesAccessMetadataRule(String scope) {
+        return new APIgetQuotesAccessMetadataRuleRequest(scope);
+    }
+    private okhttp3.Call listQuotesCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -873,98 +1118,168 @@ public class QuotesApi {
 
     }
 
-    /**
-     * [DEPRECATED] ListQuotes: List quotes
-     * List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfQuote
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfQuote listQuotes(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfQuote> localVarResp = listQuotesWithHttpInfo(scope, asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [DEPRECATED] ListQuotes: List quotes
-     * List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfQuote&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfQuote> listQuotesWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfQuote> listQuotesWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [DEPRECATED] ListQuotes: List quotes (asynchronously)
-     * List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listQuotesAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
+    private okhttp3.Call listQuotesAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistQuotesRequest {
+        private final String scope;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistQuotesRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
+         * @return APIlistQuotesRequest
+         */
+        public APIlistQuotesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistQuotesRequest
+         */
+        public APIlistQuotesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistQuotesRequest
+         */
+        public APIlistQuotesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistQuotesRequest
+         */
+        public APIlistQuotesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistQuotesRequest
+         */
+        public APIlistQuotesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listQuotesCall(scope, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listQuotes request
+         * @return ResourceListOfQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQuote execute() throws ApiException {
+            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesWithHttpInfo(scope, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listQuotes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQuote> executeWithHttpInfo() throws ApiException {
+            return listQuotesWithHttpInfo(scope, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
+            return listQuotesAsync(scope, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listQuotesAccessMetadataRules
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [DEPRECATED] ListQuotes: List quotes
+     * List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
+     * @param scope The scope of the quotes to list. (required)
+     * @return APIlistQuotesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listQuotesAccessMetadataRulesCall(String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIlistQuotesRequest listQuotes(String scope) {
+        return new APIlistQuotesRequest(scope);
+    }
+    private okhttp3.Call listQuotesAccessMetadataRulesCall(String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1026,90 +1341,124 @@ public class QuotesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
-     * Get all the quote access metadata rules in the specified scope
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @return ResourceListOfQuoteAccessMetadataRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfQuoteAccessMetadataRule listQuotesAccessMetadataRules(String scope, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfQuoteAccessMetadataRule> localVarResp = listQuotesAccessMetadataRulesWithHttpInfo(scope, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
-     * Get all the quote access metadata rules in the specified scope
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfQuoteAccessMetadataRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfQuoteAccessMetadataRule> listQuotesAccessMetadataRulesWithHttpInfo(String scope, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfQuoteAccessMetadataRule> listQuotesAccessMetadataRulesWithHttpInfo(String scope, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfQuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope (asynchronously)
-     * Get all the quote access metadata rules in the specified scope
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listQuotesAccessMetadataRulesAsync(String scope, OffsetDateTime asAt, final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback) throws ApiException {
+    private okhttp3.Call listQuotesAccessMetadataRulesAsync(String scope, OffsetDateTime asAt, final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfQuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistQuotesAccessMetadataRulesRequest {
+        private final String scope;
+        private OffsetDateTime asAt;
+
+        private APIlistQuotesAccessMetadataRulesRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified. (optional)
+         * @return APIlistQuotesAccessMetadataRulesRequest
+         */
+        public APIlistQuotesAccessMetadataRulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listQuotesAccessMetadataRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listQuotesAccessMetadataRulesCall(scope, asAt, _callback);
+        }
+
+        /**
+         * Execute listQuotesAccessMetadataRules request
+         * @return ResourceListOfQuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQuoteAccessMetadataRule execute() throws ApiException {
+            ApiResponse<ResourceListOfQuoteAccessMetadataRule> localVarResp = listQuotesAccessMetadataRulesWithHttpInfo(scope, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listQuotesAccessMetadataRules request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfQuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
+            return listQuotesAccessMetadataRulesWithHttpInfo(scope, asAt);
+        }
+
+        /**
+         * Execute listQuotesAccessMetadataRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback) throws ApiException {
+            return listQuotesAccessMetadataRulesAsync(scope, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listQuotesForScope
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
+     * Get all the quote access metadata rules in the specified scope
+     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
+     * @return APIlistQuotesAccessMetadataRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listQuotesForScopeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistQuotesAccessMetadataRulesRequest listQuotesAccessMetadataRules(String scope) {
+        return new APIlistQuotesAccessMetadataRulesRequest(scope);
+    }
+    private okhttp3.Call listQuotesForScopeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1187,100 +1536,168 @@ public class QuotesApi {
 
     }
 
-    /**
-     * ListQuotesForScope: List quotes for scope
-     * List all the quotes from a single scope at the specified date/time
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfQuote
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfQuote listQuotesForScope(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfQuote> localVarResp = listQuotesForScopeWithHttpInfo(scope, asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListQuotesForScope: List quotes for scope
-     * List all the quotes from a single scope at the specified date/time
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfQuote&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfQuote> listQuotesForScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfQuote> listQuotesForScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListQuotesForScope: List quotes for scope (asynchronously)
-     * List all the quotes from a single scope at the specified date/time
-     * @param scope The scope of the quotes to list. (required)
-     * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
-     * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listQuotesForScopeAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
+    private okhttp3.Call listQuotesForScopeAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistQuotesForScopeRequest {
+        private final String scope;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistQuotesForScopeRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the quotes. Defaults to latest if not specified. (optional)
+         * @return APIlistQuotesForScopeRequest
+         */
+        public APIlistQuotesForScopeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistQuotesForScopeRequest
+         */
+        public APIlistQuotesForScopeRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistQuotesForScopeRequest
+         */
+        public APIlistQuotesForScopeRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistQuotesForScopeRequest
+         */
+        public APIlistQuotesForScopeRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistQuotesForScopeRequest
+         */
+        public APIlistQuotesForScopeRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listQuotesForScope
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listQuotesForScopeCall(scope, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listQuotesForScope request
+         * @return ResourceListOfQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQuote execute() throws ApiException {
+            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesForScopeWithHttpInfo(scope, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listQuotesForScope request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQuote> executeWithHttpInfo() throws ApiException {
+            return listQuotesForScopeWithHttpInfo(scope, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listQuotesForScope request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
+            return listQuotesForScopeAsync(scope, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertQuoteAccessMetadataRule
-     * @param scope The scope to use when updating or inserting the Quote Access Metadata Rule. (required)
-     * @param upsertQuoteAccessMetadataRuleRequest The Quote Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ListQuotesForScope: List quotes for scope
+     * List all the quotes from a single scope at the specified date/time
+     * @param scope The scope of the quotes to list. (required)
+     * @return APIlistQuotesForScopeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertQuoteAccessMetadataRuleCall(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIlistQuotesForScopeRequest listQuotesForScope(String scope) {
+        return new APIlistQuotesForScopeRequest(scope);
+    }
+    private okhttp3.Call upsertQuoteAccessMetadataRuleCall(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1355,92 +1772,138 @@ public class QuotesApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
-     * Update or insert one Quote Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Quote Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a key can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
-     * @param scope The scope to use when updating or inserting the Quote Access Metadata Rule. (required)
-     * @param upsertQuoteAccessMetadataRuleRequest The Quote Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return QuoteAccessMetadataRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public QuoteAccessMetadataRule upsertQuoteAccessMetadataRule(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<QuoteAccessMetadataRule> localVarResp = upsertQuoteAccessMetadataRuleWithHttpInfo(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
-     * Update or insert one Quote Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Quote Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a key can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
-     * @param scope The scope to use when updating or inserting the Quote Access Metadata Rule. (required)
-     * @param upsertQuoteAccessMetadataRuleRequest The Quote Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<QuoteAccessMetadataRule> upsertQuoteAccessMetadataRuleWithHttpInfo(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<QuoteAccessMetadataRule> upsertQuoteAccessMetadataRuleWithHttpInfo(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID. (asynchronously)
-     * Update or insert one Quote Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Quote Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a key can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
-     * @param scope The scope to use when updating or inserting the Quote Access Metadata Rule. (required)
-     * @param upsertQuoteAccessMetadataRuleRequest The Quote Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertQuoteAccessMetadataRuleAsync(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
+    private okhttp3.Call upsertQuoteAccessMetadataRuleAsync(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertQuoteAccessMetadataRuleRequest {
+        private final String scope;
+        private final UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIupsertQuoteAccessMetadataRuleRequest(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest) {
+            this.scope = scope;
+            this.upsertQuoteAccessMetadataRuleRequest = upsertQuoteAccessMetadataRuleRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The date this rule will effective from (optional)
+         * @return APIupsertQuoteAccessMetadataRuleRequest
+         */
+        public APIupsertQuoteAccessMetadataRuleRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIupsertQuoteAccessMetadataRuleRequest
+         */
+        public APIupsertQuoteAccessMetadataRuleRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for upsertQuoteAccessMetadataRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertQuoteAccessMetadataRuleCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertQuoteAccessMetadataRule request
+         * @return QuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QuoteAccessMetadataRule execute() throws ApiException {
+            ApiResponse<QuoteAccessMetadataRule> localVarResp = upsertQuoteAccessMetadataRuleWithHttpInfo(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertQuoteAccessMetadataRule request with HTTP info returned
+         * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
+            return upsertQuoteAccessMetadataRuleWithHttpInfo(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertQuoteAccessMetadataRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
+            return upsertQuoteAccessMetadataRuleAsync(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertQuotes
-     * @param scope The scope to use when updating or inserting the quotes. (required)
-     * @param requestBody The quotes to update or insert keyed by a unique correlation id. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
+     * Update or insert one Quote Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Quote Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a key can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+     * @param scope The scope to use when updating or inserting the Quote Access Metadata Rule. (required)
+     * @param upsertQuoteAccessMetadataRuleRequest The Quote Access Metadata Rule to update or insert (required)
+     * @return APIupsertQuoteAccessMetadataRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertQuotesCall(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIupsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRule(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest) {
+        return new APIupsertQuoteAccessMetadataRuleRequest(scope, upsertQuoteAccessMetadataRuleRequest);
+    }
+    private okhttp3.Call upsertQuotesCall(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1502,55 +1965,112 @@ public class QuotesApi {
 
     }
 
-    /**
-     * UpsertQuotes: Upsert quotes
-     * Update or insert one or more quotes in a single scope. A quote will be updated if it already exists  and inserted if it does not.                In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully updated or inserted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.  The maximum number of quotes that this method can upsert per request is 2,000.
-     * @param scope The scope to use when updating or inserting the quotes. (required)
-     * @param requestBody The quotes to update or insert keyed by a unique correlation id. (optional)
-     * @return UpsertQuotesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertQuotesResponse upsertQuotes(String scope, Map<String, UpsertQuoteRequest> requestBody) throws ApiException {
-        ApiResponse<UpsertQuotesResponse> localVarResp = upsertQuotesWithHttpInfo(scope, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertQuotes: Upsert quotes
-     * Update or insert one or more quotes in a single scope. A quote will be updated if it already exists  and inserted if it does not.                In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully updated or inserted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.  The maximum number of quotes that this method can upsert per request is 2,000.
-     * @param scope The scope to use when updating or inserting the quotes. (required)
-     * @param requestBody The quotes to update or insert keyed by a unique correlation id. (optional)
-     * @return ApiResponse&lt;UpsertQuotesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertQuotesResponse> upsertQuotesWithHttpInfo(String scope, Map<String, UpsertQuoteRequest> requestBody) throws ApiException {
+    private ApiResponse<UpsertQuotesResponse> upsertQuotesWithHttpInfo(String scope, Map<String, UpsertQuoteRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertQuotesAsync(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback<UpsertQuotesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertQuotesRequest {
+        private final String scope;
+        private Map<String, UpsertQuoteRequest> requestBody;
+
+        private APIupsertQuotesRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The quotes to update or insert keyed by a unique correlation id. (optional)
+         * @return APIupsertQuotesRequest
+         */
+        public APIupsertQuotesRequest requestBody(Map<String, UpsertQuoteRequest> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for upsertQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertQuotesCall(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertQuotes request
+         * @return UpsertQuotesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertQuotesResponse execute() throws ApiException {
+            ApiResponse<UpsertQuotesResponse> localVarResp = upsertQuotesWithHttpInfo(scope, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertQuotes request with HTTP info returned
+         * @return ApiResponse&lt;UpsertQuotesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertQuotesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertQuotesWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertQuotesResponse> _callback) throws ApiException {
+            return upsertQuotesAsync(scope, requestBody, _callback);
+        }
+    }
+
     /**
-     * UpsertQuotes: Upsert quotes (asynchronously)
-     * Update or insert one or more quotes in a single scope. A quote will be updated if it already exists  and inserted if it does not.                In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.                The response will return both the collection of successfully updated or inserted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.  The maximum number of quotes that this method can upsert per request is 2,000.
+     * UpsertQuotes: Upsert quotes
+     * Update or insert one or more quotes in a single scope. A quote will be updated if it already exists  and inserted if it does not.     In the request each quote must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return both the collection of successfully updated or inserted quotes, as well as those that failed.  For the failures a reason will be provided explaining why the quote could not be updated or inserted.     It is important to always check the failed set for any unsuccessful results.  The maximum number of quotes that this method can upsert per request is 2,000.
      * @param scope The scope to use when updating or inserting the quotes. (required)
-     * @param requestBody The quotes to update or insert keyed by a unique correlation id. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertQuotesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1559,11 +2079,7 @@ public class QuotesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertQuotesAsync(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback<UpsertQuotesResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertQuotesRequest upsertQuotes(String scope) {
+        return new APIupsertQuotesRequest(scope);
     }
 }

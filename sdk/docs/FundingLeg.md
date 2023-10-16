@@ -2,7 +2,7 @@
 
 # FundingLeg
 
-LUSID representation of a Funding Leg with variable notional.    This Funding Leg is a hybrid between a single leg swap and a loan facility; the notional is not fixed and can vary within a reset period.                 The model can be used to represent the funding leg of a basket of instruments (e.g. equities) where the contents  of the basket can change over time. The actual notional history is stored in the FundingLegHistory object.     The actual notional history is stored in the FundingLegHistory object.                The main analytic calculated for this instrument is Accrual rather than PV.
+LUSID representation of a Funding Leg with variable notional.    This Funding Leg is a hybrid between a single leg swap and a loan facility; the notional is not fixed and can vary within a reset period.      The model can be used to represent the funding leg of a basket of instruments (e.g. equities) where the contents  of the basket can change over time. The actual notional history is stored in the FundingLegHistory object.     The actual notional history is stored in the FundingLegHistory object.     The main analytic calculated for this instrument is Accrual rather than PV.
 
 ## Properties
 

@@ -235,25 +235,18 @@ public class JELinesQueryParameters {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to JELinesQueryParameters
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to JELinesQueryParameters
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!JELinesQueryParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!JELinesQueryParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in JELinesQueryParameters is not found in the empty JSON string", JELinesQueryParameters.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!JELinesQueryParameters.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `JELinesQueryParameters` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
@@ -264,7 +257,7 @@ public class JELinesQueryParameters {
         throw new IllegalArgumentException(String.format("Expected the field `filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filter").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("propertyKeys") != null && !jsonObj.get("propertyKeys").isJsonArray()) {
+      if (jsonObj.get("propertyKeys") != null && !jsonObj.get("propertyKeys").isJsonNull() && !jsonObj.get("propertyKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyKeys` to be an array in the JSON string but got `%s`", jsonObj.get("propertyKeys").toString()));
       }
   }
@@ -289,9 +282,9 @@ public class JELinesQueryParameters {
 
            @Override
            public JELinesQueryParameters read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

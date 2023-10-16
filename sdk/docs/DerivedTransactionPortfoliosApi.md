@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createDerivedPortfolio"></a>
 # **createDerivedPortfolio**
-> Portfolio createDerivedPortfolio(scope, createDerivedTransactionPortfolioRequest)
+> Portfolio createDerivedPortfolio(scope).createDerivedTransactionPortfolioRequest(createDerivedTransactionPortfolioRequest).execute();
 
 CreateDerivedPortfolio: Create derived portfolio
 
@@ -39,7 +39,9 @@ public class Example {
     String scope = "scope_example"; // String | The scope in which to create the derived transaction portfolio.
     CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest = new CreateDerivedTransactionPortfolioRequest(); // CreateDerivedTransactionPortfolioRequest | The definition of the derived transaction portfolio.
     try {
-      Portfolio result = apiInstance.createDerivedPortfolio(scope, createDerivedTransactionPortfolioRequest);
+      Portfolio result = apiInstance.createDerivedPortfolio(scope)
+            .createDerivedTransactionPortfolioRequest(createDerivedTransactionPortfolioRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DerivedTransactionPortfoliosApi#createDerivedPortfolio");
@@ -81,7 +83,7 @@ public class Example {
 
 <a id="deleteDerivedPortfolioDetails"></a>
 # **deleteDerivedPortfolioDetails**
-> DeletedEntityResponse deleteDerivedPortfolioDetails(scope, code, effectiveAt)
+> DeletedEntityResponse deleteDerivedPortfolioDetails(scope, code).effectiveAt(effectiveAt).execute();
 
 [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
 
@@ -108,10 +110,12 @@ public class Example {
 
     DerivedTransactionPortfoliosApi apiInstance = new DerivedTransactionPortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the derived transaction portfolio.
-    String code = "code_example"; // String | The code of the derived transaction portfolio. Together with the scope this uniquely identifies              the derived transaction portfolio.
+    String code = "code_example"; // String | The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio.
     String effectiveAt = "effectiveAt_example"; // String | The effective date of the change.
     try {
-      DeletedEntityResponse result = apiInstance.deleteDerivedPortfolioDetails(scope, code, effectiveAt);
+      DeletedEntityResponse result = apiInstance.deleteDerivedPortfolioDetails(scope, code)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DerivedTransactionPortfoliosApi#deleteDerivedPortfolioDetails");
@@ -129,7 +133,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the derived transaction portfolio. | |
-| **code** | **String**| The code of the derived transaction portfolio. Together with the scope this uniquely identifies              the derived transaction portfolio. | |
+| **code** | **String**| The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio. | |
 | **effectiveAt** | **String**| The effective date of the change. | [optional] |
 
 ### Return type

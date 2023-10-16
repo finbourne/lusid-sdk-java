@@ -566,28 +566,21 @@ public class A2BDataRecord {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to A2BDataRecord
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to A2BDataRecord
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!A2BDataRecord.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!A2BDataRecord.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in A2BDataRecord is not found in the empty JSON string", A2BDataRecord.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!A2BDataRecord.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `A2BDataRecord` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `portfolioId`
       if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("portfolioId"));
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       }
       if ((jsonObj.get("holdingType") != null && !jsonObj.get("holdingType").isJsonNull()) && !jsonObj.get("holdingType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingType").toString()));
@@ -606,23 +599,23 @@ public class A2BDataRecord {
       }
       // validate the optional field `start`
       if (jsonObj.get("start") != null && !jsonObj.get("start").isJsonNull()) {
-        A2BCategory.validateJsonObject(jsonObj.getAsJsonObject("start"));
+        A2BCategory.validateJsonElement(jsonObj.get("start"));
       }
       // validate the optional field `flows`
       if (jsonObj.get("flows") != null && !jsonObj.get("flows").isJsonNull()) {
-        A2BCategory.validateJsonObject(jsonObj.getAsJsonObject("flows"));
+        A2BCategory.validateJsonElement(jsonObj.get("flows"));
       }
       // validate the optional field `gains`
       if (jsonObj.get("gains") != null && !jsonObj.get("gains").isJsonNull()) {
-        A2BCategory.validateJsonObject(jsonObj.getAsJsonObject("gains"));
+        A2BCategory.validateJsonElement(jsonObj.get("gains"));
       }
       // validate the optional field `carry`
       if (jsonObj.get("carry") != null && !jsonObj.get("carry").isJsonNull()) {
-        A2BCategory.validateJsonObject(jsonObj.getAsJsonObject("carry"));
+        A2BCategory.validateJsonElement(jsonObj.get("carry"));
       }
       // validate the optional field `end`
       if (jsonObj.get("end") != null && !jsonObj.get("end").isJsonNull()) {
-        A2BCategory.validateJsonObject(jsonObj.getAsJsonObject("end"));
+        A2BCategory.validateJsonElement(jsonObj.get("end"));
       }
       if ((jsonObj.get("groupId") != null && !jsonObj.get("groupId").isJsonNull()) && !jsonObj.get("groupId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `groupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("groupId").toString()));
@@ -637,7 +630,7 @@ public class A2BDataRecord {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ResponseMetaData.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            ResponseMetaData.validateJsonElement(jsonArrayerrors.get(i));
           };
         }
       }
@@ -663,9 +656,9 @@ public class A2BDataRecord {
 
            @Override
            public A2BDataRecord read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -380,34 +380,27 @@ public class AggregatedTransactionsRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AggregatedTransactionsRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to AggregatedTransactionsRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!AggregatedTransactionsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!AggregatedTransactionsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AggregatedTransactionsRequest is not found in the empty JSON string", AggregatedTransactionsRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AggregatedTransactionsRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AggregatedTransactionsRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AggregatedTransactionsRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `portfolioId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("portfolioId"));
+      ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       // ensure the json data is an array
       if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
@@ -416,10 +409,10 @@ public class AggregatedTransactionsRequest {
       JsonArray jsonArraymetrics = jsonObj.getAsJsonArray("metrics");
       // validate the required field `metrics` (array)
       for (int i = 0; i < jsonArraymetrics.size(); i++) {
-        AggregateSpec.validateJsonObject(jsonArraymetrics.get(i).getAsJsonObject());
+        AggregateSpec.validateJsonElement(jsonArraymetrics.get(i));
       };
       // ensure the optional json data is an array if present
-      if (jsonObj.get("groupBy") != null && !jsonObj.get("groupBy").isJsonArray()) {
+      if (jsonObj.get("groupBy") != null && !jsonObj.get("groupBy").isJsonNull() && !jsonObj.get("groupBy").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `groupBy` to be an array in the JSON string but got `%s`", jsonObj.get("groupBy").toString()));
       }
       if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
@@ -432,7 +425,7 @@ public class AggregatedTransactionsRequest {
 
           // validate the optional field `filters` (array)
           for (int i = 0; i < jsonArrayfilters.size(); i++) {
-            PropertyFilter.validateJsonObject(jsonArrayfilters.get(i).getAsJsonObject());
+            PropertyFilter.validateJsonElement(jsonArrayfilters.get(i));
           };
         }
       }
@@ -446,7 +439,7 @@ public class AggregatedTransactionsRequest {
 
           // validate the optional field `sort` (array)
           for (int i = 0; i < jsonArraysort.size(); i++) {
-            OrderBySpec.validateJsonObject(jsonArraysort.get(i).getAsJsonObject());
+            OrderBySpec.validateJsonElement(jsonArraysort.get(i));
           };
         }
       }
@@ -472,9 +465,9 @@ public class AggregatedTransactionsRequest {
 
            @Override
            public AggregatedTransactionsRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Virtual document consists of (potentially several) upserted documents.                The documents get parsed according to the provided data map on upsert, the collection of resulting values in  aggregated in a virtual document
+ * Virtual document consists of (potentially several) upserted documents.     The documents get parsed according to the provided data map on upsert, the collection of resulting values in  aggregated in a virtual document
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VirtualDocument {
@@ -181,28 +181,21 @@ public class VirtualDocument {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VirtualDocument
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to VirtualDocument
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!VirtualDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!VirtualDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualDocument is not found in the empty JSON string", VirtualDocument.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!VirtualDocument.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VirtualDocument` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `documentId`
       if (jsonObj.get("documentId") != null && !jsonObj.get("documentId").isJsonNull()) {
-        StructuredResultDataId.validateJsonObject(jsonObj.getAsJsonObject("documentId"));
+        StructuredResultDataId.validateJsonElement(jsonObj.get("documentId"));
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
@@ -214,7 +207,7 @@ public class VirtualDocument {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            VirtualDocumentRow.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+            VirtualDocumentRow.validateJsonElement(jsonArraydata.get(i));
           };
         }
       }
@@ -240,9 +233,9 @@ public class VirtualDocument {
 
            @Override
            public VirtualDocument read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

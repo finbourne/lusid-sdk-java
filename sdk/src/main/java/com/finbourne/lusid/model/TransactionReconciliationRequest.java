@@ -325,42 +325,35 @@ public class TransactionReconciliationRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to TransactionReconciliationRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to TransactionReconciliationRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!TransactionReconciliationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!TransactionReconciliationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransactionReconciliationRequest is not found in the empty JSON string", TransactionReconciliationRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!TransactionReconciliationRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransactionReconciliationRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : TransactionReconciliationRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `leftPortfolioId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("leftPortfolioId"));
+      ResourceId.validateJsonElement(jsonObj.get("leftPortfolioId"));
       // validate the required field `rightPortfolioId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("rightPortfolioId"));
+      ResourceId.validateJsonElement(jsonObj.get("rightPortfolioId"));
       // validate the optional field `mappingId`
       if (jsonObj.get("mappingId") != null && !jsonObj.get("mappingId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("mappingId"));
+        ResourceId.validateJsonElement(jsonObj.get("mappingId"));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("propertyKeys") != null && !jsonObj.get("propertyKeys").isJsonArray()) {
+      if (jsonObj.get("propertyKeys") != null && !jsonObj.get("propertyKeys").isJsonNull() && !jsonObj.get("propertyKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyKeys` to be an array in the JSON string but got `%s`", jsonObj.get("propertyKeys").toString()));
       }
   }
@@ -385,9 +378,9 @@ public class TransactionReconciliationRequest {
 
            @Override
            public TransactionReconciliationRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

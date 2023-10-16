@@ -81,23 +81,7 @@ public class CorporateActionSourcesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for batchUpsertCorporateActions
-     * @param scope The scope of corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param upsertCorporateActionRequest The corporate action definitions (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call batchUpsertCorporateActionsCall(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertCorporateActionsCall(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -165,88 +149,127 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source.
-     * Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.                If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.                The maximum number of corporate actions that this method can upsert per request is 10,000.
-     * @param scope The scope of corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param upsertCorporateActionRequest The corporate action definitions (optional)
-     * @return UpsertCorporateActionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertCorporateActionsResponse batchUpsertCorporateActions(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest) throws ApiException {
-        ApiResponse<UpsertCorporateActionsResponse> localVarResp = batchUpsertCorporateActionsWithHttpInfo(scope, code, upsertCorporateActionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source.
-     * Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.                If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.                The maximum number of corporate actions that this method can upsert per request is 10,000.
-     * @param scope The scope of corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param upsertCorporateActionRequest The corporate action definitions (optional)
-     * @return ApiResponse&lt;UpsertCorporateActionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertCorporateActionsResponse> batchUpsertCorporateActionsWithHttpInfo(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest) throws ApiException {
+    private ApiResponse<UpsertCorporateActionsResponse> batchUpsertCorporateActionsWithHttpInfo(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest) throws ApiException {
         okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, null);
         Type localVarReturnType = new TypeToken<UpsertCorporateActionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source. (asynchronously)
-     * Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.                If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.                The maximum number of corporate actions that this method can upsert per request is 10,000.
-     * @param scope The scope of corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param upsertCorporateActionRequest The corporate action definitions (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback<UpsertCorporateActionsResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback<UpsertCorporateActionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, _callback);
         Type localVarReturnType = new TypeToken<UpsertCorporateActionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIbatchUpsertCorporateActionsRequest {
+        private final String scope;
+        private final String code;
+        private List<UpsertCorporateActionRequest> upsertCorporateActionRequest;
+
+        private APIbatchUpsertCorporateActionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set upsertCorporateActionRequest
+         * @param upsertCorporateActionRequest The corporate action definitions (optional)
+         * @return APIbatchUpsertCorporateActionsRequest
+         */
+        public APIbatchUpsertCorporateActionsRequest upsertCorporateActionRequest(List<UpsertCorporateActionRequest> upsertCorporateActionRequest) {
+            this.upsertCorporateActionRequest = upsertCorporateActionRequest;
+            return this;
+        }
+
+        /**
+         * Build call for batchUpsertCorporateActions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchUpsertCorporateActionsCall(scope, code, upsertCorporateActionRequest, _callback);
+        }
+
+        /**
+         * Execute batchUpsertCorporateActions request
+         * @return UpsertCorporateActionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertCorporateActionsResponse execute() throws ApiException {
+            ApiResponse<UpsertCorporateActionsResponse> localVarResp = batchUpsertCorporateActionsWithHttpInfo(scope, code, upsertCorporateActionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertCorporateActions request with HTTP info returned
+         * @return ApiResponse&lt;UpsertCorporateActionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertCorporateActionsResponse> executeWithHttpInfo() throws ApiException {
+            return batchUpsertCorporateActionsWithHttpInfo(scope, code, upsertCorporateActionRequest);
+        }
+
+        /**
+         * Execute batchUpsertCorporateActions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertCorporateActionsResponse> _callback) throws ApiException {
+            return batchUpsertCorporateActionsAsync(scope, code, upsertCorporateActionRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for createCorporateActionSource
-     * @param createCorporateActionSourceRequest The corporate action source definition (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source.
+     * Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.     If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.     The maximum number of corporate actions that this method can upsert per request is 10,000.
+     * @param scope The scope of corporate action source (required)
+     * @param code The code of the corporate action source (required)
+     * @return APIbatchUpsertCorporateActionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCorporateActionSourceCall(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback _callback) throws ApiException {
+    public APIbatchUpsertCorporateActionsRequest batchUpsertCorporateActions(String scope, String code) {
+        return new APIbatchUpsertCorporateActionsRequest(scope, code);
+    }
+    private okhttp3.Call createCorporateActionSourceCall(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,83 +330,113 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] CreateCorporateActionSource: Create corporate action source
-     * Create a corporate action source.
-     * @param createCorporateActionSourceRequest The corporate action source definition (required)
-     * @return CorporateActionSource
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CorporateActionSource createCorporateActionSource(CreateCorporateActionSourceRequest createCorporateActionSourceRequest) throws ApiException {
-        ApiResponse<CorporateActionSource> localVarResp = createCorporateActionSourceWithHttpInfo(createCorporateActionSourceRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] CreateCorporateActionSource: Create corporate action source
-     * Create a corporate action source.
-     * @param createCorporateActionSourceRequest The corporate action source definition (required)
-     * @return ApiResponse&lt;CorporateActionSource&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CorporateActionSource> createCorporateActionSourceWithHttpInfo(CreateCorporateActionSourceRequest createCorporateActionSourceRequest) throws ApiException {
+    private ApiResponse<CorporateActionSource> createCorporateActionSourceWithHttpInfo(CreateCorporateActionSourceRequest createCorporateActionSourceRequest) throws ApiException {
         okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, null);
         Type localVarReturnType = new TypeToken<CorporateActionSource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] CreateCorporateActionSource: Create corporate action source (asynchronously)
-     * Create a corporate action source.
-     * @param createCorporateActionSourceRequest The corporate action source definition (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCorporateActionSourceAsync(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback<CorporateActionSource> _callback) throws ApiException {
+    private okhttp3.Call createCorporateActionSourceAsync(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback<CorporateActionSource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, _callback);
         Type localVarReturnType = new TypeToken<CorporateActionSource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateCorporateActionSourceRequest {
+        private final CreateCorporateActionSourceRequest createCorporateActionSourceRequest;
+
+        private APIcreateCorporateActionSourceRequest(CreateCorporateActionSourceRequest createCorporateActionSourceRequest) {
+            this.createCorporateActionSourceRequest = createCorporateActionSourceRequest;
+        }
+
+        /**
+         * Build call for createCorporateActionSource
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createCorporateActionSourceCall(createCorporateActionSourceRequest, _callback);
+        }
+
+        /**
+         * Execute createCorporateActionSource request
+         * @return CorporateActionSource
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CorporateActionSource execute() throws ApiException {
+            ApiResponse<CorporateActionSource> localVarResp = createCorporateActionSourceWithHttpInfo(createCorporateActionSourceRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createCorporateActionSource request with HTTP info returned
+         * @return ApiResponse&lt;CorporateActionSource&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CorporateActionSource> executeWithHttpInfo() throws ApiException {
+            return createCorporateActionSourceWithHttpInfo(createCorporateActionSourceRequest);
+        }
+
+        /**
+         * Execute createCorporateActionSource request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CorporateActionSource> _callback) throws ApiException {
+            return createCorporateActionSourceAsync(createCorporateActionSourceRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteCorporateActionSource
-     * @param scope The scope of the corporate action source to be deleted (required)
-     * @param code The code of the corporate action source to be deleted (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] CreateCorporateActionSource: Create corporate action source
+     * Create a corporate action source.
+     * @param createCorporateActionSourceRequest The corporate action source definition (required)
+     * @return APIcreateCorporateActionSourceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCorporateActionSourceCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateCorporateActionSourceRequest createCorporateActionSource(CreateCorporateActionSourceRequest createCorporateActionSourceRequest) {
+        return new APIcreateCorporateActionSourceRequest(createCorporateActionSourceRequest);
+    }
+    private okhttp3.Call deleteCorporateActionSourceCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -447,87 +500,116 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source.
-     * Deletes a single corporate action source
-     * @param scope The scope of the corporate action source to be deleted (required)
-     * @param code The code of the corporate action source to be deleted (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteCorporateActionSource(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteCorporateActionSourceWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source.
-     * Deletes a single corporate action source
-     * @param scope The scope of the corporate action source to be deleted (required)
-     * @param code The code of the corporate action source to be deleted (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteCorporateActionSourceWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteCorporateActionSourceWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source. (asynchronously)
-     * Deletes a single corporate action source
-     * @param scope The scope of the corporate action source to be deleted (required)
-     * @param code The code of the corporate action source to be deleted (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCorporateActionSourceAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCorporateActionSourceAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCorporateActionSourceRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteCorporateActionSourceRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteCorporateActionSource
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCorporateActionSourceCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCorporateActionSource request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCorporateActionSourceWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCorporateActionSource request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCorporateActionSourceWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCorporateActionSource request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteCorporateActionSourceAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteCorporateActions
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param corporateActionIds The IDs of the corporate actions to delete (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source.
+     * Deletes a single corporate action source
+     * @param scope The scope of the corporate action source to be deleted (required)
+     * @param code The code of the corporate action source to be deleted (required)
+     * @return APIdeleteCorporateActionSourceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCorporateActionsCall(String scope, String code, List<String> corporateActionIds, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCorporateActionSourceRequest deleteCorporateActionSource(String scope, String code) {
+        return new APIdeleteCorporateActionSourceRequest(scope, code);
+    }
+    private okhttp3.Call deleteCorporateActionsCall(String scope, String code, List<String> corporateActionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -600,90 +682,119 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions
-     * Delete one or more corporate actions from a particular corporate action source.                The maximum number of corporate actions that this method can delete per request is 1,000.
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param corporateActionIds The IDs of the corporate actions to delete (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteCorporateActions(String scope, String code, List<String> corporateActionIds) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteCorporateActionsWithHttpInfo(scope, code, corporateActionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions
-     * Delete one or more corporate actions from a particular corporate action source.                The maximum number of corporate actions that this method can delete per request is 1,000.
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param corporateActionIds The IDs of the corporate actions to delete (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteCorporateActionsWithHttpInfo(String scope, String code, List<String> corporateActionIds) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteCorporateActionsWithHttpInfo(String scope, String code, List<String> corporateActionIds) throws ApiException {
         okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions (asynchronously)
-     * Delete one or more corporate actions from a particular corporate action source.                The maximum number of corporate actions that this method can delete per request is 1,000.
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param corporateActionIds The IDs of the corporate actions to delete (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCorporateActionsAsync(String scope, String code, List<String> corporateActionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCorporateActionsAsync(String scope, String code, List<String> corporateActionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCorporateActionsRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> corporateActionIds;
+
+        private APIdeleteCorporateActionsRequest(String scope, String code, List<String> corporateActionIds) {
+            this.scope = scope;
+            this.code = code;
+            this.corporateActionIds = corporateActionIds;
+        }
+
+        /**
+         * Build call for deleteCorporateActions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCorporateActionsCall(scope, code, corporateActionIds, _callback);
+        }
+
+        /**
+         * Execute deleteCorporateActions request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCorporateActionsWithHttpInfo(scope, code, corporateActionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCorporateActions request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCorporateActionsWithHttpInfo(scope, code, corporateActionIds);
+        }
+
+        /**
+         * Execute deleteCorporateActions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteCorporateActionsAsync(scope, code, corporateActionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteInstrumentEvents
+     * [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions
+     * Delete one or more corporate actions from a particular corporate action source.     The maximum number of corporate actions that this method can delete per request is 1,000.
      * @param scope The scope of the corporate action source (required)
      * @param code The code of the corporate action source (required)
-     * @param instrumentEventIds The IDs of the instrument events to delete (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param corporateActionIds The IDs of the corporate actions to delete (required)
+     * @return APIdeleteCorporateActionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInstrumentEventsCall(String scope, String code, List<String> instrumentEventIds, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCorporateActionsRequest deleteCorporateActions(String scope, String code, List<String> corporateActionIds) {
+        return new APIdeleteCorporateActionsRequest(scope, code, corporateActionIds);
+    }
+    private okhttp3.Call deleteInstrumentEventsCall(String scope, String code, List<String> instrumentEventIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -756,95 +867,119 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source.
-     * Delete one or more corporate actions from a particular corporate action source.                The maximum number of instrument events that this method can delete per request is 1,000.
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param instrumentEventIds The IDs of the instrument events to delete (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteInstrumentEvents(String scope, String code, List<String> instrumentEventIds) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteInstrumentEventsWithHttpInfo(scope, code, instrumentEventIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source.
-     * Delete one or more corporate actions from a particular corporate action source.                The maximum number of instrument events that this method can delete per request is 1,000.
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param instrumentEventIds The IDs of the instrument events to delete (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteInstrumentEventsWithHttpInfo(String scope, String code, List<String> instrumentEventIds) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteInstrumentEventsWithHttpInfo(String scope, String code, List<String> instrumentEventIds) throws ApiException {
         okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source. (asynchronously)
-     * Delete one or more corporate actions from a particular corporate action source.                The maximum number of instrument events that this method can delete per request is 1,000.
-     * @param scope The scope of the corporate action source (required)
-     * @param code The code of the corporate action source (required)
-     * @param instrumentEventIds The IDs of the instrument events to delete (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteInstrumentEventsAsync(String scope, String code, List<String> instrumentEventIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentEventsAsync(String scope, String code, List<String> instrumentEventIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteInstrumentEventsRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> instrumentEventIds;
+
+        private APIdeleteInstrumentEventsRequest(String scope, String code, List<String> instrumentEventIds) {
+            this.scope = scope;
+            this.code = code;
+            this.instrumentEventIds = instrumentEventIds;
+        }
+
+        /**
+         * Build call for deleteInstrumentEvents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInstrumentEventsCall(scope, code, instrumentEventIds, _callback);
+        }
+
+        /**
+         * Execute deleteInstrumentEvents request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInstrumentEventsWithHttpInfo(scope, code, instrumentEventIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInstrumentEvents request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInstrumentEventsWithHttpInfo(scope, code, instrumentEventIds);
+        }
+
+        /**
+         * Execute deleteInstrumentEvents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteInstrumentEventsAsync(scope, code, instrumentEventIds, _callback);
+        }
+    }
+
     /**
-     * Build call for getCorporateActions
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param fromEffectiveAt Optional. The start effective date of the data range. (optional)
-     * @param toEffectiveAt Optional. The end effective date of the data range. (optional)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the results to this number. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source.
+     * Delete one or more corporate actions from a particular corporate action source.     The maximum number of instrument events that this method can delete per request is 1,000.
+     * @param scope The scope of the corporate action source (required)
+     * @param code The code of the corporate action source (required)
+     * @param instrumentEventIds The IDs of the instrument events to delete (required)
+     * @return APIdeleteInstrumentEventsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCorporateActionsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIdeleteInstrumentEventsRequest deleteInstrumentEvents(String scope, String code, List<String> instrumentEventIds) {
+        return new APIdeleteInstrumentEventsRequest(scope, code, instrumentEventIds);
+    }
+    private okhttp3.Call getCorporateActionsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -932,108 +1067,182 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCorporateActions: List corporate actions (instrument transition events) from the corporate action source.
-     * Get corporate actions from a particular corporate action source.
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param fromEffectiveAt Optional. The start effective date of the data range. (optional)
-     * @param toEffectiveAt Optional. The end effective date of the data range. (optional)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the results to this number. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfCorporateAction
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfCorporateAction getCorporateActions(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfCorporateAction> localVarResp = getCorporateActionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCorporateActions: List corporate actions (instrument transition events) from the corporate action source.
-     * Get corporate actions from a particular corporate action source.
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param fromEffectiveAt Optional. The start effective date of the data range. (optional)
-     * @param toEffectiveAt Optional. The end effective date of the data range. (optional)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the results to this number. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfCorporateAction&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfCorporateAction> getCorporateActionsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfCorporateAction> getCorporateActionsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfCorporateAction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCorporateActions: List corporate actions (instrument transition events) from the corporate action source. (asynchronously)
-     * Get corporate actions from a particular corporate action source.
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param fromEffectiveAt Optional. The start effective date of the data range. (optional)
-     * @param toEffectiveAt Optional. The end effective date of the data range. (optional)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the results to this number. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCorporateActionsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfCorporateAction> _callback) throws ApiException {
+    private okhttp3.Call getCorporateActionsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfCorporateAction> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfCorporateAction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCorporateActionsRequest {
+        private final String scope;
+        private final String code;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+
+        private APIgetCorporateActionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt Optional. The start effective date of the data range. (optional)
+         * @return APIgetCorporateActionsRequest
+         */
+        public APIgetCorporateActionsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt Optional. The end effective date of the data range. (optional)
+         * @return APIgetCorporateActionsRequest
+         */
+        public APIgetCorporateActionsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The AsAt date of the data. (optional)
+         * @return APIgetCorporateActionsRequest
+         */
+        public APIgetCorporateActionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+         * @return APIgetCorporateActionsRequest
+         */
+        public APIgetCorporateActionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the results to this number. (optional)
+         * @return APIgetCorporateActionsRequest
+         */
+        public APIgetCorporateActionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.   For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetCorporateActionsRequest
+         */
+        public APIgetCorporateActionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getCorporateActions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCorporateActionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getCorporateActions request
+         * @return ResourceListOfCorporateAction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfCorporateAction execute() throws ApiException {
+            ApiResponse<ResourceListOfCorporateAction> localVarResp = getCorporateActionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCorporateActions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfCorporateAction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfCorporateAction> executeWithHttpInfo() throws ApiException {
+            return getCorporateActionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter);
+        }
+
+        /**
+         * Execute getCorporateActions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCorporateAction> _callback) throws ApiException {
+            return getCorporateActionsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for getInstrumentEvents
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. (required)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. (optional)
-     * @param filter Optional. Expression to filter the result set. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetCorporateActions: List corporate actions (instrument transition events) from the corporate action source.
+     * Get corporate actions from a particular corporate action source.
+     * @param scope The scope of the corporate action source. (required)
+     * @param code The code of the corporate action source. (required)
+     * @return APIgetCorporateActionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInstrumentEventsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetCorporateActionsRequest getCorporateActions(String scope, String code) {
+        return new APIgetCorporateActionsRequest(scope, code);
+    }
+    private okhttp3.Call getInstrumentEventsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1113,101 +1322,160 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source.
-     * Retrieves extrinsic corporate actions out of a corporate actions source
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. (required)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. (optional)
-     * @param filter Optional. Expression to filter the result set. (optional)
-     * @return PagedResourceListOfInstrumentEventHolder
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfInstrumentEventHolder getInstrumentEvents(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfInstrumentEventHolder> localVarResp = getInstrumentEventsWithHttpInfo(scope, code, asAt, limit, page, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source.
-     * Retrieves extrinsic corporate actions out of a corporate actions source
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. (required)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. (optional)
-     * @param filter Optional. Expression to filter the result set. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfInstrumentEventHolder&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfInstrumentEventHolder> getInstrumentEventsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfInstrumentEventHolder> getInstrumentEventsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter) throws ApiException {
         okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventHolder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source. (asynchronously)
-     * Retrieves extrinsic corporate actions out of a corporate actions source
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. (required)
-     * @param asAt Optional. The AsAt date of the data. (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. (optional)
-     * @param filter Optional. Expression to filter the result set. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getInstrumentEventsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentEventsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventHolder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetInstrumentEventsRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String page;
+        private String filter;
+
+        private APIgetInstrumentEventsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The AsAt date of the data. (optional)
+         * @return APIgetInstrumentEventsRequest
+         */
+        public APIgetInstrumentEventsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
+         * @return APIgetInstrumentEventsRequest
+         */
+        public APIgetInstrumentEventsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. (optional)
+         * @return APIgetInstrumentEventsRequest
+         */
+        public APIgetInstrumentEventsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set. (optional)
+         * @return APIgetInstrumentEventsRequest
+         */
+        public APIgetInstrumentEventsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrumentEvents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentEventsCall(scope, code, asAt, limit, page, filter, _callback);
+        }
+
+        /**
+         * Execute getInstrumentEvents request
+         * @return PagedResourceListOfInstrumentEventHolder
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfInstrumentEventHolder execute() throws ApiException {
+            ApiResponse<PagedResourceListOfInstrumentEventHolder> localVarResp = getInstrumentEventsWithHttpInfo(scope, code, asAt, limit, page, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentEvents request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfInstrumentEventHolder&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfInstrumentEventHolder> executeWithHttpInfo() throws ApiException {
+            return getInstrumentEventsWithHttpInfo(scope, code, asAt, limit, page, filter);
+        }
+
+        /**
+         * Execute getInstrumentEvents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback) throws ApiException {
+            return getInstrumentEventsAsync(scope, code, asAt, limit, page, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listCorporateActionSources
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
-     * @param filter Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source.
+     * Retrieves extrinsic corporate actions out of a corporate actions source
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. (required)
+     * @return APIgetInstrumentEventsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCorporateActionSourcesCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetInstrumentEventsRequest getInstrumentEvents(String scope, String code) {
+        return new APIgetInstrumentEventsRequest(scope, code);
+    }
+    private okhttp3.Call listCorporateActionSourcesCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1279,96 +1547,165 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListCorporateActionSources: List corporate action sources
-     * Gets a list of all corporate action sources
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
-     * @param filter Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. (optional)
-     * @return PagedResourceListOfCorporateActionSource
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfCorporateActionSource listCorporateActionSources(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfCorporateActionSource> localVarResp = listCorporateActionSourcesWithHttpInfo(asAt, sortBy, limit, filter, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListCorporateActionSources: List corporate action sources
-     * Gets a list of all corporate action sources
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
-     * @param filter Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfCorporateActionSource&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfCorporateActionSource> listCorporateActionSourcesWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfCorporateActionSource> listCorporateActionSourcesWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page) throws ApiException {
         okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCorporateActionSource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListCorporateActionSources: List corporate action sources (asynchronously)
-     * Gets a list of all corporate action sources
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
-     * @param filter Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCorporateActionSourcesAsync(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCorporateActionSource> _callback) throws ApiException {
+    private okhttp3.Call listCorporateActionSourcesAsync(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCorporateActionSource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCorporateActionSource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCorporateActionSourcesRequest {
+        private OffsetDateTime asAt;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+        private String page;
+
+        private APIlistCorporateActionSourcesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The AsAt date of the data (optional)
+         * @return APIlistCorporateActionSourcesRequest
+         */
+        public APIlistCorporateActionSourcesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+         * @return APIlistCorporateActionSourcesRequest
+         */
+        public APIlistCorporateActionSourcesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
+         * @return APIlistCorporateActionSourcesRequest
+         */
+        public APIlistCorporateActionSourcesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistCorporateActionSourcesRequest
+         */
+        public APIlistCorporateActionSourcesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. (optional)
+         * @return APIlistCorporateActionSourcesRequest
+         */
+        public APIlistCorporateActionSourcesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for listCorporateActionSources
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCorporateActionSourcesCall(asAt, sortBy, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listCorporateActionSources request
+         * @return PagedResourceListOfCorporateActionSource
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCorporateActionSource execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCorporateActionSource> localVarResp = listCorporateActionSourcesWithHttpInfo(asAt, sortBy, limit, filter, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCorporateActionSources request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCorporateActionSource&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCorporateActionSource> executeWithHttpInfo() throws ApiException {
+            return listCorporateActionSourcesWithHttpInfo(asAt, sortBy, limit, filter, page);
+        }
+
+        /**
+         * Execute listCorporateActionSources request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCorporateActionSource> _callback) throws ApiException {
+            return listCorporateActionSourcesAsync(asAt, sortBy, limit, filter, page, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertInstrumentEvents
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param upsertInstrumentEventRequest The instrument event definitions. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListCorporateActionSources: List corporate action sources
+     * Gets a list of all corporate action sources
+     * @return APIlistCorporateActionSourcesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertInstrumentEventsCall(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistCorporateActionSourcesRequest listCorporateActionSources() {
+        return new APIlistCorporateActionSourcesRequest();
+    }
+    private okhttp3.Call upsertInstrumentEventsCall(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1436,58 +1773,115 @@ public class CorporateActionSourcesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertInstrumentEvents: Upsert instrument events to the provided corporate actions source.
-     * Batch upsert instrument events to corporate action sources.                The maximum number of instrument events that this method can upsert per request is 10,000.
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param upsertInstrumentEventRequest The instrument event definitions. (optional)
-     * @return UpsertInstrumentEventsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertInstrumentEventsResponse upsertInstrumentEvents(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest) throws ApiException {
-        ApiResponse<UpsertInstrumentEventsResponse> localVarResp = upsertInstrumentEventsWithHttpInfo(scope, code, upsertInstrumentEventRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertInstrumentEvents: Upsert instrument events to the provided corporate actions source.
-     * Batch upsert instrument events to corporate action sources.                The maximum number of instrument events that this method can upsert per request is 10,000.
-     * @param scope The scope of the corporate action source. (required)
-     * @param code The code of the corporate action source. (required)
-     * @param upsertInstrumentEventRequest The instrument event definitions. (optional)
-     * @return ApiResponse&lt;UpsertInstrumentEventsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertInstrumentEventsResponse> upsertInstrumentEventsWithHttpInfo(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest) throws ApiException {
+    private ApiResponse<UpsertInstrumentEventsResponse> upsertInstrumentEventsWithHttpInfo(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, null);
         Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertInstrumentEventsAsync(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback<UpsertInstrumentEventsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertInstrumentEventsRequest {
+        private final String scope;
+        private final String code;
+        private List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest;
+
+        private APIupsertInstrumentEventsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set upsertInstrumentEventRequest
+         * @param upsertInstrumentEventRequest The instrument event definitions. (optional)
+         * @return APIupsertInstrumentEventsRequest
+         */
+        public APIupsertInstrumentEventsRequest upsertInstrumentEventRequest(List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest) {
+            this.upsertInstrumentEventRequest = upsertInstrumentEventRequest;
+            return this;
+        }
+
+        /**
+         * Build call for upsertInstrumentEvents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertInstrumentEventsCall(scope, code, upsertInstrumentEventRequest, _callback);
+        }
+
+        /**
+         * Execute upsertInstrumentEvents request
+         * @return UpsertInstrumentEventsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertInstrumentEventsResponse execute() throws ApiException {
+            ApiResponse<UpsertInstrumentEventsResponse> localVarResp = upsertInstrumentEventsWithHttpInfo(scope, code, upsertInstrumentEventRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertInstrumentEvents request with HTTP info returned
+         * @return ApiResponse&lt;UpsertInstrumentEventsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertInstrumentEventsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertInstrumentEventsWithHttpInfo(scope, code, upsertInstrumentEventRequest);
+        }
+
+        /**
+         * Execute upsertInstrumentEvents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentEventsResponse> _callback) throws ApiException {
+            return upsertInstrumentEventsAsync(scope, code, upsertInstrumentEventRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertInstrumentEvents: Upsert instrument events to the provided corporate actions source. (asynchronously)
-     * Batch upsert instrument events to corporate action sources.                The maximum number of instrument events that this method can upsert per request is 10,000.
+     * [EARLY ACCESS] UpsertInstrumentEvents: Upsert instrument events to the provided corporate actions source.
+     * Batch upsert instrument events to corporate action sources.     The maximum number of instrument events that this method can upsert per request is 10,000.
      * @param scope The scope of the corporate action source. (required)
      * @param code The code of the corporate action source. (required)
-     * @param upsertInstrumentEventRequest The instrument event definitions. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertInstrumentEventsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1496,11 +1890,7 @@ public class CorporateActionSourcesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertInstrumentEventsAsync(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback<UpsertInstrumentEventsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertInstrumentEventsRequest upsertInstrumentEvents(String scope, String code) {
+        return new APIupsertInstrumentEventsRequest(scope, code);
     }
 }

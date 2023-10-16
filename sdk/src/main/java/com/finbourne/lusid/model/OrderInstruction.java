@@ -486,41 +486,34 @@ public class OrderInstruction {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OrderInstruction
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to OrderInstruction
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!OrderInstruction.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!OrderInstruction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrderInstruction is not found in the empty JSON string", OrderInstruction.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!OrderInstruction.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderInstruction` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OrderInstruction.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      ResourceId.validateJsonElement(jsonObj.get("id"));
       // validate the optional field `portfolioId`
       if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("portfolioId"));
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       }
       // validate the optional field `price`
       if (jsonObj.get("price") != null && !jsonObj.get("price").isJsonNull()) {
-        CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("price"));
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("price"));
       }
       if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
@@ -530,7 +523,7 @@ public class OrderInstruction {
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -542,7 +535,7 @@ public class OrderInstruction {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -568,9 +561,9 @@ public class OrderInstruction {
 
            @Override
            public OrderInstruction read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

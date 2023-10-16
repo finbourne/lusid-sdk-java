@@ -197,54 +197,54 @@ public class ResultValue {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ResultValue
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ResultValue
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ResultValue.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ResultValue.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ResultValue is not found in the empty JSON string", ResultValue.openapiRequiredFields.toString()));
         }
       }
 
-      String discriminatorValue = jsonObj.get("resultValueType").getAsString();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("resultValueType").getAsString();
       switch (discriminatorValue) {
         case "CashFlowValue":
-          CashFlowValue.validateJsonObject(jsonObj);
+          CashFlowValue.validateJsonElement(jsonElement);
           break;
         case "CashFlowValueSet":
-          CashFlowValueSet.validateJsonObject(jsonObj);
+          CashFlowValueSet.validateJsonElement(jsonElement);
           break;
         case "LifeCycleEventValue":
-          LifeCycleEventValue.validateJsonObject(jsonObj);
+          LifeCycleEventValue.validateJsonElement(jsonElement);
           break;
         case "ResultValue0D":
-          ResultValue0D.validateJsonObject(jsonObj);
+          ResultValue0D.validateJsonElement(jsonElement);
           break;
         case "ResultValueBool":
-          ResultValueBool.validateJsonObject(jsonObj);
+          ResultValueBool.validateJsonElement(jsonElement);
           break;
         case "ResultValueCurrency":
-          ResultValueCurrency.validateJsonObject(jsonObj);
+          ResultValueCurrency.validateJsonElement(jsonElement);
           break;
         case "ResultValueDateTimeOffset":
-          ResultValueDateTimeOffset.validateJsonObject(jsonObj);
+          ResultValueDateTimeOffset.validateJsonElement(jsonElement);
           break;
         case "ResultValueDecimal":
-          ResultValueDecimal.validateJsonObject(jsonObj);
+          ResultValueDecimal.validateJsonElement(jsonElement);
           break;
         case "ResultValueDictionary":
-          ResultValueDictionary.validateJsonObject(jsonObj);
+          ResultValueDictionary.validateJsonElement(jsonElement);
           break;
         case "ResultValueInt":
-          ResultValueInt.validateJsonObject(jsonObj);
+          ResultValueInt.validateJsonElement(jsonElement);
           break;
         case "ResultValueString":
-          ResultValueString.validateJsonObject(jsonObj);
+          ResultValueString.validateJsonElement(jsonElement);
           break;
-        default: 
+        default:
           throw new IllegalArgumentException(String.format("The value of the `resultValueType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }

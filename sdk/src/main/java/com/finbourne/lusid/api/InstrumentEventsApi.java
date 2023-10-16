@@ -78,21 +78,7 @@ public class InstrumentEventsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for queryBucketedCashFlows
-     * @param queryBucketedCashFlowsRequest The Query Information. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call queryBucketedCashFlowsCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call queryBucketedCashFlowsCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,84 +134,121 @@ public class InstrumentEventsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
-     * Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
-     * @param queryBucketedCashFlowsRequest The Query Information. (optional)
-     * @return BucketedCashFlowResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BucketedCashFlowResponse queryBucketedCashFlows(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest) throws ApiException {
-        ApiResponse<BucketedCashFlowResponse> localVarResp = queryBucketedCashFlowsWithHttpInfo(queryBucketedCashFlowsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
-     * Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
-     * @param queryBucketedCashFlowsRequest The Query Information. (optional)
-     * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BucketedCashFlowResponse> queryBucketedCashFlowsWithHttpInfo(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest) throws ApiException {
+    private ApiResponse<BucketedCashFlowResponse> queryBucketedCashFlowsWithHttpInfo(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest) throws ApiException {
         okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, null);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query. (asynchronously)
-     * Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
-     * @param queryBucketedCashFlowsRequest The Query Information. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call queryBucketedCashFlowsAsync(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
+    private okhttp3.Call queryBucketedCashFlowsAsync(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, _callback);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIqueryBucketedCashFlowsRequest {
+        private QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest;
+
+        private APIqueryBucketedCashFlowsRequest() {
+        }
+
+        /**
+         * Set queryBucketedCashFlowsRequest
+         * @param queryBucketedCashFlowsRequest The Query Information. (optional)
+         * @return APIqueryBucketedCashFlowsRequest
+         */
+        public APIqueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest) {
+            this.queryBucketedCashFlowsRequest = queryBucketedCashFlowsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for queryBucketedCashFlows
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryBucketedCashFlowsCall(queryBucketedCashFlowsRequest, _callback);
+        }
+
+        /**
+         * Execute queryBucketedCashFlows request
+         * @return BucketedCashFlowResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BucketedCashFlowResponse execute() throws ApiException {
+            ApiResponse<BucketedCashFlowResponse> localVarResp = queryBucketedCashFlowsWithHttpInfo(queryBucketedCashFlowsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryBucketedCashFlows request with HTTP info returned
+         * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BucketedCashFlowResponse> executeWithHttpInfo() throws ApiException {
+            return queryBucketedCashFlowsWithHttpInfo(queryBucketedCashFlowsRequest);
+        }
+
+        /**
+         * Execute queryBucketedCashFlows request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
+            return queryBucketedCashFlowsAsync(queryBucketedCashFlowsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for queryCashFlows
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryCashFlowsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
+     * Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
+     * @return APIqueryBucketedCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call queryCashFlowsCall(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback _callback) throws ApiException {
+    public APIqueryBucketedCashFlowsRequest queryBucketedCashFlows() {
+        return new APIqueryBucketedCashFlowsRequest();
+    }
+    private okhttp3.Call queryCashFlowsCall(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -289,90 +312,143 @@ public class InstrumentEventsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryCashFlowsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @return ResourceListOfInstrumentCashFlow
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfInstrumentCashFlow queryCashFlows(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest) throws ApiException {
-        ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = queryCashFlowsWithHttpInfo(limit, page, queryCashFlowsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryCashFlowsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfInstrumentCashFlow> queryCashFlowsWithHttpInfo(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest) throws ApiException {
+    private ApiResponse<ResourceListOfInstrumentCashFlow> queryCashFlowsWithHttpInfo(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest) throws ApiException {
         okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query. (asynchronously)
-     * Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryCashFlowsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call queryCashFlowsAsync(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
+    private okhttp3.Call queryCashFlowsAsync(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIqueryCashFlowsRequest {
+        private Integer limit;
+        private String page;
+        private QueryCashFlowsRequest queryCashFlowsRequest;
+
+        private APIqueryCashFlowsRequest() {
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
+         * @return APIqueryCashFlowsRequest
+         */
+        public APIqueryCashFlowsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
+         * @return APIqueryCashFlowsRequest
+         */
+        public APIqueryCashFlowsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set queryCashFlowsRequest
+         * @param queryCashFlowsRequest The filter parameters used to retrieve instrument events. (optional)
+         * @return APIqueryCashFlowsRequest
+         */
+        public APIqueryCashFlowsRequest queryCashFlowsRequest(QueryCashFlowsRequest queryCashFlowsRequest) {
+            this.queryCashFlowsRequest = queryCashFlowsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for queryCashFlows
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryCashFlowsCall(limit, page, queryCashFlowsRequest, _callback);
+        }
+
+        /**
+         * Execute queryCashFlows request
+         * @return ResourceListOfInstrumentCashFlow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentCashFlow execute() throws ApiException {
+            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = queryCashFlowsWithHttpInfo(limit, page, queryCashFlowsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryCashFlows request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo() throws ApiException {
+            return queryCashFlowsWithHttpInfo(limit, page, queryCashFlowsRequest);
+        }
+
+        /**
+         * Execute queryCashFlows request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
+            return queryCashFlowsAsync(limit, page, queryCashFlowsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for queryInstrumentEvents
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryInstrumentEventsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
+     * Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
+     * @return APIqueryCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call queryInstrumentEventsCall(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
+    public APIqueryCashFlowsRequest queryCashFlows() {
+        return new APIqueryCashFlowsRequest();
+    }
+    private okhttp3.Call queryInstrumentEventsCall(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -436,90 +512,143 @@ public class InstrumentEventsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryInstrumentEventsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @return ResourceListOfInstrumentEventHolder
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfInstrumentEventHolder queryInstrumentEvents(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest) throws ApiException {
-        ApiResponse<ResourceListOfInstrumentEventHolder> localVarResp = queryInstrumentEventsWithHttpInfo(limit, page, queryInstrumentEventsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryInstrumentEventsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @return ApiResponse&lt;ResourceListOfInstrumentEventHolder&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfInstrumentEventHolder> queryInstrumentEventsWithHttpInfo(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest) throws ApiException {
+    private ApiResponse<ResourceListOfInstrumentEventHolder> queryInstrumentEventsWithHttpInfo(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest) throws ApiException {
         okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentEventHolder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query. (asynchronously)
-     * Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryInstrumentEventsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call queryInstrumentEventsAsync(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback<ResourceListOfInstrumentEventHolder> _callback) throws ApiException {
+    private okhttp3.Call queryInstrumentEventsAsync(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback<ResourceListOfInstrumentEventHolder> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentEventHolder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIqueryInstrumentEventsRequest {
+        private Integer limit;
+        private String page;
+        private QueryInstrumentEventsRequest queryInstrumentEventsRequest;
+
+        private APIqueryInstrumentEventsRequest() {
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
+         * @return APIqueryInstrumentEventsRequest
+         */
+        public APIqueryInstrumentEventsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
+         * @return APIqueryInstrumentEventsRequest
+         */
+        public APIqueryInstrumentEventsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set queryInstrumentEventsRequest
+         * @param queryInstrumentEventsRequest The filter parameters used to retrieve instrument events. (optional)
+         * @return APIqueryInstrumentEventsRequest
+         */
+        public APIqueryInstrumentEventsRequest queryInstrumentEventsRequest(QueryInstrumentEventsRequest queryInstrumentEventsRequest) {
+            this.queryInstrumentEventsRequest = queryInstrumentEventsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for queryInstrumentEvents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryInstrumentEventsCall(limit, page, queryInstrumentEventsRequest, _callback);
+        }
+
+        /**
+         * Execute queryInstrumentEvents request
+         * @return ResourceListOfInstrumentEventHolder
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentEventHolder execute() throws ApiException {
+            ApiResponse<ResourceListOfInstrumentEventHolder> localVarResp = queryInstrumentEventsWithHttpInfo(limit, page, queryInstrumentEventsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryInstrumentEvents request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfInstrumentEventHolder&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentEventHolder> executeWithHttpInfo() throws ApiException {
+            return queryInstrumentEventsWithHttpInfo(limit, page, queryInstrumentEventsRequest);
+        }
+
+        /**
+         * Execute queryInstrumentEvents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentEventHolder> _callback) throws ApiException {
+            return queryInstrumentEventsAsync(limit, page, queryInstrumentEventsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for queryTradeTickets
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryTradeTicketsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
+     * Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
+     * @return APIqueryInstrumentEventsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call queryTradeTicketsCall(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback _callback) throws ApiException {
+    public APIqueryInstrumentEventsRequest queryInstrumentEvents() {
+        return new APIqueryInstrumentEventsRequest();
+    }
+    private okhttp3.Call queryTradeTicketsCall(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -583,58 +712,131 @@ public class InstrumentEventsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryTradeTicketsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @return ResourceListOfPortfolioTradeTicket
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPortfolioTradeTicket queryTradeTickets(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest) throws ApiException {
-        ApiResponse<ResourceListOfPortfolioTradeTicket> localVarResp = queryTradeTicketsWithHttpInfo(limit, page, queryTradeTicketsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryTradeTicketsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @return ApiResponse&lt;ResourceListOfPortfolioTradeTicket&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPortfolioTradeTicket> queryTradeTicketsWithHttpInfo(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest) throws ApiException {
+    private ApiResponse<ResourceListOfPortfolioTradeTicket> queryTradeTicketsWithHttpInfo(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest) throws ApiException {
         okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call queryTradeTicketsAsync(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIqueryTradeTicketsRequest {
+        private Integer limit;
+        private String page;
+        private QueryTradeTicketsRequest queryTradeTicketsRequest;
+
+        private APIqueryTradeTicketsRequest() {
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
+         * @return APIqueryTradeTicketsRequest
+         */
+        public APIqueryTradeTicketsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
+         * @return APIqueryTradeTicketsRequest
+         */
+        public APIqueryTradeTicketsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set queryTradeTicketsRequest
+         * @param queryTradeTicketsRequest The filter parameters used to retrieve instrument events. (optional)
+         * @return APIqueryTradeTicketsRequest
+         */
+        public APIqueryTradeTicketsRequest queryTradeTicketsRequest(QueryTradeTicketsRequest queryTradeTicketsRequest) {
+            this.queryTradeTicketsRequest = queryTradeTicketsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for queryTradeTickets
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryTradeTicketsCall(limit, page, queryTradeTicketsRequest, _callback);
+        }
+
+        /**
+         * Execute queryTradeTickets request
+         * @return ResourceListOfPortfolioTradeTicket
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolioTradeTicket execute() throws ApiException {
+            ApiResponse<ResourceListOfPortfolioTradeTicket> localVarResp = queryTradeTicketsWithHttpInfo(limit, page, queryTradeTicketsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryTradeTickets request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPortfolioTradeTicket&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolioTradeTicket> executeWithHttpInfo() throws ApiException {
+            return queryTradeTicketsWithHttpInfo(limit, page, queryTradeTicketsRequest);
+        }
+
+        /**
+         * Execute queryTradeTickets request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback) throws ApiException {
+            return queryTradeTicketsAsync(limit, page, queryTradeTicketsRequest, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query. (asynchronously)
+     * [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
      * Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
-     * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
-     * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
-     * @param queryTradeTicketsRequest The filter parameters used to retrieve instrument events. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIqueryTradeTicketsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -643,11 +845,7 @@ public class InstrumentEventsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call queryTradeTicketsAsync(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIqueryTradeTicketsRequest queryTradeTickets() {
+        return new APIqueryTradeTicketsRequest();
     }
 }

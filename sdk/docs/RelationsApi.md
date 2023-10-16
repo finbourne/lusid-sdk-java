@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createRelation"></a>
 # **createRelation**
-> CompleteRelation createRelation(scope, code, createRelationRequest, effectiveAt)
+> CompleteRelation createRelation(scope, code, createRelationRequest).effectiveAt(effectiveAt).execute();
 
 [EXPERIMENTAL] CreateRelation: Create Relation
 
@@ -41,7 +41,9 @@ public class Example {
     CreateRelationRequest createRelationRequest = new CreateRelationRequest(); // CreateRelationRequest | The details of the relation to create.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified.
     try {
-      CompleteRelation result = apiInstance.createRelation(scope, code, createRelationRequest, effectiveAt);
+      CompleteRelation result = apiInstance.createRelation(scope, code, createRelationRequest)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationsApi#createRelation");
@@ -85,7 +87,7 @@ public class Example {
 
 <a id="deleteRelation"></a>
 # **deleteRelation**
-> DeletedEntityResponse deleteRelation(scope, code, deleteRelationRequest, effectiveAt)
+> DeletedEntityResponse deleteRelation(scope, code, deleteRelationRequest).effectiveAt(effectiveAt).execute();
 
 [EXPERIMENTAL] DeleteRelation: Delete a relation
 
@@ -116,7 +118,9 @@ public class Example {
     DeleteRelationRequest deleteRelationRequest = new DeleteRelationRequest(); // DeleteRelationRequest | The details of the relation to delete.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified.
     try {
-      DeletedEntityResponse result = apiInstance.deleteRelation(scope, code, deleteRelationRequest, effectiveAt);
+      DeletedEntityResponse result = apiInstance.deleteRelation(scope, code, deleteRelationRequest)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RelationsApi#deleteRelation");

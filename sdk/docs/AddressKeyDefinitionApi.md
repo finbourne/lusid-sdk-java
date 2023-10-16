@@ -11,7 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createAddressKeyDefinition"></a>
 # **createAddressKeyDefinition**
-> AddressKeyDefinition createAddressKeyDefinition(createAddressKeyDefinitionRequest)
+> AddressKeyDefinition createAddressKeyDefinition(createAddressKeyDefinitionRequest).execute();
 
 [EARLY ACCESS] CreateAddressKeyDefinition: Create an AddressKeyDefinition.
 
@@ -39,7 +39,8 @@ public class Example {
     AddressKeyDefinitionApi apiInstance = new AddressKeyDefinitionApi(defaultClient);
     CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest = new CreateAddressKeyDefinitionRequest(); // CreateAddressKeyDefinitionRequest | The request used to create the address key definition.
     try {
-      AddressKeyDefinition result = apiInstance.createAddressKeyDefinition(createAddressKeyDefinitionRequest);
+      AddressKeyDefinition result = apiInstance.createAddressKeyDefinition(createAddressKeyDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressKeyDefinitionApi#createAddressKeyDefinition");
@@ -80,7 +81,7 @@ public class Example {
 
 <a id="getAddressKeyDefinition"></a>
 # **getAddressKeyDefinition**
-> AddressKeyDefinition getAddressKeyDefinition(key, asAt)
+> AddressKeyDefinition getAddressKeyDefinition(key).asAt(asAt).execute();
 
 [EARLY ACCESS] GetAddressKeyDefinition: Get an AddressKeyDefinition.
 
@@ -109,7 +110,9 @@ public class Example {
     String key = "key_example"; // String | The address key of the address key definition.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified.
     try {
-      AddressKeyDefinition result = apiInstance.getAddressKeyDefinition(key, asAt);
+      AddressKeyDefinition result = apiInstance.getAddressKeyDefinition(key)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressKeyDefinitionApi#getAddressKeyDefinition");
@@ -151,7 +154,7 @@ public class Example {
 
 <a id="listAddressKeyDefinitions"></a>
 # **listAddressKeyDefinitions**
-> PagedResourceListOfAddressKeyDefinition listAddressKeyDefinitions(asAt, page, limit, filter)
+> PagedResourceListOfAddressKeyDefinition listAddressKeyDefinitions().asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] ListAddressKeyDefinitions: List AddressKeyDefinitions.
 
@@ -177,12 +180,17 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     AddressKeyDefinitionApi apiInstance = new AddressKeyDefinitionApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the address key definition.              Defaults to return the latest version of the address key definition if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the address key definition.   Defaults to return the latest version of the address key definition if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
     try {
-      PagedResourceListOfAddressKeyDefinition result = apiInstance.listAddressKeyDefinitions(asAt, page, limit, filter);
+      PagedResourceListOfAddressKeyDefinition result = apiInstance.listAddressKeyDefinitions()
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
+            .filter(filter)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressKeyDefinitionApi#listAddressKeyDefinitions");
@@ -199,10 +207,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the address key definition.              Defaults to return the latest version of the address key definition if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the address key definition.   Defaults to return the latest version of the address key definition if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

@@ -85,23 +85,7 @@ public class PersonsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deletePerson
-     * @param idTypeScope The scope of the person identifier type. (required)
-     * @param idTypeCode The code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type scope and code. This together with defined              identifier type uniquely identifies the person to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePersonCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePersonCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -171,93 +155,119 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeletePerson: Delete person
-     * Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the person identifier type. (required)
-     * @param idTypeCode The code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type scope and code. This together with defined              identifier type uniquely identifies the person to delete. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePerson(String idTypeScope, String idTypeCode, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePersonWithHttpInfo(idTypeScope, idTypeCode, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeletePerson: Delete person
-     * Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the person identifier type. (required)
-     * @param idTypeCode The code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type scope and code. This together with defined              identifier type uniquely identifies the person to delete. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePersonWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePersonWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
         okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeletePerson: Delete person (asynchronously)
-     * Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the person identifier type. (required)
-     * @param idTypeCode The code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type scope and code. This together with defined              identifier type uniquely identifies the person to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePersonAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePersonAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePersonRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+
+        private APIdeletePersonRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deletePerson
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePersonCall(idTypeScope, idTypeCode, code, _callback);
+        }
+
+        /**
+         * Execute deletePerson request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonWithHttpInfo(idTypeScope, idTypeCode, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePerson request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePersonWithHttpInfo(idTypeScope, idTypeCode, code);
+        }
+
+        /**
+         * Execute deletePerson request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePersonAsync(idTypeScope, idTypeCode, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePersonAccessMetadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeletePerson: Delete person
+     * Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param idTypeScope The scope of the person identifier type. (required)
+     * @param idTypeCode The code of the person identifier type. (required)
+     * @param code Code of the person under specified identifier type scope and code. This together with defined   identifier type uniquely identifies the person to delete. (required)
+     * @return APIdeletePersonRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIdeletePersonRequest deletePerson(String idTypeScope, String idTypeCode, String code) {
+        return new APIdeletePersonRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call deletePersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -341,101 +351,144 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
-     * Deletes the Person Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePersonAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
-     * Deletes the Person Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry (asynchronously)
-     * Deletes the Person Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePersonAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String metadataKey;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIdeletePersonAccessMetadataRequest(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.metadataKey = metadataKey;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
+         * @return APIdeletePersonAccessMetadataRequest
+         */
+        public APIdeletePersonAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIdeletePersonAccessMetadataRequest
+         */
+        public APIdeletePersonAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for deletePersonAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deletePersonAccessMetadata request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePersonAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deletePersonAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePersonAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePersonIdentifiers
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
+     * Deletes the Person Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
+     * @param idTypeScope Scope of the person identifier. (required)
+     * @param idTypeCode Code of the person identifier. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
+     * @param metadataKey Key of the metadata entry to retrieve (required)
+     * @return APIdeletePersonAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIdeletePersonAccessMetadataRequest deletePersonAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+        return new APIdeletePersonAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey);
+    }
+    private okhttp3.Call deletePersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -518,98 +571,133 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers
-     * Delete identifiers that belong to the given property keys of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePersonIdentifiers(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers
-     * Delete identifiers that belong to the given property keys of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers (asynchronously)
-     * Delete identifiers that belong to the given property keys of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePersonIdentifiersRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final List<String> propertyKeys;
+        private String effectiveAt;
+
+        private APIdeletePersonIdentifiersRequest(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual. (optional)
+         * @return APIdeletePersonIdentifiersRequest
+         */
+        public APIdeletePersonIdentifiersRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deletePersonIdentifiers
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePersonIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePersonIdentifiers request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePersonIdentifiers request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deletePersonIdentifiers request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePersonIdentifiersAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePersonProperties
+     * [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers
+     * Delete identifiers that belong to the given property keys of the person.
      * @param idTypeScope Scope of the person identifier type. (required)
      * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @param propertyKeys The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
+     * @return APIdeletePersonIdentifiersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePersonPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIdeletePersonIdentifiersRequest deletePersonIdentifiers(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+        return new APIdeletePersonIdentifiersRequest(idTypeScope, idTypeCode, code, propertyKeys);
+    }
+    private okhttp3.Call deletePersonPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -692,98 +780,133 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeletePersonProperties: Delete Person Properties
-     * Delete all properties that belong to the given property keys of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePersonProperties(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeletePersonProperties: Delete Person Properties
-     * Delete all properties that belong to the given property keys of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeletePersonProperties: Delete Person Properties (asynchronously)
-     * Delete all properties that belong to the given property keys of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePersonPropertiesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final List<String> propertyKeys;
+        private String effectiveAt;
+
+        private APIdeletePersonPropertiesRequest(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
+         * @return APIdeletePersonPropertiesRequest
+         */
+        public APIdeletePersonPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deletePersonProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePersonPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePersonProperties request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePersonProperties request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deletePersonProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePersonPropertiesAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getAllPersonAccessMetadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeletePersonProperties: Delete Person Properties
+     * Delete all properties that belong to the given property keys of the person.
+     * @param idTypeScope Scope of the person identifier type. (required)
+     * @param idTypeCode Code of the person identifier type. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @param propertyKeys The property keys of the person&#39;s properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
+     * @return APIdeletePersonPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeletePersonPropertiesRequest deletePersonProperties(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys) {
+        return new APIdeletePersonPropertiesRequest(idTypeScope, idTypeCode, code, propertyKeys);
+    }
+    private okhttp3.Call getAllPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -861,100 +984,141 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules for a Person
-     * Pass the Scope and Code of the Person identifier along with the person code parameter to retrieve the associated Access Metadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> getAllPersonAccessMetadata(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules for a Person
-     * Pass the Scope and Code of the Person identifier along with the person code parameter to retrieve the associated Access Metadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> getAllPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules for a Person (asynchronously)
-     * Pass the Scope and Code of the Person identifier along with the person code parameter to retrieve the associated Access Metadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call getAllPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAllPersonAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetAllPersonAccessMetadataRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetAllPersonAccessMetadataRequest
+         */
+        public APIgetAllPersonAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetAllPersonAccessMetadataRequest
+         */
+        public APIgetAllPersonAccessMetadataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAllPersonAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllPersonAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllPersonAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllPersonAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return getAllPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllPersonAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return getAllPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPerson
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules for a Person
+     * Pass the Scope and Code of the Person identifier along with the person code parameter to retrieve the associated Access Metadata
+     * @param idTypeScope Scope of the person identifier. (required)
+     * @param idTypeCode Code of the person identifier. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
+     * @return APIgetAllPersonAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPersonCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetAllPersonAccessMetadataRequest getAllPersonAccessMetadata(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetAllPersonAccessMetadataRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call getPersonCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1040,105 +1204,163 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPerson: Get Person
-     * Retrieve the definition of a person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return Person
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Person getPerson(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<Person> localVarResp = getPersonWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPerson: Get Person
-     * Retrieve the definition of a person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;Person&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Person> getPersonWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<Person> getPersonWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPerson: Get Person (asynchronously)
-     * Retrieve the definition of a person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPersonAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<Person> _callback) throws ApiException {
+    private okhttp3.Call getPersonAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<Person> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPersonRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private List<String> propertyKeys;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> relationshipDefinitionIds;
+
+        private APIgetPersonRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
+         * @return APIgetPersonRequest
+         */
+        public APIgetPersonRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPersonRequest
+         */
+        public APIgetPersonRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. (optional)
+         * @return APIgetPersonRequest
+         */
+        public APIgetPersonRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIgetPersonRequest
+         */
+        public APIgetPersonRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for getPerson
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPersonCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getPerson request
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute() throws ApiException {
+            ApiResponse<Person> localVarResp = getPersonWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPerson request with HTTP info returned
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
+            return getPersonWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getPerson request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
+            return getPersonAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for getPersonAccessMetadataByKey
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPerson: Get Person
+     * Retrieve the definition of a person.
+     * @param idTypeScope Scope of the person identifier type. (required)
+     * @param idTypeCode Code of the person identifier type. (required)
+     * @param code Code of the person under specified scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @return APIgetPersonRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPersonAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPersonRequest getPerson(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetPersonRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call getPersonAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1222,104 +1444,144 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person
-     * Get a specific Person Access Metadata by specifying the corresponding identifier parts and Person code                No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return List&lt;AccessMetadataValue&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<AccessMetadataValue> getPersonAccessMetadataByKey(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<List<AccessMetadataValue>> localVarResp = getPersonAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person
-     * Get a specific Person Access Metadata by specifying the corresponding identifier parts and Person code                No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<AccessMetadataValue>> getPersonAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<List<AccessMetadataValue>> getPersonAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person (asynchronously)
-     * Get a specific Person Access Metadata by specifying the corresponding identifier parts and Person code                No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
-     * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPersonAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+    private okhttp3.Call getPersonAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPersonAccessMetadataByKeyRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String metadataKey;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPersonAccessMetadataByKeyRequest(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.metadataKey = metadataKey;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetPersonAccessMetadataByKeyRequest
+         */
+        public APIgetPersonAccessMetadataByKeyRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetPersonAccessMetadataByKeyRequest
+         */
+        public APIgetPersonAccessMetadataByKeyRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPersonAccessMetadataByKey
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPersonAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPersonAccessMetadataByKey request
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute() throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getPersonAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPersonAccessMetadataByKey request with HTTP info returned
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
+            return getPersonAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPersonAccessMetadataByKey request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+            return getPersonAccessMetadataByKeyAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPersonPropertyTimeSeries
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.              Each property must be from the \&quot;Person\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person
+     * Get a specific Person Access Metadata by specifying the corresponding identifier parts and Person code     No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
+     * @param idTypeScope Scope of the person identifier. (required)
+     * @param idTypeCode Code of the person identifier. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
+     * @param metadataKey Key of the metadata entry to retrieve (required)
+     * @return APIgetPersonAccessMetadataByKeyRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPersonPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIgetPersonAccessMetadataByKeyRequest getPersonAccessMetadataByKey(String idTypeScope, String idTypeCode, String code, String metadataKey) {
+        return new APIgetPersonAccessMetadataByKeyRequest(idTypeScope, idTypeCode, code, metadataKey);
+    }
+    private okhttp3.Call getPersonPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1414,109 +1676,166 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonPropertyTimeSeries: Get Person Property Time Series
-     * List the complete time series of a person property.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.              Each property must be from the \&quot;Person\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @return ResourceListOfPropertyInterval
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPropertyInterval getPersonPropertyTimeSeries(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPersonPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPersonPropertyTimeSeries: Get Person Property Time Series
-     * List the complete time series of a person property.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.              Each property must be from the \&quot;Person\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPropertyInterval> getPersonPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfPropertyInterval> getPersonPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonPropertyTimeSeries: Get Person Property Time Series (asynchronously)
-     * List the complete time series of a person property.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.              Each property must be from the \&quot;Person\&quot; domain. (required)
-     * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPersonPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+    private okhttp3.Call getPersonPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPersonPropertyTimeSeriesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String propertyKey;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String page;
+        private Integer limit;
+
+        private APIgetPersonPropertyTimeSeriesRequest(String idTypeScope, String idTypeCode, String code, String propertyKey) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.propertyKey = propertyKey;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. (optional)
+         * @return APIgetPersonPropertyTimeSeriesRequest
+         */
+        public APIgetPersonPropertyTimeSeriesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetPersonPropertyTimeSeriesRequest
+         */
+        public APIgetPersonPropertyTimeSeriesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. (optional)
+         * @return APIgetPersonPropertyTimeSeriesRequest
+         */
+        public APIgetPersonPropertyTimeSeriesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetPersonPropertyTimeSeriesRequest
+         */
+        public APIgetPersonPropertyTimeSeriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getPersonPropertyTimeSeries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPersonPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPersonPropertyTimeSeries request
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute() throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPersonPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPersonPropertyTimeSeries request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
+            return getPersonPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPersonPropertyTimeSeries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+            return getPersonPropertyTimeSeriesAsync(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for getPersonRelations
+     * [EARLY ACCESS] GetPersonPropertyTimeSeries: Get Person Property Time Series
+     * List the complete time series of a person property.
      * @param idTypeScope Scope of the person identifier type. (required)
      * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. (required)
+     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.   Each property must be from the \&quot;Person\&quot; domain. (required)
+     * @return APIgetPersonPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPersonRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetPersonPropertyTimeSeriesRequest getPersonPropertyTimeSeries(String idTypeScope, String idTypeCode, String code, String propertyKey) {
+        return new APIgetPersonPropertyTimeSeriesRequest(idTypeScope, idTypeCode, code, propertyKey);
+    }
+    private okhttp3.Call getPersonRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1602,106 +1921,163 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonRelations: Get Relations for Person
-     * Get relations for the specified person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @return ResourceListOfRelation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelation getPersonRelations(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelation> localVarResp = getPersonRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPersonRelations: Get Relations for Person
-     * Get relations for the specified person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelation> getPersonRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelation> getPersonRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonRelations: Get Relations for Person (asynchronously)
-     * Get relations for the specified person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPersonRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
+    private okhttp3.Call getPersonRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPersonRelationsRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetPersonRelationsRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPersonRelationsRequest
+         */
+        public APIgetPersonRelationsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetPersonRelationsRequest
+         */
+        public APIgetPersonRelationsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the relations. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetPersonRelationsRequest
+         */
+        public APIgetPersonRelationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
+         * @return APIgetPersonRelationsRequest
+         */
+        public APIgetPersonRelationsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getPersonRelations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPersonRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPersonRelations request
+         * @return ResourceListOfRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelation execute() throws ApiException {
+            ApiResponse<ResourceListOfRelation> localVarResp = getPersonRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPersonRelations request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelation> executeWithHttpInfo() throws ApiException {
+            return getPersonRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPersonRelations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
+            return getPersonRelationsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for getPersonRelationships
-     * @param idTypeScope Scope of the person&#39;s identifier type. (required)
-     * @param idTypeCode Code of the person&#39;s identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPersonRelations: Get Relations for Person
+     * Get relations for the specified person.
+     * @param idTypeScope Scope of the person identifier type. (required)
+     * @param idTypeCode Code of the person identifier type. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @return APIgetPersonRelationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPersonRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetPersonRelationsRequest getPersonRelations(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetPersonRelationsRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call getPersonRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1787,106 +2163,163 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonRelationships: Get Relationships for Person
-     * Get relationships for the specified person.
-     * @param idTypeScope Scope of the person&#39;s identifier type. (required)
-     * @param idTypeCode Code of the person&#39;s identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @return ResourceListOfRelationship
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelationship getPersonRelationships(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelationship> localVarResp = getPersonRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPersonRelationships: Get Relationships for Person
-     * Get relationships for the specified person.
-     * @param idTypeScope Scope of the person&#39;s identifier type. (required)
-     * @param idTypeCode Code of the person&#39;s identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelationship&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelationship> getPersonRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelationship> getPersonRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPersonRelationships: Get Relationships for Person (asynchronously)
-     * Get relationships for the specified person.
-     * @param idTypeScope Scope of the person&#39;s identifier type. (required)
-     * @param idTypeCode Code of the person&#39;s identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPersonRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+    private okhttp3.Call getPersonRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPersonRelationshipsRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetPersonRelationshipsRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPersonRelationshipsRequest
+         */
+        public APIgetPersonRelationshipsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetPersonRelationshipsRequest
+         */
+        public APIgetPersonRelationshipsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetPersonRelationshipsRequest
+         */
+        public APIgetPersonRelationshipsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @return APIgetPersonRelationshipsRequest
+         */
+        public APIgetPersonRelationshipsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getPersonRelationships
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPersonRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPersonRelationships request
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute() throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getPersonRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPersonRelationships request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
+            return getPersonRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPersonRelationships request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+            return getPersonRelationshipsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for listAllPersons
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPersonRelationships: Get Relationships for Person
+     * Get relationships for the specified person.
+     * @param idTypeScope Scope of the person&#39;s identifier type. (required)
+     * @param idTypeCode Code of the person&#39;s identifier type. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @return APIgetPersonRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAllPersonsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetPersonRelationshipsRequest getPersonRelationships(String idTypeScope, String idTypeCode, String code) {
+        return new APIgetPersonRelationshipsRequest(idTypeScope, idTypeCode, code);
+    }
+    private okhttp3.Call listAllPersonsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1966,109 +2399,187 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListAllPersons: List All Persons
-     * List all persons which the user is entitled to see.
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ResourceListOfPerson
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPerson listAllPersons(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<ResourceListOfPerson> localVarResp = listAllPersonsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListAllPersons: List All Persons
-     * List all persons which the user is entitled to see.
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;ResourceListOfPerson&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPerson> listAllPersonsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<ResourceListOfPerson> listAllPersonsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPerson>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListAllPersons: List All Persons (asynchronously)
-     * List all persons which the user is entitled to see.
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAllPersonsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPerson> _callback) throws ApiException {
+    private okhttp3.Call listAllPersonsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPerson> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPerson>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistAllPersonsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistAllPersonsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.    For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistAllPersonsRequest
+         */
+        public APIlistAllPersonsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listAllPersons
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAllPersonsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listAllPersons request
+         * @return ResourceListOfPerson
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPerson execute() throws ApiException {
+            ApiResponse<ResourceListOfPerson> localVarResp = listAllPersonsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAllPersons request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPerson&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPerson> executeWithHttpInfo() throws ApiException {
+            return listAllPersonsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listAllPersons request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerson> _callback) throws ApiException {
+            return listAllPersonsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for listPersons
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListAllPersons: List All Persons
+     * List all persons which the user is entitled to see.
+     * @return APIlistAllPersonsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPersonsCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIlistAllPersonsRequest listAllPersons() {
+        return new APIlistAllPersonsRequest();
+    }
+    private okhttp3.Call listPersonsCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2164,114 +2675,204 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListPersons: List Persons
-     * List persons which have identifiers of a specific identifier type&#39;s scope and code, and satisfies filter criteria.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return PagedResourceListOfPerson
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPerson listPersons(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<PagedResourceListOfPerson> localVarResp = listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListPersons: List Persons
-     * List persons which have identifiers of a specific identifier type&#39;s scope and code, and satisfies filter criteria.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPerson&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPerson> listPersonsWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<PagedResourceListOfPerson> listPersonsWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListPersons: List Persons (asynchronously)
-     * List persons which have identifiers of a specific identifier type&#39;s scope and code, and satisfies filter criteria.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. (optional)
-     * @param page The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPersonsAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
+    private okhttp3.Call listPersonsAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPersonsRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistPersonsRequest(String idTypeScope, String idTypeCode) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.    For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistPersonsRequest
+         */
+        public APIlistPersonsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listPersons
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listPersons request
+         * @return PagedResourceListOfPerson
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPerson execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPerson> localVarResp = listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPersons request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPerson&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPerson> executeWithHttpInfo() throws ApiException {
+            return listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listPersons request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
+            return listPersonsAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for patchPersonAccessMetadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListPersons: List Persons
+     * List persons which have identifiers of a specific identifier type&#39;s scope and code, and satisfies filter criteria.
+     * @param idTypeScope Scope of the person identifier type. (required)
+     * @param idTypeCode Code of the person identifier type. (required)
+     * @return APIlistPersonsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIlistPersonsRequest listPersons(String idTypeScope, String idTypeCode) {
+        return new APIlistPersonsRequest(idTypeScope, idTypeCode);
+    }
+    private okhttp3.Call patchPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2358,100 +2959,144 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person.
-     * Patch Person Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.                The response will return any affected Person Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> patchPersonAccessMetadata(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person.
-     * Patch Person Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.                The response will return any affected Person Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> patchPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person. (asynchronously)
-     * Patch Person Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.                The response will return any affected Person Access Metadata rules or a failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call patchPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpatchPersonAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final List<AccessMetadataOperation> accessMetadataOperation;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIpatchPersonAccessMetadataRequest(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.accessMetadataOperation = accessMetadataOperation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
+         * @return APIpatchPersonAccessMetadataRequest
+         */
+        public APIpatchPersonAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIpatchPersonAccessMetadataRequest
+         */
+        public APIpatchPersonAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for patchPersonAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchPersonAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchPersonAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchPersonAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return patchPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchPersonAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return patchPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for setPersonIdentifiers
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonIdentifiersRequest Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person.
+     * Patch Person Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.     The response will return any affected Person Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * @param idTypeScope Scope of the person identifier. (required)
+     * @param idTypeCode Code of the person identifier. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
+     * @param accessMetadataOperation The Json Patch document (required)
+     * @return APIpatchPersonAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setPersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback _callback) throws ApiException {
+    public APIpatchPersonAccessMetadataRequest patchPersonAccessMetadata(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation) {
+        return new APIpatchPersonAccessMetadataRequest(idTypeScope, idTypeCode, code, accessMetadataOperation);
+    }
+    private okhttp3.Call setPersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2530,94 +3175,122 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers
-     * Set identifiers of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonIdentifiersRequest Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. (required)
-     * @return Person
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Person setPersonIdentifiers(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest) throws ApiException {
-        ApiResponse<Person> localVarResp = setPersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers
-     * Set identifiers of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonIdentifiersRequest Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. (required)
-     * @return ApiResponse&lt;Person&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Person> setPersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest) throws ApiException {
+    private ApiResponse<Person> setPersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest) throws ApiException {
         okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, null);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers (asynchronously)
-     * Set identifiers of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonIdentifiersRequest Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setPersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback<Person> _callback) throws ApiException {
+    private okhttp3.Call setPersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback<Person> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetPersonIdentifiersRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final SetPersonIdentifiersRequest setPersonIdentifiersRequest;
+
+        private APIsetPersonIdentifiersRequest(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.setPersonIdentifiersRequest = setPersonIdentifiersRequest;
+        }
+
+        /**
+         * Build call for setPersonIdentifiers
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setPersonIdentifiersCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback);
+        }
+
+        /**
+         * Execute setPersonIdentifiers request
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute() throws ApiException {
+            ApiResponse<Person> localVarResp = setPersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setPersonIdentifiers request with HTTP info returned
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
+            return setPersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest);
+        }
+
+        /**
+         * Execute setPersonIdentifiers request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
+            return setPersonIdentifiersAsync(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for setPersonProperties
+     * [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers
+     * Set identifiers of the person.
      * @param idTypeScope Scope of the person identifier type. (required)
      * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonPropertiesRequest Request containing properties to set for the person. Properties not specified in request will not be changed. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @param setPersonIdentifiersRequest Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. (required)
+     * @return APIsetPersonIdentifiersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setPersonPropertiesCall(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback _callback) throws ApiException {
+    public APIsetPersonIdentifiersRequest setPersonIdentifiers(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest) {
+        return new APIsetPersonIdentifiersRequest(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest);
+    }
+    private okhttp3.Call setPersonPropertiesCall(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2696,91 +3369,122 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] SetPersonProperties: Set Person Properties
-     * Set properties of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonPropertiesRequest Request containing properties to set for the person. Properties not specified in request will not be changed. (required)
-     * @return Person
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Person setPersonProperties(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest) throws ApiException {
-        ApiResponse<Person> localVarResp = setPersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setPersonPropertiesRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] SetPersonProperties: Set Person Properties
-     * Set properties of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonPropertiesRequest Request containing properties to set for the person. Properties not specified in request will not be changed. (required)
-     * @return ApiResponse&lt;Person&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Person> setPersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest) throws ApiException {
+    private ApiResponse<Person> setPersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest) throws ApiException {
         okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, null);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] SetPersonProperties: Set Person Properties (asynchronously)
-     * Set properties of the person.
-     * @param idTypeScope Scope of the person identifier type. (required)
-     * @param idTypeCode Code of the person identifier type. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. (required)
-     * @param setPersonPropertiesRequest Request containing properties to set for the person. Properties not specified in request will not be changed. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setPersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback<Person> _callback) throws ApiException {
+    private okhttp3.Call setPersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback<Person> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetPersonPropertiesRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final SetPersonPropertiesRequest setPersonPropertiesRequest;
+
+        private APIsetPersonPropertiesRequest(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.setPersonPropertiesRequest = setPersonPropertiesRequest;
+        }
+
+        /**
+         * Build call for setPersonProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setPersonPropertiesCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback);
+        }
+
+        /**
+         * Execute setPersonProperties request
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute() throws ApiException {
+            ApiResponse<Person> localVarResp = setPersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setPersonPropertiesRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setPersonProperties request with HTTP info returned
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
+            return setPersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setPersonPropertiesRequest);
+        }
+
+        /**
+         * Execute setPersonProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
+            return setPersonPropertiesAsync(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPerson
-     * @param upsertPersonRequest Request to create or update a person. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] SetPersonProperties: Set Person Properties
+     * Set properties of the person.
+     * @param idTypeScope Scope of the person identifier type. (required)
+     * @param idTypeCode Code of the person identifier type. (required)
+     * @param code Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. (required)
+     * @param setPersonPropertiesRequest Request containing properties to set for the person. Properties not specified in request will not be changed. (required)
+     * @return APIsetPersonPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPersonCall(UpsertPersonRequest upsertPersonRequest, final ApiCallback _callback) throws ApiException {
+    public APIsetPersonPropertiesRequest setPersonProperties(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest) {
+        return new APIsetPersonPropertiesRequest(idTypeScope, idTypeCode, code, setPersonPropertiesRequest);
+    }
+    private okhttp3.Call upsertPersonCall(UpsertPersonRequest upsertPersonRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2841,88 +3545,113 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPerson: Upsert Person
-     * Create or update a new person under the specified scope.
-     * @param upsertPersonRequest Request to create or update a person. (required)
-     * @return Person
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Person upsertPerson(UpsertPersonRequest upsertPersonRequest) throws ApiException {
-        ApiResponse<Person> localVarResp = upsertPersonWithHttpInfo(upsertPersonRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertPerson: Upsert Person
-     * Create or update a new person under the specified scope.
-     * @param upsertPersonRequest Request to create or update a person. (required)
-     * @return ApiResponse&lt;Person&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Person> upsertPersonWithHttpInfo(UpsertPersonRequest upsertPersonRequest) throws ApiException {
+    private ApiResponse<Person> upsertPersonWithHttpInfo(UpsertPersonRequest upsertPersonRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, null);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPerson: Upsert Person (asynchronously)
-     * Create or update a new person under the specified scope.
-     * @param upsertPersonRequest Request to create or update a person. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertPersonAsync(UpsertPersonRequest upsertPersonRequest, final ApiCallback<Person> _callback) throws ApiException {
+    private okhttp3.Call upsertPersonAsync(UpsertPersonRequest upsertPersonRequest, final ApiCallback<Person> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, _callback);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertPersonRequest {
+        private final UpsertPersonRequest upsertPersonRequest;
+
+        private APIupsertPersonRequest(UpsertPersonRequest upsertPersonRequest) {
+            this.upsertPersonRequest = upsertPersonRequest;
+        }
+
+        /**
+         * Build call for upsertPerson
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPersonCall(upsertPersonRequest, _callback);
+        }
+
+        /**
+         * Execute upsertPerson request
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute() throws ApiException {
+            ApiResponse<Person> localVarResp = upsertPersonWithHttpInfo(upsertPersonRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPerson request with HTTP info returned
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
+            return upsertPersonWithHttpInfo(upsertPersonRequest);
+        }
+
+        /**
+         * Execute upsertPerson request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
+            return upsertPersonAsync(upsertPersonRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPersonAccessMetadata
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param upsertPersonAccessMetadataRequest The Person Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertPerson: Upsert Person
+     * Create or update a new person under the specified scope.
+     * @param upsertPersonRequest Request to create or update a person. (required)
+     * @return APIupsertPersonRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIupsertPersonRequest upsertPerson(UpsertPersonRequest upsertPersonRequest) {
+        return new APIupsertPersonRequest(upsertPersonRequest);
+    }
+    private okhttp3.Call upsertPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3015,70 +3744,135 @@ public class PersonsApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Person Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Person Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param upsertPersonAccessMetadataRequest The Person Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ResourceListOfAccessMetadataValueOf
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAccessMetadataValueOf upsertPersonAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Person Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Person Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param idTypeScope Scope of the person identifier. (required)
-     * @param idTypeCode Code of the person identifier. (required)
-     * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
-     * @param metadataKey Key of the metadata entry to retrieve (required)
-     * @param upsertPersonAccessMetadataRequest The Person Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertPersonAccessMetadataRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+        private final String metadataKey;
+        private final UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIupsertPersonAccessMetadataRequest(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+            this.metadataKey = metadataKey;
+            this.upsertPersonAccessMetadataRequest = upsertPersonAccessMetadataRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
+         * @return APIupsertPersonAccessMetadataRequest
+         */
+        public APIupsertPersonAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIupsertPersonAccessMetadataRequest
+         */
+        public APIupsertPersonAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for upsertPersonAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertPersonAccessMetadata request
+         * @return ResourceListOfAccessMetadataValueOf
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessMetadataValueOf execute() throws ApiException {
+            ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPersonAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo() throws ApiException {
+            return upsertPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertPersonAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
+            return upsertPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. (asynchronously)
-     * Update or insert one Person Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.                The response will return the successfully updated or inserted Person Access Metadata rule or failure message if unsuccessful.                It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
+     * Update or insert one Person Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Person Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param idTypeScope Scope of the person identifier. (required)
      * @param idTypeCode Code of the person identifier. (required)
      * @param code Code of the person under specified identifier type&#39;s scope and code. (required)
      * @param metadataKey Key of the metadata entry to retrieve (required)
      * @param upsertPersonAccessMetadataRequest The Person Access Metadata entry to upsert (required)
-     * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
-     * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertPersonAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -3087,11 +3881,7 @@ public class PersonsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertPersonAccessMetadataRequest upsertPersonAccessMetadata(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest) {
+        return new APIupsertPersonAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest);
     }
 }

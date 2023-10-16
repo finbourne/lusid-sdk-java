@@ -76,23 +76,7 @@ public class AggregationApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for generateConfigurationRecipe
-     * @param scope The scope of the portfolio (required)
-     * @param code The code of the portfolio (required)
-     * @param createRecipeRequest The request specifying the parameters to generating the recipe (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call generateConfigurationRecipeCall(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateConfigurationRecipeCall(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -160,81 +144,115 @@ public class AggregationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio.
-     * Given a set of scopes, a portfolio Id and a basic recipe, this endpoint generates a configuration recipe with relevant rules that can value the instruments in the portfolio.
-     * @param scope The scope of the portfolio (required)
-     * @param code The code of the portfolio (required)
-     * @param createRecipeRequest The request specifying the parameters to generating the recipe (optional)
-     * @return ConfigurationRecipe
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ConfigurationRecipe generateConfigurationRecipe(String scope, String code, CreateRecipeRequest createRecipeRequest) throws ApiException {
-        ApiResponse<ConfigurationRecipe> localVarResp = generateConfigurationRecipeWithHttpInfo(scope, code, createRecipeRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio.
-     * Given a set of scopes, a portfolio Id and a basic recipe, this endpoint generates a configuration recipe with relevant rules that can value the instruments in the portfolio.
-     * @param scope The scope of the portfolio (required)
-     * @param code The code of the portfolio (required)
-     * @param createRecipeRequest The request specifying the parameters to generating the recipe (optional)
-     * @return ApiResponse&lt;ConfigurationRecipe&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ConfigurationRecipe> generateConfigurationRecipeWithHttpInfo(String scope, String code, CreateRecipeRequest createRecipeRequest) throws ApiException {
+    private ApiResponse<ConfigurationRecipe> generateConfigurationRecipeWithHttpInfo(String scope, String code, CreateRecipeRequest createRecipeRequest) throws ApiException {
         okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, null);
         Type localVarReturnType = new TypeToken<ConfigurationRecipe>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio. (asynchronously)
-     * Given a set of scopes, a portfolio Id and a basic recipe, this endpoint generates a configuration recipe with relevant rules that can value the instruments in the portfolio.
-     * @param scope The scope of the portfolio (required)
-     * @param code The code of the portfolio (required)
-     * @param createRecipeRequest The request specifying the parameters to generating the recipe (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call generateConfigurationRecipeAsync(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback<ConfigurationRecipe> _callback) throws ApiException {
+    private okhttp3.Call generateConfigurationRecipeAsync(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback<ConfigurationRecipe> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, _callback);
         Type localVarReturnType = new TypeToken<ConfigurationRecipe>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgenerateConfigurationRecipeRequest {
+        private final String scope;
+        private final String code;
+        private CreateRecipeRequest createRecipeRequest;
+
+        private APIgenerateConfigurationRecipeRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set createRecipeRequest
+         * @param createRecipeRequest The request specifying the parameters to generating the recipe (optional)
+         * @return APIgenerateConfigurationRecipeRequest
+         */
+        public APIgenerateConfigurationRecipeRequest createRecipeRequest(CreateRecipeRequest createRecipeRequest) {
+            this.createRecipeRequest = createRecipeRequest;
+            return this;
+        }
+
+        /**
+         * Build call for generateConfigurationRecipe
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return generateConfigurationRecipeCall(scope, code, createRecipeRequest, _callback);
+        }
+
+        /**
+         * Execute generateConfigurationRecipe request
+         * @return ConfigurationRecipe
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ConfigurationRecipe execute() throws ApiException {
+            ApiResponse<ConfigurationRecipe> localVarResp = generateConfigurationRecipeWithHttpInfo(scope, code, createRecipeRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute generateConfigurationRecipe request with HTTP info returned
+         * @return ApiResponse&lt;ConfigurationRecipe&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ConfigurationRecipe> executeWithHttpInfo() throws ApiException {
+            return generateConfigurationRecipeWithHttpInfo(scope, code, createRecipeRequest);
+        }
+
+        /**
+         * Execute generateConfigurationRecipe request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ConfigurationRecipe> _callback) throws ApiException {
+            return generateConfigurationRecipeAsync(scope, code, createRecipeRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getQueryableKeys
-     * @param page The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.              This value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio.
+     * Given a set of scopes, a portfolio Id and a basic recipe, this endpoint generates a configuration recipe with relevant rules that can value the instruments in the portfolio.
+     * @param scope The scope of the portfolio (required)
+     * @param code The code of the portfolio (required)
+     * @return APIgenerateConfigurationRecipeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -243,7 +261,10 @@ public class AggregationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getQueryableKeysCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgenerateConfigurationRecipeRequest generateConfigurationRecipe(String scope, String code) {
+        return new APIgenerateConfigurationRecipeRequest(scope, code);
+    }
+    private okhttp3.Call getQueryableKeysCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,79 +328,131 @@ public class AggregationApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint.
-     * When a request is made for aggregation, the user needs to know what keys can be passed to it for queryable data. This endpoint allows to queries to provide the set of keys,  what they are and what they return.
-     * @param page The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.              This value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ResourceListOfAggregationQuery
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAggregationQuery getQueryableKeys(String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<ResourceListOfAggregationQuery> localVarResp = getQueryableKeysWithHttpInfo(page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint.
-     * When a request is made for aggregation, the user needs to know what keys can be passed to it for queryable data. This endpoint allows to queries to provide the set of keys,  what they are and what they return.
-     * @param page The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.              This value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;ResourceListOfAggregationQuery&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAggregationQuery> getQueryableKeysWithHttpInfo(String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<ResourceListOfAggregationQuery> getQueryableKeysWithHttpInfo(String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregationQuery>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint. (asynchronously)
-     * When a request is made for aggregation, the user needs to know what keys can be passed to it for queryable data. This endpoint allows to queries to provide the set of keys,  what they are and what they return.
-     * @param page The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.              This value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getQueryableKeysAsync(String page, Integer limit, String filter, final ApiCallback<ResourceListOfAggregationQuery> _callback) throws ApiException {
+    private okhttp3.Call getQueryableKeysAsync(String page, Integer limit, String filter, final ApiCallback<ResourceListOfAggregationQuery> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregationQuery>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetQueryableKeysRequest {
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIgetQueryableKeysRequest() {
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.   This value is returned from the previous call. (optional)
+         * @return APIgetQueryableKeysRequest
+         */
+        public APIgetQueryableKeysRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetQueryableKeysRequest
+         */
+        public APIgetQueryableKeysRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetQueryableKeysRequest
+         */
+        public APIgetQueryableKeysRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getQueryableKeys
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getQueryableKeysCall(page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getQueryableKeys request
+         * @return ResourceListOfAggregationQuery
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAggregationQuery execute() throws ApiException {
+            ApiResponse<ResourceListOfAggregationQuery> localVarResp = getQueryableKeysWithHttpInfo(page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getQueryableKeys request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAggregationQuery&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAggregationQuery> executeWithHttpInfo() throws ApiException {
+            return getQueryableKeysWithHttpInfo(page, limit, filter);
+        }
+
+        /**
+         * Execute getQueryableKeys request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAggregationQuery> _callback) throws ApiException {
+            return getQueryableKeysAsync(page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for getValuation
-     * @param valuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint.
+     * When a request is made for aggregation, the user needs to know what keys can be passed to it for queryable data. This endpoint allows to queries to provide the set of keys,  what they are and what they return.
+     * @return APIgetQueryableKeysRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -388,7 +461,10 @@ public class AggregationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValuationCall(ValuationRequest valuationRequest, final ApiCallback _callback) throws ApiException {
+    public APIgetQueryableKeysRequest getQueryableKeys() {
+        return new APIgetQueryableKeysRequest();
+    }
+    private okhttp3.Call getValuationCall(ValuationRequest valuationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -444,73 +520,109 @@ public class AggregationApi {
 
     }
 
-    /**
-     * GetValuation: Perform valuation for a list of portfolios and/or portfolio groups
-     * Perform valuation on specified list of portfolio and/or portfolio groups for a set of dates.
-     * @param valuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @return ListAggregationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListAggregationResponse getValuation(ValuationRequest valuationRequest) throws ApiException {
-        ApiResponse<ListAggregationResponse> localVarResp = getValuationWithHttpInfo(valuationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetValuation: Perform valuation for a list of portfolios and/or portfolio groups
-     * Perform valuation on specified list of portfolio and/or portfolio groups for a set of dates.
-     * @param valuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @return ApiResponse&lt;ListAggregationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListAggregationResponse> getValuationWithHttpInfo(ValuationRequest valuationRequest) throws ApiException {
+    private ApiResponse<ListAggregationResponse> getValuationWithHttpInfo(ValuationRequest valuationRequest) throws ApiException {
         okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, null);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetValuation: Perform valuation for a list of portfolios and/or portfolio groups (asynchronously)
-     * Perform valuation on specified list of portfolio and/or portfolio groups for a set of dates.
-     * @param valuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getValuationAsync(ValuationRequest valuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+    private okhttp3.Call getValuationAsync(ValuationRequest valuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, _callback);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetValuationRequest {
+        private ValuationRequest valuationRequest;
+
+        private APIgetValuationRequest() {
+        }
+
+        /**
+         * Set valuationRequest
+         * @param valuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
+         * @return APIgetValuationRequest
+         */
+        public APIgetValuationRequest valuationRequest(ValuationRequest valuationRequest) {
+            this.valuationRequest = valuationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for getValuation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationCall(valuationRequest, _callback);
+        }
+
+        /**
+         * Execute getValuation request
+         * @return ListAggregationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationResponse execute() throws ApiException {
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationWithHttpInfo(valuationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuation request with HTTP info returned
+         * @return ApiResponse&lt;ListAggregationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationResponse> executeWithHttpInfo() throws ApiException {
+            return getValuationWithHttpInfo(valuationRequest);
+        }
+
+        /**
+         * Execute getValuation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+            return getValuationAsync(valuationRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getValuationOfWeightedInstruments
-     * @param inlineValuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetValuation: Perform valuation for a list of portfolios and/or portfolio groups
+     * Perform valuation on specified list of portfolio and/or portfolio groups for a set of dates.
+     * @return APIgetValuationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -519,7 +631,10 @@ public class AggregationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValuationOfWeightedInstrumentsCall(InlineValuationRequest inlineValuationRequest, final ApiCallback _callback) throws ApiException {
+    public APIgetValuationRequest getValuation() {
+        return new APIgetValuationRequest();
+    }
+    private okhttp3.Call getValuationOfWeightedInstrumentsCall(InlineValuationRequest inlineValuationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -575,52 +690,109 @@ public class AggregationApi {
 
     }
 
-    /**
-     * GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio
-     * Perform valuation on the portfolio that is defined by the weighted set of instruments passed to the request.
-     * @param inlineValuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @return ListAggregationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListAggregationResponse getValuationOfWeightedInstruments(InlineValuationRequest inlineValuationRequest) throws ApiException {
-        ApiResponse<ListAggregationResponse> localVarResp = getValuationOfWeightedInstrumentsWithHttpInfo(inlineValuationRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio
-     * Perform valuation on the portfolio that is defined by the weighted set of instruments passed to the request.
-     * @param inlineValuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @return ApiResponse&lt;ListAggregationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListAggregationResponse> getValuationOfWeightedInstrumentsWithHttpInfo(InlineValuationRequest inlineValuationRequest) throws ApiException {
+    private ApiResponse<ListAggregationResponse> getValuationOfWeightedInstrumentsWithHttpInfo(InlineValuationRequest inlineValuationRequest) throws ApiException {
         okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, null);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call getValuationOfWeightedInstrumentsAsync(InlineValuationRequest inlineValuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, _callback);
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetValuationOfWeightedInstrumentsRequest {
+        private InlineValuationRequest inlineValuationRequest;
+
+        private APIgetValuationOfWeightedInstrumentsRequest() {
+        }
+
+        /**
+         * Set inlineValuationRequest
+         * @param inlineValuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
+         * @return APIgetValuationOfWeightedInstrumentsRequest
+         */
+        public APIgetValuationOfWeightedInstrumentsRequest inlineValuationRequest(InlineValuationRequest inlineValuationRequest) {
+            this.inlineValuationRequest = inlineValuationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for getValuationOfWeightedInstruments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationOfWeightedInstrumentsCall(inlineValuationRequest, _callback);
+        }
+
+        /**
+         * Execute getValuationOfWeightedInstruments request
+         * @return ListAggregationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationResponse execute() throws ApiException {
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationOfWeightedInstrumentsWithHttpInfo(inlineValuationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationOfWeightedInstruments request with HTTP info returned
+         * @return ApiResponse&lt;ListAggregationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationResponse> executeWithHttpInfo() throws ApiException {
+            return getValuationOfWeightedInstrumentsWithHttpInfo(inlineValuationRequest);
+        }
+
+        /**
+         * Execute getValuationOfWeightedInstruments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+            return getValuationOfWeightedInstrumentsAsync(inlineValuationRequest, _callback);
+        }
+    }
+
     /**
-     * GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio (asynchronously)
+     * GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio
      * Perform valuation on the portfolio that is defined by the weighted set of instruments passed to the request.
-     * @param inlineValuationRequest The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIgetValuationOfWeightedInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -629,11 +801,7 @@ public class AggregationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValuationOfWeightedInstrumentsAsync(InlineValuationRequest inlineValuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, _callback);
-        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIgetValuationOfWeightedInstrumentsRequest getValuationOfWeightedInstruments() {
+        return new APIgetValuationOfWeightedInstrumentsRequest();
     }
 }

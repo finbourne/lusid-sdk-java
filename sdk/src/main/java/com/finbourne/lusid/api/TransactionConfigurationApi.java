@@ -79,22 +79,7 @@ public class TransactionConfigurationApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteSideDefinition
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteSideDefinitionCall(String side, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSideDefinitionCall(String side, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -156,78 +141,112 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition
-     * Delete the side which user specify in the request.
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteSideDefinition(String side, String scope) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteSideDefinitionWithHttpInfo(side, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition
-     * Delete the side which user specify in the request.
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteSideDefinitionWithHttpInfo(String side, String scope) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteSideDefinitionWithHttpInfo(String side, String scope) throws ApiException {
         okhttp3.Call localVarCall = deleteSideDefinitionValidateBeforeCall(side, scope, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition (asynchronously)
-     * Delete the side which user specify in the request.
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteSideDefinitionAsync(String side, String scope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteSideDefinitionAsync(String side, String scope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteSideDefinitionValidateBeforeCall(side, scope, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteSideDefinitionRequest {
+        private final String side;
+        private String scope;
+
+        private APIdeleteSideDefinitionRequest(String side) {
+            this.side = side;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIdeleteSideDefinitionRequest
+         */
+        public APIdeleteSideDefinitionRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for deleteSideDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteSideDefinitionCall(side, scope, _callback);
+        }
+
+        /**
+         * Execute deleteSideDefinition request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteSideDefinitionWithHttpInfo(side, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteSideDefinition request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteSideDefinitionWithHttpInfo(side, scope);
+        }
+
+        /**
+         * Execute deleteSideDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteSideDefinitionAsync(side, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteTransactionType
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition
+     * Delete the side which user specify in the request.
+     * @param side The label to uniquely identify the side. (required)
+     * @return APIdeleteSideDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -236,7 +255,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTransactionTypeCall(String source, String type, String scope, final ApiCallback _callback) throws ApiException {
+    public APIdeleteSideDefinitionRequest deleteSideDefinition(String side) {
+        return new APIdeleteSideDefinitionRequest(side);
+    }
+    private okhttp3.Call deleteTransactionTypeCall(String source, String type, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -304,80 +326,115 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type
-     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteTransactionType(String source, String type, String scope) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionTypeWithHttpInfo(source, type, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type
-     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteTransactionTypeWithHttpInfo(String source, String type, String scope) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteTransactionTypeWithHttpInfo(String source, String type, String scope) throws ApiException {
         okhttp3.Call localVarCall = deleteTransactionTypeValidateBeforeCall(source, type, scope, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type (asynchronously)
-     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTransactionTypeAsync(String source, String type, String scope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionTypeAsync(String source, String type, String scope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTransactionTypeValidateBeforeCall(source, type, scope, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteTransactionTypeRequest {
+        private final String source;
+        private final String type;
+        private String scope;
+
+        private APIdeleteTransactionTypeRequest(String source, String type) {
+            this.source = source;
+            this.type = type;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIdeleteTransactionTypeRequest
+         */
+        public APIdeleteTransactionTypeRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for deleteTransactionType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTransactionTypeCall(source, type, scope, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionType request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionTypeWithHttpInfo(source, type, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTransactionType request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteTransactionTypeWithHttpInfo(source, type, scope);
+        }
+
+        /**
+         * Execute deleteTransactionType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteTransactionTypeAsync(source, type, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteTransactionTypeSource
-     * @param source The source to set the transaction types for. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type
+     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * @param source The source that the type is in (required)
+     * @param type One of the type&#39;s aliases (required)
+     * @return APIdeleteTransactionTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -386,7 +443,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTransactionTypeSourceCall(String source, String scope, final ApiCallback _callback) throws ApiException {
+    public APIdeleteTransactionTypeRequest deleteTransactionType(String source, String type) {
+        return new APIdeleteTransactionTypeRequest(source, type);
+    }
+    private okhttp3.Call deleteTransactionTypeSourceCall(String source, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -448,78 +508,112 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
-     * Delete all the types for the given source and scope.
-     * @param source The source to set the transaction types for. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteTransactionTypeSource(String source, String scope) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionTypeSourceWithHttpInfo(source, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
-     * Delete all the types for the given source and scope.
-     * @param source The source to set the transaction types for. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteTransactionTypeSourceWithHttpInfo(String source, String scope) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteTransactionTypeSourceWithHttpInfo(String source, String scope) throws ApiException {
         okhttp3.Call localVarCall = deleteTransactionTypeSourceValidateBeforeCall(source, scope, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope (asynchronously)
-     * Delete all the types for the given source and scope.
-     * @param source The source to set the transaction types for. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTransactionTypeSourceAsync(String source, String scope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionTypeSourceAsync(String source, String scope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTransactionTypeSourceValidateBeforeCall(source, scope, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteTransactionTypeSourceRequest {
+        private final String source;
+        private String scope;
+
+        private APIdeleteTransactionTypeSourceRequest(String source) {
+            this.source = source;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIdeleteTransactionTypeSourceRequest
+         */
+        public APIdeleteTransactionTypeSourceRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for deleteTransactionTypeSource
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTransactionTypeSourceCall(source, scope, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionTypeSource request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionTypeSourceWithHttpInfo(source, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTransactionTypeSource request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteTransactionTypeSourceWithHttpInfo(source, scope);
+        }
+
+        /**
+         * Execute deleteTransactionTypeSource request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteTransactionTypeSourceAsync(source, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for getSideDefinition
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
+     * Delete all the types for the given source and scope.
+     * @param source The source to set the transaction types for. (required)
+     * @return APIdeleteTransactionTypeSourceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -528,7 +622,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSideDefinitionCall(String side, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteTransactionTypeSourceRequest deleteTransactionTypeSource(String source) {
+        return new APIdeleteTransactionTypeSourceRequest(source);
+    }
+    private okhttp3.Call getSideDefinitionCall(String side, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -594,82 +691,123 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label)
-     * Get the side definition user requested.
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @return SideDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public SideDefinition getSideDefinition(String side, String scope, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<SideDefinition> localVarResp = getSideDefinitionWithHttpInfo(side, scope, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label)
-     * Get the side definition user requested.
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @return ApiResponse&lt;SideDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SideDefinition> getSideDefinitionWithHttpInfo(String side, String scope, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<SideDefinition> getSideDefinitionWithHttpInfo(String side, String scope, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, null);
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label) (asynchronously)
-     * Get the side definition user requested.
-     * @param side The label to uniquely identify the side. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getSideDefinitionAsync(String side, String scope, OffsetDateTime asAt, final ApiCallback<SideDefinition> _callback) throws ApiException {
+    private okhttp3.Call getSideDefinitionAsync(String side, String scope, OffsetDateTime asAt, final ApiCallback<SideDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, _callback);
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetSideDefinitionRequest {
+        private final String side;
+        private String scope;
+        private OffsetDateTime asAt;
+
+        private APIgetSideDefinitionRequest(String side) {
+            this.side = side;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetSideDefinitionRequest
+         */
+        public APIgetSideDefinitionRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
+         * @return APIgetSideDefinitionRequest
+         */
+        public APIgetSideDefinitionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getSideDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getSideDefinitionCall(side, scope, asAt, _callback);
+        }
+
+        /**
+         * Execute getSideDefinition request
+         * @return SideDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public SideDefinition execute() throws ApiException {
+            ApiResponse<SideDefinition> localVarResp = getSideDefinitionWithHttpInfo(side, scope, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getSideDefinition request with HTTP info returned
+         * @return ApiResponse&lt;SideDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SideDefinition> executeWithHttpInfo() throws ApiException {
+            return getSideDefinitionWithHttpInfo(side, scope, asAt);
+        }
+
+        /**
+         * Execute getSideDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SideDefinition> _callback) throws ApiException {
+            return getSideDefinitionAsync(side, scope, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getTransactionType
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param asAt The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified (optional)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label)
+     * Get the side definition user requested.
+     * @param side The label to uniquely identify the side. (required)
+     * @return APIgetSideDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -678,7 +816,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionTypeCall(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetSideDefinitionRequest getSideDefinition(String side) {
+        return new APIgetSideDefinitionRequest(side);
+    }
+    private okhttp3.Call getTransactionTypeCall(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -750,83 +891,126 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type
-     * Get a single transaction type. Returns failure if not found
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param asAt The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified (optional)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return TransactionType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TransactionType getTransactionType(String source, String type, OffsetDateTime asAt, String scope) throws ApiException {
-        ApiResponse<TransactionType> localVarResp = getTransactionTypeWithHttpInfo(source, type, asAt, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type
-     * Get a single transaction type. Returns failure if not found
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param asAt The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified (optional)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;TransactionType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TransactionType> getTransactionTypeWithHttpInfo(String source, String type, OffsetDateTime asAt, String scope) throws ApiException {
+    private ApiResponse<TransactionType> getTransactionTypeWithHttpInfo(String source, String type, OffsetDateTime asAt, String scope) throws ApiException {
         okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, null);
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type (asynchronously)
-     * Get a single transaction type. Returns failure if not found
-     * @param source The source that the type is in (required)
-     * @param type One of the type&#39;s aliases (required)
-     * @param asAt The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified (optional)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTransactionTypeAsync(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback<TransactionType> _callback) throws ApiException {
+    private okhttp3.Call getTransactionTypeAsync(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback<TransactionType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, _callback);
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTransactionTypeRequest {
+        private final String source;
+        private final String type;
+        private OffsetDateTime asAt;
+        private String scope;
+
+        private APIgetTransactionTypeRequest(String source, String type) {
+            this.source = source;
+            this.type = type;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified (optional)
+         * @return APIgetTransactionTypeRequest
+         */
+        public APIgetTransactionTypeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIgetTransactionTypeRequest
+         */
+        public APIgetTransactionTypeRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for getTransactionType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransactionTypeCall(source, type, asAt, scope, _callback);
+        }
+
+        /**
+         * Execute getTransactionType request
+         * @return TransactionType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionType execute() throws ApiException {
+            ApiResponse<TransactionType> localVarResp = getTransactionTypeWithHttpInfo(source, type, asAt, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactionType request with HTTP info returned
+         * @return ApiResponse&lt;TransactionType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionType> executeWithHttpInfo() throws ApiException {
+            return getTransactionTypeWithHttpInfo(source, type, asAt, scope);
+        }
+
+        /**
+         * Execute getTransactionType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionType> _callback) throws ApiException {
+            return getTransactionTypeAsync(source, type, asAt, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for listSideDefinitions
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type
+     * Get a single transaction type. Returns failure if not found
+     * @param source The source that the type is in (required)
+     * @param type One of the type&#39;s aliases (required)
+     * @return APIgetTransactionTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -835,7 +1019,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSideDefinitionsCall(OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    public APIgetTransactionTypeRequest getTransactionType(String source, String type) {
+        return new APIgetTransactionTypeRequest(source, type);
+    }
+    private okhttp3.Call listSideDefinitionsCall(OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -895,77 +1082,120 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListSideDefinitions: List the side definitions
-     * List all the side definitions in the given scope
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ResourceListOfSideDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfSideDefinition listSideDefinitions(OffsetDateTime asAt, String scope) throws ApiException {
-        ApiResponse<ResourceListOfSideDefinition> localVarResp = listSideDefinitionsWithHttpInfo(asAt, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListSideDefinitions: List the side definitions
-     * List all the side definitions in the given scope
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;ResourceListOfSideDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfSideDefinition> listSideDefinitionsWithHttpInfo(OffsetDateTime asAt, String scope) throws ApiException {
+    private ApiResponse<ResourceListOfSideDefinition> listSideDefinitionsWithHttpInfo(OffsetDateTime asAt, String scope) throws ApiException {
         okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, null);
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListSideDefinitions: List the side definitions (asynchronously)
-     * List all the side definitions in the given scope
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listSideDefinitionsAsync(OffsetDateTime asAt, String scope, final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
+    private okhttp3.Call listSideDefinitionsAsync(OffsetDateTime asAt, String scope, final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistSideDefinitionsRequest {
+        private OffsetDateTime asAt;
+        private String scope;
+
+        private APIlistSideDefinitionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)
+         * @return APIlistSideDefinitionsRequest
+         */
+        public APIlistSideDefinitionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIlistSideDefinitionsRequest
+         */
+        public APIlistSideDefinitionsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for listSideDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listSideDefinitionsCall(asAt, scope, _callback);
+        }
+
+        /**
+         * Execute listSideDefinitions request
+         * @return ResourceListOfSideDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfSideDefinition execute() throws ApiException {
+            ApiResponse<ResourceListOfSideDefinition> localVarResp = listSideDefinitionsWithHttpInfo(asAt, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listSideDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfSideDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfSideDefinition> executeWithHttpInfo() throws ApiException {
+            return listSideDefinitionsWithHttpInfo(asAt, scope);
+        }
+
+        /**
+         * Execute listSideDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
+            return listSideDefinitionsAsync(asAt, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for listTransactionTypes
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListSideDefinitions: List the side definitions
+     * List all the side definitions in the given scope
+     * @return APIlistSideDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -974,7 +1204,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listTransactionTypesCall(OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    public APIlistSideDefinitionsRequest listSideDefinitions() {
+        return new APIlistSideDefinitionsRequest();
+    }
+    private okhttp3.Call listTransactionTypesCall(OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1034,78 +1267,120 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListTransactionTypes: List transaction types
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return Map&lt;String, List&lt;TransactionType&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<TransactionType>> listTransactionTypes(OffsetDateTime asAt, String scope) throws ApiException {
-        ApiResponse<Map<String, List<TransactionType>>> localVarResp = listTransactionTypesWithHttpInfo(asAt, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListTransactionTypes: List transaction types
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;TransactionType&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<TransactionType>>> listTransactionTypesWithHttpInfo(OffsetDateTime asAt, String scope) throws ApiException {
+    private ApiResponse<Map<String, List<TransactionType>>> listTransactionTypesWithHttpInfo(OffsetDateTime asAt, String scope) throws ApiException {
         okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, null);
         Type localVarReturnType = new TypeToken<Map<String, List<TransactionType>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListTransactionTypes: List transaction types (asynchronously)
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
-     * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listTransactionTypesAsync(OffsetDateTime asAt, String scope, final ApiCallback<Map<String, List<TransactionType>>> _callback) throws ApiException {
+    private okhttp3.Call listTransactionTypesAsync(OffsetDateTime asAt, String scope, final ApiCallback<Map<String, List<TransactionType>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<TransactionType>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistTransactionTypesRequest {
+        private OffsetDateTime asAt;
+        private String scope;
+
+        private APIlistTransactionTypesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. (optional)
+         * @return APIlistTransactionTypesRequest
+         */
+        public APIlistTransactionTypesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIlistTransactionTypesRequest
+         */
+        public APIlistTransactionTypesRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for listTransactionTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTransactionTypesCall(asAt, scope, _callback);
+        }
+
+        /**
+         * Execute listTransactionTypes request
+         * @return Map&lt;String, List&lt;TransactionType&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<TransactionType>> execute() throws ApiException {
+            ApiResponse<Map<String, List<TransactionType>>> localVarResp = listTransactionTypesWithHttpInfo(asAt, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTransactionTypes request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;TransactionType&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<TransactionType>>> executeWithHttpInfo() throws ApiException {
+            return listTransactionTypesWithHttpInfo(asAt, scope);
+        }
+
+        /**
+         * Execute listTransactionTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<TransactionType>>> _callback) throws ApiException {
+            return listTransactionTypesAsync(asAt, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for setSideDefinition
-     * @param side The label to uniquely identify the side. (required)
-     * @param sideDefinitionRequest The side definition to create or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListTransactionTypes: List transaction types
+     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+     * @return APIlistTransactionTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1114,7 +1389,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setSideDefinitionCall(String side, SideDefinitionRequest sideDefinitionRequest, String scope, final ApiCallback _callback) throws ApiException {
+    public APIlistTransactionTypesRequest listTransactionTypes() {
+        return new APIlistTransactionTypesRequest();
+    }
+    private okhttp3.Call setSideDefinitionCall(String side, SideDefinitionRequest sideDefinitionRequest, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1185,80 +1463,115 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetSideDefinition: Set a side definition
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
-     * @param side The label to uniquely identify the side. (required)
-     * @param sideDefinitionRequest The side definition to create or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return SideDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public SideDefinition setSideDefinition(String side, SideDefinitionRequest sideDefinitionRequest, String scope) throws ApiException {
-        ApiResponse<SideDefinition> localVarResp = setSideDefinitionWithHttpInfo(side, sideDefinitionRequest, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetSideDefinition: Set a side definition
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
-     * @param side The label to uniquely identify the side. (required)
-     * @param sideDefinitionRequest The side definition to create or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;SideDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SideDefinition> setSideDefinitionWithHttpInfo(String side, SideDefinitionRequest sideDefinitionRequest, String scope) throws ApiException {
+    private ApiResponse<SideDefinition> setSideDefinitionWithHttpInfo(String side, SideDefinitionRequest sideDefinitionRequest, String scope) throws ApiException {
         okhttp3.Call localVarCall = setSideDefinitionValidateBeforeCall(side, sideDefinitionRequest, scope, null);
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] SetSideDefinition: Set a side definition (asynchronously)
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
-     * @param side The label to uniquely identify the side. (required)
-     * @param sideDefinitionRequest The side definition to create or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setSideDefinitionAsync(String side, SideDefinitionRequest sideDefinitionRequest, String scope, final ApiCallback<SideDefinition> _callback) throws ApiException {
+    private okhttp3.Call setSideDefinitionAsync(String side, SideDefinitionRequest sideDefinitionRequest, String scope, final ApiCallback<SideDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setSideDefinitionValidateBeforeCall(side, sideDefinitionRequest, scope, _callback);
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetSideDefinitionRequest {
+        private final String side;
+        private final SideDefinitionRequest sideDefinitionRequest;
+        private String scope;
+
+        private APIsetSideDefinitionRequest(String side, SideDefinitionRequest sideDefinitionRequest) {
+            this.side = side;
+            this.sideDefinitionRequest = sideDefinitionRequest;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIsetSideDefinitionRequest
+         */
+        public APIsetSideDefinitionRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for setSideDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setSideDefinitionCall(side, sideDefinitionRequest, scope, _callback);
+        }
+
+        /**
+         * Execute setSideDefinition request
+         * @return SideDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public SideDefinition execute() throws ApiException {
+            ApiResponse<SideDefinition> localVarResp = setSideDefinitionWithHttpInfo(side, sideDefinitionRequest, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setSideDefinition request with HTTP info returned
+         * @return ApiResponse&lt;SideDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SideDefinition> executeWithHttpInfo() throws ApiException {
+            return setSideDefinitionWithHttpInfo(side, sideDefinitionRequest, scope);
+        }
+
+        /**
+         * Execute setSideDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SideDefinition> _callback) throws ApiException {
+            return setSideDefinitionAsync(side, sideDefinitionRequest, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for setSideDefinitions
-     * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] SetSideDefinition: Set a side definition
+     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+     * @param side The label to uniquely identify the side. (required)
+     * @param sideDefinitionRequest The side definition to create or replace. (required)
+     * @return APIsetSideDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1267,7 +1580,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setSideDefinitionsCall(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope, final ApiCallback _callback) throws ApiException {
+    public APIsetSideDefinitionRequest setSideDefinition(String side, SideDefinitionRequest sideDefinitionRequest) {
+        return new APIsetSideDefinitionRequest(side, sideDefinitionRequest);
+    }
+    private okhttp3.Call setSideDefinitionsCall(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1332,79 +1648,112 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
-     * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ResourceListOfSideDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfSideDefinition setSideDefinitions(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope) throws ApiException {
-        ApiResponse<ResourceListOfSideDefinition> localVarResp = setSideDefinitionsWithHttpInfo(sidesDefinitionRequest, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
-     * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;ResourceListOfSideDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfSideDefinition> setSideDefinitionsWithHttpInfo(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope) throws ApiException {
+    private ApiResponse<ResourceListOfSideDefinition> setSideDefinitionsWithHttpInfo(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope) throws ApiException {
         okhttp3.Call localVarCall = setSideDefinitionsValidateBeforeCall(sidesDefinitionRequest, scope, null);
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions (asynchronously)
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
-     * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
-     * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setSideDefinitionsAsync(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope, final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
+    private okhttp3.Call setSideDefinitionsAsync(List<SidesDefinitionRequest> sidesDefinitionRequest, String scope, final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setSideDefinitionsValidateBeforeCall(sidesDefinitionRequest, scope, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetSideDefinitionsRequest {
+        private final List<SidesDefinitionRequest> sidesDefinitionRequest;
+        private String scope;
+
+        private APIsetSideDefinitionsRequest(List<SidesDefinitionRequest> sidesDefinitionRequest) {
+            this.sidesDefinitionRequest = sidesDefinitionRequest;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIsetSideDefinitionsRequest
+         */
+        public APIsetSideDefinitionsRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for setSideDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setSideDefinitionsCall(sidesDefinitionRequest, scope, _callback);
+        }
+
+        /**
+         * Execute setSideDefinitions request
+         * @return ResourceListOfSideDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfSideDefinition execute() throws ApiException {
+            ApiResponse<ResourceListOfSideDefinition> localVarResp = setSideDefinitionsWithHttpInfo(sidesDefinitionRequest, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setSideDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfSideDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfSideDefinition> executeWithHttpInfo() throws ApiException {
+            return setSideDefinitionsWithHttpInfo(sidesDefinitionRequest, scope);
+        }
+
+        /**
+         * Execute setSideDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
+            return setSideDefinitionsAsync(sidesDefinitionRequest, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for setTransactionType
-     * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
-     * @param transactionTypeRequest The transaction configuration to set (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions
+     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+     * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
+     * @return APIsetSideDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1413,7 +1762,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setTransactionTypeCall(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope, final ApiCallback _callback) throws ApiException {
+    public APIsetSideDefinitionsRequest setSideDefinitions(List<SidesDefinitionRequest> sidesDefinitionRequest) {
+        return new APIsetSideDefinitionsRequest(sidesDefinitionRequest);
+    }
+    private okhttp3.Call setTransactionTypeCall(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1490,84 +1842,118 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
-     * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
-     * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
-     * @param transactionTypeRequest The transaction configuration to set (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return TransactionType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public TransactionType setTransactionType(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope) throws ApiException {
-        ApiResponse<TransactionType> localVarResp = setTransactionTypeWithHttpInfo(source, type, transactionTypeRequest, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
-     * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
-     * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
-     * @param transactionTypeRequest The transaction configuration to set (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;TransactionType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TransactionType> setTransactionTypeWithHttpInfo(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope) throws ApiException {
+    private ApiResponse<TransactionType> setTransactionTypeWithHttpInfo(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope) throws ApiException {
         okhttp3.Call localVarCall = setTransactionTypeValidateBeforeCall(source, type, transactionTypeRequest, scope, null);
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type (asynchronously)
-     * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
-     * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
-     * @param transactionTypeRequest The transaction configuration to set (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setTransactionTypeAsync(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope, final ApiCallback<TransactionType> _callback) throws ApiException {
+    private okhttp3.Call setTransactionTypeAsync(String source, String type, TransactionTypeRequest transactionTypeRequest, String scope, final ApiCallback<TransactionType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setTransactionTypeValidateBeforeCall(source, type, transactionTypeRequest, scope, _callback);
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetTransactionTypeRequest {
+        private final String source;
+        private final String type;
+        private final TransactionTypeRequest transactionTypeRequest;
+        private String scope;
+
+        private APIsetTransactionTypeRequest(String source, String type, TransactionTypeRequest transactionTypeRequest) {
+            this.source = source;
+            this.type = type;
+            this.transactionTypeRequest = transactionTypeRequest;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIsetTransactionTypeRequest
+         */
+        public APIsetTransactionTypeRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for setTransactionType
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setTransactionTypeCall(source, type, transactionTypeRequest, scope, _callback);
+        }
+
+        /**
+         * Execute setTransactionType request
+         * @return TransactionType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionType execute() throws ApiException {
+            ApiResponse<TransactionType> localVarResp = setTransactionTypeWithHttpInfo(source, type, transactionTypeRequest, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setTransactionType request with HTTP info returned
+         * @return ApiResponse&lt;TransactionType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionType> executeWithHttpInfo() throws ApiException {
+            return setTransactionTypeWithHttpInfo(source, type, transactionTypeRequest, scope);
+        }
+
+        /**
+         * Execute setTransactionType request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionType> _callback) throws ApiException {
+            return setTransactionTypeAsync(source, type, transactionTypeRequest, scope, _callback);
+        }
+    }
+
     /**
-     * Build call for setTransactionTypeSource
-     * @param source The source to set the transaction types for. (required)
-     * @param transactionTypeRequest The set of transaction types. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
+     * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * @param source The source to set the transaction configuration for (required)
+     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
+     * @param transactionTypeRequest The transaction configuration to set (required)
+     * @return APIsetTransactionTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1576,7 +1962,10 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setTransactionTypeSourceCall(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope, final ApiCallback _callback) throws ApiException {
+    public APIsetTransactionTypeRequest setTransactionType(String source, String type, TransactionTypeRequest transactionTypeRequest) {
+        return new APIsetTransactionTypeRequest(source, type, transactionTypeRequest);
+    }
+    private okhttp3.Call setTransactionTypeSourceCall(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1647,58 +2036,115 @@ public class TransactionConfigurationApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope
-     * The complete set of transaction types for the source.
-     * @param source The source to set the transaction types for. (required)
-     * @param transactionTypeRequest The set of transaction types. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ResourceListOfTransactionType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfTransactionType setTransactionTypeSource(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope) throws ApiException {
-        ApiResponse<ResourceListOfTransactionType> localVarResp = setTransactionTypeSourceWithHttpInfo(source, transactionTypeRequest, scope);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope
-     * The complete set of transaction types for the source.
-     * @param source The source to set the transaction types for. (required)
-     * @param transactionTypeRequest The set of transaction types. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @return ApiResponse&lt;ResourceListOfTransactionType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfTransactionType> setTransactionTypeSourceWithHttpInfo(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope) throws ApiException {
+    private ApiResponse<ResourceListOfTransactionType> setTransactionTypeSourceWithHttpInfo(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope) throws ApiException {
         okhttp3.Call localVarCall = setTransactionTypeSourceValidateBeforeCall(source, transactionTypeRequest, scope, null);
         Type localVarReturnType = new TypeToken<ResourceListOfTransactionType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call setTransactionTypeSourceAsync(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope, final ApiCallback<ResourceListOfTransactionType> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setTransactionTypeSourceValidateBeforeCall(source, transactionTypeRequest, scope, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsetTransactionTypeSourceRequest {
+        private final String source;
+        private final List<TransactionTypeRequest> transactionTypeRequest;
+        private String scope;
+
+        private APIsetTransactionTypeSourceRequest(String source, List<TransactionTypeRequest> transactionTypeRequest) {
+            this.source = source;
+            this.transactionTypeRequest = transactionTypeRequest;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIsetTransactionTypeSourceRequest
+         */
+        public APIsetTransactionTypeSourceRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Build call for setTransactionTypeSource
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setTransactionTypeSourceCall(source, transactionTypeRequest, scope, _callback);
+        }
+
+        /**
+         * Execute setTransactionTypeSource request
+         * @return ResourceListOfTransactionType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransactionType execute() throws ApiException {
+            ApiResponse<ResourceListOfTransactionType> localVarResp = setTransactionTypeSourceWithHttpInfo(source, transactionTypeRequest, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setTransactionTypeSource request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTransactionType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransactionType> executeWithHttpInfo() throws ApiException {
+            return setTransactionTypeSourceWithHttpInfo(source, transactionTypeRequest, scope);
+        }
+
+        /**
+         * Execute setTransactionTypeSource request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionType> _callback) throws ApiException {
+            return setTransactionTypeSourceAsync(source, transactionTypeRequest, scope, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope (asynchronously)
+     * [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope
      * The complete set of transaction types for the source.
      * @param source The source to set the transaction types for. (required)
      * @param transactionTypeRequest The set of transaction types. (required)
-     * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIsetTransactionTypeSourceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1707,11 +2153,7 @@ public class TransactionConfigurationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setTransactionTypeSourceAsync(String source, List<TransactionTypeRequest> transactionTypeRequest, String scope, final ApiCallback<ResourceListOfTransactionType> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = setTransactionTypeSourceValidateBeforeCall(source, transactionTypeRequest, scope, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfTransactionType>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIsetTransactionTypeSourceRequest setTransactionTypeSource(String source, List<TransactionTypeRequest> transactionTypeRequest) {
+        return new APIsetTransactionTypeSourceRequest(source, transactionTypeRequest);
     }
 }

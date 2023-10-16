@@ -98,25 +98,7 @@ public class PortfoliosApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteKeyFromPortfolioAccessMetadata
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey The metadataKey identifying the access metadata entry to delete (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteKeyFromPortfolioAccessMetadataCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteKeyFromPortfolioAccessMetadataCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -194,95 +176,141 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule
-     * Delete the Portfolio Access Metadata Rule that exactly matches the provided identifier parts
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey The metadataKey identifying the access metadata entry to delete (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteKeyFromPortfolioAccessMetadata(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteKeyFromPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule
-     * Delete the Portfolio Access Metadata Rule that exactly matches the provided identifier parts
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey The metadataKey identifying the access metadata entry to delete (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteKeyFromPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteKeyFromPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule (asynchronously)
-     * Delete the Portfolio Access Metadata Rule that exactly matches the provided identifier parts
-     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey The metadataKey identifying the access metadata entry to delete (required)
-     * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
-     * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteKeyFromPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteKeyFromPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteKeyFromPortfolioAccessMetadataRequest {
+        private final String scope;
+        private final String code;
+        private final String metadataKey;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIdeleteKeyFromPortfolioAccessMetadataRequest(String scope, String code, String metadataKey) {
+            this.scope = scope;
+            this.code = code;
+            this.metadataKey = metadataKey;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
+         * @return APIdeleteKeyFromPortfolioAccessMetadataRequest
+         */
+        public APIdeleteKeyFromPortfolioAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIdeleteKeyFromPortfolioAccessMetadataRequest
+         */
+        public APIdeleteKeyFromPortfolioAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for deleteKeyFromPortfolioAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteKeyFromPortfolioAccessMetadataCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteKeyFromPortfolioAccessMetadata request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteKeyFromPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteKeyFromPortfolioAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteKeyFromPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deleteKeyFromPortfolioAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteKeyFromPortfolioAccessMetadataAsync(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePortfolio
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule
+     * Delete the Portfolio Access Metadata Rule that exactly matches the provided identifier parts
+     * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
+     * @param code Portfolio code (required)
+     * @param metadataKey The metadataKey identifying the access metadata entry to delete (required)
+     * @return APIdeleteKeyFromPortfolioAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePortfolioCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIdeleteKeyFromPortfolioAccessMetadataRequest deleteKeyFromPortfolioAccessMetadata(String scope, String code, String metadataKey) {
+        return new APIdeleteKeyFromPortfolioAccessMetadataRequest(scope, code, metadataKey);
+    }
+    private okhttp3.Call deletePortfolioCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -346,88 +374,116 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * DeletePortfolio: Delete portfolio
-     * Delete a particular portfolio.                The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePortfolio(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * DeletePortfolio: Delete portfolio
-     * Delete a particular portfolio.                The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePortfolioWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePortfolioWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * DeletePortfolio: Delete portfolio (asynchronously)
-     * Delete a particular portfolio.                The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePortfolioAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePortfolioAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePortfolioRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeletePortfolioRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deletePortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePortfolioCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePortfolio request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePortfolio request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePortfolioWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deletePortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePortfolioAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePortfolioProperties
+     * DeletePortfolio: Delete portfolio
+     * Delete a particular portfolio.     The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKeys The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIdeletePortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePortfolioPropertiesCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIdeletePortfolioRequest deletePortfolio(String scope, String code) {
+        return new APIdeletePortfolioRequest(scope, code);
+    }
+    private okhttp3.Call deletePortfolioPropertiesCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -504,97 +560,130 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * DeletePortfolioProperties: Delete portfolio properties
-     * Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKeys The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePortfolioProperties(String scope, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioPropertiesWithHttpInfo(scope, code, propertyKeys, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * DeletePortfolioProperties: Delete portfolio properties
-     * Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKeys The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePortfolioPropertiesWithHttpInfo(String scope, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePortfolioPropertiesWithHttpInfo(String scope, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * DeletePortfolioProperties: Delete portfolio properties (asynchronously)
-     * Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKeys The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
-     * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePortfolioPropertiesAsync(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePortfolioPropertiesAsync(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePortfolioPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> propertyKeys;
+        private String effectiveAt;
+
+        private APIdeletePortfolioPropertiesRequest(String scope, String code, List<String> propertyKeys) {
+            this.scope = scope;
+            this.code = code;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
+         * @return APIdeletePortfolioPropertiesRequest
+         */
+        public APIdeletePortfolioPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deletePortfolioProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePortfolioPropertiesCall(scope, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePortfolioProperties request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioPropertiesWithHttpInfo(scope, code, propertyKeys, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePortfolioProperties request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePortfolioPropertiesWithHttpInfo(scope, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deletePortfolioProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePortfolioPropertiesAsync(scope, code, propertyKeys, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePortfolioReturns
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to delete the Returns. (required)
-     * @param toEffectiveAt The end date from which to delete the Returns. (required)
-     * @param period The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * DeletePortfolioProperties: Delete portfolio properties
+     * Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param propertyKeys The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
+     * @return APIdeletePortfolioPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback) throws ApiException {
+    public APIdeletePortfolioPropertiesRequest deletePortfolioProperties(String scope, String code, List<String> propertyKeys) {
+        return new APIdeletePortfolioPropertiesRequest(scope, code, propertyKeys);
+    }
+    private okhttp3.Call deletePortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -692,103 +781,139 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeletePortfolioReturns: Delete Returns
-     * Cancel one or more Returns which exist into the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to delete the Returns. (required)
-     * @param toEffectiveAt The end date from which to delete the Returns. (required)
-     * @param period The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePortfolioReturns(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeletePortfolioReturns: Delete Returns
-     * Cancel one or more Returns which exist into the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to delete the Returns. (required)
-     * @param toEffectiveAt The end date from which to delete the Returns. (required)
-     * @param period The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period) throws ApiException {
         okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeletePortfolioReturns: Delete Returns (asynchronously)
-     * Cancel one or more Returns which exist into the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to delete the Returns. (required)
-     * @param toEffectiveAt The end date from which to delete the Returns. (required)
-     * @param period The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePortfolioReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String returnScope;
+        private final String returnCode;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private String period;
+
+        private APIdeletePortfolioReturnsRequest(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.returnScope = returnScope;
+            this.returnCode = returnCode;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set period
+         * @param period The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)
+         * @return APIdeletePortfolioReturnsRequest
+         */
+        public APIdeletePortfolioReturnsRequest period(String period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Build call for deletePortfolioReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        }
+
+        /**
+         * Execute deletePortfolioReturns request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePortfolioReturns request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period);
+        }
+
+        /**
+         * Execute deletePortfolioReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePortfolioReturnsAsync(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        }
+    }
+
     /**
-     * Build call for getAggregatedReturnsDispersionMetrics
+     * [EARLY ACCESS] DeletePortfolioReturns: Delete Returns
+     * Cancel one or more Returns which exist into the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsDispersionRequest The request used in the AggregatedReturnsDispersionMetric. (required)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Portfolio. (required)
+     * @param returnScope The scope of the Returns. (required)
+     * @param returnCode The code of the Returns. (required)
+     * @param fromEffectiveAt The start date from which to delete the Returns. (required)
+     * @param toEffectiveAt The end date from which to delete the Returns. (required)
+     * @return APIdeletePortfolioReturnsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAggregatedReturnsDispersionMetricsCall(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeletePortfolioReturnsRequest deletePortfolioReturns(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIdeletePortfolioReturnsRequest(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt);
+    }
+    private okhttp3.Call getAggregatedReturnsDispersionMetricsCall(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -865,87 +990,118 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric
-     * Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.             This works only for composites which have at least 6 constituents for a full year in.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsDispersionRequest The request used in the AggregatedReturnsDispersionMetric. (required)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return CompositeDispersionResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CompositeDispersionResponse getAggregatedReturnsDispersionMetrics(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<CompositeDispersionResponse> localVarResp = getAggregatedReturnsDispersionMetricsWithHttpInfo(scope, code, aggregatedReturnsDispersionRequest, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric
-     * Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.             This works only for composites which have at least 6 constituents for a full year in.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsDispersionRequest The request used in the AggregatedReturnsDispersionMetric. (required)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return ApiResponse&lt;CompositeDispersionResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CompositeDispersionResponse> getAggregatedReturnsDispersionMetricsWithHttpInfo(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<CompositeDispersionResponse> getAggregatedReturnsDispersionMetricsWithHttpInfo(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, null);
         Type localVarReturnType = new TypeToken<CompositeDispersionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric (asynchronously)
-     * Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.             This works only for composites which have at least 6 constituents for a full year in.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsDispersionRequest The request used in the AggregatedReturnsDispersionMetric. (required)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAggregatedReturnsDispersionMetricsAsync(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback<CompositeDispersionResponse> _callback) throws ApiException {
+    private okhttp3.Call getAggregatedReturnsDispersionMetricsAsync(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback<CompositeDispersionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback);
         Type localVarReturnType = new TypeToken<CompositeDispersionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAggregatedReturnsDispersionMetricsRequest {
+        private final String scope;
+        private final String code;
+        private final AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest;
+        private OffsetDateTime asAt;
+
+        private APIgetAggregatedReturnsDispersionMetricsRequest(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.aggregatedReturnsDispersionRequest = aggregatedReturnsDispersionRequest;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
+         * @return APIgetAggregatedReturnsDispersionMetricsRequest
+         */
+        public APIgetAggregatedReturnsDispersionMetricsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAggregatedReturnsDispersionMetrics
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAggregatedReturnsDispersionMetricsCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback);
+        }
+
+        /**
+         * Execute getAggregatedReturnsDispersionMetrics request
+         * @return CompositeDispersionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompositeDispersionResponse execute() throws ApiException {
+            ApiResponse<CompositeDispersionResponse> localVarResp = getAggregatedReturnsDispersionMetricsWithHttpInfo(scope, code, aggregatedReturnsDispersionRequest, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAggregatedReturnsDispersionMetrics request with HTTP info returned
+         * @return ApiResponse&lt;CompositeDispersionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompositeDispersionResponse> executeWithHttpInfo() throws ApiException {
+            return getAggregatedReturnsDispersionMetricsWithHttpInfo(scope, code, aggregatedReturnsDispersionRequest, asAt);
+        }
+
+        /**
+         * Execute getAggregatedReturnsDispersionMetrics request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompositeDispersionResponse> _callback) throws ApiException {
+            return getAggregatedReturnsDispersionMetricsAsync(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getCompositeBreakdown
+     * [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric
+     * Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.   This works only for composites which have at least 6 constituents for a full year in.
      * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param compositeBreakdownRequest The request used in the GetCompositeBreakdown. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Portfolio. (required)
+     * @param aggregatedReturnsDispersionRequest The request used in the AggregatedReturnsDispersionMetric. (required)
+     * @return APIgetAggregatedReturnsDispersionMetricsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -954,7 +1110,10 @@ public class PortfoliosApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompositeBreakdownCall(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetAggregatedReturnsDispersionMetricsRequest getAggregatedReturnsDispersionMetrics(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest) {
+        return new APIgetAggregatedReturnsDispersionMetricsRequest(scope, code, aggregatedReturnsDispersionRequest);
+    }
+    private okhttp3.Call getCompositeBreakdownCall(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1039,102 +1198,152 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated
-     * Calculate the Composite Returns and return this with the constituents which are included in this calculation
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param compositeBreakdownRequest The request used in the GetCompositeBreakdown. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return CompositeBreakdownResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CompositeBreakdownResponse getCompositeBreakdown(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<CompositeBreakdownResponse> localVarResp = getCompositeBreakdownWithHttpInfo(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated
-     * Calculate the Composite Returns and return this with the constituents which are included in this calculation
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param compositeBreakdownRequest The request used in the GetCompositeBreakdown. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return ApiResponse&lt;CompositeBreakdownResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CompositeBreakdownResponse> getCompositeBreakdownWithHttpInfo(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<CompositeBreakdownResponse> getCompositeBreakdownWithHttpInfo(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<CompositeBreakdownResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated (asynchronously)
-     * Calculate the Composite Returns and return this with the constituents which are included in this calculation
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param compositeBreakdownRequest The request used in the GetCompositeBreakdown. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCompositeBreakdownAsync(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<CompositeBreakdownResponse> _callback) throws ApiException {
+    private okhttp3.Call getCompositeBreakdownAsync(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<CompositeBreakdownResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<CompositeBreakdownResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCompositeBreakdownRequest {
+        private final String scope;
+        private final String code;
+        private final CompositeBreakdownRequest compositeBreakdownRequest;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetCompositeBreakdownRequest(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.compositeBreakdownRequest = compositeBreakdownRequest;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
+         * @return APIgetCompositeBreakdownRequest
+         */
+        public APIgetCompositeBreakdownRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
+         * @return APIgetCompositeBreakdownRequest
+         */
+        public APIgetCompositeBreakdownRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
+         * @return APIgetCompositeBreakdownRequest
+         */
+        public APIgetCompositeBreakdownRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCompositeBreakdown
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCompositeBreakdownCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getCompositeBreakdown request
+         * @return CompositeBreakdownResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompositeBreakdownResponse execute() throws ApiException {
+            ApiResponse<CompositeBreakdownResponse> localVarResp = getCompositeBreakdownWithHttpInfo(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCompositeBreakdown request with HTTP info returned
+         * @return ApiResponse&lt;CompositeBreakdownResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompositeBreakdownResponse> executeWithHttpInfo() throws ApiException {
+            return getCompositeBreakdownWithHttpInfo(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute getCompositeBreakdown request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompositeBreakdownResponse> _callback) throws ApiException {
+            return getCompositeBreakdownAsync(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolio
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated
+     * Calculate the Composite Returns and return this with the constituents which are included in this calculation
+     * @param scope The scope of the Portfolio. (required)
+     * @param code The code of the Portfolio. (required)
+     * @param compositeBreakdownRequest The request used in the GetCompositeBreakdown. (required)
+     * @return APIgetCompositeBreakdownRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIgetCompositeBreakdownRequest getCompositeBreakdown(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest) {
+        return new APIgetCompositeBreakdownRequest(scope, code, compositeBreakdownRequest);
+    }
+    private okhttp3.Call getPortfolioCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1214,110 +1423,160 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * GetPortfolio: Get portfolio
-     * Retrieve the definition of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return Portfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Portfolio getPortfolio(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<Portfolio> localVarResp = getPortfolioWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetPortfolio: Get portfolio
-     * Retrieve the definition of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;Portfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Portfolio> getPortfolioWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<Portfolio> getPortfolioWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetPortfolio: Get portfolio (asynchronously)
-     * Retrieve the definition of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<Portfolio> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<Portfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIgetPortfolioRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioRequest
+         */
+        public APIgetPortfolioRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. (optional)
+         * @return APIgetPortfolioRequest
+         */
+        public APIgetPortfolioRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the format   {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @return APIgetPortfolioRequest
+         */
+        public APIgetPortfolioRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIgetPortfolioRequest
+         */
+        public APIgetPortfolioRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getPortfolio request
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute() throws ApiException {
+            ApiResponse<Portfolio> localVarResp = getPortfolioWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolio request with HTTP info returned
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
+            return getPortfolioWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getPortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
+            return getPortfolioAsync(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioAggregateReturns
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param recipeIdScope The Recipe Scope for getting the fx rates (optional)
-     * @param recipeIdCode The Recipe Code for getting the fx rates (optional)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param compositeMethod The method used to calculate the Portfolio performance:              Equal/Asset. (optional)
-     * @param period The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)
-     * @param outputFrequency The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)
-     * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param alternativeIncDate The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetPortfolio: Get portfolio
+     * Retrieve the definition of a particular portfolio.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIgetPortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioAggregateReturnsCall(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioRequest getPortfolio(String scope, String code) {
+        return new APIgetPortfolioRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioAggregateReturnsCall(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1433,126 +1692,232 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
-     * Aggregate Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param recipeIdScope The Recipe Scope for getting the fx rates (optional)
-     * @param recipeIdCode The Recipe Code for getting the fx rates (optional)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param compositeMethod The method used to calculate the Portfolio performance:              Equal/Asset. (optional)
-     * @param period The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)
-     * @param outputFrequency The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)
-     * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param alternativeIncDate The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)
-     * @return ResourceListOfAggregatedReturn
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAggregatedReturn getPortfolioAggregateReturns(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate) throws ApiException {
-        ApiResponse<ResourceListOfAggregatedReturn> localVarResp = getPortfolioAggregateReturnsWithHttpInfo(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
-     * Aggregate Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param recipeIdScope The Recipe Scope for getting the fx rates (optional)
-     * @param recipeIdCode The Recipe Code for getting the fx rates (optional)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param compositeMethod The method used to calculate the Portfolio performance:              Equal/Asset. (optional)
-     * @param period The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)
-     * @param outputFrequency The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)
-     * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param alternativeIncDate The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)
-     * @return ApiResponse&lt;ResourceListOfAggregatedReturn&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAggregatedReturn> getPortfolioAggregateReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate) throws ApiException {
+    private ApiResponse<ResourceListOfAggregatedReturn> getPortfolioAggregateReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregatedReturn>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint). (asynchronously)
-     * Aggregate Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param recipeIdScope The Recipe Scope for getting the fx rates (optional)
-     * @param recipeIdCode The Recipe Code for getting the fx rates (optional)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param compositeMethod The method used to calculate the Portfolio performance:              Equal/Asset. (optional)
-     * @param period The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)
-     * @param outputFrequency The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)
-     * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param alternativeIncDate The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioAggregateReturnsAsync(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback<ResourceListOfAggregatedReturn> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioAggregateReturnsAsync(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback<ResourceListOfAggregatedReturn> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregatedReturn>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioAggregateReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String returnScope;
+        private final String returnCode;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private String compositeMethod;
+        private String period;
+        private String outputFrequency;
+        private List<String> metrics;
+        private OffsetDateTime asAt;
+        private String alternativeIncDate;
+
+        private APIgetPortfolioAggregateReturnsRequest(String scope, String code, String returnScope, String returnCode) {
+            this.scope = scope;
+            this.code = code;
+            this.returnScope = returnScope;
+            this.returnCode = returnCode;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The Recipe Scope for getting the fx rates (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The Recipe Code for getting the fx rates (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set compositeMethod
+         * @param compositeMethod The method used to calculate the Portfolio performance:   Equal/Asset. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest compositeMethod(String compositeMethod) {
+            this.compositeMethod = compositeMethod;
+            return this;
+        }
+
+        /**
+         * Set period
+         * @param period The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest period(String period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Set outputFrequency
+         * @param outputFrequency The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest outputFrequency(String outputFrequency) {
+            this.outputFrequency = outputFrequency;
+            return this;
+        }
+
+        /**
+         * Set metrics
+         * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest metrics(List<String> metrics) {
+            this.metrics = metrics;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set alternativeIncDate
+         * @param alternativeIncDate The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)
+         * @return APIgetPortfolioAggregateReturnsRequest
+         */
+        public APIgetPortfolioAggregateReturnsRequest alternativeIncDate(String alternativeIncDate) {
+            this.alternativeIncDate = alternativeIncDate;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioAggregateReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioAggregateReturnsCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback);
+        }
+
+        /**
+         * Execute getPortfolioAggregateReturns request
+         * @return ResourceListOfAggregatedReturn
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAggregatedReturn execute() throws ApiException {
+            ApiResponse<ResourceListOfAggregatedReturn> localVarResp = getPortfolioAggregateReturnsWithHttpInfo(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioAggregateReturns request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAggregatedReturn&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAggregatedReturn> executeWithHttpInfo() throws ApiException {
+            return getPortfolioAggregateReturnsWithHttpInfo(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate);
+        }
+
+        /**
+         * Execute getPortfolioAggregateReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAggregatedReturn> _callback) throws ApiException {
+            return getPortfolioAggregateReturnsAsync(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioAggregatedReturns
+     * [EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
+     * Aggregate Returns which are on the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsRequest The request used in the AggregatedReturns. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Portfolio. (required)
+     * @param returnScope The scope of the Returns. (required)
+     * @param returnCode The code of the Returns. (required)
+     * @return APIgetPortfolioAggregateReturnsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioAggregatedReturnsCall(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioAggregateReturnsRequest getPortfolioAggregateReturns(String scope, String code, String returnScope, String returnCode) {
+        return new APIgetPortfolioAggregateReturnsRequest(scope, code, returnScope, returnCode);
+    }
+    private okhttp3.Call getPortfolioAggregatedReturnsCall(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1637,103 +2002,152 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns
-     * Aggregate Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsRequest The request used in the AggregatedReturns. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return AggregatedReturnsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AggregatedReturnsResponse getPortfolioAggregatedReturns(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<AggregatedReturnsResponse> localVarResp = getPortfolioAggregatedReturnsWithHttpInfo(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns
-     * Aggregate Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsRequest The request used in the AggregatedReturns. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return ApiResponse&lt;AggregatedReturnsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AggregatedReturnsResponse> getPortfolioAggregatedReturnsWithHttpInfo(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<AggregatedReturnsResponse> getPortfolioAggregatedReturnsWithHttpInfo(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns (asynchronously)
-     * Aggregate Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param aggregatedReturnsRequest The request used in the AggregatedReturns. (required)
-     * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
-     * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioAggregatedReturnsAsync(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioAggregatedReturnsAsync(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioAggregatedReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final AggregatedReturnsRequest aggregatedReturnsRequest;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfolioAggregatedReturnsRequest(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.aggregatedReturnsRequest = aggregatedReturnsRequest;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The start date from which to calculate the Returns. (optional)
+         * @return APIgetPortfolioAggregatedReturnsRequest
+         */
+        public APIgetPortfolioAggregatedReturnsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The end date for which to calculate the Returns. (optional)
+         * @return APIgetPortfolioAggregatedReturnsRequest
+         */
+        public APIgetPortfolioAggregatedReturnsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
+         * @return APIgetPortfolioAggregatedReturnsRequest
+         */
+        public APIgetPortfolioAggregatedReturnsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioAggregatedReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioAggregatedReturnsCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioAggregatedReturns request
+         * @return AggregatedReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AggregatedReturnsResponse execute() throws ApiException {
+            ApiResponse<AggregatedReturnsResponse> localVarResp = getPortfolioAggregatedReturnsWithHttpInfo(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioAggregatedReturns request with HTTP info returned
+         * @return ApiResponse&lt;AggregatedReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AggregatedReturnsResponse> executeWithHttpInfo() throws ApiException {
+            return getPortfolioAggregatedReturnsWithHttpInfo(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioAggregatedReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
+            return getPortfolioAggregatedReturnsAsync(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioCommands
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param fromAsAt The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. (optional)
-     * @param toAsAt The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.              For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 500 if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns
+     * Aggregate Returns which are on the specified portfolio.
+     * @param scope The scope of the Portfolio. (required)
+     * @param code The code of the Portfolio. (required)
+     * @param aggregatedReturnsRequest The request used in the AggregatedReturns. (required)
+     * @return APIgetPortfolioAggregatedReturnsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioCommandsCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioAggregatedReturnsRequest getPortfolioAggregatedReturns(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest) {
+        return new APIgetPortfolioAggregatedReturnsRequest(scope, code, aggregatedReturnsRequest);
+    }
+    private okhttp3.Call getPortfolioCommandsCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1817,103 +2231,171 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * GetPortfolioCommands: Get portfolio commands
-     * Get all the commands that modified a particular portfolio, including any input transactions.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param fromAsAt The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. (optional)
-     * @param toAsAt The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.              For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 500 if not specified. (optional)
-     * @return ResourceListOfProcessedCommand
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfProcessedCommand getPortfolioCommands(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfProcessedCommand> localVarResp = getPortfolioCommandsWithHttpInfo(scope, code, fromAsAt, toAsAt, filter, page, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetPortfolioCommands: Get portfolio commands
-     * Get all the commands that modified a particular portfolio, including any input transactions.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param fromAsAt The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. (optional)
-     * @param toAsAt The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.              For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 500 if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfProcessedCommand&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfProcessedCommand> getPortfolioCommandsWithHttpInfo(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfProcessedCommand> getPortfolioCommandsWithHttpInfo(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetPortfolioCommands: Get portfolio commands (asynchronously)
-     * Get all the commands that modified a particular portfolio, including any input transactions.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param fromAsAt The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. (optional)
-     * @param toAsAt The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.              For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 500 if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioCommandsAsync(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfProcessedCommand> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCommandsAsync(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfProcessedCommand> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioCommandsRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime fromAsAt;
+        private OffsetDateTime toAsAt;
+        private String filter;
+        private String page;
+        private Integer limit;
+
+        private APIgetPortfolioCommandsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromAsAt
+         * @param fromAsAt The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. (optional)
+         * @return APIgetPortfolioCommandsRequest
+         */
+        public APIgetPortfolioCommandsRequest fromAsAt(OffsetDateTime fromAsAt) {
+            this.fromAsAt = fromAsAt;
+            return this;
+        }
+
+        /**
+         * Set toAsAt
+         * @param toAsAt The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. (optional)
+         * @return APIgetPortfolioCommandsRequest
+         */
+        public APIgetPortfolioCommandsRequest toAsAt(OffsetDateTime toAsAt) {
+            this.toAsAt = toAsAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.   For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetPortfolioCommandsRequest
+         */
+        public APIgetPortfolioCommandsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
+         * @return APIgetPortfolioCommandsRequest
+         */
+        public APIgetPortfolioCommandsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 500 if not specified. (optional)
+         * @return APIgetPortfolioCommandsRequest
+         */
+        public APIgetPortfolioCommandsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioCommands
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioCommandsCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCommands request
+         * @return ResourceListOfProcessedCommand
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProcessedCommand execute() throws ApiException {
+            ApiResponse<ResourceListOfProcessedCommand> localVarResp = getPortfolioCommandsWithHttpInfo(scope, code, fromAsAt, toAsAt, filter, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioCommands request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfProcessedCommand&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProcessedCommand> executeWithHttpInfo() throws ApiException {
+            return getPortfolioCommandsWithHttpInfo(scope, code, fromAsAt, toAsAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPortfolioCommands request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProcessedCommand> _callback) throws ApiException {
+            return getPortfolioCommandsAsync(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioMetadata
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the access metadata rule. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetPortfolioCommands: Get portfolio commands
+     * Get all the commands that modified a particular portfolio, including any input transactions.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIgetPortfolioCommandsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioMetadataCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioCommandsRequest getPortfolioCommands(String scope, String code) {
+        return new APIgetPortfolioCommandsRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioMetadataCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1985,94 +2467,138 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for a portfolio
-     * Pass the scope and portfolio code parameters to retrieve the AccessMetadata associated with a portfolio
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the access metadata rule. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> getPortfolioMetadata(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getPortfolioMetadataWithHttpInfo(scope, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for a portfolio
-     * Pass the scope and portfolio code parameters to retrieve the AccessMetadata associated with a portfolio
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the access metadata rule. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> getPortfolioMetadataWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getPortfolioMetadataWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for a portfolio (asynchronously)
-     * Pass the scope and portfolio code parameters to retrieve the AccessMetadata associated with a portfolio
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code Portfolio code (required)
-     * @param effectiveAt The effectiveAt datetime at which to retrieve the access metadata rule. (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioMetadataAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioMetadataAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioMetadataRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfolioMetadataRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the access metadata rule. (optional)
+         * @return APIgetPortfolioMetadataRequest
+         */
+        public APIgetPortfolioMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
+         * @return APIgetPortfolioMetadataRequest
+         */
+        public APIgetPortfolioMetadataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioMetadataCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getPortfolioMetadataWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return getPortfolioMetadataWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return getPortfolioMetadataAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioProperties
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for a portfolio
+     * Pass the scope and portfolio code parameters to retrieve the AccessMetadata associated with a portfolio
+     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
+     * @param code Portfolio code (required)
+     * @return APIgetPortfolioMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioMetadataRequest getPortfolioMetadata(String scope, String code) {
+        return new APIgetPortfolioMetadataRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2144,98 +2670,138 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * GetPortfolioProperties: Get portfolio properties
-     * List all the properties of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @return PortfolioProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PortfolioProperties getPortfolioProperties(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<PortfolioProperties> localVarResp = getPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetPortfolioProperties: Get portfolio properties
-     * List all the properties of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @return ApiResponse&lt;PortfolioProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PortfolioProperties> getPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<PortfolioProperties> getPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetPortfolioProperties: Get portfolio properties (asynchronously)
-     * List all the properties of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfolioPropertiesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioPropertiesRequest
+         */
+        public APIgetPortfolioPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
+         * @return APIgetPortfolioPropertiesRequest
+         */
+        public APIgetPortfolioPropertiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioPropertiesCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioProperties request
+         * @return PortfolioProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioProperties execute() throws ApiException {
+            ApiResponse<PortfolioProperties> localVarResp = getPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioProperties request with HTTP info returned
+         * @return ApiResponse&lt;PortfolioProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioProperties> executeWithHttpInfo() throws ApiException {
+            return getPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioProperties> _callback) throws ApiException {
+            return getPortfolioPropertiesAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioPropertyTimeSeries
+     * GetPortfolioProperties: Get portfolio properties
+     * List all the properties of a particular portfolio.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKey The property key of the property whose history to show.              This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
-     * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetPortfolioPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioPropertyTimeSeriesCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioPropertiesRequest getPortfolioProperties(String scope, String code) {
+        return new APIgetPortfolioPropertiesRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioPropertyTimeSeriesCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2328,108 +2894,174 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioPropertyTimeSeries: Get portfolio property time series
-     * Show the complete time series (history) for a particular portfolio property.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKey The property key of the property whose history to show.              This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
-     * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @return ResourceListOfPropertyInterval
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPropertyInterval getPortfolioPropertyTimeSeries(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPortfolioPropertyTimeSeriesWithHttpInfo(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioPropertyTimeSeries: Get portfolio property time series
-     * Show the complete time series (history) for a particular portfolio property.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKey The property key of the property whose history to show.              This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
-     * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPropertyInterval> getPortfolioPropertyTimeSeriesWithHttpInfo(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfPropertyInterval> getPortfolioPropertyTimeSeriesWithHttpInfo(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioPropertyTimeSeries: Get portfolio property time series (asynchronously)
-     * Show the complete time series (history) for a particular portfolio property.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKey The property key of the property whose history to show.              This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
-     * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. (optional)
-     * @param filter Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param page The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields              must not have changed since the original request. (optional)
-     * @param limit When paginating, limit the results to this number. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioPropertyTimeSeriesAsync(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioPropertyTimeSeriesAsync(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioPropertyTimeSeriesRequest {
+        private final String scope;
+        private final String code;
+        private final String propertyKey;
+        private String portfolioEffectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String page;
+        private Integer limit;
+
+        private APIgetPortfolioPropertyTimeSeriesRequest(String scope, String code, String propertyKey) {
+            this.scope = scope;
+            this.code = code;
+            this.propertyKey = propertyKey;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioPropertyTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertyTimeSeriesRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. (optional)
+         * @return APIgetPortfolioPropertyTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertyTimeSeriesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetPortfolioPropertyTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertyTimeSeriesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIgetPortfolioPropertyTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertyTimeSeriesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. (optional)
+         * @return APIgetPortfolioPropertyTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertyTimeSeriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioPropertyTimeSeries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioPropertyTimeSeriesCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPortfolioPropertyTimeSeries request
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute() throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPortfolioPropertyTimeSeriesWithHttpInfo(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioPropertyTimeSeries request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
+            return getPortfolioPropertyTimeSeriesWithHttpInfo(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPortfolioPropertyTimeSeries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
+            return getPortfolioPropertyTimeSeriesAsync(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioRelations
+     * [EARLY ACCESS] GetPortfolioPropertyTimeSeries: Get portfolio property time series
+     * Show the complete time series (history) for a particular portfolio property.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param propertyKey The property key of the property whose history to show.   This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
+     * @return APIgetPortfolioPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioRelationsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioPropertyTimeSeriesRequest getPortfolioPropertyTimeSeries(String scope, String code, String propertyKey) {
+        return new APIgetPortfolioPropertyTimeSeriesRequest(scope, code, propertyKey);
+    }
+    private okhttp3.Call getPortfolioRelationsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2509,102 +3141,160 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations
-     * Get relations for a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @return ResourceListOfRelation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelation getPortfolioRelations(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelation> localVarResp = getPortfolioRelationsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations
-     * Get relations for a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelation> getPortfolioRelationsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelation> getPortfolioRelationsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations (asynchronously)
-     * Get relations for a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relations. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioRelationsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioRelationsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioRelationsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetPortfolioRelationsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioRelationsRequest
+         */
+        public APIgetPortfolioRelationsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetPortfolioRelationsRequest
+         */
+        public APIgetPortfolioRelationsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the relations. Provide a null or empty string for this field until further notice. (optional)
+         * @return APIgetPortfolioRelationsRequest
+         */
+        public APIgetPortfolioRelationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
+         * @return APIgetPortfolioRelationsRequest
+         */
+        public APIgetPortfolioRelationsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioRelations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioRelationsCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPortfolioRelations request
+         * @return ResourceListOfRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelation execute() throws ApiException {
+            ApiResponse<ResourceListOfRelation> localVarResp = getPortfolioRelationsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioRelations request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelation> executeWithHttpInfo() throws ApiException {
+            return getPortfolioRelationsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPortfolioRelations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
+            return getPortfolioRelationsAsync(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioRelationships
+     * [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations
+     * Get relations for a particular portfolio.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relationships. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIgetPortfolioRelationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioRelationshipsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioRelationsRequest getPortfolioRelations(String scope, String code) {
+        return new APIgetPortfolioRelationsRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioRelationshipsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2684,104 +3374,160 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships
-     * Get relationships for a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relationships. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @return ResourceListOfRelationship
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfRelationship getPortfolioRelationships(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        ApiResponse<ResourceListOfRelationship> localVarResp = getPortfolioRelationshipsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships
-     * Get relationships for a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relationships. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @return ApiResponse&lt;ResourceListOfRelationship&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfRelationship> getPortfolioRelationshipsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+    private ApiResponse<ResourceListOfRelationship> getPortfolioRelationshipsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships (asynchronously)
-     * Get relationships for a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
-     * @param filter Expression to filter the relationships. Provide a null or empty string for this field until further notice. (optional)
-     * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioRelationshipsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioRelationshipsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioRelationshipsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetPortfolioRelationshipsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioRelationshipsRequest
+         */
+        public APIgetPortfolioRelationshipsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetPortfolioRelationshipsRequest
+         */
+        public APIgetPortfolioRelationshipsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the relationships. Provide a null or empty string for this field until further notice. (optional)
+         * @return APIgetPortfolioRelationshipsRequest
+         */
+        public APIgetPortfolioRelationshipsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @return APIgetPortfolioRelationshipsRequest
+         */
+        public APIgetPortfolioRelationshipsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioRelationships
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioRelationshipsCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPortfolioRelationships request
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute() throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getPortfolioRelationshipsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioRelationships request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
+            return getPortfolioRelationshipsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPortfolioRelationships request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+            return getPortfolioRelationshipsAsync(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioReturns
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to get the Returns. (optional)
-     * @param toEffectiveAt The end date from which to get the Returns. (optional)
-     * @param period Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships
+     * Get relationships for a particular portfolio.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIgetPortfolioRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioRelationshipsRequest getPortfolioRelationships(String scope, String code) {
+        return new APIgetPortfolioRelationshipsRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2873,107 +3619,166 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioReturns: Get Returns
-     * Get Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to get the Returns. (optional)
-     * @param toEffectiveAt The end date from which to get the Returns. (optional)
-     * @param period Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return ResourceListOfPerformanceReturn
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPerformanceReturn getPortfolioReturns(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfPerformanceReturn> localVarResp = getPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioReturns: Get Returns
-     * Get Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to get the Returns. (optional)
-     * @param toEffectiveAt The end date from which to get the Returns. (optional)
-     * @param period Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @return ApiResponse&lt;ResourceListOfPerformanceReturn&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPerformanceReturn> getPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfPerformanceReturn> getPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfolioReturns: Get Returns (asynchronously)
-     * Get Returns which are on the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param fromEffectiveAt The start date from which to get the Returns. (optional)
-     * @param toEffectiveAt The end date from which to get the Returns. (optional)
-     * @param period Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String returnScope;
+        private final String returnCode;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private String period;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfolioReturnsRequest(String scope, String code, String returnScope, String returnCode) {
+            this.scope = scope;
+            this.code = code;
+            this.returnScope = returnScope;
+            this.returnCode = returnCode;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The start date from which to get the Returns. (optional)
+         * @return APIgetPortfolioReturnsRequest
+         */
+        public APIgetPortfolioReturnsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The end date from which to get the Returns. (optional)
+         * @return APIgetPortfolioReturnsRequest
+         */
+        public APIgetPortfolioReturnsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set period
+         * @param period Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)
+         * @return APIgetPortfolioReturnsRequest
+         */
+        public APIgetPortfolioReturnsRequest period(String period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
+         * @return APIgetPortfolioReturnsRequest
+         */
+        public APIgetPortfolioReturnsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioReturns request
+         * @return ResourceListOfPerformanceReturn
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPerformanceReturn execute() throws ApiException {
+            ApiResponse<ResourceListOfPerformanceReturn> localVarResp = getPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioReturns request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPerformanceReturn&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPerformanceReturn> executeWithHttpInfo() throws ApiException {
+            return getPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt);
+        }
+
+        /**
+         * Execute getPortfolioReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
+            return getPortfolioReturnsAsync(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfoliosAccessMetadataByKey
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code The code of the portfolio (required)
-     * @param metadataKey Key of the metadata to retrieve (required)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPortfolioReturns: Get Returns
+     * Get Returns which are on the specified portfolio.
+     * @param scope The scope of the Portfolio. (required)
+     * @param code The code of the Portfolio. (required)
+     * @param returnScope The scope of the Returns. (required)
+     * @param returnCode The code of the Returns. (required)
+     * @return APIgetPortfolioReturnsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfoliosAccessMetadataByKeyCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioReturnsRequest getPortfolioReturns(String scope, String code, String returnScope, String returnCode) {
+        return new APIgetPortfolioReturnsRequest(scope, code, returnScope, returnCode);
+    }
+    private okhttp3.Call getPortfoliosAccessMetadataByKeyCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3051,99 +3856,141 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object
-     * Get a specific portfolio access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code The code of the portfolio (required)
-     * @param metadataKey Key of the metadata to retrieve (required)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @return List&lt;AccessMetadataValue&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<AccessMetadataValue> getPortfoliosAccessMetadataByKey(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<List<AccessMetadataValue>> localVarResp = getPortfoliosAccessMetadataByKeyWithHttpInfo(scope, code, metadataKey, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object
-     * Get a specific portfolio access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code The code of the portfolio (required)
-     * @param metadataKey Key of the metadata to retrieve (required)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<AccessMetadataValue>> getPortfoliosAccessMetadataByKeyWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<List<AccessMetadataValue>> getPortfoliosAccessMetadataByKeyWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object (asynchronously)
-     * Get a specific portfolio access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
-     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
-     * @param code The code of the portfolio (required)
-     * @param metadataKey Key of the metadata to retrieve (required)
-     * @param effectiveAt The effective date of the rule (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfoliosAccessMetadataByKeyAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+    private okhttp3.Call getPortfoliosAccessMetadataByKeyAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfoliosAccessMetadataByKeyRequest {
+        private final String scope;
+        private final String code;
+        private final String metadataKey;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfoliosAccessMetadataByKeyRequest(String scope, String code, String metadataKey) {
+            this.scope = scope;
+            this.code = code;
+            this.metadataKey = metadataKey;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date of the rule (optional)
+         * @return APIgetPortfoliosAccessMetadataByKeyRequest
+         */
+        public APIgetPortfoliosAccessMetadataByKeyRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio access metadata. (optional)
+         * @return APIgetPortfoliosAccessMetadataByKeyRequest
+         */
+        public APIgetPortfoliosAccessMetadataByKeyRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfoliosAccessMetadataByKey
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfoliosAccessMetadataByKeyCall(scope, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfoliosAccessMetadataByKey request
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute() throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getPortfoliosAccessMetadataByKeyWithHttpInfo(scope, code, metadataKey, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfoliosAccessMetadataByKey request with HTTP info returned
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
+            return getPortfoliosAccessMetadataByKeyWithHttpInfo(scope, code, metadataKey, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfoliosAccessMetadataByKey request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
+            return getPortfoliosAccessMetadataByKeyAsync(scope, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listPortfolioProperties
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object
+     * Get a specific portfolio access metadata rule by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
+     * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
+     * @param code The code of the portfolio (required)
+     * @param metadataKey Key of the metadata to retrieve (required)
+     * @return APIgetPortfoliosAccessMetadataByKeyRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfoliosAccessMetadataByKeyRequest getPortfoliosAccessMetadataByKey(String scope, String code, String metadataKey) {
+        return new APIgetPortfoliosAccessMetadataByKeyRequest(scope, code, metadataKey);
+    }
+    private okhttp3.Call listPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3223,106 +4070,160 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListPortfolioProperties: Get portfolio properties
-     * List all the properties of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @return ResourceListOfProperty
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfProperty listPortfolioProperties(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfProperty> localVarResp = listPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListPortfolioProperties: Get portfolio properties
-     * List all the properties of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @return ApiResponse&lt;ResourceListOfProperty&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfProperty> listPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfProperty> listPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListPortfolioProperties: Get portfolio properties (asynchronously)
-     * List all the properties of a particular portfolio.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
-     * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
-     * @param limit When paginating, limit the results per page to this number. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
+    private okhttp3.Call listPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPortfolioPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+
+        private APIlistPortfolioPropertiesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistPortfolioPropertiesRequest
+         */
+        public APIlistPortfolioPropertiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the portfolio&#39;s properties. Defaults to returning the latest version of each property if not specified. (optional)
+         * @return APIlistPortfolioPropertiesRequest
+         */
+        public APIlistPortfolioPropertiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing commands; this value is returned from the previous call. (optional)
+         * @return APIlistPortfolioPropertiesRequest
+         */
+        public APIlistPortfolioPropertiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results per page to this number. (optional)
+         * @return APIlistPortfolioPropertiesRequest
+         */
+        public APIlistPortfolioPropertiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for listPortfolioProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPortfolioPropertiesCall(scope, code, effectiveAt, asAt, page, limit, _callback);
+        }
+
+        /**
+         * Execute listPortfolioProperties request
+         * @return ResourceListOfProperty
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProperty execute() throws ApiException {
+            ApiResponse<ResourceListOfProperty> localVarResp = listPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPortfolioProperties request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfProperty&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProperty> executeWithHttpInfo() throws ApiException {
+            return listPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit);
+        }
+
+        /**
+         * Execute listPortfolioProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
+            return listPortfolioPropertiesAsync(scope, code, effectiveAt, asAt, page, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for listPortfolios
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which              portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,              specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListPortfolioProperties: Get portfolio properties
+     * List all the properties of a particular portfolio.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIlistPortfolioPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIlistPortfolioPropertiesRequest listPortfolioProperties(String scope, String code) {
+        return new APIlistPortfolioPropertiesRequest(scope, code);
+    }
+    private okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3414,118 +4315,220 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * ListPortfolios: List portfolios
-     * List all the portfolios matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which              portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,              specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ResourceListOfPortfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPortfolio listPortfolios(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListPortfolios: List portfolios
-     * List all the portfolios matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which              portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,              specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPortfolio> listPortfoliosWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<ResourceListOfPortfolio> listPortfoliosWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListPortfolios: List portfolios (asynchronously)
-     * List all the portfolios matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which              portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,              specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPortfoliosRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private String query;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistPortfoliosRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set query
+         * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which   portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,   specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest query(String query) {
+            this.query = query;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistPortfoliosRequest
+         */
+        public APIlistPortfoliosRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listPortfolios
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPortfoliosCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listPortfolios request
+         * @return ResourceListOfPortfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolio execute() throws ApiException {
+            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPortfolios request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo() throws ApiException {
+            return listPortfoliosWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listPortfolios request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+            return listPortfoliosAsync(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for listPortfoliosForScope
-     * @param scope The scope whose portfolios to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ListPortfolios: List portfolios
+     * List all the portfolios matching particular criteria.
+     * @return APIlistPortfoliosRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    public APIlistPortfoliosRequest listPortfolios() {
+        return new APIlistPortfoliosRequest();
+    }
+    private okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3619,111 +4622,212 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * ListPortfoliosForScope: List portfolios for scope
-     * List all the portfolios in a particular scope.
-     * @param scope The scope whose portfolios to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ResourceListOfPortfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPortfolio listPortfoliosForScope(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListPortfoliosForScope: List portfolios for scope
-     * List all the portfolios in a particular scope.
-     * @param scope The scope whose portfolios to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPortfolio> listPortfoliosForScopeWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+    private ApiResponse<ResourceListOfPortfolio> listPortfoliosForScopeWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
         okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListPortfoliosForScope: List portfolios for scope (asynchronously)
-     * List all the portfolios in a particular scope.
-     * @param scope The scope whose portfolios to list. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. (optional)
-     * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
-     * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPortfoliosForScopeRequest {
+        private final String scope;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private List<String> propertyKeys;
+        private List<String> relationshipDefinitionIds;
+
+        private APIlistPortfoliosForScopeRequest(String scope) {
+            this.scope = scope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set relationshipDefinitionIds
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @return APIlistPortfoliosForScopeRequest
+         */
+        public APIlistPortfoliosForScopeRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
+            this.relationshipDefinitionIds = relationshipDefinitionIds;
+            return this;
+        }
+
+        /**
+         * Build call for listPortfoliosForScope
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listPortfoliosForScope request
+         * @return ResourceListOfPortfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolio execute() throws ApiException {
+            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPortfoliosForScope request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo() throws ApiException {
+            return listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listPortfoliosForScope request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+            return listPortfoliosForScopeAsync(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for patchPortfolio
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the               scope this uniquely identifies the portfolio. (required)
-     * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ListPortfoliosForScope: List portfolios for scope
+     * List all the portfolios in a particular scope.
+     * @param scope The scope whose portfolios to list. (required)
+     * @return APIlistPortfoliosForScopeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchPortfolioCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+    public APIlistPortfoliosForScopeRequest listPortfoliosForScope(String scope) {
+        return new APIlistPortfoliosForScopeRequest(scope);
+    }
+    private okhttp3.Call patchPortfolioCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3796,92 +4900,119 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolio: Patch portfolio.
-     * Create or update certain fields for a particular  portfolio.  The behaviour is defined by the JSON Patch specification.                Currently supported are: CreationDate, InstrumentScopes.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the               scope this uniquely identifies the portfolio. (required)
-     * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
-     * @return ActionResultOfPortfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ActionResultOfPortfolio patchPortfolio(String scope, String code, List<Operation> operation) throws ApiException {
-        ApiResponse<ActionResultOfPortfolio> localVarResp = patchPortfolioWithHttpInfo(scope, code, operation);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolio: Patch portfolio.
-     * Create or update certain fields for a particular  portfolio.  The behaviour is defined by the JSON Patch specification.                Currently supported are: CreationDate, InstrumentScopes.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the               scope this uniquely identifies the portfolio. (required)
-     * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
-     * @return ApiResponse&lt;ActionResultOfPortfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ActionResultOfPortfolio> patchPortfolioWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
+    private ApiResponse<ActionResultOfPortfolio> patchPortfolioWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
         okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, null);
         Type localVarReturnType = new TypeToken<ActionResultOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolio: Patch portfolio. (asynchronously)
-     * Create or update certain fields for a particular  portfolio.  The behaviour is defined by the JSON Patch specification.                Currently supported are: CreationDate, InstrumentScopes.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the               scope this uniquely identifies the portfolio. (required)
-     * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchPortfolioAsync(String scope, String code, List<Operation> operation, final ApiCallback<ActionResultOfPortfolio> _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioAsync(String scope, String code, List<Operation> operation, final ApiCallback<ActionResultOfPortfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, _callback);
         Type localVarReturnType = new TypeToken<ActionResultOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpatchPortfolioRequest {
+        private final String scope;
+        private final String code;
+        private final List<Operation> operation;
+
+        private APIpatchPortfolioRequest(String scope, String code, List<Operation> operation) {
+            this.scope = scope;
+            this.code = code;
+            this.operation = operation;
+        }
+
+        /**
+         * Build call for patchPortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchPortfolioCall(scope, code, operation, _callback);
+        }
+
+        /**
+         * Execute patchPortfolio request
+         * @return ActionResultOfPortfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ActionResultOfPortfolio execute() throws ApiException {
+            ApiResponse<ActionResultOfPortfolio> localVarResp = patchPortfolioWithHttpInfo(scope, code, operation);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchPortfolio request with HTTP info returned
+         * @return ApiResponse&lt;ActionResultOfPortfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ActionResultOfPortfolio> executeWithHttpInfo() throws ApiException {
+            return patchPortfolioWithHttpInfo(scope, code, operation);
+        }
+
+        /**
+         * Execute patchPortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ActionResultOfPortfolio> _callback) throws ApiException {
+            return patchPortfolioAsync(scope, code, operation, _callback);
+        }
+    }
+
     /**
-     * Build call for patchPortfolioAccessMetadata
-     * @param scope The scope of the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] PatchPortfolio: Patch portfolio.
+     * Create or update certain fields for a particular portfolio.  The behaviour is defined by the JSON Patch specification.     Currently supported are: CreationDate, InstrumentScopes.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the   scope this uniquely identifies the portfolio. (required)
+     * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
+     * @return APIpatchPortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchPortfolioAccessMetadataCall(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIpatchPortfolioRequest patchPortfolio(String scope, String code, List<Operation> operation) {
+        return new APIpatchPortfolioRequest(scope, code, operation);
+    }
+    private okhttp3.Call patchPortfolioAccessMetadataCall(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3962,97 +5093,141 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.
-     * Patch Portfolio Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.    The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.    It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param scope The scope of the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Map<String, List<AccessMetadataValue>> patchPortfolioAccessMetadata(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchPortfolioAccessMetadataWithHttpInfo(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.
-     * Patch Portfolio Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.    The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.    It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param scope The scope of the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Map<String, List<AccessMetadataValue>>> patchPortfolioAccessMetadataWithHttpInfo(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchPortfolioAccessMetadataWithHttpInfo(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio. (asynchronously)
-     * Patch Portfolio Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.                Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.    The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.    It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
-     * @param scope The scope of the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param accessMetadataOperation The Json Patch document (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchPortfolioAccessMetadataAsync(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioAccessMetadataAsync(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpatchPortfolioAccessMetadataRequest {
+        private final String scope;
+        private final String code;
+        private final List<AccessMetadataOperation> accessMetadataOperation;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIpatchPortfolioAccessMetadataRequest(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation) {
+            this.scope = scope;
+            this.code = code;
+            this.accessMetadataOperation = accessMetadataOperation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The date this rule will effective from (optional)
+         * @return APIpatchPortfolioAccessMetadataRequest
+         */
+        public APIpatchPortfolioAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIpatchPortfolioAccessMetadataRequest
+         */
+        public APIpatchPortfolioAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for patchPortfolioAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchPortfolioAccessMetadataCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchPortfolioAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchPortfolioAccessMetadataWithHttpInfo(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchPortfolioAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return patchPortfolioAccessMetadataWithHttpInfo(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchPortfolioAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return patchPortfolioAccessMetadataAsync(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for updatePortfolio
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param updatePortfolioRequest The updated portfolio definition. (required)
-     * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current               LUSID system datetime if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.
+     * Patch Portfolio Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.    The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * @param scope The scope of the Portfolio Access Metadata Rule. (required)
+     * @param code Portfolio code (required)
+     * @param accessMetadataOperation The Json Patch document (required)
+     * @return APIpatchPortfolioAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updatePortfolioCall(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIpatchPortfolioAccessMetadataRequest patchPortfolioAccessMetadata(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation) {
+        return new APIpatchPortfolioAccessMetadataRequest(scope, code, accessMetadataOperation);
+    }
+    private okhttp3.Call updatePortfolioCall(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4129,96 +5304,130 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * UpdatePortfolio: Update portfolio
-     * Update the definition of a particular portfolio.                Note that not all elements of a portfolio definition are  modifiable due to the potential implications for data already stored.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param updatePortfolioRequest The updated portfolio definition. (required)
-     * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current               LUSID system datetime if not specified. (optional)
-     * @return Portfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Portfolio updatePortfolio(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt) throws ApiException {
-        ApiResponse<Portfolio> localVarResp = updatePortfolioWithHttpInfo(scope, code, updatePortfolioRequest, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpdatePortfolio: Update portfolio
-     * Update the definition of a particular portfolio.                Note that not all elements of a portfolio definition are  modifiable due to the potential implications for data already stored.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param updatePortfolioRequest The updated portfolio definition. (required)
-     * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current               LUSID system datetime if not specified. (optional)
-     * @return ApiResponse&lt;Portfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Portfolio> updatePortfolioWithHttpInfo(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt) throws ApiException {
+    private ApiResponse<Portfolio> updatePortfolioWithHttpInfo(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, null);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * UpdatePortfolio: Update portfolio (asynchronously)
-     * Update the definition of a particular portfolio.                Note that not all elements of a portfolio definition are  modifiable due to the potential implications for data already stored.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param updatePortfolioRequest The updated portfolio definition. (required)
-     * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current               LUSID system datetime if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback<Portfolio> _callback) throws ApiException {
+    private okhttp3.Call updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback<Portfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupdatePortfolioRequest {
+        private final String scope;
+        private final String code;
+        private final UpdatePortfolioRequest updatePortfolioRequest;
+        private String effectiveAt;
+
+        private APIupdatePortfolioRequest(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updatePortfolioRequest = updatePortfolioRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current   LUSID system datetime if not specified. (optional)
+         * @return APIupdatePortfolioRequest
+         */
+        public APIupdatePortfolioRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for updatePortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updatePortfolioCall(scope, code, updatePortfolioRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute updatePortfolio request
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute() throws ApiException {
+            ApiResponse<Portfolio> localVarResp = updatePortfolioWithHttpInfo(scope, code, updatePortfolioRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updatePortfolio request with HTTP info returned
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
+            return updatePortfolioWithHttpInfo(scope, code, updatePortfolioRequest, effectiveAt);
+        }
+
+        /**
+         * Execute updatePortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
+            return updatePortfolioAsync(scope, code, updatePortfolioRequest, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPortfolioAccessMetadata
-     * @param scope The scope to use when updating or inserting the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey Key of the access metadata to upsert (required)
-     * @param upsertPortfolioAccessMetadataRequest The Portfolio Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * UpdatePortfolio: Update portfolio
+     * Update the definition of a particular portfolio.     Note that not all elements of a portfolio definition are  modifiable due to the potential implications for data already stored.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param updatePortfolioRequest The updated portfolio definition. (required)
+     * @return APIupdatePortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPortfolioAccessMetadataCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    public APIupdatePortfolioRequest updatePortfolio(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest) {
+        return new APIupdatePortfolioRequest(scope, code, updatePortfolioRequest);
+    }
+    private okhttp3.Call upsertPortfolioAccessMetadataCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4305,99 +5514,144 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
-     * @param scope The scope to use when updating or inserting the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey Key of the access metadata to upsert (required)
-     * @param upsertPortfolioAccessMetadataRequest The Portfolio Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ResourceListOfAccessMetadataValueOf
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfAccessMetadataValueOf upsertPortfolioAccessMetadata(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
-     * @param scope The scope to use when updating or inserting the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey Key of the access metadata to upsert (required)
-     * @param upsertPortfolioAccessMetadataRequest The Portfolio Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+    private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
         okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, null);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID. (asynchronously)
-     * Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
-     * @param scope The scope to use when updating or inserting the Portfolio Access Metadata Rule. (required)
-     * @param code Portfolio code (required)
-     * @param metadataKey Key of the access metadata to upsert (required)
-     * @param upsertPortfolioAccessMetadataRequest The Portfolio Access Metadata Rule to update or insert (required)
-     * @param effectiveAt The date this rule will effective from (optional)
-     * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertPortfolioAccessMetadataRequest {
+        private final String scope;
+        private final String code;
+        private final String metadataKey;
+        private final UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIupsertPortfolioAccessMetadataRequest(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.metadataKey = metadataKey;
+            this.upsertPortfolioAccessMetadataRequest = upsertPortfolioAccessMetadataRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The date this rule will effective from (optional)
+         * @return APIupsertPortfolioAccessMetadataRequest
+         */
+        public APIupsertPortfolioAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIupsertPortfolioAccessMetadataRequest
+         */
+        public APIupsertPortfolioAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for upsertPortfolioAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPortfolioAccessMetadataCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioAccessMetadata request
+         * @return ResourceListOfAccessMetadataValueOf
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessMetadataValueOf execute() throws ApiException {
+            ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPortfolioAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo() throws ApiException {
+            return upsertPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertPortfolioAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
+            return upsertPortfolioAccessMetadataAsync(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPortfolioProperties
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param requestBody The properties to be created or updated. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;Portfolio/Manager/Id&#39;. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID.
+     * Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+     * @param scope The scope to use when updating or inserting the Portfolio Access Metadata Rule. (required)
+     * @param code Portfolio code (required)
+     * @param metadataKey Key of the access metadata to upsert (required)
+     * @param upsertPortfolioAccessMetadataRequest The Portfolio Access Metadata Rule to update or insert (required)
+     * @return APIupsertPortfolioAccessMetadataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPortfolioPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIupsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadata(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest) {
+        return new APIupsertPortfolioAccessMetadataRequest(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest);
+    }
+    private okhttp3.Call upsertPortfolioPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4470,92 +5724,119 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * UpsertPortfolioProperties: Upsert portfolio properties
-     * Create or update one or more properties for a particular portfolio. A property is updated if it  already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param requestBody The properties to be created or updated. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;Portfolio/Manager/Id&#39;. (required)
-     * @return PortfolioProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PortfolioProperties upsertPortfolioProperties(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        ApiResponse<PortfolioProperties> localVarResp = upsertPortfolioPropertiesWithHttpInfo(scope, code, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertPortfolioProperties: Upsert portfolio properties
-     * Create or update one or more properties for a particular portfolio. A property is updated if it  already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param requestBody The properties to be created or updated. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;Portfolio/Manager/Id&#39;. (required)
-     * @return ApiResponse&lt;PortfolioProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PortfolioProperties> upsertPortfolioPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
+    private ApiResponse<PortfolioProperties> upsertPortfolioPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, null);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * UpsertPortfolioProperties: Upsert portfolio properties (asynchronously)
-     * Create or update one or more properties for a particular portfolio. A property is updated if it  already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param requestBody The properties to be created or updated. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;Portfolio/Manager/Id&#39;. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertPortfolioPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertPortfolioPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private final Map<String, Property> requestBody;
+
+        private APIupsertPortfolioPropertiesRequest(String scope, String code, Map<String, Property> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertPortfolioProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPortfolioPropertiesCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioProperties request
+         * @return PortfolioProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioProperties execute() throws ApiException {
+            ApiResponse<PortfolioProperties> localVarResp = upsertPortfolioPropertiesWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPortfolioProperties request with HTTP info returned
+         * @return ApiResponse&lt;PortfolioProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioProperties> executeWithHttpInfo() throws ApiException {
+            return upsertPortfolioPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertPortfolioProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioProperties> _callback) throws ApiException {
+            return upsertPortfolioPropertiesAsync(scope, code, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPortfolioReturns
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param performanceReturn This contains the Returns which need to be upsert. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * UpsertPortfolioProperties: Upsert portfolio properties
+     * Create or update one or more properties for a particular portfolio. A property is updated if it  already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param requestBody The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;Portfolio/Manager/Id&#39;. (required)
+     * @return APIupsertPortfolioPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback) throws ApiException {
+    public APIupsertPortfolioPropertiesRequest upsertPortfolioProperties(String scope, String code, Map<String, Property> requestBody) {
+        return new APIupsertPortfolioPropertiesRequest(scope, code, requestBody);
+    }
+    private okhttp3.Call upsertPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4640,64 +5921,113 @@ public class PortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns
-     * Update or insert returns into the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param performanceReturn This contains the Returns which need to be upsert. (required)
-     * @return UpsertReturnsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertReturnsResponse upsertPortfolioReturns(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn) throws ApiException {
-        ApiResponse<UpsertReturnsResponse> localVarResp = upsertPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, performanceReturn);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns
-     * Update or insert returns into the specified portfolio.
-     * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
-     * @param returnScope The scope of the Returns. (required)
-     * @param returnCode The code of the Returns. (required)
-     * @param performanceReturn This contains the Returns which need to be upsert. (required)
-     * @return ApiResponse&lt;UpsertReturnsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertReturnsResponse> upsertPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn) throws ApiException {
+    private ApiResponse<UpsertReturnsResponse> upsertPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn) throws ApiException {
         okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, null);
         Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, _callback);
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertPortfolioReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String returnScope;
+        private final String returnCode;
+        private final List<PerformanceReturn> performanceReturn;
+
+        private APIupsertPortfolioReturnsRequest(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn) {
+            this.scope = scope;
+            this.code = code;
+            this.returnScope = returnScope;
+            this.returnCode = returnCode;
+            this.performanceReturn = performanceReturn;
+        }
+
+        /**
+         * Build call for upsertPortfolioReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPortfolioReturnsCall(scope, code, returnScope, returnCode, performanceReturn, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioReturns request
+         * @return UpsertReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertReturnsResponse execute() throws ApiException {
+            ApiResponse<UpsertReturnsResponse> localVarResp = upsertPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, performanceReturn);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPortfolioReturns request with HTTP info returned
+         * @return ApiResponse&lt;UpsertReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertReturnsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, performanceReturn);
+        }
+
+        /**
+         * Execute upsertPortfolioReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
+            return upsertPortfolioReturnsAsync(scope, code, returnScope, returnCode, performanceReturn, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns (asynchronously)
+     * [EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns
      * Update or insert returns into the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
-     * @param code The code of the  Portfolio. (required)
+     * @param code The code of the Portfolio. (required)
      * @param returnScope The scope of the Returns. (required)
      * @param returnCode The code of the Returns. (required)
      * @param performanceReturn This contains the Returns which need to be upsert. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertPortfolioReturnsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -4706,11 +6036,7 @@ public class PortfoliosApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, _callback);
-        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertPortfolioReturnsRequest upsertPortfolioReturns(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn) {
+        return new APIupsertPortfolioReturnsRequest(scope, code, returnScope, returnCode, performanceReturn);
     }
 }

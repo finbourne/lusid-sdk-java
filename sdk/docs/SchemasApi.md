@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="getEntitySchema"></a>
 # **getEntitySchema**
-> Schema getEntitySchema(entity)
+> Schema getEntitySchema(entity).execute();
 
 [EARLY ACCESS] GetEntitySchema: Get schema
 
@@ -40,7 +40,8 @@ public class Example {
     SchemasApi apiInstance = new SchemasApi(defaultClient);
     String entity = "entity_example"; // String | The name of a valid entity
     try {
-      Schema result = apiInstance.getEntitySchema(entity);
+      Schema result = apiInstance.getEntitySchema(entity)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SchemasApi#getEntitySchema");
@@ -81,7 +82,7 @@ public class Example {
 
 <a id="getPropertySchema"></a>
 # **getPropertySchema**
-> PropertySchema getPropertySchema(propertyKeys, asAt)
+> PropertySchema getPropertySchema().propertyKeys(propertyKeys).asAt(asAt).execute();
 
 [EARLY ACCESS] GetPropertySchema: Get property schema
 
@@ -110,7 +111,10 @@ public class Example {
     List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys for which the schema is requested
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data
     try {
-      PropertySchema result = apiInstance.getPropertySchema(propertyKeys, asAt);
+      PropertySchema result = apiInstance.getPropertySchema()
+            .propertyKeys(propertyKeys)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SchemasApi#getPropertySchema");
@@ -152,7 +156,7 @@ public class Example {
 
 <a id="getValueTypes"></a>
 # **getValueTypes**
-> ResourceListOfValueType getValueTypes(sortBy, start, limit)
+> ResourceListOfValueType getValueTypes().sortBy(sortBy).start(start).limit(limit).execute();
 
 [EARLY ACCESS] GetValueTypes: Get value types
 
@@ -182,7 +186,11 @@ public class Example {
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     try {
-      ResourceListOfValueType result = apiInstance.getValueTypes(sortBy, start, limit);
+      ResourceListOfValueType result = apiInstance.getValueTypes()
+            .sortBy(sortBy)
+            .start(start)
+            .limit(limit)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SchemasApi#getValueTypes");
@@ -225,7 +233,7 @@ public class Example {
 
 <a id="listEntities"></a>
 # **listEntities**
-> ResourceListOfString listEntities()
+> ResourceListOfString listEntities().execute();
 
 [EARLY ACCESS] ListEntities: List entities
 
@@ -252,7 +260,8 @@ public class Example {
 
     SchemasApi apiInstance = new SchemasApi(defaultClient);
     try {
-      ResourceListOfString result = apiInstance.listEntities();
+      ResourceListOfString result = apiInstance.listEntities()
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SchemasApi#listEntities");

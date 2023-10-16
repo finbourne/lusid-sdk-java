@@ -93,22 +93,7 @@ public class ChartOfAccountsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createChartOfAccounts
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createChartOfAccountsCall(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createChartOfAccountsCall(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -175,87 +160,116 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
-     * Create the given Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
-     * @return ChartOfAccounts
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ChartOfAccounts createChartOfAccounts(String scope, ChartOfAccountsRequest chartOfAccountsRequest) throws ApiException {
-        ApiResponse<ChartOfAccounts> localVarResp = createChartOfAccountsWithHttpInfo(scope, chartOfAccountsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
-     * Create the given Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
-     * @return ApiResponse&lt;ChartOfAccounts&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ChartOfAccounts> createChartOfAccountsWithHttpInfo(String scope, ChartOfAccountsRequest chartOfAccountsRequest) throws ApiException {
+    private ApiResponse<ChartOfAccounts> createChartOfAccountsWithHttpInfo(String scope, ChartOfAccountsRequest chartOfAccountsRequest) throws ApiException {
         okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, null);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts (asynchronously)
-     * Create the given Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createChartOfAccountsAsync(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
+    private okhttp3.Call createChartOfAccountsAsync(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, _callback);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateChartOfAccountsRequest {
+        private final String scope;
+        private final ChartOfAccountsRequest chartOfAccountsRequest;
+
+        private APIcreateChartOfAccountsRequest(String scope, ChartOfAccountsRequest chartOfAccountsRequest) {
+            this.scope = scope;
+            this.chartOfAccountsRequest = chartOfAccountsRequest;
+        }
+
+        /**
+         * Build call for createChartOfAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createChartOfAccountsCall(scope, chartOfAccountsRequest, _callback);
+        }
+
+        /**
+         * Execute createChartOfAccounts request
+         * @return ChartOfAccounts
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ChartOfAccounts execute() throws ApiException {
+            ApiResponse<ChartOfAccounts> localVarResp = createChartOfAccountsWithHttpInfo(scope, chartOfAccountsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createChartOfAccounts request with HTTP info returned
+         * @return ApiResponse&lt;ChartOfAccounts&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ChartOfAccounts> executeWithHttpInfo() throws ApiException {
+            return createChartOfAccountsWithHttpInfo(scope, chartOfAccountsRequest);
+        }
+
+        /**
+         * Execute createChartOfAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
+            return createChartOfAccountsAsync(scope, chartOfAccountsRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for createGeneralLedgerProfile
+     * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+     * Create the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
+     * @return APIcreateChartOfAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createGeneralLedgerProfileCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
+    public APIcreateChartOfAccountsRequest createChartOfAccounts(String scope, ChartOfAccountsRequest chartOfAccountsRequest) {
+        return new APIcreateChartOfAccountsRequest(scope, chartOfAccountsRequest);
+    }
+    private okhttp3.Call createGeneralLedgerProfileCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -328,90 +342,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
-     * Create the given General Ledger profile.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
-     * @return GeneralLedgerProfileResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GeneralLedgerProfileResponse createGeneralLedgerProfile(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) throws ApiException {
-        ApiResponse<GeneralLedgerProfileResponse> localVarResp = createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
-     * Create the given General Ledger profile.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
-     * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GeneralLedgerProfileResponse> createGeneralLedgerProfileWithHttpInfo(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) throws ApiException {
+    private ApiResponse<GeneralLedgerProfileResponse> createGeneralLedgerProfileWithHttpInfo(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) throws ApiException {
         okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, null);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. (asynchronously)
-     * Create the given General Ledger profile.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createGeneralLedgerProfileAsync(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+    private okhttp3.Call createGeneralLedgerProfileAsync(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, _callback);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateGeneralLedgerProfileRequest {
+        private final String scope;
+        private final String code;
+        private final GeneralLedgerProfileRequest generalLedgerProfileRequest;
+
+        private APIcreateGeneralLedgerProfileRequest(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.generalLedgerProfileRequest = generalLedgerProfileRequest;
+        }
+
+        /**
+         * Build call for createGeneralLedgerProfile
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createGeneralLedgerProfileCall(scope, code, generalLedgerProfileRequest, _callback);
+        }
+
+        /**
+         * Execute createGeneralLedgerProfile request
+         * @return GeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GeneralLedgerProfileResponse execute() throws ApiException {
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createGeneralLedgerProfile request with HTTP info returned
+         * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
+            return createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest);
+        }
+
+        /**
+         * Execute createGeneralLedgerProfile request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+            return createGeneralLedgerProfileAsync(scope, code, generalLedgerProfileRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for createPostingModule
+     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+     * Create the given General Ledger profile.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleRequest The definition of the Posting Module. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
+     * @return APIcreateGeneralLedgerProfileRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPostingModuleCall(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback _callback) throws ApiException {
+    public APIcreateGeneralLedgerProfileRequest createGeneralLedgerProfile(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) {
+        return new APIcreateGeneralLedgerProfileRequest(scope, code, generalLedgerProfileRequest);
+    }
+    private okhttp3.Call createPostingModuleCall(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -484,91 +527,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
-     * Create the given Posting Module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleRequest The definition of the Posting Module. (required)
-     * @return PostingModuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostingModuleResponse createPostingModule(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
-        ApiResponse<PostingModuleResponse> localVarResp = createPostingModuleWithHttpInfo(scope, code, postingModuleRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
-     * Create the given Posting Module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleRequest The definition of the Posting Module. (required)
-     * @return ApiResponse&lt;PostingModuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostingModuleResponse> createPostingModuleWithHttpInfo(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
+    private ApiResponse<PostingModuleResponse> createPostingModuleWithHttpInfo(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
         okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, null);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreatePostingModule: Create a Posting Module (asynchronously)
-     * Create the given Posting Module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleRequest The definition of the Posting Module. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createPostingModuleAsync(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call createPostingModuleAsync(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, _callback);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreatePostingModuleRequest {
+        private final String scope;
+        private final String code;
+        private final PostingModuleRequest postingModuleRequest;
+
+        private APIcreatePostingModuleRequest(String scope, String code, PostingModuleRequest postingModuleRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleRequest = postingModuleRequest;
+        }
+
+        /**
+         * Build call for createPostingModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createPostingModuleCall(scope, code, postingModuleRequest, _callback);
+        }
+
+        /**
+         * Execute createPostingModule request
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute() throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = createPostingModuleWithHttpInfo(scope, code, postingModuleRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createPostingModule request with HTTP info returned
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
+            return createPostingModuleWithHttpInfo(scope, code, postingModuleRequest);
+        }
+
+        /**
+         * Execute createPostingModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+            return createPostingModuleAsync(scope, code, postingModuleRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteAccounts
+     * [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+     * Create the given Posting Module.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param requestBody The codes of the accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleRequest The definition of the Posting Module. (required)
+     * @return APIcreatePostingModuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAccountsCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback) throws ApiException {
+    public APIcreatePostingModuleRequest createPostingModule(String scope, String code, PostingModuleRequest postingModuleRequest) {
+        return new APIcreatePostingModuleRequest(scope, code, postingModuleRequest);
+    }
+    private okhttp3.Call deleteAccountsCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -645,92 +716,130 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
-     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param requestBody The codes of the accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @return DeleteAccountsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeleteAccountsResponse deleteAccounts(String scope, String code, List<String> requestBody, String deleteMode) throws ApiException {
-        ApiResponse<DeleteAccountsResponse> localVarResp = deleteAccountsWithHttpInfo(scope, code, requestBody, deleteMode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
-     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param requestBody The codes of the accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @return ApiResponse&lt;DeleteAccountsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeleteAccountsResponse> deleteAccountsWithHttpInfo(String scope, String code, List<String> requestBody, String deleteMode) throws ApiException {
+    private ApiResponse<DeleteAccountsResponse> deleteAccountsWithHttpInfo(String scope, String code, List<String> requestBody, String deleteMode) throws ApiException {
         okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, null);
         Type localVarReturnType = new TypeToken<DeleteAccountsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts (asynchronously)
-     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param requestBody The codes of the accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteAccountsAsync(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback<DeleteAccountsResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteAccountsAsync(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback<DeleteAccountsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, _callback);
         Type localVarReturnType = new TypeToken<DeleteAccountsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteAccountsRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> requestBody;
+        private String deleteMode;
+
+        private APIdeleteAccountsRequest(String scope, String code, List<String> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set deleteMode
+         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @return APIdeleteAccountsRequest
+         */
+        public APIdeleteAccountsRequest deleteMode(String deleteMode) {
+            this.deleteMode = deleteMode;
+            return this;
+        }
+
+        /**
+         * Build call for deleteAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteAccountsCall(scope, code, requestBody, deleteMode, _callback);
+        }
+
+        /**
+         * Execute deleteAccounts request
+         * @return DeleteAccountsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteAccountsResponse execute() throws ApiException {
+            ApiResponse<DeleteAccountsResponse> localVarResp = deleteAccountsWithHttpInfo(scope, code, requestBody, deleteMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteAccounts request with HTTP info returned
+         * @return ApiResponse&lt;DeleteAccountsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteAccountsResponse> executeWithHttpInfo() throws ApiException {
+            return deleteAccountsWithHttpInfo(scope, code, requestBody, deleteMode);
+        }
+
+        /**
+         * Execute deleteAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteAccountsResponse> _callback) throws ApiException {
+            return deleteAccountsAsync(scope, code, requestBody, deleteMode, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteChartOfAccounts
-     * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
+     * @param requestBody The codes of the accounts to delete. (required)
+     * @return APIdeleteAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteChartOfAccountsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIdeleteAccountsRequest deleteAccounts(String scope, String code, List<String> requestBody) {
+        return new APIdeleteAccountsRequest(scope, code, requestBody);
+    }
+    private okhttp3.Call deleteChartOfAccountsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -794,87 +903,116 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
-     * Delete the given Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteChartOfAccounts(String scope, String code) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteChartOfAccountsWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
-     * Delete the given Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteChartOfAccountsWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteChartOfAccountsWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts (asynchronously)
-     * Delete the given Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteChartOfAccountsAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteChartOfAccountsAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteChartOfAccountsRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteChartOfAccountsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteChartOfAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteChartOfAccountsCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteChartOfAccounts request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteChartOfAccountsWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteChartOfAccounts request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteChartOfAccountsWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteChartOfAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteChartOfAccountsAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteGeneralLedgerProfile
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+     * Delete the given Chart of Accounts.
+     * @param scope The scope of the Chart of Accounts to be deleted. (required)
+     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @return APIdeleteChartOfAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+    public APIdeleteChartOfAccountsRequest deleteChartOfAccounts(String scope, String code) {
+        return new APIdeleteChartOfAccountsRequest(scope, code);
+    }
+    private okhttp3.Call deleteGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -944,90 +1082,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
-     * Delete the given General Ledger Profile.
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deleteGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
-     * Delete the given General Ledger Profile.
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deleteGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deleteGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
         okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. (asynchronously)
-     * Delete the given General Ledger Profile.
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteGeneralLedgerProfileRequest {
+        private final String scope;
+        private final String code;
+        private final String generalLedgerProfileCode;
+
+        private APIdeleteGeneralLedgerProfileRequest(String scope, String code, String generalLedgerProfileCode) {
+            this.scope = scope;
+            this.code = code;
+            this.generalLedgerProfileCode = generalLedgerProfileCode;
+        }
+
+        /**
+         * Build call for deleteGeneralLedgerProfile
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+        }
+
+        /**
+         * Execute deleteGeneralLedgerProfile request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteGeneralLedgerProfile request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+        }
+
+        /**
+         * Execute deleteGeneralLedgerProfile request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePostingModule
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be deleted. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+     * Delete the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
+     * @return APIdeleteGeneralLedgerProfileRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+    public APIdeleteGeneralLedgerProfileRequest deleteGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) {
+        return new APIdeleteGeneralLedgerProfileRequest(scope, code, generalLedgerProfileCode);
+    }
+    private okhttp3.Call deletePostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1097,93 +1264,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
-     * Delete the given Posting Module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be deleted. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePostingModule(String scope, String code, String postingModuleCode) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePostingModuleWithHttpInfo(scope, code, postingModuleCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
-     * Delete the given Posting Module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be deleted. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
         okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. (asynchronously)
-     * Delete the given Posting Module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be deleted. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePostingModuleRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+
+        private APIdeletePostingModuleRequest(String scope, String code, String postingModuleCode) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+        }
+
+        /**
+         * Build call for deletePostingModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePostingModuleCall(scope, code, postingModuleCode, _callback);
+        }
+
+        /**
+         * Execute deletePostingModule request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePostingModuleWithHttpInfo(scope, code, postingModuleCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePostingModule request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePostingModuleWithHttpInfo(scope, code, postingModuleCode);
+        }
+
+        /**
+         * Execute deletePostingModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePostingModuleAsync(scope, code, postingModuleCode, _callback);
+        }
+    }
+
     /**
-     * Build call for getAccount
+     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+     * Delete the given Posting Module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The code of the Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If not provided will return all the entitled properties for that Account. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param postingModuleCode The code of the Posting Module to be deleted. (required)
+     * @return APIdeletePostingModuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAccountCall(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeletePostingModuleRequest deletePostingModule(String scope, String code, String postingModuleCode) {
+        return new APIdeletePostingModuleRequest(scope, code, postingModuleCode);
+    }
+    private okhttp3.Call getAccountCall(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1265,101 +1458,152 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetAccount: Get Account
-     * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The code of the Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If not provided will return all the entitled properties for that Account. (optional)
-     * @return Account
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Account getAccount(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<Account> localVarResp = getAccountWithHttpInfo(scope, code, accountCode, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetAccount: Get Account
-     * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The code of the Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If not provided will return all the entitled properties for that Account. (optional)
-     * @return ApiResponse&lt;Account&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Account> getAccountWithHttpInfo(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<Account> getAccountWithHttpInfo(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<Account>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetAccount: Get Account (asynchronously)
-     * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The code of the Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If not provided will return all the entitled properties for that Account. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAccountAsync(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Account> _callback) throws ApiException {
+    private okhttp3.Call getAccountAsync(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Account> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Account>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetAccountRequest {
+        private final String scope;
+        private final String code;
+        private final String accountCode;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetAccountRequest(String scope, String code, String accountCode) {
+            this.scope = scope;
+            this.code = code;
+            this.accountCode = accountCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetAccountRequest
+         */
+        public APIgetAccountRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
+         * @return APIgetAccountRequest
+         */
+        public APIgetAccountRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If not provided will return all the entitled properties for that Account. (optional)
+         * @return APIgetAccountRequest
+         */
+        public APIgetAccountRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getAccount
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAccountCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getAccount request
+         * @return Account
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Account execute() throws ApiException {
+            ApiResponse<Account> localVarResp = getAccountWithHttpInfo(scope, code, accountCode, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAccount request with HTTP info returned
+         * @return ApiResponse&lt;Account&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Account> executeWithHttpInfo() throws ApiException {
+            return getAccountWithHttpInfo(scope, code, accountCode, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getAccount request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Account> _callback) throws ApiException {
+            return getAccountAsync(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getChartOfAccounts
+     * [EXPERIMENTAL] GetAccount: Get Account
+     * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param accountCode The code of the Account. (required)
+     * @return APIgetAccountRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChartOfAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetAccountRequest getAccount(String scope, String code, String accountCode) {
+        return new APIgetAccountRequest(scope, code, accountCode);
+    }
+    private okhttp3.Call getChartOfAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1435,96 +1679,149 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
-     * Retrieve the definition of a particular Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
-     * @return ChartOfAccounts
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ChartOfAccounts getChartOfAccounts(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<ChartOfAccounts> localVarResp = getChartOfAccountsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
-     * Retrieve the definition of a particular Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
-     * @return ApiResponse&lt;ChartOfAccounts&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ChartOfAccounts> getChartOfAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<ChartOfAccounts> getChartOfAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts (asynchronously)
-     * Retrieve the definition of a particular Chart of Accounts.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getChartOfAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
+    private okhttp3.Call getChartOfAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetChartOfAccountsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetChartOfAccountsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetChartOfAccountsRequest
+         */
+        public APIgetChartOfAccountsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
+         * @return APIgetChartOfAccountsRequest
+         */
+        public APIgetChartOfAccountsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
+         * @return APIgetChartOfAccountsRequest
+         */
+        public APIgetChartOfAccountsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getChartOfAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getChartOfAccountsCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getChartOfAccounts request
+         * @return ChartOfAccounts
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ChartOfAccounts execute() throws ApiException {
+            ApiResponse<ChartOfAccounts> localVarResp = getChartOfAccountsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getChartOfAccounts request with HTTP info returned
+         * @return ApiResponse&lt;ChartOfAccounts&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ChartOfAccounts> executeWithHttpInfo() throws ApiException {
+            return getChartOfAccountsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getChartOfAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
+            return getChartOfAccountsAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getGeneralLedgerProfile
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+     * Retrieve the definition of a particular Chart of Accounts.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @return APIgetChartOfAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+    public APIgetChartOfAccountsRequest getChartOfAccounts(String scope, String code) {
+        return new APIgetChartOfAccountsRequest(scope, code);
+    }
+    private okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1594,90 +1891,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
-     * Get the given General Ledger Profile.
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
-     * @return GeneralLedgerProfileResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GeneralLedgerProfileResponse getGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) throws ApiException {
-        ApiResponse<GeneralLedgerProfileResponse> localVarResp = getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
-     * Get the given General Ledger Profile.
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
-     * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
+    private ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
         okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. (asynchronously)
-     * Get the given General Ledger Profile.
-     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
-     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+    private okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetGeneralLedgerProfileRequest {
+        private final String scope;
+        private final String code;
+        private final String generalLedgerProfileCode;
+
+        private APIgetGeneralLedgerProfileRequest(String scope, String code, String generalLedgerProfileCode) {
+            this.scope = scope;
+            this.code = code;
+            this.generalLedgerProfileCode = generalLedgerProfileCode;
+        }
+
+        /**
+         * Build call for getGeneralLedgerProfile
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+        }
+
+        /**
+         * Execute getGeneralLedgerProfile request
+         * @return GeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GeneralLedgerProfileResponse execute() throws ApiException {
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getGeneralLedgerProfile request with HTTP info returned
+         * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
+            return getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+        }
+
+        /**
+         * Execute getGeneralLedgerProfile request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+            return getGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, _callback);
+        }
+    }
+
     /**
-     * Build call for getPostingModule
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+     * Get the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
+     * @return APIgetGeneralLedgerProfileRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+    public APIgetGeneralLedgerProfileRequest getGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) {
+        return new APIgetGeneralLedgerProfileRequest(scope, code, generalLedgerProfileCode);
+    }
+    private okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1747,96 +2073,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module
-     * Retrieve the definition of a Posting Module complete with its rules.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module. (required)
-     * @return PostingModuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostingModuleResponse getPostingModule(String scope, String code, String postingModuleCode) throws ApiException {
-        ApiResponse<PostingModuleResponse> localVarResp = getPostingModuleWithHttpInfo(scope, code, postingModuleCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module
-     * Retrieve the definition of a Posting Module complete with its rules.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module. (required)
-     * @return ApiResponse&lt;PostingModuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
+    private ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
         okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, null);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module (asynchronously)
-     * Retrieve the definition of a Posting Module complete with its rules.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPostingModuleRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+
+        private APIgetPostingModuleRequest(String scope, String code, String postingModuleCode) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+        }
+
+        /**
+         * Build call for getPostingModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPostingModuleCall(scope, code, postingModuleCode, _callback);
+        }
+
+        /**
+         * Execute getPostingModule request
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute() throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = getPostingModuleWithHttpInfo(scope, code, postingModuleCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPostingModule request with HTTP info returned
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
+            return getPostingModuleWithHttpInfo(scope, code, postingModuleCode);
+        }
+
+        /**
+         * Execute getPostingModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+            return getPostingModuleAsync(scope, code, postingModuleCode, _callback);
+        }
+    }
+
     /**
-     * Build call for listAccounts
+     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+     * Retrieve the definition of a Posting Module complete with its rules.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module. (required)
+     * @return APIgetPostingModuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetPostingModuleRequest getPostingModule(String scope, String code, String postingModuleCode) {
+        return new APIgetPostingModuleRequest(scope, code, postingModuleCode);
+    }
+    private okhttp3.Call listAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1928,112 +2277,193 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListAccounts: List Accounts
-     * List the accounts in a Chart of Accounts
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
-     * @return PagedResourceListOfAccount
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfAccount listAccounts(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfAccount> localVarResp = listAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListAccounts: List Accounts
-     * List the accounts in a Chart of Accounts
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfAccount&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfAccount> listAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfAccount> listAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListAccounts: List Accounts (asynchronously)
-     * List the accounts in a Chart of Accounts
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAccount> _callback) throws ApiException {
+    private okhttp3.Call listAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistAccountsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistAccountsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing charts of accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.   These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
+         * @return APIlistAccountsRequest
+         */
+        public APIlistAccountsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAccountsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listAccounts request
+         * @return PagedResourceListOfAccount
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAccount execute() throws ApiException {
+            ApiResponse<PagedResourceListOfAccount> localVarResp = listAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAccounts request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfAccount&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAccount> executeWithHttpInfo() throws ApiException {
+            return listAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAccount> _callback) throws ApiException {
+            return listAccountsAsync(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listChartsOfAccounts
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListAccounts: List Accounts
+     * List the accounts in a Chart of Accounts
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
+     * @return APIlistAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listChartsOfAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIlistAccountsRequest listAccounts(String scope, String code) {
+        return new APIlistAccountsRequest(scope, code);
+    }
+    private okhttp3.Call listChartsOfAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2113,106 +2543,187 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
-     * List all the Charts of Accounts matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
-     * @return PagedResourceListOfChartOfAccounts
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfChartOfAccounts listChartsOfAccounts(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfChartOfAccounts> localVarResp = listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
-     * List all the Charts of Accounts matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfChartOfAccounts&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfChartOfAccounts> listChartsOfAccountsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfChartOfAccounts> listChartsOfAccountsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts (asynchronously)
-     * List all the Charts of Accounts matching particular criteria.
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
-     * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listChartsOfAccountsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
+    private okhttp3.Call listChartsOfAccountsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistChartsOfAccountsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistChartsOfAccountsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version   of each Chart of Accounts if not specified. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing charts of accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listChartsOfAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listChartsOfAccountsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listChartsOfAccounts request
+         * @return PagedResourceListOfChartOfAccounts
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfChartOfAccounts execute() throws ApiException {
+            ApiResponse<PagedResourceListOfChartOfAccounts> localVarResp = listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listChartsOfAccounts request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfChartOfAccounts&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfChartOfAccounts> executeWithHttpInfo() throws ApiException {
+            return listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listChartsOfAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
+            return listChartsOfAccountsAsync(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listGeneralLedgerProfiles
-     * @param scope The scope of the Chart of Accounts (required)
-     * @param code The code of the Chart of Accounts (required)
-     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
-     * @param start The start of the pager for the list of General Ledger Profiles (optional)
-     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+     * List all the Charts of Accounts matching particular criteria.
+     * @return APIlistChartsOfAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistChartsOfAccountsRequest listChartsOfAccounts() {
+        return new APIlistChartsOfAccountsRequest();
+    }
+    private okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2296,107 +2807,171 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
-     * List all the General Ledger profiles matching particular criteria.
-     * @param scope The scope of the Chart of Accounts (required)
-     * @param code The code of the Chart of Accounts (required)
-     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
-     * @param start The start of the pager for the list of General Ledger Profiles (optional)
-     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return PagedResourceListOfGeneralLedgerProfileResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfGeneralLedgerProfileResponse listGeneralLedgerProfiles(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> localVarResp = listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, start, page, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
-     * List all the General Ledger profiles matching particular criteria.
-     * @param scope The scope of the Chart of Accounts (required)
-     * @param code The code of the Chart of Accounts (required)
-     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
-     * @param start The start of the pager for the list of General Ledger Profiles (optional)
-     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfGeneralLedgerProfileResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, start, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. (asynchronously)
-     * List all the General Ledger profiles matching particular criteria.
-     * @param scope The scope of the Chart of Accounts (required)
-     * @param code The code of the Chart of Accounts (required)
-     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
-     * @param start The start of the pager for the list of General Ledger Profiles (optional)
-     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
+    private okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, start, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistGeneralLedgerProfilesRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private Integer start;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistGeneralLedgerProfilesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
+         * @return APIlistGeneralLedgerProfilesRequest
+         */
+        public APIlistGeneralLedgerProfilesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start The start of the pager for the list of General Ledger Profiles (optional)
+         * @return APIlistGeneralLedgerProfilesRequest
+         */
+        public APIlistGeneralLedgerProfilesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing General Ledger Profiles; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistGeneralLedgerProfilesRequest
+         */
+        public APIlistGeneralLedgerProfilesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistGeneralLedgerProfilesRequest
+         */
+        public APIlistGeneralLedgerProfilesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistGeneralLedgerProfilesRequest
+         */
+        public APIlistGeneralLedgerProfilesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listGeneralLedgerProfiles
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listGeneralLedgerProfilesCall(scope, code, asAt, start, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listGeneralLedgerProfiles request
+         * @return PagedResourceListOfGeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfGeneralLedgerProfileResponse execute() throws ApiException {
+            ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> localVarResp = listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, start, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listGeneralLedgerProfiles request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfGeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
+            return listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, start, page, limit, filter);
+        }
+
+        /**
+         * Execute listGeneralLedgerProfiles request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
+            return listGeneralLedgerProfilesAsync(scope, code, asAt, start, page, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listPostingModuleRules
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the posting module. (required)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing posting module rules; this              value is returned from the previous call. If a pagination token is provided, the filter              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+     * List all the General Ledger profiles matching particular criteria.
+     * @param scope The scope of the Chart of Accounts (required)
+     * @param code The code of the Chart of Accounts (required)
+     * @return APIlistGeneralLedgerProfilesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPostingModuleRulesCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistGeneralLedgerProfilesRequest listGeneralLedgerProfiles(String scope, String code) {
+        return new APIlistGeneralLedgerProfilesRequest(scope, code);
+    }
+    private okhttp3.Call listPostingModuleRulesCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2486,109 +3061,174 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
-     * List the Rules in a Posting Module
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the posting module. (required)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing posting module rules; this              value is returned from the previous call. If a pagination token is provided, the filter              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return PagedResourceListOfPostingModuleRule
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPostingModuleRule listPostingModuleRules(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfPostingModuleRule> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
-     * List the Rules in a Posting Module
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the posting module. (required)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing posting module rules; this              value is returned from the previous call. If a pagination token is provided, the filter              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPostingModuleRule&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPostingModuleRule> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfPostingModuleRule> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules (asynchronously)
-     * List the Rules in a Posting Module
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the posting module. (required)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing posting module rules; this              value is returned from the previous call. If a pagination token is provided, the filter              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
+    private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPostingModuleRulesRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistPostingModuleRulesRequest(String scope, String code, String postingModuleCode) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIlistPostingModuleRulesRequest
+         */
+        public APIlistPostingModuleRulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing posting module rules; this   value is returned from the previous call. If a pagination token is provided, the filter   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistPostingModuleRulesRequest
+         */
+        public APIlistPostingModuleRulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistPostingModuleRulesRequest
+         */
+        public APIlistPostingModuleRulesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistPostingModuleRulesRequest
+         */
+        public APIlistPostingModuleRulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistPostingModuleRulesRequest
+         */
+        public APIlistPostingModuleRulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listPostingModuleRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPostingModuleRulesCall(scope, code, postingModuleCode, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listPostingModuleRules request
+         * @return PagedResourceListOfPostingModuleRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPostingModuleRule execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPostingModuleRule> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPostingModuleRules request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPostingModuleRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPostingModuleRule> executeWithHttpInfo() throws ApiException {
+            return listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listPostingModuleRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
+            return listPostingModuleRulesAsync(scope, code, postingModuleCode, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for listPostingModules
+     * [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+     * List the Rules in a Posting Module
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version              of each Posting Module if not specified. (optional)
-     * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param postingModuleCode The code of the posting module. (required)
+     * @return APIlistPostingModuleRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPostingModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    public APIlistPostingModuleRulesRequest listPostingModuleRules(String scope, String code, String postingModuleCode) {
+        return new APIlistPostingModuleRulesRequest(scope, code, postingModuleCode);
+    }
+    private okhttp3.Call listPostingModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2672,103 +3312,171 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListPostingModules: List Posting Modules
-     * List all the Posting Modules matching particular criteria.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version              of each Posting Module if not specified. (optional)
-     * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return PagedResourceListOfPostingModuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfPostingModuleResponse listPostingModules(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        ApiResponse<PagedResourceListOfPostingModuleResponse> localVarResp = listPostingModulesWithHttpInfo(scope, code, asAt, page, start, limit, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListPostingModules: List Posting Modules
-     * List all the Posting Modules matching particular criteria.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version              of each Posting Module if not specified. (optional)
-     * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfPostingModuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfPostingModuleResponse> listPostingModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfPostingModuleResponse> listPostingModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, start, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListPostingModules: List Posting Modules (asynchronously)
-     * List all the Posting Modules matching particular criteria.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version              of each Posting Module if not specified. (optional)
-     * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPostingModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call listPostingModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistPostingModulesRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistPostingModulesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version   of each Posting Module if not specified. (optional)
+         * @return APIlistPostingModulesRequest
+         */
+        public APIlistPostingModulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Posting Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistPostingModulesRequest
+         */
+        public APIlistPostingModulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistPostingModulesRequest
+         */
+        public APIlistPostingModulesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistPostingModulesRequest
+         */
+        public APIlistPostingModulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistPostingModulesRequest
+         */
+        public APIlistPostingModulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listPostingModules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listPostingModulesCall(scope, code, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listPostingModules request
+         * @return PagedResourceListOfPostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPostingModuleResponse execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPostingModuleResponse> localVarResp = listPostingModulesWithHttpInfo(scope, code, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listPostingModules request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfPostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPostingModuleResponse> executeWithHttpInfo() throws ApiException {
+            return listPostingModulesWithHttpInfo(scope, code, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listPostingModules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
+            return listPostingModulesAsync(scope, code, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for setGeneralLedgerProfileMappings
+     * [EXPERIMENTAL] ListPostingModules: List Posting Modules
+     * List all the Posting Modules matching particular criteria.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
-     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @return APIlistPostingModulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setGeneralLedgerProfileMappingsCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
+    public APIlistPostingModulesRequest listPostingModules(String scope, String code) {
+        return new APIlistPostingModulesRequest(scope, code);
+    }
+    private okhttp3.Call setGeneralLedgerProfileMappingsCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2847,94 +3555,122 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
-     * Update the given General Ledger profile Mappings.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
-     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
-     * @return GeneralLedgerProfileResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GeneralLedgerProfileResponse setGeneralLedgerProfileMappings(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) throws ApiException {
-        ApiResponse<GeneralLedgerProfileResponse> localVarResp = setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
-     * Update the given General Ledger profile Mappings.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
-     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
-     * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GeneralLedgerProfileResponse> setGeneralLedgerProfileMappingsWithHttpInfo(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) throws ApiException {
+    private ApiResponse<GeneralLedgerProfileResponse> setGeneralLedgerProfileMappingsWithHttpInfo(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) throws ApiException {
         okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, null);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. (asynchronously)
-     * Update the given General Ledger profile Mappings.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. (required)
-     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
-     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setGeneralLedgerProfileMappingsAsync(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+    private okhttp3.Call setGeneralLedgerProfileMappingsAsync(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetGeneralLedgerProfileMappingsRequest {
+        private final String scope;
+        private final String code;
+        private final String generalLedgerProfileCode;
+        private final List<GeneralLedgerProfileMapping> generalLedgerProfileMapping;
+
+        private APIsetGeneralLedgerProfileMappingsRequest(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) {
+            this.scope = scope;
+            this.code = code;
+            this.generalLedgerProfileCode = generalLedgerProfileCode;
+            this.generalLedgerProfileMapping = generalLedgerProfileMapping;
+        }
+
+        /**
+         * Build call for setGeneralLedgerProfileMappings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setGeneralLedgerProfileMappingsCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+        }
+
+        /**
+         * Execute setGeneralLedgerProfileMappings request
+         * @return GeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GeneralLedgerProfileResponse execute() throws ApiException {
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setGeneralLedgerProfileMappings request with HTTP info returned
+         * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
+            return setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
+        }
+
+        /**
+         * Execute setGeneralLedgerProfileMappings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+            return setGeneralLedgerProfileMappingsAsync(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+        }
+    }
+
     /**
-     * Build call for setPostingModuleDetails
+     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+     * Update the given General Ledger profile Mappings.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleDetails The new details for the Posting Module. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
+     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
+     * @return APIsetGeneralLedgerProfileMappingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setPostingModuleDetailsCall(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback _callback) throws ApiException {
+    public APIsetGeneralLedgerProfileMappingsRequest setGeneralLedgerProfileMappings(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) {
+        return new APIsetGeneralLedgerProfileMappingsRequest(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
+    }
+    private okhttp3.Call setPostingModuleDetailsCall(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3013,94 +3749,122 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
-     * Update the given Posting Module details.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleDetails The new details for the Posting Module. (required)
-     * @return PostingModuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostingModuleResponse setPostingModuleDetails(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails) throws ApiException {
-        ApiResponse<PostingModuleResponse> localVarResp = setPostingModuleDetailsWithHttpInfo(scope, code, postingModuleCode, postingModuleDetails);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
-     * Update the given Posting Module details.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleDetails The new details for the Posting Module. (required)
-     * @return ApiResponse&lt;PostingModuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostingModuleResponse> setPostingModuleDetailsWithHttpInfo(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails) throws ApiException {
+    private ApiResponse<PostingModuleResponse> setPostingModuleDetailsWithHttpInfo(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails) throws ApiException {
         okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, null);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module (asynchronously)
-     * Update the given Posting Module details.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleDetails The new details for the Posting Module. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setPostingModuleDetailsAsync(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call setPostingModuleDetailsAsync(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, _callback);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetPostingModuleDetailsRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+        private final PostingModuleDetails postingModuleDetails;
+
+        private APIsetPostingModuleDetailsRequest(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+            this.postingModuleDetails = postingModuleDetails;
+        }
+
+        /**
+         * Build call for setPostingModuleDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setPostingModuleDetailsCall(scope, code, postingModuleCode, postingModuleDetails, _callback);
+        }
+
+        /**
+         * Execute setPostingModuleDetails request
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute() throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = setPostingModuleDetailsWithHttpInfo(scope, code, postingModuleCode, postingModuleDetails);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setPostingModuleDetails request with HTTP info returned
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
+            return setPostingModuleDetailsWithHttpInfo(scope, code, postingModuleCode, postingModuleDetails);
+        }
+
+        /**
+         * Execute setPostingModuleDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+            return setPostingModuleDetailsAsync(scope, code, postingModuleCode, postingModuleDetails, _callback);
+        }
+    }
+
     /**
-     * Build call for setPostingModuleRules
+     * [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+     * Update the given Posting Module details.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleRule The new rule set for the Posting Module. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param postingModuleDetails The new details for the Posting Module. (required)
+     * @return APIsetPostingModuleDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setPostingModuleRulesCall(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback _callback) throws ApiException {
+    public APIsetPostingModuleDetailsRequest setPostingModuleDetails(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails) {
+        return new APIsetPostingModuleDetailsRequest(scope, code, postingModuleCode, postingModuleDetails);
+    }
+    private okhttp3.Call setPostingModuleRulesCall(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3179,94 +3943,122 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
-     * Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleRule The new rule set for the Posting Module. (required)
-     * @return PostingModuleRulesUpdatedResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostingModuleRulesUpdatedResponse setPostingModuleRules(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) throws ApiException {
-        ApiResponse<PostingModuleRulesUpdatedResponse> localVarResp = setPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
-     * Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleRule The new rule set for the Posting Module. (required)
-     * @return ApiResponse&lt;PostingModuleRulesUpdatedResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostingModuleRulesUpdatedResponse> setPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) throws ApiException {
+    private ApiResponse<PostingModuleRulesUpdatedResponse> setPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) throws ApiException {
         okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, null);
         Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module (asynchronously)
-     * Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param postingModuleCode The code of the Posting Module to be updated. (required)
-     * @param postingModuleRule The new rule set for the Posting Module. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setPostingModuleRulesAsync(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
+    private okhttp3.Call setPostingModuleRulesAsync(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, _callback);
         Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetPostingModuleRulesRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+        private final List<PostingModuleRule> postingModuleRule;
+
+        private APIsetPostingModuleRulesRequest(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+            this.postingModuleRule = postingModuleRule;
+        }
+
+        /**
+         * Build call for setPostingModuleRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setPostingModuleRulesCall(scope, code, postingModuleCode, postingModuleRule, _callback);
+        }
+
+        /**
+         * Execute setPostingModuleRules request
+         * @return PostingModuleRulesUpdatedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleRulesUpdatedResponse execute() throws ApiException {
+            ApiResponse<PostingModuleRulesUpdatedResponse> localVarResp = setPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setPostingModuleRules request with HTTP info returned
+         * @return ApiResponse&lt;PostingModuleRulesUpdatedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleRulesUpdatedResponse> executeWithHttpInfo() throws ApiException {
+            return setPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule);
+        }
+
+        /**
+         * Execute setPostingModuleRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
+            return setPostingModuleRulesAsync(scope, code, postingModuleCode, postingModuleRule, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertAccountProperties
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The unique ID of the account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+     * Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module to be updated. (required)
+     * @param postingModuleRule The new rule set for the Posting Module. (required)
+     * @return APIsetPostingModuleRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAccountPropertiesCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIsetPostingModuleRulesRequest setPostingModuleRules(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) {
+        return new APIsetPostingModuleRulesRequest(scope, code, postingModuleCode, postingModuleRule);
+    }
+    private okhttp3.Call upsertAccountPropertiesCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3340,93 +4132,130 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
-     * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The unique ID of the account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
-     * @return AccountProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AccountProperties upsertAccountProperties(String scope, String code, String accountCode, Map<String, Property> requestBody) throws ApiException {
-        ApiResponse<AccountProperties> localVarResp = upsertAccountPropertiesWithHttpInfo(scope, code, accountCode, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
-     * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The unique ID of the account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
-     * @return ApiResponse&lt;AccountProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AccountProperties> upsertAccountPropertiesWithHttpInfo(String scope, String code, String accountCode, Map<String, Property> requestBody) throws ApiException {
+    private ApiResponse<AccountProperties> upsertAccountPropertiesWithHttpInfo(String scope, String code, String accountCode, Map<String, Property> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, null);
         Type localVarReturnType = new TypeToken<AccountProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties (asynchronously)
-     * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param accountCode The unique ID of the account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertAccountPropertiesAsync(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback<AccountProperties> _callback) throws ApiException {
+    private okhttp3.Call upsertAccountPropertiesAsync(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback<AccountProperties> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, _callback);
         Type localVarReturnType = new TypeToken<AccountProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertAccountPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private final String accountCode;
+        private Map<String, Property> requestBody;
+
+        private APIupsertAccountPropertiesRequest(String scope, String code, String accountCode) {
+            this.scope = scope;
+            this.code = code;
+            this.accountCode = accountCode;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
+         * @return APIupsertAccountPropertiesRequest
+         */
+        public APIupsertAccountPropertiesRequest requestBody(Map<String, Property> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for upsertAccountProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertAccountPropertiesCall(scope, code, accountCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertAccountProperties request
+         * @return AccountProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AccountProperties execute() throws ApiException {
+            ApiResponse<AccountProperties> localVarResp = upsertAccountPropertiesWithHttpInfo(scope, code, accountCode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertAccountProperties request with HTTP info returned
+         * @return ApiResponse&lt;AccountProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AccountProperties> executeWithHttpInfo() throws ApiException {
+            return upsertAccountPropertiesWithHttpInfo(scope, code, accountCode, requestBody);
+        }
+
+        /**
+         * Execute upsertAccountProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AccountProperties> _callback) throws ApiException {
+            return upsertAccountPropertiesAsync(scope, code, accountCode, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertAccounts
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param account A list of accounts to be created or updated. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+     * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.     Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param accountCode The unique ID of the account to create or update properties for. (required)
+     * @return APIupsertAccountPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertAccountsCall(String scope, String code, List<Account> account, final ApiCallback _callback) throws ApiException {
+    public APIupsertAccountPropertiesRequest upsertAccountProperties(String scope, String code, String accountCode) {
+        return new APIupsertAccountPropertiesRequest(scope, code, accountCode);
+    }
+    private okhttp3.Call upsertAccountsCall(String scope, String code, List<Account> account, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3499,90 +4328,119 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
-     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param account A list of accounts to be created or updated. (required)
-     * @return AccountsUpsertResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AccountsUpsertResponse upsertAccounts(String scope, String code, List<Account> account) throws ApiException {
-        ApiResponse<AccountsUpsertResponse> localVarResp = upsertAccountsWithHttpInfo(scope, code, account);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
-     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param account A list of accounts to be created or updated. (required)
-     * @return ApiResponse&lt;AccountsUpsertResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AccountsUpsertResponse> upsertAccountsWithHttpInfo(String scope, String code, List<Account> account) throws ApiException {
+    private ApiResponse<AccountsUpsertResponse> upsertAccountsWithHttpInfo(String scope, String code, List<Account> account) throws ApiException {
         okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, null);
         Type localVarReturnType = new TypeToken<AccountsUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts (asynchronously)
-     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
-     * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
-     * @param account A list of accounts to be created or updated. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertAccountsAsync(String scope, String code, List<Account> account, final ApiCallback<AccountsUpsertResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertAccountsAsync(String scope, String code, List<Account> account, final ApiCallback<AccountsUpsertResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, _callback);
         Type localVarReturnType = new TypeToken<AccountsUpsertResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertAccountsRequest {
+        private final String scope;
+        private final String code;
+        private final List<Account> account;
+
+        private APIupsertAccountsRequest(String scope, String code, List<Account> account) {
+            this.scope = scope;
+            this.code = code;
+            this.account = account;
+        }
+
+        /**
+         * Build call for upsertAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertAccountsCall(scope, code, account, _callback);
+        }
+
+        /**
+         * Execute upsertAccounts request
+         * @return AccountsUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AccountsUpsertResponse execute() throws ApiException {
+            ApiResponse<AccountsUpsertResponse> localVarResp = upsertAccountsWithHttpInfo(scope, code, account);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertAccounts request with HTTP info returned
+         * @return ApiResponse&lt;AccountsUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AccountsUpsertResponse> executeWithHttpInfo() throws ApiException {
+            return upsertAccountsWithHttpInfo(scope, code, account);
+        }
+
+        /**
+         * Execute upsertAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AccountsUpsertResponse> _callback) throws ApiException {
+            return upsertAccountsAsync(scope, code, account, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertChartOfAccountsProperties
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
+     * @param account A list of accounts to be created or updated. (required)
+     * @return APIupsertAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertChartOfAccountsPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIupsertAccountsRequest upsertAccounts(String scope, String code, List<Account> account) {
+        return new APIupsertAccountsRequest(scope, code, account);
+    }
+    private okhttp3.Call upsertChartOfAccountsPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3650,58 +4508,115 @@ public class ChartOfAccountsApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
-     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
-     * @return ChartOfAccountsProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ChartOfAccountsProperties upsertChartOfAccountsProperties(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        ApiResponse<ChartOfAccountsProperties> localVarResp = upsertChartOfAccountsPropertiesWithHttpInfo(scope, code, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
-     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
-     * @return ApiResponse&lt;ChartOfAccountsProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ChartOfAccountsProperties> upsertChartOfAccountsPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
+    private ApiResponse<ChartOfAccountsProperties> upsertChartOfAccountsPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, null);
         Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertChartOfAccountsPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<ChartOfAccountsProperties> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertChartOfAccountsPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private Map<String, Property> requestBody;
+
+        private APIupsertChartOfAccountsPropertiesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
+         * @return APIupsertChartOfAccountsPropertiesRequest
+         */
+        public APIupsertChartOfAccountsPropertiesRequest requestBody(Map<String, Property> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for upsertChartOfAccountsProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertChartOfAccountsPropertiesCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertChartOfAccountsProperties request
+         * @return ChartOfAccountsProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ChartOfAccountsProperties execute() throws ApiException {
+            ApiResponse<ChartOfAccountsProperties> localVarResp = upsertChartOfAccountsPropertiesWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertChartOfAccountsProperties request with HTTP info returned
+         * @return ApiResponse&lt;ChartOfAccountsProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ChartOfAccountsProperties> executeWithHttpInfo() throws ApiException {
+            return upsertChartOfAccountsPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertChartOfAccountsProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccountsProperties> _callback) throws ApiException {
+            return upsertChartOfAccountsPropertiesAsync(scope, code, requestBody, _callback);
+        }
+    }
+
     /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties (asynchronously)
-     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.     Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
      * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
-     * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertChartOfAccountsPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -3710,11 +4625,7 @@ public class ChartOfAccountsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertChartOfAccountsPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<ChartOfAccountsProperties> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertChartOfAccountsPropertiesRequest upsertChartOfAccountsProperties(String scope, String code) {
+        return new APIupsertChartOfAccountsPropertiesRequest(scope, code);
     }
 }

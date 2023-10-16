@@ -75,21 +75,7 @@ public class SchemasApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getEntitySchema
-     * @param entity The name of a valid entity (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getEntitySchemaCall(String entity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEntitySchemaCall(String entity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -147,74 +133,101 @@ public class SchemasApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetEntitySchema: Get schema
-     * Gets the schema and meta-data for a given entity
-     * @param entity The name of a valid entity (required)
-     * @return Schema
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Schema getEntitySchema(String entity) throws ApiException {
-        ApiResponse<Schema> localVarResp = getEntitySchemaWithHttpInfo(entity);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetEntitySchema: Get schema
-     * Gets the schema and meta-data for a given entity
-     * @param entity The name of a valid entity (required)
-     * @return ApiResponse&lt;Schema&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Schema> getEntitySchemaWithHttpInfo(String entity) throws ApiException {
+    private ApiResponse<Schema> getEntitySchemaWithHttpInfo(String entity) throws ApiException {
         okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, null);
         Type localVarReturnType = new TypeToken<Schema>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetEntitySchema: Get schema (asynchronously)
-     * Gets the schema and meta-data for a given entity
-     * @param entity The name of a valid entity (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getEntitySchemaAsync(String entity, final ApiCallback<Schema> _callback) throws ApiException {
+    private okhttp3.Call getEntitySchemaAsync(String entity, final ApiCallback<Schema> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, _callback);
         Type localVarReturnType = new TypeToken<Schema>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetEntitySchemaRequest {
+        private final String entity;
+
+        private APIgetEntitySchemaRequest(String entity) {
+            this.entity = entity;
+        }
+
+        /**
+         * Build call for getEntitySchema
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getEntitySchemaCall(entity, _callback);
+        }
+
+        /**
+         * Execute getEntitySchema request
+         * @return Schema
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Schema execute() throws ApiException {
+            ApiResponse<Schema> localVarResp = getEntitySchemaWithHttpInfo(entity);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getEntitySchema request with HTTP info returned
+         * @return ApiResponse&lt;Schema&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Schema> executeWithHttpInfo() throws ApiException {
+            return getEntitySchemaWithHttpInfo(entity);
+        }
+
+        /**
+         * Execute getEntitySchema request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Schema> _callback) throws ApiException {
+            return getEntitySchemaAsync(entity, _callback);
+        }
+    }
+
     /**
-     * Build call for getPropertySchema
-     * @param propertyKeys One or more property keys for which the schema is requested (optional)
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetEntitySchema: Get schema
+     * Gets the schema and meta-data for a given entity
+     * @param entity The name of a valid entity (required)
+     * @return APIgetEntitySchemaRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -223,7 +236,10 @@ public class SchemasApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPropertySchemaCall(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetEntitySchemaRequest getEntitySchema(String entity) {
+        return new APIgetEntitySchemaRequest(entity);
+    }
+    private okhttp3.Call getPropertySchemaCall(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -283,78 +299,120 @@ public class SchemasApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetPropertySchema: Get property schema
-     * Get the schemas for the provided list of property keys.
-     * @param propertyKeys One or more property keys for which the schema is requested (optional)
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @return PropertySchema
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PropertySchema getPropertySchema(List<String> propertyKeys, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<PropertySchema> localVarResp = getPropertySchemaWithHttpInfo(propertyKeys, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetPropertySchema: Get property schema
-     * Get the schemas for the provided list of property keys.
-     * @param propertyKeys One or more property keys for which the schema is requested (optional)
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @return ApiResponse&lt;PropertySchema&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PropertySchema> getPropertySchemaWithHttpInfo(List<String> propertyKeys, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<PropertySchema> getPropertySchemaWithHttpInfo(List<String> propertyKeys, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, null);
         Type localVarReturnType = new TypeToken<PropertySchema>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetPropertySchema: Get property schema (asynchronously)
-     * Get the schemas for the provided list of property keys.
-     * @param propertyKeys One or more property keys for which the schema is requested (optional)
-     * @param asAt Optional. The AsAt date of the data (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPropertySchemaAsync(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback<PropertySchema> _callback) throws ApiException {
+    private okhttp3.Call getPropertySchemaAsync(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback<PropertySchema> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, _callback);
         Type localVarReturnType = new TypeToken<PropertySchema>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPropertySchemaRequest {
+        private List<String> propertyKeys;
+        private OffsetDateTime asAt;
+
+        private APIgetPropertySchemaRequest() {
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys One or more property keys for which the schema is requested (optional)
+         * @return APIgetPropertySchemaRequest
+         */
+        public APIgetPropertySchemaRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The AsAt date of the data (optional)
+         * @return APIgetPropertySchemaRequest
+         */
+        public APIgetPropertySchemaRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPropertySchema
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPropertySchemaCall(propertyKeys, asAt, _callback);
+        }
+
+        /**
+         * Execute getPropertySchema request
+         * @return PropertySchema
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertySchema execute() throws ApiException {
+            ApiResponse<PropertySchema> localVarResp = getPropertySchemaWithHttpInfo(propertyKeys, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPropertySchema request with HTTP info returned
+         * @return ApiResponse&lt;PropertySchema&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertySchema> executeWithHttpInfo() throws ApiException {
+            return getPropertySchemaWithHttpInfo(propertyKeys, asAt);
+        }
+
+        /**
+         * Execute getPropertySchema request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertySchema> _callback) throws ApiException {
+            return getPropertySchemaAsync(propertyKeys, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getValueTypes
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetPropertySchema: Get property schema
+     * Get the schemas for the provided list of property keys.
+     * @return APIgetPropertySchemaRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -363,7 +421,10 @@ public class SchemasApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValueTypesCall(List<String> sortBy, Integer start, Integer limit, final ApiCallback _callback) throws ApiException {
+    public APIgetPropertySchemaRequest getPropertySchema() {
+        return new APIgetPropertySchemaRequest();
+    }
+    private okhttp3.Call getValueTypesCall(List<String> sortBy, Integer start, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -427,86 +488,143 @@ public class SchemasApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetValueTypes: Get value types
-     * Gets the available value types for which a schema is available.
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @return ResourceListOfValueType
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfValueType getValueTypes(List<String> sortBy, Integer start, Integer limit) throws ApiException {
-        ApiResponse<ResourceListOfValueType> localVarResp = getValueTypesWithHttpInfo(sortBy, start, limit);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetValueTypes: Get value types
-     * Gets the available value types for which a schema is available.
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @return ApiResponse&lt;ResourceListOfValueType&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfValueType> getValueTypesWithHttpInfo(List<String> sortBy, Integer start, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListOfValueType> getValueTypesWithHttpInfo(List<String> sortBy, Integer start, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, start, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetValueTypes: Get value types (asynchronously)
-     * Gets the available value types for which a schema is available.
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getValueTypesAsync(List<String> sortBy, Integer start, Integer limit, final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
+    private okhttp3.Call getValueTypesAsync(List<String> sortBy, Integer start, Integer limit, final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, start, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetValueTypesRequest {
+        private List<String> sortBy;
+        private Integer start;
+        private Integer limit;
+
+        private APIgetValueTypesRequest() {
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+         * @return APIgetValueTypesRequest
+         */
+        public APIgetValueTypesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start Optional. When paginating, skip this number of results (optional)
+         * @return APIgetValueTypesRequest
+         */
+        public APIgetValueTypesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIgetValueTypesRequest
+         */
+        public APIgetValueTypesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getValueTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValueTypesCall(sortBy, start, limit, _callback);
+        }
+
+        /**
+         * Execute getValueTypes request
+         * @return ResourceListOfValueType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfValueType execute() throws ApiException {
+            ApiResponse<ResourceListOfValueType> localVarResp = getValueTypesWithHttpInfo(sortBy, start, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValueTypes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfValueType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfValueType> executeWithHttpInfo() throws ApiException {
+            return getValueTypesWithHttpInfo(sortBy, start, limit);
+        }
+
+        /**
+         * Execute getValueTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
+            return getValueTypesAsync(sortBy, start, limit, _callback);
+        }
+    }
+
     /**
-     * Build call for listEntities
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetValueTypes: Get value types
+     * Gets the available value types for which a schema is available.
+     * @return APIgetValueTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listEntitiesCall(final ApiCallback _callback) throws ApiException {
+    public APIgetValueTypesRequest getValueTypes() {
+        return new APIgetValueTypesRequest();
+    }
+    private okhttp3.Call listEntitiesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -558,47 +676,94 @@ public class SchemasApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListEntities: List entities
-     * List all available entities for which schema information is available.
-     * @return ResourceListOfString
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfString listEntities() throws ApiException {
-        ApiResponse<ResourceListOfString> localVarResp = listEntitiesWithHttpInfo();
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListEntities: List entities
-     * List all available entities for which schema information is available.
-     * @return ApiResponse&lt;ResourceListOfString&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfString> listEntitiesWithHttpInfo() throws ApiException {
+    private ApiResponse<ResourceListOfString> listEntitiesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call listEntitiesAsync(final ApiCallback<ResourceListOfString> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistEntitiesRequest {
+
+        private APIlistEntitiesRequest() {
+        }
+
+        /**
+         * Build call for listEntities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listEntitiesCall(_callback);
+        }
+
+        /**
+         * Execute listEntities request
+         * @return ResourceListOfString
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfString execute() throws ApiException {
+            ApiResponse<ResourceListOfString> localVarResp = listEntitiesWithHttpInfo();
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listEntities request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfString&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfString> executeWithHttpInfo() throws ApiException {
+            return listEntitiesWithHttpInfo();
+        }
+
+        /**
+         * Execute listEntities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfString> _callback) throws ApiException {
+            return listEntitiesAsync(_callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] ListEntities: List entities (asynchronously)
+     * [EARLY ACCESS] ListEntities: List entities
      * List all available entities for which schema information is available.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIlistEntitiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -606,11 +771,7 @@ public class SchemasApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listEntitiesAsync(final ApiCallback<ResourceListOfString> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIlistEntitiesRequest listEntities() {
+        return new APIlistEntitiesRequest();
     }
 }

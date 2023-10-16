@@ -181,28 +181,21 @@ public class TransactionsReconciliationsResponse {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to TransactionsReconciliationsResponse
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to TransactionsReconciliationsResponse
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!TransactionsReconciliationsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!TransactionsReconciliationsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransactionsReconciliationsResponse is not found in the empty JSON string", TransactionsReconciliationsResponse.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!TransactionsReconciliationsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransactionsReconciliationsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `mapping`
       if (jsonObj.get("mapping") != null && !jsonObj.get("mapping").isJsonNull()) {
-        Mapping.validateJsonObject(jsonObj.getAsJsonObject("mapping"));
+        Mapping.validateJsonElement(jsonObj.get("mapping"));
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
@@ -214,7 +207,7 @@ public class TransactionsReconciliationsResponse {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            ReconciledTransaction.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+            ReconciledTransaction.validateJsonElement(jsonArraydata.get(i));
           };
         }
       }
@@ -240,9 +233,9 @@ public class TransactionsReconciliationsResponse {
 
            @Override
            public TransactionsReconciliationsResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

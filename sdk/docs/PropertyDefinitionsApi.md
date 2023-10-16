@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createDerivedPropertyDefinition"></a>
 # **createDerivedPropertyDefinition**
-> PropertyDefinition createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest)
+> PropertyDefinition createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest).execute();
 
 [EARLY ACCESS] CreateDerivedPropertyDefinition: Create derived property definition
 
@@ -46,7 +46,8 @@ public class Example {
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
     CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest = new CreateDerivedPropertyDefinitionRequest(); // CreateDerivedPropertyDefinitionRequest | The definition of the new derived property.
     try {
-      PropertyDefinition result = apiInstance.createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest);
+      PropertyDefinition result = apiInstance.createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#createDerivedPropertyDefinition");
@@ -87,7 +88,7 @@ public class Example {
 
 <a id="createPropertyDefinition"></a>
 # **createPropertyDefinition**
-> PropertyDefinition createPropertyDefinition(createPropertyDefinitionRequest)
+> PropertyDefinition createPropertyDefinition(createPropertyDefinitionRequest).execute();
 
 CreatePropertyDefinition: Create property definition
 
@@ -115,7 +116,8 @@ public class Example {
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
     CreatePropertyDefinitionRequest createPropertyDefinitionRequest = new CreatePropertyDefinitionRequest(); // CreatePropertyDefinitionRequest | The definition of the new property.
     try {
-      PropertyDefinition result = apiInstance.createPropertyDefinition(createPropertyDefinitionRequest);
+      PropertyDefinition result = apiInstance.createPropertyDefinition(createPropertyDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#createPropertyDefinition");
@@ -156,7 +158,7 @@ public class Example {
 
 <a id="deletePropertyDefinition"></a>
 # **deletePropertyDefinition**
-> DeletedEntityResponse deletePropertyDefinition(domain, scope, code)
+> DeletedEntityResponse deletePropertyDefinition(domain, scope, code).execute();
 
 DeletePropertyDefinition: Delete property definition
 
@@ -184,9 +186,10 @@ public class Example {
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
     String domain = "NotDefined"; // String | The domain of the property to be deleted.
     String scope = "scope_example"; // String | The scope of the property to be deleted.
-    String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.
+    String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely   identifies the property.
     try {
-      DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code);
+      DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#deletePropertyDefinition");
@@ -205,7 +208,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **domain** | **String**| The domain of the property to be deleted. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry] |
 | **scope** | **String**| The scope of the property to be deleted. | |
-| **code** | **String**| The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property. | |
+| **code** | **String**| The code of the property to be deleted. Together with the domain and scope this uniquely   identifies the property. | |
 
 ### Return type
 
@@ -229,7 +232,7 @@ public class Example {
 
 <a id="deletePropertyDefinitionProperties"></a>
 # **deletePropertyDefinitionProperties**
-> DeletedEntityResponse deletePropertyDefinitionProperties(domain, scope, code, requestBody, effectiveAt)
+> DeletedEntityResponse deletePropertyDefinitionProperties(domain, scope, code, requestBody).effectiveAt(effectiveAt).execute();
 
 [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties
 
@@ -258,10 +261,12 @@ public class Example {
     String domain = "NotDefined"; // String | The domain of the property definition to delete properties from.
     String scope = "scope_example"; // String | The scope of the property definition to delete properties from.
     String code = "code_example"; // String | The code of the property definition to delete properties from.
-    List<String> requestBody = ["PropertyDefinition/MyScope/MyPropertyName","PropertyDefinition/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is before              the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual.
+    List<String> requestBody = ["PropertyDefinition/MyScope/MyPropertyName","PropertyDefinition/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is before   the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual.
     try {
-      DeletedEntityResponse result = apiInstance.deletePropertyDefinitionProperties(domain, scope, code, requestBody, effectiveAt);
+      DeletedEntityResponse result = apiInstance.deletePropertyDefinitionProperties(domain, scope, code, requestBody)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#deletePropertyDefinitionProperties");
@@ -281,8 +286,8 @@ public class Example {
 | **domain** | **String**| The domain of the property definition to delete properties from. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry] |
 | **scope** | **String**| The scope of the property definition to delete properties from. | |
 | **code** | **String**| The code of the property definition to delete properties from. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before              the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. | [optional] |
+| **requestBody** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before   the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -306,7 +311,7 @@ public class Example {
 
 <a id="getMultiplePropertyDefinitions"></a>
 # **getMultiplePropertyDefinitions**
-> ResourceListOfPropertyDefinition getMultiplePropertyDefinitions(propertyKeys, asAt, filter, effectiveAt)
+> ResourceListOfPropertyDefinition getMultiplePropertyDefinitions(propertyKeys).asAt(asAt).filter(filter).effectiveAt(effectiveAt).execute();
 
 GetMultiplePropertyDefinitions: Get multiple property definitions
 
@@ -332,12 +337,16 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
-    List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified.
-    String filter = "filter_example"; // String | Expression to filter the result set.               For example, to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.              Defaults to the current LUSID system datetime if not specified.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should   be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return   the latest version of each definition if not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set.    For example, to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified.
     try {
-      ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter, effectiveAt);
+      ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys)
+            .asAt(asAt)
+            .filter(filter)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#getMultiplePropertyDefinitions");
@@ -354,10 +363,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.               For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.              Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys which identify each property that a definition should   be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definitions. Defaults to return   the latest version of each definition if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 
 ### Return type
 
@@ -381,7 +390,7 @@ public class Example {
 
 <a id="getPropertyDefinition"></a>
 # **getPropertyDefinition**
-> PropertyDefinition getPropertyDefinition(domain, scope, code, asAt, effectiveAt)
+> PropertyDefinition getPropertyDefinition(domain, scope, code).asAt(asAt).effectiveAt(effectiveAt).execute();
 
 GetPropertyDefinition: Get property definition
 
@@ -409,11 +418,14 @@ public class Example {
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
     String domain = "NotDefined"; // String | The domain of the specified property.
     String scope = "scope_example"; // String | The scope of the specified property.
-    String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely              identifies the property.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.              Defaults to the current LUSID system datetime if not specified.
+    String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely   identifies the property.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return   the latest version of the definition if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified.
     try {
-      PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt, effectiveAt);
+      PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code)
+            .asAt(asAt)
+            .effectiveAt(effectiveAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#getPropertyDefinition");
@@ -432,9 +444,9 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **domain** | **String**| The domain of the specified property. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry] |
 | **scope** | **String**| The scope of the specified property. | |
-| **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely              identifies the property. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.              Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely   identifies the property. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 
 ### Return type
 
@@ -458,7 +470,7 @@ public class Example {
 
 <a id="getPropertyDefinitionPropertyTimeSeries"></a>
 # **getPropertyDefinitionPropertyTimeSeries**
-> ResourceListOfPropertyInterval getPropertyDefinitionPropertyTimeSeries(domain, scope, code, propertyKey, asAt, filter, page, limit)
+> ResourceListOfPropertyInterval getPropertyDefinitionPropertyTimeSeries(domain, scope, code, propertyKey).asAt(asAt).filter(filter).page(page).limit(limit).execute();
 
 [EARLY ACCESS] GetPropertyDefinitionPropertyTimeSeries: Get Property Definition Property Time Series
 
@@ -487,13 +499,18 @@ public class Example {
     String domain = "NotDefined"; // String | The domain of the property definition to which the property is attached
     String scope = "scope_example"; // String | The scope of the property definition to which the property is attached
     String code = "code_example"; // String | The code of the property definition to which the property is attached
-    String propertyKey = "propertyKey_example"; // String | The property key of the property whose history to show. This must be from the \"Property Definition\" domain and in the format              {domain}/{scope}/{code}, for example \"PropertyDefinition/myScope/someAttributeKey\".
+    String propertyKey = "propertyKey_example"; // String | The property key of the property whose history to show. This must be from the \"Property Definition\" domain and in the format   {domain}/{scope}/{code}, for example \"PropertyDefinition/myScope/someAttributeKey\".
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to show the history. Defaults to the current datetime if not specified.
     String filter = "filter_example"; // String | Expression to filter the results. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request.
+    String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     try {
-      ResourceListOfPropertyInterval result = apiInstance.getPropertyDefinitionPropertyTimeSeries(domain, scope, code, propertyKey, asAt, filter, page, limit);
+      ResourceListOfPropertyInterval result = apiInstance.getPropertyDefinitionPropertyTimeSeries(domain, scope, code, propertyKey)
+            .asAt(asAt)
+            .filter(filter)
+            .page(page)
+            .limit(limit)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#getPropertyDefinitionPropertyTimeSeries");
@@ -513,10 +530,10 @@ public class Example {
 | **domain** | **String**| The domain of the property definition to which the property is attached | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry] |
 | **scope** | **String**| The scope of the property definition to which the property is attached | |
 | **code** | **String**| The code of the property definition to which the property is attached | |
-| **propertyKey** | **String**| The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. | |
+| **propertyKey** | **String**| The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format   {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to show the history. Defaults to the current datetime if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
@@ -541,7 +558,7 @@ public class Example {
 
 <a id="updateDerivedPropertyDefinition"></a>
 # **updateDerivedPropertyDefinition**
-> PropertyDefinition updateDerivedPropertyDefinition(domain, scope, code, updateDerivedPropertyDefinitionRequest)
+> PropertyDefinition updateDerivedPropertyDefinition(domain, scope, code, updateDerivedPropertyDefinitionRequest).execute();
 
 [EARLY ACCESS] UpdateDerivedPropertyDefinition: Update a pre-existing derived property definition
 
@@ -572,7 +589,8 @@ public class Example {
     String code = "code_example"; // String | Code of the property definition
     UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest = new UpdateDerivedPropertyDefinitionRequest(); // UpdateDerivedPropertyDefinitionRequest | Information about the derived property definition being updated
     try {
-      PropertyDefinition result = apiInstance.updateDerivedPropertyDefinition(domain, scope, code, updateDerivedPropertyDefinitionRequest);
+      PropertyDefinition result = apiInstance.updateDerivedPropertyDefinition(domain, scope, code, updateDerivedPropertyDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#updateDerivedPropertyDefinition");
@@ -616,7 +634,7 @@ public class Example {
 
 <a id="updatePropertyDefinition"></a>
 # **updatePropertyDefinition**
-> PropertyDefinition updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest)
+> PropertyDefinition updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest).execute();
 
 UpdatePropertyDefinition: Update property definition
 
@@ -644,10 +662,11 @@ public class Example {
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
     String domain = "NotDefined"; // String | The domain of the property being updated.
     String scope = "scope_example"; // String | The scope of the property being updated.
-    String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.
+    String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely   identifies the property.
     UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = new UpdatePropertyDefinitionRequest(); // UpdatePropertyDefinitionRequest | The updated definition of the property.
     try {
-      PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest);
+      PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#updatePropertyDefinition");
@@ -666,7 +685,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **domain** | **String**| The domain of the property being updated. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry] |
 | **scope** | **String**| The scope of the property being updated. | |
-| **code** | **String**| The code of the property being updated. Together with the domain and scope this uniquely              identifies the property. | |
+| **code** | **String**| The code of the property being updated. Together with the domain and scope this uniquely   identifies the property. | |
 | **updatePropertyDefinitionRequest** | [**UpdatePropertyDefinitionRequest**](UpdatePropertyDefinitionRequest.md)| The updated definition of the property. | |
 
 ### Return type
@@ -691,7 +710,7 @@ public class Example {
 
 <a id="upsertPropertyDefinitionProperties"></a>
 # **upsertPropertyDefinitionProperties**
-> BatchUpsertPropertyDefinitionPropertiesResponse upsertPropertyDefinitionProperties(domain, scope, code, requestBody, successMode)
+> BatchUpsertPropertyDefinitionPropertiesResponse upsertPropertyDefinitionProperties(domain, scope, code, requestBody).successMode(successMode).execute();
 
 [EARLY ACCESS] UpsertPropertyDefinitionProperties: Upsert properties to a property definition
 
@@ -720,10 +739,12 @@ public class Example {
     String domain = "NotDefined"; // String | The domain of the specified property.
     String scope = "scope_example"; // String | The scope of the specified property.
     String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely
-    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              'PropertyDefinition/Manager/Id'.
+    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   'PropertyDefinition/Manager/Id'.
     String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
     try {
-      BatchUpsertPropertyDefinitionPropertiesResponse result = apiInstance.upsertPropertyDefinitionProperties(domain, scope, code, requestBody, successMode);
+      BatchUpsertPropertyDefinitionPropertiesResponse result = apiInstance.upsertPropertyDefinitionProperties(domain, scope, code, requestBody)
+            .successMode(successMode)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PropertyDefinitionsApi#upsertPropertyDefinitionProperties");
@@ -743,7 +764,7 @@ public class Example {
 | **domain** | **String**| The domain of the specified property. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry] |
 | **scope** | **String**| The scope of the specified property. | |
 | **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;. | |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;PropertyDefinition/Manager/Id&#39;. | |
 | **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. | [optional] [default to Partial] |
 
 ### Return type

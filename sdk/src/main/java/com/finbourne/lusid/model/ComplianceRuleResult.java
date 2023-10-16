@@ -392,32 +392,25 @@ public class ComplianceRuleResult {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ComplianceRuleResult
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ComplianceRuleResult
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ComplianceRuleResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ComplianceRuleResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ComplianceRuleResult is not found in the empty JSON string", ComplianceRuleResult.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ComplianceRuleResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ComplianceRuleResult` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ComplianceRuleResult.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("ruleId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ruleId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleId").toString()));
       }
@@ -428,7 +421,7 @@ public class ComplianceRuleResult {
         throw new IllegalArgumentException(String.format("Expected the field `ruleDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleDescription").toString()));
       }
       // validate the required field `portfolio`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("portfolio"));
+      ResourceId.validateJsonElement(jsonObj.get("portfolio"));
       if (!jsonObj.get("ruleInformationMatch").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ruleInformationMatch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleInformationMatch").toString()));
       }
@@ -457,9 +450,9 @@ public class ComplianceRuleResult {
 
            @Override
            public ComplianceRuleResult read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

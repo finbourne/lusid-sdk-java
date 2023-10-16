@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * What is the provenance of an instrument. This defines who creates/owns it, what format it is in (e.g. a proprietary format or a common and known one)              and what the version of that is.
+ * What is the provenance of an instrument. This defines who creates/owns it, what format it is in (e.g. a proprietary format or a common and known one)   and what the version of that is.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentDefinitionFormat {
@@ -92,7 +92,7 @@ public class InstrumentDefinitionFormat {
   }
 
    /**
-   * An instrument will potentially have been created by any number of different organisations. Some will be understood completely (e.g. LUSID&#39;s), some won&#39;t.              The provenance of an instrument indicates who \&quot;owns\&quot; the associated format.
+   * An instrument will potentially have been created by any number of different organisations. Some will be understood completely (e.g. LUSID&#39;s), some won&#39;t.   The provenance of an instrument indicates who \&quot;owns\&quot; the associated format.
    * @return vendor
   **/
   @jakarta.annotation.Nonnull
@@ -188,32 +188,25 @@ public class InstrumentDefinitionFormat {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InstrumentDefinitionFormat
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to InstrumentDefinitionFormat
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!InstrumentDefinitionFormat.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!InstrumentDefinitionFormat.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstrumentDefinitionFormat is not found in the empty JSON string", InstrumentDefinitionFormat.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!InstrumentDefinitionFormat.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InstrumentDefinitionFormat` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : InstrumentDefinitionFormat.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("sourceSystem").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceSystem` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceSystem").toString()));
       }
@@ -245,9 +238,9 @@ public class InstrumentDefinitionFormat {
 
            @Override
            public InstrumentDefinitionFormat read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

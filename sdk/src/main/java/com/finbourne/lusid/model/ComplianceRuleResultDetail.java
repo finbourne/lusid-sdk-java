@@ -411,34 +411,27 @@ public class ComplianceRuleResultDetail {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ComplianceRuleResultDetail
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ComplianceRuleResultDetail
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ComplianceRuleResultDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ComplianceRuleResultDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ComplianceRuleResultDetail is not found in the empty JSON string", ComplianceRuleResultDetail.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ComplianceRuleResultDetail.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ComplianceRuleResultDetail` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ComplianceRuleResultDetail.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `ruleId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("ruleId"));
+      ResourceId.validateJsonElement(jsonObj.get("ruleId"));
       // ensure the json data is an array
       if (!jsonObj.get("affectedPortfoliosDetails").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `affectedPortfoliosDetails` to be an array in the JSON string but got `%s`", jsonObj.get("affectedPortfoliosDetails").toString()));
@@ -447,7 +440,7 @@ public class ComplianceRuleResultDetail {
       JsonArray jsonArrayaffectedPortfoliosDetails = jsonObj.getAsJsonArray("affectedPortfoliosDetails");
       // validate the required field `affectedPortfoliosDetails` (array)
       for (int i = 0; i < jsonArrayaffectedPortfoliosDetails.size(); i++) {
-        ComplianceRuleResultPortfolioDetail.validateJsonObject(jsonArrayaffectedPortfoliosDetails.get(i).getAsJsonObject());
+        ComplianceRuleResultPortfolioDetail.validateJsonElement(jsonArrayaffectedPortfoliosDetails.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("affectedOrders").isJsonArray()) {
@@ -457,10 +450,10 @@ public class ComplianceRuleResultDetail {
       JsonArray jsonArrayaffectedOrders = jsonObj.getAsJsonArray("affectedOrders");
       // validate the required field `affectedOrders` (array)
       for (int i = 0; i < jsonArrayaffectedOrders.size(); i++) {
-        ResourceId.validateJsonObject(jsonArrayaffectedOrders.get(i).getAsJsonObject());
+        ResourceId.validateJsonElement(jsonArrayaffectedOrders.get(i));
       };
       // validate the required field `templateId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("templateId"));
+      ResourceId.validateJsonElement(jsonObj.get("templateId"));
       if (!jsonObj.get("templateDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `templateDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("templateDescription").toString()));
       }
@@ -501,9 +494,9 @@ public class ComplianceRuleResultDetail {
 
            @Override
            public ComplianceRuleResultDetail read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

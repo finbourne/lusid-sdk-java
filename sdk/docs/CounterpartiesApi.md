@@ -16,11 +16,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="deleteCounterpartyAgreement"></a>
 # **deleteCounterpartyAgreement**
-> AnnulSingleStructuredDataResponse deleteCounterpartyAgreement(scope, code)
+> AnnulSingleStructuredDataResponse deleteCounterpartyAgreement(scope, code).execute();
 
 [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code
 
-Delete the specified Counterparty Agreement from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
+Delete the specified Counterparty Agreement from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
 
 ### Example
 ```java
@@ -45,7 +45,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Counterparty Agreement to delete.
     String code = "code_example"; // String | The Counterparty Agreement to delete.
     try {
-      AnnulSingleStructuredDataResponse result = apiInstance.deleteCounterpartyAgreement(scope, code);
+      AnnulSingleStructuredDataResponse result = apiInstance.deleteCounterpartyAgreement(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#deleteCounterpartyAgreement");
@@ -87,11 +88,11 @@ public class Example {
 
 <a id="deleteCreditSupportAnnex"></a>
 # **deleteCreditSupportAnnex**
-> AnnulSingleStructuredDataResponse deleteCreditSupportAnnex(scope, code)
+> AnnulSingleStructuredDataResponse deleteCreditSupportAnnex(scope, code).execute();
 
 [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code
 
-Delete the specified Credit Support Annex from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
+Delete the specified Credit Support Annex from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
 
 ### Example
 ```java
@@ -116,7 +117,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Credit Support Annex to delete.
     String code = "code_example"; // String | The Credit Support Annex to delete.
     try {
-      AnnulSingleStructuredDataResponse result = apiInstance.deleteCreditSupportAnnex(scope, code);
+      AnnulSingleStructuredDataResponse result = apiInstance.deleteCreditSupportAnnex(scope, code)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#deleteCreditSupportAnnex");
@@ -158,7 +160,7 @@ public class Example {
 
 <a id="getCounterpartyAgreement"></a>
 # **getCounterpartyAgreement**
-> GetCounterpartyAgreementResponse getCounterpartyAgreement(scope, code, asAt)
+> GetCounterpartyAgreementResponse getCounterpartyAgreement(scope, code).asAt(asAt).execute();
 
 [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement
 
@@ -188,7 +190,9 @@ public class Example {
     String code = "code_example"; // String | The name of the Counterparty Agreement to retrieve the data for.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified.
     try {
-      GetCounterpartyAgreementResponse result = apiInstance.getCounterpartyAgreement(scope, code, asAt);
+      GetCounterpartyAgreementResponse result = apiInstance.getCounterpartyAgreement(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#getCounterpartyAgreement");
@@ -231,7 +235,7 @@ public class Example {
 
 <a id="getCreditSupportAnnex"></a>
 # **getCreditSupportAnnex**
-> GetCreditSupportAnnexResponse getCreditSupportAnnex(scope, code, asAt)
+> GetCreditSupportAnnexResponse getCreditSupportAnnex(scope, code).asAt(asAt).execute();
 
 [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex
 
@@ -261,7 +265,9 @@ public class Example {
     String code = "code_example"; // String | The name of the Credit Support Annex to retrieve the data for.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified.
     try {
-      GetCreditSupportAnnexResponse result = apiInstance.getCreditSupportAnnex(scope, code, asAt);
+      GetCreditSupportAnnexResponse result = apiInstance.getCreditSupportAnnex(scope, code)
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#getCreditSupportAnnex");
@@ -304,7 +310,7 @@ public class Example {
 
 <a id="listCounterpartyAgreements"></a>
 # **listCounterpartyAgreements**
-> ResourceListOfGetCounterpartyAgreementResponse listCounterpartyAgreements(asAt)
+> ResourceListOfGetCounterpartyAgreementResponse listCounterpartyAgreements().asAt(asAt).execute();
 
 [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements
 
@@ -332,7 +338,9 @@ public class Example {
     CounterpartiesApi apiInstance = new CounterpartiesApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified.
     try {
-      ResourceListOfGetCounterpartyAgreementResponse result = apiInstance.listCounterpartyAgreements(asAt);
+      ResourceListOfGetCounterpartyAgreementResponse result = apiInstance.listCounterpartyAgreements()
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#listCounterpartyAgreements");
@@ -373,7 +381,7 @@ public class Example {
 
 <a id="listCreditSupportAnnexes"></a>
 # **listCreditSupportAnnexes**
-> ResourceListOfGetCreditSupportAnnexResponse listCreditSupportAnnexes(asAt)
+> ResourceListOfGetCreditSupportAnnexResponse listCreditSupportAnnexes().asAt(asAt).execute();
 
 [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
 
@@ -401,7 +409,9 @@ public class Example {
     CounterpartiesApi apiInstance = new CounterpartiesApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified.
     try {
-      ResourceListOfGetCreditSupportAnnexResponse result = apiInstance.listCreditSupportAnnexes(asAt);
+      ResourceListOfGetCreditSupportAnnexResponse result = apiInstance.listCreditSupportAnnexes()
+            .asAt(asAt)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#listCreditSupportAnnexes");
@@ -442,11 +452,11 @@ public class Example {
 
 <a id="upsertCounterpartyAgreement"></a>
 # **upsertCounterpartyAgreement**
-> UpsertSingleStructuredDataResponse upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest)
+> UpsertSingleStructuredDataResponse upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest).execute();
 
 [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
 
-Update or insert Counterparty Agreement in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Counterparty Agreement or failure message if unsuccessful                It is important to always check to verify success (or failure).
+Update or insert Counterparty Agreement in a single scope. An item will be updated if it already exists and inserted if it does not.     The response will return the successfully updated or inserted Counterparty Agreement or failure message if unsuccessful     It is important to always check to verify success (or failure).
 
 ### Example
 ```java
@@ -470,7 +480,8 @@ public class Example {
     CounterpartiesApi apiInstance = new CounterpartiesApi(defaultClient);
     UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest = new UpsertCounterpartyAgreementRequest(); // UpsertCounterpartyAgreementRequest | The Counterparty Agreement to update or insert
     try {
-      UpsertSingleStructuredDataResponse result = apiInstance.upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest);
+      UpsertSingleStructuredDataResponse result = apiInstance.upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#upsertCounterpartyAgreement");
@@ -511,11 +522,11 @@ public class Example {
 
 <a id="upsertCreditSupportAnnex"></a>
 # **upsertCreditSupportAnnex**
-> UpsertSingleStructuredDataResponse upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest)
+> UpsertSingleStructuredDataResponse upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest).execute();
 
 [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
 
-Update or insert Credit Support Annex in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Credit Support Annex or failure message if unsuccessful                It is important to always check to verify success (or failure).
+Update or insert Credit Support Annex in a single scope. An item will be updated if it already exists and inserted if it does not.     The response will return the successfully updated or inserted Credit Support Annex or failure message if unsuccessful     It is important to always check to verify success (or failure).
 
 ### Example
 ```java
@@ -539,7 +550,8 @@ public class Example {
     CounterpartiesApi apiInstance = new CounterpartiesApi(defaultClient);
     UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest = new UpsertCreditSupportAnnexRequest(); // UpsertCreditSupportAnnexRequest | The Credit Support Annex to update or insert
     try {
-      UpsertSingleStructuredDataResponse result = apiInstance.upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest);
+      UpsertSingleStructuredDataResponse result = apiInstance.upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CounterpartiesApi#upsertCreditSupportAnnex");

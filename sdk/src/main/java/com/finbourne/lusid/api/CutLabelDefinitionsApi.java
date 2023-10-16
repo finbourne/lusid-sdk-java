@@ -75,21 +75,7 @@ public class CutLabelDefinitionsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createCutLabelDefinition
-     * @param createCutLabelDefinitionRequest The cut label definition (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCutLabelDefinitionCall(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCutLabelDefinitionCall(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -145,82 +131,121 @@ public class CutLabelDefinitionsApi {
 
     }
 
-    /**
-     * CreateCutLabelDefinition: Create a Cut Label
-     * Create a Cut Label valid in all scopes
-     * @param createCutLabelDefinitionRequest The cut label definition (optional)
-     * @return CutLabelDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CutLabelDefinition createCutLabelDefinition(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest) throws ApiException {
-        ApiResponse<CutLabelDefinition> localVarResp = createCutLabelDefinitionWithHttpInfo(createCutLabelDefinitionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * CreateCutLabelDefinition: Create a Cut Label
-     * Create a Cut Label valid in all scopes
-     * @param createCutLabelDefinitionRequest The cut label definition (optional)
-     * @return ApiResponse&lt;CutLabelDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CutLabelDefinition> createCutLabelDefinitionWithHttpInfo(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest) throws ApiException {
+    private ApiResponse<CutLabelDefinition> createCutLabelDefinitionWithHttpInfo(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest) throws ApiException {
         okhttp3.Call localVarCall = createCutLabelDefinitionValidateBeforeCall(createCutLabelDefinitionRequest, null);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * CreateCutLabelDefinition: Create a Cut Label (asynchronously)
-     * Create a Cut Label valid in all scopes
-     * @param createCutLabelDefinitionRequest The cut label definition (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCutLabelDefinitionAsync(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+    private okhttp3.Call createCutLabelDefinitionAsync(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createCutLabelDefinitionValidateBeforeCall(createCutLabelDefinitionRequest, _callback);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateCutLabelDefinitionRequest {
+        private CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest;
+
+        private APIcreateCutLabelDefinitionRequest() {
+        }
+
+        /**
+         * Set createCutLabelDefinitionRequest
+         * @param createCutLabelDefinitionRequest The cut label definition (optional)
+         * @return APIcreateCutLabelDefinitionRequest
+         */
+        public APIcreateCutLabelDefinitionRequest createCutLabelDefinitionRequest(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest) {
+            this.createCutLabelDefinitionRequest = createCutLabelDefinitionRequest;
+            return this;
+        }
+
+        /**
+         * Build call for createCutLabelDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createCutLabelDefinitionCall(createCutLabelDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createCutLabelDefinition request
+         * @return CutLabelDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CutLabelDefinition execute() throws ApiException {
+            ApiResponse<CutLabelDefinition> localVarResp = createCutLabelDefinitionWithHttpInfo(createCutLabelDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createCutLabelDefinition request with HTTP info returned
+         * @return ApiResponse&lt;CutLabelDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CutLabelDefinition> executeWithHttpInfo() throws ApiException {
+            return createCutLabelDefinitionWithHttpInfo(createCutLabelDefinitionRequest);
+        }
+
+        /**
+         * Execute createCutLabelDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+            return createCutLabelDefinitionAsync(createCutLabelDefinitionRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteCutLabelDefinition
-     * @param code The Code of the Cut Label that is being Deleted (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * CreateCutLabelDefinition: Create a Cut Label
+     * Create a Cut Label valid in all scopes
+     * @return APIcreateCutLabelDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created cut label </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCutLabelDefinitionCall(String code, final ApiCallback _callback) throws ApiException {
+    public APIcreateCutLabelDefinitionRequest createCutLabelDefinition() {
+        return new APIcreateCutLabelDefinitionRequest();
+    }
+    private okhttp3.Call deleteCutLabelDefinitionCall(String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -278,83 +303,113 @@ public class CutLabelDefinitionsApi {
 
     }
 
-    /**
-     * DeleteCutLabelDefinition: Delete a Cut Label
-     * Delete a specified cut label
-     * @param code The Code of the Cut Label that is being Deleted (required)
-     * @return OffsetDateTime
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public OffsetDateTime deleteCutLabelDefinition(String code) throws ApiException {
-        ApiResponse<OffsetDateTime> localVarResp = deleteCutLabelDefinitionWithHttpInfo(code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * DeleteCutLabelDefinition: Delete a Cut Label
-     * Delete a specified cut label
-     * @param code The Code of the Cut Label that is being Deleted (required)
-     * @return ApiResponse&lt;OffsetDateTime&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<OffsetDateTime> deleteCutLabelDefinitionWithHttpInfo(String code) throws ApiException {
+    private ApiResponse<OffsetDateTime> deleteCutLabelDefinitionWithHttpInfo(String code) throws ApiException {
         okhttp3.Call localVarCall = deleteCutLabelDefinitionValidateBeforeCall(code, null);
         Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * DeleteCutLabelDefinition: Delete a Cut Label (asynchronously)
-     * Delete a specified cut label
-     * @param code The Code of the Cut Label that is being Deleted (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCutLabelDefinitionAsync(String code, final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+    private okhttp3.Call deleteCutLabelDefinitionAsync(String code, final ApiCallback<OffsetDateTime> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCutLabelDefinitionValidateBeforeCall(code, _callback);
         Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCutLabelDefinitionRequest {
+        private final String code;
+
+        private APIdeleteCutLabelDefinitionRequest(String code) {
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteCutLabelDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCutLabelDefinitionCall(code, _callback);
+        }
+
+        /**
+         * Execute deleteCutLabelDefinition request
+         * @return OffsetDateTime
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffsetDateTime execute() throws ApiException {
+            ApiResponse<OffsetDateTime> localVarResp = deleteCutLabelDefinitionWithHttpInfo(code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCutLabelDefinition request with HTTP info returned
+         * @return ApiResponse&lt;OffsetDateTime&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffsetDateTime> executeWithHttpInfo() throws ApiException {
+            return deleteCutLabelDefinitionWithHttpInfo(code);
+        }
+
+        /**
+         * Execute deleteCutLabelDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+            return deleteCutLabelDefinitionAsync(code, _callback);
+        }
+    }
+
     /**
-     * Build call for getCutLabelDefinition
-     * @param code The Code of the Cut Label that is being queried (required)
-     * @param asAt The time at which to get the Cut Label (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * DeleteCutLabelDefinition: Delete a Cut Label
+     * Delete a specified cut label
+     * @param code The Code of the Cut Label that is being Deleted (required)
+     * @return APIdeleteCutLabelDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The time of deletion </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCutLabelDefinitionCall(String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCutLabelDefinitionRequest deleteCutLabelDefinition(String code) {
+        return new APIdeleteCutLabelDefinitionRequest(code);
+    }
+    private okhttp3.Call getCutLabelDefinitionCall(String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -416,90 +471,124 @@ public class CutLabelDefinitionsApi {
 
     }
 
-    /**
-     * GetCutLabelDefinition: Get a Cut Label
-     * Get a specified cut label at a given time
-     * @param code The Code of the Cut Label that is being queried (required)
-     * @param asAt The time at which to get the Cut Label (optional)
-     * @return CutLabelDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CutLabelDefinition getCutLabelDefinition(String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<CutLabelDefinition> localVarResp = getCutLabelDefinitionWithHttpInfo(code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetCutLabelDefinition: Get a Cut Label
-     * Get a specified cut label at a given time
-     * @param code The Code of the Cut Label that is being queried (required)
-     * @param asAt The time at which to get the Cut Label (optional)
-     * @return ApiResponse&lt;CutLabelDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CutLabelDefinition> getCutLabelDefinitionWithHttpInfo(String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<CutLabelDefinition> getCutLabelDefinitionWithHttpInfo(String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCutLabelDefinitionValidateBeforeCall(code, asAt, null);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetCutLabelDefinition: Get a Cut Label (asynchronously)
-     * Get a specified cut label at a given time
-     * @param code The Code of the Cut Label that is being queried (required)
-     * @param asAt The time at which to get the Cut Label (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCutLabelDefinitionAsync(String code, OffsetDateTime asAt, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+    private okhttp3.Call getCutLabelDefinitionAsync(String code, OffsetDateTime asAt, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCutLabelDefinitionValidateBeforeCall(code, asAt, _callback);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCutLabelDefinitionRequest {
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetCutLabelDefinitionRequest(String code) {
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The time at which to get the Cut Label (optional)
+         * @return APIgetCutLabelDefinitionRequest
+         */
+        public APIgetCutLabelDefinitionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCutLabelDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCutLabelDefinitionCall(code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCutLabelDefinition request
+         * @return CutLabelDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CutLabelDefinition execute() throws ApiException {
+            ApiResponse<CutLabelDefinition> localVarResp = getCutLabelDefinitionWithHttpInfo(code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCutLabelDefinition request with HTTP info returned
+         * @return ApiResponse&lt;CutLabelDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CutLabelDefinition> executeWithHttpInfo() throws ApiException {
+            return getCutLabelDefinitionWithHttpInfo(code, asAt);
+        }
+
+        /**
+         * Execute getCutLabelDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+            return getCutLabelDefinitionAsync(code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listCutLabelDefinitions
-     * @param asAt Optional. The As At time at which listed Cut Labels are valid (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetCutLabelDefinition: Get a Cut Label
+     * Get a specified cut label at a given time
+     * @param code The Code of the Cut Label that is being queried (required)
+     * @return APIgetCutLabelDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested cut label </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCutLabelDefinitionsCall(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+    public APIgetCutLabelDefinitionRequest getCutLabelDefinition(String code) {
+        return new APIgetCutLabelDefinitionRequest(code);
+    }
+    private okhttp3.Call listCutLabelDefinitionsCall(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -575,98 +664,176 @@ public class CutLabelDefinitionsApi {
 
     }
 
-    /**
-     * ListCutLabelDefinitions: List Existing Cut Labels
-     * List all the Cut Label Definitions that are valid at the given AsAt time
-     * @param asAt Optional. The As At time at which listed Cut Labels are valid (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @return PagedResourceListOfCutLabelDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfCutLabelDefinition listCutLabelDefinitions(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page) throws ApiException {
-        ApiResponse<PagedResourceListOfCutLabelDefinition> localVarResp = listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, start, limit, filter, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListCutLabelDefinitions: List Existing Cut Labels
-     * List all the Cut Label Definitions that are valid at the given AsAt time
-     * @param asAt Optional. The As At time at which listed Cut Labels are valid (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfCutLabelDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfCutLabelDefinition> listCutLabelDefinitionsWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page) throws ApiException {
+    private ApiResponse<PagedResourceListOfCutLabelDefinition> listCutLabelDefinitionsWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page) throws ApiException {
         okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, start, limit, filter, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCutLabelDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListCutLabelDefinitions: List Existing Cut Labels (asynchronously)
-     * List all the Cut Label Definitions that are valid at the given AsAt time
-     * @param asAt Optional. The As At time at which listed Cut Labels are valid (optional)
-     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
-     * @param start Optional. When paginating, skip this number of results (optional)
-     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCutLabelDefinitionsAsync(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
+    private okhttp3.Call listCutLabelDefinitionsAsync(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, start, limit, filter, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCutLabelDefinitionsRequest {
+        private OffsetDateTime asAt;
+        private List<String> sortBy;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private String page;
+
+        private APIlistCutLabelDefinitionsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The As At time at which listed Cut Labels are valid (optional)
+         * @return APIlistCutLabelDefinitionsRequest
+         */
+        public APIlistCutLabelDefinitionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+         * @return APIlistCutLabelDefinitionsRequest
+         */
+        public APIlistCutLabelDefinitionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start Optional. When paginating, skip this number of results (optional)
+         * @return APIlistCutLabelDefinitionsRequest
+         */
+        public APIlistCutLabelDefinitionsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistCutLabelDefinitionsRequest
+         */
+        public APIlistCutLabelDefinitionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set.   For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistCutLabelDefinitionsRequest
+         */
+        public APIlistCutLabelDefinitionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistCutLabelDefinitionsRequest
+         */
+        public APIlistCutLabelDefinitionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for listCutLabelDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCutLabelDefinitionsCall(asAt, sortBy, start, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listCutLabelDefinitions request
+         * @return PagedResourceListOfCutLabelDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCutLabelDefinition execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCutLabelDefinition> localVarResp = listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, start, limit, filter, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCutLabelDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCutLabelDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCutLabelDefinition> executeWithHttpInfo() throws ApiException {
+            return listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, start, limit, filter, page);
+        }
+
+        /**
+         * Execute listCutLabelDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
+            return listCutLabelDefinitionsAsync(asAt, sortBy, start, limit, filter, page, _callback);
+        }
+    }
+
     /**
-     * Build call for updateCutLabelDefinition
-     * @param code The Code of the Cut Label that is being updated (required)
-     * @param updateCutLabelDefinitionRequest The cut label update definition (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * ListCutLabelDefinitions: List Existing Cut Labels
+     * List all the Cut Label Definitions that are valid at the given AsAt time
+     * @return APIlistCutLabelDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of cut labels </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCutLabelDefinitionCall(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistCutLabelDefinitionsRequest listCutLabelDefinitions() {
+        return new APIlistCutLabelDefinitionsRequest();
+    }
+    private okhttp3.Call updateCutLabelDefinitionCall(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -728,55 +895,112 @@ public class CutLabelDefinitionsApi {
 
     }
 
-    /**
-     * UpdateCutLabelDefinition: Update a Cut Label
-     * Update a specified cut label
-     * @param code The Code of the Cut Label that is being updated (required)
-     * @param updateCutLabelDefinitionRequest The cut label update definition (optional)
-     * @return CutLabelDefinition
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CutLabelDefinition updateCutLabelDefinition(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest) throws ApiException {
-        ApiResponse<CutLabelDefinition> localVarResp = updateCutLabelDefinitionWithHttpInfo(code, updateCutLabelDefinitionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpdateCutLabelDefinition: Update a Cut Label
-     * Update a specified cut label
-     * @param code The Code of the Cut Label that is being updated (required)
-     * @param updateCutLabelDefinitionRequest The cut label update definition (optional)
-     * @return ApiResponse&lt;CutLabelDefinition&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CutLabelDefinition> updateCutLabelDefinitionWithHttpInfo(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest) throws ApiException {
+    private ApiResponse<CutLabelDefinition> updateCutLabelDefinitionWithHttpInfo(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest) throws ApiException {
         okhttp3.Call localVarCall = updateCutLabelDefinitionValidateBeforeCall(code, updateCutLabelDefinitionRequest, null);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call updateCutLabelDefinitionAsync(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateCutLabelDefinitionValidateBeforeCall(code, updateCutLabelDefinitionRequest, _callback);
+        Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateCutLabelDefinitionRequest {
+        private final String code;
+        private UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest;
+
+        private APIupdateCutLabelDefinitionRequest(String code) {
+            this.code = code;
+        }
+
+        /**
+         * Set updateCutLabelDefinitionRequest
+         * @param updateCutLabelDefinitionRequest The cut label update definition (optional)
+         * @return APIupdateCutLabelDefinitionRequest
+         */
+        public APIupdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest(UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest) {
+            this.updateCutLabelDefinitionRequest = updateCutLabelDefinitionRequest;
+            return this;
+        }
+
+        /**
+         * Build call for updateCutLabelDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateCutLabelDefinitionCall(code, updateCutLabelDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute updateCutLabelDefinition request
+         * @return CutLabelDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CutLabelDefinition execute() throws ApiException {
+            ApiResponse<CutLabelDefinition> localVarResp = updateCutLabelDefinitionWithHttpInfo(code, updateCutLabelDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateCutLabelDefinition request with HTTP info returned
+         * @return ApiResponse&lt;CutLabelDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CutLabelDefinition> executeWithHttpInfo() throws ApiException {
+            return updateCutLabelDefinitionWithHttpInfo(code, updateCutLabelDefinitionRequest);
+        }
+
+        /**
+         * Execute updateCutLabelDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated cut label </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+            return updateCutLabelDefinitionAsync(code, updateCutLabelDefinitionRequest, _callback);
+        }
+    }
+
     /**
-     * UpdateCutLabelDefinition: Update a Cut Label (asynchronously)
+     * UpdateCutLabelDefinition: Update a Cut Label
      * Update a specified cut label
      * @param code The Code of the Cut Label that is being updated (required)
-     * @param updateCutLabelDefinitionRequest The cut label update definition (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupdateCutLabelDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -785,11 +1009,7 @@ public class CutLabelDefinitionsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCutLabelDefinitionAsync(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateCutLabelDefinitionValidateBeforeCall(code, updateCutLabelDefinitionRequest, _callback);
-        Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupdateCutLabelDefinitionRequest updateCutLabelDefinition(String code) {
+        return new APIupdateCutLabelDefinitionRequest(code);
     }
 }

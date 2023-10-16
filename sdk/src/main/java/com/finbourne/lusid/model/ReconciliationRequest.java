@@ -284,36 +284,29 @@ public class ReconciliationRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReconciliationRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ReconciliationRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ReconciliationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ReconciliationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReconciliationRequest is not found in the empty JSON string", ReconciliationRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ReconciliationRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReconciliationRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ReconciliationRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `left`
-      ValuationRequest.validateJsonObject(jsonObj.getAsJsonObject("left"));
+      ValuationRequest.validateJsonElement(jsonObj.get("left"));
       // validate the required field `right`
-      ValuationRequest.validateJsonObject(jsonObj.getAsJsonObject("right"));
+      ValuationRequest.validateJsonElement(jsonObj.get("right"));
       if (jsonObj.get("leftToRightMapping") != null && !jsonObj.get("leftToRightMapping").isJsonNull()) {
         JsonArray jsonArrayleftToRightMapping = jsonObj.getAsJsonArray("leftToRightMapping");
         if (jsonArrayleftToRightMapping != null) {
@@ -324,7 +317,7 @@ public class ReconciliationRequest {
 
           // validate the optional field `leftToRightMapping` (array)
           for (int i = 0; i < jsonArrayleftToRightMapping.size(); i++) {
-            ReconciliationLeftRightAddressKeyPair.validateJsonObject(jsonArrayleftToRightMapping.get(i).getAsJsonObject());
+            ReconciliationLeftRightAddressKeyPair.validateJsonElement(jsonArrayleftToRightMapping.get(i));
           };
         }
       }
@@ -338,12 +331,12 @@ public class ReconciliationRequest {
 
           // validate the optional field `comparisonRules` (array)
           for (int i = 0; i < jsonArraycomparisonRules.size(); i++) {
-            ReconciliationRule.validateJsonObject(jsonArraycomparisonRules.get(i).getAsJsonObject());
+            ReconciliationRule.validateJsonElement(jsonArraycomparisonRules.get(i));
           };
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("preserveKeys") != null && !jsonObj.get("preserveKeys").isJsonArray()) {
+      if (jsonObj.get("preserveKeys") != null && !jsonObj.get("preserveKeys").isJsonNull() && !jsonObj.get("preserveKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `preserveKeys` to be an array in the JSON string but got `%s`", jsonObj.get("preserveKeys").toString()));
       }
   }
@@ -368,9 +361,9 @@ public class ReconciliationRequest {
 
            @Override
            public ReconciliationRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

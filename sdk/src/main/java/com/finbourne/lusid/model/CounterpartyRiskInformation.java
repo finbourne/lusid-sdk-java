@@ -208,32 +208,25 @@ public class CounterpartyRiskInformation {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CounterpartyRiskInformation
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CounterpartyRiskInformation
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CounterpartyRiskInformation.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CounterpartyRiskInformation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CounterpartyRiskInformation is not found in the empty JSON string", CounterpartyRiskInformation.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CounterpartyRiskInformation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CounterpartyRiskInformation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CounterpartyRiskInformation.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("countryOfRisk").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `countryOfRisk` to be a primitive type in the JSON string but got `%s`", jsonObj.get("countryOfRisk").toString()));
       }
@@ -245,7 +238,7 @@ public class CounterpartyRiskInformation {
       JsonArray jsonArraycreditRatings = jsonObj.getAsJsonArray("creditRatings");
       // validate the required field `creditRatings` (array)
       for (int i = 0; i < jsonArraycreditRatings.size(); i++) {
-        CreditRating.validateJsonObject(jsonArraycreditRatings.get(i).getAsJsonObject());
+        CreditRating.validateJsonElement(jsonArraycreditRatings.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("industryClassifiers").isJsonArray()) {
@@ -255,7 +248,7 @@ public class CounterpartyRiskInformation {
       JsonArray jsonArrayindustryClassifiers = jsonObj.getAsJsonArray("industryClassifiers");
       // validate the required field `industryClassifiers` (array)
       for (int i = 0; i < jsonArrayindustryClassifiers.size(); i++) {
-        IndustryClassifier.validateJsonObject(jsonArrayindustryClassifiers.get(i).getAsJsonObject());
+        IndustryClassifier.validateJsonElement(jsonArrayindustryClassifiers.get(i));
       };
   }
 
@@ -279,9 +272,9 @@ public class CounterpartyRiskInformation {
 
            @Override
            public CounterpartyRiskInformation read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -257,25 +257,18 @@ public class PricingContext {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PricingContext
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PricingContext
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PricingContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PricingContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PricingContext is not found in the empty JSON string", PricingContext.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!PricingContext.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PricingContext` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("modelRules") != null && !jsonObj.get("modelRules").isJsonNull()) {
         JsonArray jsonArraymodelRules = jsonObj.getAsJsonArray("modelRules");
         if (jsonArraymodelRules != null) {
@@ -286,13 +279,13 @@ public class PricingContext {
 
           // validate the optional field `modelRules` (array)
           for (int i = 0; i < jsonArraymodelRules.size(); i++) {
-            VendorModelRule.validateJsonObject(jsonArraymodelRules.get(i).getAsJsonObject());
+            VendorModelRule.validateJsonElement(jsonArraymodelRules.get(i));
           };
         }
       }
       // validate the optional field `options`
       if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {
-        PricingOptions.validateJsonObject(jsonObj.getAsJsonObject("options"));
+        PricingOptions.validateJsonElement(jsonObj.get("options"));
       }
       if (jsonObj.get("resultDataRules") != null && !jsonObj.get("resultDataRules").isJsonNull()) {
         JsonArray jsonArrayresultDataRules = jsonObj.getAsJsonArray("resultDataRules");
@@ -304,7 +297,7 @@ public class PricingContext {
 
           // validate the optional field `resultDataRules` (array)
           for (int i = 0; i < jsonArrayresultDataRules.size(); i++) {
-            ResultKeyRule.validateJsonObject(jsonArrayresultDataRules.get(i).getAsJsonObject());
+            ResultKeyRule.validateJsonElement(jsonArrayresultDataRules.get(i));
           };
         }
       }
@@ -330,9 +323,9 @@ public class PricingContext {
 
            @Override
            public PricingContext read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

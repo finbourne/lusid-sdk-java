@@ -111,25 +111,7 @@ public class TransactionPortfoliosApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for adjustHoldings
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the              transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -215,98 +197,133 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * AdjustHoldings: Adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the              transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @return AdjustHolding
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AdjustHolding adjustHoldings(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
-        ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
-        return localVarResp.getData();
-    }
 
-    /**
-     * AdjustHoldings: Adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the              transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @return ApiResponse&lt;AdjustHolding&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
+    private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
         okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * AdjustHoldings: Adjust holdings (asynchronously)
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the              transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
+    private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIadjustHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+        private final List<AdjustHoldingRequest> adjustHoldingRequest;
+        private List<String> reconciliationMethods;
+
+        private APIadjustHoldingsRequest(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+            this.adjustHoldingRequest = adjustHoldingRequest;
+        }
+
+        /**
+         * Set reconciliationMethods
+         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
+         * @return APIadjustHoldingsRequest
+         */
+        public APIadjustHoldingsRequest reconciliationMethods(List<String> reconciliationMethods) {
+            this.reconciliationMethods = reconciliationMethods;
+            return this;
+        }
+
+        /**
+         * Build call for adjustHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute adjustHoldings request
+         * @return AdjustHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AdjustHolding execute() throws ApiException {
+            ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute adjustHoldings request with HTTP info returned
+         * @return ApiResponse&lt;AdjustHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
+            return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+        }
+
+        /**
+         * Execute adjustHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
+            return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        }
+    }
+
     /**
-     * Build call for batchAdjustHoldings
+     * AdjustHoldings: Adjust holdings
+     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The selected set of holdings to adjust to the provided targets for the               transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
+     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the   transaction portfolio. (required)
+     * @return APIadjustHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call batchAdjustHoldingsCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+    public APIadjustHoldingsRequest adjustHoldings(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
+        return new APIadjustHoldingsRequest(scope, code, effectiveAt, adjustHoldingRequest);
+    }
+    private okhttp3.Call batchAdjustHoldingsCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -392,97 +409,133 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.                Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The selected set of holdings to adjust to the provided targets for the               transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @return BatchAdjustHoldingsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BatchAdjustHoldingsResponse batchAdjustHoldings(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods) throws ApiException {
-        ApiResponse<BatchAdjustHoldingsResponse> localVarResp = batchAdjustHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.                Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The selected set of holdings to adjust to the provided targets for the               transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @return ApiResponse&lt;BatchAdjustHoldingsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BatchAdjustHoldingsResponse> batchAdjustHoldingsWithHttpInfo(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods) throws ApiException {
+    private ApiResponse<BatchAdjustHoldingsResponse> batchAdjustHoldingsWithHttpInfo(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods) throws ApiException {
         okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, null);
         Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings (asynchronously)
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.                Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The selected set of holdings to adjust to the provided targets for the               transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call batchAdjustHoldingsAsync(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
+    private okhttp3.Call batchAdjustHoldingsAsync(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, _callback);
         Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIbatchAdjustHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private final String successMode;
+        private final Map<String, AdjustHoldingForDateRequest> requestBody;
+        private List<String> reconciliationMethods;
+
+        private APIbatchAdjustHoldingsRequest(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set reconciliationMethods
+         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
+         * @return APIbatchAdjustHoldingsRequest
+         */
+        public APIbatchAdjustHoldingsRequest reconciliationMethods(List<String> reconciliationMethods) {
+            this.reconciliationMethods = reconciliationMethods;
+            return this;
+        }
+
+        /**
+         * Build call for batchAdjustHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchAdjustHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute batchAdjustHoldings request
+         * @return BatchAdjustHoldingsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAdjustHoldingsResponse execute() throws ApiException {
+            ApiResponse<BatchAdjustHoldingsResponse> localVarResp = batchAdjustHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchAdjustHoldings request with HTTP info returned
+         * @return ApiResponse&lt;BatchAdjustHoldingsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAdjustHoldingsResponse> executeWithHttpInfo() throws ApiException {
+            return batchAdjustHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods);
+        }
+
+        /**
+         * Execute batchAdjustHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
+            return batchAdjustHoldingsAsync(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        }
+    }
+
     /**
-     * Build call for batchUpsertTransactions
+     * [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings
+     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
-     * @param requestBody The payload describing the transactions to be created or updated. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
+     * @param requestBody The selected set of holdings to adjust to the provided targets for the   transaction portfolio. (required)
+     * @return APIbatchAdjustHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIbatchAdjustHoldingsRequest batchAdjustHoldings(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
+        return new APIbatchAdjustHoldingsRequest(scope, code, successMode, requestBody);
+    }
+    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -564,98 +617,122 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
-     * @param requestBody The payload describing the transactions to be created or updated. (required)
-     * @return BatchUpsertPortfolioTransactionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BatchUpsertPortfolioTransactionsResponse batchUpsertTransactions(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) throws ApiException {
-        ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
-     * @param requestBody The payload describing the transactions to be created or updated. (required)
-     * @return ApiResponse&lt;BatchUpsertPortfolioTransactionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) throws ApiException {
+    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) throws ApiException {
         okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, null);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions (asynchronously)
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
-     * @param requestBody The payload describing the transactions to be created or updated. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, _callback);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIbatchUpsertTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private final String successMode;
+        private final Map<String, TransactionRequest> requestBody;
+
+        private APIbatchUpsertTransactionsRequest(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for batchUpsertTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchUpsertTransactionsCall(scope, code, successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute batchUpsertTransactions request
+         * @return BatchUpsertPortfolioTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertPortfolioTransactionsResponse execute() throws ApiException {
+            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertTransactions request with HTTP info returned
+         * @return ApiResponse&lt;BatchUpsertPortfolioTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
+            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody);
+        }
+
+        /**
+         * Execute batchUpsertTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for buildTransactions
+     * [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions
+     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
-     * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest              version of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to BuildTransactions. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
+     * @param requestBody The payload describing the transactions to be created or updated. (required)
+     * @return APIbatchUpsertTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    public APIbatchUpsertTransactionsRequest batchUpsertTransactions(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) {
+        return new APIbatchUpsertTransactionsRequest(scope, code, successMode, requestBody);
+    }
+    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -748,105 +825,174 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * BuildTransactions: Build transactions
-     * Builds and returns all transactions that affect the holdings of a portfolio over a given interval of  effective time into a set of output transactions. This includes transactions automatically generated by  LUSID such as holding adjustments.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
-     * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest              version of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to BuildTransactions. (optional)
-     * @return VersionedResourceListOfOutputTransaction
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfOutputTransaction buildTransactions(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page) throws ApiException {
-        ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
-        return localVarResp.getData();
-    }
 
-    /**
-     * BuildTransactions: Build transactions
-     * Builds and returns all transactions that affect the holdings of a portfolio over a given interval of  effective time into a set of output transactions. This includes transactions automatically generated by  LUSID such as holding adjustments.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
-     * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest              version of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to BuildTransactions. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfOutputTransaction&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page) throws ApiException {
+    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * BuildTransactions: Build transactions (asynchronously)
-     * Builds and returns all transactions that affect the holdings of a portfolio over a given interval of  effective time into a set of output transactions. This includes transactions automatically generated by  LUSID such as holding adjustments.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
-     * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest              version of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to BuildTransactions. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
+    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIbuildTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private final TransactionQueryParameters transactionQueryParameters;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private Integer limit;
+        private String page;
+
+        private APIbuildTransactionsRequest(String scope, String code, TransactionQueryParameters transactionQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionQueryParameters = transactionQueryParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing transactions from a previous call to BuildTransactions. (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for buildTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+        }
+
+        /**
+         * Execute buildTransactions request
+         * @return VersionedResourceListOfOutputTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfOutputTransaction execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute buildTransactions request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfOutputTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo() throws ApiException {
+            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
+        }
+
+        /**
+         * Execute buildTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
+            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+        }
+    }
+
     /**
-     * Build call for cancelAdjustHoldings
+     * BuildTransactions: Build transactions
+     * Builds and returns all transactions that affect the holdings of a portfolio over a given interval of  effective time into a set of output transactions. This includes transactions automatically generated by  LUSID such as holding adjustments.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holding adjustments should be undone. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
+     * @return APIbuildTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelAdjustHoldingsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIbuildTransactionsRequest buildTransactions(String scope, String code, TransactionQueryParameters transactionQueryParameters) {
+        return new APIbuildTransactionsRequest(scope, code, transactionQueryParameters);
+    }
+    private okhttp3.Call cancelAdjustHoldingsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -919,90 +1065,119 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * CancelAdjustHoldings: Cancel adjust holdings
-     * Cancel all previous holding adjustments made on the specified transaction portfolio for a specified effective  datetime. This should be used to undo holding adjustments made via set holdings or adjust holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holding adjustments should be undone. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse cancelAdjustHoldings(String scope, String code, String effectiveAt) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = cancelAdjustHoldingsWithHttpInfo(scope, code, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * CancelAdjustHoldings: Cancel adjust holdings
-     * Cancel all previous holding adjustments made on the specified transaction portfolio for a specified effective  datetime. This should be used to undo holding adjustments made via set holdings or adjust holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holding adjustments should be undone. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> cancelAdjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> cancelAdjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * CancelAdjustHoldings: Cancel adjust holdings (asynchronously)
-     * Cancel all previous holding adjustments made on the specified transaction portfolio for a specified effective  datetime. This should be used to undo holding adjustments made via set holdings or adjust holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holding adjustments should be undone. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cancelAdjustHoldingsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call cancelAdjustHoldingsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcancelAdjustHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+
+        private APIcancelAdjustHoldingsRequest(String scope, String code, String effectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+        }
+
+        /**
+         * Build call for cancelAdjustHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelAdjustHoldingsCall(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute cancelAdjustHoldings request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = cancelAdjustHoldingsWithHttpInfo(scope, code, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelAdjustHoldings request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return cancelAdjustHoldingsWithHttpInfo(scope, code, effectiveAt);
+        }
+
+        /**
+         * Execute cancelAdjustHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return cancelAdjustHoldingsAsync(scope, code, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for cancelTransactions
+     * CancelAdjustHoldings: Cancel adjust holdings
+     * Cancel all previous holding adjustments made on the specified transaction portfolio for a specified effective  datetime. This should be used to undo holding adjustments made via set holdings or adjust holdings.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionIds The IDs of the transactions to cancel. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param effectiveAt The effective datetime or cut label at which the holding adjustments should be undone. (required)
+     * @return APIcancelAdjustHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelTransactionsCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback) throws ApiException {
+    public APIcancelAdjustHoldingsRequest cancelAdjustHoldings(String scope, String code, String effectiveAt) {
+        return new APIcancelAdjustHoldingsRequest(scope, code, effectiveAt);
+    }
+    private okhttp3.Call cancelTransactionsCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1075,89 +1250,119 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * CancelTransactions: Cancel transactions
-     * Cancel one or more transactions from the transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionIds The IDs of the transactions to cancel. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse cancelTransactions(String scope, String code, List<String> transactionIds) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = cancelTransactionsWithHttpInfo(scope, code, transactionIds);
-        return localVarResp.getData();
-    }
 
-    /**
-     * CancelTransactions: Cancel transactions
-     * Cancel one or more transactions from the transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionIds The IDs of the transactions to cancel. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> cancelTransactionsWithHttpInfo(String scope, String code, List<String> transactionIds) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> cancelTransactionsWithHttpInfo(String scope, String code, List<String> transactionIds) throws ApiException {
         okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * CancelTransactions: Cancel transactions (asynchronously)
-     * Cancel one or more transactions from the transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionIds The IDs of the transactions to cancel. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cancelTransactionsAsync(String scope, String code, List<String> transactionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call cancelTransactionsAsync(String scope, String code, List<String> transactionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcancelTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> transactionIds;
+
+        private APIcancelTransactionsRequest(String scope, String code, List<String> transactionIds) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionIds = transactionIds;
+        }
+
+        /**
+         * Build call for cancelTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelTransactionsCall(scope, code, transactionIds, _callback);
+        }
+
+        /**
+         * Execute cancelTransactions request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = cancelTransactionsWithHttpInfo(scope, code, transactionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelTransactions request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return cancelTransactionsWithHttpInfo(scope, code, transactionIds);
+        }
+
+        /**
+         * Execute cancelTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return cancelTransactionsAsync(scope, code, transactionIds, _callback);
+        }
+    }
+
     /**
-     * Build call for createPortfolio
-     * @param scope The scope in which to create the transaction portfolio. (required)
-     * @param createTransactionPortfolioRequest The definition of the transaction portfolio. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * CancelTransactions: Cancel transactions
+     * Cancel one or more transactions from the transaction portfolio.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionIds The IDs of the transactions to cancel. (required)
+     * @return APIcancelTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPortfolioCall(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
+    public APIcancelTransactionsRequest cancelTransactions(String scope, String code, List<String> transactionIds) {
+        return new APIcancelTransactionsRequest(scope, code, transactionIds);
+    }
+    private okhttp3.Call createPortfolioCall(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1224,87 +1429,116 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * CreatePortfolio: Create portfolio
-     * Create a transaction portfolio in a particular scope.
-     * @param scope The scope in which to create the transaction portfolio. (required)
-     * @param createTransactionPortfolioRequest The definition of the transaction portfolio. (required)
-     * @return Portfolio
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public Portfolio createPortfolio(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest) throws ApiException {
-        ApiResponse<Portfolio> localVarResp = createPortfolioWithHttpInfo(scope, createTransactionPortfolioRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * CreatePortfolio: Create portfolio
-     * Create a transaction portfolio in a particular scope.
-     * @param scope The scope in which to create the transaction portfolio. (required)
-     * @param createTransactionPortfolioRequest The definition of the transaction portfolio. (required)
-     * @return ApiResponse&lt;Portfolio&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Portfolio> createPortfolioWithHttpInfo(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest) throws ApiException {
+    private ApiResponse<Portfolio> createPortfolioWithHttpInfo(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest) throws ApiException {
         okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, null);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * CreatePortfolio: Create portfolio (asynchronously)
-     * Create a transaction portfolio in a particular scope.
-     * @param scope The scope in which to create the transaction portfolio. (required)
-     * @param createTransactionPortfolioRequest The definition of the transaction portfolio. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
+    private okhttp3.Call createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreatePortfolioRequest {
+        private final String scope;
+        private final CreateTransactionPortfolioRequest createTransactionPortfolioRequest;
+
+        private APIcreatePortfolioRequest(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest) {
+            this.scope = scope;
+            this.createTransactionPortfolioRequest = createTransactionPortfolioRequest;
+        }
+
+        /**
+         * Build call for createPortfolio
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createPortfolioCall(scope, createTransactionPortfolioRequest, _callback);
+        }
+
+        /**
+         * Execute createPortfolio request
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute() throws ApiException {
+            ApiResponse<Portfolio> localVarResp = createPortfolioWithHttpInfo(scope, createTransactionPortfolioRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createPortfolio request with HTTP info returned
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
+            return createPortfolioWithHttpInfo(scope, createTransactionPortfolioRequest);
+        }
+
+        /**
+         * Execute createPortfolio request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
+            return createPortfolioAsync(scope, createTransactionPortfolioRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for createTradeTicket
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param lusidTradeTicket the trade ticket to upsert (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * CreatePortfolio: Create portfolio
+     * Create a transaction portfolio in a particular scope.
+     * @param scope The scope in which to create the transaction portfolio. (required)
+     * @param createTransactionPortfolioRequest The definition of the transaction portfolio. (required)
+     * @return APIcreatePortfolioRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTradeTicketCall(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback _callback) throws ApiException {
+    public APIcreatePortfolioRequest createPortfolio(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest) {
+        return new APIcreatePortfolioRequest(scope, createTransactionPortfolioRequest);
+    }
+    private okhttp3.Call createTradeTicketCall(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1372,91 +1606,127 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] CreateTradeTicket: Create Trade Ticket
-     * Upsert a trade ticket. This is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param lusidTradeTicket the trade ticket to upsert (optional)
-     * @return LusidTradeTicket
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public LusidTradeTicket createTradeTicket(String scope, String code, LusidTradeTicket lusidTradeTicket) throws ApiException {
-        ApiResponse<LusidTradeTicket> localVarResp = createTradeTicketWithHttpInfo(scope, code, lusidTradeTicket);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] CreateTradeTicket: Create Trade Ticket
-     * Upsert a trade ticket. This is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param lusidTradeTicket the trade ticket to upsert (optional)
-     * @return ApiResponse&lt;LusidTradeTicket&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LusidTradeTicket> createTradeTicketWithHttpInfo(String scope, String code, LusidTradeTicket lusidTradeTicket) throws ApiException {
+    private ApiResponse<LusidTradeTicket> createTradeTicketWithHttpInfo(String scope, String code, LusidTradeTicket lusidTradeTicket) throws ApiException {
         okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, null);
         Type localVarReturnType = new TypeToken<LusidTradeTicket>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] CreateTradeTicket: Create Trade Ticket (asynchronously)
-     * Upsert a trade ticket. This is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param lusidTradeTicket the trade ticket to upsert (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createTradeTicketAsync(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback<LusidTradeTicket> _callback) throws ApiException {
+    private okhttp3.Call createTradeTicketAsync(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback<LusidTradeTicket> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, _callback);
         Type localVarReturnType = new TypeToken<LusidTradeTicket>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcreateTradeTicketRequest {
+        private final String scope;
+        private final String code;
+        private LusidTradeTicket lusidTradeTicket;
+
+        private APIcreateTradeTicketRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set lusidTradeTicket
+         * @param lusidTradeTicket the trade ticket to upsert (optional)
+         * @return APIcreateTradeTicketRequest
+         */
+        public APIcreateTradeTicketRequest lusidTradeTicket(LusidTradeTicket lusidTradeTicket) {
+            this.lusidTradeTicket = lusidTradeTicket;
+            return this;
+        }
+
+        /**
+         * Build call for createTradeTicket
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createTradeTicketCall(scope, code, lusidTradeTicket, _callback);
+        }
+
+        /**
+         * Execute createTradeTicket request
+         * @return LusidTradeTicket
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LusidTradeTicket execute() throws ApiException {
+            ApiResponse<LusidTradeTicket> localVarResp = createTradeTicketWithHttpInfo(scope, code, lusidTradeTicket);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createTradeTicket request with HTTP info returned
+         * @return ApiResponse&lt;LusidTradeTicket&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LusidTradeTicket> executeWithHttpInfo() throws ApiException {
+            return createTradeTicketWithHttpInfo(scope, code, lusidTradeTicket);
+        }
+
+        /**
+         * Execute createTradeTicket request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LusidTradeTicket> _callback) throws ApiException {
+            return createTradeTicketAsync(scope, code, lusidTradeTicket, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteCustodianAccounts
-     * @param scope The scope of the Transaction Portfolios. (required)
-     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param resourceId The scope and codes of the custodian accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] CreateTradeTicket: Create Trade Ticket
+     * Upsert a trade ticket. This is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIcreateTradeTicketRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCustodianAccountsCall(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback _callback) throws ApiException {
+    public APIcreateTradeTicketRequest createTradeTicket(String scope, String code) {
+        return new APIcreateTradeTicketRequest(scope, code);
+    }
+    private okhttp3.Call deleteCustodianAccountsCall(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1533,94 +1803,130 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
-     * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
-     * @param scope The scope of the Transaction Portfolios. (required)
-     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param resourceId The scope and codes of the custodian accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @return DeleteCustodianAccountsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeleteCustodianAccountsResponse deleteCustodianAccounts(String scope, String code, List<ResourceId> resourceId, String deleteMode) throws ApiException {
-        ApiResponse<DeleteCustodianAccountsResponse> localVarResp = deleteCustodianAccountsWithHttpInfo(scope, code, resourceId, deleteMode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
-     * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
-     * @param scope The scope of the Transaction Portfolios. (required)
-     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param resourceId The scope and codes of the custodian accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @return ApiResponse&lt;DeleteCustodianAccountsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeleteCustodianAccountsResponse> deleteCustodianAccountsWithHttpInfo(String scope, String code, List<ResourceId> resourceId, String deleteMode) throws ApiException {
+    private ApiResponse<DeleteCustodianAccountsResponse> deleteCustodianAccountsWithHttpInfo(String scope, String code, List<ResourceId> resourceId, String deleteMode) throws ApiException {
         okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, null);
         Type localVarReturnType = new TypeToken<DeleteCustodianAccountsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts (asynchronously)
-     * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
-     * @param scope The scope of the Transaction Portfolios. (required)
-     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param resourceId The scope and codes of the custodian accounts to delete. (required)
-     * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCustodianAccountsAsync(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback<DeleteCustodianAccountsResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCustodianAccountsAsync(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback<DeleteCustodianAccountsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, _callback);
         Type localVarReturnType = new TypeToken<DeleteCustodianAccountsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCustodianAccountsRequest {
+        private final String scope;
+        private final String code;
+        private final List<ResourceId> resourceId;
+        private String deleteMode;
+
+        private APIdeleteCustodianAccountsRequest(String scope, String code, List<ResourceId> resourceId) {
+            this.scope = scope;
+            this.code = code;
+            this.resourceId = resourceId;
+        }
+
+        /**
+         * Set deleteMode
+         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @return APIdeleteCustodianAccountsRequest
+         */
+        public APIdeleteCustodianAccountsRequest deleteMode(String deleteMode) {
+            this.deleteMode = deleteMode;
+            return this;
+        }
+
+        /**
+         * Build call for deleteCustodianAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCustodianAccountsCall(scope, code, resourceId, deleteMode, _callback);
+        }
+
+        /**
+         * Execute deleteCustodianAccounts request
+         * @return DeleteCustodianAccountsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteCustodianAccountsResponse execute() throws ApiException {
+            ApiResponse<DeleteCustodianAccountsResponse> localVarResp = deleteCustodianAccountsWithHttpInfo(scope, code, resourceId, deleteMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCustodianAccounts request with HTTP info returned
+         * @return ApiResponse&lt;DeleteCustodianAccountsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteCustodianAccountsResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCustodianAccountsWithHttpInfo(scope, code, resourceId, deleteMode);
+        }
+
+        /**
+         * Execute deleteCustodianAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteCustodianAccountsResponse> _callback) throws ApiException {
+            return deleteCustodianAccountsAsync(scope, code, resourceId, deleteMode, _callback);
+        }
+    }
+
     /**
-     * Build call for deletePropertiesFromTransaction
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction from which to delete properties. (required)
-     * @param propertyKeys The property keys of the properties to delete.              These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example              \&quot;Transaction/strategy/quantsignal\&quot;. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
+     * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
+     * @param scope The scope of the Transaction Portfolios. (required)
+     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
+     * @param resourceId The scope and codes of the custodian accounts to delete. (required)
+     * @return APIdeleteCustodianAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePropertiesFromTransactionCall(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCustodianAccountsRequest deleteCustodianAccounts(String scope, String code, List<ResourceId> resourceId) {
+        return new APIdeleteCustodianAccountsRequest(scope, code, resourceId);
+    }
+    private okhttp3.Call deletePropertiesFromTransactionCall(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1699,99 +2005,122 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * DeletePropertiesFromTransaction: Delete properties from transaction
-     * Delete one or more properties from a single transaction in a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction from which to delete properties. (required)
-     * @param propertyKeys The property keys of the properties to delete.              These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example              \&quot;Transaction/strategy/quantsignal\&quot;. (required)
-     * @return DeletedEntityResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeletedEntityResponse deletePropertiesFromTransaction(String scope, String code, String transactionId, List<String> propertyKeys) throws ApiException {
-        ApiResponse<DeletedEntityResponse> localVarResp = deletePropertiesFromTransactionWithHttpInfo(scope, code, transactionId, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * DeletePropertiesFromTransaction: Delete properties from transaction
-     * Delete one or more properties from a single transaction in a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction from which to delete properties. (required)
-     * @param propertyKeys The property keys of the properties to delete.              These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example              \&quot;Transaction/strategy/quantsignal\&quot;. (required)
-     * @return ApiResponse&lt;DeletedEntityResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeletedEntityResponse> deletePropertiesFromTransactionWithHttpInfo(String scope, String code, String transactionId, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<DeletedEntityResponse> deletePropertiesFromTransactionWithHttpInfo(String scope, String code, String transactionId, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, null);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * DeletePropertiesFromTransaction: Delete properties from transaction (asynchronously)
-     * Delete one or more properties from a single transaction in a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction from which to delete properties. (required)
-     * @param propertyKeys The property keys of the properties to delete.              These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example              \&quot;Transaction/strategy/quantsignal\&quot;. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePropertiesFromTransactionAsync(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePropertiesFromTransactionAsync(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeletePropertiesFromTransactionRequest {
+        private final String scope;
+        private final String code;
+        private final String transactionId;
+        private final List<String> propertyKeys;
+
+        private APIdeletePropertiesFromTransactionRequest(String scope, String code, String transactionId, List<String> propertyKeys) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionId = transactionId;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Build call for deletePropertiesFromTransaction
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deletePropertiesFromTransactionCall(scope, code, transactionId, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute deletePropertiesFromTransaction request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePropertiesFromTransactionWithHttpInfo(scope, code, transactionId, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deletePropertiesFromTransaction request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deletePropertiesFromTransactionWithHttpInfo(scope, code, transactionId, propertyKeys);
+        }
+
+        /**
+         * Execute deletePropertiesFromTransaction request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deletePropertiesFromTransactionAsync(scope, code, transactionId, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getA2BData
-     * @param scope The scope of the portfolio to retrieve the A2B report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * DeletePropertiesFromTransaction: Delete properties from transaction
+     * Delete one or more properties from a single transaction in a transaction portfolio.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionId The unique ID of the transaction from which to delete properties. (required)
+     * @param propertyKeys The property keys of the properties to delete.   These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example   \&quot;Transaction/strategy/quantsignal\&quot;. (required)
+     * @return APIdeletePropertiesFromTransactionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getA2BDataCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    public APIdeletePropertiesFromTransactionRequest deletePropertiesFromTransaction(String scope, String code, String transactionId, List<String> propertyKeys) {
+        return new APIdeletePropertiesFromTransactionRequest(scope, code, transactionId, propertyKeys);
+    }
+    private okhttp3.Call getA2BDataCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1893,114 +2222,177 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetA2BData: Get A2B data
-     * Get an A2B report for the given portfolio.
-     * @param scope The scope of the portfolio to retrieve the A2B report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return VersionedResourceListOfA2BDataRecord
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfA2BDataRecord getA2BData(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
-        ApiResponse<VersionedResourceListOfA2BDataRecord> localVarResp = getA2BDataWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetA2BData: Get A2B data
-     * Get an A2B report for the given portfolio.
-     * @param scope The scope of the portfolio to retrieve the A2B report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfA2BDataRecord&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfA2BDataRecord> getA2BDataWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
+    private ApiResponse<VersionedResourceListOfA2BDataRecord> getA2BDataWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
         okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BDataRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetA2BData: Get A2B data (asynchronously)
-     * Get an A2B report for the given portfolio.
-     * @param scope The scope of the portfolio to retrieve the A2B report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getA2BDataAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback) throws ApiException {
+    private okhttp3.Call getA2BDataAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BDataRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetA2BDataRequest {
+        private final String scope;
+        private final String code;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private OffsetDateTime asAt;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private List<String> propertyKeys;
+        private String filter;
+
+        private APIgetA2BDataRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @return APIgetA2BDataRequest
+         */
+        public APIgetA2BDataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetA2BDataRequest
+         */
+        public APIgetA2BDataRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeId (optional)
+         * @return APIgetA2BDataRequest
+         */
+        public APIgetA2BDataRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @return APIgetA2BDataRequest
+         */
+        public APIgetA2BDataRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetA2BDataRequest
+         */
+        public APIgetA2BDataRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getA2BData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getA2BDataCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute getA2BData request
+         * @return VersionedResourceListOfA2BDataRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfA2BDataRecord execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfA2BDataRecord> localVarResp = getA2BDataWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BData request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfA2BDataRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfA2BDataRecord> executeWithHttpInfo() throws ApiException {
+            return getA2BDataWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+        }
+
+        /**
+         * Execute getA2BData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback) throws ApiException {
+            return getA2BDataAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for getA2BMovements
-     * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetA2BData: Get A2B data
+     * Get an A2B report for the given portfolio.
+     * @param scope The scope of the portfolio to retrieve the A2B report for. (required)
+     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @return APIgetA2BDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getA2BMovementsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    public APIgetA2BDataRequest getA2BData(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIgetA2BDataRequest(scope, code, fromEffectiveAt, toEffectiveAt);
+    }
+    private okhttp3.Call getA2BMovementsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2102,108 +2494,177 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetA2BMovements: Get an A2B report at the movement level for the given portfolio.
-     * Get an A2B report at the movement level for the given portfolio.
-     * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return VersionedResourceListOfA2BMovementRecord
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfA2BMovementRecord getA2BMovements(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
-        ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetA2BMovements: Get an A2B report at the movement level for the given portfolio.
-     * Get an A2B report at the movement level for the given portfolio.
-     * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfA2BMovementRecord&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
+    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
         okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetA2BMovements: Get an A2B report at the movement level for the given portfolio. (asynchronously)
-     * Get an A2B report at the movement level for the given portfolio.
-     * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
-     * @param filter Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getA2BMovementsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
+    private okhttp3.Call getA2BMovementsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetA2BMovementsRequest {
+        private final String scope;
+        private final String code;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private OffsetDateTime asAt;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private List<String> propertyKeys;
+        private String filter;
+
+        private APIgetA2BMovementsRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @return APIgetA2BMovementsRequest
+         */
+        public APIgetA2BMovementsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetA2BMovementsRequest
+         */
+        public APIgetA2BMovementsRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeId (optional)
+         * @return APIgetA2BMovementsRequest
+         */
+        public APIgetA2BMovementsRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @return APIgetA2BMovementsRequest
+         */
+        public APIgetA2BMovementsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetA2BMovementsRequest
+         */
+        public APIgetA2BMovementsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getA2BMovements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getA2BMovementsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute getA2BMovements request
+         * @return VersionedResourceListOfA2BMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfA2BMovementRecord execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BMovements request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfA2BMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo() throws ApiException {
+            return getA2BMovementsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+        }
+
+        /**
+         * Execute getA2BMovements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
+            return getA2BMovementsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+    }
+
     /**
-     * Build call for getBucketedCashFlows
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param bucketedCashFlowRequest Request specifying the bucketing of cashflows (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * GetA2BMovements: Get an A2B report at the movement level for the given portfolio.
+     * Get an A2B report at the movement level for the given portfolio.
+     * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
+     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @return APIgetA2BMovementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBucketedCashFlowsCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback) throws ApiException {
+    public APIgetA2BMovementsRequest getA2BMovements(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIgetA2BMovementsRequest(scope, code, fromEffectiveAt, toEffectiveAt);
+    }
+    private okhttp3.Call getBucketedCashFlowsCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2271,94 +2732,127 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
-     * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.                If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param bucketedCashFlowRequest Request specifying the bucketing of cashflows (optional)
-     * @return BucketedCashFlowResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BucketedCashFlowResponse getBucketedCashFlows(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest) throws ApiException {
-        ApiResponse<BucketedCashFlowResponse> localVarResp = getBucketedCashFlowsWithHttpInfo(scope, code, bucketedCashFlowRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
-     * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.                If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param bucketedCashFlowRequest Request specifying the bucketing of cashflows (optional)
-     * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BucketedCashFlowResponse> getBucketedCashFlowsWithHttpInfo(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest) throws ApiException {
+    private ApiResponse<BucketedCashFlowResponse> getBucketedCashFlowsWithHttpInfo(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest) throws ApiException {
         okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, null);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios (asynchronously)
-     * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.                If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param bucketedCashFlowRequest Request specifying the bucketing of cashflows (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getBucketedCashFlowsAsync(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
+    private okhttp3.Call getBucketedCashFlowsAsync(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, _callback);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetBucketedCashFlowsRequest {
+        private final String scope;
+        private final String code;
+        private BucketedCashFlowRequest bucketedCashFlowRequest;
+
+        private APIgetBucketedCashFlowsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set bucketedCashFlowRequest
+         * @param bucketedCashFlowRequest Request specifying the bucketing of cashflows (optional)
+         * @return APIgetBucketedCashFlowsRequest
+         */
+        public APIgetBucketedCashFlowsRequest bucketedCashFlowRequest(BucketedCashFlowRequest bucketedCashFlowRequest) {
+            this.bucketedCashFlowRequest = bucketedCashFlowRequest;
+            return this;
+        }
+
+        /**
+         * Build call for getBucketedCashFlows
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getBucketedCashFlowsCall(scope, code, bucketedCashFlowRequest, _callback);
+        }
+
+        /**
+         * Execute getBucketedCashFlows request
+         * @return BucketedCashFlowResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BucketedCashFlowResponse execute() throws ApiException {
+            ApiResponse<BucketedCashFlowResponse> localVarResp = getBucketedCashFlowsWithHttpInfo(scope, code, bucketedCashFlowRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getBucketedCashFlows request with HTTP info returned
+         * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BucketedCashFlowResponse> executeWithHttpInfo() throws ApiException {
+            return getBucketedCashFlowsWithHttpInfo(scope, code, bucketedCashFlowRequest);
+        }
+
+        /**
+         * Execute getBucketedCashFlows request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
+            return getBucketedCashFlowsAsync(scope, code, bucketedCashFlowRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for getCustodianAccount
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio. (required)
-     * @param custodianAccountScope The scope of the Custodian Account. (required)
-     * @param custodianAccountCode The code of the Custodian Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If not provided will return all the entitled properties for that Custodian Account. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
+     * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.     If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIgetBucketedCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustodianAccountCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetBucketedCashFlowsRequest getBucketedCashFlows(String scope, String code) {
+        return new APIgetBucketedCashFlowsRequest(scope, code);
+    }
+    private okhttp3.Call getCustodianAccountCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2446,103 +2940,155 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetCustodianAccount: Get Custodian Account
-     * Retrieve the definition of a particular Custodian Account which is part of a Transaction Portfolios.
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio. (required)
-     * @param custodianAccountScope The scope of the Custodian Account. (required)
-     * @param custodianAccountCode The code of the Custodian Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If not provided will return all the entitled properties for that Custodian Account. (optional)
-     * @return CustodianAccount
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustodianAccount getCustodianAccount(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<CustodianAccount> localVarResp = getCustodianAccountWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetCustodianAccount: Get Custodian Account
-     * Retrieve the definition of a particular Custodian Account which is part of a Transaction Portfolios.
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio. (required)
-     * @param custodianAccountScope The scope of the Custodian Account. (required)
-     * @param custodianAccountCode The code of the Custodian Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If not provided will return all the entitled properties for that Custodian Account. (optional)
-     * @return ApiResponse&lt;CustodianAccount&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustodianAccount> getCustodianAccountWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<CustodianAccount> getCustodianAccountWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<CustodianAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetCustodianAccount: Get Custodian Account (asynchronously)
-     * Retrieve the definition of a particular Custodian Account which is part of a Transaction Portfolios.
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio. (required)
-     * @param custodianAccountScope The scope of the Custodian Account. (required)
-     * @param custodianAccountCode The code of the Custodian Account. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If not provided will return all the entitled properties for that Custodian Account. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCustodianAccountAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<CustodianAccount> _callback) throws ApiException {
+    private okhttp3.Call getCustodianAccountAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<CustodianAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<CustodianAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCustodianAccountRequest {
+        private final String scope;
+        private final String code;
+        private final String custodianAccountScope;
+        private final String custodianAccountCode;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetCustodianAccountRequest(String scope, String code, String custodianAccountScope, String custodianAccountCode) {
+            this.scope = scope;
+            this.code = code;
+            this.custodianAccountScope = custodianAccountScope;
+            this.custodianAccountCode = custodianAccountCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetCustodianAccountRequest
+         */
+        public APIgetCustodianAccountRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. (optional)
+         * @return APIgetCustodianAccountRequest
+         */
+        public APIgetCustodianAccountRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If not provided will return all the entitled properties for that Custodian Account. (optional)
+         * @return APIgetCustodianAccountRequest
+         */
+        public APIgetCustodianAccountRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getCustodianAccount
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCustodianAccountCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getCustodianAccount request
+         * @return CustodianAccount
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustodianAccount execute() throws ApiException {
+            ApiResponse<CustodianAccount> localVarResp = getCustodianAccountWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustodianAccount request with HTTP info returned
+         * @return ApiResponse&lt;CustodianAccount&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustodianAccount> executeWithHttpInfo() throws ApiException {
+            return getCustodianAccountWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getCustodianAccount request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustodianAccount> _callback) throws ApiException {
+            return getCustodianAccountAsync(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getDetails
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the              scope this uniquely identifies the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults              to returning the latest version of the details if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] GetCustodianAccount: Get Custodian Account
+     * Retrieve the definition of a particular Custodian Account which is part of a Transaction Portfolios.
+     * @param scope The scope of the Transaction Portfolio. (required)
+     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio. (required)
+     * @param custodianAccountScope The scope of the Custodian Account. (required)
+     * @param custodianAccountCode The code of the Custodian Account. (required)
+     * @return APIgetCustodianAccountRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDetailsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetCustodianAccountRequest getCustodianAccount(String scope, String code, String custodianAccountScope, String custodianAccountCode) {
+        return new APIgetCustodianAccountRequest(scope, code, custodianAccountScope, custodianAccountCode);
+    }
+    private okhttp3.Call getDetailsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2614,97 +3160,138 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetDetails: Get details
-     * Get certain details associated with a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the              scope this uniquely identifies the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults              to returning the latest version of the details if not specified. (optional)
-     * @return PortfolioDetails
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PortfolioDetails getDetails(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<PortfolioDetails> localVarResp = getDetailsWithHttpInfo(scope, code, effectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetDetails: Get details
-     * Get certain details associated with a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the              scope this uniquely identifies the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults              to returning the latest version of the details if not specified. (optional)
-     * @return ApiResponse&lt;PortfolioDetails&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PortfolioDetails> getDetailsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<PortfolioDetails> getDetailsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetDetails: Get details (asynchronously)
-     * Get certain details associated with a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the              scope this uniquely identifies the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults              to returning the latest version of the details if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDetailsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
+    private okhttp3.Call getDetailsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetDetailsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetDetailsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetDetailsRequest
+         */
+        public APIgetDetailsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults   to returning the latest version of the details if not specified. (optional)
+         * @return APIgetDetailsRequest
+         */
+        public APIgetDetailsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getDetailsCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getDetails request
+         * @return PortfolioDetails
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioDetails execute() throws ApiException {
+            ApiResponse<PortfolioDetails> localVarResp = getDetailsWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getDetails request with HTTP info returned
+         * @return ApiResponse&lt;PortfolioDetails&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioDetails> executeWithHttpInfo() throws ApiException {
+            return getDetailsWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback) throws ApiException {
+            return getDetailsAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getHoldings
+     * GetDetails: Get details
+     * Get certain details associated with a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)
+     * @return APIgetDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
+    public APIgetDetailsRequest getDetails(String scope, String code) {
+        return new APIgetDetailsRequest(scope, code);
+    }
+    private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2788,104 +3375,171 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetHoldings: Get holdings
-     * Calculate holdings for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @return VersionedResourceListOfPortfolioHolding
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfPortfolioHolding getHoldings(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots) throws ApiException {
-        ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetHoldings: Get holdings
-     * Calculate holdings for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots) throws ApiException {
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots) throws ApiException {
         okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetHoldings: Get holdings (asynchronously)
-     * Calculate holdings for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private Boolean byTaxlots;
+
+        private APIgetHoldingsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetHoldingsRequest
+         */
+        public APIgetHoldingsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetHoldingsRequest
+         */
+        public APIgetHoldingsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetHoldingsRequest
+         */
+        public APIgetHoldingsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @return APIgetHoldingsRequest
+         */
+        public APIgetHoldingsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set byTaxlots
+         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. (optional)
+         * @return APIgetHoldingsRequest
+         */
+        public APIgetHoldingsRequest byTaxlots(Boolean byTaxlots) {
+            this.byTaxlots = byTaxlots;
+            return this;
+        }
+
+        /**
+         * Build call for getHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
+        }
+
+        /**
+         * Execute getHoldings request
+         * @return VersionedResourceListOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfPortfolioHolding execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldings request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
+            return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots);
+        }
+
+        /**
+         * Execute getHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+            return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
+        }
+    }
+
     /**
-     * Build call for getHoldingsAdjustment
+     * GetHoldings: Get holdings
+     * Calculate holdings for a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIgetHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetHoldingsRequest getHoldings(String scope, String code) {
+        return new APIgetHoldingsRequest(scope, code);
+    }
+    private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2963,102 +3617,141 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetHoldingsAdjustment: Get holdings adjustment
-     * Get a holdings adjustment made to a transaction portfolio at a specific effective datetime. Note that a  holdings adjustment will only be returned if one exists for the specified effective datetime.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
-     * @return HoldingsAdjustment
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public HoldingsAdjustment getHoldingsAdjustment(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetHoldingsAdjustment: Get holdings adjustment
-     * Get a holdings adjustment made to a transaction portfolio at a specific effective datetime. Note that a  holdings adjustment will only be returned if one exists for the specified effective datetime.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
-     * @return ApiResponse&lt;HoldingsAdjustment&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetHoldingsAdjustment: Get holdings adjustment (asynchronously)
-     * Get a holdings adjustment made to a transaction portfolio at a specific effective datetime. Note that a  holdings adjustment will only be returned if one exists for the specified effective datetime.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetHoldingsAdjustmentRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> propertyKeys;
+
+        private APIgetHoldingsAdjustmentRequest(String scope, String code, String effectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified. (optional)
+         * @return APIgetHoldingsAdjustmentRequest
+         */
+        public APIgetHoldingsAdjustmentRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+         * @return APIgetHoldingsAdjustmentRequest
+         */
+        public APIgetHoldingsAdjustmentRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getHoldingsAdjustment
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getHoldingsAdjustment request
+         * @return HoldingsAdjustment
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingsAdjustment execute() throws ApiException {
+            ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingsAdjustment request with HTTP info returned
+         * @return ApiResponse&lt;HoldingsAdjustment&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingsAdjustment> executeWithHttpInfo() throws ApiException {
+            return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getHoldingsAdjustment request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
+            return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for getHoldingsWithOrders
+     * GetHoldingsAdjustment: Get holdings adjustment
+     * Get a holdings adjustment made to a transaction portfolio at a specific effective datetime. Note that a  holdings adjustment will only be returned if one exists for the specified effective datetime.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version of the holdings if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
+     * @return APIgetHoldingsAdjustmentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
+    public APIgetHoldingsAdjustmentRequest getHoldingsAdjustment(String scope, String code, String effectiveAt) {
+        return new APIgetHoldingsAdjustmentRequest(scope, code, effectiveAt);
+    }
+    private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3150,115 +3843,193 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
-     * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version of the holdings if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @return VersionedResourceListWithWarningsOfPortfolioHolding
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListWithWarningsOfPortfolioHolding getHoldingsWithOrders(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode) throws ApiException {
-        ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
-     * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version of the holdings if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @return ApiResponse&lt;VersionedResourceListWithWarningsOfPortfolioHolding&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode) throws ApiException {
+    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode) throws ApiException {
         okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders (asynchronously)
-     * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version of the holdings if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeId (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetHoldingsWithOrdersRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private Boolean byTaxlots;
+        private String recipeIdScope;
+        private String recipeIdCode;
+
+        private APIgetHoldingsWithOrdersRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version of the holdings if not specified. (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set byTaxlots
+         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest byTaxlots(Boolean byTaxlots) {
+            this.byTaxlots = byTaxlots;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeId (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Build call for getHoldingsWithOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, _callback);
+        }
+
+        /**
+         * Execute getHoldingsWithOrders request
+         * @return VersionedResourceListWithWarningsOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListWithWarningsOfPortfolioHolding execute() throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingsWithOrders request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
+            return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode);
+        }
+
+        /**
+         * Execute getHoldingsWithOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
+            return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioCashFlows
+     * [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
+     * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIgetHoldingsWithOrdersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+    public APIgetHoldingsWithOrdersRequest getHoldingsWithOrders(String scope, String code) {
+        return new APIgetHoldingsWithOrdersRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3354,118 +4125,204 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [BETA] GetPortfolioCashFlows: Get portfolio cash flows
-     * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.                Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @return ResourceListOfInstrumentCashFlow
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfInstrumentCashFlow getPortfolioCashFlows(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] GetPortfolioCashFlows: Get portfolio cash flows
-     * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.                Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
+    private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] GetPortfolioCashFlows: Get portfolio cash flows (asynchronously)
-     * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.                Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioCashFlowsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private String windowStart;
+        private String windowEnd;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private Boolean excludeUnsettledTrades;
+
+        private APIgetPortfolioCashFlowsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set windowStart
+         * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest windowStart(String windowStart) {
+            this.windowStart = windowStart;
+            return this;
+        }
+
+        /**
+         * Set windowEnd
+         * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest windowEnd(String windowEnd) {
+            this.windowEnd = windowEnd;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeID (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set excludeUnsettledTrades
+         * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest excludeUnsettledTrades(Boolean excludeUnsettledTrades) {
+            this.excludeUnsettledTrades = excludeUnsettledTrades;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioCashFlows
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCashFlows request
+         * @return ResourceListOfInstrumentCashFlow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentCashFlow execute() throws ApiException {
+            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioCashFlows request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo() throws ApiException {
+            return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+        }
+
+        /**
+         * Execute getPortfolioCashFlows request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
+            return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioCashLadder
+     * [BETA] GetPortfolioCashFlows: Get portfolio cash flows
+     * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.     Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @return APIgetPortfolioCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioCashFlowsRequest getPortfolioCashFlows(String scope, String code) {
+        return new APIgetPortfolioCashFlowsRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3576,116 +4433,180 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetPortfolioCashLadder: Get portfolio cash ladder
-     * Get a cash ladder for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @return ResourceListOfPortfolioCashLadder
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPortfolioCashLadder getPortfolioCashLadder(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetPortfolioCashLadder: Get portfolio cash ladder
-     * Get a cash ladder for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @return ApiResponse&lt;ResourceListOfPortfolioCashLadder&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
+    private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetPortfolioCashLadder: Get portfolio cash ladder (asynchronously)
-     * Get a cash ladder for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioCashLadderRequest {
+        private final String scope;
+        private final String code;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private final String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private Boolean excludeUnsettledTrades;
+
+        private APIgetPortfolioCashLadderRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+            this.effectiveAt = effectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetPortfolioCashLadderRequest
+         */
+        public APIgetPortfolioCashLadderRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetPortfolioCashLadderRequest
+         */
+        public APIgetPortfolioCashLadderRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetPortfolioCashLadderRequest
+         */
+        public APIgetPortfolioCashLadderRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeID (optional)
+         * @return APIgetPortfolioCashLadderRequest
+         */
+        public APIgetPortfolioCashLadderRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set excludeUnsettledTrades
+         * @param excludeUnsettledTrades If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. (optional, default to false)
+         * @return APIgetPortfolioCashLadderRequest
+         */
+        public APIgetPortfolioCashLadderRequest excludeUnsettledTrades(Boolean excludeUnsettledTrades) {
+            this.excludeUnsettledTrades = excludeUnsettledTrades;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioCashLadder
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCashLadder request
+         * @return ResourceListOfPortfolioCashLadder
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolioCashLadder execute() throws ApiException {
+            ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioCashLadder request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPortfolioCashLadder&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolioCashLadder> executeWithHttpInfo() throws ApiException {
+            return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+        }
+
+        /**
+         * Execute getPortfolioCashLadder request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
+            return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+    }
+
     /**
-     * Build call for getPortfolioCashStatement
+     * GetPortfolioCashLadder: Get portfolio cash ladder
+     * Get a cash ladder for a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
+     * @return APIgetPortfolioCashLadderRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioCashLadderRequest getPortfolioCashLadder(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt) {
+        return new APIgetPortfolioCashLadderRequest(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt);
+    }
+    private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3783,106 +4704,166 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetPortfolioCashStatement: Get portfolio cash statement
-     * Get a cash statement for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @return ResourceListOfPortfolioCashFlow
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfPortfolioCashFlow getPortfolioCashStatement(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode) throws ApiException {
-        ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetPortfolioCashStatement: Get portfolio cash statement
-     * Get a cash statement for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @return ApiResponse&lt;ResourceListOfPortfolioCashFlow&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode) throws ApiException {
+    private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode) throws ApiException {
         okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetPortfolioCashStatement: Get portfolio cash statement (asynchronously)
-     * Get a cash statement for a transaction portfolio.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this              uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. (required)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetPortfolioCashStatementRequest {
+        private final String scope;
+        private final String code;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String recipeIdScope;
+        private String recipeIdCode;
+
+        private APIgetPortfolioCashStatementRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetPortfolioCashStatementRequest
+         */
+        public APIgetPortfolioCashStatementRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetPortfolioCashStatementRequest
+         */
+        public APIgetPortfolioCashStatementRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetPortfolioCashStatementRequest
+         */
+        public APIgetPortfolioCashStatementRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeID (optional)
+         * @return APIgetPortfolioCashStatementRequest
+         */
+        public APIgetPortfolioCashStatementRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioCashStatement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCashStatement request
+         * @return ResourceListOfPortfolioCashFlow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolioCashFlow execute() throws ApiException {
+            ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioCashStatement request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPortfolioCashFlow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolioCashFlow> executeWithHttpInfo() throws ApiException {
+            return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode);
+        }
+
+        /**
+         * Execute getPortfolioCashStatement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
+            return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+        }
+    }
+
     /**
-     * Build call for getTransactionHistory
+     * GetPortfolioCashStatement: Get portfolio cash statement
+     * Get a cash statement for a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update. (required)
-     * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults              to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @return APIgetPortfolioCashStatementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionHistoryCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetPortfolioCashStatementRequest getPortfolioCashStatement(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIgetPortfolioCashStatementRequest(scope, code, fromEffectiveAt, toEffectiveAt);
+    }
+    private okhttp3.Call getTransactionHistoryCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3956,101 +4937,130 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetTransactionHistory: Get the history of a transaction
-     * Get all of the changes that have happened to a transaction.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update. (required)
-     * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults              to return the latest version if not specified. (optional)
-     * @return ResourceListOfChangeHistory
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfChangeHistory getTransactionHistory(String scope, String code, String transactionId, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfChangeHistory> localVarResp = getTransactionHistoryWithHttpInfo(scope, code, transactionId, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetTransactionHistory: Get the history of a transaction
-     * Get all of the changes that have happened to a transaction.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update. (required)
-     * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults              to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfChangeHistory&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfChangeHistory> getTransactionHistoryWithHttpInfo(String scope, String code, String transactionId, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfChangeHistory> getTransactionHistoryWithHttpInfo(String scope, String code, String transactionId, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfChangeHistory>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetTransactionHistory: Get the history of a transaction (asynchronously)
-     * Get all of the changes that have happened to a transaction.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update. (required)
-     * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults              to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTransactionHistoryAsync(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback<ResourceListOfChangeHistory> _callback) throws ApiException {
+    private okhttp3.Call getTransactionHistoryAsync(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback<ResourceListOfChangeHistory> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfChangeHistory>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTransactionHistoryRequest {
+        private final String scope;
+        private final String code;
+        private final String transactionId;
+        private OffsetDateTime asAt;
+
+        private APIgetTransactionHistoryRequest(String scope, String code, String transactionId) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionId = transactionId;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetTransactionHistoryRequest
+         */
+        public APIgetTransactionHistoryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTransactionHistory
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransactionHistoryCall(scope, code, transactionId, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionHistory request
+         * @return ResourceListOfChangeHistory
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfChangeHistory execute() throws ApiException {
+            ApiResponse<ResourceListOfChangeHistory> localVarResp = getTransactionHistoryWithHttpInfo(scope, code, transactionId, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactionHistory request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfChangeHistory&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfChangeHistory> executeWithHttpInfo() throws ApiException {
+            return getTransactionHistoryWithHttpInfo(scope, code, transactionId, asAt);
+        }
+
+        /**
+         * Execute getTransactionHistory request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeHistory> _callback) throws ApiException {
+            return getTransactionHistoryAsync(scope, code, transactionId, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getTransactions
+     * [EARLY ACCESS] GetTransactionHistory: Get the history of a transaction
+     * Get all of the changes that have happened to a transaction.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or               &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. The current behaviour is               to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended               to populate this field to enable pagination. (optional)
-     * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionId The unique ID of the transaction to create or update. (required)
+     * @return APIgetTransactionHistoryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    public APIgetTransactionHistoryRequest getTransactionHistory(String scope, String code, String transactionId) {
+        return new APIgetTransactionHistoryRequest(scope, code, transactionId);
+    }
+    private okhttp3.Call getTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4150,121 +5160,215 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * GetTransactions: Get transactions
-     * Retrieve all the transactions that occurred during a particular time interval.                If the portfolio is a derived transaction portfolio, the transactions returned are the  union set of all transactions of the parent (and any grandparents, etc.) as well as  those of the derived transaction portfolio itself.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or               &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. The current behaviour is               to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended               to populate this field to enable pagination. (optional)
-     * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @return VersionedResourceListOfTransaction
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfTransaction getTransactions(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
-        ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy);
-        return localVarResp.getData();
-    }
 
-    /**
-     * GetTransactions: Get transactions
-     * Retrieve all the transactions that occurred during a particular time interval.                If the portfolio is a derived transaction portfolio, the transactions returned are the  union set of all transactions of the parent (and any grandparents, etc.) as well as  those of the derived transaction portfolio itself.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or               &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. The current behaviour is               to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended               to populate this field to enable pagination. (optional)
-     * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfTransaction> getTransactionsWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
+    private ApiResponse<VersionedResourceListOfTransaction> getTransactionsWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
         okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * GetTransactions: Get transactions (asynchronously)
-     * Retrieve all the transactions that occurred during a particular time interval.                If the portfolio is a derived transaction portfolio, the transactions returned are the  union set of all transactions of the parent (and any grandparents, etc.) as well as  those of the derived transaction portfolio itself.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or               &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. The current behaviour is               to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended               to populate this field to enable pagination. (optional)
-     * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTransactionsAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
+    private okhttp3.Call getTransactionsAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private String fromTransactionDate;
+        private String toTransactionDate;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private String page;
+        private Integer limit;
+        private Boolean showCancelledTransactions;
+        private List<String> sortBy;
+
+        private APIgetTransactionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromTransactionDate
+         * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no lower bound if this is not specified. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest fromTransactionDate(String fromTransactionDate) {
+            this.fromTransactionDate = fromTransactionDate;
+            return this;
+        }
+
+        /**
+         * Set toTransactionDate
+         * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest toTransactionDate(String toTransactionDate) {
+            this.toTransactionDate = toTransactionDate;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto   transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or   &#39;Transaction/strategy/quantsignal&#39;. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. The current behaviour is   to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended   to populate this field to enable pagination. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set showCancelledTransactions
+         * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest showCancelledTransactions(Boolean showCancelledTransactions) {
+            this.showCancelledTransactions = showCancelledTransactions;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIgetTransactionsRequest
+         */
+        public APIgetTransactionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for getTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransactionsCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback);
+        }
+
+        /**
+         * Execute getTransactions request
+         * @return VersionedResourceListOfTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfTransaction execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactions request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
+            return getTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy);
+        }
+
+        /**
+         * Execute getTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
+            return getTransactionsAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback);
+        }
+    }
+
     /**
-     * Build call for getUpsertablePortfolioCashFlows
+     * GetTransactions: Get transactions
+     * Retrieve all the transactions that occurred during a particular time interval.     If the portfolio is a derived transaction portfolio, the transactions returned are the  union set of all transactions of the parent (and any grandparents, etc.) as well as  those of the derived transaction portfolio itself.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. (optional, default to true)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIgetTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+    public APIgetTransactionsRequest getTransactions(String scope, String code) {
+        return new APIgetTransactionsRequest(scope, code);
+    }
+    private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4360,117 +5464,204 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [BETA] GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
-     * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).                Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.                In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID.  There are a couple of important points:  (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.      These are therefore defaulted to a sensible option; the user will likely need to change these.  (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty.  (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. (optional, default to true)
-     * @return ResourceListOfTransaction
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfTransaction getUpsertablePortfolioCashFlows(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [BETA] GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
-     * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).                Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.                In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID.  There are a couple of important points:  (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.      These are therefore defaulted to a sensible option; the user will likely need to change these.  (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty.  (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. (optional, default to true)
-     * @return ApiResponse&lt;ResourceListOfTransaction&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
+    private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
         okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null);
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [BETA] GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. (asynchronously)
-     * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).                Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.                In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID.  There are a couple of important points:  (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.      These are therefore defaulted to a sensible option; the user will likely need to change these.  (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty.  (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this               uniquely identifies the portfolio. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
-     * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
-     * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.               The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
-     * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version               of each transaction if not specified. (optional)
-     * @param filter Expression to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param recipeIdScope The scope of the given recipeId (optional)
-     * @param recipeIdCode The code of the given recipeID (optional)
-     * @param excludeUnsettledTrades If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. (optional, default to true)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
+    private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetUpsertablePortfolioCashFlowsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private String windowStart;
+        private String windowEnd;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private Boolean excludeUnsettledTrades;
+
+        private APIgetUpsertablePortfolioCashFlowsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set windowStart
+         * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest windowStart(String windowStart) {
+            this.windowStart = windowStart;
+            return this;
+        }
+
+        /**
+         * Set windowEnd
+         * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest windowEnd(String windowEnd) {
+            this.windowEnd = windowEnd;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeID (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set excludeUnsettledTrades
+         * @param excludeUnsettledTrades If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. (optional, default to true)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest excludeUnsettledTrades(Boolean excludeUnsettledTrades) {
+            this.excludeUnsettledTrades = excludeUnsettledTrades;
+            return this;
+        }
+
+        /**
+         * Build call for getUpsertablePortfolioCashFlows
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+
+        /**
+         * Execute getUpsertablePortfolioCashFlows request
+         * @return ResourceListOfTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransaction execute() throws ApiException {
+            ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getUpsertablePortfolioCashFlows request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
+            return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+        }
+
+        /**
+         * Execute getUpsertablePortfolioCashFlows request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
+            return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+    }
+
     /**
-     * Build call for listCustodianAccounts
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing custodian accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [BETA] GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
+     * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).     Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.     In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID.  There are a couple of important points:  (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.   These are therefore defaulted to a sensible option; the user will likely need to change these.  (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty.  (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @return APIgetUpsertablePortfolioCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCustodianAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIgetUpsertablePortfolioCashFlowsRequest getUpsertablePortfolioCashFlows(String scope, String code) {
+        return new APIgetUpsertablePortfolioCashFlowsRequest(scope, code);
+    }
+    private okhttp3.Call listCustodianAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4562,110 +5753,193 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts
-     * List the custodian accounts in a Transaction Portfolios
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing custodian accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
-     * @return PagedResourceListOfCustodianAccount
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfCustodianAccount listCustodianAccounts(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfCustodianAccount> localVarResp = listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts
-     * List the custodian accounts in a Transaction Portfolios
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing custodian accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
-     * @return ApiResponse&lt;PagedResourceListOfCustodianAccount&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfCustodianAccount> listCustodianAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfCustodianAccount> listCustodianAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts (asynchronously)
-     * List the custodian accounts in a Transaction Portfolios
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. (optional)
-     * @param page The pagination token to use to continue listing custodian accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
-     * @param start When paginating, skip this number of results. (optional)
-     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustodianAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
+    private okhttp3.Call listCustodianAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCustodianAccountsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistCustodianAccountsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
+         * @return APIlistCustodianAccountsRequest
+         */
+        public APIlistCustodianAccountsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listCustodianAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listCustodianAccounts request
+         * @return PagedResourceListOfCustodianAccount
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCustodianAccount execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCustodianAccount> localVarResp = listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCustodianAccounts request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCustodianAccount&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCustodianAccount> executeWithHttpInfo() throws ApiException {
+            return listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listCustodianAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
+            return listCustodianAccountsAsync(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listHoldingsAdjustments
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no lower bound if this is not specified. (optional)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the              latest version of each holding adjustment if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts
+     * List the custodian accounts in a Transaction Portfolios
+     * @param scope The scope of the Transaction Portfolio. (required)
+     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
+     * @return APIlistCustodianAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIlistCustodianAccountsRequest listCustodianAccounts(String scope, String code) {
+        return new APIlistCustodianAccountsRequest(scope, code);
+    }
+    private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4741,102 +6015,149 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * ListHoldingsAdjustments: List holdings adjustments
-     * List the holdings adjustments made to the specified transaction portfolio over a specified interval of effective time.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no lower bound if this is not specified. (optional)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the              latest version of each holding adjustment if not specified. (optional)
-     * @return ResourceListOfHoldingsAdjustmentHeader
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfHoldingsAdjustmentHeader listHoldingsAdjustments(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * ListHoldingsAdjustments: List holdings adjustments
-     * List the holdings adjustments made to the specified transaction portfolio over a specified interval of effective time.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no lower bound if this is not specified. (optional)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the              latest version of each holding adjustment if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfHoldingsAdjustmentHeader&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * ListHoldingsAdjustments: List holdings adjustments (asynchronously)
-     * List the holdings adjustments made to the specified transaction portfolio over a specified interval of effective time.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no lower bound if this is not specified. (optional)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the              latest version of each holding adjustment if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
+    private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistHoldingsAdjustmentsRequest {
+        private final String scope;
+        private final String code;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIlistHoldingsAdjustmentsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no lower bound if this is not specified. (optional)
+         * @return APIlistHoldingsAdjustmentsRequest
+         */
+        public APIlistHoldingsAdjustmentsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified. (optional)
+         * @return APIlistHoldingsAdjustmentsRequest
+         */
+        public APIlistHoldingsAdjustmentsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified. (optional)
+         * @return APIlistHoldingsAdjustmentsRequest
+         */
+        public APIlistHoldingsAdjustmentsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listHoldingsAdjustments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listHoldingsAdjustments request
+         * @return ResourceListOfHoldingsAdjustmentHeader
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfHoldingsAdjustmentHeader execute() throws ApiException {
+            ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listHoldingsAdjustments request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfHoldingsAdjustmentHeader&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfHoldingsAdjustmentHeader> executeWithHttpInfo() throws ApiException {
+            return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute listHoldingsAdjustments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
+            return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for lookThroughHoldings
+     * ListHoldingsAdjustments: List holdings adjustments
+     * List the holdings adjustments made to the specified transaction portfolio over a specified interval of effective time.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIlistHoldingsAdjustmentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call lookThroughHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass, final ApiCallback _callback) throws ApiException {
+    public APIlistHoldingsAdjustmentsRequest listHoldingsAdjustments(String scope, String code) {
+        return new APIlistHoldingsAdjustmentsRequest(scope, code);
+    }
+    private okhttp3.Call lookThroughHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4928,119 +6249,193 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] LookThroughHoldings: Get LookThrough Holdings
-     * Calculate holdings for a transaction portfolio with lookthrough
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @return VersionedResourceListOfPortfolioHolding
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfPortfolioHolding lookThroughHoldings(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass) throws ApiException {
-        ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = lookThroughHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] LookThroughHoldings: Get LookThrough Holdings
-     * Calculate holdings for a transaction portfolio with lookthrough
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfPortfolioHolding> lookThroughHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass) throws ApiException {
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> lookThroughHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass) throws ApiException {
         okhttp3.Call localVarCall = lookThroughHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] LookThroughHoldings: Get LookThrough Holdings (asynchronously)
-     * Calculate holdings for a transaction portfolio with lookthrough
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. (optional)
-     * @param filter Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call lookThroughHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call lookThroughHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String quotesScope, String slice, String shareClass, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = lookThroughHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlookThroughHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private String quotesScope;
+        private String slice;
+        private String shareClass;
+
+        private APIlookThroughHoldingsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version if not specified. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set quotesScope
+         * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest quotesScope(String quotesScope) {
+            this.quotesScope = quotesScope;
+            return this;
+        }
+
+        /**
+         * Set slice
+         * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest slice(String slice) {
+            this.slice = slice;
+            return this;
+        }
+
+        /**
+         * Set shareClass
+         * @param shareClass When running LookThrough, use this along with the slice parameter to specify   the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite   for this parameter to be valid. (optional)
+         * @return APIlookThroughHoldingsRequest
+         */
+        public APIlookThroughHoldingsRequest shareClass(String shareClass) {
+            this.shareClass = shareClass;
+            return this;
+        }
+
+        /**
+         * Build call for lookThroughHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return lookThroughHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass, _callback);
+        }
+
+        /**
+         * Execute lookThroughHoldings request
+         * @return VersionedResourceListOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfPortfolioHolding execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = lookThroughHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute lookThroughHoldings request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
+            return lookThroughHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass);
+        }
+
+        /**
+         * Execute lookThroughHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+            return lookThroughHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, quotesScope, slice, shareClass, _callback);
+        }
+    }
+
     /**
-     * Build call for lookThroughTransactions
+     * [EXPERIMENTAL] LookThroughHoldings: Get LookThrough Holdings
+     * Calculate holdings for a transaction portfolio with lookthrough
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto              transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or              &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to LookThroughTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. This will default to 1000 if not specified. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @param useAlternateScalingLogic When running LookThrough, set this flag to use the same scaling logic as for LT Holdings (optional, default to false)
-     * @param alternateEffectiveAt This effectiveAt field is required when using alternate scaling logic to determine which fund and currency data is used for scaling (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIlookThroughHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio with lookthrough </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call lookThroughTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIlookThroughHoldingsRequest lookThroughHoldings(String scope, String code) {
+        return new APIlookThroughHoldingsRequest(scope, code);
+    }
+    private okhttp3.Call lookThroughTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5152,124 +6547,248 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] LookThroughTransactions: Look through transactions
-     * Retrieve all the transactions that occurred during a particular time interval.    If the portfolio is part of a fund as defined in Fund Accounting documents, the transactions returned are the  union set of all transactions in portfolios of the same type, in any funds invested in by the portfolio&#39;s fund  (and any funds invested in from that fund, etc.).  The transactions will be scaled according to the ratio of the value of the investment in the fund to the NAV of the fund itself.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto              transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or              &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to LookThroughTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. This will default to 1000 if not specified. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @param useAlternateScalingLogic When running LookThrough, set this flag to use the same scaling logic as for LT Holdings (optional, default to false)
-     * @param alternateEffectiveAt This effectiveAt field is required when using alternate scaling logic to determine which fund and currency data is used for scaling (optional)
-     * @return VersionedResourceListOfTransaction
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionedResourceListOfTransaction lookThroughTransactions(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt) throws ApiException {
-        ApiResponse<VersionedResourceListOfTransaction> localVarResp = lookThroughTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] LookThroughTransactions: Look through transactions
-     * Retrieve all the transactions that occurred during a particular time interval.    If the portfolio is part of a fund as defined in Fund Accounting documents, the transactions returned are the  union set of all transactions in portfolios of the same type, in any funds invested in by the portfolio&#39;s fund  (and any funds invested in from that fund, etc.).  The transactions will be scaled according to the ratio of the value of the investment in the fund to the NAV of the fund itself.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto              transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or              &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to LookThroughTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. This will default to 1000 if not specified. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @param useAlternateScalingLogic When running LookThrough, set this flag to use the same scaling logic as for LT Holdings (optional, default to false)
-     * @param alternateEffectiveAt This effectiveAt field is required when using alternate scaling logic to determine which fund and currency data is used for scaling (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionedResourceListOfTransaction> lookThroughTransactionsWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt) throws ApiException {
+    private ApiResponse<VersionedResourceListOfTransaction> lookThroughTransactionsWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt) throws ApiException {
         okhttp3.Call localVarCall = lookThroughTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] LookThroughTransactions: Look through transactions (asynchronously)
-     * Retrieve all the transactions that occurred during a particular time interval.    If the portfolio is part of a fund as defined in Fund Accounting documents, the transactions returned are the  union set of all transactions in portfolios of the same type, in any funds invested in by the portfolio&#39;s fund  (and any funds invested in from that fund, etc.).  The transactions will be scaled according to the ratio of the value of the investment in the fund to the NAV of the fund itself.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no lower bound if this is not specified. (optional)
-     * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.              There is no upper bound if this is not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)
-     * @param filter Expression with which to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto              transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or              &#39;Transaction/strategy/quantsignal&#39;. (optional)
-     * @param page The pagination token to use to continue listing transactions from a previous call to LookThroughTransactions. (optional)
-     * @param limit When paginating, limit the number of returned results to this many. This will default to 1000 if not specified. (optional)
-     * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
-     * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
-     * @param shareClass When running LookThrough, use this along with the slice parameter to specify              the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite              for this parameter to be valid. (optional)
-     * @param useAlternateScalingLogic When running LookThrough, set this flag to use the same scaling logic as for LT Holdings (optional, default to false)
-     * @param alternateEffectiveAt This effectiveAt field is required when using alternate scaling logic to determine which fund and currency data is used for scaling (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call lookThroughTransactionsAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
+    private okhttp3.Call lookThroughTransactionsAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, String quotesScope, String slice, String shareClass, Boolean useAlternateScalingLogic, String alternateEffectiveAt, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = lookThroughTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlookThroughTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private String fromTransactionDate;
+        private String toTransactionDate;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private String page;
+        private Integer limit;
+        private String quotesScope;
+        private String slice;
+        private String shareClass;
+        private Boolean useAlternateScalingLogic;
+        private String alternateEffectiveAt;
+
+        private APIlookThroughTransactionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromTransactionDate
+         * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no lower bound if this is not specified. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest fromTransactionDate(String fromTransactionDate) {
+            this.fromTransactionDate = fromTransactionDate;
+            return this;
+        }
+
+        /**
+         * Set toTransactionDate
+         * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest toTransactionDate(String toTransactionDate) {
+            this.toTransactionDate = toTransactionDate;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto   transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or   &#39;Transaction/strategy/quantsignal&#39;. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing transactions from a previous call to LookThroughTransactions. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. This will default to 1000 if not specified. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set quotesScope
+         * @param quotesScope The scope containing the quotes with the FX rates used for currency conversion. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest quotesScope(String quotesScope) {
+            this.quotesScope = quotesScope;
+            return this;
+        }
+
+        /**
+         * Set slice
+         * @param slice When running LookThrough, define this slice as the root slice in the portfolio to look through from. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest slice(String slice) {
+            this.slice = slice;
+            return this;
+        }
+
+        /**
+         * Set shareClass
+         * @param shareClass When running LookThrough, use this along with the slice parameter to specify   the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite   for this parameter to be valid. (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest shareClass(String shareClass) {
+            this.shareClass = shareClass;
+            return this;
+        }
+
+        /**
+         * Set useAlternateScalingLogic
+         * @param useAlternateScalingLogic When running LookThrough, set this flag to use the same scaling logic as for LT Holdings (optional, default to false)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest useAlternateScalingLogic(Boolean useAlternateScalingLogic) {
+            this.useAlternateScalingLogic = useAlternateScalingLogic;
+            return this;
+        }
+
+        /**
+         * Set alternateEffectiveAt
+         * @param alternateEffectiveAt This effectiveAt field is required when using alternate scaling logic to determine which fund and currency data is used for scaling (optional)
+         * @return APIlookThroughTransactionsRequest
+         */
+        public APIlookThroughTransactionsRequest alternateEffectiveAt(String alternateEffectiveAt) {
+            this.alternateEffectiveAt = alternateEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for lookThroughTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return lookThroughTransactionsCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute lookThroughTransactions request
+         * @return VersionedResourceListOfTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfTransaction execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfTransaction> localVarResp = lookThroughTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute lookThroughTransactions request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
+            return lookThroughTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt);
+        }
+
+        /**
+         * Execute lookThroughTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
+            return lookThroughTransactionsAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, quotesScope, slice, shareClass, useAlternateScalingLogic, alternateEffectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for patchPortfolioDetails
+     * [EXPERIMENTAL] LookThroughTransactions: Look through transactions
+     * Retrieve all the transactions that occurred during a particular time interval.    If the portfolio is part of a fund as defined in Fund Accounting documents, the transactions returned are the  union set of all transactions in portfolios of the same type, in any funds invested in by the portfolio&#39;s fund  (and any funds invested in from that fund, etc.).  The transactions will be scaled according to the ratio of the value of the investment in the fund to the NAV of the fund itself.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param operation The patch document. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified.               Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIlookThroughTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchPortfolioDetailsCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIlookThroughTransactionsRequest lookThroughTransactions(String scope, String code) {
+        return new APIlookThroughTransactionsRequest(scope, code);
+    }
+    private okhttp3.Call patchPortfolioDetailsCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5346,97 +6865,130 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolioDetails: Patch portfolio details
-     * Create or update certain details for a particular transaction portfolio.  The behaviour is defined by the JSON Patch specification.                Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  Currently supported properties are: SubHoldingKeys, BaseCurrency, AmortisationMethod
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param operation The patch document. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified.               Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
-     * @return PortfolioDetails
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PortfolioDetails patchPortfolioDetails(String scope, String code, List<Operation> operation, String effectiveAt) throws ApiException {
-        ApiResponse<PortfolioDetails> localVarResp = patchPortfolioDetailsWithHttpInfo(scope, code, operation, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolioDetails: Patch portfolio details
-     * Create or update certain details for a particular transaction portfolio.  The behaviour is defined by the JSON Patch specification.                Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  Currently supported properties are: SubHoldingKeys, BaseCurrency, AmortisationMethod
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param operation The patch document. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified.               Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
-     * @return ApiResponse&lt;PortfolioDetails&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PortfolioDetails> patchPortfolioDetailsWithHttpInfo(String scope, String code, List<Operation> operation, String effectiveAt) throws ApiException {
+    private ApiResponse<PortfolioDetails> patchPortfolioDetailsWithHttpInfo(String scope, String code, List<Operation> operation, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, null);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] PatchPortfolioDetails: Patch portfolio details (asynchronously)
-     * Create or update certain details for a particular transaction portfolio.  The behaviour is defined by the JSON Patch specification.                Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  Currently supported properties are: SubHoldingKeys, BaseCurrency, AmortisationMethod
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param operation The patch document. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified.               Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchPortfolioDetailsAsync(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioDetailsAsync(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpatchPortfolioDetailsRequest {
+        private final String scope;
+        private final String code;
+        private final List<Operation> operation;
+        private String effectiveAt;
+
+        private APIpatchPortfolioDetailsRequest(String scope, String code, List<Operation> operation) {
+            this.scope = scope;
+            this.code = code;
+            this.operation = operation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
+         * @return APIpatchPortfolioDetailsRequest
+         */
+        public APIpatchPortfolioDetailsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for patchPortfolioDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchPortfolioDetailsCall(scope, code, operation, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute patchPortfolioDetails request
+         * @return PortfolioDetails
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioDetails execute() throws ApiException {
+            ApiResponse<PortfolioDetails> localVarResp = patchPortfolioDetailsWithHttpInfo(scope, code, operation, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchPortfolioDetails request with HTTP info returned
+         * @return ApiResponse&lt;PortfolioDetails&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioDetails> executeWithHttpInfo() throws ApiException {
+            return patchPortfolioDetailsWithHttpInfo(scope, code, operation, effectiveAt);
+        }
+
+        /**
+         * Execute patchPortfolioDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback) throws ApiException {
+            return patchPortfolioDetailsAsync(scope, code, operation, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for resolveInstrument
+     * [EARLY ACCESS] PatchPortfolioDetails: Patch portfolio details
+     * Create or update certain details for a particular transaction portfolio.  The behaviour is defined by the JSON Patch specification.     Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  Currently supported properties are: SubHoldingKeys, BaseCurrency, AmortisationMethod
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param instrumentIdentifierType The instrument identifier type. (required)
-     * @param instrumentIdentifierValue The value for the given instrument identifier. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (optional)
-     * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.              When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
-     * @param requestBody The dictionary with the instrument identifiers to be updated on the             transaction and holdings. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)
+     * @param operation The patch document. (required)
+     * @return APIpatchPortfolioDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call resolveInstrumentCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIpatchPortfolioDetailsRequest patchPortfolioDetails(String scope, String code, List<Operation> operation) {
+        return new APIpatchPortfolioDetailsRequest(scope, code, operation);
+    }
+    private okhttp3.Call resolveInstrumentCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5530,104 +7082,155 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ResolveInstrument: Resolve instrument
-     * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified  period of time. Also update the instrument identifiers with the given instrument identifiers collection.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param instrumentIdentifierType The instrument identifier type. (required)
-     * @param instrumentIdentifierValue The value for the given instrument identifier. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (optional)
-     * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.              When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
-     * @param requestBody The dictionary with the instrument identifiers to be updated on the             transaction and holdings. (optional)
-     * @return UpsertPortfolioTransactionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertPortfolioTransactionsResponse resolveInstrument(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody) throws ApiException {
-        ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = resolveInstrumentWithHttpInfo(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ResolveInstrument: Resolve instrument
-     * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified  period of time. Also update the instrument identifiers with the given instrument identifiers collection.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param instrumentIdentifierType The instrument identifier type. (required)
-     * @param instrumentIdentifierValue The value for the given instrument identifier. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (optional)
-     * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.              When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
-     * @param requestBody The dictionary with the instrument identifiers to be updated on the             transaction and holdings. (optional)
-     * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertPortfolioTransactionsResponse> resolveInstrumentWithHttpInfo(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody) throws ApiException {
+    private ApiResponse<UpsertPortfolioTransactionsResponse> resolveInstrumentWithHttpInfo(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody) throws ApiException {
         okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ResolveInstrument: Resolve instrument (asynchronously)
-     * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified  period of time. Also update the instrument identifiers with the given instrument identifiers collection.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param instrumentIdentifierType The instrument identifier type. (required)
-     * @param instrumentIdentifierValue The value for the given instrument identifier. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. (optional)
-     * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.              When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
-     * @param requestBody The dictionary with the instrument identifiers to be updated on the             transaction and holdings. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call resolveInstrumentAsync(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call resolveInstrumentAsync(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIresolveInstrumentRequest {
+        private final String scope;
+        private final String code;
+        private final String instrumentIdentifierType;
+        private final String instrumentIdentifierValue;
+        private String fromEffectiveAt;
+        private Boolean reResolve;
+        private Map<String, String> requestBody;
+
+        private APIresolveInstrumentRequest(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue) {
+            this.scope = scope;
+            this.code = code;
+            this.instrumentIdentifierType = instrumentIdentifierType;
+            this.instrumentIdentifierValue = instrumentIdentifierValue;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (optional)
+         * @return APIresolveInstrumentRequest
+         */
+        public APIresolveInstrumentRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set reResolve
+         * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.   When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
+         * @return APIresolveInstrumentRequest
+         */
+        public APIresolveInstrumentRequest reResolve(Boolean reResolve) {
+            this.reResolve = reResolve;
+            return this;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The dictionary with the instrument identifiers to be updated on the   transaction and holdings. (optional)
+         * @return APIresolveInstrumentRequest
+         */
+        public APIresolveInstrumentRequest requestBody(Map<String, String> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for resolveInstrument
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return resolveInstrumentCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback);
+        }
+
+        /**
+         * Execute resolveInstrument request
+         * @return UpsertPortfolioTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertPortfolioTransactionsResponse execute() throws ApiException {
+            ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = resolveInstrumentWithHttpInfo(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resolveInstrument request with HTTP info returned
+         * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
+            return resolveInstrumentWithHttpInfo(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody);
+        }
+
+        /**
+         * Execute resolveInstrument request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+            return resolveInstrumentAsync(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for setHoldings
+     * [EARLY ACCESS] ResolveInstrument: Resolve instrument
+     * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified  period of time. Also update the instrument identifiers with the given instrument identifiers collection.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The complete set of target holdings for the transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param instrumentIdentifierType The instrument identifier type. (required)
+     * @param instrumentIdentifierValue The value for the given instrument identifier. (required)
+     * @return APIresolveInstrumentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+    public APIresolveInstrumentRequest resolveInstrument(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue) {
+        return new APIresolveInstrumentRequest(scope, code, instrumentIdentifierType, instrumentIdentifierValue);
+    }
+    private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5713,96 +7316,133 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * SetHoldings: Set holdings
-     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The complete set of target holdings for the transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @return AdjustHolding
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AdjustHolding setHoldings(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
-        ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
-        return localVarResp.getData();
-    }
 
-    /**
-     * SetHoldings: Set holdings
-     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The complete set of target holdings for the transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @return ApiResponse&lt;AdjustHolding&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
+    private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
         okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * SetHoldings: Set holdings (asynchronously)
-     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The complete set of target holdings for the transaction portfolio. (required)
-     * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
+    private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsetHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+        private final List<AdjustHoldingRequest> adjustHoldingRequest;
+        private List<String> reconciliationMethods;
+
+        private APIsetHoldingsRequest(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+            this.adjustHoldingRequest = adjustHoldingRequest;
+        }
+
+        /**
+         * Set reconciliationMethods
+         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
+         * @return APIsetHoldingsRequest
+         */
+        public APIsetHoldingsRequest reconciliationMethods(List<String> reconciliationMethods) {
+            this.reconciliationMethods = reconciliationMethods;
+            return this;
+        }
+
+        /**
+         * Build call for setHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute setHoldings request
+         * @return AdjustHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AdjustHolding execute() throws ApiException {
+            ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setHoldings request with HTTP info returned
+         * @return ApiResponse&lt;AdjustHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
+            return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+        }
+
+        /**
+         * Execute setHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
+            return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCustodianAccounts
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param custodianAccountRequest A list of Custodian Accounts to be created or updated. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * SetHoldings: Set holdings
+     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
+     * @param adjustHoldingRequest The complete set of target holdings for the transaction portfolio. (required)
+     * @return APIsetHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCustodianAccountsCall(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback _callback) throws ApiException {
+    public APIsetHoldingsRequest setHoldings(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
+        return new APIsetHoldingsRequest(scope, code, effectiveAt, adjustHoldingRequest);
+    }
+    private okhttp3.Call upsertCustodianAccountsCall(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5875,92 +7515,119 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts
-     * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param custodianAccountRequest A list of Custodian Accounts to be created or updated. (required)
-     * @return CustodianAccountsUpsertResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustodianAccountsUpsertResponse upsertCustodianAccounts(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest) throws ApiException {
-        ApiResponse<CustodianAccountsUpsertResponse> localVarResp = upsertCustodianAccountsWithHttpInfo(scope, code, custodianAccountRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts
-     * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param custodianAccountRequest A list of Custodian Accounts to be created or updated. (required)
-     * @return ApiResponse&lt;CustodianAccountsUpsertResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustodianAccountsUpsertResponse> upsertCustodianAccountsWithHttpInfo(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest) throws ApiException {
+    private ApiResponse<CustodianAccountsUpsertResponse> upsertCustodianAccountsWithHttpInfo(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, null);
         Type localVarReturnType = new TypeToken<CustodianAccountsUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts (asynchronously)
-     * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
-     * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. (required)
-     * @param custodianAccountRequest A list of Custodian Accounts to be created or updated. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertCustodianAccountsAsync(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback<CustodianAccountsUpsertResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertCustodianAccountsAsync(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback<CustodianAccountsUpsertResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, _callback);
         Type localVarReturnType = new TypeToken<CustodianAccountsUpsertResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertCustodianAccountsRequest {
+        private final String scope;
+        private final String code;
+        private final List<CustodianAccountRequest> custodianAccountRequest;
+
+        private APIupsertCustodianAccountsRequest(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.custodianAccountRequest = custodianAccountRequest;
+        }
+
+        /**
+         * Build call for upsertCustodianAccounts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCustodianAccountsCall(scope, code, custodianAccountRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCustodianAccounts request
+         * @return CustodianAccountsUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustodianAccountsUpsertResponse execute() throws ApiException {
+            ApiResponse<CustodianAccountsUpsertResponse> localVarResp = upsertCustodianAccountsWithHttpInfo(scope, code, custodianAccountRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCustodianAccounts request with HTTP info returned
+         * @return ApiResponse&lt;CustodianAccountsUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustodianAccountsUpsertResponse> executeWithHttpInfo() throws ApiException {
+            return upsertCustodianAccountsWithHttpInfo(scope, code, custodianAccountRequest);
+        }
+
+        /**
+         * Execute upsertCustodianAccounts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustodianAccountsUpsertResponse> _callback) throws ApiException {
+            return upsertCustodianAccountsAsync(scope, code, custodianAccountRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCustodianAccountsProperties
-     * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
-     * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)
-     * @param custodianAccountScope The scope of the Custodian Account to update or insert the properties onto. (required)
-     * @param custodianAccountCode The unique ID of the custodian account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts
+     * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
+     * @param scope The scope of the Transaction Portfolio. (required)
+     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
+     * @param custodianAccountRequest A list of Custodian Accounts to be created or updated. (required)
+     * @return APIupsertCustodianAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCustodianAccountsPropertiesCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIupsertCustodianAccountsRequest upsertCustodianAccounts(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest) {
+        return new APIupsertCustodianAccountsRequest(scope, code, custodianAccountRequest);
+    }
+    private okhttp3.Call upsertCustodianAccountsPropertiesCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6040,97 +7707,133 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties
-     * Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.                Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
-     * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)
-     * @param custodianAccountScope The scope of the Custodian Account to update or insert the properties onto. (required)
-     * @param custodianAccountCode The unique ID of the custodian account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
-     * @return CustodianAccountProperties
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustodianAccountProperties upsertCustodianAccountsProperties(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody) throws ApiException {
-        ApiResponse<CustodianAccountProperties> localVarResp = upsertCustodianAccountsPropertiesWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties
-     * Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.                Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
-     * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)
-     * @param custodianAccountScope The scope of the Custodian Account to update or insert the properties onto. (required)
-     * @param custodianAccountCode The unique ID of the custodian account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
-     * @return ApiResponse&lt;CustodianAccountProperties&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustodianAccountProperties> upsertCustodianAccountsPropertiesWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody) throws ApiException {
+    private ApiResponse<CustodianAccountProperties> upsertCustodianAccountsPropertiesWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, null);
         Type localVarReturnType = new TypeToken<CustodianAccountProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties (asynchronously)
-     * Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.                Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
-     * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)
-     * @param custodianAccountScope The scope of the Custodian Account to update or insert the properties onto. (required)
-     * @param custodianAccountCode The unique ID of the custodian account to create or update properties for. (required)
-     * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertCustodianAccountsPropertiesAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback<CustodianAccountProperties> _callback) throws ApiException {
+    private okhttp3.Call upsertCustodianAccountsPropertiesAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback<CustodianAccountProperties> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback);
         Type localVarReturnType = new TypeToken<CustodianAccountProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertCustodianAccountsPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private final String custodianAccountScope;
+        private final String custodianAccountCode;
+        private Map<String, Property> requestBody;
+
+        private APIupsertCustodianAccountsPropertiesRequest(String scope, String code, String custodianAccountScope, String custodianAccountCode) {
+            this.scope = scope;
+            this.code = code;
+            this.custodianAccountScope = custodianAccountScope;
+            this.custodianAccountCode = custodianAccountCode;
+        }
+
+        /**
+         * Set requestBody
+         * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
+         * @return APIupsertCustodianAccountsPropertiesRequest
+         */
+        public APIupsertCustodianAccountsPropertiesRequest requestBody(Map<String, Property> requestBody) {
+            this.requestBody = requestBody;
+            return this;
+        }
+
+        /**
+         * Build call for upsertCustodianAccountsProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCustodianAccountsPropertiesCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertCustodianAccountsProperties request
+         * @return CustodianAccountProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustodianAccountProperties execute() throws ApiException {
+            ApiResponse<CustodianAccountProperties> localVarResp = upsertCustodianAccountsPropertiesWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCustodianAccountsProperties request with HTTP info returned
+         * @return ApiResponse&lt;CustodianAccountProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustodianAccountProperties> executeWithHttpInfo() throws ApiException {
+            return upsertCustodianAccountsPropertiesWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, requestBody);
+        }
+
+        /**
+         * Execute upsertCustodianAccountsProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustodianAccountProperties> _callback) throws ApiException {
+            return upsertCustodianAccountsPropertiesAsync(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertPortfolioDetails
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param createPortfolioDetails The details to create or update for the specified transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties
+     * Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.     Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
+     * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)
+     * @param custodianAccountScope The scope of the Custodian Account to update or insert the properties onto. (required)
+     * @param custodianAccountCode The unique ID of the custodian account to create or update properties for. (required)
+     * @return APIupsertCustodianAccountsPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertPortfolioDetailsCall(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    public APIupsertCustodianAccountsPropertiesRequest upsertCustodianAccountsProperties(String scope, String code, String custodianAccountScope, String custodianAccountCode) {
+        return new APIupsertCustodianAccountsPropertiesRequest(scope, code, custodianAccountScope, custodianAccountCode);
+    }
+    private okhttp3.Call upsertPortfolioDetailsCall(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6207,94 +7910,130 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * UpsertPortfolioDetails: Upsert portfolio details
-     * Create or update certain details for a particular transaction portfolio. The details are updated if they already exist, and inserted if they do not.                Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param createPortfolioDetails The details to create or update for the specified transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return PortfolioDetails
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PortfolioDetails upsertPortfolioDetails(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt) throws ApiException {
-        ApiResponse<PortfolioDetails> localVarResp = upsertPortfolioDetailsWithHttpInfo(scope, code, createPortfolioDetails, effectiveAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertPortfolioDetails: Upsert portfolio details
-     * Create or update certain details for a particular transaction portfolio. The details are updated if they already exist, and inserted if they do not.                Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param createPortfolioDetails The details to create or update for the specified transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @return ApiResponse&lt;PortfolioDetails&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PortfolioDetails> upsertPortfolioDetailsWithHttpInfo(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt) throws ApiException {
+    private ApiResponse<PortfolioDetails> upsertPortfolioDetailsWithHttpInfo(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt) throws ApiException {
         okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, null);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * UpsertPortfolioDetails: Upsert portfolio details (asynchronously)
-     * Create or update certain details for a particular transaction portfolio. The details are updated if they already exist, and inserted if they do not.                Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. (required)
-     * @param createPortfolioDetails The details to create or update for the specified transaction portfolio. (required)
-     * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertPortfolioDetailsAsync(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioDetailsAsync(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertPortfolioDetailsRequest {
+        private final String scope;
+        private final String code;
+        private final CreatePortfolioDetails createPortfolioDetails;
+        private String effectiveAt;
+
+        private APIupsertPortfolioDetailsRequest(String scope, String code, CreatePortfolioDetails createPortfolioDetails) {
+            this.scope = scope;
+            this.code = code;
+            this.createPortfolioDetails = createPortfolioDetails;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIupsertPortfolioDetailsRequest
+         */
+        public APIupsertPortfolioDetailsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for upsertPortfolioDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertPortfolioDetailsCall(scope, code, createPortfolioDetails, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioDetails request
+         * @return PortfolioDetails
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioDetails execute() throws ApiException {
+            ApiResponse<PortfolioDetails> localVarResp = upsertPortfolioDetailsWithHttpInfo(scope, code, createPortfolioDetails, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertPortfolioDetails request with HTTP info returned
+         * @return ApiResponse&lt;PortfolioDetails&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioDetails> executeWithHttpInfo() throws ApiException {
+            return upsertPortfolioDetailsWithHttpInfo(scope, code, createPortfolioDetails, effectiveAt);
+        }
+
+        /**
+         * Execute upsertPortfolioDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback) throws ApiException {
+            return upsertPortfolioDetailsAsync(scope, code, createPortfolioDetails, effectiveAt, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertTransactionProperties
+     * UpsertPortfolioDetails: Upsert portfolio details
+     * Create or update certain details for a particular transaction portfolio. The details are updated if they already exist, and inserted if they do not.     Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update properties for. (required)
-     * @param requestBody The properties and their associated values to create or update. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)
+     * @param createPortfolioDetails The details to create or update for the specified transaction portfolio. (required)
+     * @return APIupsertPortfolioDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTransactionPropertiesCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback) throws ApiException {
+    public APIupsertPortfolioDetailsRequest upsertPortfolioDetails(String scope, String code, CreatePortfolioDetails createPortfolioDetails) {
+        return new APIupsertPortfolioDetailsRequest(scope, code, createPortfolioDetails);
+    }
+    private okhttp3.Call upsertTransactionPropertiesCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6373,93 +8112,122 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * UpsertTransactionProperties: Upsert transaction properties
-     * Create or update one or more transaction properties for a single transaction in the transaction portfolio.  Each property will be updated if it already exists and created if it does not.  Both transaction and portfolio must exist at the time when properties are created or updated.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update properties for. (required)
-     * @param requestBody The properties and their associated values to create or update. (required)
-     * @return UpsertTransactionPropertiesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertTransactionPropertiesResponse upsertTransactionProperties(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) throws ApiException {
-        ApiResponse<UpsertTransactionPropertiesResponse> localVarResp = upsertTransactionPropertiesWithHttpInfo(scope, code, transactionId, requestBody);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertTransactionProperties: Upsert transaction properties
-     * Create or update one or more transaction properties for a single transaction in the transaction portfolio.  Each property will be updated if it already exists and created if it does not.  Both transaction and portfolio must exist at the time when properties are created or updated.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update properties for. (required)
-     * @param requestBody The properties and their associated values to create or update. (required)
-     * @return ApiResponse&lt;UpsertTransactionPropertiesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertTransactionPropertiesResponse> upsertTransactionPropertiesWithHttpInfo(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) throws ApiException {
+    private ApiResponse<UpsertTransactionPropertiesResponse> upsertTransactionPropertiesWithHttpInfo(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) throws ApiException {
         okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, null);
         Type localVarReturnType = new TypeToken<UpsertTransactionPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * UpsertTransactionProperties: Upsert transaction properties (asynchronously)
-     * Create or update one or more transaction properties for a single transaction in the transaction portfolio.  Each property will be updated if it already exists and created if it does not.  Both transaction and portfolio must exist at the time when properties are created or updated.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionId The unique ID of the transaction to create or update properties for. (required)
-     * @param requestBody The properties and their associated values to create or update. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertTransactionPropertiesAsync(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback<UpsertTransactionPropertiesResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionPropertiesAsync(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback<UpsertTransactionPropertiesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, _callback);
         Type localVarReturnType = new TypeToken<UpsertTransactionPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertTransactionPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private final String transactionId;
+        private final Map<String, PerpetualProperty> requestBody;
+
+        private APIupsertTransactionPropertiesRequest(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionId = transactionId;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertTransactionProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTransactionPropertiesCall(scope, code, transactionId, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertTransactionProperties request
+         * @return UpsertTransactionPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertTransactionPropertiesResponse execute() throws ApiException {
+            ApiResponse<UpsertTransactionPropertiesResponse> localVarResp = upsertTransactionPropertiesWithHttpInfo(scope, code, transactionId, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTransactionProperties request with HTTP info returned
+         * @return ApiResponse&lt;UpsertTransactionPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertTransactionPropertiesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertTransactionPropertiesWithHttpInfo(scope, code, transactionId, requestBody);
+        }
+
+        /**
+         * Execute upsertTransactionProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertTransactionPropertiesResponse> _callback) throws ApiException {
+            return upsertTransactionPropertiesAsync(scope, code, transactionId, requestBody, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertTransactions
+     * UpsertTransactionProperties: Upsert transaction properties
+     * Create or update one or more transaction properties for a single transaction in the transaction portfolio.  Each property will be updated if it already exists and created if it does not.  Both transaction and portfolio must exist at the time when properties are created or updated.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionRequest A list of transactions to be created or updated. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionId The unique ID of the transaction to create or update properties for. (required)
+     * @param requestBody The properties and their associated values to create or update. (required)
+     * @return APIupsertTransactionPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTransactionsCall(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertTransactionPropertiesRequest upsertTransactionProperties(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) {
+        return new APIupsertTransactionPropertiesRequest(scope, code, transactionId, requestBody);
+    }
+    private okhttp3.Call upsertTransactionsCall(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6532,58 +8300,107 @@ public class TransactionPortfoliosApi {
 
     }
 
-    /**
-     * UpsertTransactions: Upsert transactions
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.  The maximum number of transactions that this method can upsert per request is 10,000.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionRequest A list of transactions to be created or updated. (required)
-     * @return UpsertPortfolioTransactionsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertPortfolioTransactionsResponse upsertTransactions(String scope, String code, List<TransactionRequest> transactionRequest) throws ApiException {
-        ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = upsertTransactionsWithHttpInfo(scope, code, transactionRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * UpsertTransactions: Upsert transactions
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.  The maximum number of transactions that this method can upsert per request is 10,000.
-     * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
-     * @param transactionRequest A list of transactions to be created or updated. (required)
-     * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsWithHttpInfo(String scope, String code, List<TransactionRequest> transactionRequest) throws ApiException {
+    private ApiResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsWithHttpInfo(String scope, String code, List<TransactionRequest> transactionRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, null);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private final List<TransactionRequest> transactionRequest;
+
+        private APIupsertTransactionsRequest(String scope, String code, List<TransactionRequest> transactionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionRequest = transactionRequest;
+        }
+
+        /**
+         * Build call for upsertTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTransactionsCall(scope, code, transactionRequest, _callback);
+        }
+
+        /**
+         * Execute upsertTransactions request
+         * @return UpsertPortfolioTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertPortfolioTransactionsResponse execute() throws ApiException {
+            ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = upsertTransactionsWithHttpInfo(scope, code, transactionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTransactions request with HTTP info returned
+         * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertTransactionsWithHttpInfo(scope, code, transactionRequest);
+        }
+
+        /**
+         * Execute upsertTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+            return upsertTransactionsAsync(scope, code, transactionRequest, _callback);
+        }
+    }
+
     /**
-     * UpsertTransactions: Upsert transactions (asynchronously)
+     * UpsertTransactions: Upsert transactions
      * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.  The maximum number of transactions that this method can upsert per request is 10,000.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
      * @param transactionRequest A list of transactions to be created or updated. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -6592,11 +8409,7 @@ public class TransactionPortfoliosApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertTransactionsRequest upsertTransactions(String scope, String code, List<TransactionRequest> transactionRequest) {
+        return new APIupsertTransactionsRequest(scope, code, transactionRequest);
     }
 }

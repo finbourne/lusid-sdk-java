@@ -529,35 +529,28 @@ public class InlineValuationRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InlineValuationRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to InlineValuationRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!InlineValuationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!InlineValuationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InlineValuationRequest is not found in the empty JSON string", InlineValuationRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!InlineValuationRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InlineValuationRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : InlineValuationRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `recipeId`
       if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("recipeId"));
+        ResourceId.validateJsonElement(jsonObj.get("recipeId"));
       }
       // ensure the json data is an array
       if (!jsonObj.get("metrics").isJsonArray()) {
@@ -567,10 +560,10 @@ public class InlineValuationRequest {
       JsonArray jsonArraymetrics = jsonObj.getAsJsonArray("metrics");
       // validate the required field `metrics` (array)
       for (int i = 0; i < jsonArraymetrics.size(); i++) {
-        AggregateSpec.validateJsonObject(jsonArraymetrics.get(i).getAsJsonObject());
+        AggregateSpec.validateJsonElement(jsonArraymetrics.get(i));
       };
       // ensure the optional json data is an array if present
-      if (jsonObj.get("groupBy") != null && !jsonObj.get("groupBy").isJsonArray()) {
+      if (jsonObj.get("groupBy") != null && !jsonObj.get("groupBy").isJsonNull() && !jsonObj.get("groupBy").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `groupBy` to be an array in the JSON string but got `%s`", jsonObj.get("groupBy").toString()));
       }
       if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
@@ -583,7 +576,7 @@ public class InlineValuationRequest {
 
           // validate the optional field `filters` (array)
           for (int i = 0; i < jsonArrayfilters.size(); i++) {
-            PropertyFilter.validateJsonObject(jsonArrayfilters.get(i).getAsJsonObject());
+            PropertyFilter.validateJsonElement(jsonArrayfilters.get(i));
           };
         }
       }
@@ -597,7 +590,7 @@ public class InlineValuationRequest {
 
           // validate the optional field `sort` (array)
           for (int i = 0; i < jsonArraysort.size(); i++) {
-            OrderBySpec.validateJsonObject(jsonArraysort.get(i).getAsJsonObject());
+            OrderBySpec.validateJsonElement(jsonArraysort.get(i));
           };
         }
       }
@@ -606,7 +599,7 @@ public class InlineValuationRequest {
       }
       // validate the optional field `valuationSchedule`
       if (jsonObj.get("valuationSchedule") != null && !jsonObj.get("valuationSchedule").isJsonNull()) {
-        ValuationSchedule.validateJsonObject(jsonObj.getAsJsonObject("valuationSchedule"));
+        ValuationSchedule.validateJsonElement(jsonObj.get("valuationSchedule"));
       }
       // ensure the json data is an array
       if (!jsonObj.get("instruments").isJsonArray()) {
@@ -616,15 +609,15 @@ public class InlineValuationRequest {
       JsonArray jsonArrayinstruments = jsonObj.getAsJsonArray("instruments");
       // validate the required field `instruments` (array)
       for (int i = 0; i < jsonArrayinstruments.size(); i++) {
-        WeightedInstrument.validateJsonObject(jsonArrayinstruments.get(i).getAsJsonObject());
+        WeightedInstrument.validateJsonElement(jsonArrayinstruments.get(i));
       };
       // validate the optional field `marketDataOverrides`
       if (jsonObj.get("marketDataOverrides") != null && !jsonObj.get("marketDataOverrides").isJsonNull()) {
-        MarketDataOverrides.validateJsonObject(jsonObj.getAsJsonObject("marketDataOverrides"));
+        MarketDataOverrides.validateJsonElement(jsonObj.get("marketDataOverrides"));
       }
       // validate the optional field `corporateActionSourceId`
       if (jsonObj.get("corporateActionSourceId") != null && !jsonObj.get("corporateActionSourceId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("corporateActionSourceId"));
+        ResourceId.validateJsonElement(jsonObj.get("corporateActionSourceId"));
       }
   }
 
@@ -648,9 +641,9 @@ public class InlineValuationRequest {
 
            @Override
            public InlineValuationRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

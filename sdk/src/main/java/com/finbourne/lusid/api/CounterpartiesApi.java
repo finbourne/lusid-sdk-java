@@ -79,22 +79,7 @@ public class CounterpartiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteCounterpartyAgreement
-     * @param scope The scope of the Counterparty Agreement to delete. (required)
-     * @param code The Counterparty Agreement to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCounterpartyAgreementCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCounterpartyAgreementCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,77 +143,104 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code
-     * Delete the specified Counterparty Agreement from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Counterparty Agreement to delete. (required)
-     * @param code The Counterparty Agreement to delete. (required)
-     * @return AnnulSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulSingleStructuredDataResponse deleteCounterpartyAgreement(String scope, String code) throws ApiException {
-        ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCounterpartyAgreementWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code
-     * Delete the specified Counterparty Agreement from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Counterparty Agreement to delete. (required)
-     * @param code The Counterparty Agreement to delete. (required)
-     * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulSingleStructuredDataResponse> deleteCounterpartyAgreementWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteCounterpartyAgreementWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code (asynchronously)
-     * Delete the specified Counterparty Agreement from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Counterparty Agreement to delete. (required)
-     * @param code The Counterparty Agreement to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCounterpartyAgreementAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCounterpartyAgreementAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCounterpartyAgreementRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteCounterpartyAgreementRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteCounterpartyAgreement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCounterpartyAgreementCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCounterpartyAgreement request
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCounterpartyAgreementWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCounterpartyAgreement request with HTTP info returned
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCounterpartyAgreementWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCounterpartyAgreement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+            return deleteCounterpartyAgreementAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for deleteCreditSupportAnnex
-     * @param scope The scope of the Credit Support Annex to delete. (required)
-     * @param code The Credit Support Annex to delete. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code
+     * Delete the specified Counterparty Agreement from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
+     * @param scope The scope of the Counterparty Agreement to delete. (required)
+     * @param code The Counterparty Agreement to delete. (required)
+     * @return APIdeleteCounterpartyAgreementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -237,7 +249,10 @@ public class CounterpartiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCreditSupportAnnexCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCounterpartyAgreementRequest deleteCounterpartyAgreement(String scope, String code) {
+        return new APIdeleteCounterpartyAgreementRequest(scope, code);
+    }
+    private okhttp3.Call deleteCreditSupportAnnexCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -301,87 +316,116 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code
-     * Delete the specified Credit Support Annex from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Credit Support Annex to delete. (required)
-     * @param code The Credit Support Annex to delete. (required)
-     * @return AnnulSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public AnnulSingleStructuredDataResponse deleteCreditSupportAnnex(String scope, String code) throws ApiException {
-        ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCreditSupportAnnexWithHttpInfo(scope, code);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code
-     * Delete the specified Credit Support Annex from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Credit Support Annex to delete. (required)
-     * @param code The Credit Support Annex to delete. (required)
-     * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AnnulSingleStructuredDataResponse> deleteCreditSupportAnnexWithHttpInfo(String scope, String code) throws ApiException {
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteCreditSupportAnnexWithHttpInfo(String scope, String code) throws ApiException {
         okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, null);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code (asynchronously)
-     * Delete the specified Credit Support Annex from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.                It is important to always check for any unsuccessful response.
-     * @param scope The scope of the Credit Support Annex to delete. (required)
-     * @param code The Credit Support Annex to delete. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCreditSupportAnnexAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCreditSupportAnnexAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIdeleteCreditSupportAnnexRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteCreditSupportAnnexRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteCreditSupportAnnex
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCreditSupportAnnexCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCreditSupportAnnex request
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCreditSupportAnnexWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCreditSupportAnnex request with HTTP info returned
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCreditSupportAnnexWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCreditSupportAnnex request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
+            return deleteCreditSupportAnnexAsync(scope, code, _callback);
+        }
+    }
+
     /**
-     * Build call for getCounterpartyAgreement
-     * @param scope The scope of the Counterparty Agreement to retrieve. (required)
-     * @param code The name of the Counterparty Agreement to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code
+     * Delete the specified Credit Support Annex from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
+     * @param scope The scope of the Credit Support Annex to delete. (required)
+     * @param code The Credit Support Annex to delete. (required)
+     * @return APIdeleteCreditSupportAnnexRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCounterpartyAgreementCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIdeleteCreditSupportAnnexRequest deleteCreditSupportAnnex(String scope, String code) {
+        return new APIdeleteCreditSupportAnnexRequest(scope, code);
+    }
+    private okhttp3.Call getCounterpartyAgreementCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -449,90 +493,127 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement
-     * Get a Counterparty Agreement from a single scope.  The response will return either the Counterparty Agreement that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Counterparty Agreement to retrieve. (required)
-     * @param code The name of the Counterparty Agreement to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. (optional)
-     * @return GetCounterpartyAgreementResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetCounterpartyAgreementResponse getCounterpartyAgreement(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<GetCounterpartyAgreementResponse> localVarResp = getCounterpartyAgreementWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement
-     * Get a Counterparty Agreement from a single scope.  The response will return either the Counterparty Agreement that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Counterparty Agreement to retrieve. (required)
-     * @param code The name of the Counterparty Agreement to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;GetCounterpartyAgreementResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetCounterpartyAgreementResponse> getCounterpartyAgreementWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<GetCounterpartyAgreementResponse> getCounterpartyAgreementWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<GetCounterpartyAgreementResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement (asynchronously)
-     * Get a Counterparty Agreement from a single scope.  The response will return either the Counterparty Agreement that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Counterparty Agreement to retrieve. (required)
-     * @param code The name of the Counterparty Agreement to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCounterpartyAgreementAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCounterpartyAgreementResponse> _callback) throws ApiException {
+    private okhttp3.Call getCounterpartyAgreementAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCounterpartyAgreementResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<GetCounterpartyAgreementResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCounterpartyAgreementRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetCounterpartyAgreementRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetCounterpartyAgreementRequest
+         */
+        public APIgetCounterpartyAgreementRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCounterpartyAgreement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCounterpartyAgreementCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCounterpartyAgreement request
+         * @return GetCounterpartyAgreementResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetCounterpartyAgreementResponse execute() throws ApiException {
+            ApiResponse<GetCounterpartyAgreementResponse> localVarResp = getCounterpartyAgreementWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCounterpartyAgreement request with HTTP info returned
+         * @return ApiResponse&lt;GetCounterpartyAgreementResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetCounterpartyAgreementResponse> executeWithHttpInfo() throws ApiException {
+            return getCounterpartyAgreementWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getCounterpartyAgreement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetCounterpartyAgreementResponse> _callback) throws ApiException {
+            return getCounterpartyAgreementAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for getCreditSupportAnnex
-     * @param scope The scope of the Credit Support Annex to retrieve. (required)
-     * @param code The name of the Credit Support Annex to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement
+     * Get a Counterparty Agreement from a single scope.  The response will return either the Counterparty Agreement that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
+     * @param scope The scope of the Counterparty Agreement to retrieve. (required)
+     * @param code The name of the Counterparty Agreement to retrieve the data for. (required)
+     * @return APIgetCounterpartyAgreementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCreditSupportAnnexCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetCounterpartyAgreementRequest getCounterpartyAgreement(String scope, String code) {
+        return new APIgetCounterpartyAgreementRequest(scope, code);
+    }
+    private okhttp3.Call getCreditSupportAnnexCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -600,88 +681,127 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex
-     * Get a Credit Support Annex from a single scope.  The response will return either the Credit Support Annex that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Credit Support Annex to retrieve. (required)
-     * @param code The name of the Credit Support Annex to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. (optional)
-     * @return GetCreditSupportAnnexResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetCreditSupportAnnexResponse getCreditSupportAnnex(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        ApiResponse<GetCreditSupportAnnexResponse> localVarResp = getCreditSupportAnnexWithHttpInfo(scope, code, asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex
-     * Get a Credit Support Annex from a single scope.  The response will return either the Credit Support Annex that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Credit Support Annex to retrieve. (required)
-     * @param code The name of the Credit Support Annex to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. (optional)
-     * @return ApiResponse&lt;GetCreditSupportAnnexResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetCreditSupportAnnexResponse> getCreditSupportAnnexWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<GetCreditSupportAnnexResponse> getCreditSupportAnnexWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, null);
         Type localVarReturnType = new TypeToken<GetCreditSupportAnnexResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex (asynchronously)
-     * Get a Credit Support Annex from a single scope.  The response will return either the Credit Support Annex that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
-     * @param scope The scope of the Credit Support Annex to retrieve. (required)
-     * @param code The name of the Credit Support Annex to retrieve the data for. (required)
-     * @param asAt The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCreditSupportAnnexAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCreditSupportAnnexResponse> _callback) throws ApiException {
+    private okhttp3.Call getCreditSupportAnnexAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCreditSupportAnnexResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, _callback);
         Type localVarReturnType = new TypeToken<GetCreditSupportAnnexResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetCreditSupportAnnexRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetCreditSupportAnnexRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. (optional)
+         * @return APIgetCreditSupportAnnexRequest
+         */
+        public APIgetCreditSupportAnnexRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getCreditSupportAnnex
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCreditSupportAnnexCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCreditSupportAnnex request
+         * @return GetCreditSupportAnnexResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetCreditSupportAnnexResponse execute() throws ApiException {
+            ApiResponse<GetCreditSupportAnnexResponse> localVarResp = getCreditSupportAnnexWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCreditSupportAnnex request with HTTP info returned
+         * @return ApiResponse&lt;GetCreditSupportAnnexResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetCreditSupportAnnexResponse> executeWithHttpInfo() throws ApiException {
+            return getCreditSupportAnnexWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getCreditSupportAnnex request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetCreditSupportAnnexResponse> _callback) throws ApiException {
+            return getCreditSupportAnnexAsync(scope, code, asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listCounterpartyAgreements
-     * @param asAt The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex
+     * Get a Credit Support Annex from a single scope.  The response will return either the Credit Support Annex that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
+     * @param scope The scope of the Credit Support Annex to retrieve. (required)
+     * @param code The name of the Credit Support Annex to retrieve the data for. (required)
+     * @return APIgetCreditSupportAnnexRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCounterpartyAgreementsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIgetCreditSupportAnnexRequest getCreditSupportAnnex(String scope, String code) {
+        return new APIgetCreditSupportAnnexRequest(scope, code);
+    }
+    private okhttp3.Call listCounterpartyAgreementsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -737,82 +857,121 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements
-     * List the set of Counterparty Agreements at the specified AsAt date/time
-     * @param asAt The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. (optional)
-     * @return ResourceListOfGetCounterpartyAgreementResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfGetCounterpartyAgreementResponse listCounterpartyAgreements(OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> localVarResp = listCounterpartyAgreementsWithHttpInfo(asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements
-     * List the set of Counterparty Agreements at the specified AsAt date/time
-     * @param asAt The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfGetCounterpartyAgreementResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> listCounterpartyAgreementsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> listCounterpartyAgreementsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCounterpartyAgreementResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements (asynchronously)
-     * List the set of Counterparty Agreements at the specified AsAt date/time
-     * @param asAt The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCounterpartyAgreementsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback) throws ApiException {
+    private okhttp3.Call listCounterpartyAgreementsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCounterpartyAgreementResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCounterpartyAgreementsRequest {
+        private OffsetDateTime asAt;
+
+        private APIlistCounterpartyAgreementsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. (optional)
+         * @return APIlistCounterpartyAgreementsRequest
+         */
+        public APIlistCounterpartyAgreementsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listCounterpartyAgreements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCounterpartyAgreementsCall(asAt, _callback);
+        }
+
+        /**
+         * Execute listCounterpartyAgreements request
+         * @return ResourceListOfGetCounterpartyAgreementResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetCounterpartyAgreementResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> localVarResp = listCounterpartyAgreementsWithHttpInfo(asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCounterpartyAgreements request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfGetCounterpartyAgreementResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> executeWithHttpInfo() throws ApiException {
+            return listCounterpartyAgreementsWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listCounterpartyAgreements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback) throws ApiException {
+            return listCounterpartyAgreementsAsync(asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for listCreditSupportAnnexes
-     * @param asAt The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements
+     * List the set of Counterparty Agreements at the specified AsAt date/time
+     * @return APIlistCounterpartyAgreementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCreditSupportAnnexesCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    public APIlistCounterpartyAgreementsRequest listCounterpartyAgreements() {
+        return new APIlistCounterpartyAgreementsRequest();
+    }
+    private okhttp3.Call listCreditSupportAnnexesCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -868,82 +1027,121 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
-     * List the set of Credit Support Annexes at the specified AsAt date/time
-     * @param asAt The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. (optional)
-     * @return ResourceListOfGetCreditSupportAnnexResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResourceListOfGetCreditSupportAnnexResponse listCreditSupportAnnexes(OffsetDateTime asAt) throws ApiException {
-        ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> localVarResp = listCreditSupportAnnexesWithHttpInfo(asAt);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
-     * List the set of Credit Support Annexes at the specified AsAt date/time
-     * @param asAt The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. (optional)
-     * @return ApiResponse&lt;ResourceListOfGetCreditSupportAnnexResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> listCreditSupportAnnexesWithHttpInfo(OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> listCreditSupportAnnexesWithHttpInfo(OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, null);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCreditSupportAnnexResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes (asynchronously)
-     * List the set of Credit Support Annexes at the specified AsAt date/time
-     * @param asAt The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCreditSupportAnnexesAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback) throws ApiException {
+    private okhttp3.Call listCreditSupportAnnexesAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCreditSupportAnnexResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistCreditSupportAnnexesRequest {
+        private OffsetDateTime asAt;
+
+        private APIlistCreditSupportAnnexesRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. (optional)
+         * @return APIlistCreditSupportAnnexesRequest
+         */
+        public APIlistCreditSupportAnnexesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listCreditSupportAnnexes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCreditSupportAnnexesCall(asAt, _callback);
+        }
+
+        /**
+         * Execute listCreditSupportAnnexes request
+         * @return ResourceListOfGetCreditSupportAnnexResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetCreditSupportAnnexResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> localVarResp = listCreditSupportAnnexesWithHttpInfo(asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCreditSupportAnnexes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfGetCreditSupportAnnexResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> executeWithHttpInfo() throws ApiException {
+            return listCreditSupportAnnexesWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listCreditSupportAnnexes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback) throws ApiException {
+            return listCreditSupportAnnexesAsync(asAt, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCounterpartyAgreement
-     * @param upsertCounterpartyAgreementRequest The Counterparty Agreement to update or insert (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
+     * List the set of Credit Support Annexes at the specified AsAt date/time
+     * @return APIlistCreditSupportAnnexesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCounterpartyAgreementCall(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback _callback) throws ApiException {
+    public APIlistCreditSupportAnnexesRequest listCreditSupportAnnexes() {
+        return new APIlistCreditSupportAnnexesRequest();
+    }
+    private okhttp3.Call upsertCounterpartyAgreementCall(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1004,82 +1202,113 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
-     * Update or insert Counterparty Agreement in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Counterparty Agreement or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCounterpartyAgreementRequest The Counterparty Agreement to update or insert (required)
-     * @return UpsertSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertSingleStructuredDataResponse upsertCounterpartyAgreement(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest) throws ApiException {
-        ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCounterpartyAgreementWithHttpInfo(upsertCounterpartyAgreementRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
-     * Update or insert Counterparty Agreement in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Counterparty Agreement or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCounterpartyAgreementRequest The Counterparty Agreement to update or insert (required)
-     * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertSingleStructuredDataResponse> upsertCounterpartyAgreementWithHttpInfo(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest) throws ApiException {
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertCounterpartyAgreementWithHttpInfo(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, null);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement (asynchronously)
-     * Update or insert Counterparty Agreement in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Counterparty Agreement or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCounterpartyAgreementRequest The Counterparty Agreement to update or insert (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertCounterpartyAgreementAsync(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertCounterpartyAgreementAsync(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, _callback);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupsertCounterpartyAgreementRequest {
+        private final UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest;
+
+        private APIupsertCounterpartyAgreementRequest(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest) {
+            this.upsertCounterpartyAgreementRequest = upsertCounterpartyAgreementRequest;
+        }
+
+        /**
+         * Build call for upsertCounterpartyAgreement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCounterpartyAgreementCall(upsertCounterpartyAgreementRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCounterpartyAgreement request
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCounterpartyAgreementWithHttpInfo(upsertCounterpartyAgreementRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCounterpartyAgreement request with HTTP info returned
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertCounterpartyAgreementWithHttpInfo(upsertCounterpartyAgreementRequest);
+        }
+
+        /**
+         * Execute upsertCounterpartyAgreement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+            return upsertCounterpartyAgreementAsync(upsertCounterpartyAgreementRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for upsertCreditSupportAnnex
-     * @param upsertCreditSupportAnnexRequest The Credit Support Annex to update or insert (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
+     * Update or insert Counterparty Agreement in a single scope. An item will be updated if it already exists and inserted if it does not.     The response will return the successfully updated or inserted Counterparty Agreement or failure message if unsuccessful     It is important to always check to verify success (or failure).
+     * @param upsertCounterpartyAgreementRequest The Counterparty Agreement to update or insert (required)
+     * @return APIupsertCounterpartyAgreementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCreditSupportAnnexCall(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback _callback) throws ApiException {
+    public APIupsertCounterpartyAgreementRequest upsertCounterpartyAgreement(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest) {
+        return new APIupsertCounterpartyAgreementRequest(upsertCounterpartyAgreementRequest);
+    }
+    private okhttp3.Call upsertCreditSupportAnnexCall(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1140,52 +1369,101 @@ public class CounterpartiesApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
-     * Update or insert Credit Support Annex in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Credit Support Annex or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCreditSupportAnnexRequest The Credit Support Annex to update or insert (required)
-     * @return UpsertSingleStructuredDataResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public UpsertSingleStructuredDataResponse upsertCreditSupportAnnex(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest) throws ApiException {
-        ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCreditSupportAnnexWithHttpInfo(upsertCreditSupportAnnexRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
-     * Update or insert Credit Support Annex in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Credit Support Annex or failure message if unsuccessful                It is important to always check to verify success (or failure).
-     * @param upsertCreditSupportAnnexRequest The Credit Support Annex to update or insert (required)
-     * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<UpsertSingleStructuredDataResponse> upsertCreditSupportAnnexWithHttpInfo(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest) throws ApiException {
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertCreditSupportAnnexWithHttpInfo(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest) throws ApiException {
         okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, null);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call upsertCreditSupportAnnexAsync(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertCreditSupportAnnexRequest {
+        private final UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest;
+
+        private APIupsertCreditSupportAnnexRequest(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest) {
+            this.upsertCreditSupportAnnexRequest = upsertCreditSupportAnnexRequest;
+        }
+
+        /**
+         * Build call for upsertCreditSupportAnnex
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertCreditSupportAnnexCall(upsertCreditSupportAnnexRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCreditSupportAnnex request
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute() throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCreditSupportAnnexWithHttpInfo(upsertCreditSupportAnnexRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertCreditSupportAnnex request with HTTP info returned
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
+            return upsertCreditSupportAnnexWithHttpInfo(upsertCreditSupportAnnexRequest);
+        }
+
+        /**
+         * Execute upsertCreditSupportAnnex request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+            return upsertCreditSupportAnnexAsync(upsertCreditSupportAnnexRequest, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex (asynchronously)
-     * Update or insert Credit Support Annex in a single scope. An item will be updated if it already exists and inserted if it does not.                The response will return the successfully updated or inserted Credit Support Annex or failure message if unsuccessful                It is important to always check to verify success (or failure).
+     * [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
+     * Update or insert Credit Support Annex in a single scope. An item will be updated if it already exists and inserted if it does not.     The response will return the successfully updated or inserted Credit Support Annex or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertCreditSupportAnnexRequest The Credit Support Annex to update or insert (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIupsertCreditSupportAnnexRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1194,11 +1472,7 @@ public class CounterpartiesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCreditSupportAnnexAsync(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIupsertCreditSupportAnnexRequest upsertCreditSupportAnnex(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest) {
+        return new APIupsertCreditSupportAnnexRequest(upsertCreditSupportAnnexRequest);
     }
 }

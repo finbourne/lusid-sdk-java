@@ -247,25 +247,18 @@ public class MarketContext {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MarketContext
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MarketContext
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MarketContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MarketContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MarketContext is not found in the empty JSON string", MarketContext.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!MarketContext.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MarketContext` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("marketRules") != null && !jsonObj.get("marketRules").isJsonNull()) {
         JsonArray jsonArraymarketRules = jsonObj.getAsJsonArray("marketRules");
         if (jsonArraymarketRules != null) {
@@ -276,17 +269,17 @@ public class MarketContext {
 
           // validate the optional field `marketRules` (array)
           for (int i = 0; i < jsonArraymarketRules.size(); i++) {
-            MarketDataKeyRule.validateJsonObject(jsonArraymarketRules.get(i).getAsJsonObject());
+            MarketDataKeyRule.validateJsonElement(jsonArraymarketRules.get(i));
           };
         }
       }
       // validate the optional field `suppliers`
       if (jsonObj.get("suppliers") != null && !jsonObj.get("suppliers").isJsonNull()) {
-        MarketContextSuppliers.validateJsonObject(jsonObj.getAsJsonObject("suppliers"));
+        MarketContextSuppliers.validateJsonElement(jsonObj.get("suppliers"));
       }
       // validate the optional field `options`
       if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {
-        MarketOptions.validateJsonObject(jsonObj.getAsJsonObject("options"));
+        MarketOptions.validateJsonElement(jsonObj.get("options"));
       }
       if (jsonObj.get("specificRules") != null && !jsonObj.get("specificRules").isJsonNull()) {
         JsonArray jsonArrayspecificRules = jsonObj.getAsJsonArray("specificRules");
@@ -298,7 +291,7 @@ public class MarketContext {
 
           // validate the optional field `specificRules` (array)
           for (int i = 0; i < jsonArrayspecificRules.size(); i++) {
-            MarketDataSpecificRule.validateJsonObject(jsonArrayspecificRules.get(i).getAsJsonObject());
+            MarketDataSpecificRule.validateJsonElement(jsonArrayspecificRules.get(i));
           };
         }
       }
@@ -324,9 +317,9 @@ public class MarketContext {
 
            @Override
            public MarketContext read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

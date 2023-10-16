@@ -435,25 +435,18 @@ public class LegalEntity {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LegalEntity
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to LegalEntity
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!LegalEntity.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!LegalEntity.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LegalEntity is not found in the empty JSON string", LegalEntity.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!LegalEntity.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LegalEntity` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
@@ -476,17 +469,17 @@ public class LegalEntity {
 
           // validate the optional field `relationships` (array)
           for (int i = 0; i < jsonArrayrelationships.size(); i++) {
-            Relationship.validateJsonObject(jsonArrayrelationships.get(i).getAsJsonObject());
+            Relationship.validateJsonElement(jsonArrayrelationships.get(i));
           };
         }
       }
       // validate the optional field `counterpartyRiskInformation`
       if (jsonObj.get("counterpartyRiskInformation") != null && !jsonObj.get("counterpartyRiskInformation").isJsonNull()) {
-        CounterpartyRiskInformation.validateJsonObject(jsonObj.getAsJsonObject("counterpartyRiskInformation"));
+        CounterpartyRiskInformation.validateJsonElement(jsonObj.get("counterpartyRiskInformation"));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -498,7 +491,7 @@ public class LegalEntity {
 
           // validate the optional field `links` (array)
           for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            Link.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
@@ -524,9 +517,9 @@ public class LegalEntity {
 
            @Override
            public LegalEntity read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

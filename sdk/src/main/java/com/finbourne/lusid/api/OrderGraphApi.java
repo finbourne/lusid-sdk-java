@@ -73,27 +73,7 @@ public class OrderGraphApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for listOrderGraphBlocks
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param useComplianceV2 Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) (optional, default to false)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listOrderGraphBlocksCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listOrderGraphBlocksCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -173,106 +153,187 @@ public class OrderGraphApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
-     * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param useComplianceV2 Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) (optional, default to false)
-     * @return PagedResourceListOfOrderGraphBlock
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfOrderGraphBlock listOrderGraphBlocks(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2) throws ApiException {
-        ApiResponse<PagedResourceListOfOrderGraphBlock> localVarResp = listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
-     * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param useComplianceV2 Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) (optional, default to false)
-     * @return ApiResponse&lt;PagedResourceListOfOrderGraphBlock&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfOrderGraphBlock> listOrderGraphBlocksWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2) throws ApiException {
+    private ApiResponse<PagedResourceListOfOrderGraphBlock> listOrderGraphBlocksWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2) throws ApiException {
         okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphBlock>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities. (asynchronously)
-     * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param useComplianceV2 Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listOrderGraphBlocksAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback) throws ApiException {
+    private okhttp3.Call listOrderGraphBlocksAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphBlock>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistOrderGraphBlocksRequest {
+        private OffsetDateTime asAt;
+        private String paginationToken;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+        private Boolean useComplianceV2;
+
+        private APIlistOrderGraphBlocksRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set paginationToken
+         * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest paginationToken(String paginationToken) {
+            this.paginationToken = paginationToken;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set useComplianceV2
+         * @param useComplianceV2 Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) (optional, default to false)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest useComplianceV2(Boolean useComplianceV2) {
+            this.useComplianceV2 = useComplianceV2;
+            return this;
+        }
+
+        /**
+         * Build call for listOrderGraphBlocks
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback);
+        }
+
+        /**
+         * Execute listOrderGraphBlocks request
+         * @return PagedResourceListOfOrderGraphBlock
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfOrderGraphBlock execute() throws ApiException {
+            ApiResponse<PagedResourceListOfOrderGraphBlock> localVarResp = listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listOrderGraphBlocks request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfOrderGraphBlock&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfOrderGraphBlock> executeWithHttpInfo() throws ApiException {
+            return listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+        }
+
+        /**
+         * Execute listOrderGraphBlocks request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback) throws ApiException {
+            return listOrderGraphBlocksAsync(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback);
+        }
+    }
+
     /**
-     * Build call for listOrderGraphPlacementChildren
-     * @param scope The parent placement&#39;s scope (required)
-     * @param code The parent placement&#39;s code (required)
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+     * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
+     * @return APIlistOrderGraphBlocksRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOrderGraphPlacementChildrenCall(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIlistOrderGraphBlocksRequest listOrderGraphBlocks() {
+        return new APIlistOrderGraphBlocksRequest();
+    }
+    private okhttp3.Call listOrderGraphPlacementChildrenCall(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -356,105 +417,171 @@ public class OrderGraphApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
-     * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
-     * @param scope The parent placement&#39;s scope (required)
-     * @param code The parent placement&#39;s code (required)
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @return PagedResourceListOfOrderGraphPlacement
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfOrderGraphPlacement listOrderGraphPlacementChildren(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfOrderGraphPlacement> localVarResp = listOrderGraphPlacementChildrenWithHttpInfo(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
-     * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
-     * @param scope The parent placement&#39;s scope (required)
-     * @param code The parent placement&#39;s code (required)
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @return ApiResponse&lt;PagedResourceListOfOrderGraphPlacement&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfOrderGraphPlacement> listOrderGraphPlacementChildrenWithHttpInfo(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfOrderGraphPlacement> listOrderGraphPlacementChildrenWithHttpInfo(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listOrderGraphPlacementChildrenValidateBeforeCall(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities. (asynchronously)
-     * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
-     * @param scope The parent placement&#39;s scope (required)
-     * @param code The parent placement&#39;s code (required)
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listOrderGraphPlacementChildrenAsync(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrderGraphPlacement> _callback) throws ApiException {
+    private okhttp3.Call listOrderGraphPlacementChildrenAsync(String scope, String code, OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrderGraphPlacement> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listOrderGraphPlacementChildrenValidateBeforeCall(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphPlacement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIlistOrderGraphPlacementChildrenRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private String paginationToken;
+        private List<String> sortBy;
+        private Integer limit;
+        private List<String> propertyKeys;
+
+        private APIlistOrderGraphPlacementChildrenRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
+         * @return APIlistOrderGraphPlacementChildrenRequest
+         */
+        public APIlistOrderGraphPlacementChildrenRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set paginationToken
+         * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @return APIlistOrderGraphPlacementChildrenRequest
+         */
+        public APIlistOrderGraphPlacementChildrenRequest paginationToken(String paginationToken) {
+            this.paginationToken = paginationToken;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. (optional)
+         * @return APIlistOrderGraphPlacementChildrenRequest
+         */
+        public APIlistOrderGraphPlacementChildrenRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @return APIlistOrderGraphPlacementChildrenRequest
+         */
+        public APIlistOrderGraphPlacementChildrenRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
+         * @return APIlistOrderGraphPlacementChildrenRequest
+         */
+        public APIlistOrderGraphPlacementChildrenRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listOrderGraphPlacementChildren
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listOrderGraphPlacementChildrenCall(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listOrderGraphPlacementChildren request
+         * @return PagedResourceListOfOrderGraphPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfOrderGraphPlacement execute() throws ApiException {
+            ApiResponse<PagedResourceListOfOrderGraphPlacement> localVarResp = listOrderGraphPlacementChildrenWithHttpInfo(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listOrderGraphPlacementChildren request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfOrderGraphPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfOrderGraphPlacement> executeWithHttpInfo() throws ApiException {
+            return listOrderGraphPlacementChildrenWithHttpInfo(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys);
+        }
+
+        /**
+         * Execute listOrderGraphPlacementChildren request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderGraphPlacement> _callback) throws ApiException {
+            return listOrderGraphPlacementChildrenAsync(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * Build call for listOrderGraphPlacements
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
+     * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
+     * @param scope The parent placement&#39;s scope (required)
+     * @param code The parent placement&#39;s code (required)
+     * @return APIlistOrderGraphPlacementChildrenRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List all child Placements for the specified Placement. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOrderGraphPlacementsCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    public APIlistOrderGraphPlacementChildrenRequest listOrderGraphPlacementChildren(String scope, String code) {
+        return new APIlistOrderGraphPlacementChildrenRequest(scope, code);
+    }
+    private okhttp3.Call listOrderGraphPlacementsCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -530,67 +657,164 @@ public class OrderGraphApi {
 
     }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
-     * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @return PagedResourceListOfOrderGraphPlacement
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public PagedResourceListOfOrderGraphPlacement listOrderGraphPlacements(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        ApiResponse<PagedResourceListOfOrderGraphPlacement> localVarResp = listOrderGraphPlacementsWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys);
-        return localVarResp.getData();
-    }
 
-    /**
-     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
-     * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @return ApiResponse&lt;PagedResourceListOfOrderGraphPlacement&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PagedResourceListOfOrderGraphPlacement> listOrderGraphPlacementsWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+    private ApiResponse<PagedResourceListOfOrderGraphPlacement> listOrderGraphPlacementsWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
         okhttp3.Call localVarCall = listOrderGraphPlacementsValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call listOrderGraphPlacementsAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrderGraphPlacement> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listOrderGraphPlacementsValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphPlacement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistOrderGraphPlacementsRequest {
+        private OffsetDateTime asAt;
+        private String paginationToken;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIlistOrderGraphPlacementsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
+         * @return APIlistOrderGraphPlacementsRequest
+         */
+        public APIlistOrderGraphPlacementsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set paginationToken
+         * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @return APIlistOrderGraphPlacementsRequest
+         */
+        public APIlistOrderGraphPlacementsRequest paginationToken(String paginationToken) {
+            this.paginationToken = paginationToken;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistOrderGraphPlacementsRequest
+         */
+        public APIlistOrderGraphPlacementsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @return APIlistOrderGraphPlacementsRequest
+         */
+        public APIlistOrderGraphPlacementsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
+         * @return APIlistOrderGraphPlacementsRequest
+         */
+        public APIlistOrderGraphPlacementsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
+         * @return APIlistOrderGraphPlacementsRequest
+         */
+        public APIlistOrderGraphPlacementsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listOrderGraphPlacements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listOrderGraphPlacementsCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listOrderGraphPlacements request
+         * @return PagedResourceListOfOrderGraphPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfOrderGraphPlacement execute() throws ApiException {
+            ApiResponse<PagedResourceListOfOrderGraphPlacement> localVarResp = listOrderGraphPlacementsWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listOrderGraphPlacements request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfOrderGraphPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfOrderGraphPlacement> executeWithHttpInfo() throws ApiException {
+            return listOrderGraphPlacementsWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listOrderGraphPlacements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderGraphPlacement> _callback) throws ApiException {
+            return listOrderGraphPlacementsAsync(asAt, paginationToken, sortBy, limit, filter, propertyKeys, _callback);
+        }
+    }
+
     /**
-     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities. (asynchronously)
+     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
      * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
-     * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
-     * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-     * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
-     * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
-     * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIlistOrderGraphPlacementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -599,11 +823,7 @@ public class OrderGraphApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOrderGraphPlacementsAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrderGraphPlacement> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listOrderGraphPlacementsValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, _callback);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphPlacement>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIlistOrderGraphPlacementsRequest listOrderGraphPlacements() {
+        return new APIlistOrderGraphPlacementsRequest();
     }
 }

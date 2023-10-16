@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="createReferencePortfolio"></a>
 # **createReferencePortfolio**
-> Portfolio createReferencePortfolio(scope, createReferencePortfolioRequest)
+> Portfolio createReferencePortfolio(scope, createReferencePortfolioRequest).execute();
 
 CreateReferencePortfolio: Create reference portfolio
 
@@ -41,7 +41,8 @@ public class Example {
     String scope = "scope_example"; // String | The scope in which to create the reference portfolio.
     CreateReferencePortfolioRequest createReferencePortfolioRequest = new CreateReferencePortfolioRequest(); // CreateReferencePortfolioRequest | The definition of the reference portfolio.
     try {
-      Portfolio result = apiInstance.createReferencePortfolio(scope, createReferencePortfolioRequest);
+      Portfolio result = apiInstance.createReferencePortfolio(scope, createReferencePortfolioRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferencePortfolioApi#createReferencePortfolio");
@@ -83,7 +84,7 @@ public class Example {
 
 <a id="getReferencePortfolioConstituents"></a>
 # **getReferencePortfolioConstituents**
-> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys)
+> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).execute();
 
 GetReferencePortfolioConstituents: Get reference portfolio constituents
 
@@ -110,12 +111,16 @@ public class Example {
 
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the reference portfolio.
-    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
+    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
     String effectiveAt = "effectiveAt_example"; // String | The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' or 'ReferenceHolding' domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name' or              'ReferenceHolding/strategy/quantsignal'. Defaults to return all available instrument and reference holding properties if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' or 'ReferenceHolding' domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name' or   'ReferenceHolding/strategy/quantsignal'. Defaults to return all available instrument and reference holding properties if not specified.
     try {
-      GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys);
+      GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code)
+            .effectiveAt(effectiveAt)
+            .asAt(asAt)
+            .propertyKeys(propertyKeys)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferencePortfolioApi#getReferencePortfolioConstituents");
@@ -133,10 +138,10 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **effectiveAt** | **String**| The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or   &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. | [optional] |
 
 ### Return type
 
@@ -160,7 +165,7 @@ public class Example {
 
 <a id="listConstituentsAdjustments"></a>
 # **listConstituentsAdjustments**
-> ResourceListOfConstituentsAdjustmentHeader listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
+> ResourceListOfConstituentsAdjustmentHeader listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt).asAtTime(asAtTime).execute();
 
 ListConstituentsAdjustments: List constituents adjustments
 
@@ -187,12 +192,14 @@ public class Example {
 
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the reference portfolio.
-    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
+    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
     String fromEffectiveAt = "fromEffectiveAt_example"; // String | Events between this time (inclusive) and the toEffectiveAt are returned.
     String toEffectiveAt = "toEffectiveAt_example"; // String | Events between this time (inclusive) and the fromEffectiveAt are returned.
     OffsetDateTime asAtTime = OffsetDateTime.now(); // OffsetDateTime | The asAt time for which the result is valid.
     try {
-      ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
+      ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt)
+            .asAtTime(asAtTime)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferencePortfolioApi#listConstituentsAdjustments");
@@ -210,7 +217,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **fromEffectiveAt** | **String**| Events between this time (inclusive) and the toEffectiveAt are returned. | |
 | **toEffectiveAt** | **String**| Events between this time (inclusive) and the fromEffectiveAt are returned. | |
 | **asAtTime** | **OffsetDateTime**| The asAt time for which the result is valid. | [optional] |
@@ -237,7 +244,7 @@ public class Example {
 
 <a id="upsertReferencePortfolioConstituents"></a>
 # **upsertReferencePortfolioConstituents**
-> UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest)
+> UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest).execute();
 
 UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
 
@@ -264,10 +271,11 @@ public class Example {
 
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the reference portfolio.
-    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
+    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
     UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = new UpsertReferencePortfolioConstituentsRequest(); // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the reference portfolio.
     try {
-      UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest);
+      UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferencePortfolioApi#upsertReferencePortfolioConstituents");
@@ -285,7 +293,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **upsertReferencePortfolioConstituentsRequest** | [**UpsertReferencePortfolioConstituentsRequest**](UpsertReferencePortfolioConstituentsRequest.md)| The constituents to upload to the reference portfolio. | |
 
 ### Return type
