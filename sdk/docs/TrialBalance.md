@@ -9,7 +9,7 @@ A TrialBalance entity.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**generalLedgerAccountCode** | **String** | The Account code that the trial balance results have been grouped against |  |
-|**description** | **String** | The description of the record |  |
+|**description** | **String** | The description of the record |  [optional] |
 |**levels** | **List&lt;String&gt;** | The levels that have been derived from the specified General Ledger Profile |  |
 |**accountType** | **String** | The account type attributed to the record |  |
 |**opening** | **java.math.BigDecimal** | The opening balance at the start of the period |  |
