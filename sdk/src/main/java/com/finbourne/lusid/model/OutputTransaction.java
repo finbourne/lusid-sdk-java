@@ -196,6 +196,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_REALISED_GAIN_LOSS)
   private List<RealisedGainLoss> realisedGainLoss;
 
+  public static final String SERIALIZED_NAME_HOLDING_IDS = "holdingIds";
+  @SerializedName(SERIALIZED_NAME_HOLDING_IDS)
+  private List<Long> holdingIds;
+
   public OutputTransaction() {
   }
 
@@ -685,6 +689,35 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction holdingIds(List<Long> holdingIds) {
+    
+    this.holdingIds = holdingIds;
+    return this;
+  }
+
+  public OutputTransaction addHoldingIdsItem(Long holdingIdsItem) {
+    if (this.holdingIds == null) {
+      this.holdingIds = new ArrayList<>();
+    }
+    this.holdingIds.add(holdingIdsItem);
+    return this;
+  }
+
+   /**
+   * The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio.
+   * @return holdingIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<Long> getHoldingIds() {
+    return holdingIds;
+  }
+
+
+  public void setHoldingIds(List<Long> holdingIds) {
+    this.holdingIds = holdingIds;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -716,7 +749,8 @@ public class OutputTransaction {
         Objects.equals(this.transactionStatus, outputTransaction.transactionStatus) &&
         Objects.equals(this.entryDateTime, outputTransaction.entryDateTime) &&
         Objects.equals(this.cancelDateTime, outputTransaction.cancelDateTime) &&
-        Objects.equals(this.realisedGainLoss, outputTransaction.realisedGainLoss);
+        Objects.equals(this.realisedGainLoss, outputTransaction.realisedGainLoss) &&
+        Objects.equals(this.holdingIds, outputTransaction.holdingIds);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -725,7 +759,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -761,6 +795,7 @@ public class OutputTransaction {
     sb.append("    entryDateTime: ").append(toIndentedString(entryDateTime)).append("\n");
     sb.append("    cancelDateTime: ").append(toIndentedString(cancelDateTime)).append("\n");
     sb.append("    realisedGainLoss: ").append(toIndentedString(realisedGainLoss)).append("\n");
+    sb.append("    holdingIds: ").append(toIndentedString(holdingIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -805,6 +840,7 @@ public class OutputTransaction {
     openapiFields.add("entryDateTime");
     openapiFields.add("cancelDateTime");
     openapiFields.add("realisedGainLoss");
+    openapiFields.add("holdingIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -884,6 +920,10 @@ public class OutputTransaction {
             RealisedGainLoss.validateJsonElement(jsonArrayrealisedGainLoss.get(i));
           };
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("holdingIds") != null && !jsonObj.get("holdingIds").isJsonNull() && !jsonObj.get("holdingIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingIds` to be an array in the JSON string but got `%s`", jsonObj.get("holdingIds").toString()));
       }
   }
 

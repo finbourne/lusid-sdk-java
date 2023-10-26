@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BucketingSchedule;
 import com.finbourne.lusid.model.PortfolioEntityId;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -114,6 +115,10 @@ public class QueryBucketedCashFlowsRequest {
   public static final String SERIALIZED_NAME_CASH_FLOW_TYPE = "cashFlowType";
   @SerializedName(SERIALIZED_NAME_CASH_FLOW_TYPE)
   private String cashFlowType;
+
+  public static final String SERIALIZED_NAME_BUCKETING_SCHEDULE = "bucketingSchedule";
+  @SerializedName(SERIALIZED_NAME_BUCKETING_SCHEDULE)
+  private BucketingSchedule bucketingSchedule;
 
   public QueryBucketedCashFlowsRequest() {
   }
@@ -473,6 +478,27 @@ public class QueryBucketedCashFlowsRequest {
   }
 
 
+  public QueryBucketedCashFlowsRequest bucketingSchedule(BucketingSchedule bucketingSchedule) {
+    
+    this.bucketingSchedule = bucketingSchedule;
+    return this;
+  }
+
+   /**
+   * Get bucketingSchedule
+   * @return bucketingSchedule
+  **/
+  @jakarta.annotation.Nullable
+  public BucketingSchedule getBucketingSchedule() {
+    return bucketingSchedule;
+  }
+
+
+  public void setBucketingSchedule(BucketingSchedule bucketingSchedule) {
+    this.bucketingSchedule = bucketingSchedule;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -497,7 +523,8 @@ public class QueryBucketedCashFlowsRequest {
         Objects.equals(this.addresses, queryBucketedCashFlowsRequest.addresses) &&
         Objects.equals(this.equipWithSubtotals, queryBucketedCashFlowsRequest.equipWithSubtotals) &&
         Objects.equals(this.excludeUnsettledTrades, queryBucketedCashFlowsRequest.excludeUnsettledTrades) &&
-        Objects.equals(this.cashFlowType, queryBucketedCashFlowsRequest.cashFlowType);
+        Objects.equals(this.cashFlowType, queryBucketedCashFlowsRequest.cashFlowType) &&
+        Objects.equals(this.bucketingSchedule, queryBucketedCashFlowsRequest.bucketingSchedule);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -506,7 +533,7 @@ public class QueryBucketedCashFlowsRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, windowStart, windowEnd, portfolioEntityIds, effectiveAt, recipeId, roundingMethod, bucketingDates, bucketingTenors, reportCurrency, groupBy, addresses, equipWithSubtotals, excludeUnsettledTrades, cashFlowType);
+    return Objects.hash(asAt, windowStart, windowEnd, portfolioEntityIds, effectiveAt, recipeId, roundingMethod, bucketingDates, bucketingTenors, reportCurrency, groupBy, addresses, equipWithSubtotals, excludeUnsettledTrades, cashFlowType, bucketingSchedule);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -535,6 +562,7 @@ public class QueryBucketedCashFlowsRequest {
     sb.append("    equipWithSubtotals: ").append(toIndentedString(equipWithSubtotals)).append("\n");
     sb.append("    excludeUnsettledTrades: ").append(toIndentedString(excludeUnsettledTrades)).append("\n");
     sb.append("    cashFlowType: ").append(toIndentedString(cashFlowType)).append("\n");
+    sb.append("    bucketingSchedule: ").append(toIndentedString(bucketingSchedule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -572,6 +600,7 @@ public class QueryBucketedCashFlowsRequest {
     openapiFields.add("equipWithSubtotals");
     openapiFields.add("excludeUnsettledTrades");
     openapiFields.add("cashFlowType");
+    openapiFields.add("bucketingSchedule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -640,6 +669,10 @@ public class QueryBucketedCashFlowsRequest {
       }
       if ((jsonObj.get("cashFlowType") != null && !jsonObj.get("cashFlowType").isJsonNull()) && !jsonObj.get("cashFlowType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashFlowType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashFlowType").toString()));
+      }
+      // validate the optional field `bucketingSchedule`
+      if (jsonObj.get("bucketingSchedule") != null && !jsonObj.get("bucketingSchedule").isJsonNull()) {
+        BucketingSchedule.validateJsonElement(jsonObj.get("bucketingSchedule"));
       }
   }
 

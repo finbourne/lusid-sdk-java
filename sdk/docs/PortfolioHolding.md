@@ -20,6 +20,7 @@ A list of holdings.
 |**transaction** | [**Transaction**](Transaction.md) |  |  [optional] |
 |**currency** | **String** | The holding currency. |  [optional] |
 |**holdingTypeName** | **String** | The decoded type of the holding e.g. Position, Balance, CashCommitment, Receivable, ForwardFX etc. |  [optional] |
+|**holdingId** | **Long** | A single identifier for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio. |  [optional] |
 
 
 

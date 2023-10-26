@@ -10,7 +10,7 @@ A posting Module request definition
 |------------ | ------------- | ------------- | -------------|
 |**displayName** | **String** | The name of the Posting Module. |  |
 |**description** | **String** | A description for the Posting Module. |  [optional] |
-|**status** | **String** | The Posting Module status. Can be Active, Inactive or Deleted. Defaults to Active. |  |
+|**status** | **String** | The Posting Module status. Can be Active or Inactive. Defaults to Active. |  |
 
 
 

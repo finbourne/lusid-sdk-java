@@ -104,6 +104,10 @@ public class PortfolioHolding {
   @SerializedName(SERIALIZED_NAME_HOLDING_TYPE_NAME)
   private String holdingTypeName;
 
+  public static final String SERIALIZED_NAME_HOLDING_ID = "holdingId";
+  @SerializedName(SERIALIZED_NAME_HOLDING_ID)
+  private Long holdingId;
+
   public PortfolioHolding() {
   }
 
@@ -375,6 +379,27 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding holdingId(Long holdingId) {
+    
+    this.holdingId = holdingId;
+    return this;
+  }
+
+   /**
+   * A single identifier for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio.
+   * @return holdingId
+  **/
+  @jakarta.annotation.Nullable
+  public Long getHoldingId() {
+    return holdingId;
+  }
+
+
+  public void setHoldingId(Long holdingId) {
+    this.holdingId = holdingId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -396,7 +421,8 @@ public class PortfolioHolding {
         Objects.equals(this.costPortfolioCcy, portfolioHolding.costPortfolioCcy) &&
         Objects.equals(this.transaction, portfolioHolding.transaction) &&
         Objects.equals(this.currency, portfolioHolding.currency) &&
-        Objects.equals(this.holdingTypeName, portfolioHolding.holdingTypeName);
+        Objects.equals(this.holdingTypeName, portfolioHolding.holdingTypeName) &&
+        Objects.equals(this.holdingId, portfolioHolding.holdingId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -405,7 +431,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -431,6 +457,7 @@ public class PortfolioHolding {
     sb.append("    transaction: ").append(toIndentedString(transaction)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    holdingTypeName: ").append(toIndentedString(holdingTypeName)).append("\n");
+    sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -465,6 +492,7 @@ public class PortfolioHolding {
     openapiFields.add("transaction");
     openapiFields.add("currency");
     openapiFields.add("holdingTypeName");
+    openapiFields.add("holdingId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

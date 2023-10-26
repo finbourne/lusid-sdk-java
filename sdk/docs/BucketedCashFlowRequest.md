@@ -22,6 +22,7 @@ Specification class consisting of parameters for BucketedCashFlow endpoint.
 |**asAt** | **OffsetDateTime** | The time of the system at which to query for bucketed cashflows. |  [optional] |
 |**excludeUnsettledTrades** | **Boolean** | Flag directing the Valuation call to exclude cashflows from unsettled trades.  If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. |  [optional] |
 |**cashFlowType** | **String** | Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this)  Options: [InstrumentCashFlow, PortfolioCashFlow] |  [optional] |
+|**bucketingSchedule** | [**BucketingSchedule**](BucketingSchedule.md) |  |  [optional] |
 
 
 
