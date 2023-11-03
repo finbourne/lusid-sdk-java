@@ -15,6 +15,7 @@ The request used to create an AborConfiguration.
 |**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
 |**postingModuleCodes** | **List&lt;String&gt;** | The Posting Module Codes from which the rules to be applied are retrieved. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Abor Configuration. |  [optional] |
+|**cleardownModuleCodes** | **List&lt;String&gt;** | The Cleardown Module Codes from which the rules to be applied are retrieved. |  [optional] |
 
 
 

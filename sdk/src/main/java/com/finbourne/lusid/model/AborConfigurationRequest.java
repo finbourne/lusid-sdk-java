@@ -84,6 +84,10 @@ public class AborConfigurationRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
+  @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
+  private List<String> cleardownModuleCodes;
+
   public AborConfigurationRequest() {
   }
 
@@ -250,6 +254,35 @@ public class AborConfigurationRequest {
   }
 
 
+  public AborConfigurationRequest cleardownModuleCodes(List<String> cleardownModuleCodes) {
+    
+    this.cleardownModuleCodes = cleardownModuleCodes;
+    return this;
+  }
+
+  public AborConfigurationRequest addCleardownModuleCodesItem(String cleardownModuleCodesItem) {
+    if (this.cleardownModuleCodes == null) {
+      this.cleardownModuleCodes = new ArrayList<>();
+    }
+    this.cleardownModuleCodes.add(cleardownModuleCodesItem);
+    return this;
+  }
+
+   /**
+   * The Cleardown Module Codes from which the rules to be applied are retrieved.
+   * @return cleardownModuleCodes
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getCleardownModuleCodes() {
+    return cleardownModuleCodes;
+  }
+
+
+  public void setCleardownModuleCodes(List<String> cleardownModuleCodes) {
+    this.cleardownModuleCodes = cleardownModuleCodes;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -266,7 +299,8 @@ public class AborConfigurationRequest {
         Objects.equals(this.recipeId, aborConfigurationRequest.recipeId) &&
         Objects.equals(this.chartOfAccountsId, aborConfigurationRequest.chartOfAccountsId) &&
         Objects.equals(this.postingModuleCodes, aborConfigurationRequest.postingModuleCodes) &&
-        Objects.equals(this.properties, aborConfigurationRequest.properties);
+        Objects.equals(this.properties, aborConfigurationRequest.properties) &&
+        Objects.equals(this.cleardownModuleCodes, aborConfigurationRequest.cleardownModuleCodes);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -275,7 +309,7 @@ public class AborConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, properties);
+    return Objects.hash(code, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, properties, cleardownModuleCodes);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -296,6 +330,7 @@ public class AborConfigurationRequest {
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -325,6 +360,7 @@ public class AborConfigurationRequest {
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("postingModuleCodes");
     openapiFields.add("properties");
+    openapiFields.add("cleardownModuleCodes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -369,6 +405,10 @@ public class AborConfigurationRequest {
       // ensure the optional json data is an array if present
       if (jsonObj.get("postingModuleCodes") != null && !jsonObj.get("postingModuleCodes").isJsonNull() && !jsonObj.get("postingModuleCodes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `postingModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("postingModuleCodes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("cleardownModuleCodes") != null && !jsonObj.get("cleardownModuleCodes").isJsonNull() && !jsonObj.get("cleardownModuleCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cleardownModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("cleardownModuleCodes").toString()));
       }
   }
 
