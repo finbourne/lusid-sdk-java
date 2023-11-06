@@ -126,7 +126,7 @@ public class Compounding {
   }
 
    /**
-   * If the interest rate is simple or compounded.    Supported string (enumeration) values are: [Average, Compounded].
+   * If the interest rate is simple, compounded or using a pre-computed compounded index.    Supported string (enumeration) values are: [Average, Compounded, CompoundedIndex].
    * @return compoundingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -189,7 +189,7 @@ public class Compounding {
   }
 
    /**
-   * Defines how the computed leg spread is applied to compounded rate.  It applies only when CompoundingMethod &#x3D; ‘Compounded‘.    Supported string (enumeration) values are: [Straight, IsdaCompounding, NoCompounding, SpreadExclusive, IsdaFlatCompounding, Flat, None].
+   * Defines how the computed leg spread is applied to compounded rate.  It applies only when CompoundingMethod &#x3D; ‘Compounded‘.    Available compounding methods:    | Method | Description |  | ------ | ----------- |  | Straight | Compounding rate in each compound period includes the spread. |  | Flat | Compounding rate does not include the spread, and the spread is used for simple interest in each compound period. |  | SpreadExclusive | Compounding rate does not include the spread, and the spread is used for simple interest for whole accrual period. |    The values \&quot;IsdaCompounding\&quot;, \&quot;NoCompounding\&quot;, \&quot;IsdaFlatCompounding\&quot;, and \&quot;None\&quot; are accepted for compatibility  with existing instruments and their use is discouraged.    Supported string (enumeration) values are: [Straight, IsdaCompounding, NoCompounding, SpreadExclusive, IsdaFlatCompounding, Flat, None].
    * @return spreadCompoundingMethod
   **/
   @jakarta.annotation.Nullable
