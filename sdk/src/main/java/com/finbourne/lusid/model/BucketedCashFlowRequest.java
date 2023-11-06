@@ -115,6 +115,10 @@ public class BucketedCashFlowRequest {
   @SerializedName(SERIALIZED_NAME_BUCKETING_SCHEDULE)
   private BucketingSchedule bucketingSchedule;
 
+  public static final String SERIALIZED_NAME_FILTER = "filter";
+  @SerializedName(SERIALIZED_NAME_FILTER)
+  private String filter;
+
   public BucketedCashFlowRequest() {
   }
 
@@ -465,6 +469,27 @@ public class BucketedCashFlowRequest {
   }
 
 
+  public BucketedCashFlowRequest filter(String filter) {
+    
+    this.filter = filter;
+    return this;
+  }
+
+   /**
+   * 
+   * @return filter
+  **/
+  @jakarta.annotation.Nullable
+  public String getFilter() {
+    return filter;
+  }
+
+
+  public void setFilter(String filter) {
+    this.filter = filter;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -489,7 +514,8 @@ public class BucketedCashFlowRequest {
         Objects.equals(this.asAt, bucketedCashFlowRequest.asAt) &&
         Objects.equals(this.excludeUnsettledTrades, bucketedCashFlowRequest.excludeUnsettledTrades) &&
         Objects.equals(this.cashFlowType, bucketedCashFlowRequest.cashFlowType) &&
-        Objects.equals(this.bucketingSchedule, bucketedCashFlowRequest.bucketingSchedule);
+        Objects.equals(this.bucketingSchedule, bucketedCashFlowRequest.bucketingSchedule) &&
+        Objects.equals(this.filter, bucketedCashFlowRequest.filter);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -498,7 +524,7 @@ public class BucketedCashFlowRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(roundingMethod, bucketingDates, bucketTenors, effectiveAt, windowStart, windowEnd, recipeId, reportCurrency, groupBy, addresses, equipWithSubtotals, asAt, excludeUnsettledTrades, cashFlowType, bucketingSchedule);
+    return Objects.hash(roundingMethod, bucketingDates, bucketTenors, effectiveAt, windowStart, windowEnd, recipeId, reportCurrency, groupBy, addresses, equipWithSubtotals, asAt, excludeUnsettledTrades, cashFlowType, bucketingSchedule, filter);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -527,6 +553,7 @@ public class BucketedCashFlowRequest {
     sb.append("    excludeUnsettledTrades: ").append(toIndentedString(excludeUnsettledTrades)).append("\n");
     sb.append("    cashFlowType: ").append(toIndentedString(cashFlowType)).append("\n");
     sb.append("    bucketingSchedule: ").append(toIndentedString(bucketingSchedule)).append("\n");
+    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -564,6 +591,7 @@ public class BucketedCashFlowRequest {
     openapiFields.add("excludeUnsettledTrades");
     openapiFields.add("cashFlowType");
     openapiFields.add("bucketingSchedule");
+    openapiFields.add("filter");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -631,6 +659,9 @@ public class BucketedCashFlowRequest {
       // validate the optional field `bucketingSchedule`
       if (jsonObj.get("bucketingSchedule") != null && !jsonObj.get("bucketingSchedule").isJsonNull()) {
         BucketingSchedule.validateJsonElement(jsonObj.get("bucketingSchedule"));
+      }
+      if ((jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) && !jsonObj.get("filter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filter").toString()));
       }
   }
 
