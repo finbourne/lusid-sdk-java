@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Version;
 import com.finbourne.lusid.model.WeekendMask;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -79,6 +80,10 @@ public class Calendar {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private List<Property> properties = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public Calendar() {
   }
@@ -217,6 +222,27 @@ public class Calendar {
   }
 
 
+  public Calendar version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -232,7 +258,8 @@ public class Calendar {
         Objects.equals(this.type, calendar.type) &&
         Objects.equals(this.weekendMask, calendar.weekendMask) &&
         Objects.equals(this.sourceProvider, calendar.sourceProvider) &&
-        Objects.equals(this.properties, calendar.properties);
+        Objects.equals(this.properties, calendar.properties) &&
+        Objects.equals(this.version, calendar.version);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -241,7 +268,7 @@ public class Calendar {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, weekendMask, sourceProvider, properties);
+    return Objects.hash(href, id, type, weekendMask, sourceProvider, properties, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -261,6 +288,7 @@ public class Calendar {
     sb.append("    weekendMask: ").append(toIndentedString(weekendMask)).append("\n");
     sb.append("    sourceProvider: ").append(toIndentedString(sourceProvider)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -289,6 +317,7 @@ public class Calendar {
     openapiFields.add("weekendMask");
     openapiFields.add("sourceProvider");
     openapiFields.add("properties");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -342,6 +371,10 @@ public class Calendar {
       for (int i = 0; i < jsonArrayproperties.size(); i++) {
         Property.validateJsonElement(jsonArrayproperties.get(i));
       };
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

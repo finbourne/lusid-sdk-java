@@ -13,6 +13,7 @@
 |**weekendMask** | [**WeekendMask**](WeekendMask.md) |  |  |
 |**sourceProvider** | **String** |  |  |
 |**properties** | [**List&lt;Property&gt;**](Property.md) |  |  |
+|**version** | [**Version**](Version.md) |  |  [optional] |
 
 
 
