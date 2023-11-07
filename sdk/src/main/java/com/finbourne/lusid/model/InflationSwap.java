@@ -11,7 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.FlowConventions;
+import com.finbourne.lusid.model.FixedLeg;
+import com.finbourne.lusid.model.InflationLeg;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,7 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,49 +61,13 @@ public class InflationSwap extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
   private OffsetDateTime maturityDate;
 
-  public static final String SERIALIZED_NAME_FLOW_CONVENTIONS = "flowConventions";
-  @SerializedName(SERIALIZED_NAME_FLOW_CONVENTIONS)
-  private FlowConventions flowConventions;
+  public static final String SERIALIZED_NAME_INFLATION_LEG = "inflationLeg";
+  @SerializedName(SERIALIZED_NAME_INFLATION_LEG)
+  private InflationLeg inflationLeg;
 
-  public static final String SERIALIZED_NAME_FIXED_RATE = "fixedRate";
-  @SerializedName(SERIALIZED_NAME_FIXED_RATE)
-  private java.math.BigDecimal fixedRate;
-
-  public static final String SERIALIZED_NAME_INFLATION_CAP = "inflationCap";
-  @SerializedName(SERIALIZED_NAME_INFLATION_CAP)
-  private java.math.BigDecimal inflationCap;
-
-  public static final String SERIALIZED_NAME_INFLATION_FLOOR = "inflationFloor";
-  @SerializedName(SERIALIZED_NAME_INFLATION_FLOOR)
-  private java.math.BigDecimal inflationFloor;
-
-  public static final String SERIALIZED_NAME_INFLATION_FREQUENCY = "inflationFrequency";
-  @SerializedName(SERIALIZED_NAME_INFLATION_FREQUENCY)
-  private String inflationFrequency;
-
-  public static final String SERIALIZED_NAME_INFLATION_INDEX_NAME = "inflationIndexName";
-  @SerializedName(SERIALIZED_NAME_INFLATION_INDEX_NAME)
-  private String inflationIndexName;
-
-  public static final String SERIALIZED_NAME_INFLATION_INTERPOLATION = "inflationInterpolation";
-  @SerializedName(SERIALIZED_NAME_INFLATION_INTERPOLATION)
-  private String inflationInterpolation;
-
-  public static final String SERIALIZED_NAME_INFLATION_ROLL_DAY = "inflationRollDay";
-  @SerializedName(SERIALIZED_NAME_INFLATION_ROLL_DAY)
-  private Integer inflationRollDay;
-
-  public static final String SERIALIZED_NAME_NOTIONAL = "notional";
-  @SerializedName(SERIALIZED_NAME_NOTIONAL)
-  private java.math.BigDecimal notional;
-
-  public static final String SERIALIZED_NAME_OBSERVATION_LAG = "observationLag";
-  @SerializedName(SERIALIZED_NAME_OBSERVATION_LAG)
-  private String observationLag;
-
-  public static final String SERIALIZED_NAME_PAY_RECEIVE = "payReceive";
-  @SerializedName(SERIALIZED_NAME_PAY_RECEIVE)
-  private String payReceive;
+  public static final String SERIALIZED_NAME_FIXED_LEG = "fixedLeg";
+  @SerializedName(SERIALIZED_NAME_FIXED_LEG)
+  private FixedLeg fixedLeg;
 
   public InflationSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -151,234 +115,45 @@ public class InflationSwap extends LusidInstrument {
   }
 
 
-  public InflationSwap flowConventions(FlowConventions flowConventions) {
+  public InflationSwap inflationLeg(InflationLeg inflationLeg) {
     
-    this.flowConventions = flowConventions;
+    this.inflationLeg = inflationLeg;
     return this;
   }
 
    /**
-   * Get flowConventions
-   * @return flowConventions
+   * Get inflationLeg
+   * @return inflationLeg
   **/
   @jakarta.annotation.Nonnull
-  public FlowConventions getFlowConventions() {
-    return flowConventions;
+  public InflationLeg getInflationLeg() {
+    return inflationLeg;
   }
 
 
-  public void setFlowConventions(FlowConventions flowConventions) {
-    this.flowConventions = flowConventions;
+  public void setInflationLeg(InflationLeg inflationLeg) {
+    this.inflationLeg = inflationLeg;
   }
 
 
-  public InflationSwap fixedRate(java.math.BigDecimal fixedRate) {
+  public InflationSwap fixedLeg(FixedLeg fixedLeg) {
     
-    this.fixedRate = fixedRate;
+    this.fixedLeg = fixedLeg;
     return this;
   }
 
    /**
-   * Fixed Rate
-   * @return fixedRate
+   * Get fixedLeg
+   * @return fixedLeg
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getFixedRate() {
-    return fixedRate;
+  public FixedLeg getFixedLeg() {
+    return fixedLeg;
   }
 
 
-  public void setFixedRate(java.math.BigDecimal fixedRate) {
-    this.fixedRate = fixedRate;
-  }
-
-
-  public InflationSwap inflationCap(java.math.BigDecimal inflationCap) {
-    
-    this.inflationCap = inflationCap;
-    return this;
-  }
-
-   /**
-   * Optional cap, needed for LPI swaps. Should not be set for ZCIIS.
-   * @return inflationCap
-  **/
-  @jakarta.annotation.Nullable
-  public java.math.BigDecimal getInflationCap() {
-    return inflationCap;
-  }
-
-
-  public void setInflationCap(java.math.BigDecimal inflationCap) {
-    this.inflationCap = inflationCap;
-  }
-
-
-  public InflationSwap inflationFloor(java.math.BigDecimal inflationFloor) {
-    
-    this.inflationFloor = inflationFloor;
-    return this;
-  }
-
-   /**
-   * Optional floor, needed for LPI swaps. Should not be set for ZCIIS.
-   * @return inflationFloor
-  **/
-  @jakarta.annotation.Nullable
-  public java.math.BigDecimal getInflationFloor() {
-    return inflationFloor;
-  }
-
-
-  public void setInflationFloor(java.math.BigDecimal inflationFloor) {
-    this.inflationFloor = inflationFloor;
-  }
-
-
-  public InflationSwap inflationFrequency(String inflationFrequency) {
-    
-    this.inflationFrequency = inflationFrequency;
-    return this;
-  }
-
-   /**
-   * Frequency of inflation updated. Optional and defaults to Monthly which is the most common.  However both Australian and New Zealand inflation is published Quarterly. Only tenors of 1M or 3M are supported.
-   * @return inflationFrequency
-  **/
-  @jakarta.annotation.Nullable
-  public String getInflationFrequency() {
-    return inflationFrequency;
-  }
-
-
-  public void setInflationFrequency(String inflationFrequency) {
-    this.inflationFrequency = inflationFrequency;
-  }
-
-
-  public InflationSwap inflationIndexName(String inflationIndexName) {
-    
-    this.inflationIndexName = inflationIndexName;
-    return this;
-  }
-
-   /**
-   * Name of the Inflation Index
-   * @return inflationIndexName
-  **/
-  @jakarta.annotation.Nonnull
-  public String getInflationIndexName() {
-    return inflationIndexName;
-  }
-
-
-  public void setInflationIndexName(String inflationIndexName) {
-    this.inflationIndexName = inflationIndexName;
-  }
-
-
-  public InflationSwap inflationInterpolation(String inflationInterpolation) {
-    
-    this.inflationInterpolation = inflationInterpolation;
-    return this;
-  }
-
-   /**
-   * Inflation Interpolation flag, defaults to Linear but some older swaps require Flat.    Supported string (enumeration) values are: [Linear, Flat].
-   * @return inflationInterpolation
-  **/
-  @jakarta.annotation.Nullable
-  public String getInflationInterpolation() {
-    return inflationInterpolation;
-  }
-
-
-  public void setInflationInterpolation(String inflationInterpolation) {
-    this.inflationInterpolation = inflationInterpolation;
-  }
-
-
-  public InflationSwap inflationRollDay(Integer inflationRollDay) {
-    
-    this.inflationRollDay = inflationRollDay;
-    return this;
-  }
-
-   /**
-   * Day of the month that inflation rolls from one month to the next. This is optional and defaults to 1, which is  the typically value for the majority of inflation bonds (exceptions include Japan which rolls on the 10th  and some LatAm bonds which roll on the 15th).
-   * @return inflationRollDay
-  **/
-  @jakarta.annotation.Nullable
-  public Integer getInflationRollDay() {
-    return inflationRollDay;
-  }
-
-
-  public void setInflationRollDay(Integer inflationRollDay) {
-    this.inflationRollDay = inflationRollDay;
-  }
-
-
-  public InflationSwap notional(java.math.BigDecimal notional) {
-    
-    this.notional = notional;
-    return this;
-  }
-
-   /**
-   * The notional
-   * @return notional
-  **/
-  @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getNotional() {
-    return notional;
-  }
-
-
-  public void setNotional(java.math.BigDecimal notional) {
-    this.notional = notional;
-  }
-
-
-  public InflationSwap observationLag(String observationLag) {
-    
-    this.observationLag = observationLag;
-    return this;
-  }
-
-   /**
-   * Observation Lag, must be a number of Months, typically 3 or 4 but sometimes 8.
-   * @return observationLag
-  **/
-  @jakarta.annotation.Nonnull
-  public String getObservationLag() {
-    return observationLag;
-  }
-
-
-  public void setObservationLag(String observationLag) {
-    this.observationLag = observationLag;
-  }
-
-
-  public InflationSwap payReceive(String payReceive) {
-    
-    this.payReceive = payReceive;
-    return this;
-  }
-
-   /**
-   * PayReceive flag for the inflation leg.  This field is optional and defaults to Pay.  If set to Pay, this swap pays inflation and receives fixed.    Supported string (enumeration) values are: [Pay, Receive].
-   * @return payReceive
-  **/
-  @jakarta.annotation.Nullable
-  public String getPayReceive() {
-    return payReceive;
-  }
-
-
-  public void setPayReceive(String payReceive) {
-    this.payReceive = payReceive;
+  public void setFixedLeg(FixedLeg fixedLeg) {
+    this.fixedLeg = fixedLeg;
   }
 
 
@@ -394,34 +169,14 @@ public class InflationSwap extends LusidInstrument {
     InflationSwap inflationSwap = (InflationSwap) o;
     return Objects.equals(this.startDate, inflationSwap.startDate) &&
         Objects.equals(this.maturityDate, inflationSwap.maturityDate) &&
-        Objects.equals(this.flowConventions, inflationSwap.flowConventions) &&
-        (this.fixedRate.compareTo(inflationSwap.getFixedRate()) == 0) &&
-        (this.inflationCap.compareTo(inflationSwap.getInflationCap()) == 0) &&
-        (this.inflationFloor.compareTo(inflationSwap.getInflationFloor()) == 0) &&
-        Objects.equals(this.inflationFrequency, inflationSwap.inflationFrequency) &&
-        Objects.equals(this.inflationIndexName, inflationSwap.inflationIndexName) &&
-        Objects.equals(this.inflationInterpolation, inflationSwap.inflationInterpolation) &&
-        Objects.equals(this.inflationRollDay, inflationSwap.inflationRollDay) &&
-        (this.notional.compareTo(inflationSwap.getNotional()) == 0) &&
-        Objects.equals(this.observationLag, inflationSwap.observationLag) &&
-        Objects.equals(this.payReceive, inflationSwap.payReceive) &&
+        Objects.equals(this.inflationLeg, inflationSwap.inflationLeg) &&
+        Objects.equals(this.fixedLeg, inflationSwap.fixedLeg) &&
         super.equals(o);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, fixedRate, inflationCap, inflationFloor, inflationFrequency, inflationIndexName, inflationInterpolation, inflationRollDay, notional, observationLag, payReceive, super.hashCode());
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(startDate, maturityDate, inflationLeg, fixedLeg, super.hashCode());
   }
 
   @Override
@@ -431,17 +186,8 @@ public class InflationSwap extends LusidInstrument {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
-    sb.append("    flowConventions: ").append(toIndentedString(flowConventions)).append("\n");
-    sb.append("    fixedRate: ").append(toIndentedString(fixedRate)).append("\n");
-    sb.append("    inflationCap: ").append(toIndentedString(inflationCap)).append("\n");
-    sb.append("    inflationFloor: ").append(toIndentedString(inflationFloor)).append("\n");
-    sb.append("    inflationFrequency: ").append(toIndentedString(inflationFrequency)).append("\n");
-    sb.append("    inflationIndexName: ").append(toIndentedString(inflationIndexName)).append("\n");
-    sb.append("    inflationInterpolation: ").append(toIndentedString(inflationInterpolation)).append("\n");
-    sb.append("    inflationRollDay: ").append(toIndentedString(inflationRollDay)).append("\n");
-    sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
-    sb.append("    observationLag: ").append(toIndentedString(observationLag)).append("\n");
-    sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
+    sb.append("    inflationLeg: ").append(toIndentedString(inflationLeg)).append("\n");
+    sb.append("    fixedLeg: ").append(toIndentedString(fixedLeg)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -467,27 +213,15 @@ public class InflationSwap extends LusidInstrument {
     openapiFields.add("instrumentType");
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
-    openapiFields.add("flowConventions");
-    openapiFields.add("fixedRate");
-    openapiFields.add("inflationCap");
-    openapiFields.add("inflationFloor");
-    openapiFields.add("inflationFrequency");
-    openapiFields.add("inflationIndexName");
-    openapiFields.add("inflationInterpolation");
-    openapiFields.add("inflationRollDay");
-    openapiFields.add("notional");
-    openapiFields.add("observationLag");
-    openapiFields.add("payReceive");
+    openapiFields.add("inflationLeg");
+    openapiFields.add("fixedLeg");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
-    openapiRequiredFields.add("flowConventions");
-    openapiRequiredFields.add("fixedRate");
-    openapiRequiredFields.add("inflationIndexName");
-    openapiRequiredFields.add("notional");
-    openapiRequiredFields.add("observationLag");
+    openapiRequiredFields.add("inflationLeg");
+    openapiRequiredFields.add("fixedLeg");
     openapiRequiredFields.add("instrumentType");
   }
 
