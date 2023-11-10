@@ -109,6 +109,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.BondCouponEvent.class, new TypeSelector<com.finbourne.lusid.model.BondCouponEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.BondCouponEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BondCouponEvent", com.finbourne.lusid.model.BondCouponEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.BondDefaultEvent.class, new TypeSelector<com.finbourne.lusid.model.BondDefaultEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.BondDefaultEvent> getClassForElement(JsonElement readElement) {
@@ -788,6 +797,7 @@ public class JSON {
                     public Class<? extends com.finbourne.lusid.model.InstrumentEvent> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("AmortisationEvent", com.finbourne.lusid.model.AmortisationEvent.class);
+                        classByDiscriminatorValue.put("BondCouponEvent", com.finbourne.lusid.model.BondCouponEvent.class);
                         classByDiscriminatorValue.put("BondDefaultEvent", com.finbourne.lusid.model.BondDefaultEvent.class);
                         classByDiscriminatorValue.put("CashDividendEvent", com.finbourne.lusid.model.CashDividendEvent.class);
                         classByDiscriminatorValue.put("CashFlowEvent", com.finbourne.lusid.model.CashFlowEvent.class);
@@ -1561,6 +1571,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BlockRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BlockSetRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Bond.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondCouponEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondDefaultEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BookTransactionsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BoolComplianceParameter.CustomTypeAdapterFactory());
@@ -1712,6 +1723,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DiscountingDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.EconomicDependencyWithComplexMarketData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.EconomicDependencyWithQuote.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ElectionSpecification.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.EmptyModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.EntityIdentifier.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Equity.CustomTypeAdapterFactory());
@@ -2147,6 +2159,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TargetTaxLotRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TaxRule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TaxRuleSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TemplateField.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TermDeposit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TotalReturnSwap.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Touch.CustomTypeAdapterFactory());
@@ -2166,6 +2179,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionSetConfigurationData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionSetConfigurationDataRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionTemplateSpecification.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionTypeAlias.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TransactionTypeCalculation.CustomTypeAdapterFactory());

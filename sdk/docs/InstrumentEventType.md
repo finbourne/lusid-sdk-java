@@ -33,5 +33,7 @@
 
 * `INFORMATIONALERROREVENT` (value: `"InformationalErrorEvent"`)
 
+* `BONDCOUPONEVENT` (value: `"BondCouponEvent"`)
+
 
 

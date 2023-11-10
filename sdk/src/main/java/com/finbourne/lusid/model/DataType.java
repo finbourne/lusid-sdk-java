@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.IUnitDefinitionDto;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ReferenceData;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -278,6 +279,10 @@ public class DataType {
   @SerializedName(SERIALIZED_NAME_REFERENCE_DATA)
   private ReferenceData referenceData;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -511,6 +516,27 @@ public class DataType {
   }
 
 
+  public DataType version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
   public DataType links(List<Link> links) {
     
     this.links = links;
@@ -560,6 +586,7 @@ public class DataType {
         Objects.equals(this.unitSchema, dataType.unitSchema) &&
         Objects.equals(this.acceptableUnits, dataType.acceptableUnits) &&
         Objects.equals(this.referenceData, dataType.referenceData) &&
+        Objects.equals(this.version, dataType.version) &&
         Objects.equals(this.links, dataType.links);
   }
 
@@ -569,7 +596,7 @@ public class DataType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, referenceData, links);
+    return Objects.hash(href, typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, referenceData, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -593,6 +620,7 @@ public class DataType {
     sb.append("    unitSchema: ").append(toIndentedString(unitSchema)).append("\n");
     sb.append("    acceptableUnits: ").append(toIndentedString(acceptableUnits)).append("\n");
     sb.append("    referenceData: ").append(toIndentedString(referenceData)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -626,6 +654,7 @@ public class DataType {
     openapiFields.add("unitSchema");
     openapiFields.add("acceptableUnits");
     openapiFields.add("referenceData");
+    openapiFields.add("version");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -698,6 +727,10 @@ public class DataType {
       // validate the optional field `referenceData`
       if (jsonObj.get("referenceData") != null && !jsonObj.get("referenceData").isJsonNull()) {
         ReferenceData.validateJsonElement(jsonObj.get("referenceData"));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

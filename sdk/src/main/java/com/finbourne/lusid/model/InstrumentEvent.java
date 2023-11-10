@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentEvent {
   /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent
    */
   @JsonAdapter(InstrumentEventTypeEnum.Adapter.class)
   public enum InstrumentEventTypeEnum {
@@ -80,7 +80,9 @@ public class InstrumentEvent {
     
     RAWVENDOREVENT("RawVendorEvent"),
     
-    INFORMATIONALERROREVENT("InformationalErrorEvent");
+    INFORMATIONALERROREVENT("InformationalErrorEvent"),
+    
+    BONDCOUPONEVENT("BondCouponEvent");
 
     private String value;
 
@@ -134,7 +136,7 @@ public class InstrumentEvent {
   }
 
    /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent
    * @return instrumentEventType
   **/
   @jakarta.annotation.Nonnull
@@ -217,6 +219,9 @@ public class InstrumentEvent {
       switch (discriminatorValue) {
         case "AmortisationEvent":
           AmortisationEvent.validateJsonElement(jsonElement);
+          break;
+        case "BondCouponEvent":
+          BondCouponEvent.validateJsonElement(jsonElement);
           break;
         case "BondDefaultEvent":
           BondDefaultEvent.validateJsonElement(jsonElement);

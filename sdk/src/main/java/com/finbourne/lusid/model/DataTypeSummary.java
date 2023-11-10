@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.IUnitDefinitionDto;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -267,6 +268,10 @@ public class DataTypeSummary {
   @SerializedName(SERIALIZED_NAME_ACCEPTABLE_UNITS)
   private List<IUnitDefinitionDto> acceptableUnits;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
   public DataTypeSummary() {
   }
 
@@ -454,6 +459,27 @@ public class DataTypeSummary {
   }
 
 
+  public DataTypeSummary version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -471,7 +497,8 @@ public class DataTypeSummary {
         Objects.equals(this.valueType, dataTypeSummary.valueType) &&
         Objects.equals(this.acceptableValues, dataTypeSummary.acceptableValues) &&
         Objects.equals(this.unitSchema, dataTypeSummary.unitSchema) &&
-        Objects.equals(this.acceptableUnits, dataTypeSummary.acceptableUnits);
+        Objects.equals(this.acceptableUnits, dataTypeSummary.acceptableUnits) &&
+        Objects.equals(this.version, dataTypeSummary.version);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -480,7 +507,7 @@ public class DataTypeSummary {
 
   @Override
   public int hashCode() {
-    return Objects.hash(typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits);
+    return Objects.hash(typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -502,6 +529,7 @@ public class DataTypeSummary {
     sb.append("    acceptableValues: ").append(toIndentedString(acceptableValues)).append("\n");
     sb.append("    unitSchema: ").append(toIndentedString(unitSchema)).append("\n");
     sb.append("    acceptableUnits: ").append(toIndentedString(acceptableUnits)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -532,6 +560,7 @@ public class DataTypeSummary {
     openapiFields.add("acceptableValues");
     openapiFields.add("unitSchema");
     openapiFields.add("acceptableUnits");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -596,6 +625,10 @@ public class DataTypeSummary {
             IUnitDefinitionDto.validateJsonElement(jsonArrayacceptableUnits.get(i));
           };
         }
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
   }
 

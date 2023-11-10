@@ -17,6 +17,7 @@
 |**unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The available values are: NoUnits, Basic, Iso4217Currency |  [optional] |
 |**acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional] |
 |**referenceData** | [**ReferenceData**](ReferenceData.md) |  |  [optional] |
+|**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

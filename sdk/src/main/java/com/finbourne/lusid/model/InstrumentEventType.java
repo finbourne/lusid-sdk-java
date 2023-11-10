@@ -51,7 +51,9 @@ public enum InstrumentEventType {
   
   RAWVENDOREVENT("RawVendorEvent"),
   
-  INFORMATIONALERROREVENT("InformationalErrorEvent");
+  INFORMATIONALERROREVENT("InformationalErrorEvent"),
+  
+  BONDCOUPONEVENT("BondCouponEvent");
 
   private String value;
 

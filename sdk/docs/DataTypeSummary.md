@@ -15,6 +15,7 @@
 |**acceptableValues** | **List&lt;String&gt;** | The acceptable set of values for this data type. Only applies to &#39;open&#39; value type range. |  [optional] |
 |**unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency |  [optional] |
 |**acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) | The definitions of the acceptable units. |  [optional] |
+|**version** | [**Version**](Version.md) |  |  [optional] |
 
 
 
