@@ -29,7 +29,9 @@ public enum TransactionPriceType {
   
   YIELD("Yield"),
   
-  SPREAD("Spread");
+  SPREAD("Spread"),
+  
+  CASHFLOWPERUNIT("CashFlowPerUnit");
 
   private String value;
 

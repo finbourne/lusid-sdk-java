@@ -11,5 +11,7 @@
 
 * `SPREAD` (value: `"Spread"`)
 
+* `CASHFLOWPERUNIT` (value: `"CashFlowPerUnit"`)
+
 
 
