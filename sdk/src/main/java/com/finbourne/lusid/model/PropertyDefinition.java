@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -520,6 +521,10 @@ public class PropertyDefinition {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -884,6 +889,27 @@ public class PropertyDefinition {
   }
 
 
+  public PropertyDefinition version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
   public PropertyDefinition links(List<Link> links) {
     
     this.links = links;
@@ -940,6 +966,7 @@ public class PropertyDefinition {
         Objects.equals(this.propertyDescription, propertyDefinition.propertyDescription) &&
         Objects.equals(this.derivationFormula, propertyDefinition.derivationFormula) &&
         Objects.equals(this.properties, propertyDefinition.properties) &&
+        Objects.equals(this.version, propertyDefinition.version) &&
         Objects.equals(this.links, propertyDefinition.links);
   }
 
@@ -949,7 +976,7 @@ public class PropertyDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, properties, links);
+    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -980,6 +1007,7 @@ public class PropertyDefinition {
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1020,6 +1048,7 @@ public class PropertyDefinition {
     openapiFields.add("propertyDescription");
     openapiFields.add("derivationFormula");
     openapiFields.add("properties");
+    openapiFields.add("version");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1084,6 +1113,10 @@ public class PropertyDefinition {
       }
       if ((jsonObj.get("derivationFormula") != null && !jsonObj.get("derivationFormula").isJsonNull()) && !jsonObj.get("derivationFormula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `derivationFormula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivationFormula").toString()));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

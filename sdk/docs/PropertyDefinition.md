@@ -25,6 +25,7 @@ A list of property definitions.
 |**propertyDescription** | **String** | A brief description of what a property of this property definition contains. |  [optional] |
 |**derivationFormula** | **String** | The rule that defines how data is composed for a derived property. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique property definition properties and associated values to store with the property definition. Each property must be from the &#39;PropertyDefinition&#39; domain. |  [optional] |
+|**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

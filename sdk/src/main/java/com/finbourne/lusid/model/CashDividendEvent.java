@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.CashElection;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,7 +20,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,13 +55,21 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CashDividendEvent extends InstrumentEvent {
-  public static final String SERIALIZED_NAME_GROSS_AMOUNT = "grossAmount";
-  @SerializedName(SERIALIZED_NAME_GROSS_AMOUNT)
-  private java.math.BigDecimal grossAmount;
-
   public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
   @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
   private OffsetDateTime paymentDate;
+
+  public static final String SERIALIZED_NAME_EX_DATE = "exDate";
+  @SerializedName(SERIALIZED_NAME_EX_DATE)
+  private OffsetDateTime exDate;
+
+  public static final String SERIALIZED_NAME_CASH_ELECTIONS = "cashElections";
+  @SerializedName(SERIALIZED_NAME_CASH_ELECTIONS)
+  private List<CashElection> cashElections = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ANNOUNCEMENT_DATE = "announcementDate";
+  @SerializedName(SERIALIZED_NAME_ANNOUNCEMENT_DATE)
+  private OffsetDateTime announcementDate;
 
   public static final String SERIALIZED_NAME_RECORD_DATE = "recordDate";
   @SerializedName(SERIALIZED_NAME_RECORD_DATE)
@@ -67,27 +79,6 @@ public class CashDividendEvent extends InstrumentEvent {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
 
-  public CashDividendEvent grossAmount(java.math.BigDecimal grossAmount) {
-    
-    this.grossAmount = grossAmount;
-    return this;
-  }
-
-   /**
-   * The before tax amount for each share held being paid out to shareholders.
-   * @return grossAmount
-  **/
-  @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getGrossAmount() {
-    return grossAmount;
-  }
-
-
-  public void setGrossAmount(java.math.BigDecimal grossAmount) {
-    this.grossAmount = grossAmount;
-  }
-
-
   public CashDividendEvent paymentDate(OffsetDateTime paymentDate) {
     
     this.paymentDate = paymentDate;
@@ -95,7 +86,7 @@ public class CashDividendEvent extends InstrumentEvent {
   }
 
    /**
-   * The date the company pays out dividends to shareholders.
+   * The date the company begins distributing the dividend.
    * @return paymentDate
   **/
   @jakarta.annotation.Nonnull
@@ -109,6 +100,77 @@ public class CashDividendEvent extends InstrumentEvent {
   }
 
 
+  public CashDividendEvent exDate(OffsetDateTime exDate) {
+    
+    this.exDate = exDate;
+    return this;
+  }
+
+   /**
+   * The first business day on which the dividend is not owed to the buying party.
+   * @return exDate
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getExDate() {
+    return exDate;
+  }
+
+
+  public void setExDate(OffsetDateTime exDate) {
+    this.exDate = exDate;
+  }
+
+
+  public CashDividendEvent cashElections(List<CashElection> cashElections) {
+    
+    this.cashElections = cashElections;
+    return this;
+  }
+
+  public CashDividendEvent addCashElectionsItem(CashElection cashElectionsItem) {
+    if (this.cashElections == null) {
+      this.cashElections = new ArrayList<>();
+    }
+    this.cashElections.add(cashElectionsItem);
+    return this;
+  }
+
+   /**
+   * Possible elections for this event, each keyed with a unique identifier.
+   * @return cashElections
+  **/
+  @jakarta.annotation.Nonnull
+  public List<CashElection> getCashElections() {
+    return cashElections;
+  }
+
+
+  public void setCashElections(List<CashElection> cashElections) {
+    this.cashElections = cashElections;
+  }
+
+
+  public CashDividendEvent announcementDate(OffsetDateTime announcementDate) {
+    
+    this.announcementDate = announcementDate;
+    return this;
+  }
+
+   /**
+   * Date on which the dividend is announced by the company.
+   * @return announcementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAnnouncementDate() {
+    return announcementDate;
+  }
+
+
+  public void setAnnouncementDate(OffsetDateTime announcementDate) {
+    this.announcementDate = announcementDate;
+  }
+
+
   public CashDividendEvent recordDate(OffsetDateTime recordDate) {
     
     this.recordDate = recordDate;
@@ -119,7 +181,7 @@ public class CashDividendEvent extends InstrumentEvent {
    * Date you have to be the holder of record in order to participate in the tender.
    * @return recordDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getRecordDate() {
     return recordDate;
   }
@@ -140,15 +202,28 @@ public class CashDividendEvent extends InstrumentEvent {
       return false;
     }
     CashDividendEvent cashDividendEvent = (CashDividendEvent) o;
-    return (this.grossAmount.compareTo(cashDividendEvent.getGrossAmount()) == 0) &&
-        Objects.equals(this.paymentDate, cashDividendEvent.paymentDate) &&
+    return Objects.equals(this.paymentDate, cashDividendEvent.paymentDate) &&
+        Objects.equals(this.exDate, cashDividendEvent.exDate) &&
+        Objects.equals(this.cashElections, cashDividendEvent.cashElections) &&
+        Objects.equals(this.announcementDate, cashDividendEvent.announcementDate) &&
         Objects.equals(this.recordDate, cashDividendEvent.recordDate) &&
         super.equals(o);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(grossAmount, paymentDate, recordDate, super.hashCode());
+    return Objects.hash(paymentDate, exDate, cashElections, announcementDate, recordDate, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -156,8 +231,10 @@ public class CashDividendEvent extends InstrumentEvent {
     StringBuilder sb = new StringBuilder();
     sb.append("class CashDividendEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    grossAmount: ").append(toIndentedString(grossAmount)).append("\n");
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
+    sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
+    sb.append("    cashElections: ").append(toIndentedString(cashElections)).append("\n");
+    sb.append("    announcementDate: ").append(toIndentedString(announcementDate)).append("\n");
     sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -182,15 +259,17 @@ public class CashDividendEvent extends InstrumentEvent {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
-    openapiFields.add("grossAmount");
     openapiFields.add("paymentDate");
+    openapiFields.add("exDate");
+    openapiFields.add("cashElections");
+    openapiFields.add("announcementDate");
     openapiFields.add("recordDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("grossAmount");
     openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("recordDate");
+    openapiRequiredFields.add("exDate");
+    openapiRequiredFields.add("cashElections");
     openapiRequiredFields.add("instrumentEventType");
   }
 

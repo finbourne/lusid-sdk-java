@@ -1586,6 +1586,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapFloor.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashDividendEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashElection.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashFlowEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashFlowLineage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashFlowValue.CustomTypeAdapterFactory());

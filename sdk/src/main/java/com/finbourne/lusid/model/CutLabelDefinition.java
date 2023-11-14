@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CutLocalTime;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -78,6 +79,10 @@ public class CutLabelDefinition {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -212,6 +217,27 @@ public class CutLabelDefinition {
   }
 
 
+  public CutLabelDefinition version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
   public CutLabelDefinition links(List<Link> links) {
     
     this.links = links;
@@ -257,6 +283,7 @@ public class CutLabelDefinition {
         Objects.equals(this.cutLocalTime, cutLabelDefinition.cutLocalTime) &&
         Objects.equals(this.timeZone, cutLabelDefinition.timeZone) &&
         Objects.equals(this.href, cutLabelDefinition.href) &&
+        Objects.equals(this.version, cutLabelDefinition.version) &&
         Objects.equals(this.links, cutLabelDefinition.links);
   }
 
@@ -266,7 +293,7 @@ public class CutLabelDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, cutLocalTime, timeZone, href, links);
+    return Objects.hash(code, displayName, description, cutLocalTime, timeZone, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,6 +313,7 @@ public class CutLabelDefinition {
     sb.append("    cutLocalTime: ").append(toIndentedString(cutLocalTime)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -315,6 +343,7 @@ public class CutLabelDefinition {
     openapiFields.add("cutLocalTime");
     openapiFields.add("timeZone");
     openapiFields.add("href");
+    openapiFields.add("version");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -352,6 +381,10 @@ public class CutLabelDefinition {
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
