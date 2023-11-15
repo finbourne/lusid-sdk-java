@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**electionType** | **String** |  |  |
-|**cardinality** | **List&lt;String&gt;** |  |  |
+|**cardinality** | **Map&lt;String, String&gt;** |  |  |
 |**referencedAs** | **List&lt;String&gt;** |  |  |
 
 

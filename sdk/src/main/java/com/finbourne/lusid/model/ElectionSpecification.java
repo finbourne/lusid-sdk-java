@@ -19,7 +19,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,7 +59,7 @@ public class ElectionSpecification {
 
   public static final String SERIALIZED_NAME_CARDINALITY = "cardinality";
   @SerializedName(SERIALIZED_NAME_CARDINALITY)
-  private List<String> cardinality = new ArrayList<>();
+  private Map<String, String> cardinality = new HashMap<>();
 
   public static final String SERIALIZED_NAME_REFERENCED_AS = "referencedAs";
   @SerializedName(SERIALIZED_NAME_REFERENCED_AS)
@@ -87,17 +89,17 @@ public class ElectionSpecification {
   }
 
 
-  public ElectionSpecification cardinality(List<String> cardinality) {
+  public ElectionSpecification cardinality(Map<String, String> cardinality) {
     
     this.cardinality = cardinality;
     return this;
   }
 
-  public ElectionSpecification addCardinalityItem(String cardinalityItem) {
+  public ElectionSpecification putCardinalityItem(String key, String cardinalityItem) {
     if (this.cardinality == null) {
-      this.cardinality = new ArrayList<>();
+      this.cardinality = new HashMap<>();
     }
-    this.cardinality.add(cardinalityItem);
+    this.cardinality.put(key, cardinalityItem);
     return this;
   }
 
@@ -106,12 +108,12 @@ public class ElectionSpecification {
    * @return cardinality
   **/
   @jakarta.annotation.Nonnull
-  public List<String> getCardinality() {
+  public Map<String, String> getCardinality() {
     return cardinality;
   }
 
 
-  public void setCardinality(List<String> cardinality) {
+  public void setCardinality(Map<String, String> cardinality) {
     this.cardinality = cardinality;
   }
 
@@ -227,12 +229,6 @@ public class ElectionSpecification {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("electionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `electionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("electionType").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("cardinality") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("cardinality").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cardinality` to be an array in the JSON string but got `%s`", jsonObj.get("cardinality").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("referencedAs") == null) {
