@@ -39,5 +39,7 @@
 
 * `INSTRUMENTLISTCOMPLIANCEPARAMETER` (value: `"InstrumentListComplianceParameter"`)
 
+* `FILTERPREDICATECOMPLIANCEPARAMETER` (value: `"FilterPredicateComplianceParameter"`)
+
 
 

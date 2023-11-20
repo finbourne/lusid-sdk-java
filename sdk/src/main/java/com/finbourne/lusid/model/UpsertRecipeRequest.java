@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ConfigurationRecipe;
-import com.finbourne.lusid.model.ConfigurationRecipeSnippet;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,10 +54,6 @@ public class UpsertRecipeRequest {
   @SerializedName(SERIALIZED_NAME_CONFIGURATION_RECIPE)
   private ConfigurationRecipe configurationRecipe;
 
-  public static final String SERIALIZED_NAME_CONFIGURATION_RECIPE_SNIPPET = "configurationRecipeSnippet";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATION_RECIPE_SNIPPET)
-  private ConfigurationRecipeSnippet configurationRecipeSnippet;
-
   public UpsertRecipeRequest() {
   }
 
@@ -83,27 +78,6 @@ public class UpsertRecipeRequest {
   }
 
 
-  public UpsertRecipeRequest configurationRecipeSnippet(ConfigurationRecipeSnippet configurationRecipeSnippet) {
-    
-    this.configurationRecipeSnippet = configurationRecipeSnippet;
-    return this;
-  }
-
-   /**
-   * Get configurationRecipeSnippet
-   * @return configurationRecipeSnippet
-  **/
-  @jakarta.annotation.Nullable
-  public ConfigurationRecipeSnippet getConfigurationRecipeSnippet() {
-    return configurationRecipeSnippet;
-  }
-
-
-  public void setConfigurationRecipeSnippet(ConfigurationRecipeSnippet configurationRecipeSnippet) {
-    this.configurationRecipeSnippet = configurationRecipeSnippet;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -114,13 +88,12 @@ public class UpsertRecipeRequest {
       return false;
     }
     UpsertRecipeRequest upsertRecipeRequest = (UpsertRecipeRequest) o;
-    return Objects.equals(this.configurationRecipe, upsertRecipeRequest.configurationRecipe) &&
-        Objects.equals(this.configurationRecipeSnippet, upsertRecipeRequest.configurationRecipeSnippet);
+    return Objects.equals(this.configurationRecipe, upsertRecipeRequest.configurationRecipe);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configurationRecipe, configurationRecipeSnippet);
+    return Objects.hash(configurationRecipe);
   }
 
   @Override
@@ -128,7 +101,6 @@ public class UpsertRecipeRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpsertRecipeRequest {\n");
     sb.append("    configurationRecipe: ").append(toIndentedString(configurationRecipe)).append("\n");
-    sb.append("    configurationRecipeSnippet: ").append(toIndentedString(configurationRecipeSnippet)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,7 +124,6 @@ public class UpsertRecipeRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("configurationRecipe");
-    openapiFields.add("configurationRecipeSnippet");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -174,10 +145,6 @@ public class UpsertRecipeRequest {
       // validate the optional field `configurationRecipe`
       if (jsonObj.get("configurationRecipe") != null && !jsonObj.get("configurationRecipe").isJsonNull()) {
         ConfigurationRecipe.validateJsonElement(jsonObj.get("configurationRecipe"));
-      }
-      // validate the optional field `configurationRecipeSnippet`
-      if (jsonObj.get("configurationRecipeSnippet") != null && !jsonObj.get("configurationRecipeSnippet").isJsonNull()) {
-        ConfigurationRecipeSnippet.validateJsonElement(jsonObj.get("configurationRecipeSnippet"));
       }
   }
 

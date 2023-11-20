@@ -57,7 +57,9 @@ public enum ComplianceParameterType {
   
   PORTFOLIOGROUPIDLISTCOMPLIANCEPARAMETER("PortfolioGroupIdListComplianceParameter"),
   
-  INSTRUMENTLISTCOMPLIANCEPARAMETER("InstrumentListComplianceParameter");
+  INSTRUMENTLISTCOMPLIANCEPARAMETER("InstrumentListComplianceParameter"),
+  
+  FILTERPREDICATECOMPLIANCEPARAMETER("FilterPredicateComplianceParameter");
 
   private String value;
 

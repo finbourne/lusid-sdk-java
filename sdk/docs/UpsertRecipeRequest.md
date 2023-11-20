@@ -9,7 +9,6 @@ A recipe or recipe snippet that is to be stored in the recipe structured data st
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**configurationRecipe** | [**ConfigurationRecipe**](ConfigurationRecipe.md) |  |  [optional] |
-|**configurationRecipeSnippet** | [**ConfigurationRecipeSnippet**](ConfigurationRecipeSnippet.md) |  |  [optional] |
 
 
 
