@@ -11,9 +11,9 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AssetLeg;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LusidInstrument;
-import com.finbourne.lusid.model.UnderlyingLeg;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -61,13 +61,13 @@ public class TotalReturnSwap extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
   private OffsetDateTime maturityDate;
 
-  public static final String SERIALIZED_NAME_PAYMENT_LEG = "paymentLeg";
-  @SerializedName(SERIALIZED_NAME_PAYMENT_LEG)
-  private InstrumentLeg paymentLeg;
+  public static final String SERIALIZED_NAME_ASSET_LEG = "assetLeg";
+  @SerializedName(SERIALIZED_NAME_ASSET_LEG)
+  private AssetLeg assetLeg;
 
-  public static final String SERIALIZED_NAME_UNDERLYING_LEG = "underlyingLeg";
-  @SerializedName(SERIALIZED_NAME_UNDERLYING_LEG)
-  private UnderlyingLeg underlyingLeg;
+  public static final String SERIALIZED_NAME_FUNDING_LEG = "fundingLeg";
+  @SerializedName(SERIALIZED_NAME_FUNDING_LEG)
+  private InstrumentLeg fundingLeg;
 
   public TotalReturnSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -115,45 +115,45 @@ public class TotalReturnSwap extends LusidInstrument {
   }
 
 
-  public TotalReturnSwap paymentLeg(InstrumentLeg paymentLeg) {
+  public TotalReturnSwap assetLeg(AssetLeg assetLeg) {
     
-    this.paymentLeg = paymentLeg;
+    this.assetLeg = assetLeg;
     return this;
   }
 
    /**
-   * Get paymentLeg
-   * @return paymentLeg
+   * Get assetLeg
+   * @return assetLeg
   **/
   @jakarta.annotation.Nonnull
-  public InstrumentLeg getPaymentLeg() {
-    return paymentLeg;
+  public AssetLeg getAssetLeg() {
+    return assetLeg;
   }
 
 
-  public void setPaymentLeg(InstrumentLeg paymentLeg) {
-    this.paymentLeg = paymentLeg;
+  public void setAssetLeg(AssetLeg assetLeg) {
+    this.assetLeg = assetLeg;
   }
 
 
-  public TotalReturnSwap underlyingLeg(UnderlyingLeg underlyingLeg) {
+  public TotalReturnSwap fundingLeg(InstrumentLeg fundingLeg) {
     
-    this.underlyingLeg = underlyingLeg;
+    this.fundingLeg = fundingLeg;
     return this;
   }
 
    /**
-   * Get underlyingLeg
-   * @return underlyingLeg
+   * Get fundingLeg
+   * @return fundingLeg
   **/
   @jakarta.annotation.Nonnull
-  public UnderlyingLeg getUnderlyingLeg() {
-    return underlyingLeg;
+  public InstrumentLeg getFundingLeg() {
+    return fundingLeg;
   }
 
 
-  public void setUnderlyingLeg(UnderlyingLeg underlyingLeg) {
-    this.underlyingLeg = underlyingLeg;
+  public void setFundingLeg(InstrumentLeg fundingLeg) {
+    this.fundingLeg = fundingLeg;
   }
 
 
@@ -169,14 +169,14 @@ public class TotalReturnSwap extends LusidInstrument {
     TotalReturnSwap totalReturnSwap = (TotalReturnSwap) o;
     return Objects.equals(this.startDate, totalReturnSwap.startDate) &&
         Objects.equals(this.maturityDate, totalReturnSwap.maturityDate) &&
-        Objects.equals(this.paymentLeg, totalReturnSwap.paymentLeg) &&
-        Objects.equals(this.underlyingLeg, totalReturnSwap.underlyingLeg) &&
+        Objects.equals(this.assetLeg, totalReturnSwap.assetLeg) &&
+        Objects.equals(this.fundingLeg, totalReturnSwap.fundingLeg) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, paymentLeg, underlyingLeg, super.hashCode());
+    return Objects.hash(startDate, maturityDate, assetLeg, fundingLeg, super.hashCode());
   }
 
   @Override
@@ -186,8 +186,8 @@ public class TotalReturnSwap extends LusidInstrument {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
-    sb.append("    paymentLeg: ").append(toIndentedString(paymentLeg)).append("\n");
-    sb.append("    underlyingLeg: ").append(toIndentedString(underlyingLeg)).append("\n");
+    sb.append("    assetLeg: ").append(toIndentedString(assetLeg)).append("\n");
+    sb.append("    fundingLeg: ").append(toIndentedString(fundingLeg)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -213,15 +213,15 @@ public class TotalReturnSwap extends LusidInstrument {
     openapiFields.add("instrumentType");
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
-    openapiFields.add("paymentLeg");
-    openapiFields.add("underlyingLeg");
+    openapiFields.add("assetLeg");
+    openapiFields.add("fundingLeg");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
-    openapiRequiredFields.add("paymentLeg");
-    openapiRequiredFields.add("underlyingLeg");
+    openapiRequiredFields.add("assetLeg");
+    openapiRequiredFields.add("fundingLeg");
     openapiRequiredFields.add("instrumentType");
   }
 
