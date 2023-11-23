@@ -59,6 +59,10 @@ public class OrderGraphBlockOrderDetail {
   @SerializedName(SERIALIZED_NAME_COMPLIANCE_STATE)
   private String complianceState;
 
+  public static final String SERIALIZED_NAME_APPROVAL_STATE = "approvalState";
+  @SerializedName(SERIALIZED_NAME_APPROVAL_STATE)
+  private String approvalState;
+
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
@@ -109,6 +113,27 @@ public class OrderGraphBlockOrderDetail {
 
   public void setComplianceState(String complianceState) {
     this.complianceState = complianceState;
+  }
+
+
+  public OrderGraphBlockOrderDetail approvalState(String approvalState) {
+    
+    this.approvalState = approvalState;
+    return this;
+  }
+
+   /**
+   * The approval state of this order. Possible values are &#39;Pending&#39;, &#39;Rejected&#39; and &#39;Approved&#39;.
+   * @return approvalState
+  **/
+  @jakarta.annotation.Nonnull
+  public String getApprovalState() {
+    return approvalState;
+  }
+
+
+  public void setApprovalState(String approvalState) {
+    this.approvalState = approvalState;
   }
 
 
@@ -166,6 +191,7 @@ public class OrderGraphBlockOrderDetail {
     OrderGraphBlockOrderDetail orderGraphBlockOrderDetail = (OrderGraphBlockOrderDetail) o;
     return Objects.equals(this.id, orderGraphBlockOrderDetail.id) &&
         Objects.equals(this.complianceState, orderGraphBlockOrderDetail.complianceState) &&
+        Objects.equals(this.approvalState, orderGraphBlockOrderDetail.approvalState) &&
         Objects.equals(this.portfolioId, orderGraphBlockOrderDetail.portfolioId) &&
         Objects.equals(this.portfolioName, orderGraphBlockOrderDetail.portfolioName);
   }
@@ -176,7 +202,7 @@ public class OrderGraphBlockOrderDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, complianceState, portfolioId, portfolioName);
+    return Objects.hash(id, complianceState, approvalState, portfolioId, portfolioName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -192,6 +218,7 @@ public class OrderGraphBlockOrderDetail {
     sb.append("class OrderGraphBlockOrderDetail {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    complianceState: ").append(toIndentedString(complianceState)).append("\n");
+    sb.append("    approvalState: ").append(toIndentedString(approvalState)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    portfolioName: ").append(toIndentedString(portfolioName)).append("\n");
     sb.append("}");
@@ -218,6 +245,7 @@ public class OrderGraphBlockOrderDetail {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("complianceState");
+    openapiFields.add("approvalState");
     openapiFields.add("portfolioId");
     openapiFields.add("portfolioName");
 
@@ -225,6 +253,7 @@ public class OrderGraphBlockOrderDetail {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("complianceState");
+    openapiRequiredFields.add("approvalState");
   }
 
  /**
@@ -251,6 +280,9 @@ public class OrderGraphBlockOrderDetail {
       ResourceId.validateJsonElement(jsonObj.get("id"));
       if (!jsonObj.get("complianceState").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `complianceState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("complianceState").toString()));
+      }
+      if (!jsonObj.get("approvalState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `approvalState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("approvalState").toString()));
       }
       // validate the optional field `portfolioId`
       if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {

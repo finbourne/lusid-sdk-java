@@ -66,10 +66,6 @@ public class ComplianceRuleBreakdown {
   @SerializedName(SERIALIZED_NAME_PROPERTIES_USED)
   private Map<String, List<Property>> propertiesUsed = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_PARAMETERS_USED = "parametersUsed";
-  @SerializedName(SERIALIZED_NAME_PARAMETERS_USED)
-  private Map<String, String> parametersUsed = new HashMap<>();
-
   public static final String SERIALIZED_NAME_MISSING_DATA_INFORMATION = "missingDataInformation";
   @SerializedName(SERIALIZED_NAME_MISSING_DATA_INFORMATION)
   private List<String> missingDataInformation = new ArrayList<>();
@@ -156,35 +152,6 @@ public class ComplianceRuleBreakdown {
   }
 
 
-  public ComplianceRuleBreakdown parametersUsed(Map<String, String> parametersUsed) {
-    
-    this.parametersUsed = parametersUsed;
-    return this;
-  }
-
-  public ComplianceRuleBreakdown putParametersUsedItem(String key, String parametersUsedItem) {
-    if (this.parametersUsed == null) {
-      this.parametersUsed = new HashMap<>();
-    }
-    this.parametersUsed.put(key, parametersUsedItem);
-    return this;
-  }
-
-   /**
-   * Get parametersUsed
-   * @return parametersUsed
-  **/
-  @jakarta.annotation.Nonnull
-  public Map<String, String> getParametersUsed() {
-    return parametersUsed;
-  }
-
-
-  public void setParametersUsed(Map<String, String> parametersUsed) {
-    this.parametersUsed = parametersUsed;
-  }
-
-
   public ComplianceRuleBreakdown missingDataInformation(List<String> missingDataInformation) {
     
     this.missingDataInformation = missingDataInformation;
@@ -227,13 +194,12 @@ public class ComplianceRuleBreakdown {
     return Objects.equals(this.groupStatus, complianceRuleBreakdown.groupStatus) &&
         Objects.equals(this.resultsUsed, complianceRuleBreakdown.resultsUsed) &&
         Objects.equals(this.propertiesUsed, complianceRuleBreakdown.propertiesUsed) &&
-        Objects.equals(this.parametersUsed, complianceRuleBreakdown.parametersUsed) &&
         Objects.equals(this.missingDataInformation, complianceRuleBreakdown.missingDataInformation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupStatus, resultsUsed, propertiesUsed, parametersUsed, missingDataInformation);
+    return Objects.hash(groupStatus, resultsUsed, propertiesUsed, missingDataInformation);
   }
 
   @Override
@@ -243,7 +209,6 @@ public class ComplianceRuleBreakdown {
     sb.append("    groupStatus: ").append(toIndentedString(groupStatus)).append("\n");
     sb.append("    resultsUsed: ").append(toIndentedString(resultsUsed)).append("\n");
     sb.append("    propertiesUsed: ").append(toIndentedString(propertiesUsed)).append("\n");
-    sb.append("    parametersUsed: ").append(toIndentedString(parametersUsed)).append("\n");
     sb.append("    missingDataInformation: ").append(toIndentedString(missingDataInformation)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -270,7 +235,6 @@ public class ComplianceRuleBreakdown {
     openapiFields.add("groupStatus");
     openapiFields.add("resultsUsed");
     openapiFields.add("propertiesUsed");
-    openapiFields.add("parametersUsed");
     openapiFields.add("missingDataInformation");
 
     // a set of required properties/fields (JSON key names)
@@ -278,7 +242,6 @@ public class ComplianceRuleBreakdown {
     openapiRequiredFields.add("groupStatus");
     openapiRequiredFields.add("resultsUsed");
     openapiRequiredFields.add("propertiesUsed");
-    openapiRequiredFields.add("parametersUsed");
     openapiRequiredFields.add("missingDataInformation");
   }
 

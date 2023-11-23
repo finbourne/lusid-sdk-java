@@ -20,6 +20,8 @@ Schedule for fixed coupon payments
 |**spread** | **java.math.BigDecimal** | Spread over floating rate given as a fraction. |  [optional] |
 |**stubType** | **String** | StubType required of the schedule    Supported string (enumeration) values are: [ShortFront, ShortBack, LongBack, LongFront, Both]. |  [optional] |
 |**exDividendConfiguration** | [**ExDividendConfiguration**](ExDividendConfiguration.md) |  |  [optional] |
+|**compounding** | [**Compounding**](Compounding.md) |  |  [optional] |
+|**resetConvention** | **String** | Control how resets are generated relative to payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears]. |  [optional] |
 
 
 

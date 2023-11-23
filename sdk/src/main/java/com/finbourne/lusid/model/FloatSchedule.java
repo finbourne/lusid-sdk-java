@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Compounding;
 import com.finbourne.lusid.model.ExDividendConfiguration;
 import com.finbourne.lusid.model.FlowConventionName;
 import com.finbourne.lusid.model.FlowConventions;
@@ -103,6 +104,14 @@ public class FloatSchedule extends Schedule {
   public static final String SERIALIZED_NAME_EX_DIVIDEND_CONFIGURATION = "exDividendConfiguration";
   @SerializedName(SERIALIZED_NAME_EX_DIVIDEND_CONFIGURATION)
   private ExDividendConfiguration exDividendConfiguration;
+
+  public static final String SERIALIZED_NAME_COMPOUNDING = "compounding";
+  @SerializedName(SERIALIZED_NAME_COMPOUNDING)
+  private Compounding compounding;
+
+  public static final String SERIALIZED_NAME_RESET_CONVENTION = "resetConvention";
+  @SerializedName(SERIALIZED_NAME_RESET_CONVENTION)
+  private String resetConvention;
 
   public FloatSchedule() {
     // this.scheduleType = this.getClass().getSimpleName();
@@ -360,6 +369,48 @@ public class FloatSchedule extends Schedule {
   }
 
 
+  public FloatSchedule compounding(Compounding compounding) {
+    
+    this.compounding = compounding;
+    return this;
+  }
+
+   /**
+   * Get compounding
+   * @return compounding
+  **/
+  @jakarta.annotation.Nullable
+  public Compounding getCompounding() {
+    return compounding;
+  }
+
+
+  public void setCompounding(Compounding compounding) {
+    this.compounding = compounding;
+  }
+
+
+  public FloatSchedule resetConvention(String resetConvention) {
+    
+    this.resetConvention = resetConvention;
+    return this;
+  }
+
+   /**
+   * Control how resets are generated relative to payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears].
+   * @return resetConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getResetConvention() {
+    return resetConvention;
+  }
+
+
+  public void setResetConvention(String resetConvention) {
+    this.resetConvention = resetConvention;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -382,6 +433,8 @@ public class FloatSchedule extends Schedule {
         (this.spread.compareTo(floatSchedule.getSpread()) == 0) &&
         Objects.equals(this.stubType, floatSchedule.stubType) &&
         Objects.equals(this.exDividendConfiguration, floatSchedule.exDividendConfiguration) &&
+        Objects.equals(this.compounding, floatSchedule.compounding) &&
+        Objects.equals(this.resetConvention, floatSchedule.resetConvention) &&
         super.equals(o);
   }
 
@@ -391,7 +444,7 @@ public class FloatSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -418,6 +471,8 @@ public class FloatSchedule extends Schedule {
     sb.append("    spread: ").append(toIndentedString(spread)).append("\n");
     sb.append("    stubType: ").append(toIndentedString(stubType)).append("\n");
     sb.append("    exDividendConfiguration: ").append(toIndentedString(exDividendConfiguration)).append("\n");
+    sb.append("    compounding: ").append(toIndentedString(compounding)).append("\n");
+    sb.append("    resetConvention: ").append(toIndentedString(resetConvention)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -453,6 +508,8 @@ public class FloatSchedule extends Schedule {
     openapiFields.add("spread");
     openapiFields.add("stubType");
     openapiFields.add("exDividendConfiguration");
+    openapiFields.add("compounding");
+    openapiFields.add("resetConvention");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

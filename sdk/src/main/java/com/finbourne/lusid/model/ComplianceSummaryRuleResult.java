@@ -79,6 +79,10 @@ public class ComplianceSummaryRuleResult {
   @SerializedName(SERIALIZED_NAME_AFFECTED_ORDERS)
   private List<ResourceId> affectedOrders = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_PARAMETERS_USED = "parametersUsed";
+  @SerializedName(SERIALIZED_NAME_PARAMETERS_USED)
+  private Map<String, String> parametersUsed = new HashMap<>();
+
   public static final String SERIALIZED_NAME_RULE_BREAKDOWN = "ruleBreakdown";
   @SerializedName(SERIALIZED_NAME_RULE_BREAKDOWN)
   private Map<String, ComplianceRuleBreakdown> ruleBreakdown = new HashMap<>();
@@ -228,6 +232,35 @@ public class ComplianceSummaryRuleResult {
   }
 
 
+  public ComplianceSummaryRuleResult parametersUsed(Map<String, String> parametersUsed) {
+    
+    this.parametersUsed = parametersUsed;
+    return this;
+  }
+
+  public ComplianceSummaryRuleResult putParametersUsedItem(String key, String parametersUsedItem) {
+    if (this.parametersUsed == null) {
+      this.parametersUsed = new HashMap<>();
+    }
+    this.parametersUsed.put(key, parametersUsedItem);
+    return this;
+  }
+
+   /**
+   * Get parametersUsed
+   * @return parametersUsed
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, String> getParametersUsed() {
+    return parametersUsed;
+  }
+
+
+  public void setParametersUsed(Map<String, String> parametersUsed) {
+    this.parametersUsed = parametersUsed;
+  }
+
+
   public ComplianceSummaryRuleResult ruleBreakdown(Map<String, ComplianceRuleBreakdown> ruleBreakdown) {
     
     this.ruleBreakdown = ruleBreakdown;
@@ -273,12 +306,13 @@ public class ComplianceSummaryRuleResult {
         Objects.equals(this.ruleStatus, complianceSummaryRuleResult.ruleStatus) &&
         Objects.equals(this.affectedPortfolios, complianceSummaryRuleResult.affectedPortfolios) &&
         Objects.equals(this.affectedOrders, complianceSummaryRuleResult.affectedOrders) &&
+        Objects.equals(this.parametersUsed, complianceSummaryRuleResult.parametersUsed) &&
         Objects.equals(this.ruleBreakdown, complianceSummaryRuleResult.ruleBreakdown);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, templateId, variation, ruleStatus, affectedPortfolios, affectedOrders, ruleBreakdown);
+    return Objects.hash(ruleId, templateId, variation, ruleStatus, affectedPortfolios, affectedOrders, parametersUsed, ruleBreakdown);
   }
 
   @Override
@@ -291,6 +325,7 @@ public class ComplianceSummaryRuleResult {
     sb.append("    ruleStatus: ").append(toIndentedString(ruleStatus)).append("\n");
     sb.append("    affectedPortfolios: ").append(toIndentedString(affectedPortfolios)).append("\n");
     sb.append("    affectedOrders: ").append(toIndentedString(affectedOrders)).append("\n");
+    sb.append("    parametersUsed: ").append(toIndentedString(parametersUsed)).append("\n");
     sb.append("    ruleBreakdown: ").append(toIndentedString(ruleBreakdown)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -320,6 +355,7 @@ public class ComplianceSummaryRuleResult {
     openapiFields.add("ruleStatus");
     openapiFields.add("affectedPortfolios");
     openapiFields.add("affectedOrders");
+    openapiFields.add("parametersUsed");
     openapiFields.add("ruleBreakdown");
 
     // a set of required properties/fields (JSON key names)
@@ -330,6 +366,7 @@ public class ComplianceSummaryRuleResult {
     openapiRequiredFields.add("ruleStatus");
     openapiRequiredFields.add("affectedPortfolios");
     openapiRequiredFields.add("affectedOrders");
+    openapiRequiredFields.add("parametersUsed");
     openapiRequiredFields.add("ruleBreakdown");
   }
 

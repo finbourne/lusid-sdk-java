@@ -82,6 +82,10 @@ public class OrderGraphBlock {
   @SerializedName(SERIALIZED_NAME_DERIVED_COMPLIANCE_STATE)
   private String derivedComplianceState;
 
+  public static final String SERIALIZED_NAME_DERIVED_APPROVAL_STATE = "derivedApprovalState";
+  @SerializedName(SERIALIZED_NAME_DERIVED_APPROVAL_STATE)
+  private String derivedApprovalState;
+
   public OrderGraphBlock() {
   }
 
@@ -232,6 +236,27 @@ public class OrderGraphBlock {
   }
 
 
+  public OrderGraphBlock derivedApprovalState(String derivedApprovalState) {
+    
+    this.derivedApprovalState = derivedApprovalState;
+    return this;
+  }
+
+   /**
+   * The overall approval state of a block, derived from approval of the block&#39;s orders. Possible values are &#39;Pending&#39;, &#39;Approved&#39; and &#39;Rejected&#39;.
+   * @return derivedApprovalState
+  **/
+  @jakarta.annotation.Nonnull
+  public String getDerivedApprovalState() {
+    return derivedApprovalState;
+  }
+
+
+  public void setDerivedApprovalState(String derivedApprovalState) {
+    this.derivedApprovalState = derivedApprovalState;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -248,12 +273,13 @@ public class OrderGraphBlock {
         Objects.equals(this.executed, orderGraphBlock.executed) &&
         Objects.equals(this.allocated, orderGraphBlock.allocated) &&
         Objects.equals(this.derivedState, orderGraphBlock.derivedState) &&
-        Objects.equals(this.derivedComplianceState, orderGraphBlock.derivedComplianceState);
+        Objects.equals(this.derivedComplianceState, orderGraphBlock.derivedComplianceState) &&
+        Objects.equals(this.derivedApprovalState, orderGraphBlock.derivedApprovalState);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(block, ordered, placed, executed, allocated, derivedState, derivedComplianceState);
+    return Objects.hash(block, ordered, placed, executed, allocated, derivedState, derivedComplianceState, derivedApprovalState);
   }
 
   @Override
@@ -267,6 +293,7 @@ public class OrderGraphBlock {
     sb.append("    allocated: ").append(toIndentedString(allocated)).append("\n");
     sb.append("    derivedState: ").append(toIndentedString(derivedState)).append("\n");
     sb.append("    derivedComplianceState: ").append(toIndentedString(derivedComplianceState)).append("\n");
+    sb.append("    derivedApprovalState: ").append(toIndentedString(derivedApprovalState)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -296,6 +323,7 @@ public class OrderGraphBlock {
     openapiFields.add("allocated");
     openapiFields.add("derivedState");
     openapiFields.add("derivedComplianceState");
+    openapiFields.add("derivedApprovalState");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -306,6 +334,7 @@ public class OrderGraphBlock {
     openapiRequiredFields.add("allocated");
     openapiRequiredFields.add("derivedState");
     openapiRequiredFields.add("derivedComplianceState");
+    openapiRequiredFields.add("derivedApprovalState");
   }
 
  /**
@@ -343,6 +372,9 @@ public class OrderGraphBlock {
       }
       if (!jsonObj.get("derivedComplianceState").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `derivedComplianceState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivedComplianceState").toString()));
+      }
+      if (!jsonObj.get("derivedApprovalState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `derivedApprovalState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivedApprovalState").toString()));
       }
   }
 

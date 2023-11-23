@@ -13,6 +13,7 @@
 |**ruleStatus** | **String** |  |  |
 |**affectedPortfolios** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  |
 |**affectedOrders** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  |
+|**parametersUsed** | **Map&lt;String, String&gt;** |  |  |
 |**ruleBreakdown** | [**Map&lt;String, ComplianceRuleBreakdownRequest&gt;**](ComplianceRuleBreakdownRequest.md) |  |  |
 
 
