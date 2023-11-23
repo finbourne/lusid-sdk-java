@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentEvent {
   /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent
    */
   @JsonAdapter(InstrumentEventTypeEnum.Adapter.class)
   public enum InstrumentEventTypeEnum {
@@ -82,7 +82,9 @@ public class InstrumentEvent {
     
     INFORMATIONALERROREVENT("InformationalErrorEvent"),
     
-    BONDCOUPONEVENT("BondCouponEvent");
+    BONDCOUPONEVENT("BondCouponEvent"),
+    
+    DIVIDENDREINVESTMENTEVENT("DividendReinvestmentEvent");
 
     private String value;
 
@@ -136,7 +138,7 @@ public class InstrumentEvent {
   }
 
    /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent
    * @return instrumentEventType
   **/
   @jakarta.annotation.Nonnull
@@ -234,6 +236,9 @@ public class InstrumentEvent {
           break;
         case "CloseEvent":
           CloseEvent.validateJsonElement(jsonElement);
+          break;
+        case "DividendReinvestmentEvent":
+          DividendReinvestmentEvent.validateJsonElement(jsonElement);
           break;
         case "ExerciseEvent":
           ExerciseEvent.validateJsonElement(jsonElement);

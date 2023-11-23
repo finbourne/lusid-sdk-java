@@ -1461,8 +1461,8 @@ public class CorporateActionSourcesApi {
     /**
      * [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source.
      * Retrieves extrinsic corporate actions out of a corporate actions source
-     * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. (required)
+     * @param scope The scope of the corporate action source. (required)
+     * @param code The code of the corporate action source. (required)
      * @return APIgetInstrumentEventsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

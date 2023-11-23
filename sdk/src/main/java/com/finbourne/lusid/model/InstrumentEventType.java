@@ -53,7 +53,9 @@ public enum InstrumentEventType {
   
   INFORMATIONALERROREVENT("InformationalErrorEvent"),
   
-  BONDCOUPONEVENT("BondCouponEvent");
+  BONDCOUPONEVENT("BondCouponEvent"),
+  
+  DIVIDENDREINVESTMENTEVENT("DividendReinvestmentEvent");
 
   private String value;
 

@@ -35,5 +35,7 @@
 
 * `BONDCOUPONEVENT` (value: `"BondCouponEvent"`)
 
+* `DIVIDENDREINVESTMENTEVENT` (value: `"DividendReinvestmentEvent"`)
+
 
 

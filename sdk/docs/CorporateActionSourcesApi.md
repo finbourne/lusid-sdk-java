@@ -498,8 +498,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CorporateActionSourcesApi apiInstance = new CorporateActionSourcesApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio.
-    String code = "code_example"; // String | The code of the portfolio.
+    String scope = "scope_example"; // String | The scope of the corporate action source.
+    String code = "code_example"; // String | The code of the corporate action source.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data.
     Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
     String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified.
@@ -527,8 +527,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the portfolio. | |
-| **code** | **String**| The code of the portfolio. | |
+| **scope** | **String**| The scope of the corporate action source. | |
+| **code** | **String**| The code of the corporate action source. | |
 | **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. | [optional] [default to 1000] |
 | **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. | [optional] |
