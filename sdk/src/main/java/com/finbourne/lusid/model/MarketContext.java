@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.GroupOfMarketDataKeyRules;
 import com.finbourne.lusid.model.MarketContextSuppliers;
 import com.finbourne.lusid.model.MarketDataKeyRule;
 import com.finbourne.lusid.model.MarketDataSpecificRule;
@@ -71,6 +72,10 @@ public class MarketContext {
   public static final String SERIALIZED_NAME_SPECIFIC_RULES = "specificRules";
   @SerializedName(SERIALIZED_NAME_SPECIFIC_RULES)
   private List<MarketDataSpecificRule> specificRules;
+
+  public static final String SERIALIZED_NAME_GROUPED_MARKET_RULES = "groupedMarketRules";
+  @SerializedName(SERIALIZED_NAME_GROUPED_MARKET_RULES)
+  private List<GroupOfMarketDataKeyRules> groupedMarketRules;
 
   public MarketContext() {
   }
@@ -175,6 +180,35 @@ public class MarketContext {
   }
 
 
+  public MarketContext groupedMarketRules(List<GroupOfMarketDataKeyRules> groupedMarketRules) {
+    
+    this.groupedMarketRules = groupedMarketRules;
+    return this;
+  }
+
+  public MarketContext addGroupedMarketRulesItem(GroupOfMarketDataKeyRules groupedMarketRulesItem) {
+    if (this.groupedMarketRules == null) {
+      this.groupedMarketRules = new ArrayList<>();
+    }
+    this.groupedMarketRules.add(groupedMarketRulesItem);
+    return this;
+  }
+
+   /**
+   * The list of groups of rules that will be used in market data resolution.  Rules given within a group will, if the group is being used to resolve data,  all be applied with the results of those individual resolution attempts combined into a single result.  The method for combining results is determined by the operation detailed in the GroupOfMarketDataKeyRules.     Notes:  - When resolving MarketData, MarketRules will be applied first followed by GroupedMarketRules  if data could not be found using only the MarketRules provided.  - GroupedMarketRules can only be used for resolving data from the QuoteStore.     Caution: As every rule in a given group will be applied in resolution if the group is applied,  groups are computationally expensive for market data resolution.  Therefore, heuristically, rule groups should be kept as small as possible.
+   * @return groupedMarketRules
+  **/
+  @jakarta.annotation.Nullable
+  public List<GroupOfMarketDataKeyRules> getGroupedMarketRules() {
+    return groupedMarketRules;
+  }
+
+
+  public void setGroupedMarketRules(List<GroupOfMarketDataKeyRules> groupedMarketRules) {
+    this.groupedMarketRules = groupedMarketRules;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -188,7 +222,8 @@ public class MarketContext {
     return Objects.equals(this.marketRules, marketContext.marketRules) &&
         Objects.equals(this.suppliers, marketContext.suppliers) &&
         Objects.equals(this.options, marketContext.options) &&
-        Objects.equals(this.specificRules, marketContext.specificRules);
+        Objects.equals(this.specificRules, marketContext.specificRules) &&
+        Objects.equals(this.groupedMarketRules, marketContext.groupedMarketRules);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -197,7 +232,7 @@ public class MarketContext {
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketRules, suppliers, options, specificRules);
+    return Objects.hash(marketRules, suppliers, options, specificRules, groupedMarketRules);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -215,6 +250,7 @@ public class MarketContext {
     sb.append("    suppliers: ").append(toIndentedString(suppliers)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    specificRules: ").append(toIndentedString(specificRules)).append("\n");
+    sb.append("    groupedMarketRules: ").append(toIndentedString(groupedMarketRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -241,6 +277,7 @@ public class MarketContext {
     openapiFields.add("suppliers");
     openapiFields.add("options");
     openapiFields.add("specificRules");
+    openapiFields.add("groupedMarketRules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -292,6 +329,20 @@ public class MarketContext {
           // validate the optional field `specificRules` (array)
           for (int i = 0; i < jsonArrayspecificRules.size(); i++) {
             MarketDataSpecificRule.validateJsonElement(jsonArrayspecificRules.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("groupedMarketRules") != null && !jsonObj.get("groupedMarketRules").isJsonNull()) {
+        JsonArray jsonArraygroupedMarketRules = jsonObj.getAsJsonArray("groupedMarketRules");
+        if (jsonArraygroupedMarketRules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("groupedMarketRules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `groupedMarketRules` to be an array in the JSON string but got `%s`", jsonObj.get("groupedMarketRules").toString()));
+          }
+
+          // validate the optional field `groupedMarketRules` (array)
+          for (int i = 0; i < jsonArraygroupedMarketRules.size(); i++) {
+            GroupOfMarketDataKeyRules.validateJsonElement(jsonArraygroupedMarketRules.get(i));
           };
         }
       }
