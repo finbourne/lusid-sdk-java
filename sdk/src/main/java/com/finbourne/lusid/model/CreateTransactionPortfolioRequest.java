@@ -160,6 +160,10 @@ public class CreateTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE_SCOPE)
   private String transactionTypeScope;
 
+  public static final String SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE = "cashGainLossCalculationDate";
+  @SerializedName(SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE)
+  private String cashGainLossCalculationDate;
+
   public CreateTransactionPortfolioRequest() {
   }
 
@@ -439,6 +443,27 @@ public class CreateTransactionPortfolioRequest {
   }
 
 
+  public CreateTransactionPortfolioRequest cashGainLossCalculationDate(String cashGainLossCalculationDate) {
+    
+    this.cashGainLossCalculationDate = cashGainLossCalculationDate;
+    return this;
+  }
+
+   /**
+   * The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. Defaults to SettlementDate.
+   * @return cashGainLossCalculationDate
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashGainLossCalculationDate() {
+    return cashGainLossCalculationDate;
+  }
+
+
+  public void setCashGainLossCalculationDate(String cashGainLossCalculationDate) {
+    this.cashGainLossCalculationDate = cashGainLossCalculationDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -460,7 +485,8 @@ public class CreateTransactionPortfolioRequest {
         Objects.equals(this.properties, createTransactionPortfolioRequest.properties) &&
         Objects.equals(this.instrumentScopes, createTransactionPortfolioRequest.instrumentScopes) &&
         Objects.equals(this.amortisationMethod, createTransactionPortfolioRequest.amortisationMethod) &&
-        Objects.equals(this.transactionTypeScope, createTransactionPortfolioRequest.transactionTypeScope);
+        Objects.equals(this.transactionTypeScope, createTransactionPortfolioRequest.transactionTypeScope) &&
+        Objects.equals(this.cashGainLossCalculationDate, createTransactionPortfolioRequest.cashGainLossCalculationDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -469,7 +495,7 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope);
+    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -495,6 +521,7 @@ public class CreateTransactionPortfolioRequest {
     sb.append("    instrumentScopes: ").append(toIndentedString(instrumentScopes)).append("\n");
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
+    sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -529,6 +556,7 @@ public class CreateTransactionPortfolioRequest {
     openapiFields.add("instrumentScopes");
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
+    openapiFields.add("cashGainLossCalculationDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -589,6 +617,9 @@ public class CreateTransactionPortfolioRequest {
       }
       if ((jsonObj.get("transactionTypeScope") != null && !jsonObj.get("transactionTypeScope").isJsonNull()) && !jsonObj.get("transactionTypeScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionTypeScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTypeScope").toString()));
+      }
+      if ((jsonObj.get("cashGainLossCalculationDate") != null && !jsonObj.get("cashGainLossCalculationDate").isJsonNull()) && !jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
       }
   }
 

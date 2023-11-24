@@ -229,6 +229,10 @@ public class Portfolio {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE_SCOPE)
   private String transactionTypeScope;
 
+  public static final String SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE = "cashGainLossCalculationDate";
+  @SerializedName(SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE)
+  private String cashGainLossCalculationDate;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -596,6 +600,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio cashGainLossCalculationDate(String cashGainLossCalculationDate) {
+    
+    this.cashGainLossCalculationDate = cashGainLossCalculationDate;
+    return this;
+  }
+
+   /**
+   * The scope of the transaction types.
+   * @return cashGainLossCalculationDate
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashGainLossCalculationDate() {
+    return cashGainLossCalculationDate;
+  }
+
+
+  public void setCashGainLossCalculationDate(String cashGainLossCalculationDate) {
+    this.cashGainLossCalculationDate = cashGainLossCalculationDate;
+  }
+
+
   public Portfolio links(List<Link> links) {
     
     this.links = links;
@@ -651,6 +676,7 @@ public class Portfolio {
         Objects.equals(this.accountingMethod, portfolio.accountingMethod) &&
         Objects.equals(this.amortisationMethod, portfolio.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, portfolio.transactionTypeScope) &&
+        Objects.equals(this.cashGainLossCalculationDate, portfolio.cashGainLossCalculationDate) &&
         Objects.equals(this.links, portfolio.links);
   }
 
@@ -660,7 +686,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, links);
+    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -690,6 +716,7 @@ public class Portfolio {
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
+    sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -729,6 +756,7 @@ public class Portfolio {
     openapiFields.add("accountingMethod");
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
+    openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -810,6 +838,9 @@ public class Portfolio {
       }
       if ((jsonObj.get("transactionTypeScope") != null && !jsonObj.get("transactionTypeScope").isJsonNull()) && !jsonObj.get("transactionTypeScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionTypeScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTypeScope").toString()));
+      }
+      if ((jsonObj.get("cashGainLossCalculationDate") != null && !jsonObj.get("cashGainLossCalculationDate").isJsonNull()) && !jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
