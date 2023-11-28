@@ -30,6 +30,11 @@ import com.finbourne.lusid.model.AccountsUpsertResponse;
 import com.finbourne.lusid.model.ChartOfAccounts;
 import com.finbourne.lusid.model.ChartOfAccountsProperties;
 import com.finbourne.lusid.model.ChartOfAccountsRequest;
+import com.finbourne.lusid.model.CleardownModuleDetails;
+import com.finbourne.lusid.model.CleardownModuleRequest;
+import com.finbourne.lusid.model.CleardownModuleResponse;
+import com.finbourne.lusid.model.CleardownModuleRule;
+import com.finbourne.lusid.model.CleardownModuleRulesUpdatedResponse;
 import com.finbourne.lusid.model.DeleteAccountsResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.GeneralLedgerProfileMapping;
@@ -40,6 +45,8 @@ import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfAccount;
 import com.finbourne.lusid.model.PagedResourceListOfChartOfAccounts;
+import com.finbourne.lusid.model.PagedResourceListOfCleardownModuleResponse;
+import com.finbourne.lusid.model.PagedResourceListOfCleardownModuleRule;
 import com.finbourne.lusid.model.PagedResourceListOfGeneralLedgerProfileResponse;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleResponse;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleRule;
@@ -268,6 +275,191 @@ public class ChartOfAccountsApi {
      */
     public APIcreateChartOfAccountsRequest createChartOfAccounts(String scope, ChartOfAccountsRequest chartOfAccountsRequest) {
         return new APIcreateChartOfAccountsRequest(scope, chartOfAccountsRequest);
+    }
+    private okhttp3.Call createCleardownModuleCall(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = cleardownModuleRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createCleardownModuleValidateBeforeCall(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling createCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling createCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleRequest' is set
+        if (cleardownModuleRequest == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleRequest' when calling createCleardownModule(Async)");
+        }
+
+        return createCleardownModuleCall(scope, code, cleardownModuleRequest, _callback);
+
+    }
+
+
+    private ApiResponse<CleardownModuleResponse> createCleardownModuleWithHttpInfo(String scope, String code, CleardownModuleRequest cleardownModuleRequest) throws ApiException {
+        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, null);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createCleardownModuleAsync(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateCleardownModuleRequest {
+        private final String scope;
+        private final String code;
+        private final CleardownModuleRequest cleardownModuleRequest;
+
+        private APIcreateCleardownModuleRequest(String scope, String code, CleardownModuleRequest cleardownModuleRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleRequest = cleardownModuleRequest;
+        }
+
+        /**
+         * Build call for createCleardownModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createCleardownModuleCall(scope, code, cleardownModuleRequest, _callback);
+        }
+
+        /**
+         * Execute createCleardownModule request
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute() throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = createCleardownModuleWithHttpInfo(scope, code, cleardownModuleRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createCleardownModule request with HTTP info returned
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
+            return createCleardownModuleWithHttpInfo(scope, code, cleardownModuleRequest);
+        }
+
+        /**
+         * Execute createCleardownModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+            return createCleardownModuleAsync(scope, code, cleardownModuleRequest, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+     * Create the given Cleardown Module.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleRequest The definition of the Cleardown Module. (required)
+     * @return APIcreateCleardownModuleRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateCleardownModuleRequest createCleardownModule(String scope, String code, CleardownModuleRequest cleardownModuleRequest) {
+        return new APIcreateCleardownModuleRequest(scope, code, cleardownModuleRequest);
     }
     private okhttp3.Call createGeneralLedgerProfileCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1011,6 +1203,188 @@ public class ChartOfAccountsApi {
      */
     public APIdeleteChartOfAccountsRequest deleteChartOfAccounts(String scope, String code) {
         return new APIdeleteChartOfAccountsRequest(scope, code);
+    }
+    private okhttp3.Call deleteCleardownModuleCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "cleardownModuleCode" + "}", localVarApiClient.escapeString(cleardownModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleCode' is set
+        if (cleardownModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling deleteCleardownModule(Async)");
+        }
+
+        return deleteCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, null);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteCleardownModuleAsync(String scope, String code, String cleardownModuleCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteCleardownModuleRequest {
+        private final String scope;
+        private final String code;
+        private final String cleardownModuleCode;
+
+        private APIdeleteCleardownModuleRequest(String scope, String code, String cleardownModuleCode) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleCode = cleardownModuleCode;
+        }
+
+        /**
+         * Build call for deleteCleardownModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+        }
+
+        /**
+         * Execute deleteCleardownModule request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteCleardownModule request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+        }
+
+        /**
+         * Execute deleteCleardownModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteCleardownModuleAsync(scope, code, cleardownModuleCode, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+     * Delete the given Cleardown Module.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleCode The code of the Cleardown Module to be deleted. (required)
+     * @return APIdeleteCleardownModuleRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteCleardownModuleRequest deleteCleardownModule(String scope, String code, String cleardownModuleCode) {
+        return new APIdeleteCleardownModuleRequest(scope, code, cleardownModuleCode);
     }
     private okhttp3.Call deleteGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1820,6 +2194,188 @@ public class ChartOfAccountsApi {
      */
     public APIgetChartOfAccountsRequest getChartOfAccounts(String scope, String code) {
         return new APIgetChartOfAccountsRequest(scope, code);
+    }
+    private okhttp3.Call getCleardownModuleCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "cleardownModuleCode" + "}", localVarApiClient.escapeString(cleardownModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleCode' is set
+        if (cleardownModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling getCleardownModule(Async)");
+        }
+
+        return getCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+
+    }
+
+
+    private ApiResponse<CleardownModuleResponse> getCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode) throws ApiException {
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, null);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getCleardownModuleAsync(String scope, String code, String cleardownModuleCode, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, _callback);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetCleardownModuleRequest {
+        private final String scope;
+        private final String code;
+        private final String cleardownModuleCode;
+
+        private APIgetCleardownModuleRequest(String scope, String code, String cleardownModuleCode) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleCode = cleardownModuleCode;
+        }
+
+        /**
+         * Build call for getCleardownModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+        }
+
+        /**
+         * Execute getCleardownModule request
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute() throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCleardownModule request with HTTP info returned
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
+            return getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+        }
+
+        /**
+         * Execute getCleardownModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+            return getCleardownModuleAsync(scope, code, cleardownModuleCode, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+     * Retrieve the definition of a Cleardown Module complete with its rules.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleCode The code of the Cleardown Module. (required)
+     * @return APIgetCleardownModuleRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetCleardownModuleRequest getCleardownModule(String scope, String code, String cleardownModuleCode) {
+        return new APIgetCleardownModuleRequest(scope, code, cleardownModuleCode);
     }
     private okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2723,6 +3279,511 @@ public class ChartOfAccountsApi {
     public APIlistChartsOfAccountsRequest listChartsOfAccounts() {
         return new APIlistChartsOfAccountsRequest();
     }
+    private okhttp3.Call listCleardownModuleRulesCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "cleardownModuleCode" + "}", localVarApiClient.escapeString(cleardownModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (start != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCleardownModuleRulesValidateBeforeCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listCleardownModuleRules(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listCleardownModuleRules(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleCode' is set
+        if (cleardownModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling listCleardownModuleRules(Async)");
+        }
+
+        return listCleardownModuleRulesCall(scope, code, cleardownModuleCode, asAt, page, start, limit, filter, _callback);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfCleardownModuleRule> listCleardownModuleRulesWithHttpInfo(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, start, limit, filter, null);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listCleardownModuleRulesAsync(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfCleardownModuleRule> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, start, limit, filter, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistCleardownModuleRulesRequest {
+        private final String scope;
+        private final String code;
+        private final String cleardownModuleCode;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistCleardownModuleRulesRequest(String scope, String code, String cleardownModuleCode) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleCode = cleardownModuleCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIlistCleardownModuleRulesRequest
+         */
+        public APIlistCleardownModuleRulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing cleardown module rules; this   value is returned from the previous call. If a pagination token is provided, the filter   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistCleardownModuleRulesRequest
+         */
+        public APIlistCleardownModuleRulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistCleardownModuleRulesRequest
+         */
+        public APIlistCleardownModuleRulesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistCleardownModuleRulesRequest
+         */
+        public APIlistCleardownModuleRulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistCleardownModuleRulesRequest
+         */
+        public APIlistCleardownModuleRulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listCleardownModuleRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCleardownModuleRulesCall(scope, code, cleardownModuleCode, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listCleardownModuleRules request
+         * @return PagedResourceListOfCleardownModuleRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCleardownModuleRule execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCleardownModuleRule> localVarResp = listCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCleardownModuleRules request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCleardownModuleRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCleardownModuleRule> executeWithHttpInfo() throws ApiException {
+            return listCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listCleardownModuleRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleRule> _callback) throws ApiException {
+            return listCleardownModuleRulesAsync(scope, code, cleardownModuleCode, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+     * List the Rules in a Cleardown Module
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleCode The code of the cleardown module. (required)
+     * @return APIlistCleardownModuleRulesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistCleardownModuleRulesRequest listCleardownModuleRules(String scope, String code, String cleardownModuleCode) {
+        return new APIlistCleardownModuleRulesRequest(scope, code, cleardownModuleCode);
+    }
+    private okhttp3.Call listCleardownModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (start != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCleardownModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listCleardownModules(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listCleardownModules(Async)");
+        }
+
+        return listCleardownModulesCall(scope, code, asAt, page, start, limit, filter, _callback);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfCleardownModuleResponse> listCleardownModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, start, limit, filter, null);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listCleardownModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, start, limit, filter, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistCleardownModulesRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer start;
+        private Integer limit;
+        private String filter;
+
+        private APIlistCleardownModulesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Cleardown Module. Defaults to returning the latest version   of each Cleardown Module if not specified. (optional)
+         * @return APIlistCleardownModulesRequest
+         */
+        public APIlistCleardownModulesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Cleardown Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @return APIlistCleardownModulesRequest
+         */
+        public APIlistCleardownModulesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set start
+         * @param start When paginating, skip this number of results. (optional)
+         * @return APIlistCleardownModulesRequest
+         */
+        public APIlistCleardownModulesRequest start(Integer start) {
+            this.start = start;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistCleardownModulesRequest
+         */
+        public APIlistCleardownModulesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistCleardownModulesRequest
+         */
+        public APIlistCleardownModulesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listCleardownModules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listCleardownModulesCall(scope, code, asAt, page, start, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listCleardownModules request
+         * @return PagedResourceListOfCleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCleardownModuleResponse execute() throws ApiException {
+            ApiResponse<PagedResourceListOfCleardownModuleResponse> localVarResp = listCleardownModulesWithHttpInfo(scope, code, asAt, page, start, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listCleardownModules request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfCleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCleardownModuleResponse> executeWithHttpInfo() throws ApiException {
+            return listCleardownModulesWithHttpInfo(scope, code, asAt, page, start, limit, filter);
+        }
+
+        /**
+         * Execute listCleardownModules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
+            return listCleardownModulesAsync(scope, code, asAt, page, start, limit, filter, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+     * List all the Cleardown Modules matching particular criteria.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @return APIlistCleardownModulesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistCleardownModulesRequest listCleardownModules(String scope, String code) {
+        return new APIlistCleardownModulesRequest(scope, code);
+    }
     private okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -3475,6 +4536,394 @@ public class ChartOfAccountsApi {
      */
     public APIlistPostingModulesRequest listPostingModules(String scope, String code) {
         return new APIlistPostingModulesRequest(scope, code);
+    }
+    private okhttp3.Call setCleardownModuleDetailsCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = cleardownModuleDetails;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "cleardownModuleCode" + "}", localVarApiClient.escapeString(cleardownModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setCleardownModuleDetailsValidateBeforeCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling setCleardownModuleDetails(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling setCleardownModuleDetails(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleCode' is set
+        if (cleardownModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling setCleardownModuleDetails(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleDetails' is set
+        if (cleardownModuleDetails == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleDetails' when calling setCleardownModuleDetails(Async)");
+        }
+
+        return setCleardownModuleDetailsCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+
+    }
+
+
+    private ApiResponse<CleardownModuleResponse> setCleardownModuleDetailsWithHttpInfo(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails) throws ApiException {
+        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, null);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call setCleardownModuleDetailsAsync(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsetCleardownModuleDetailsRequest {
+        private final String scope;
+        private final String code;
+        private final String cleardownModuleCode;
+        private final CleardownModuleDetails cleardownModuleDetails;
+
+        private APIsetCleardownModuleDetailsRequest(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleCode = cleardownModuleCode;
+            this.cleardownModuleDetails = cleardownModuleDetails;
+        }
+
+        /**
+         * Build call for setCleardownModuleDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setCleardownModuleDetailsCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+        }
+
+        /**
+         * Execute setCleardownModuleDetails request
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute() throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = setCleardownModuleDetailsWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleDetails);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setCleardownModuleDetails request with HTTP info returned
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
+            return setCleardownModuleDetailsWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleDetails);
+        }
+
+        /**
+         * Execute setCleardownModuleDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+            return setCleardownModuleDetailsAsync(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+     * Update the given Cleardown Module details.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleCode The code of the Cleardown Module to be updated. (required)
+     * @param cleardownModuleDetails The new details for the Cleardown Module. (required)
+     * @return APIsetCleardownModuleDetailsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIsetCleardownModuleDetailsRequest setCleardownModuleDetails(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails) {
+        return new APIsetCleardownModuleDetailsRequest(scope, code, cleardownModuleCode, cleardownModuleDetails);
+    }
+    private okhttp3.Call setCleardownModuleRulesCall(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = cleardownModuleRule;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "cleardownModuleCode" + "}", localVarApiClient.escapeString(cleardownModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setCleardownModuleRulesValidateBeforeCall(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling setCleardownModuleRules(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling setCleardownModuleRules(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleCode' is set
+        if (cleardownModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling setCleardownModuleRules(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleRule' is set
+        if (cleardownModuleRule == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleRule' when calling setCleardownModuleRules(Async)");
+        }
+
+        return setCleardownModuleRulesCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+
+    }
+
+
+    private ApiResponse<CleardownModuleRulesUpdatedResponse> setCleardownModuleRulesWithHttpInfo(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule) throws ApiException {
+        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, null);
+        Type localVarReturnType = new TypeToken<CleardownModuleRulesUpdatedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call setCleardownModuleRulesAsync(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback<CleardownModuleRulesUpdatedResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+        Type localVarReturnType = new TypeToken<CleardownModuleRulesUpdatedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsetCleardownModuleRulesRequest {
+        private final String scope;
+        private final String code;
+        private final String cleardownModuleCode;
+        private final List<CleardownModuleRule> cleardownModuleRule;
+
+        private APIsetCleardownModuleRulesRequest(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleCode = cleardownModuleCode;
+            this.cleardownModuleRule = cleardownModuleRule;
+        }
+
+        /**
+         * Build call for setCleardownModuleRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setCleardownModuleRulesCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+        }
+
+        /**
+         * Execute setCleardownModuleRules request
+         * @return CleardownModuleRulesUpdatedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleRulesUpdatedResponse execute() throws ApiException {
+            ApiResponse<CleardownModuleRulesUpdatedResponse> localVarResp = setCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleRule);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setCleardownModuleRules request with HTTP info returned
+         * @return ApiResponse&lt;CleardownModuleRulesUpdatedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleRulesUpdatedResponse> executeWithHttpInfo() throws ApiException {
+            return setCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleRule);
+        }
+
+        /**
+         * Execute setCleardownModuleRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleRulesUpdatedResponse> _callback) throws ApiException {
+            return setCleardownModuleRulesAsync(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+     * Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleCode The code of the Cleardown Module to be updated. (required)
+     * @param cleardownModuleRule The new rule set for the Cleardown Module. (required)
+     * @return APIsetCleardownModuleRulesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIsetCleardownModuleRulesRequest setCleardownModuleRules(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule) {
+        return new APIsetCleardownModuleRulesRequest(scope, code, cleardownModuleCode, cleardownModuleRule);
     }
     private okhttp3.Call setGeneralLedgerProfileMappingsCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
         String basePath = null;

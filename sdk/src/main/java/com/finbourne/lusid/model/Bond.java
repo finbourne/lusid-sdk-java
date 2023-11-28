@@ -111,6 +111,10 @@ public class Bond extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_EX_DIVIDEND_CONFIGURATION)
   private ExDividendConfiguration exDividendConfiguration;
 
+  public static final String SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE = "originalIssuePrice";
+  @SerializedName(SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE)
+  private java.math.BigDecimal originalIssuePrice;
+
   public Bond() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -404,6 +408,27 @@ public class Bond extends LusidInstrument {
   }
 
 
+  public Bond originalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    
+    this.originalIssuePrice = originalIssuePrice;
+    return this;
+  }
+
+   /**
+   * The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.
+   * @return originalIssuePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOriginalIssuePrice() {
+    return originalIssuePrice;
+  }
+
+
+  public void setOriginalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    this.originalIssuePrice = originalIssuePrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -427,6 +452,7 @@ public class Bond extends LusidInstrument {
         Objects.equals(this.calculationType, bond.calculationType) &&
         Objects.equals(this.roundingConventions, bond.roundingConventions) &&
         Objects.equals(this.exDividendConfiguration, bond.exDividendConfiguration) &&
+        (this.originalIssuePrice.compareTo(bond.getOriginalIssuePrice()) == 0) &&
         super.equals(o);
   }
 
@@ -436,7 +462,7 @@ public class Bond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, flowConventions, principal, couponRate, identifiers, exDividendDays, initialCouponDate, firstCouponPayDate, calculationType, roundingConventions, exDividendConfiguration, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, flowConventions, principal, couponRate, identifiers, exDividendDays, initialCouponDate, firstCouponPayDate, calculationType, roundingConventions, exDividendConfiguration, originalIssuePrice, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -464,6 +490,7 @@ public class Bond extends LusidInstrument {
     sb.append("    calculationType: ").append(toIndentedString(calculationType)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
     sb.append("    exDividendConfiguration: ").append(toIndentedString(exDividendConfiguration)).append("\n");
+    sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -500,6 +527,7 @@ public class Bond extends LusidInstrument {
     openapiFields.add("calculationType");
     openapiFields.add("roundingConventions");
     openapiFields.add("exDividendConfiguration");
+    openapiFields.add("originalIssuePrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

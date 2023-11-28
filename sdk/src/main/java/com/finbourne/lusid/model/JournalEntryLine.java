@@ -148,6 +148,14 @@ public class JournalEntryLine {
   @SerializedName(SERIALIZED_NAME_SOURCE_LEVELS)
   private List<String> sourceLevels;
 
+  public static final String SERIALIZED_NAME_MOVEMENT_SIGN = "movementSign";
+  @SerializedName(SERIALIZED_NAME_MOVEMENT_SIGN)
+  private String movementSign;
+
+  public static final String SERIALIZED_NAME_HOLDING_SIGN = "holdingSign";
+  @SerializedName(SERIALIZED_NAME_HOLDING_SIGN)
+  private String holdingSign;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -649,6 +657,48 @@ public class JournalEntryLine {
   }
 
 
+  public JournalEntryLine movementSign(String movementSign) {
+    
+    this.movementSign = movementSign;
+    return this;
+  }
+
+   /**
+   * Indicates if the Journal Entry Line corresponds to a Long or Short movement.
+   * @return movementSign
+  **/
+  @jakarta.annotation.Nullable
+  public String getMovementSign() {
+    return movementSign;
+  }
+
+
+  public void setMovementSign(String movementSign) {
+    this.movementSign = movementSign;
+  }
+
+
+  public JournalEntryLine holdingSign(String holdingSign) {
+    
+    this.holdingSign = holdingSign;
+    return this;
+  }
+
+   /**
+   * Indicates if the Journal Entry Line is operating against a Long or Short holding.
+   * @return holdingSign
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingSign() {
+    return holdingSign;
+  }
+
+
+  public void setHoldingSign(String holdingSign) {
+    this.holdingSign = holdingSign;
+  }
+
+
   public JournalEntryLine links(List<Link> links) {
     
     this.links = links;
@@ -710,6 +760,8 @@ public class JournalEntryLine {
         Objects.equals(this.economicBucket, journalEntryLine.economicBucket) &&
         Objects.equals(this.levels, journalEntryLine.levels) &&
         Objects.equals(this.sourceLevels, journalEntryLine.sourceLevels) &&
+        Objects.equals(this.movementSign, journalEntryLine.movementSign) &&
+        Objects.equals(this.holdingSign, journalEntryLine.holdingSign) &&
         Objects.equals(this.links, journalEntryLine.links);
   }
 
@@ -719,7 +771,7 @@ public class JournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, levels, sourceLevels, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, levels, sourceLevels, movementSign, holdingSign, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -755,6 +807,8 @@ public class JournalEntryLine {
     sb.append("    economicBucket: ").append(toIndentedString(economicBucket)).append("\n");
     sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
     sb.append("    sourceLevels: ").append(toIndentedString(sourceLevels)).append("\n");
+    sb.append("    movementSign: ").append(toIndentedString(movementSign)).append("\n");
+    sb.append("    holdingSign: ").append(toIndentedString(holdingSign)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -800,6 +854,8 @@ public class JournalEntryLine {
     openapiFields.add("economicBucket");
     openapiFields.add("levels");
     openapiFields.add("sourceLevels");
+    openapiFields.add("movementSign");
+    openapiFields.add("holdingSign");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -891,6 +947,12 @@ public class JournalEntryLine {
       // ensure the optional json data is an array if present
       if (jsonObj.get("sourceLevels") != null && !jsonObj.get("sourceLevels").isJsonNull() && !jsonObj.get("sourceLevels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceLevels` to be an array in the JSON string but got `%s`", jsonObj.get("sourceLevels").toString()));
+      }
+      if ((jsonObj.get("movementSign") != null && !jsonObj.get("movementSign").isJsonNull()) && !jsonObj.get("movementSign").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `movementSign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementSign").toString()));
+      }
+      if ((jsonObj.get("holdingSign") != null && !jsonObj.get("holdingSign").isJsonNull()) && !jsonObj.get("holdingSign").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingSign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingSign").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
