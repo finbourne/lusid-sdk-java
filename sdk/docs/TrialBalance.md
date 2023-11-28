@@ -16,6 +16,7 @@ A TrialBalance entity.
 |**closing** | **java.math.BigDecimal** | The closing balance at the end of the period |  |
 |**debit** | **java.math.BigDecimal** | All debits that occured in the period |  |
 |**credit** | **java.math.BigDecimal** | All credits that occured in the period |  |
+|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Properties found on the mapped &#39;Account&#39;, as specified in request |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

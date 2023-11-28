@@ -18,7 +18,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -66,6 +68,10 @@ public class TrialBalanceQueryParameters {
   public static final String SERIALIZED_NAME_GENERAL_LEDGER_PROFILE_CODE = "generalLedgerProfileCode";
   @SerializedName(SERIALIZED_NAME_GENERAL_LEDGER_PROFILE_CODE)
   private String generalLedgerProfileCode;
+
+  public static final String SERIALIZED_NAME_PROPERTY_KEYS = "propertyKeys";
+  @SerializedName(SERIALIZED_NAME_PROPERTY_KEYS)
+  private List<String> propertyKeys;
 
   public TrialBalanceQueryParameters() {
   }
@@ -154,6 +160,35 @@ public class TrialBalanceQueryParameters {
   }
 
 
+  public TrialBalanceQueryParameters propertyKeys(List<String> propertyKeys) {
+    
+    this.propertyKeys = propertyKeys;
+    return this;
+  }
+
+  public TrialBalanceQueryParameters addPropertyKeysItem(String propertyKeysItem) {
+    if (this.propertyKeys == null) {
+      this.propertyKeys = new ArrayList<>();
+    }
+    this.propertyKeys.add(propertyKeysItem);
+    return this;
+  }
+
+   /**
+   * A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the journal entry lines.
+   * @return propertyKeys
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getPropertyKeys() {
+    return propertyKeys;
+  }
+
+
+  public void setPropertyKeys(List<String> propertyKeys) {
+    this.propertyKeys = propertyKeys;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -167,7 +202,8 @@ public class TrialBalanceQueryParameters {
     return Objects.equals(this.start, trialBalanceQueryParameters.start) &&
         Objects.equals(this.end, trialBalanceQueryParameters.end) &&
         Objects.equals(this.dateMode, trialBalanceQueryParameters.dateMode) &&
-        Objects.equals(this.generalLedgerProfileCode, trialBalanceQueryParameters.generalLedgerProfileCode);
+        Objects.equals(this.generalLedgerProfileCode, trialBalanceQueryParameters.generalLedgerProfileCode) &&
+        Objects.equals(this.propertyKeys, trialBalanceQueryParameters.propertyKeys);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -176,7 +212,7 @@ public class TrialBalanceQueryParameters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end, dateMode, generalLedgerProfileCode);
+    return Objects.hash(start, end, dateMode, generalLedgerProfileCode, propertyKeys);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,6 +230,7 @@ public class TrialBalanceQueryParameters {
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("    dateMode: ").append(toIndentedString(dateMode)).append("\n");
     sb.append("    generalLedgerProfileCode: ").append(toIndentedString(generalLedgerProfileCode)).append("\n");
+    sb.append("    propertyKeys: ").append(toIndentedString(propertyKeys)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -220,6 +257,7 @@ public class TrialBalanceQueryParameters {
     openapiFields.add("end");
     openapiFields.add("dateMode");
     openapiFields.add("generalLedgerProfileCode");
+    openapiFields.add("propertyKeys");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -251,6 +289,10 @@ public class TrialBalanceQueryParameters {
       }
       if ((jsonObj.get("generalLedgerProfileCode") != null && !jsonObj.get("generalLedgerProfileCode").isJsonNull()) && !jsonObj.get("generalLedgerProfileCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `generalLedgerProfileCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("generalLedgerProfileCode").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("propertyKeys") != null && !jsonObj.get("propertyKeys").isJsonNull() && !jsonObj.get("propertyKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `propertyKeys` to be an array in the JSON string but got `%s`", jsonObj.get("propertyKeys").toString()));
       }
   }
 

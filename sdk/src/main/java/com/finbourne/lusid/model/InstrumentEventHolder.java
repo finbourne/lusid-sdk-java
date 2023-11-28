@@ -94,6 +94,10 @@ public class InstrumentEventHolder {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private List<PerpetualProperty> properties;
 
+  public static final String SERIALIZED_NAME_SEQUENCE_NUMBER = "sequenceNumber";
+  @SerializedName(SERIALIZED_NAME_SEQUENCE_NUMBER)
+  private Integer sequenceNumber;
+
   public InstrumentEventHolder() {
   }
 
@@ -302,6 +306,27 @@ public class InstrumentEventHolder {
   }
 
 
+  public InstrumentEventHolder sequenceNumber(Integer sequenceNumber) {
+    
+    this.sequenceNumber = sequenceNumber;
+    return this;
+  }
+
+   /**
+   * The order of the instrument event relative others on the same date (0 being processed first). Must be non negative.
+   * @return sequenceNumber
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getSequenceNumber() {
+    return sequenceNumber;
+  }
+
+
+  public void setSequenceNumber(Integer sequenceNumber) {
+    this.sequenceNumber = sequenceNumber;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -320,7 +345,8 @@ public class InstrumentEventHolder {
         Objects.equals(this.description, instrumentEventHolder.description) &&
         Objects.equals(this.eventDateRange, instrumentEventHolder.eventDateRange) &&
         Objects.equals(this.instrumentEvent, instrumentEventHolder.instrumentEvent) &&
-        Objects.equals(this.properties, instrumentEventHolder.properties);
+        Objects.equals(this.properties, instrumentEventHolder.properties) &&
+        Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -329,7 +355,7 @@ public class InstrumentEventHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, instrumentEvent, properties);
+    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, instrumentEvent, properties, sequenceNumber);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -352,6 +378,7 @@ public class InstrumentEventHolder {
     sb.append("    eventDateRange: ").append(toIndentedString(eventDateRange)).append("\n");
     sb.append("    instrumentEvent: ").append(toIndentedString(instrumentEvent)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    sequenceNumber: ").append(toIndentedString(sequenceNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -383,6 +410,7 @@ public class InstrumentEventHolder {
     openapiFields.add("eventDateRange");
     openapiFields.add("instrumentEvent");
     openapiFields.add("properties");
+    openapiFields.add("sequenceNumber");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

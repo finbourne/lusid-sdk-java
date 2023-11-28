@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,7 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -84,6 +87,10 @@ public class TrialBalance {
   public static final String SERIALIZED_NAME_CREDIT = "credit";
   @SerializedName(SERIALIZED_NAME_CREDIT)
   private java.math.BigDecimal credit;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -268,6 +275,35 @@ public class TrialBalance {
   }
 
 
+  public TrialBalance properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public TrialBalance putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Properties found on the mapped &#39;Account&#39;, as specified in request
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
   public TrialBalance links(List<Link> links) {
     
     this.links = links;
@@ -315,6 +351,7 @@ public class TrialBalance {
         (this.closing.compareTo(trialBalance.getClosing()) == 0) &&
         (this.debit.compareTo(trialBalance.getDebit()) == 0) &&
         (this.credit.compareTo(trialBalance.getCredit()) == 0) &&
+        Objects.equals(this.properties, trialBalance.properties) &&
         Objects.equals(this.links, trialBalance.links);
   }
 
@@ -324,7 +361,7 @@ public class TrialBalance {
 
   @Override
   public int hashCode() {
-    return Objects.hash(generalLedgerAccountCode, description, levels, accountType, opening, closing, debit, credit, links);
+    return Objects.hash(generalLedgerAccountCode, description, levels, accountType, opening, closing, debit, credit, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -346,6 +383,7 @@ public class TrialBalance {
     sb.append("    closing: ").append(toIndentedString(closing)).append("\n");
     sb.append("    debit: ").append(toIndentedString(debit)).append("\n");
     sb.append("    credit: ").append(toIndentedString(credit)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -377,6 +415,7 @@ public class TrialBalance {
     openapiFields.add("closing");
     openapiFields.add("debit");
     openapiFields.add("credit");
+    openapiFields.add("properties");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
