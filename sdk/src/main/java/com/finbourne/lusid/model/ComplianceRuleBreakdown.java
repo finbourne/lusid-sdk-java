@@ -80,7 +80,7 @@ public class ComplianceRuleBreakdown {
   }
 
    /**
-   * Get groupStatus
+   * The status of this subset of results.
    * @return groupStatus
   **/
   @jakarta.annotation.Nonnull
@@ -109,7 +109,7 @@ public class ComplianceRuleBreakdown {
   }
 
    /**
-   * Get resultsUsed
+   * Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule.
    * @return resultsUsed
   **/
   @jakarta.annotation.Nonnull
@@ -138,7 +138,7 @@ public class ComplianceRuleBreakdown {
   }
 
    /**
-   * Get propertiesUsed
+   * Dictionary of PropertyKey (as string) and their corresponding Properties, that were used in this rule
    * @return propertiesUsed
   **/
   @jakarta.annotation.Nonnull
@@ -167,7 +167,7 @@ public class ComplianceRuleBreakdown {
   }
 
    /**
-   * Get missingDataInformation
+   * List of string information detailing data that was missing from contributions processed in this rule
    * @return missingDataInformation
   **/
   @jakarta.annotation.Nonnull

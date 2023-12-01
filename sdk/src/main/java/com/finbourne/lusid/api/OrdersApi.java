@@ -437,7 +437,7 @@ public class OrdersApi {
 
     /**
      * [EARLY ACCESS] GetOrder: Get Order
-     * Fetch an Order that matches the specified identifier
+     * Fetch an Order that matches the specified identifier.
      * @param scope The scope to which the order belongs. (required)
      * @param code The order&#39;s unique identifier. (required)
      * @return APIgetOrderRequest
@@ -637,7 +637,7 @@ public class OrdersApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Orders in scope. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -653,7 +653,7 @@ public class OrdersApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Orders in scope. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -670,7 +670,7 @@ public class OrdersApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Orders in scope. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -687,7 +687,7 @@ public class OrdersApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Orders in scope. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -699,12 +699,12 @@ public class OrdersApi {
 
     /**
      * [EARLY ACCESS] ListOrders: List Orders
-     * Fetch the last pre-AsAt date version of each order in scope (does not fetch the entire history).
+     * Fetch the last pre-AsAt date version of each order with optional filtering (does not fetch the entire history).
      * @return APIlistOrdersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Orders in scope. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Orders. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

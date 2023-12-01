@@ -302,7 +302,7 @@ public class Bond extends LusidInstrument {
   }
 
    /**
-   * Optional. If set, this is the date at which the bond begins to accrue interest, if not set then the bond begins to accrue on the StartDate.
+   * Optional and to be DEPRECATED. If set, this is the date at which the bond begins to accrue interest. Instead, this information should be entered in the field StartDate.
    * @return initialCouponDate
   **/
   @jakarta.annotation.Nullable

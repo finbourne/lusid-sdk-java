@@ -34,6 +34,8 @@ import com.finbourne.lusid.model.TranslateEntitiesInlinedRequest;
 import com.finbourne.lusid.model.TranslateEntitiesRequest;
 import com.finbourne.lusid.model.TranslateEntitiesResponse;
 import com.finbourne.lusid.model.TranslationScript;
+import com.finbourne.lusid.model.UpsertDialectRequest;
+import com.finbourne.lusid.model.UpsertTranslationScriptRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1263,7 +1265,7 @@ public class ScriptedTranslationApi {
     public APItranslateEntitiesInlinedRequest translateEntitiesInlined(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) {
         return new APItranslateEntitiesInlinedRequest(translateEntitiesInlinedRequest);
     }
-    private okhttp3.Call upsertTranslationDialectCall(Dialect dialect, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationDialectCall(UpsertDialectRequest upsertDialectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1277,7 +1279,7 @@ public class ScriptedTranslationApi {
             basePath = null;
         }
 
-        Object localVarPostBody = dialect;
+        Object localVarPostBody = upsertDialectRequest;
 
         // create path and map variables
         String localVarPath = "/api/scriptedtranslation/dialects";
@@ -1314,36 +1316,36 @@ public class ScriptedTranslationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTranslationDialectValidateBeforeCall(Dialect dialect, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'dialect' is set
-        if (dialect == null) {
-            throw new ApiException("Missing the required parameter 'dialect' when calling upsertTranslationDialect(Async)");
+    private okhttp3.Call upsertTranslationDialectValidateBeforeCall(UpsertDialectRequest upsertDialectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'upsertDialectRequest' is set
+        if (upsertDialectRequest == null) {
+            throw new ApiException("Missing the required parameter 'upsertDialectRequest' when calling upsertTranslationDialect(Async)");
         }
 
-        return upsertTranslationDialectCall(dialect, _callback);
+        return upsertTranslationDialectCall(upsertDialectRequest, _callback);
 
     }
 
 
-    private ApiResponse<Dialect> upsertTranslationDialectWithHttpInfo(Dialect dialect) throws ApiException {
-        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(dialect, null);
+    private ApiResponse<Dialect> upsertTranslationDialectWithHttpInfo(UpsertDialectRequest upsertDialectRequest) throws ApiException {
+        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, null);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertTranslationDialectAsync(Dialect dialect, final ApiCallback<Dialect> _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationDialectAsync(UpsertDialectRequest upsertDialectRequest, final ApiCallback<Dialect> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(dialect, _callback);
+        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, _callback);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIupsertTranslationDialectRequest {
-        private final Dialect dialect;
+        private final UpsertDialectRequest upsertDialectRequest;
 
-        private APIupsertTranslationDialectRequest(Dialect dialect) {
-            this.dialect = dialect;
+        private APIupsertTranslationDialectRequest(UpsertDialectRequest upsertDialectRequest) {
+            this.upsertDialectRequest = upsertDialectRequest;
         }
 
         /**
@@ -1360,7 +1362,7 @@ public class ScriptedTranslationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertTranslationDialectCall(dialect, _callback);
+            return upsertTranslationDialectCall(upsertDialectRequest, _callback);
         }
 
         /**
@@ -1376,7 +1378,7 @@ public class ScriptedTranslationApi {
          </table>
          */
         public Dialect execute() throws ApiException {
-            ApiResponse<Dialect> localVarResp = upsertTranslationDialectWithHttpInfo(dialect);
+            ApiResponse<Dialect> localVarResp = upsertTranslationDialectWithHttpInfo(upsertDialectRequest);
             return localVarResp.getData();
         }
 
@@ -1393,7 +1395,7 @@ public class ScriptedTranslationApi {
          </table>
          */
         public ApiResponse<Dialect> executeWithHttpInfo() throws ApiException {
-            return upsertTranslationDialectWithHttpInfo(dialect);
+            return upsertTranslationDialectWithHttpInfo(upsertDialectRequest);
         }
 
         /**
@@ -1410,14 +1412,14 @@ public class ScriptedTranslationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback) throws ApiException {
-            return upsertTranslationDialectAsync(dialect, _callback);
+            return upsertTranslationDialectAsync(upsertDialectRequest, _callback);
         }
     }
 
     /**
      * [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect.
      * Upsert the given dialect.
-     * @param dialect The dialect to upsert. (required)
+     * @param upsertDialectRequest The dialect to upsert. (required)
      * @return APIupsertTranslationDialectRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1427,10 +1429,10 @@ public class ScriptedTranslationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupsertTranslationDialectRequest upsertTranslationDialect(Dialect dialect) {
-        return new APIupsertTranslationDialectRequest(dialect);
+    public APIupsertTranslationDialectRequest upsertTranslationDialect(UpsertDialectRequest upsertDialectRequest) {
+        return new APIupsertTranslationDialectRequest(upsertDialectRequest);
     }
-    private okhttp3.Call upsertTranslationScriptCall(TranslationScript translationScript, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationScriptCall(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1444,7 +1446,7 @@ public class ScriptedTranslationApi {
             basePath = null;
         }
 
-        Object localVarPostBody = translationScript;
+        Object localVarPostBody = upsertTranslationScriptRequest;
 
         // create path and map variables
         String localVarPath = "/api/scriptedtranslation/scripts";
@@ -1481,36 +1483,36 @@ public class ScriptedTranslationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTranslationScriptValidateBeforeCall(TranslationScript translationScript, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'translationScript' is set
-        if (translationScript == null) {
-            throw new ApiException("Missing the required parameter 'translationScript' when calling upsertTranslationScript(Async)");
+    private okhttp3.Call upsertTranslationScriptValidateBeforeCall(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'upsertTranslationScriptRequest' is set
+        if (upsertTranslationScriptRequest == null) {
+            throw new ApiException("Missing the required parameter 'upsertTranslationScriptRequest' when calling upsertTranslationScript(Async)");
         }
 
-        return upsertTranslationScriptCall(translationScript, _callback);
+        return upsertTranslationScriptCall(upsertTranslationScriptRequest, _callback);
 
     }
 
 
-    private ApiResponse<TranslationScript> upsertTranslationScriptWithHttpInfo(TranslationScript translationScript) throws ApiException {
-        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(translationScript, null);
+    private ApiResponse<TranslationScript> upsertTranslationScriptWithHttpInfo(UpsertTranslationScriptRequest upsertTranslationScriptRequest) throws ApiException {
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, null);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertTranslationScriptAsync(TranslationScript translationScript, final ApiCallback<TranslationScript> _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationScriptAsync(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback<TranslationScript> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(translationScript, _callback);
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, _callback);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIupsertTranslationScriptRequest {
-        private final TranslationScript translationScript;
+        private final UpsertTranslationScriptRequest upsertTranslationScriptRequest;
 
-        private APIupsertTranslationScriptRequest(TranslationScript translationScript) {
-            this.translationScript = translationScript;
+        private APIupsertTranslationScriptRequest(UpsertTranslationScriptRequest upsertTranslationScriptRequest) {
+            this.upsertTranslationScriptRequest = upsertTranslationScriptRequest;
         }
 
         /**
@@ -1527,7 +1529,7 @@ public class ScriptedTranslationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertTranslationScriptCall(translationScript, _callback);
+            return upsertTranslationScriptCall(upsertTranslationScriptRequest, _callback);
         }
 
         /**
@@ -1543,7 +1545,7 @@ public class ScriptedTranslationApi {
          </table>
          */
         public TranslationScript execute() throws ApiException {
-            ApiResponse<TranslationScript> localVarResp = upsertTranslationScriptWithHttpInfo(translationScript);
+            ApiResponse<TranslationScript> localVarResp = upsertTranslationScriptWithHttpInfo(upsertTranslationScriptRequest);
             return localVarResp.getData();
         }
 
@@ -1560,7 +1562,7 @@ public class ScriptedTranslationApi {
          </table>
          */
         public ApiResponse<TranslationScript> executeWithHttpInfo() throws ApiException {
-            return upsertTranslationScriptWithHttpInfo(translationScript);
+            return upsertTranslationScriptWithHttpInfo(upsertTranslationScriptRequest);
         }
 
         /**
@@ -1577,14 +1579,14 @@ public class ScriptedTranslationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback) throws ApiException {
-            return upsertTranslationScriptAsync(translationScript, _callback);
+            return upsertTranslationScriptAsync(upsertTranslationScriptRequest, _callback);
         }
     }
 
     /**
      * [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script.
      * Upserts a translation script to be used for translating financial entities.
-     * @param translationScript The translation script to be upserted. (required)
+     * @param upsertTranslationScriptRequest The translation script to be upserted. (required)
      * @return APIupsertTranslationScriptRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1594,7 +1596,7 @@ public class ScriptedTranslationApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupsertTranslationScriptRequest upsertTranslationScript(TranslationScript translationScript) {
-        return new APIupsertTranslationScriptRequest(translationScript);
+    public APIupsertTranslationScriptRequest upsertTranslationScript(UpsertTranslationScriptRequest upsertTranslationScriptRequest) {
+        return new APIupsertTranslationScriptRequest(upsertTranslationScriptRequest);
     }
 }

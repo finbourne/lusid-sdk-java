@@ -476,7 +476,7 @@ public class Example {
 
 <a id="upsertTranslationDialect"></a>
 # **upsertTranslationDialect**
-> Dialect upsertTranslationDialect(dialect).execute();
+> Dialect upsertTranslationDialect(upsertDialectRequest).execute();
 
 [EARLY ACCESS] UpsertTranslationDialect: Upsert a Dialect.
 
@@ -502,9 +502,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
-    Dialect dialect = new Dialect(); // Dialect | The dialect to upsert.
+    UpsertDialectRequest upsertDialectRequest = new UpsertDialectRequest(); // UpsertDialectRequest | The dialect to upsert.
     try {
-      Dialect result = apiInstance.upsertTranslationDialect(dialect)
+      Dialect result = apiInstance.upsertTranslationDialect(upsertDialectRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -522,7 +522,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dialect** | [**Dialect**](Dialect.md)| The dialect to upsert. | |
+| **upsertDialectRequest** | [**UpsertDialectRequest**](UpsertDialectRequest.md)| The dialect to upsert. | |
 
 ### Return type
 
@@ -546,7 +546,7 @@ public class Example {
 
 <a id="upsertTranslationScript"></a>
 # **upsertTranslationScript**
-> TranslationScript upsertTranslationScript(translationScript).execute();
+> TranslationScript upsertTranslationScript(upsertTranslationScriptRequest).execute();
 
 [EARLY ACCESS] UpsertTranslationScript: Upsert a translation script.
 
@@ -572,9 +572,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ScriptedTranslationApi apiInstance = new ScriptedTranslationApi(defaultClient);
-    TranslationScript translationScript = new TranslationScript(); // TranslationScript | The translation script to be upserted.
+    UpsertTranslationScriptRequest upsertTranslationScriptRequest = new UpsertTranslationScriptRequest(); // UpsertTranslationScriptRequest | The translation script to be upserted.
     try {
-      TranslationScript result = apiInstance.upsertTranslationScript(translationScript)
+      TranslationScript result = apiInstance.upsertTranslationScript(upsertTranslationScriptRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -592,7 +592,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **translationScript** | [**TranslationScript**](TranslationScript.md)| The translation script to be upserted. | |
+| **upsertTranslationScriptRequest** | [**UpsertTranslationScriptRequest**](UpsertTranslationScriptRequest.md)| The translation script to be upserted. | |
 
 ### Return type
 
