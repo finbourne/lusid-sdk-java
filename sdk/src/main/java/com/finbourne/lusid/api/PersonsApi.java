@@ -2448,7 +2448,7 @@ public class PersonsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAllPersonsRequest
          */
         public APIlistAllPersonsRequest page(String page) {
@@ -2579,7 +2579,7 @@ public class PersonsApi {
     public APIlistAllPersonsRequest listAllPersons() {
         return new APIlistAllPersonsRequest();
     }
-    private okhttp3.Call listPersonsCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPersonsCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2616,10 +2616,6 @@ public class PersonsApi {
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -2660,7 +2656,7 @@ public class PersonsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPersonsValidateBeforeCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPersonsValidateBeforeCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling listPersons(Async)");
@@ -2671,20 +2667,20 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'idTypeCode' when calling listPersons(Async)");
         }
 
-        return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfPerson> listPersonsWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, null);
+    private ApiResponse<PagedResourceListOfPerson> listPersonsWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPersonsAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
+    private okhttp3.Call listPersonsAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2696,7 +2692,6 @@ public class PersonsApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
@@ -2729,21 +2724,11 @@ public class PersonsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPersonsRequest
          */
         public APIlistPersonsRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistPersonsRequest
-         */
-        public APIlistPersonsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -2801,7 +2786,7 @@ public class PersonsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+            return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -2817,7 +2802,7 @@ public class PersonsApi {
          </table>
          */
         public PagedResourceListOfPerson execute() throws ApiException {
-            ApiResponse<PagedResourceListOfPerson> localVarResp = listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds);
+            ApiResponse<PagedResourceListOfPerson> localVarResp = listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
             return localVarResp.getData();
         }
 
@@ -2834,7 +2819,7 @@ public class PersonsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfPerson> executeWithHttpInfo() throws ApiException {
-            return listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds);
+            return listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
         }
 
         /**
@@ -2851,7 +2836,7 @@ public class PersonsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
-            return listPersonsAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+            return listPersonsAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
         }
     }
 

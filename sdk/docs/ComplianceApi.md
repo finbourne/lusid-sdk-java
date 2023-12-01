@@ -498,7 +498,7 @@ public class Example {
 
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
+    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. A list of field names to sort by, each suffixed by \"ASC\" or \"DESC\"
@@ -527,7 +527,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional] |
@@ -554,7 +554,7 @@ public class Example {
 
 <a id="listComplianceTemplates"></a>
 # **listComplianceTemplates**
-> PagedResourceListOfComplianceTemplate listComplianceTemplates().asAt(asAt).page(page).start(start).limit(limit).filter(filter).execute();
+> PagedResourceListOfComplianceTemplate listComplianceTemplates().asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
 
@@ -581,15 +581,13 @@ public class Example {
 
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results.
+    String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
       PagedResourceListOfComplianceTemplate result = apiInstance.listComplianceTemplates()
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .execute();
@@ -610,8 +608,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| Optional. When paginating, skip this number of results. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 

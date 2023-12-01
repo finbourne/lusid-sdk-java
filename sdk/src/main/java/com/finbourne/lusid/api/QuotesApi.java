@@ -1040,7 +1040,7 @@ public class QuotesApi {
     public APIgetQuotesAccessMetadataRuleRequest getQuotesAccessMetadataRule(String scope) {
         return new APIgetQuotesAccessMetadataRuleRequest(scope);
     }
-    private okhttp3.Call listQuotesCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1074,10 +1074,6 @@ public class QuotesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -1108,26 +1104,26 @@ public class QuotesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listQuotesValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listQuotes(Async)");
         }
 
-        return listQuotesCall(scope, asAt, page, start, limit, filter, _callback);
+        return listQuotesCall(scope, asAt, page, limit, filter, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfQuote> listQuotesWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, start, limit, filter, null);
+    private ApiResponse<ResourceListOfQuote> listQuotesWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listQuotesAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
+    private okhttp3.Call listQuotesAsync(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, start, limit, filter, _callback);
+        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1137,7 +1133,6 @@ public class QuotesApi {
         private final String scope;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
 
@@ -1157,21 +1152,11 @@ public class QuotesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistQuotesRequest
          */
         public APIlistQuotesRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistQuotesRequest
-         */
-        public APIlistQuotesRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -1209,7 +1194,7 @@ public class QuotesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listQuotesCall(scope, asAt, page, start, limit, filter, _callback);
+            return listQuotesCall(scope, asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -1225,7 +1210,7 @@ public class QuotesApi {
          </table>
          */
         public ResourceListOfQuote execute() throws ApiException {
-            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesWithHttpInfo(scope, asAt, page, start, limit, filter);
+            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesWithHttpInfo(scope, asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
@@ -1242,7 +1227,7 @@ public class QuotesApi {
          </table>
          */
         public ApiResponse<ResourceListOfQuote> executeWithHttpInfo() throws ApiException {
-            return listQuotesWithHttpInfo(scope, asAt, page, start, limit, filter);
+            return listQuotesWithHttpInfo(scope, asAt, page, limit, filter);
         }
 
         /**
@@ -1259,13 +1244,13 @@ public class QuotesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
-            return listQuotesAsync(scope, asAt, page, start, limit, filter, _callback);
+            return listQuotesAsync(scope, asAt, page, limit, filter, _callback);
         }
     }
 
     /**
      * [DEPRECATED] ListQuotes: List quotes
-     * List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
+     * List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
      * @param scope The scope of the quotes to list. (required)
      * @return APIlistQuotesRequest
      * @http.response.details
@@ -1458,7 +1443,7 @@ public class QuotesApi {
     public APIlistQuotesAccessMetadataRulesRequest listQuotesAccessMetadataRules(String scope) {
         return new APIlistQuotesAccessMetadataRulesRequest(scope);
     }
-    private okhttp3.Call listQuotesForScopeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesForScopeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1492,10 +1477,6 @@ public class QuotesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -1526,26 +1507,26 @@ public class QuotesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listQuotesForScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesForScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listQuotesForScope(Async)");
         }
 
-        return listQuotesForScopeCall(scope, asAt, page, start, limit, filter, _callback);
+        return listQuotesForScopeCall(scope, asAt, page, limit, filter, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfQuote> listQuotesForScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, start, limit, filter, null);
+    private ApiResponse<ResourceListOfQuote> listQuotesForScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listQuotesForScopeAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
+    private okhttp3.Call listQuotesForScopeAsync(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, start, limit, filter, _callback);
+        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1555,7 +1536,6 @@ public class QuotesApi {
         private final String scope;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
 
@@ -1575,21 +1555,11 @@ public class QuotesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistQuotesForScopeRequest
          */
         public APIlistQuotesForScopeRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistQuotesForScopeRequest
-         */
-        public APIlistQuotesForScopeRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -1627,7 +1597,7 @@ public class QuotesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listQuotesForScopeCall(scope, asAt, page, start, limit, filter, _callback);
+            return listQuotesForScopeCall(scope, asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -1643,7 +1613,7 @@ public class QuotesApi {
          </table>
          */
         public ResourceListOfQuote execute() throws ApiException {
-            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesForScopeWithHttpInfo(scope, asAt, page, start, limit, filter);
+            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesForScopeWithHttpInfo(scope, asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
@@ -1660,7 +1630,7 @@ public class QuotesApi {
          </table>
          */
         public ApiResponse<ResourceListOfQuote> executeWithHttpInfo() throws ApiException {
-            return listQuotesForScopeWithHttpInfo(scope, asAt, page, start, limit, filter);
+            return listQuotesForScopeWithHttpInfo(scope, asAt, page, limit, filter);
         }
 
         /**
@@ -1677,7 +1647,7 @@ public class QuotesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
-            return listQuotesForScopeAsync(scope, asAt, page, start, limit, filter, _callback);
+            return listQuotesForScopeAsync(scope, asAt, page, limit, filter, _callback);
         }
     }
 

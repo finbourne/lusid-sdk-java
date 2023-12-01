@@ -762,7 +762,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIgetLegacyComplianceRunResultsRequest
          */
         public APIgetLegacyComplianceRunResultsRequest page(String page) {
@@ -1208,7 +1208,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistLegacyComplianceRunInfoRequest
          */
         public APIlistLegacyComplianceRunInfoRequest page(String page) {

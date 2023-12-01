@@ -452,7 +452,7 @@ public class AllocationsApi {
     public APIgetAllocationRequest getAllocation(String scope, String code) {
         return new APIgetAllocationRequest(scope, code);
     }
-    private okhttp3.Call listAllocationsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAllocationsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -489,10 +489,6 @@ public class AllocationsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -527,21 +523,21 @@ public class AllocationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAllocationsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listAllocationsCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listAllocationsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAllocationsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfAllocation> listAllocationsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfAllocation> listAllocationsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAllocation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAllocationsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
+    private okhttp3.Call listAllocationsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAllocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -551,7 +547,6 @@ public class AllocationsApi {
         private OffsetDateTime asAt;
         private String page;
         private List<String> sortBy;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
@@ -571,7 +566,7 @@ public class AllocationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistAllocationsRequest
          */
         public APIlistAllocationsRequest page(String page) {
@@ -586,16 +581,6 @@ public class AllocationsApi {
          */
         public APIlistAllocationsRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistAllocationsRequest
-         */
-        public APIlistAllocationsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -643,7 +628,7 @@ public class AllocationsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAllocationsCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+            return listAllocationsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -659,7 +644,7 @@ public class AllocationsApi {
          </table>
          */
         public PagedResourceListOfAllocation execute() throws ApiException {
-            ApiResponse<PagedResourceListOfAllocation> localVarResp = listAllocationsWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfAllocation> localVarResp = listAllocationsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -676,7 +661,7 @@ public class AllocationsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfAllocation> executeWithHttpInfo() throws ApiException {
-            return listAllocationsWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
+            return listAllocationsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
         }
 
         /**
@@ -693,7 +678,7 @@ public class AllocationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
-            return listAllocationsAsync(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+            return listAllocationsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         }
     }
 

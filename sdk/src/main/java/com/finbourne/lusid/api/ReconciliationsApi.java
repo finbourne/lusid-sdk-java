@@ -1837,7 +1837,7 @@ public class ReconciliationsApi {
     public APIgetReconciliationRunRequest getReconciliationRun(String scope, String code, OffsetDateTime runDate, Integer version) {
         return new APIgetReconciliationRunRequest(scope, code, runDate, version);
     }
-    private okhttp3.Call listReconciliationBreaksCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listReconciliationBreaksCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1878,10 +1878,6 @@ public class ReconciliationsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -1912,7 +1908,7 @@ public class ReconciliationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listReconciliationBreaksValidateBeforeCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listReconciliationBreaksValidateBeforeCall(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listReconciliationBreaks(Async)");
@@ -1933,20 +1929,20 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'version' when calling listReconciliationBreaks(Async)");
         }
 
-        return listReconciliationBreaksCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
+        return listReconciliationBreaksCall(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfReconciliationRunBreak> listReconciliationBreaksWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listReconciliationBreaksValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, null);
+    private ApiResponse<PagedResourceListOfReconciliationRunBreak> listReconciliationBreaksWithHttpInfo(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listReconciliationBreaksValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRunBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listReconciliationBreaksAsync(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRunBreak> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationBreaksAsync(String scope, String code, OffsetDateTime runDate, Integer version, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRunBreak> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listReconciliationBreaksValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
+        okhttp3.Call localVarCall = listReconciliationBreaksValidateBeforeCall(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRunBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1960,7 +1956,6 @@ public class ReconciliationsApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
 
@@ -1993,21 +1988,11 @@ public class ReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistReconciliationBreaksRequest
          */
         public APIlistReconciliationBreaksRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistReconciliationBreaksRequest
-         */
-        public APIlistReconciliationBreaksRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -2045,7 +2030,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listReconciliationBreaksCall(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
+            return listReconciliationBreaksCall(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -2061,7 +2046,7 @@ public class ReconciliationsApi {
          </table>
          */
         public PagedResourceListOfReconciliationRunBreak execute() throws ApiException {
-            ApiResponse<PagedResourceListOfReconciliationRunBreak> localVarResp = listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter);
+            ApiResponse<PagedResourceListOfReconciliationRunBreak> localVarResp = listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
@@ -2078,7 +2063,7 @@ public class ReconciliationsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfReconciliationRunBreak> executeWithHttpInfo() throws ApiException {
-            return listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter);
+            return listReconciliationBreaksWithHttpInfo(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter);
         }
 
         /**
@@ -2095,7 +2080,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliationRunBreak> _callback) throws ApiException {
-            return listReconciliationBreaksAsync(scope, code, runDate, version, effectiveAt, asAt, page, start, limit, filter, _callback);
+            return listReconciliationBreaksAsync(scope, code, runDate, version, effectiveAt, asAt, page, limit, filter, _callback);
         }
     }
 
@@ -2288,7 +2273,7 @@ public class ReconciliationsApi {
     public APIlistReconciliationMappingsRequest listReconciliationMappings() {
         return new APIlistReconciliationMappingsRequest();
     }
-    private okhttp3.Call listReconciliationRunsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listReconciliationRunsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2327,10 +2312,6 @@ public class ReconciliationsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -2361,7 +2342,7 @@ public class ReconciliationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listReconciliationRunsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listReconciliationRunsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listReconciliationRuns(Async)");
@@ -2372,20 +2353,20 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listReconciliationRuns(Async)");
         }
 
-        return listReconciliationRunsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
+        return listReconciliationRunsCall(scope, code, effectiveAt, asAt, page, limit, filter, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfReconciliationRun> listReconciliationRunsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listReconciliationRunsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, null);
+    private ApiResponse<PagedResourceListOfReconciliationRun> listReconciliationRunsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listReconciliationRunsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listReconciliationRunsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRun> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationRunsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfReconciliationRun> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listReconciliationRunsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
+        okhttp3.Call localVarCall = listReconciliationRunsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliationRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2397,7 +2378,6 @@ public class ReconciliationsApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
 
@@ -2428,21 +2408,11 @@ public class ReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing reconciliation runs; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistReconciliationRunsRequest
          */
         public APIlistReconciliationRunsRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistReconciliationRunsRequest
-         */
-        public APIlistReconciliationRunsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -2480,7 +2450,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listReconciliationRunsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
+            return listReconciliationRunsCall(scope, code, effectiveAt, asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -2496,7 +2466,7 @@ public class ReconciliationsApi {
          </table>
          */
         public PagedResourceListOfReconciliationRun execute() throws ApiException {
-            ApiResponse<PagedResourceListOfReconciliationRun> localVarResp = listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter);
+            ApiResponse<PagedResourceListOfReconciliationRun> localVarResp = listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
@@ -2513,7 +2483,7 @@ public class ReconciliationsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfReconciliationRun> executeWithHttpInfo() throws ApiException {
-            return listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter);
+            return listReconciliationRunsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter);
         }
 
         /**
@@ -2530,7 +2500,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliationRun> _callback) throws ApiException {
-            return listReconciliationRunsAsync(scope, code, effectiveAt, asAt, page, start, limit, filter, _callback);
+            return listReconciliationRunsAsync(scope, code, effectiveAt, asAt, page, limit, filter, _callback);
         }
     }
 
@@ -2551,7 +2521,7 @@ public class ReconciliationsApi {
     public APIlistReconciliationRunsRequest listReconciliationRuns(String scope, String code) {
         return new APIlistReconciliationRunsRequest(scope, code);
     }
-    private okhttp3.Call listReconciliationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listReconciliationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2588,10 +2558,6 @@ public class ReconciliationsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -2626,21 +2592,21 @@ public class ReconciliationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listReconciliationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listReconciliationsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listReconciliationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listReconciliationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfReconciliation> listReconciliationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfReconciliation> listReconciliationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listReconciliationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
+    private okhttp3.Call listReconciliationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2650,7 +2616,6 @@ public class ReconciliationsApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
@@ -2680,21 +2645,11 @@ public class ReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistReconciliationsRequest
          */
         public APIlistReconciliationsRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistReconciliationsRequest
-         */
-        public APIlistReconciliationsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -2742,7 +2697,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listReconciliationsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+            return listReconciliationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -2758,7 +2713,7 @@ public class ReconciliationsApi {
          </table>
          */
         public PagedResourceListOfReconciliation execute() throws ApiException {
-            ApiResponse<PagedResourceListOfReconciliation> localVarResp = listReconciliationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfReconciliation> localVarResp = listReconciliationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -2775,7 +2730,7 @@ public class ReconciliationsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfReconciliation> executeWithHttpInfo() throws ApiException {
-            return listReconciliationsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return listReconciliationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
         }
 
         /**
@@ -2792,7 +2747,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
-            return listReconciliationsAsync(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+            return listReconciliationsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         }
     }
 
@@ -2981,7 +2936,7 @@ public class ReconciliationsApi {
     public APIreconcileGenericRequest reconcileGeneric() {
         return new APIreconcileGenericRequest();
     }
-    private okhttp3.Call reconcileHoldingsCall(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reconcileHoldingsCall(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3008,10 +2963,6 @@ public class ReconciliationsApi {
 
         if (sortBy != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -3048,21 +2999,21 @@ public class ReconciliationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileHoldingsValidateBeforeCall(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
-        return reconcileHoldingsCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
+    private okhttp3.Call reconcileHoldingsValidateBeforeCall(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return reconcileHoldingsCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfReconciliationBreak> reconcileHoldingsWithHttpInfo(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, null);
+    private ApiResponse<ResourceListOfReconciliationBreak> reconcileHoldingsWithHttpInfo(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest) throws ApiException {
+        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, null);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call reconcileHoldingsAsync(List<String> sortBy, Integer start, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
+    private okhttp3.Call reconcileHoldingsAsync(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3070,7 +3021,6 @@ public class ReconciliationsApi {
 
     public class APIreconcileHoldingsRequest {
         private List<String> sortBy;
-        private Integer start;
         private Integer limit;
         private String filter;
         private PortfoliosReconciliationRequest portfoliosReconciliationRequest;
@@ -3085,16 +3035,6 @@ public class ReconciliationsApi {
          */
         public APIreconcileHoldingsRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start Optional. When paginating, skip this number of results (optional)
-         * @return APIreconcileHoldingsRequest
-         */
-        public APIreconcileHoldingsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -3142,7 +3082,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return reconcileHoldingsCall(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
+            return reconcileHoldingsCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
         }
 
         /**
@@ -3158,7 +3098,7 @@ public class ReconciliationsApi {
          </table>
          */
         public ResourceListOfReconciliationBreak execute() throws ApiException {
-            ApiResponse<ResourceListOfReconciliationBreak> localVarResp = reconcileHoldingsWithHttpInfo(sortBy, start, limit, filter, portfoliosReconciliationRequest);
+            ApiResponse<ResourceListOfReconciliationBreak> localVarResp = reconcileHoldingsWithHttpInfo(sortBy, limit, filter, portfoliosReconciliationRequest);
             return localVarResp.getData();
         }
 
@@ -3175,7 +3115,7 @@ public class ReconciliationsApi {
          </table>
          */
         public ApiResponse<ResourceListOfReconciliationBreak> executeWithHttpInfo() throws ApiException {
-            return reconcileHoldingsWithHttpInfo(sortBy, start, limit, filter, portfoliosReconciliationRequest);
+            return reconcileHoldingsWithHttpInfo(sortBy, limit, filter, portfoliosReconciliationRequest);
         }
 
         /**
@@ -3192,7 +3132,7 @@ public class ReconciliationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
-            return reconcileHoldingsAsync(sortBy, start, limit, filter, portfoliosReconciliationRequest, _callback);
+            return reconcileHoldingsAsync(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
         }
     }
 

@@ -654,7 +654,7 @@ public class DataTypesApi {
     public APIgetUnitsFromDataTypeRequest getUnitsFromDataType(String scope, String code) {
         return new APIgetUnitsFromDataTypeRequest(scope, code);
     }
-    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -685,10 +685,6 @@ public class DataTypesApi {
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -725,21 +721,21 @@ public class DataTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataTypeSummariesValidateBeforeCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listDataTypeSummariesCall(asAt, page, start, limit, filter, sortBy, _callback);
+    private okhttp3.Call listDataTypeSummariesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, start, limit, filter, sortBy, null);
+    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
+    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, start, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -748,7 +744,6 @@ public class DataTypesApi {
     public class APIlistDataTypeSummariesRequest {
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> sortBy;
@@ -768,21 +763,11 @@ public class DataTypesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistDataTypeSummariesRequest
          */
         public APIlistDataTypeSummariesRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistDataTypeSummariesRequest
-         */
-        public APIlistDataTypeSummariesRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -830,7 +815,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDataTypeSummariesCall(asAt, page, start, limit, filter, sortBy, _callback);
+            return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, _callback);
         }
 
         /**
@@ -846,7 +831,7 @@ public class DataTypesApi {
          </table>
          */
         public PagedResourceListOfDataTypeSummary execute() throws ApiException {
-            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, start, limit, filter, sortBy);
+            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy);
             return localVarResp.getData();
         }
 
@@ -863,7 +848,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfDataTypeSummary> executeWithHttpInfo() throws ApiException {
-            return listDataTypeSummariesWithHttpInfo(asAt, page, start, limit, filter, sortBy);
+            return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy);
         }
 
         /**
@@ -880,7 +865,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
-            return listDataTypeSummariesAsync(asAt, page, start, limit, filter, sortBy, _callback);
+            return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, _callback);
         }
     }
 
@@ -899,7 +884,7 @@ public class DataTypesApi {
     public APIlistDataTypeSummariesRequest listDataTypeSummaries() {
         return new APIlistDataTypeSummariesRequest();
     }
-    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -937,10 +922,6 @@ public class DataTypesApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -971,26 +952,26 @@ public class DataTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataTypesValidateBeforeCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDataTypesValidateBeforeCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listDataTypes(Async)");
         }
 
-        return listDataTypesCall(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
+        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, start, limit, filter, null);
+    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, null);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
+    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1001,7 +982,6 @@ public class DataTypesApi {
         private OffsetDateTime asAt;
         private Boolean includeSystem;
         private List<String> sortBy;
-        private Integer start;
         private Integer limit;
         private String filter;
 
@@ -1040,16 +1020,6 @@ public class DataTypesApi {
         }
 
         /**
-         * Set start
-         * @param start Optional. When paginating, skip this number of results (optional)
-         * @return APIlistDataTypesRequest
-         */
-        public APIlistDataTypesRequest start(Integer start) {
-            this.start = start;
-            return this;
-        }
-
-        /**
          * Set limit
          * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
          * @return APIlistDataTypesRequest
@@ -1083,7 +1053,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDataTypesCall(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
+            return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
         }
 
         /**
@@ -1099,7 +1069,7 @@ public class DataTypesApi {
          </table>
          */
         public ResourceListOfDataType execute() throws ApiException {
-            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, start, limit, filter);
+            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter);
             return localVarResp.getData();
         }
 
@@ -1116,7 +1086,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<ResourceListOfDataType> executeWithHttpInfo() throws ApiException {
-            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, start, limit, filter);
+            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter);
         }
 
         /**
@@ -1133,7 +1103,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
-            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, start, limit, filter, _callback);
+            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
         }
     }
 

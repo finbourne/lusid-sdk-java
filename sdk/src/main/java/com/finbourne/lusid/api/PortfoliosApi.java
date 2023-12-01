@@ -4223,7 +4223,7 @@ public class PortfoliosApi {
     public APIlistPortfolioPropertiesRequest listPortfolioProperties(String scope, String code) {
         return new APIlistPortfolioPropertiesRequest(scope, code);
     }
-    private okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4258,10 +4258,6 @@ public class PortfoliosApi {
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -4310,21 +4306,21 @@ public class PortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPortfoliosValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listPortfoliosCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+    private okhttp3.Call listPortfoliosValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listPortfoliosCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfPortfolio> listPortfoliosWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, null);
+    private ApiResponse<ResourceListOfPortfolio> listPortfoliosWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4334,7 +4330,6 @@ public class PortfoliosApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> sortBy;
@@ -4367,21 +4362,11 @@ public class PortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistPortfoliosRequest
-         */
-        public APIlistPortfoliosRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -4459,7 +4444,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPortfoliosCall(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+            return listPortfoliosCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -4475,7 +4460,7 @@ public class PortfoliosApi {
          </table>
          */
         public ResourceListOfPortfolio execute() throws ApiException {
-            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
+            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
             return localVarResp.getData();
         }
 
@@ -4492,7 +4477,7 @@ public class PortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo() throws ApiException {
-            return listPortfoliosWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
+            return listPortfoliosWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
         }
 
         /**
@@ -4509,7 +4494,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
-            return listPortfoliosAsync(effectiveAt, asAt, page, start, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+            return listPortfoliosAsync(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
         }
     }
 
@@ -4528,7 +4513,7 @@ public class PortfoliosApi {
     public APIlistPortfoliosRequest listPortfolios() {
         return new APIlistPortfoliosRequest();
     }
-    private okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4564,10 +4549,6 @@ public class PortfoliosApi {
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -4612,26 +4593,26 @@ public class PortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPortfoliosForScopeValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosForScopeValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPortfoliosForScope(Async)");
         }
 
-        return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfPortfolio> listPortfoliosForScopeWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
+    private ApiResponse<ResourceListOfPortfolio> listPortfoliosForScopeWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
+        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4642,7 +4623,6 @@ public class PortfoliosApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> sortBy;
@@ -4675,21 +4655,11 @@ public class PortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistPortfoliosForScopeRequest
-         */
-        public APIlistPortfoliosForScopeRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -4757,7 +4727,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+            return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -4773,7 +4743,7 @@ public class PortfoliosApi {
          </table>
          */
         public ResourceListOfPortfolio execute() throws ApiException {
-            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
             return localVarResp.getData();
         }
 
@@ -4790,7 +4760,7 @@ public class PortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo() throws ApiException {
-            return listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+            return listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
         }
 
         /**
@@ -4807,7 +4777,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
-            return listPortfoliosForScopeAsync(scope, effectiveAt, asAt, page, start, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+            return listPortfoliosForScopeAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
         }
     }
 

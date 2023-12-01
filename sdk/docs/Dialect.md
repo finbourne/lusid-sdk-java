@@ -10,6 +10,7 @@ The language/format of a translatable entity. Entities can be LUSID native or ex
 |------------ | ------------- | ------------- | -------------|
 |**id** | [**DialectId**](DialectId.md) |  |  |
 |**schema** | [**DialectSchema**](DialectSchema.md) |  |  |
+|**version** | [**Version**](Version.md) |  |  [optional] |
 
 
 

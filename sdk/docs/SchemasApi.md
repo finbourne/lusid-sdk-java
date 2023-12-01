@@ -156,7 +156,7 @@ public class Example {
 
 <a id="getValueTypes"></a>
 # **getValueTypes**
-> ResourceListOfValueType getValueTypes().sortBy(sortBy).start(start).limit(limit).execute();
+> ResourceListOfValueType getValueTypes().sortBy(sortBy).limit(limit).execute();
 
 [EARLY ACCESS] GetValueTypes: Get value types
 
@@ -183,12 +183,10 @@ public class Example {
 
     SchemasApi apiInstance = new SchemasApi(defaultClient);
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     try {
       ResourceListOfValueType result = apiInstance.getValueTypes()
             .sortBy(sortBy)
-            .start(start)
             .limit(limit)
             .execute();
       System.out.println(result);
@@ -208,7 +206,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
-| **start** | **Integer**| Optional. When paginating, skip this number of results | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type

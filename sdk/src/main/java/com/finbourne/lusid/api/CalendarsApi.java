@@ -1901,7 +1901,7 @@ public class CalendarsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistCalendarsRequest
          */
         public APIlistCalendarsRequest page(String page) {
@@ -2022,7 +2022,7 @@ public class CalendarsApi {
     public APIlistCalendarsRequest listCalendars() {
         return new APIlistCalendarsRequest();
     }
-    private okhttp3.Call listCalendarsInScopeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCalendarsInScopeCall(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2054,10 +2054,6 @@ public class CalendarsApi {
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -2094,26 +2090,26 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCalendarsInScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCalendarsInScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCalendarsInScope(Async)");
         }
 
-        return listCalendarsInScopeCall(scope, asAt, page, start, limit, propertyKeys, filter, _callback);
+        return listCalendarsInScopeCall(scope, asAt, page, limit, propertyKeys, filter, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfCalendar> listCalendarsInScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, List<String> propertyKeys, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, start, limit, propertyKeys, filter, null);
+    private ApiResponse<PagedResourceListOfCalendar> listCalendarsInScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listCalendarsInScopeAsync(String scope, OffsetDateTime asAt, String page, Integer start, Integer limit, List<String> propertyKeys, String filter, final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
+    private okhttp3.Call listCalendarsInScopeAsync(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, start, limit, propertyKeys, filter, _callback);
+        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2123,7 +2119,6 @@ public class CalendarsApi {
         private final String scope;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private List<String> propertyKeys;
         private String filter;
@@ -2144,21 +2139,11 @@ public class CalendarsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistCalendarsInScopeRequest
          */
         public APIlistCalendarsInScopeRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistCalendarsInScopeRequest
-         */
-        public APIlistCalendarsInScopeRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -2206,7 +2191,7 @@ public class CalendarsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listCalendarsInScopeCall(scope, asAt, page, start, limit, propertyKeys, filter, _callback);
+            return listCalendarsInScopeCall(scope, asAt, page, limit, propertyKeys, filter, _callback);
         }
 
         /**
@@ -2222,7 +2207,7 @@ public class CalendarsApi {
          </table>
          */
         public PagedResourceListOfCalendar execute() throws ApiException {
-            ApiResponse<PagedResourceListOfCalendar> localVarResp = listCalendarsInScopeWithHttpInfo(scope, asAt, page, start, limit, propertyKeys, filter);
+            ApiResponse<PagedResourceListOfCalendar> localVarResp = listCalendarsInScopeWithHttpInfo(scope, asAt, page, limit, propertyKeys, filter);
             return localVarResp.getData();
         }
 
@@ -2239,7 +2224,7 @@ public class CalendarsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfCalendar> executeWithHttpInfo() throws ApiException {
-            return listCalendarsInScopeWithHttpInfo(scope, asAt, page, start, limit, propertyKeys, filter);
+            return listCalendarsInScopeWithHttpInfo(scope, asAt, page, limit, propertyKeys, filter);
         }
 
         /**
@@ -2256,7 +2241,7 @@ public class CalendarsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
-            return listCalendarsInScopeAsync(scope, asAt, page, start, limit, propertyKeys, filter, _callback);
+            return listCalendarsInScopeAsync(scope, asAt, page, limit, propertyKeys, filter, _callback);
         }
     }
 

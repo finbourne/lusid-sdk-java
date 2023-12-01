@@ -452,7 +452,7 @@ public class OrdersApi {
     public APIgetOrderRequest getOrder(String scope, String code) {
         return new APIgetOrderRequest(scope, code);
     }
-    private okhttp3.Call listOrdersCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listOrdersCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -489,10 +489,6 @@ public class OrdersApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -527,21 +523,21 @@ public class OrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listOrdersValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listOrdersCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listOrdersValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfOrder> listOrdersWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfOrder> listOrdersWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listOrdersAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrder> _callback) throws ApiException {
+    private okhttp3.Call listOrdersAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -551,7 +547,6 @@ public class OrdersApi {
         private OffsetDateTime asAt;
         private String page;
         private List<String> sortBy;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
@@ -571,7 +566,7 @@ public class OrdersApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing orders from a previous call to list orders.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing orders from a previous call to list orders.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistOrdersRequest
          */
         public APIlistOrdersRequest page(String page) {
@@ -586,16 +581,6 @@ public class OrdersApi {
          */
         public APIlistOrdersRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistOrdersRequest
-         */
-        public APIlistOrdersRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -643,7 +628,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listOrdersCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+            return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -659,7 +644,7 @@ public class OrdersApi {
          </table>
          */
         public PagedResourceListOfOrder execute() throws ApiException {
-            ApiResponse<PagedResourceListOfOrder> localVarResp = listOrdersWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfOrder> localVarResp = listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -676,7 +661,7 @@ public class OrdersApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfOrder> executeWithHttpInfo() throws ApiException {
-            return listOrdersWithHttpInfo(asAt, page, sortBy, start, limit, filter, propertyKeys);
+            return listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
         }
 
         /**
@@ -693,7 +678,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrder> _callback) throws ApiException {
-            return listOrdersAsync(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
+            return listOrdersAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         }
     }
 

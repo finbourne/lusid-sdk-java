@@ -238,7 +238,7 @@ public class Example {
 
 <a id="listAborConfigurations"></a>
 # **listAborConfigurations**
-> PagedResourceListOfAborConfiguration listAborConfigurations().effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
+> PagedResourceListOfAborConfiguration listAborConfigurations().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
 
@@ -266,8 +266,7 @@ public class Example {
     AborConfigurationApi apiInstance = new AborConfigurationApi(defaultClient);
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | When paginating, skip this number of results.
+    String page = "page_example"; // String | The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the AborConfiguration type, specify \"id.Code eq 'AborConfiguration1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'.
@@ -276,7 +275,6 @@ public class Example {
             .effectiveAt(effectiveAt)
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .propertyKeys(propertyKeys)
@@ -299,8 +297,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. | [optional] |

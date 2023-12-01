@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.DialectId;
 import com.finbourne.lusid.model.DialectSchema;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,6 +60,10 @@ public class Dialect {
   @SerializedName(SERIALIZED_NAME_SCHEMA)
   private DialectSchema schema;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
   public Dialect() {
   }
 
@@ -104,6 +109,27 @@ public class Dialect {
   }
 
 
+  public Dialect version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,12 +141,13 @@ public class Dialect {
     }
     Dialect dialect = (Dialect) o;
     return Objects.equals(this.id, dialect.id) &&
-        Objects.equals(this.schema, dialect.schema);
+        Objects.equals(this.schema, dialect.schema) &&
+        Objects.equals(this.version, dialect.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, schema);
+    return Objects.hash(id, schema, version);
   }
 
   @Override
@@ -129,6 +156,7 @@ public class Dialect {
     sb.append("class Dialect {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    schema: ").append(toIndentedString(schema)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,6 +181,7 @@ public class Dialect {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("schema");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -184,6 +213,10 @@ public class Dialect {
       DialectId.validateJsonElement(jsonObj.get("id"));
       // validate the required field `schema`
       DialectSchema.validateJsonElement(jsonObj.get("schema"));
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

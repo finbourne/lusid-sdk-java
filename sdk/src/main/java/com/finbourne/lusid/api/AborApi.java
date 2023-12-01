@@ -1566,7 +1566,7 @@ public class AborApi {
     public APIgetTrialBalanceRequest getTrialBalance(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters) {
         return new APIgetTrialBalanceRequest(scope, code, trialBalanceQueryParameters);
     }
-    private okhttp3.Call listAborsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAborsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1603,10 +1603,6 @@ public class AborApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -1641,21 +1637,21 @@ public class AborApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAborsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listAborsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listAborsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAborsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfAbor> listAborsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfAbor> listAborsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAbor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAborsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
+    private okhttp3.Call listAborsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAbor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1665,7 +1661,6 @@ public class AborApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
@@ -1695,21 +1690,11 @@ public class AborApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAborsRequest
          */
         public APIlistAborsRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistAborsRequest
-         */
-        public APIlistAborsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -1757,7 +1742,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAborsCall(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+            return listAborsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -1773,7 +1758,7 @@ public class AborApi {
          </table>
          */
         public PagedResourceListOfAbor execute() throws ApiException {
-            ApiResponse<PagedResourceListOfAbor> localVarResp = listAborsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfAbor> localVarResp = listAborsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -1790,7 +1775,7 @@ public class AborApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfAbor> executeWithHttpInfo() throws ApiException {
-            return listAborsWithHttpInfo(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return listAborsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
         }
 
         /**
@@ -1807,7 +1792,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
-            return listAborsAsync(effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+            return listAborsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         }
     }
 
@@ -1966,7 +1951,7 @@ public class AborApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistDiaryEntriesRequest
          */
         public APIlistDiaryEntriesRequest page(String page) {

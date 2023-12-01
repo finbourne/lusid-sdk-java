@@ -1331,7 +1331,7 @@ public class ComplianceApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistComplianceRunsRequest
          */
         public APIlistComplianceRunsRequest page(String page) {
@@ -1452,7 +1452,7 @@ public class ComplianceApi {
     public APIlistComplianceRunsRequest listComplianceRuns() {
         return new APIlistComplianceRunsRequest();
     }
-    private okhttp3.Call listComplianceTemplatesCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listComplianceTemplatesCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1485,10 +1485,6 @@ public class ComplianceApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -1519,21 +1515,21 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listComplianceTemplatesValidateBeforeCall(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listComplianceTemplatesCall(asAt, page, start, limit, filter, _callback);
+    private okhttp3.Call listComplianceTemplatesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listComplianceTemplatesCall(asAt, page, limit, filter, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfComplianceTemplate> listComplianceTemplatesWithHttpInfo(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listComplianceTemplatesValidateBeforeCall(asAt, page, start, limit, filter, null);
+    private ApiResponse<PagedResourceListOfComplianceTemplate> listComplianceTemplatesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listComplianceTemplatesValidateBeforeCall(asAt, page, limit, filter, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listComplianceTemplatesAsync(OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, final ApiCallback<PagedResourceListOfComplianceTemplate> _callback) throws ApiException {
+    private okhttp3.Call listComplianceTemplatesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfComplianceTemplate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listComplianceTemplatesValidateBeforeCall(asAt, page, start, limit, filter, _callback);
+        okhttp3.Call localVarCall = listComplianceTemplatesValidateBeforeCall(asAt, page, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfComplianceTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1542,7 +1538,6 @@ public class ComplianceApi {
     public class APIlistComplianceTemplatesRequest {
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
 
@@ -1561,21 +1556,11 @@ public class ComplianceApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistComplianceTemplatesRequest
          */
         public APIlistComplianceTemplatesRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start Optional. When paginating, skip this number of results. (optional)
-         * @return APIlistComplianceTemplatesRequest
-         */
-        public APIlistComplianceTemplatesRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -1613,7 +1598,7 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listComplianceTemplatesCall(asAt, page, start, limit, filter, _callback);
+            return listComplianceTemplatesCall(asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -1629,7 +1614,7 @@ public class ComplianceApi {
          </table>
          */
         public PagedResourceListOfComplianceTemplate execute() throws ApiException {
-            ApiResponse<PagedResourceListOfComplianceTemplate> localVarResp = listComplianceTemplatesWithHttpInfo(asAt, page, start, limit, filter);
+            ApiResponse<PagedResourceListOfComplianceTemplate> localVarResp = listComplianceTemplatesWithHttpInfo(asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
@@ -1646,7 +1631,7 @@ public class ComplianceApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfComplianceTemplate> executeWithHttpInfo() throws ApiException {
-            return listComplianceTemplatesWithHttpInfo(asAt, page, start, limit, filter);
+            return listComplianceTemplatesWithHttpInfo(asAt, page, limit, filter);
         }
 
         /**
@@ -1663,7 +1648,7 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfComplianceTemplate> _callback) throws ApiException {
-            return listComplianceTemplatesAsync(asAt, page, start, limit, filter, _callback);
+            return listComplianceTemplatesAsync(asAt, page, limit, filter, _callback);
         }
     }
 

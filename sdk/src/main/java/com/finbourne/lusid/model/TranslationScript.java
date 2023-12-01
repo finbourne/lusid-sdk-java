@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.TranslationScriptId;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -58,6 +59,10 @@ public class TranslationScript {
   @SerializedName(SERIALIZED_NAME_BODY)
   private String body;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
   public TranslationScript() {
   }
 
@@ -103,6 +108,27 @@ public class TranslationScript {
   }
 
 
+  public TranslationScript version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +140,13 @@ public class TranslationScript {
     }
     TranslationScript translationScript = (TranslationScript) o;
     return Objects.equals(this.id, translationScript.id) &&
-        Objects.equals(this.body, translationScript.body);
+        Objects.equals(this.body, translationScript.body) &&
+        Objects.equals(this.version, translationScript.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, body);
+    return Objects.hash(id, body, version);
   }
 
   @Override
@@ -128,6 +155,7 @@ public class TranslationScript {
     sb.append("class TranslationScript {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +180,7 @@ public class TranslationScript {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("body");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -183,6 +212,10 @@ public class TranslationScript {
       TranslationScriptId.validateJsonElement(jsonObj.get("id"));
       if (!jsonObj.get("body").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `body` to be a primitive type in the JSON string but got `%s`", jsonObj.get("body").toString()));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
   }
 

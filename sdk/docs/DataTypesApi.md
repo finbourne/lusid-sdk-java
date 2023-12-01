@@ -242,7 +242,7 @@ public class Example {
 
 <a id="listDataTypeSummaries"></a>
 # **listDataTypeSummaries**
-> PagedResourceListOfDataTypeSummary listDataTypeSummaries().asAt(asAt).page(page).start(start).limit(limit).filter(filter).sortBy(sortBy).execute();
+> PagedResourceListOfDataTypeSummary listDataTypeSummaries().asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).execute();
 
 [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
 
@@ -269,8 +269,7 @@ public class Example {
 
     DataTypesApi apiInstance = new DataTypesApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the data type summaries. Defaults to returning the latest version   of each summary if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | When paginating, skip this number of results.
+    String page = "page_example"; // String | The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Scope, use \"id.scope eq 'myscope'\", to filter on Schema, use \"schema eq 'string'\",   to filter on AcceptableValues use \"acceptableValues any (~ eq 'value')\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
@@ -278,7 +277,6 @@ public class Example {
       PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries()
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .sortBy(sortBy)
@@ -300,8 +298,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the data type summaries. Defaults to returning the latest version   of each summary if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set.    For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,   to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
@@ -328,7 +325,7 @@ public class Example {
 
 <a id="listDataTypes"></a>
 # **listDataTypes**
-> ResourceListOfDataType listDataTypes(scope).asAt(asAt).includeSystem(includeSystem).sortBy(sortBy).start(start).limit(limit).filter(filter).execute();
+> ResourceListOfDataType listDataTypes(scope).asAt(asAt).includeSystem(includeSystem).sortBy(sortBy).limit(limit).filter(filter).execute();
 
 ListDataTypes: List data types
 
@@ -358,7 +355,6 @@ public class Example {
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as at of the requested data types
     Boolean includeSystem = true; // Boolean | Whether to additionally include those data types in the \"system\" scope
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \"displayName eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
@@ -366,7 +362,6 @@ public class Example {
             .asAt(asAt)
             .includeSystem(includeSystem)
             .sortBy(sortBy)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .execute();
@@ -390,7 +385,6 @@ public class Example {
 | **asAt** | **OffsetDateTime**| The as at of the requested data types | [optional] |
 | **includeSystem** | **Boolean**| Whether to additionally include those data types in the \&quot;system\&quot; scope | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
-| **start** | **Integer**| Optional. When paginating, skip this number of results | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 

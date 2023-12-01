@@ -5964,7 +5964,7 @@ public class TransactionPortfoliosApi {
     public APIgetUpsertablePortfolioCashFlowsRequest getUpsertablePortfolioCashFlows(String scope, String code) {
         return new APIgetUpsertablePortfolioCashFlowsRequest(scope, code);
     }
-    private okhttp3.Call listCustodianAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCustodianAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6003,10 +6003,6 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -6041,7 +6037,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCustodianAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCustodianAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCustodianAccounts(Async)");
@@ -6052,20 +6048,20 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listCustodianAccounts(Async)");
         }
 
-        return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfCustodianAccount> listCustodianAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfCustodianAccount> listCustodianAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listCustodianAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
+    private okhttp3.Call listCustodianAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6077,7 +6073,6 @@ public class TransactionPortfoliosApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
-        private Integer start;
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
@@ -6109,21 +6104,11 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest page(String page) {
             this.page = page;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start When paginating, skip this number of results. (optional)
-         * @return APIlistCustodianAccountsRequest
-         */
-        public APIlistCustodianAccountsRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -6171,7 +6156,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+            return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -6187,7 +6172,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public PagedResourceListOfCustodianAccount execute() throws ApiException {
-            ApiResponse<PagedResourceListOfCustodianAccount> localVarResp = listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfCustodianAccount> localVarResp = listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -6204,7 +6189,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfCustodianAccount> executeWithHttpInfo() throws ApiException {
-            return listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys);
+            return listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
         }
 
         /**
@@ -6221,7 +6206,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
-            return listCustodianAccountsAsync(scope, code, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
+            return listCustodianAccountsAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
         }
     }
 

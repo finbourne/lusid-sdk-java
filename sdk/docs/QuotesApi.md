@@ -357,11 +357,11 @@ public class Example {
 
 <a id="listQuotes"></a>
 # **listQuotes**
-> ResourceListOfQuote listQuotes(scope).asAt(asAt).page(page).start(start).limit(limit).filter(filter).execute();
+> ResourceListOfQuote listQuotes(scope).asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 [DEPRECATED] ListQuotes: List quotes
 
-List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
+List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
 
 ### Example
 ```java
@@ -385,15 +385,13 @@ public class Example {
     QuotesApi apiInstance = new QuotesApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the quotes to list.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the quotes. Defaults to latest if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | When paginating, skip this number of results.
+    String page = "page_example"; // String | The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
       ResourceListOfQuote result = apiInstance.listQuotes(scope)
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .execute();
@@ -415,8 +413,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the quotes to list. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the quotes. Defaults to latest if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
@@ -515,7 +512,7 @@ public class Example {
 
 <a id="listQuotesForScope"></a>
 # **listQuotesForScope**
-> ResourceListOfQuote listQuotesForScope(scope).asAt(asAt).page(page).start(start).limit(limit).filter(filter).execute();
+> ResourceListOfQuote listQuotesForScope(scope).asAt(asAt).page(page).limit(limit).filter(filter).execute();
 
 ListQuotesForScope: List quotes for scope
 
@@ -543,15 +540,13 @@ public class Example {
     QuotesApi apiInstance = new QuotesApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the quotes to list.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the quotes. Defaults to latest if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | When paginating, skip this number of results.
+    String page = "page_example"; // String | The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
       ResourceListOfQuote result = apiInstance.listQuotesForScope(scope)
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .execute();
@@ -573,8 +568,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the quotes to list. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the quotes. Defaults to latest if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing quotes from a previous call to list quotes.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 

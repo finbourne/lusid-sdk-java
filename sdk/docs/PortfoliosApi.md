@@ -1531,7 +1531,7 @@ public class Example {
 
 <a id="listPortfolios"></a>
 # **listPortfolios**
-> ResourceListOfPortfolio listPortfolios().effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).sortBy(sortBy).query(query).propertyKeys(propertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
+> ResourceListOfPortfolio listPortfolios().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).query(query).propertyKeys(propertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
 ListPortfolios: List portfolios
 
@@ -1559,8 +1559,7 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | When paginating, skip this number of results.
+    String page = "page_example"; // String | The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the transaction type, specify \"type eq 'Transaction'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
@@ -1572,7 +1571,6 @@ public class Example {
             .effectiveAt(effectiveAt)
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .sortBy(sortBy)
@@ -1598,8 +1596,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
@@ -1629,7 +1626,7 @@ public class Example {
 
 <a id="listPortfoliosForScope"></a>
 # **listPortfoliosForScope**
-> ResourceListOfPortfolio listPortfoliosForScope(scope).effectiveAt(effectiveAt).asAt(asAt).page(page).start(start).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
+> ResourceListOfPortfolio listPortfoliosForScope(scope).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
 ListPortfoliosForScope: List portfolios for scope
 
@@ -1658,8 +1655,7 @@ public class Example {
     String scope = "scope_example"; // String | The scope whose portfolios to list.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
-    Integer start = 56; // Integer | When paginating, skip this number of results.
+    String page = "page_example"; // String | The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
     List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
@@ -1670,7 +1666,6 @@ public class Example {
             .effectiveAt(effectiveAt)
             .asAt(asAt)
             .page(page)
-            .start(start)
             .limit(limit)
             .filter(filter)
             .sortBy(sortBy)
@@ -1696,8 +1691,7 @@ public class Example {
 | **scope** | **String**| The scope whose portfolios to list. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
-| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |

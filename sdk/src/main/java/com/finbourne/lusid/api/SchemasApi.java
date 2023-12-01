@@ -424,7 +424,7 @@ public class SchemasApi {
     public APIgetPropertySchemaRequest getPropertySchema() {
         return new APIgetPropertySchemaRequest();
     }
-    private okhttp3.Call getValueTypesCall(List<String> sortBy, Integer start, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValueTypesCall(List<String> sortBy, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -453,10 +453,6 @@ public class SchemasApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -483,21 +479,21 @@ public class SchemasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValueTypesValidateBeforeCall(List<String> sortBy, Integer start, Integer limit, final ApiCallback _callback) throws ApiException {
-        return getValueTypesCall(sortBy, start, limit, _callback);
+    private okhttp3.Call getValueTypesValidateBeforeCall(List<String> sortBy, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getValueTypesCall(sortBy, limit, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfValueType> getValueTypesWithHttpInfo(List<String> sortBy, Integer start, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, start, limit, null);
+    private ApiResponse<ResourceListOfValueType> getValueTypesWithHttpInfo(List<String> sortBy, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValueTypesAsync(List<String> sortBy, Integer start, Integer limit, final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
+    private okhttp3.Call getValueTypesAsync(List<String> sortBy, Integer limit, final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, start, limit, _callback);
+        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -505,7 +501,6 @@ public class SchemasApi {
 
     public class APIgetValueTypesRequest {
         private List<String> sortBy;
-        private Integer start;
         private Integer limit;
 
         private APIgetValueTypesRequest() {
@@ -518,16 +513,6 @@ public class SchemasApi {
          */
         public APIgetValueTypesRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set start
-         * @param start Optional. When paginating, skip this number of results (optional)
-         * @return APIgetValueTypesRequest
-         */
-        public APIgetValueTypesRequest start(Integer start) {
-            this.start = start;
             return this;
         }
 
@@ -555,7 +540,7 @@ public class SchemasApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValueTypesCall(sortBy, start, limit, _callback);
+            return getValueTypesCall(sortBy, limit, _callback);
         }
 
         /**
@@ -571,7 +556,7 @@ public class SchemasApi {
          </table>
          */
         public ResourceListOfValueType execute() throws ApiException {
-            ApiResponse<ResourceListOfValueType> localVarResp = getValueTypesWithHttpInfo(sortBy, start, limit);
+            ApiResponse<ResourceListOfValueType> localVarResp = getValueTypesWithHttpInfo(sortBy, limit);
             return localVarResp.getData();
         }
 
@@ -588,7 +573,7 @@ public class SchemasApi {
          </table>
          */
         public ApiResponse<ResourceListOfValueType> executeWithHttpInfo() throws ApiException {
-            return getValueTypesWithHttpInfo(sortBy, start, limit);
+            return getValueTypesWithHttpInfo(sortBy, limit);
         }
 
         /**
@@ -605,7 +590,7 @@ public class SchemasApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
-            return getValueTypesAsync(sortBy, start, limit, _callback);
+            return getValueTypesAsync(sortBy, limit, _callback);
         }
     }
 

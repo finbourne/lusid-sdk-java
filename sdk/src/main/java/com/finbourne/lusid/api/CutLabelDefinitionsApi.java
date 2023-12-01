@@ -588,7 +588,7 @@ public class CutLabelDefinitionsApi {
     public APIgetCutLabelDefinitionRequest getCutLabelDefinition(String code) {
         return new APIgetCutLabelDefinitionRequest(code);
     }
-    private okhttp3.Call listCutLabelDefinitionsCall(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCutLabelDefinitionsCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -619,10 +619,6 @@ public class CutLabelDefinitionsApi {
 
         if (sortBy != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
-        }
-
-        if (start != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
         }
 
         if (limit != null) {
@@ -659,21 +655,21 @@ public class CutLabelDefinitionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCutLabelDefinitionsValidateBeforeCall(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
-        return listCutLabelDefinitionsCall(asAt, sortBy, start, limit, filter, page, _callback);
+    private okhttp3.Call listCutLabelDefinitionsValidateBeforeCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+        return listCutLabelDefinitionsCall(asAt, sortBy, limit, filter, page, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfCutLabelDefinition> listCutLabelDefinitionsWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page) throws ApiException {
-        okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, start, limit, filter, page, null);
+    private ApiResponse<PagedResourceListOfCutLabelDefinition> listCutLabelDefinitionsWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page) throws ApiException {
+        okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, limit, filter, page, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCutLabelDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listCutLabelDefinitionsAsync(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
+    private okhttp3.Call listCutLabelDefinitionsAsync(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, start, limit, filter, page, _callback);
+        okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, limit, filter, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -682,7 +678,6 @@ public class CutLabelDefinitionsApi {
     public class APIlistCutLabelDefinitionsRequest {
         private OffsetDateTime asAt;
         private List<String> sortBy;
-        private Integer start;
         private Integer limit;
         private String filter;
         private String page;
@@ -711,16 +706,6 @@ public class CutLabelDefinitionsApi {
         }
 
         /**
-         * Set start
-         * @param start Optional. When paginating, skip this number of results (optional)
-         * @return APIlistCutLabelDefinitionsRequest
-         */
-        public APIlistCutLabelDefinitionsRequest start(Integer start) {
-            this.start = start;
-            return this;
-        }
-
-        /**
          * Set limit
          * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
          * @return APIlistCutLabelDefinitionsRequest
@@ -742,7 +727,7 @@ public class CutLabelDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+         * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistCutLabelDefinitionsRequest
          */
         public APIlistCutLabelDefinitionsRequest page(String page) {
@@ -764,7 +749,7 @@ public class CutLabelDefinitionsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listCutLabelDefinitionsCall(asAt, sortBy, start, limit, filter, page, _callback);
+            return listCutLabelDefinitionsCall(asAt, sortBy, limit, filter, page, _callback);
         }
 
         /**
@@ -780,7 +765,7 @@ public class CutLabelDefinitionsApi {
          </table>
          */
         public PagedResourceListOfCutLabelDefinition execute() throws ApiException {
-            ApiResponse<PagedResourceListOfCutLabelDefinition> localVarResp = listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, start, limit, filter, page);
+            ApiResponse<PagedResourceListOfCutLabelDefinition> localVarResp = listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, limit, filter, page);
             return localVarResp.getData();
         }
 
@@ -797,7 +782,7 @@ public class CutLabelDefinitionsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfCutLabelDefinition> executeWithHttpInfo() throws ApiException {
-            return listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, start, limit, filter, page);
+            return listCutLabelDefinitionsWithHttpInfo(asAt, sortBy, limit, filter, page);
         }
 
         /**
@@ -814,7 +799,7 @@ public class CutLabelDefinitionsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
-            return listCutLabelDefinitionsAsync(asAt, sortBy, start, limit, filter, page, _callback);
+            return listCutLabelDefinitionsAsync(asAt, sortBy, limit, filter, page, _callback);
         }
     }
 
