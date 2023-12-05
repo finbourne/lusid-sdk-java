@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentEvent {
   /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent
    */
   @JsonAdapter(InstrumentEventTypeEnum.Adapter.class)
   public enum InstrumentEventTypeEnum {
@@ -84,7 +84,9 @@ public class InstrumentEvent {
     
     BONDCOUPONEVENT("BondCouponEvent"),
     
-    DIVIDENDREINVESTMENTEVENT("DividendReinvestmentEvent");
+    DIVIDENDREINVESTMENTEVENT("DividendReinvestmentEvent"),
+    
+    ACCUMULATIONEVENT("AccumulationEvent");
 
     private String value;
 
@@ -138,7 +140,7 @@ public class InstrumentEvent {
   }
 
    /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent
    * @return instrumentEventType
   **/
   @jakarta.annotation.Nonnull
@@ -219,6 +221,9 @@ public class InstrumentEvent {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("instrumentEventType").getAsString();
       switch (discriminatorValue) {
+        case "AccumulationEvent":
+          AccumulationEvent.validateJsonElement(jsonElement);
+          break;
         case "AmortisationEvent":
           AmortisationEvent.validateJsonElement(jsonElement);
           break;

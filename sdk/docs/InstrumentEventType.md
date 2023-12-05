@@ -37,5 +37,7 @@
 
 * `DIVIDENDREINVESTMENTEVENT` (value: `"DividendReinvestmentEvent"`)
 
+* `ACCUMULATIONEVENT` (value: `"AccumulationEvent"`)
+
 
 

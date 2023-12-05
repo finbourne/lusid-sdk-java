@@ -55,7 +55,9 @@ public enum InstrumentEventType {
   
   BONDCOUPONEVENT("BondCouponEvent"),
   
-  DIVIDENDREINVESTMENTEVENT("DividendReinvestmentEvent");
+  DIVIDENDREINVESTMENTEVENT("DividendReinvestmentEvent"),
+  
+  ACCUMULATIONEVENT("AccumulationEvent");
 
   private String value;
 
