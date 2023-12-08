@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.MultiCurrencyAmounts;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -72,21 +73,25 @@ public class TrialBalance {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_TYPE)
   private String accountType;
 
+  public static final String SERIALIZED_NAME_LOCAL_CURRENCY = "localCurrency";
+  @SerializedName(SERIALIZED_NAME_LOCAL_CURRENCY)
+  private String localCurrency;
+
   public static final String SERIALIZED_NAME_OPENING = "opening";
   @SerializedName(SERIALIZED_NAME_OPENING)
-  private java.math.BigDecimal opening;
+  private MultiCurrencyAmounts opening;
 
   public static final String SERIALIZED_NAME_CLOSING = "closing";
   @SerializedName(SERIALIZED_NAME_CLOSING)
-  private java.math.BigDecimal closing;
+  private MultiCurrencyAmounts closing;
 
   public static final String SERIALIZED_NAME_DEBIT = "debit";
   @SerializedName(SERIALIZED_NAME_DEBIT)
-  private java.math.BigDecimal debit;
+  private MultiCurrencyAmounts debit;
 
   public static final String SERIALIZED_NAME_CREDIT = "credit";
   @SerializedName(SERIALIZED_NAME_CREDIT)
-  private java.math.BigDecimal credit;
+  private MultiCurrencyAmounts credit;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -191,86 +196,107 @@ public class TrialBalance {
   }
 
 
-  public TrialBalance opening(java.math.BigDecimal opening) {
+  public TrialBalance localCurrency(String localCurrency) {
+    
+    this.localCurrency = localCurrency;
+    return this;
+  }
+
+   /**
+   * The account type attributed to the record
+   * @return localCurrency
+  **/
+  @jakarta.annotation.Nonnull
+  public String getLocalCurrency() {
+    return localCurrency;
+  }
+
+
+  public void setLocalCurrency(String localCurrency) {
+    this.localCurrency = localCurrency;
+  }
+
+
+  public TrialBalance opening(MultiCurrencyAmounts opening) {
     
     this.opening = opening;
     return this;
   }
 
    /**
-   * The opening balance at the start of the period
+   * Get opening
    * @return opening
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getOpening() {
+  public MultiCurrencyAmounts getOpening() {
     return opening;
   }
 
 
-  public void setOpening(java.math.BigDecimal opening) {
+  public void setOpening(MultiCurrencyAmounts opening) {
     this.opening = opening;
   }
 
 
-  public TrialBalance closing(java.math.BigDecimal closing) {
+  public TrialBalance closing(MultiCurrencyAmounts closing) {
     
     this.closing = closing;
     return this;
   }
 
    /**
-   * The closing balance at the end of the period
+   * Get closing
    * @return closing
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getClosing() {
+  public MultiCurrencyAmounts getClosing() {
     return closing;
   }
 
 
-  public void setClosing(java.math.BigDecimal closing) {
+  public void setClosing(MultiCurrencyAmounts closing) {
     this.closing = closing;
   }
 
 
-  public TrialBalance debit(java.math.BigDecimal debit) {
+  public TrialBalance debit(MultiCurrencyAmounts debit) {
     
     this.debit = debit;
     return this;
   }
 
    /**
-   * All debits that occured in the period
+   * Get debit
    * @return debit
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getDebit() {
+  public MultiCurrencyAmounts getDebit() {
     return debit;
   }
 
 
-  public void setDebit(java.math.BigDecimal debit) {
+  public void setDebit(MultiCurrencyAmounts debit) {
     this.debit = debit;
   }
 
 
-  public TrialBalance credit(java.math.BigDecimal credit) {
+  public TrialBalance credit(MultiCurrencyAmounts credit) {
     
     this.credit = credit;
     return this;
   }
 
    /**
-   * All credits that occured in the period
+   * Get credit
    * @return credit
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getCredit() {
+  public MultiCurrencyAmounts getCredit() {
     return credit;
   }
 
 
-  public void setCredit(java.math.BigDecimal credit) {
+  public void setCredit(MultiCurrencyAmounts credit) {
     this.credit = credit;
   }
 
@@ -347,10 +373,11 @@ public class TrialBalance {
         Objects.equals(this.description, trialBalance.description) &&
         Objects.equals(this.levels, trialBalance.levels) &&
         Objects.equals(this.accountType, trialBalance.accountType) &&
-        (this.opening.compareTo(trialBalance.getOpening()) == 0) &&
-        (this.closing.compareTo(trialBalance.getClosing()) == 0) &&
-        (this.debit.compareTo(trialBalance.getDebit()) == 0) &&
-        (this.credit.compareTo(trialBalance.getCredit()) == 0) &&
+        Objects.equals(this.localCurrency, trialBalance.localCurrency) &&
+        Objects.equals(this.opening, trialBalance.opening) &&
+        Objects.equals(this.closing, trialBalance.closing) &&
+        Objects.equals(this.debit, trialBalance.debit) &&
+        Objects.equals(this.credit, trialBalance.credit) &&
         Objects.equals(this.properties, trialBalance.properties) &&
         Objects.equals(this.links, trialBalance.links);
   }
@@ -361,7 +388,7 @@ public class TrialBalance {
 
   @Override
   public int hashCode() {
-    return Objects.hash(generalLedgerAccountCode, description, levels, accountType, opening, closing, debit, credit, properties, links);
+    return Objects.hash(generalLedgerAccountCode, description, levels, accountType, localCurrency, opening, closing, debit, credit, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -379,6 +406,7 @@ public class TrialBalance {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
     sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
+    sb.append("    localCurrency: ").append(toIndentedString(localCurrency)).append("\n");
     sb.append("    opening: ").append(toIndentedString(opening)).append("\n");
     sb.append("    closing: ").append(toIndentedString(closing)).append("\n");
     sb.append("    debit: ").append(toIndentedString(debit)).append("\n");
@@ -411,6 +439,7 @@ public class TrialBalance {
     openapiFields.add("description");
     openapiFields.add("levels");
     openapiFields.add("accountType");
+    openapiFields.add("localCurrency");
     openapiFields.add("opening");
     openapiFields.add("closing");
     openapiFields.add("debit");
@@ -423,6 +452,7 @@ public class TrialBalance {
     openapiRequiredFields.add("generalLedgerAccountCode");
     openapiRequiredFields.add("levels");
     openapiRequiredFields.add("accountType");
+    openapiRequiredFields.add("localCurrency");
     openapiRequiredFields.add("opening");
     openapiRequiredFields.add("closing");
     openapiRequiredFields.add("debit");
@@ -464,6 +494,17 @@ public class TrialBalance {
       if (!jsonObj.get("accountType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountType").toString()));
       }
+      if (!jsonObj.get("localCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `localCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("localCurrency").toString()));
+      }
+      // validate the required field `opening`
+      MultiCurrencyAmounts.validateJsonElement(jsonObj.get("opening"));
+      // validate the required field `closing`
+      MultiCurrencyAmounts.validateJsonElement(jsonObj.get("closing"));
+      // validate the required field `debit`
+      MultiCurrencyAmounts.validateJsonElement(jsonObj.get("debit"));
+      // validate the required field `credit`
+      MultiCurrencyAmounts.validateJsonElement(jsonObj.get("credit"));
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

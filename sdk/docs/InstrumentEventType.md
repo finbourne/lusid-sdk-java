@@ -39,5 +39,7 @@
 
 * `ACCUMULATIONEVENT` (value: `"AccumulationEvent"`)
 
+* `BONDPRINCIPALEVENT` (value: `"BondPrincipalEvent"`)
+
 
 
