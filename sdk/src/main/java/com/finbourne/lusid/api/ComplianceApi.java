@@ -458,7 +458,7 @@ public class ComplianceApi {
     public APIgetComplianceRuleRequest getComplianceRule(String scope, String code) {
         return new APIgetComplianceRuleRequest(scope, code);
     }
-    private okhttp3.Call getComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceRuleResultDetailsCall(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -475,9 +475,11 @@ public class ComplianceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/compliance/runs/summary/{scope}/{code}"
-            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+        String localVarPath = "/api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode}"
+            .replace("{" + "runScope" + "}", localVarApiClient.escapeString(runScope.toString()))
+            .replace("{" + "runCode" + "}", localVarApiClient.escapeString(runCode.toString()))
+            .replace("{" + "ruleScope" + "}", localVarApiClient.escapeString(ruleScope.toString()))
+            .replace("{" + "ruleCode" + "}", localVarApiClient.escapeString(ruleCode.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -507,43 +509,232 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplianceRunSummaryValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'scope' is set
-        if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling getComplianceRunSummary(Async)");
+    private okhttp3.Call getComplianceRuleResultDetailsValidateBeforeCall(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'runScope' is set
+        if (runScope == null) {
+            throw new ApiException("Missing the required parameter 'runScope' when calling getComplianceRuleResultDetails(Async)");
         }
 
-        // verify the required parameter 'code' is set
-        if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getComplianceRunSummary(Async)");
+        // verify the required parameter 'runCode' is set
+        if (runCode == null) {
+            throw new ApiException("Missing the required parameter 'runCode' when calling getComplianceRuleResultDetails(Async)");
         }
 
-        return getComplianceRunSummaryCall(scope, code, _callback);
+        // verify the required parameter 'ruleScope' is set
+        if (ruleScope == null) {
+            throw new ApiException("Missing the required parameter 'ruleScope' when calling getComplianceRuleResultDetails(Async)");
+        }
+
+        // verify the required parameter 'ruleCode' is set
+        if (ruleCode == null) {
+            throw new ApiException("Missing the required parameter 'ruleCode' when calling getComplianceRuleResultDetails(Async)");
+        }
+
+        return getComplianceRuleResultDetailsCall(runScope, runCode, ruleScope, ruleCode, _callback);
 
     }
 
 
-    private ApiResponse<ComplianceRunSummary> getComplianceRunSummaryWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = getComplianceRunSummaryValidateBeforeCall(scope, code, null);
+    private ApiResponse<ComplianceRunSummary> getComplianceRuleResultDetailsWithHttpInfo(String runScope, String runCode, String ruleScope, String ruleCode) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceRuleResultDetailsValidateBeforeCall(runScope, runCode, ruleScope, ruleCode, null);
         Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getComplianceRunSummaryAsync(String scope, String code, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+    private okhttp3.Call getComplianceRuleResultDetailsAsync(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getComplianceRunSummaryValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = getComplianceRuleResultDetailsValidateBeforeCall(runScope, runCode, ruleScope, ruleCode, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetComplianceRuleResultDetailsRequest {
+        private final String runScope;
+        private final String runCode;
+        private final String ruleScope;
+        private final String ruleCode;
+
+        private APIgetComplianceRuleResultDetailsRequest(String runScope, String runCode, String ruleScope, String ruleCode) {
+            this.runScope = runScope;
+            this.runCode = runCode;
+            this.ruleScope = ruleScope;
+            this.ruleCode = ruleCode;
+        }
+
+        /**
+         * Build call for getComplianceRuleResultDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run summary details for a specific rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getComplianceRuleResultDetailsCall(runScope, runCode, ruleScope, ruleCode, _callback);
+        }
+
+        /**
+         * Execute getComplianceRuleResultDetails request
+         * @return ComplianceRunSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run summary details for a specific rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunSummary execute() throws ApiException {
+            ApiResponse<ComplianceRunSummary> localVarResp = getComplianceRuleResultDetailsWithHttpInfo(runScope, runCode, ruleScope, ruleCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplianceRuleResultDetails request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run summary details for a specific rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunSummary> executeWithHttpInfo() throws ApiException {
+            return getComplianceRuleResultDetailsWithHttpInfo(runScope, runCode, ruleScope, ruleCode);
+        }
+
+        /**
+         * Execute getComplianceRuleResultDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run summary details for a specific rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+            return getComplianceRuleResultDetailsAsync(runScope, runCode, ruleScope, ruleCode, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetComplianceRuleResultDetails: Get summary results for a specific rule within a compliance run.
+     * Specify a run scope and code from a previously run compliance check, and the scope and code of a rule within that run, to get detailed results for that rule.
+     * @param runScope Required: Run Scope. (required)
+     * @param runCode Required: Run Code. (required)
+     * @param ruleScope Required: Rule Scope. (required)
+     * @param ruleCode Required: Rule Code. (required)
+     * @return APIgetComplianceRuleResultDetailsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested compliance run summary details for a specific rule. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetComplianceRuleResultDetailsRequest getComplianceRuleResultDetails(String runScope, String runCode, String ruleScope, String ruleCode) {
+        return new APIgetComplianceRuleResultDetailsRequest(runScope, runCode, ruleScope, ruleCode);
+    }
+    private okhttp3.Call getComplianceRunSummaryCall(String runScope, String runCode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/runs/summary/{runScope}/{runCode}"
+            .replace("{" + "runScope" + "}", localVarApiClient.escapeString(runScope.toString()))
+            .replace("{" + "runCode" + "}", localVarApiClient.escapeString(runCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getComplianceRunSummaryValidateBeforeCall(String runScope, String runCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'runScope' is set
+        if (runScope == null) {
+            throw new ApiException("Missing the required parameter 'runScope' when calling getComplianceRunSummary(Async)");
+        }
+
+        // verify the required parameter 'runCode' is set
+        if (runCode == null) {
+            throw new ApiException("Missing the required parameter 'runCode' when calling getComplianceRunSummary(Async)");
+        }
+
+        return getComplianceRunSummaryCall(runScope, runCode, _callback);
+
+    }
+
+
+    private ApiResponse<ComplianceRunSummary> getComplianceRunSummaryWithHttpInfo(String runScope, String runCode) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceRunSummaryValidateBeforeCall(runScope, runCode, null);
+        Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getComplianceRunSummaryAsync(String runScope, String runCode, final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getComplianceRunSummaryValidateBeforeCall(runScope, runCode, _callback);
         Type localVarReturnType = new TypeToken<ComplianceRunSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIgetComplianceRunSummaryRequest {
-        private final String scope;
-        private final String code;
+        private final String runScope;
+        private final String runCode;
 
-        private APIgetComplianceRunSummaryRequest(String scope, String code) {
-            this.scope = scope;
-            this.code = code;
+        private APIgetComplianceRunSummaryRequest(String runScope, String runCode) {
+            this.runScope = runScope;
+            this.runCode = runCode;
         }
 
         /**
@@ -560,7 +751,7 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getComplianceRunSummaryCall(scope, code, _callback);
+            return getComplianceRunSummaryCall(runScope, runCode, _callback);
         }
 
         /**
@@ -576,7 +767,7 @@ public class ComplianceApi {
          </table>
          */
         public ComplianceRunSummary execute() throws ApiException {
-            ApiResponse<ComplianceRunSummary> localVarResp = getComplianceRunSummaryWithHttpInfo(scope, code);
+            ApiResponse<ComplianceRunSummary> localVarResp = getComplianceRunSummaryWithHttpInfo(runScope, runCode);
             return localVarResp.getData();
         }
 
@@ -593,7 +784,7 @@ public class ComplianceApi {
          </table>
          */
         public ApiResponse<ComplianceRunSummary> executeWithHttpInfo() throws ApiException {
-            return getComplianceRunSummaryWithHttpInfo(scope, code);
+            return getComplianceRunSummaryWithHttpInfo(runScope, runCode);
         }
 
         /**
@@ -610,15 +801,15 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunSummary> _callback) throws ApiException {
-            return getComplianceRunSummaryAsync(scope, code, _callback);
+            return getComplianceRunSummaryAsync(runScope, runCode, _callback);
         }
     }
 
     /**
      * [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
      * Specify a run scope and code from a previously run compliance check to get summarised results.
-     * @param scope Required: Run Scope. (required)
-     * @param code Required: Run Code. (required)
+     * @param runScope Required: Run Scope. (required)
+     * @param runCode Required: Run Code. (required)
      * @return APIgetComplianceRunSummaryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -628,8 +819,8 @@ public class ComplianceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetComplianceRunSummaryRequest getComplianceRunSummary(String scope, String code) {
-        return new APIgetComplianceRunSummaryRequest(scope, code);
+    public APIgetComplianceRunSummaryRequest getComplianceRunSummary(String runScope, String runCode) {
+        return new APIgetComplianceRunSummaryRequest(runScope, runCode);
     }
     private okhttp3.Call getComplianceTemplateCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;

@@ -6,7 +6,8 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**deleteComplianceRule**](ComplianceApi.md#deleteComplianceRule) | **DELETE** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule. |
 | [**getComplianceRule**](ComplianceApi.md#getComplianceRule) | **GET** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule: Get compliance rule. |
-| [**getComplianceRunSummary**](ComplianceApi.md#getComplianceRunSummary) | **GET** /api/compliance/runs/summary/{scope}/{code} | [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run. |
+| [**getComplianceRuleResultDetails**](ComplianceApi.md#getComplianceRuleResultDetails) | **GET** /api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode} | [EARLY ACCESS] GetComplianceRuleResultDetails: Get summary results for a specific rule within a compliance run. |
+| [**getComplianceRunSummary**](ComplianceApi.md#getComplianceRunSummary) | **GET** /api/compliance/runs/summary/{runScope}/{runCode} | [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run. |
 | [**getComplianceTemplate**](ComplianceApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
 | [**getDecoratedComplianceRunSummary**](ComplianceApi.md#getDecoratedComplianceRunSummary) | **GET** /api/compliance/runs/summary/{scope}/{code}/$decorate | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. |
 | [**listComplianceRules**](ComplianceApi.md#listComplianceRules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules. |
@@ -167,9 +168,85 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
+<a id="getComplianceRuleResultDetails"></a>
+# **getComplianceRuleResultDetails**
+> ComplianceRunSummary getComplianceRuleResultDetails(runScope, runCode, ruleScope, ruleCode).execute();
+
+[EARLY ACCESS] GetComplianceRuleResultDetails: Get summary results for a specific rule within a compliance run.
+
+Specify a run scope and code from a previously run compliance check, and the scope and code of a rule within that run, to get detailed results for that rule.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceApi apiInstance = new ComplianceApi(defaultClient);
+    String runScope = "runScope_example"; // String | Required: Run Scope.
+    String runCode = "runCode_example"; // String | Required: Run Code.
+    String ruleScope = "ruleScope_example"; // String | Required: Rule Scope.
+    String ruleCode = "ruleCode_example"; // String | Required: Rule Code.
+    try {
+      ComplianceRunSummary result = apiInstance.getComplianceRuleResultDetails(runScope, runCode, ruleScope, ruleCode)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceApi#getComplianceRuleResultDetails");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runScope** | **String**| Required: Run Scope. | |
+| **runCode** | **String**| Required: Run Code. | |
+| **ruleScope** | **String**| Required: Rule Scope. | |
+| **ruleCode** | **String**| Required: Rule Code. | |
+
+### Return type
+
+[**ComplianceRunSummary**](ComplianceRunSummary.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested compliance run summary details for a specific rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
 <a id="getComplianceRunSummary"></a>
 # **getComplianceRunSummary**
-> ComplianceRunSummary getComplianceRunSummary(scope, code).execute();
+> ComplianceRunSummary getComplianceRunSummary(runScope, runCode).execute();
 
 [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
 
@@ -195,10 +272,10 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ComplianceApi apiInstance = new ComplianceApi(defaultClient);
-    String scope = "scope_example"; // String | Required: Run Scope.
-    String code = "code_example"; // String | Required: Run Code.
+    String runScope = "runScope_example"; // String | Required: Run Scope.
+    String runCode = "runCode_example"; // String | Required: Run Code.
     try {
-      ComplianceRunSummary result = apiInstance.getComplianceRunSummary(scope, code)
+      ComplianceRunSummary result = apiInstance.getComplianceRunSummary(runScope, runCode)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -216,8 +293,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| Required: Run Scope. | |
-| **code** | **String**| Required: Run Code. | |
+| **runScope** | **String**| Required: Run Scope. | |
+| **runCode** | **String**| Required: Run Code. | |
 
 ### Return type
 
