@@ -14,14 +14,12 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static com.finbourne.lusid.utilities.TestDataUtilities.*;
 import static org.junit.Assert.assertEquals;
 
 public class TransactionsTest {
 
-    private static InstrumentsApi instrumentsApi;
     private static TransactionPortfoliosApi transactionPortfoliosApi;
     private static List<String> instrumentIds;
 
@@ -32,7 +30,7 @@ public class TransactionsTest {
         ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration, 30, 30);
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
-        instrumentsApi = new InstrumentsApi(apiClient);
+        InstrumentsApi instrumentsApi = new InstrumentsApi(apiClient);
 
         //  ensure instruments are created and exist in LUSID
         InstrumentLoader instrumentLoader = new InstrumentLoader(instrumentsApi);

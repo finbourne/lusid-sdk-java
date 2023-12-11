@@ -20,8 +20,8 @@ import static com.finbourne.lusid.utilities.TestDataUtilities.TutorialScope;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class PortfoliosTest {
 
@@ -164,7 +164,7 @@ public class PortfoliosTest {
                 .source("Broker");
 
         //    Add the transaction to the portfolio
-        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Collections.singletonList(transaction)));
 
         //    Retrieve the transaction
         VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
@@ -237,7 +237,7 @@ public class PortfoliosTest {
                 .properties(properties);
 
         //  Add the transaction
-        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Collections.singletonList(transaction)));
 
         //  get the trade
         VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
@@ -264,7 +264,7 @@ public class PortfoliosTest {
     public void list_portfolios() throws ApiException {
 
         //    This defines the scope that the portfolios will be retrieved from
-        String scope = TutorialScope + "-" + UUID.randomUUID().toString();
+        String scope = TutorialScope + "-" + UUID.randomUUID();
 
         for (int i = 0; i < 10; i++) {
             testDataUtilities.createTransactionPortfolio(scope);

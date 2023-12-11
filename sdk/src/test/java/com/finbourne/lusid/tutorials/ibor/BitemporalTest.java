@@ -54,13 +54,12 @@ public class BitemporalTest {
         assertNotNull(portfolioId);
 
         Consumer<List<Transaction>> printTransactions = transactions -> transactions.forEach(t ->
-                System.out.println(
-                        String.format("%s\t%s\t%f\t%f\t%f",
-                                t.getInstrumentUid(),
-                                t.getTransactionDate(),
-                                t.getUnits(),
-                                t.getTransactionPrice().getPrice(),
-                                t.getTotalConsideration().getAmount())));
+                System.out.printf("%s\t%s\t%f\t%f\t%f%n",
+                        t.getInstrumentUid(),
+                        t.getTransactionDate(),
+                        t.getUnits(),
+                        t.getTransactionPrice().getPrice(),
+                        t.getTotalConsideration().getAmount()));
 
         List<TransactionRequest>    newTransactions = new ArrayList<>();
         newTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), BigDecimal.valueOf(100.0), BigDecimal.valueOf(101.0), "GBP", OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC), "Buy"));
