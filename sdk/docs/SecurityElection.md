@@ -11,7 +11,8 @@ Security election for Events that result in equity
 |**electionKey** | **String** | Unique key associated to this election. |  |
 |**isChosen** | **Boolean** | Is this the election that has been explicitly chosen from multiple options. |  [optional] |
 |**isDefault** | **Boolean** | Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided. |  [optional] |
-|**price** | **java.math.BigDecimal** | Price per unit of the security. |  |
+|**price** | **java.math.BigDecimal** | Price per unit of the security. At least one of UnitsRatio or Price must be provided. |  |
+|**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  [optional] |
 
 
 

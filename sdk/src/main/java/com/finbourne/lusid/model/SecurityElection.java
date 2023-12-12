@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.UnitsRatio;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -64,6 +65,10 @@ public class SecurityElection {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   private java.math.BigDecimal price;
+
+  public static final String SERIALIZED_NAME_UNITS_RATIO = "unitsRatio";
+  @SerializedName(SERIALIZED_NAME_UNITS_RATIO)
+  private UnitsRatio unitsRatio;
 
   public SecurityElection() {
   }
@@ -138,7 +143,7 @@ public class SecurityElection {
   }
 
    /**
-   * Price per unit of the security.
+   * Price per unit of the security. At least one of UnitsRatio or Price must be provided.
    * @return price
   **/
   @jakarta.annotation.Nonnull
@@ -149,6 +154,27 @@ public class SecurityElection {
 
   public void setPrice(java.math.BigDecimal price) {
     this.price = price;
+  }
+
+
+  public SecurityElection unitsRatio(UnitsRatio unitsRatio) {
+    
+    this.unitsRatio = unitsRatio;
+    return this;
+  }
+
+   /**
+   * Get unitsRatio
+   * @return unitsRatio
+  **/
+  @jakarta.annotation.Nullable
+  public UnitsRatio getUnitsRatio() {
+    return unitsRatio;
+  }
+
+
+  public void setUnitsRatio(UnitsRatio unitsRatio) {
+    this.unitsRatio = unitsRatio;
   }
 
 
@@ -165,12 +191,13 @@ public class SecurityElection {
     return Objects.equals(this.electionKey, securityElection.electionKey) &&
         Objects.equals(this.isChosen, securityElection.isChosen) &&
         Objects.equals(this.isDefault, securityElection.isDefault) &&
-        (this.price.compareTo(securityElection.getPrice()) == 0);
+        (this.price.compareTo(securityElection.getPrice()) == 0) &&
+        Objects.equals(this.unitsRatio, securityElection.unitsRatio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(electionKey, isChosen, isDefault, price);
+    return Objects.hash(electionKey, isChosen, isDefault, price, unitsRatio);
   }
 
   @Override
@@ -181,6 +208,7 @@ public class SecurityElection {
     sb.append("    isChosen: ").append(toIndentedString(isChosen)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,6 +235,7 @@ public class SecurityElection {
     openapiFields.add("isChosen");
     openapiFields.add("isDefault");
     openapiFields.add("price");
+    openapiFields.add("unitsRatio");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,6 +265,10 @@ public class SecurityElection {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("electionKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `electionKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("electionKey").toString()));
+      }
+      // validate the optional field `unitsRatio`
+      if (jsonObj.get("unitsRatio") != null && !jsonObj.get("unitsRatio").isJsonNull()) {
+        UnitsRatio.validateJsonElement(jsonObj.get("unitsRatio"));
       }
   }
 

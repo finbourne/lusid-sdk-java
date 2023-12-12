@@ -52,7 +52,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of an Interest Rate Swap, including:     generate justfile Vanilla (single currency fixed-float non-amortising)   generate justfile CrossCurrency (&gt;1 currency is used by the swap legs)   generate justfile Basis (single currency, floating-floating legs of different tenors)   generate justfile Amortising (the swap has 1+ leg with amortised notional)
+ * LUSID representation of an Interest Rate Swap, including:     generate justfile Vanilla (single currency fixed-float non-amortising)   generate justfile CrossCurrency (&gt;1 currency is used by the swap legs)   generate justfile Basis (single currency, floating-floating legs of different tenors)   generate justfile Amortising (the swap has 1+ leg with amortised notional)     This instrument has multiple legs, to see how legs are used in LUSID see https://support.lusid.com/knowledgebase/article/KA-02252.     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | Pay/Receive | Cash flows representing the pay/receive leg. |  | 2 | Receive/Pay | Cash flows representing the receive/pay leg. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InterestRateSwap extends LusidInstrument {

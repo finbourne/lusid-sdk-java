@@ -41,5 +41,7 @@
 
 * `BONDPRINCIPALEVENT` (value: `"BondPrincipalEvent"`)
 
+* `DIVIDENDOPTIONEVENT` (value: `"DividendOptionEvent"`)
+
 
 
