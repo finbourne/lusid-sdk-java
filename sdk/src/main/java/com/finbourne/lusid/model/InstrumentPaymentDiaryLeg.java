@@ -53,6 +53,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentPaymentDiaryLeg {
+  public static final String SERIALIZED_NAME_LEG_INDEX = "legIndex";
+  @SerializedName(SERIALIZED_NAME_LEG_INDEX)
+  private Integer legIndex;
+
   public static final String SERIALIZED_NAME_LEG_ID = "legId";
   @SerializedName(SERIALIZED_NAME_LEG_ID)
   private String legId;
@@ -64,6 +68,27 @@ public class InstrumentPaymentDiaryLeg {
   public InstrumentPaymentDiaryLeg() {
   }
 
+  public InstrumentPaymentDiaryLeg legIndex(Integer legIndex) {
+    
+    this.legIndex = legIndex;
+    return this;
+  }
+
+   /**
+   * Index (integer) for the leg of a payment diary.
+   * @return legIndex
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getLegIndex() {
+    return legIndex;
+  }
+
+
+  public void setLegIndex(Integer legIndex) {
+    this.legIndex = legIndex;
+  }
+
+
   public InstrumentPaymentDiaryLeg legId(String legId) {
     
     this.legId = legId;
@@ -71,7 +96,7 @@ public class InstrumentPaymentDiaryLeg {
   }
 
    /**
-   * Identifier for the leg of a payment diary.
+   * Identifier string for the leg of a payment diary.
    * @return legId
   **/
   @jakarta.annotation.Nullable
@@ -124,7 +149,8 @@ public class InstrumentPaymentDiaryLeg {
       return false;
     }
     InstrumentPaymentDiaryLeg instrumentPaymentDiaryLeg = (InstrumentPaymentDiaryLeg) o;
-    return Objects.equals(this.legId, instrumentPaymentDiaryLeg.legId) &&
+    return Objects.equals(this.legIndex, instrumentPaymentDiaryLeg.legIndex) &&
+        Objects.equals(this.legId, instrumentPaymentDiaryLeg.legId) &&
         Objects.equals(this.rows, instrumentPaymentDiaryLeg.rows);
   }
 
@@ -134,7 +160,7 @@ public class InstrumentPaymentDiaryLeg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(legId, rows);
+    return Objects.hash(legIndex, legId, rows);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -148,6 +174,7 @@ public class InstrumentPaymentDiaryLeg {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstrumentPaymentDiaryLeg {\n");
+    sb.append("    legIndex: ").append(toIndentedString(legIndex)).append("\n");
     sb.append("    legId: ").append(toIndentedString(legId)).append("\n");
     sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
     sb.append("}");
@@ -172,6 +199,7 @@ public class InstrumentPaymentDiaryLeg {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("legIndex");
     openapiFields.add("legId");
     openapiFields.add("rows");
 

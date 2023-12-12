@@ -266,6 +266,7 @@ public class JSON {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.ComplexMarketData> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ConstantVolatilitySurface", com.finbourne.lusid.model.ConstantVolatilitySurface.class);
                         classByDiscriminatorValue.put("CreditSpreadCurveData", com.finbourne.lusid.model.CreditSpreadCurveData.class);
                         classByDiscriminatorValue.put("DiscountFactorCurveData", com.finbourne.lusid.model.DiscountFactorCurveData.class);
                         classByDiscriminatorValue.put("EquityCurveByPricesData", com.finbourne.lusid.model.EquityCurveByPricesData.class);
@@ -309,6 +310,15 @@ public class JSON {
                         classByDiscriminatorValue.put("ComplianceParameter", com.finbourne.lusid.model.ComplianceParameter.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "complianceParameterType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.ConstantVolatilitySurface.class, new TypeSelector<com.finbourne.lusid.model.ConstantVolatilitySurface>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.ConstantVolatilitySurface> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ConstantVolatilitySurface", com.finbourne.lusid.model.ConstantVolatilitySurface.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.ContractForDifference.class, new TypeSelector<com.finbourne.lusid.model.ContractForDifference>() {
@@ -1693,6 +1703,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CompositeDispersionResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Compounding.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ConfigurationRecipe.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ConstantVolatilitySurface.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ConstituentsAdjustmentHeader.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ContractForDifference.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CorporateAction.CustomTypeAdapterFactory());

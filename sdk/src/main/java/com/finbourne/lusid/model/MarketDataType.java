@@ -49,7 +49,9 @@ public enum MarketDataType {
   
   CREDITSPREADCURVEDATA("CreditSpreadCurveData"),
   
-  EQUITYCURVEBYPRICESDATA("EquityCurveByPricesData");
+  EQUITYCURVEBYPRICESDATA("EquityCurveByPricesData"),
+  
+  CONSTANTVOLATILITYSURFACE("ConstantVolatilitySurface");
 
   private String value;
 

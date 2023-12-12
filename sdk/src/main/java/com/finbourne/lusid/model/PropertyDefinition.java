@@ -517,6 +517,10 @@ public class PropertyDefinition {
   @SerializedName(SERIALIZED_NAME_DERIVATION_FORMULA)
   private String derivationFormula;
 
+  public static final String SERIALIZED_NAME_COLLECTION_TYPE = "collectionType";
+  @SerializedName(SERIALIZED_NAME_COLLECTION_TYPE)
+  private String collectionType;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -860,6 +864,27 @@ public class PropertyDefinition {
   }
 
 
+  public PropertyDefinition collectionType(String collectionType) {
+    
+    this.collectionType = collectionType;
+    return this;
+  }
+
+   /**
+   * Describes whether a collection property should behave as a set or as an array.
+   * @return collectionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCollectionType() {
+    return collectionType;
+  }
+
+
+  public void setCollectionType(String collectionType) {
+    this.collectionType = collectionType;
+  }
+
+
   public PropertyDefinition properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -965,6 +990,7 @@ public class PropertyDefinition {
         Objects.equals(this.propertyDefinitionType, propertyDefinition.propertyDefinitionType) &&
         Objects.equals(this.propertyDescription, propertyDefinition.propertyDescription) &&
         Objects.equals(this.derivationFormula, propertyDefinition.derivationFormula) &&
+        Objects.equals(this.collectionType, propertyDefinition.collectionType) &&
         Objects.equals(this.properties, propertyDefinition.properties) &&
         Objects.equals(this.version, propertyDefinition.version) &&
         Objects.equals(this.links, propertyDefinition.links);
@@ -976,7 +1002,7 @@ public class PropertyDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, properties, version, links);
+    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1006,6 +1032,7 @@ public class PropertyDefinition {
     sb.append("    propertyDefinitionType: ").append(toIndentedString(propertyDefinitionType)).append("\n");
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
+    sb.append("    collectionType: ").append(toIndentedString(collectionType)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -1047,6 +1074,7 @@ public class PropertyDefinition {
     openapiFields.add("propertyDefinitionType");
     openapiFields.add("propertyDescription");
     openapiFields.add("derivationFormula");
+    openapiFields.add("collectionType");
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -1113,6 +1141,9 @@ public class PropertyDefinition {
       }
       if ((jsonObj.get("derivationFormula") != null && !jsonObj.get("derivationFormula").isJsonNull()) && !jsonObj.get("derivationFormula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `derivationFormula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivationFormula").toString()));
+      }
+      if ((jsonObj.get("collectionType") != null && !jsonObj.get("collectionType").isJsonNull()) && !jsonObj.get("collectionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `collectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("collectionType").toString()));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

@@ -17,9 +17,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,12 +53,12 @@ import com.finbourne.lusid.JSON;
 public class LabelValueSet {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private Set<String> values = new LinkedHashSet<>();
+  private List<String> values = new ArrayList<>();
 
   public LabelValueSet() {
   }
 
-  public LabelValueSet values(Set<String> values) {
+  public LabelValueSet values(List<String> values) {
     
     this.values = values;
     return this;
@@ -66,7 +66,7 @@ public class LabelValueSet {
 
   public LabelValueSet addValuesItem(String valuesItem) {
     if (this.values == null) {
-      this.values = new LinkedHashSet<>();
+      this.values = new ArrayList<>();
     }
     this.values.add(valuesItem);
     return this;
@@ -77,12 +77,12 @@ public class LabelValueSet {
    * @return values
   **/
   @jakarta.annotation.Nonnull
-  public Set<String> getValues() {
+  public List<String> getValues() {
     return values;
   }
 
 
-  public void setValues(Set<String> values) {
+  public void setValues(List<String> values) {
     this.values = values;
   }
 

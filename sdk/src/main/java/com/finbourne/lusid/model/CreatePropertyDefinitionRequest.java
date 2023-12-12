@@ -251,6 +251,10 @@ public class CreatePropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTY_DESCRIPTION)
   private String propertyDescription;
 
+  public static final String SERIALIZED_NAME_COLLECTION_TYPE = "collectionType";
+  @SerializedName(SERIALIZED_NAME_COLLECTION_TYPE)
+  private String collectionType;
+
   public CreatePropertyDefinitionRequest() {
   }
 
@@ -443,6 +447,27 @@ public class CreatePropertyDefinitionRequest {
   }
 
 
+  public CreatePropertyDefinitionRequest collectionType(String collectionType) {
+    
+    this.collectionType = collectionType;
+    return this;
+  }
+
+   /**
+   * Describes whether a collection property should behave as a set or as an array.
+   * @return collectionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCollectionType() {
+    return collectionType;
+  }
+
+
+  public void setCollectionType(String collectionType) {
+    this.collectionType = collectionType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -461,7 +486,8 @@ public class CreatePropertyDefinitionRequest {
         Objects.equals(this.dataTypeId, createPropertyDefinitionRequest.dataTypeId) &&
         Objects.equals(this.lifeTime, createPropertyDefinitionRequest.lifeTime) &&
         Objects.equals(this.constraintStyle, createPropertyDefinitionRequest.constraintStyle) &&
-        Objects.equals(this.propertyDescription, createPropertyDefinitionRequest.propertyDescription);
+        Objects.equals(this.propertyDescription, createPropertyDefinitionRequest.propertyDescription) &&
+        Objects.equals(this.collectionType, createPropertyDefinitionRequest.collectionType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -470,7 +496,7 @@ public class CreatePropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain, scope, code, valueRequired, displayName, dataTypeId, lifeTime, constraintStyle, propertyDescription);
+    return Objects.hash(domain, scope, code, valueRequired, displayName, dataTypeId, lifeTime, constraintStyle, propertyDescription, collectionType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -493,6 +519,7 @@ public class CreatePropertyDefinitionRequest {
     sb.append("    lifeTime: ").append(toIndentedString(lifeTime)).append("\n");
     sb.append("    constraintStyle: ").append(toIndentedString(constraintStyle)).append("\n");
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
+    sb.append("    collectionType: ").append(toIndentedString(collectionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -524,6 +551,7 @@ public class CreatePropertyDefinitionRequest {
     openapiFields.add("lifeTime");
     openapiFields.add("constraintStyle");
     openapiFields.add("propertyDescription");
+    openapiFields.add("collectionType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -576,6 +604,9 @@ public class CreatePropertyDefinitionRequest {
       }
       if ((jsonObj.get("propertyDescription") != null && !jsonObj.get("propertyDescription").isJsonNull()) && !jsonObj.get("propertyDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("propertyDescription").toString()));
+      }
+      if ((jsonObj.get("collectionType") != null && !jsonObj.get("collectionType").isJsonNull()) && !jsonObj.get("collectionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `collectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("collectionType").toString()));
       }
   }
 

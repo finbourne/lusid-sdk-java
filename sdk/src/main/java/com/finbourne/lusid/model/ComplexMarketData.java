@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplexMarketData {
   /**
-   * The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData
+   * The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface
    */
   @JsonAdapter(MarketDataTypeEnum.Adapter.class)
   public enum MarketDataTypeEnum {
@@ -78,7 +78,9 @@ public class ComplexMarketData {
     
     CREDITSPREADCURVEDATA("CreditSpreadCurveData"),
     
-    EQUITYCURVEBYPRICESDATA("EquityCurveByPricesData");
+    EQUITYCURVEBYPRICESDATA("EquityCurveByPricesData"),
+    
+    CONSTANTVOLATILITYSURFACE("ConstantVolatilitySurface");
 
     private String value;
 
@@ -132,7 +134,7 @@ public class ComplexMarketData {
   }
 
    /**
-   * The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData
+   * The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface
    * @return marketDataType
   **/
   @jakarta.annotation.Nonnull
@@ -213,6 +215,9 @@ public class ComplexMarketData {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("marketDataType").getAsString();
       switch (discriminatorValue) {
+        case "ConstantVolatilitySurface":
+          ConstantVolatilitySurface.validateJsonElement(jsonElement);
+          break;
         case "CreditSpreadCurveData":
           CreditSpreadCurveData.validateJsonElement(jsonElement);
           break;

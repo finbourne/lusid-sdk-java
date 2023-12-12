@@ -8,7 +8,7 @@ The set of string labels in a multi-value property.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**values** | **Set&lt;String&gt;** |  |  |
+|**values** | **List&lt;String&gt;** |  |  |
 
 
 

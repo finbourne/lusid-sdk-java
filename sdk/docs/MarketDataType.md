@@ -31,5 +31,7 @@
 
 * `EQUITYCURVEBYPRICESDATA` (value: `"EquityCurveByPricesData"`)
 
+* `CONSTANTVOLATILITYSURFACE` (value: `"ConstantVolatilitySurface"`)
+
 
 

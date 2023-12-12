@@ -24,6 +24,7 @@ A list of property definitions.
 |**propertyDefinitionType** | [**PropertyDefinitionTypeEnum**](#PropertyDefinitionTypeEnum) | The definition type (DerivedDefinition or Definition). The available values are: ValueProperty, DerivedDefinition |  [optional] |
 |**propertyDescription** | **String** | A brief description of what a property of this property definition contains. |  [optional] |
 |**derivationFormula** | **String** | The rule that defines how data is composed for a derived property. |  [optional] |
+|**collectionType** | **String** | Describes whether a collection property should behave as a set or as an array. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique property definition properties and associated values to store with the property definition. Each property must be from the &#39;PropertyDefinition&#39; domain. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |

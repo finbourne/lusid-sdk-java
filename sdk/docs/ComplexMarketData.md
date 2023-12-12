@@ -8,7 +8,7 @@ Base class for representing complex market data in LUSID.  Generally speaking, m
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**marketDataType** | [**MarketDataTypeEnum**](#MarketDataTypeEnum) | The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData |  |
+|**marketDataType** | [**MarketDataTypeEnum**](#MarketDataTypeEnum) | The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface |  |
 
 
 
@@ -29,6 +29,7 @@ Base class for representing complex market data in LUSID.  Generally speaking, m
 | FXFORWARDCURVEBYQUOTEREFERENCE | &quot;FxForwardCurveByQuoteReference&quot; |
 | CREDITSPREADCURVEDATA | &quot;CreditSpreadCurveData&quot; |
 | EQUITYCURVEBYPRICESDATA | &quot;EquityCurveByPricesData&quot; |
+| CONSTANTVOLATILITYSURFACE | &quot;ConstantVolatilitySurface&quot; |
 
 
 

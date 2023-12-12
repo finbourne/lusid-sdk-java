@@ -16,6 +16,7 @@
 |**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Describes how the property&#39;s values can change over time. The available values are: Perpetual, TimeVariant |  [optional] |
 |**constraintStyle** | **String** | Describes the uniqueness and cardinality of the property for entity objects under the property domain specified in Key. Defaults to \&quot;Property\&quot; if not specified. Valid values for this field are: Property, Collection or Identifier. |  [optional] |
 |**propertyDescription** | **String** | Describes the property |  [optional] |
+|**collectionType** | **String** | Describes whether a collection property should behave as a set or as an array. |  [optional] |
 
 
 

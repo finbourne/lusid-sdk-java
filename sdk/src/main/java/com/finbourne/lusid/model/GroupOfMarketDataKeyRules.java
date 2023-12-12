@@ -70,7 +70,7 @@ public class GroupOfMarketDataKeyRules {
   }
 
    /**
-   * The operation that will be used to process the collection of market data items and failures found on resolution  into a single market data item or failure to be used.
+   * The operation that will be used to process the collection of market data items and failures found on resolution  into a single market data item or failure to be used.  Supported values: [FirstLatest, AverageOfQuotesFound, AverageOfAllQuotes, FirstMinimum, FirstMaximum]
    * @return marketDataKeyRuleGroupOperation
   **/
   @jakarta.annotation.Nonnull
