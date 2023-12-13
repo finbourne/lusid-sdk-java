@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.WeightedInstrumentInLineLookupIdentifiers;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -62,6 +63,10 @@ public class WeightedInstrument {
   public static final String SERIALIZED_NAME_INSTRUMENT = "instrument";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT)
   private LusidInstrument instrument;
+
+  public static final String SERIALIZED_NAME_IN_LINE_LOOKUP_IDENTIFIERS = "inLineLookupIdentifiers";
+  @SerializedName(SERIALIZED_NAME_IN_LINE_LOOKUP_IDENTIFIERS)
+  private WeightedInstrumentInLineLookupIdentifiers inLineLookupIdentifiers;
 
   public WeightedInstrument() {
   }
@@ -129,6 +134,27 @@ public class WeightedInstrument {
   }
 
 
+  public WeightedInstrument inLineLookupIdentifiers(WeightedInstrumentInLineLookupIdentifiers inLineLookupIdentifiers) {
+    
+    this.inLineLookupIdentifiers = inLineLookupIdentifiers;
+    return this;
+  }
+
+   /**
+   * Get inLineLookupIdentifiers
+   * @return inLineLookupIdentifiers
+  **/
+  @jakarta.annotation.Nullable
+  public WeightedInstrumentInLineLookupIdentifiers getInLineLookupIdentifiers() {
+    return inLineLookupIdentifiers;
+  }
+
+
+  public void setInLineLookupIdentifiers(WeightedInstrumentInLineLookupIdentifiers inLineLookupIdentifiers) {
+    this.inLineLookupIdentifiers = inLineLookupIdentifiers;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +167,8 @@ public class WeightedInstrument {
     WeightedInstrument weightedInstrument = (WeightedInstrument) o;
     return (this.quantity.compareTo(weightedInstrument.getQuantity()) == 0) &&
         Objects.equals(this.holdingIdentifier, weightedInstrument.holdingIdentifier) &&
-        Objects.equals(this.instrument, weightedInstrument.instrument);
+        Objects.equals(this.instrument, weightedInstrument.instrument) &&
+        Objects.equals(this.inLineLookupIdentifiers, weightedInstrument.inLineLookupIdentifiers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +177,7 @@ public class WeightedInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, holdingIdentifier, instrument);
+    return Objects.hash(quantity, holdingIdentifier, instrument, inLineLookupIdentifiers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +194,7 @@ public class WeightedInstrument {
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    holdingIdentifier: ").append(toIndentedString(holdingIdentifier)).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
+    sb.append("    inLineLookupIdentifiers: ").append(toIndentedString(inLineLookupIdentifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,6 +220,7 @@ public class WeightedInstrument {
     openapiFields.add("quantity");
     openapiFields.add("holdingIdentifier");
     openapiFields.add("instrument");
+    openapiFields.add("inLineLookupIdentifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -216,6 +245,10 @@ public class WeightedInstrument {
       // validate the optional field `instrument`
       if (jsonObj.get("instrument") != null && !jsonObj.get("instrument").isJsonNull()) {
         LusidInstrument.validateJsonElement(jsonObj.get("instrument"));
+      }
+      // validate the optional field `inLineLookupIdentifiers`
+      if (jsonObj.get("inLineLookupIdentifiers") != null && !jsonObj.get("inLineLookupIdentifiers").isJsonNull()) {
+        WeightedInstrumentInLineLookupIdentifiers.validateJsonElement(jsonObj.get("inLineLookupIdentifiers"));
       }
   }
 

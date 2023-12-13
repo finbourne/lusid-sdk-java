@@ -41,5 +41,9 @@
 
 * `VARIATIONMARGIN` (value: `"VariationMargin"`)
 
+* `CAPITAL` (value: `"Capital"`)
+
+* `FEE` (value: `"Fee"`)
+
 
 

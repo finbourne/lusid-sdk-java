@@ -59,7 +59,11 @@ public enum MovementType {
   
   CARRYASPNL("CarryAsPnl"),
   
-  VARIATIONMARGIN("VariationMargin");
+  VARIATIONMARGIN("VariationMargin"),
+  
+  CAPITAL("Capital"),
+  
+  FEE("Fee");
 
   private String value;
 

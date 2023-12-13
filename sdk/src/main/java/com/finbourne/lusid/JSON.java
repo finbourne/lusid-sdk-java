@@ -2357,6 +2357,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Warning.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeekendMask.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeightedInstrument.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeightedInstrumentInLineLookupIdentifiers.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeightedInstruments.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.YieldCurveData.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();

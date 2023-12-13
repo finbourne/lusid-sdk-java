@@ -57,7 +57,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionConfigurationMovementData {
   /**
-   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin
+   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin, Capital, Fee
    */
   @JsonAdapter(MovementTypesEnum.Adapter.class)
   public enum MovementTypesEnum {
@@ -95,7 +95,11 @@ public class TransactionConfigurationMovementData {
     
     CARRYASPNL("CarryAsPnl"),
     
-    VARIATIONMARGIN("VariationMargin");
+    VARIATIONMARGIN("VariationMargin"),
+    
+    CAPITAL("Capital"),
+    
+    FEE("Fee");
 
     private String value;
 
@@ -173,7 +177,7 @@ public class TransactionConfigurationMovementData {
   }
 
    /**
-   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin
+   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin, Capital, Fee
    * @return movementTypes
   **/
   @jakarta.annotation.Nonnull
