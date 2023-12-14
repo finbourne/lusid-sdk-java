@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ResourceId;
-import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -62,10 +61,6 @@ public class ParticipationRequest {
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
   private ResourceId orderId;
-
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version;
 
   public ParticipationRequest() {
   }
@@ -133,27 +128,6 @@ public class ParticipationRequest {
   }
 
 
-  public ParticipationRequest version(Version version) {
-    
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @jakarta.annotation.Nullable
-  public Version getVersion() {
-    return version;
-  }
-
-
-  public void setVersion(Version version) {
-    this.version = version;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -166,13 +140,12 @@ public class ParticipationRequest {
     ParticipationRequest participationRequest = (ParticipationRequest) o;
     return Objects.equals(this.id, participationRequest.id) &&
         Objects.equals(this.placementId, participationRequest.placementId) &&
-        Objects.equals(this.orderId, participationRequest.orderId) &&
-        Objects.equals(this.version, participationRequest.version);
+        Objects.equals(this.orderId, participationRequest.orderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, placementId, orderId, version);
+    return Objects.hash(id, placementId, orderId);
   }
 
   @Override
@@ -182,7 +155,6 @@ public class ParticipationRequest {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    placementId: ").append(toIndentedString(placementId)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -208,7 +180,6 @@ public class ParticipationRequest {
     openapiFields.add("id");
     openapiFields.add("placementId");
     openapiFields.add("orderId");
-    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -243,10 +214,6 @@ public class ParticipationRequest {
       ResourceId.validateJsonElement(jsonObj.get("placementId"));
       // validate the required field `orderId`
       ResourceId.validateJsonElement(jsonObj.get("orderId"));
-      // validate the optional field `version`
-      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonElement(jsonObj.get("version"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

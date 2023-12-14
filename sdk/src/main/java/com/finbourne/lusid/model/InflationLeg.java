@@ -189,7 +189,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * The calculation type.  ZeroCoupon is used for CPILegs where there is a single payment at maturity of  Notional generate justfile (CPI(T) / CPI(T0) - 1)  where CPI(T0) is the BaseCPI of this leg  YearOnYear is used for YoY and LPI swap legs where there is a series of annual payments  Notional generate justfile dayCount generate justfile (CPI(t) / CPI(t-1) - 1)  If a cap and floor is added to this it becomes an LPI swap leg.  Compounded is used for inflation swap legs where there is a series of annual payments  Notional generate justfile dayCount generate justfile (CPI(t) / CPI(T0) - 1)  i.e. the BaseCPI is used every year. These swaps are not as common as CPI or    Supported string (enumeration) values are: [ZeroCoupon, YearOnYear, Compounded].
+   * The calculation type.  ZeroCoupon is used for CPILegs where there is a single payment at maturity of  Notional generate justfile test_sdk (CPI(T) / CPI(T0) - 1)  where CPI(T0) is the BaseCPI of this leg  YearOnYear is used for YoY and LPI swap legs where there is a series of annual payments  Notional generate justfile test_sdk dayCount generate justfile test_sdk (CPI(t) / CPI(t-1) - 1)  If a cap and floor is added to this it becomes an LPI swap leg.  Compounded is used for inflation swap legs where there is a series of annual payments  Notional generate justfile test_sdk dayCount generate justfile test_sdk (CPI(t) / CPI(T0) - 1)  i.e. the BaseCPI is used every year. These swaps are not as common as CPI or    Supported string (enumeration) values are: [ZeroCoupon, YearOnYear, Compounded].
    * @return calculationType
   **/
   @jakarta.annotation.Nonnull
