@@ -97,7 +97,9 @@ public enum PropertyDomain {
   
   COMPLIANCE("Compliance"),
   
-  DIARYENTRY("DiaryEntry");
+  DIARYENTRY("DiaryEntry"),
+  
+  LEG("Leg");
 
   private String value;
 

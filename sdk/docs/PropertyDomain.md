@@ -79,5 +79,7 @@
 
 * `DIARYENTRY` (value: `"DiaryEntry"`)
 
+* `LEG` (value: `"Leg"`)
+
 
 
