@@ -28,6 +28,7 @@ A Journal Entry line entity.
 |**movementName** | **String** | The name of the movement. |  |
 |**holdingType** | **String** | Defines the broad category holding within the portfolio. |  |
 |**economicBucket** | **String** | Raw Journal Entry Line details of the economic bucket for the Journal Entry Line. |  |
+|**economicBucketComponent** | **String** | Sub bucket of the economic bucket. |  [optional] |
 |**levels** | **List&lt;String&gt;** | Resolved data from the general ledger profile where the GeneralLedgerProfileCode is specified in the GetJournalEntryLines request body. |  [optional] |
 |**sourceLevels** | **List&lt;String&gt;** | Source data from the general ledger profile where the GeneralLedgerProfileCode is specified in the GetJournalEntryLines request body. |  [optional] |
 |**movementSign** | **String** | Indicates if the Journal Entry Line corresponds to a Long or Short movement. |  [optional] |

@@ -140,6 +140,10 @@ public class JournalEntryLine {
   @SerializedName(SERIALIZED_NAME_ECONOMIC_BUCKET)
   private String economicBucket;
 
+  public static final String SERIALIZED_NAME_ECONOMIC_BUCKET_COMPONENT = "economicBucketComponent";
+  @SerializedName(SERIALIZED_NAME_ECONOMIC_BUCKET_COMPONENT)
+  private String economicBucketComponent;
+
   public static final String SERIALIZED_NAME_LEVELS = "levels";
   @SerializedName(SERIALIZED_NAME_LEVELS)
   private List<String> levels;
@@ -599,6 +603,27 @@ public class JournalEntryLine {
   }
 
 
+  public JournalEntryLine economicBucketComponent(String economicBucketComponent) {
+    
+    this.economicBucketComponent = economicBucketComponent;
+    return this;
+  }
+
+   /**
+   * Sub bucket of the economic bucket.
+   * @return economicBucketComponent
+  **/
+  @jakarta.annotation.Nullable
+  public String getEconomicBucketComponent() {
+    return economicBucketComponent;
+  }
+
+
+  public void setEconomicBucketComponent(String economicBucketComponent) {
+    this.economicBucketComponent = economicBucketComponent;
+  }
+
+
   public JournalEntryLine levels(List<String> levels) {
     
     this.levels = levels;
@@ -758,6 +783,7 @@ public class JournalEntryLine {
         Objects.equals(this.movementName, journalEntryLine.movementName) &&
         Objects.equals(this.holdingType, journalEntryLine.holdingType) &&
         Objects.equals(this.economicBucket, journalEntryLine.economicBucket) &&
+        Objects.equals(this.economicBucketComponent, journalEntryLine.economicBucketComponent) &&
         Objects.equals(this.levels, journalEntryLine.levels) &&
         Objects.equals(this.sourceLevels, journalEntryLine.sourceLevels) &&
         Objects.equals(this.movementSign, journalEntryLine.movementSign) &&
@@ -771,7 +797,7 @@ public class JournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, levels, sourceLevels, movementSign, holdingSign, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, levels, sourceLevels, movementSign, holdingSign, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -805,6 +831,7 @@ public class JournalEntryLine {
     sb.append("    movementName: ").append(toIndentedString(movementName)).append("\n");
     sb.append("    holdingType: ").append(toIndentedString(holdingType)).append("\n");
     sb.append("    economicBucket: ").append(toIndentedString(economicBucket)).append("\n");
+    sb.append("    economicBucketComponent: ").append(toIndentedString(economicBucketComponent)).append("\n");
     sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
     sb.append("    sourceLevels: ").append(toIndentedString(sourceLevels)).append("\n");
     sb.append("    movementSign: ").append(toIndentedString(movementSign)).append("\n");
@@ -852,6 +879,7 @@ public class JournalEntryLine {
     openapiFields.add("movementName");
     openapiFields.add("holdingType");
     openapiFields.add("economicBucket");
+    openapiFields.add("economicBucketComponent");
     openapiFields.add("levels");
     openapiFields.add("sourceLevels");
     openapiFields.add("movementSign");
@@ -939,6 +967,9 @@ public class JournalEntryLine {
       }
       if (!jsonObj.get("economicBucket").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `economicBucket` to be a primitive type in the JSON string but got `%s`", jsonObj.get("economicBucket").toString()));
+      }
+      if ((jsonObj.get("economicBucketComponent") != null && !jsonObj.get("economicBucketComponent").isJsonNull()) && !jsonObj.get("economicBucketComponent").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `economicBucketComponent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("economicBucketComponent").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("levels") != null && !jsonObj.get("levels").isJsonNull() && !jsonObj.get("levels").isJsonArray()) {
