@@ -120,7 +120,7 @@ public class CompositeDispersion {
    * The result for the dispersion calculation on the given effectiveAt.
    * @return dispersionCalculation
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getDispersionCalculation() {
     return dispersionCalculation;
   }
@@ -141,7 +141,7 @@ public class CompositeDispersion {
    * The variance on the given effectiveAt.
    * @return variance
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getVariance() {
     return variance;
   }
@@ -162,7 +162,7 @@ public class CompositeDispersion {
    * First Quartile (Q1) &#x3D; (lower quartile) &#x3D; the middle of the bottom half of the returns.
    * @return firstQuartile
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getFirstQuartile() {
     return firstQuartile;
   }
@@ -183,7 +183,7 @@ public class CompositeDispersion {
    * Third Quartile (Q3) &#x3D; (higher quartile) &#x3D; the middle of the top half of the returns.
    * @return thirdQuartile
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getThirdQuartile() {
     return thirdQuartile;
   }
@@ -204,7 +204,7 @@ public class CompositeDispersion {
    * Highest return - Lowest return.
    * @return range
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getRange() {
     return range;
   }
@@ -355,11 +355,6 @@ public class CompositeDispersion {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("effectiveAt");
-    openapiRequiredFields.add("dispersionCalculation");
-    openapiRequiredFields.add("variance");
-    openapiRequiredFields.add("firstQuartile");
-    openapiRequiredFields.add("thirdQuartile");
-    openapiRequiredFields.add("range");
   }
 
  /**
