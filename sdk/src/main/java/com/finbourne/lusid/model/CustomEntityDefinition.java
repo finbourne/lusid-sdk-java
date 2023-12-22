@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CustomEntityFieldDefinition;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -77,6 +78,10 @@ public class CustomEntityDefinition {
   public static final String SERIALIZED_NAME_FIELD_SCHEMA = "fieldSchema";
   @SerializedName(SERIALIZED_NAME_FIELD_SCHEMA)
   private List<CustomEntityFieldDefinition> fieldSchema = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public CustomEntityDefinition() {
   }
@@ -215,6 +220,27 @@ public class CustomEntityDefinition {
   }
 
 
+  public CustomEntityDefinition version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nonnull
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -230,7 +256,8 @@ public class CustomEntityDefinition {
         Objects.equals(this.displayName, customEntityDefinition.displayName) &&
         Objects.equals(this.description, customEntityDefinition.description) &&
         Objects.equals(this.entityType, customEntityDefinition.entityType) &&
-        Objects.equals(this.fieldSchema, customEntityDefinition.fieldSchema);
+        Objects.equals(this.fieldSchema, customEntityDefinition.fieldSchema) &&
+        Objects.equals(this.version, customEntityDefinition.version);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -239,7 +266,7 @@ public class CustomEntityDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, entityTypeName, displayName, description, entityType, fieldSchema);
+    return Objects.hash(href, entityTypeName, displayName, description, entityType, fieldSchema, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -259,6 +286,7 @@ public class CustomEntityDefinition {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    fieldSchema: ").append(toIndentedString(fieldSchema)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -287,6 +315,7 @@ public class CustomEntityDefinition {
     openapiFields.add("description");
     openapiFields.add("entityType");
     openapiFields.add("fieldSchema");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -294,6 +323,7 @@ public class CustomEntityDefinition {
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("entityType");
     openapiRequiredFields.add("fieldSchema");
+    openapiRequiredFields.add("version");
   }
 
  /**
@@ -341,6 +371,8 @@ public class CustomEntityDefinition {
       for (int i = 0; i < jsonArrayfieldSchema.size(); i++) {
         CustomEntityFieldDefinition.validateJsonElement(jsonArrayfieldSchema.get(i));
       };
+      // validate the required field `version`
+      Version.validateJsonElement(jsonObj.get("version"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

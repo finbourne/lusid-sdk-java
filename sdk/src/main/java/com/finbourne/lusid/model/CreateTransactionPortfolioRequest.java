@@ -408,7 +408,7 @@ public class CreateTransactionPortfolioRequest {
   }
 
    /**
-   * The amortisation method the portfolio is using in the calculation. This can be &#39;NoAmortisation&#39;, &#39;StraightLine&#39; or &#39;EffectiveYield&#39;.
+   * The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate
    * @return amortisationMethod
   **/
   @jakarta.annotation.Nullable

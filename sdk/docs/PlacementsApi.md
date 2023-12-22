@@ -113,7 +113,7 @@ public class Example {
     String scope = "scope_example"; // String | The scope to which the placement belongs.
     String code = "code_example"; // String | The placement's unique identifier.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto the placement.   These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto the placement. If none are given, all applied properties are returned.   These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\". Property keys from the instrument domain can also be decorated   onto the placement, e.g. \"Instrument/default/Isin\". These are only decorated if requested.
     try {
       Placement result = apiInstance.getPlacement(scope, code)
             .asAt(asAt)
@@ -138,7 +138,7 @@ public class Example {
 | **scope** | **String**| The scope to which the placement belongs. | |
 | **code** | **String**| The placement&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement. If none are given, all applied properties are returned.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. Property keys from the instrument domain can also be decorated   onto the placement, e.g. \&quot;Instrument/default/Isin\&quot;. These are only decorated if requested. | [optional] |
 
 ### Return type
 

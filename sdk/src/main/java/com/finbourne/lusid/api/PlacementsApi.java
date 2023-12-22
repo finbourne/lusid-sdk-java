@@ -359,7 +359,7 @@ public class PlacementsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement. If none are given, all applied properties are returned.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. Property keys from the instrument domain can also be decorated   onto the placement, e.g. \&quot;Instrument/default/Isin\&quot;. These are only decorated if requested. (optional)
          * @return APIgetPlacementRequest
          */
         public APIgetPlacementRequest propertyKeys(List<String> propertyKeys) {
