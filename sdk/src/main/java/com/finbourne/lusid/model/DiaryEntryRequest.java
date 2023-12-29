@@ -105,7 +105,7 @@ public class DiaryEntryRequest {
   }
 
    /**
-   * The status of the diary entry. Defaults to &#39;Undefined&#39;.
+   * The status of the diary entry. Defaults to &#39;Undefined&#39; for valuation points and &#39;Estimate&#39; for closing periods.
    * @return status
   **/
   @jakarta.annotation.Nullable

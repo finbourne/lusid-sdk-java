@@ -5,6 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. |
+| [**closePeriod**](AborApi.md#closePeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$closeperiod | [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor. |
 | [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
@@ -13,6 +14,8 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor. |
 | [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
 | [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
+| [**lockPeriod**](AborApi.md#lockPeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$lockperiod | [EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period. |
+| [**reOpenPeriods**](AborApi.md#reOpenPeriods) | **POST** /api/abor/{scope}/{code}/accountingdiary/$reopenperiods | [EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor. |
 | [**upsertAborProperties**](AborApi.md#upsertAborProperties) | **POST** /api/abor/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties |
 
 
@@ -89,6 +92,80 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The newly added diary entry. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="closePeriod"></a>
+# **closePeriod**
+> DiaryEntry closePeriod(scope, code, closePeriodDiaryEntryRequest).execute();
+
+[EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor.
+
+Closes or Locks the current open period for the given Abor.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor.
+    String code = "code_example"; // String | The code of the Abor.
+    ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest = new ClosePeriodDiaryEntryRequest(); // ClosePeriodDiaryEntryRequest | The request body, containing details to apply to the closing/locking period.
+    try {
+      DiaryEntry result = apiInstance.closePeriod(scope, code, closePeriodDiaryEntryRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#closePeriod");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. | |
+| **closePeriodDiaryEntryRequest** | [**ClosePeriodDiaryEntryRequest**](ClosePeriodDiaryEntryRequest.md)| The request body, containing details to apply to the closing/locking period. | |
+
+### Return type
+
+[**DiaryEntry**](DiaryEntry.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The DiaryEntry created as a result of the closing of the Period. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -745,6 +822,156 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested diary entries. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="lockPeriod"></a>
+# **lockPeriod**
+> DiaryEntry lockPeriod(scope, code).lockPeriodDiaryEntryRequest(lockPeriodDiaryEntryRequest).execute();
+
+[EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period.
+
+Locks the specified or last locked period for the given Abor.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor.
+    String code = "code_example"; // String | The code of the Abor.
+    LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest = new LockPeriodDiaryEntryRequest(); // LockPeriodDiaryEntryRequest | The request body, detailing lock details
+    try {
+      DiaryEntry result = apiInstance.lockPeriod(scope, code)
+            .lockPeriodDiaryEntryRequest(lockPeriodDiaryEntryRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#lockPeriod");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. | |
+| **lockPeriodDiaryEntryRequest** | [**LockPeriodDiaryEntryRequest**](LockPeriodDiaryEntryRequest.md)| The request body, detailing lock details | [optional] |
+
+### Return type
+
+[**DiaryEntry**](DiaryEntry.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated DiaryEntry as a result of the locking of the Period. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="reOpenPeriods"></a>
+# **reOpenPeriods**
+> PeriodDiaryEntriesReopenedResponse reOpenPeriods(scope, code).reOpenPeriodDiaryEntryRequest(reOpenPeriodDiaryEntryRequest).execute();
+
+[EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
+
+Reopens one or more periods.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor to be deleted.
+    String code = "code_example"; // String | The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor.
+    ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest = new ReOpenPeriodDiaryEntryRequest(); // ReOpenPeriodDiaryEntryRequest | The request body, detailing re open details
+    try {
+      PeriodDiaryEntriesReopenedResponse result = apiInstance.reOpenPeriods(scope, code)
+            .reOpenPeriodDiaryEntryRequest(reOpenPeriodDiaryEntryRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#reOpenPeriods");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor to be deleted. | |
+| **code** | **String**| The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. | |
+| **reOpenPeriodDiaryEntryRequest** | [**ReOpenPeriodDiaryEntryRequest**](ReOpenPeriodDiaryEntryRequest.md)| The request body, detailing re open details | [optional] |
+
+### Return type
+
+[**PeriodDiaryEntriesReopenedResponse**](PeriodDiaryEntriesReopenedResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the DiaryEntryCodes were deleted |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

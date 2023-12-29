@@ -27,17 +27,21 @@ import java.io.IOException;
 import com.finbourne.lusid.model.Abor;
 import com.finbourne.lusid.model.AborProperties;
 import com.finbourne.lusid.model.AborRequest;
+import com.finbourne.lusid.model.ClosePeriodDiaryEntryRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.DiaryEntryRequest;
 import com.finbourne.lusid.model.JELinesQueryParameters;
 import com.finbourne.lusid.model.JournalEntryLinesQueryParameters;
+import com.finbourne.lusid.model.LockPeriodDiaryEntryRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfAbor;
 import com.finbourne.lusid.model.PagedResourceListOfDiaryEntry;
+import com.finbourne.lusid.model.PeriodDiaryEntriesReopenedResponse;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.ReOpenPeriodDiaryEntryRequest;
 import com.finbourne.lusid.model.TrialBalanceQueryParameters;
 import com.finbourne.lusid.model.VersionedResourceListOfJournalEntryLine;
 import com.finbourne.lusid.model.VersionedResourceListOfTrialBalance;
@@ -278,6 +282,191 @@ public class AborApi {
      */
     public APIaddDiaryEntryRequest addDiaryEntry(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) {
         return new APIaddDiaryEntryRequest(scope, code, diaryEntryCode, diaryEntryRequest);
+    }
+    private okhttp3.Call closePeriodCall(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = closePeriodDiaryEntryRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/abor/{scope}/{code}/accountingdiary/$closeperiod"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call closePeriodValidateBeforeCall(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling closePeriod(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling closePeriod(Async)");
+        }
+
+        // verify the required parameter 'closePeriodDiaryEntryRequest' is set
+        if (closePeriodDiaryEntryRequest == null) {
+            throw new ApiException("Missing the required parameter 'closePeriodDiaryEntryRequest' when calling closePeriod(Async)");
+        }
+
+        return closePeriodCall(scope, code, closePeriodDiaryEntryRequest, _callback);
+
+    }
+
+
+    private ApiResponse<DiaryEntry> closePeriodWithHttpInfo(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest) throws ApiException {
+        okhttp3.Call localVarCall = closePeriodValidateBeforeCall(scope, code, closePeriodDiaryEntryRequest, null);
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call closePeriodAsync(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = closePeriodValidateBeforeCall(scope, code, closePeriodDiaryEntryRequest, _callback);
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIclosePeriodRequest {
+        private final String scope;
+        private final String code;
+        private final ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest;
+
+        private APIclosePeriodRequest(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.closePeriodDiaryEntryRequest = closePeriodDiaryEntryRequest;
+        }
+
+        /**
+         * Build call for closePeriod
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The DiaryEntry created as a result of the closing of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return closePeriodCall(scope, code, closePeriodDiaryEntryRequest, _callback);
+        }
+
+        /**
+         * Execute closePeriod request
+         * @return DiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The DiaryEntry created as a result of the closing of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DiaryEntry execute() throws ApiException {
+            ApiResponse<DiaryEntry> localVarResp = closePeriodWithHttpInfo(scope, code, closePeriodDiaryEntryRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute closePeriod request with HTTP info returned
+         * @return ApiResponse&lt;DiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The DiaryEntry created as a result of the closing of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
+            return closePeriodWithHttpInfo(scope, code, closePeriodDiaryEntryRequest);
+        }
+
+        /**
+         * Execute closePeriod request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The DiaryEntry created as a result of the closing of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
+            return closePeriodAsync(scope, code, closePeriodDiaryEntryRequest, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor.
+     * Closes or Locks the current open period for the given Abor.
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. (required)
+     * @param closePeriodDiaryEntryRequest The request body, containing details to apply to the closing/locking period. (required)
+     * @return APIclosePeriodRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The DiaryEntry created as a result of the closing of the Period. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIclosePeriodRequest closePeriod(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest) {
+        return new APIclosePeriodRequest(scope, code, closePeriodDiaryEntryRequest);
     }
     private okhttp3.Call createAborCall(String scope, AborRequest aborRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2073,6 +2262,382 @@ public class AborApi {
      */
     public APIlistDiaryEntriesRequest listDiaryEntries(String scope, String code) {
         return new APIlistDiaryEntriesRequest(scope, code);
+    }
+    private okhttp3.Call lockPeriodCall(String scope, String code, LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = lockPeriodDiaryEntryRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/abor/{scope}/{code}/accountingdiary/$lockperiod"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call lockPeriodValidateBeforeCall(String scope, String code, LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling lockPeriod(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling lockPeriod(Async)");
+        }
+
+        return lockPeriodCall(scope, code, lockPeriodDiaryEntryRequest, _callback);
+
+    }
+
+
+    private ApiResponse<DiaryEntry> lockPeriodWithHttpInfo(String scope, String code, LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest) throws ApiException {
+        okhttp3.Call localVarCall = lockPeriodValidateBeforeCall(scope, code, lockPeriodDiaryEntryRequest, null);
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call lockPeriodAsync(String scope, String code, LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = lockPeriodValidateBeforeCall(scope, code, lockPeriodDiaryEntryRequest, _callback);
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlockPeriodRequest {
+        private final String scope;
+        private final String code;
+        private LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest;
+
+        private APIlockPeriodRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set lockPeriodDiaryEntryRequest
+         * @param lockPeriodDiaryEntryRequest The request body, detailing lock details (optional)
+         * @return APIlockPeriodRequest
+         */
+        public APIlockPeriodRequest lockPeriodDiaryEntryRequest(LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest) {
+            this.lockPeriodDiaryEntryRequest = lockPeriodDiaryEntryRequest;
+            return this;
+        }
+
+        /**
+         * Build call for lockPeriod
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated DiaryEntry as a result of the locking of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return lockPeriodCall(scope, code, lockPeriodDiaryEntryRequest, _callback);
+        }
+
+        /**
+         * Execute lockPeriod request
+         * @return DiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated DiaryEntry as a result of the locking of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DiaryEntry execute() throws ApiException {
+            ApiResponse<DiaryEntry> localVarResp = lockPeriodWithHttpInfo(scope, code, lockPeriodDiaryEntryRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute lockPeriod request with HTTP info returned
+         * @return ApiResponse&lt;DiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated DiaryEntry as a result of the locking of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
+            return lockPeriodWithHttpInfo(scope, code, lockPeriodDiaryEntryRequest);
+        }
+
+        /**
+         * Execute lockPeriod request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated DiaryEntry as a result of the locking of the Period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
+            return lockPeriodAsync(scope, code, lockPeriodDiaryEntryRequest, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period.
+     * Locks the specified or last locked period for the given Abor.
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. (required)
+     * @return APIlockPeriodRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated DiaryEntry as a result of the locking of the Period. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlockPeriodRequest lockPeriod(String scope, String code) {
+        return new APIlockPeriodRequest(scope, code);
+    }
+    private okhttp3.Call reOpenPeriodsCall(String scope, String code, ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = reOpenPeriodDiaryEntryRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/abor/{scope}/{code}/accountingdiary/$reopenperiods"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call reOpenPeriodsValidateBeforeCall(String scope, String code, ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling reOpenPeriods(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling reOpenPeriods(Async)");
+        }
+
+        return reOpenPeriodsCall(scope, code, reOpenPeriodDiaryEntryRequest, _callback);
+
+    }
+
+
+    private ApiResponse<PeriodDiaryEntriesReopenedResponse> reOpenPeriodsWithHttpInfo(String scope, String code, ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest) throws ApiException {
+        okhttp3.Call localVarCall = reOpenPeriodsValidateBeforeCall(scope, code, reOpenPeriodDiaryEntryRequest, null);
+        Type localVarReturnType = new TypeToken<PeriodDiaryEntriesReopenedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call reOpenPeriodsAsync(String scope, String code, ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest, final ApiCallback<PeriodDiaryEntriesReopenedResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = reOpenPeriodsValidateBeforeCall(scope, code, reOpenPeriodDiaryEntryRequest, _callback);
+        Type localVarReturnType = new TypeToken<PeriodDiaryEntriesReopenedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIreOpenPeriodsRequest {
+        private final String scope;
+        private final String code;
+        private ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest;
+
+        private APIreOpenPeriodsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set reOpenPeriodDiaryEntryRequest
+         * @param reOpenPeriodDiaryEntryRequest The request body, detailing re open details (optional)
+         * @return APIreOpenPeriodsRequest
+         */
+        public APIreOpenPeriodsRequest reOpenPeriodDiaryEntryRequest(ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest) {
+            this.reOpenPeriodDiaryEntryRequest = reOpenPeriodDiaryEntryRequest;
+            return this;
+        }
+
+        /**
+         * Build call for reOpenPeriods
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the DiaryEntryCodes were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reOpenPeriodsCall(scope, code, reOpenPeriodDiaryEntryRequest, _callback);
+        }
+
+        /**
+         * Execute reOpenPeriods request
+         * @return PeriodDiaryEntriesReopenedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the DiaryEntryCodes were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PeriodDiaryEntriesReopenedResponse execute() throws ApiException {
+            ApiResponse<PeriodDiaryEntriesReopenedResponse> localVarResp = reOpenPeriodsWithHttpInfo(scope, code, reOpenPeriodDiaryEntryRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reOpenPeriods request with HTTP info returned
+         * @return ApiResponse&lt;PeriodDiaryEntriesReopenedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the DiaryEntryCodes were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PeriodDiaryEntriesReopenedResponse> executeWithHttpInfo() throws ApiException {
+            return reOpenPeriodsWithHttpInfo(scope, code, reOpenPeriodDiaryEntryRequest);
+        }
+
+        /**
+         * Execute reOpenPeriods request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the DiaryEntryCodes were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PeriodDiaryEntriesReopenedResponse> _callback) throws ApiException {
+            return reOpenPeriodsAsync(scope, code, reOpenPeriodDiaryEntryRequest, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
+     * Reopens one or more periods.
+     * @param scope The scope of the Abor to be deleted. (required)
+     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
+     * @return APIreOpenPeriodsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the DiaryEntryCodes were deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIreOpenPeriodsRequest reOpenPeriods(String scope, String code) {
+        return new APIreOpenPeriodsRequest(scope, code);
     }
     private okhttp3.Call upsertAborPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;

@@ -12,7 +12,7 @@
 |**diaryEntryCode** | **String** | The code of the diary entry. |  [optional] |
 |**type** | **String** | The type of the diary entry. |  |
 |**name** | **String** | The name of the diary entry. |  [optional] |
-|**status** | **String** | The status of the diary entry. Defaults to &#39;Undefined&#39;. |  |
+|**status** | **String** | The status of the diary entry. Defaults to &#39;Undefined&#39; for valuation points and &#39;Estimate&#39; for closing periods. |  |
 |**effectiveAt** | **OffsetDateTime** | The effective time of the diary entry. |  |
 |**queryAsAt** | **OffsetDateTime** | The query time of the diary entry. Defaults to latest. |  [optional] |
 |**previousEntryTime** | **OffsetDateTime** | The entry time of the previous diary entry. |  [optional] |
