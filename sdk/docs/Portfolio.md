@@ -25,6 +25,7 @@ A list of portfolios.
 |**amortisationMethod** | **String** | The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate |  [optional] |
 |**transactionTypeScope** | **String** | The scope of the transaction types. |  [optional] |
 |**cashGainLossCalculationDate** | **String** | The scope of the transaction types. |  [optional] |
+|**instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

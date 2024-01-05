@@ -26,8 +26,9 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.TransactionTemplate;
 import com.finbourne.lusid.model.TransactionTemplateRequest;
-import com.finbourne.lusid.model.TransactionTemplateResponse;
 import com.finbourne.lusid.model.TransactionTemplateSpecification;
 
 import java.lang.reflect.Type;
@@ -153,16 +154,16 @@ public class InstrumentEventTypesApi {
     }
 
 
-    private ApiResponse<TransactionTemplateResponse> createTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) throws ApiException {
+    private ApiResponse<TransactionTemplate> createTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) throws ApiException {
         okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null);
-        Type localVarReturnType = new TypeToken<TransactionTemplateResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback<TransactionTemplateResponse> _callback) throws ApiException {
+    private okhttp3.Call createTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
-        Type localVarReturnType = new TypeToken<TransactionTemplateResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -199,7 +200,7 @@ public class InstrumentEventTypesApi {
 
         /**
          * Execute createTransactionTemplate request
-         * @return TransactionTemplateResponse
+         * @return TransactionTemplate
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -209,14 +210,14 @@ public class InstrumentEventTypesApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionTemplateResponse execute() throws ApiException {
-            ApiResponse<TransactionTemplateResponse> localVarResp = createTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
+        public TransactionTemplate execute() throws ApiException {
+            ApiResponse<TransactionTemplate> localVarResp = createTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
             return localVarResp.getData();
         }
 
         /**
          * Execute createTransactionTemplate request with HTTP info returned
-         * @return ApiResponse&lt;TransactionTemplateResponse&gt;
+         * @return ApiResponse&lt;TransactionTemplate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -226,7 +227,7 @@ public class InstrumentEventTypesApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionTemplateResponse> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<TransactionTemplate> executeWithHttpInfo() throws ApiException {
             return createTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
         }
 
@@ -243,7 +244,7 @@ public class InstrumentEventTypesApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplateResponse> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback) throws ApiException {
             return createTransactionTemplateAsync(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
         }
     }
@@ -266,6 +267,200 @@ public class InstrumentEventTypesApi {
      */
     public APIcreateTransactionTemplateRequest createTransactionTemplate(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) {
         return new APIcreateTransactionTemplateRequest(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
+    }
+    private okhttp3.Call getTransactionTemplateCall(String instrumentEventType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/instrumenteventtypes/{instrumentEventType}/transactiontemplates"
+            .replace("{" + "instrumentEventType" + "}", localVarApiClient.escapeString(instrumentEventType.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTransactionTemplateValidateBeforeCall(String instrumentEventType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'instrumentEventType' is set
+        if (instrumentEventType == null) {
+            throw new ApiException("Missing the required parameter 'instrumentEventType' when calling getTransactionTemplate(Async)");
+        }
+
+        return getTransactionTemplateCall(instrumentEventType, scope, asAt, _callback);
+
+    }
+
+
+    private ApiResponse<TransactionTemplate> getTransactionTemplateWithHttpInfo(String instrumentEventType, String scope, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, scope, asAt, null);
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getTransactionTemplateAsync(String instrumentEventType, String scope, OffsetDateTime asAt, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, scope, asAt, _callback);
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetTransactionTemplateRequest {
+        private final String instrumentEventType;
+        private String scope;
+        private OffsetDateTime asAt;
+
+        private APIgetTransactionTemplateRequest(String instrumentEventType) {
+            this.instrumentEventType = instrumentEventType;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the template lies. When not supplied the scope is &#39;default&#39;. (optional)
+         * @return APIgetTransactionTemplateRequest
+         */
+        public APIgetTransactionTemplateRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The AsAt time of the requested Transaction Template (optional)
+         * @return APIgetTransactionTemplateRequest
+         */
+        public APIgetTransactionTemplateRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTransactionTemplate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransactionTemplateCall(instrumentEventType, scope, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionTemplate request
+         * @return TransactionTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionTemplate execute() throws ApiException {
+            ApiResponse<TransactionTemplate> localVarResp = getTransactionTemplateWithHttpInfo(instrumentEventType, scope, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactionTemplate request with HTTP info returned
+         * @return ApiResponse&lt;TransactionTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionTemplate> executeWithHttpInfo() throws ApiException {
+            return getTransactionTemplateWithHttpInfo(instrumentEventType, scope, asAt);
+        }
+
+        /**
+         * Execute getTransactionTemplate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback) throws ApiException {
+            return getTransactionTemplateAsync(instrumentEventType, scope, asAt, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template
+     * Gets the Transaction Template that for the instrument event type within the scope specified.
+     * @param instrumentEventType The instrument event type of the transaction template (required)
+     * @return APIgetTransactionTemplateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetTransactionTemplateRequest getTransactionTemplate(String instrumentEventType) {
+        return new APIgetTransactionTemplateRequest(instrumentEventType);
     }
     private okhttp3.Call getTransactionTemplateSpecificationCall(String instrumentEventType, final ApiCallback _callback) throws ApiException {
         String basePath = null;

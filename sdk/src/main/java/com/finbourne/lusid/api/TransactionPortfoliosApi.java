@@ -536,7 +536,7 @@ public class TransactionPortfoliosApi {
     public APIbatchAdjustHoldingsRequest batchAdjustHoldings(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
         return new APIbatchAdjustHoldingsRequest(scope, code, successMode, requestBody);
     }
-    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -567,6 +567,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
         }
 
+        if (preserveProperties != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("preserveProperties", preserveProperties));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -593,7 +597,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertTransactionsValidateBeforeCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsValidateBeforeCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertTransactions(Async)");
@@ -614,20 +618,20 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertTransactions(Async)");
         }
 
-        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, _callback);
+        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, _callback);
 
     }
 
 
-    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, null);
+    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, null);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, _callback);
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, _callback);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -638,12 +642,23 @@ public class TransactionPortfoliosApi {
         private final String code;
         private final String successMode;
         private final Map<String, TransactionRequest> requestBody;
+        private Boolean preserveProperties;
 
         private APIbatchUpsertTransactionsRequest(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) {
             this.scope = scope;
             this.code = code;
             this.successMode = successMode;
             this.requestBody = requestBody;
+        }
+
+        /**
+         * Set preserveProperties
+         * @param preserveProperties If set to true, only the properties provided will be updated, if not specified or set to false, the entire property set will be overwritten by the provided properties. (optional, default to false)
+         * @return APIbatchUpsertTransactionsRequest
+         */
+        public APIbatchUpsertTransactionsRequest preserveProperties(Boolean preserveProperties) {
+            this.preserveProperties = preserveProperties;
+            return this;
         }
 
         /**
@@ -660,7 +675,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return batchUpsertTransactionsCall(scope, code, successMode, requestBody, _callback);
+            return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, _callback);
         }
 
         /**
@@ -676,7 +691,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public BatchUpsertPortfolioTransactionsResponse execute() throws ApiException {
-            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody);
+            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties);
             return localVarResp.getData();
         }
 
@@ -693,7 +708,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<BatchUpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
-            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody);
+            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties);
         }
 
         /**
@@ -710,7 +725,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
-            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, _callback);
+            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, _callback);
         }
     }
 
@@ -8515,7 +8530,7 @@ public class TransactionPortfoliosApi {
     public APIupsertTransactionPropertiesRequest upsertTransactionProperties(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) {
         return new APIupsertTransactionPropertiesRequest(scope, code, transactionId, requestBody);
     }
-    private okhttp3.Call upsertTransactionsCall(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionsCall(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8541,6 +8556,10 @@ public class TransactionPortfoliosApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (preserveProperties != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("preserveProperties", preserveProperties));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -8568,7 +8587,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTransactionsValidateBeforeCall(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionsValidateBeforeCall(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertTransactions(Async)");
@@ -8584,20 +8603,20 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionRequest' when calling upsertTransactions(Async)");
         }
 
-        return upsertTransactionsCall(scope, code, transactionRequest, _callback);
+        return upsertTransactionsCall(scope, code, transactionRequest, preserveProperties, _callback);
 
     }
 
 
-    private ApiResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsWithHttpInfo(String scope, String code, List<TransactionRequest> transactionRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, null);
+    private ApiResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsWithHttpInfo(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties) throws ApiException {
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, null);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactionRequest, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, _callback);
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, _callback);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8607,11 +8626,22 @@ public class TransactionPortfoliosApi {
         private final String scope;
         private final String code;
         private final List<TransactionRequest> transactionRequest;
+        private Boolean preserveProperties;
 
         private APIupsertTransactionsRequest(String scope, String code, List<TransactionRequest> transactionRequest) {
             this.scope = scope;
             this.code = code;
             this.transactionRequest = transactionRequest;
+        }
+
+        /**
+         * Set preserveProperties
+         * @param preserveProperties If set to true, only the properties provided will be updated, if not specified or set to false, the entire property set will be overwritten by the provided properties. (optional, default to false)
+         * @return APIupsertTransactionsRequest
+         */
+        public APIupsertTransactionsRequest preserveProperties(Boolean preserveProperties) {
+            this.preserveProperties = preserveProperties;
+            return this;
         }
 
         /**
@@ -8628,7 +8658,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertTransactionsCall(scope, code, transactionRequest, _callback);
+            return upsertTransactionsCall(scope, code, transactionRequest, preserveProperties, _callback);
         }
 
         /**
@@ -8644,7 +8674,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public UpsertPortfolioTransactionsResponse execute() throws ApiException {
-            ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = upsertTransactionsWithHttpInfo(scope, code, transactionRequest);
+            ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = upsertTransactionsWithHttpInfo(scope, code, transactionRequest, preserveProperties);
             return localVarResp.getData();
         }
 
@@ -8661,7 +8691,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
-            return upsertTransactionsWithHttpInfo(scope, code, transactionRequest);
+            return upsertTransactionsWithHttpInfo(scope, code, transactionRequest, preserveProperties);
         }
 
         /**
@@ -8678,7 +8708,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
-            return upsertTransactionsAsync(scope, code, transactionRequest, _callback);
+            return upsertTransactionsAsync(scope, code, transactionRequest, preserveProperties, _callback);
         }
     }
 

@@ -71,6 +71,10 @@ public class OrderGraphBlockOrderDetail {
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_NAME)
   private String portfolioName;
 
+  public static final String SERIALIZED_NAME_ORDER_APPROVAL_TASK_ID = "orderApprovalTaskId";
+  @SerializedName(SERIALIZED_NAME_ORDER_APPROVAL_TASK_ID)
+  private String orderApprovalTaskId;
+
   public OrderGraphBlockOrderDetail() {
   }
 
@@ -179,6 +183,27 @@ public class OrderGraphBlockOrderDetail {
   }
 
 
+  public OrderGraphBlockOrderDetail orderApprovalTaskId(String orderApprovalTaskId) {
+    
+    this.orderApprovalTaskId = orderApprovalTaskId;
+    return this;
+  }
+
+   /**
+   * The task id associated with the approval state of the order.
+   * @return orderApprovalTaskId
+  **/
+  @jakarta.annotation.Nullable
+  public String getOrderApprovalTaskId() {
+    return orderApprovalTaskId;
+  }
+
+
+  public void setOrderApprovalTaskId(String orderApprovalTaskId) {
+    this.orderApprovalTaskId = orderApprovalTaskId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,7 +218,8 @@ public class OrderGraphBlockOrderDetail {
         Objects.equals(this.complianceState, orderGraphBlockOrderDetail.complianceState) &&
         Objects.equals(this.approvalState, orderGraphBlockOrderDetail.approvalState) &&
         Objects.equals(this.portfolioId, orderGraphBlockOrderDetail.portfolioId) &&
-        Objects.equals(this.portfolioName, orderGraphBlockOrderDetail.portfolioName);
+        Objects.equals(this.portfolioName, orderGraphBlockOrderDetail.portfolioName) &&
+        Objects.equals(this.orderApprovalTaskId, orderGraphBlockOrderDetail.orderApprovalTaskId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -202,7 +228,7 @@ public class OrderGraphBlockOrderDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, complianceState, approvalState, portfolioId, portfolioName);
+    return Objects.hash(id, complianceState, approvalState, portfolioId, portfolioName, orderApprovalTaskId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,6 +247,7 @@ public class OrderGraphBlockOrderDetail {
     sb.append("    approvalState: ").append(toIndentedString(approvalState)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    portfolioName: ").append(toIndentedString(portfolioName)).append("\n");
+    sb.append("    orderApprovalTaskId: ").append(toIndentedString(orderApprovalTaskId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -248,6 +275,7 @@ public class OrderGraphBlockOrderDetail {
     openapiFields.add("approvalState");
     openapiFields.add("portfolioId");
     openapiFields.add("portfolioName");
+    openapiFields.add("orderApprovalTaskId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -290,6 +318,9 @@ public class OrderGraphBlockOrderDetail {
       }
       if ((jsonObj.get("portfolioName") != null && !jsonObj.get("portfolioName").isJsonNull()) && !jsonObj.get("portfolioName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `portfolioName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("portfolioName").toString()));
+      }
+      if ((jsonObj.get("orderApprovalTaskId") != null && !jsonObj.get("orderApprovalTaskId").isJsonNull()) && !jsonObj.get("orderApprovalTaskId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `orderApprovalTaskId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orderApprovalTaskId").toString()));
       }
   }
 

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -163,6 +164,10 @@ public class CreateTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE = "cashGainLossCalculationDate";
   @SerializedName(SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE)
   private String cashGainLossCalculationDate;
+
+  public static final String SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION = "instrumentEventConfiguration";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION)
+  private InstrumentEventConfiguration instrumentEventConfiguration;
 
   public CreateTransactionPortfolioRequest() {
   }
@@ -464,6 +469,27 @@ public class CreateTransactionPortfolioRequest {
   }
 
 
+  public CreateTransactionPortfolioRequest instrumentEventConfiguration(InstrumentEventConfiguration instrumentEventConfiguration) {
+    
+    this.instrumentEventConfiguration = instrumentEventConfiguration;
+    return this;
+  }
+
+   /**
+   * Get instrumentEventConfiguration
+   * @return instrumentEventConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public InstrumentEventConfiguration getInstrumentEventConfiguration() {
+    return instrumentEventConfiguration;
+  }
+
+
+  public void setInstrumentEventConfiguration(InstrumentEventConfiguration instrumentEventConfiguration) {
+    this.instrumentEventConfiguration = instrumentEventConfiguration;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -486,7 +512,8 @@ public class CreateTransactionPortfolioRequest {
         Objects.equals(this.instrumentScopes, createTransactionPortfolioRequest.instrumentScopes) &&
         Objects.equals(this.amortisationMethod, createTransactionPortfolioRequest.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, createTransactionPortfolioRequest.transactionTypeScope) &&
-        Objects.equals(this.cashGainLossCalculationDate, createTransactionPortfolioRequest.cashGainLossCalculationDate);
+        Objects.equals(this.cashGainLossCalculationDate, createTransactionPortfolioRequest.cashGainLossCalculationDate) &&
+        Objects.equals(this.instrumentEventConfiguration, createTransactionPortfolioRequest.instrumentEventConfiguration);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -495,7 +522,7 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate);
+    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -522,6 +549,7 @@ public class CreateTransactionPortfolioRequest {
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
+    sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -557,6 +585,7 @@ public class CreateTransactionPortfolioRequest {
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
+    openapiFields.add("instrumentEventConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -620,6 +649,10 @@ public class CreateTransactionPortfolioRequest {
       }
       if ((jsonObj.get("cashGainLossCalculationDate") != null && !jsonObj.get("cashGainLossCalculationDate").isJsonNull()) && !jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
+      }
+      // validate the optional field `instrumentEventConfiguration`
+      if (jsonObj.get("instrumentEventConfiguration") != null && !jsonObj.get("instrumentEventConfiguration").isJsonNull()) {
+        InstrumentEventConfiguration.validateJsonElement(jsonObj.get("instrumentEventConfiguration"));
       }
   }
 

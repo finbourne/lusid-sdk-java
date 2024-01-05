@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.LineageMember;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -69,6 +70,10 @@ public class ComplianceRuleBreakdownRequest {
   public static final String SERIALIZED_NAME_MISSING_DATA_INFORMATION = "missingDataInformation";
   @SerializedName(SERIALIZED_NAME_MISSING_DATA_INFORMATION)
   private List<String> missingDataInformation = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_LINEAGE = "lineage";
+  @SerializedName(SERIALIZED_NAME_LINEAGE)
+  private List<LineageMember> lineage = new ArrayList<>();
 
   public ComplianceRuleBreakdownRequest() {
   }
@@ -181,6 +186,35 @@ public class ComplianceRuleBreakdownRequest {
   }
 
 
+  public ComplianceRuleBreakdownRequest lineage(List<LineageMember> lineage) {
+    
+    this.lineage = lineage;
+    return this;
+  }
+
+  public ComplianceRuleBreakdownRequest addLineageItem(LineageMember lineageItem) {
+    if (this.lineage == null) {
+      this.lineage = new ArrayList<>();
+    }
+    this.lineage.add(lineageItem);
+    return this;
+  }
+
+   /**
+   * Get lineage
+   * @return lineage
+  **/
+  @jakarta.annotation.Nonnull
+  public List<LineageMember> getLineage() {
+    return lineage;
+  }
+
+
+  public void setLineage(List<LineageMember> lineage) {
+    this.lineage = lineage;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -194,12 +228,13 @@ public class ComplianceRuleBreakdownRequest {
     return Objects.equals(this.groupStatus, complianceRuleBreakdownRequest.groupStatus) &&
         Objects.equals(this.resultsUsed, complianceRuleBreakdownRequest.resultsUsed) &&
         Objects.equals(this.propertiesUsed, complianceRuleBreakdownRequest.propertiesUsed) &&
-        Objects.equals(this.missingDataInformation, complianceRuleBreakdownRequest.missingDataInformation);
+        Objects.equals(this.missingDataInformation, complianceRuleBreakdownRequest.missingDataInformation) &&
+        Objects.equals(this.lineage, complianceRuleBreakdownRequest.lineage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupStatus, resultsUsed, propertiesUsed, missingDataInformation);
+    return Objects.hash(groupStatus, resultsUsed, propertiesUsed, missingDataInformation, lineage);
   }
 
   @Override
@@ -210,6 +245,7 @@ public class ComplianceRuleBreakdownRequest {
     sb.append("    resultsUsed: ").append(toIndentedString(resultsUsed)).append("\n");
     sb.append("    propertiesUsed: ").append(toIndentedString(propertiesUsed)).append("\n");
     sb.append("    missingDataInformation: ").append(toIndentedString(missingDataInformation)).append("\n");
+    sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -236,6 +272,7 @@ public class ComplianceRuleBreakdownRequest {
     openapiFields.add("resultsUsed");
     openapiFields.add("propertiesUsed");
     openapiFields.add("missingDataInformation");
+    openapiFields.add("lineage");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -243,6 +280,7 @@ public class ComplianceRuleBreakdownRequest {
     openapiRequiredFields.add("resultsUsed");
     openapiRequiredFields.add("propertiesUsed");
     openapiRequiredFields.add("missingDataInformation");
+    openapiRequiredFields.add("lineage");
   }
 
  /**
@@ -274,6 +312,16 @@ public class ComplianceRuleBreakdownRequest {
       } else if (!jsonObj.get("missingDataInformation").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `missingDataInformation` to be an array in the JSON string but got `%s`", jsonObj.get("missingDataInformation").toString()));
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("lineage").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineage` to be an array in the JSON string but got `%s`", jsonObj.get("lineage").toString()));
+      }
+
+      JsonArray jsonArraylineage = jsonObj.getAsJsonArray("lineage");
+      // validate the required field `lineage` (array)
+      for (int i = 0; i < jsonArraylineage.size(); i++) {
+        LineageMember.validateJsonElement(jsonArraylineage.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

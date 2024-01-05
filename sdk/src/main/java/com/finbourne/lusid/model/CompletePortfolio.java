@@ -151,6 +151,10 @@ public class CompletePortfolio {
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
   private String baseCurrency;
 
+  public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
+  @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
+  private List<String> subHoldingKeys;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -396,6 +400,35 @@ public class CompletePortfolio {
   }
 
 
+  public CompletePortfolio subHoldingKeys(List<String> subHoldingKeys) {
+    
+    this.subHoldingKeys = subHoldingKeys;
+    return this;
+  }
+
+  public CompletePortfolio addSubHoldingKeysItem(String subHoldingKeysItem) {
+    if (this.subHoldingKeys == null) {
+      this.subHoldingKeys = new ArrayList<>();
+    }
+    this.subHoldingKeys.add(subHoldingKeysItem);
+    return this;
+  }
+
+   /**
+   * The sub holding key properties configured for the portfolio
+   * @return subHoldingKeys
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getSubHoldingKeys() {
+    return subHoldingKeys;
+  }
+
+
+  public void setSubHoldingKeys(List<String> subHoldingKeys) {
+    this.subHoldingKeys = subHoldingKeys;
+  }
+
+
   public CompletePortfolio links(List<Link> links) {
     
     this.links = links;
@@ -446,6 +479,7 @@ public class CompletePortfolio {
         Objects.equals(this.version, completePortfolio.version) &&
         Objects.equals(this.properties, completePortfolio.properties) &&
         Objects.equals(this.baseCurrency, completePortfolio.baseCurrency) &&
+        Objects.equals(this.subHoldingKeys, completePortfolio.subHoldingKeys) &&
         Objects.equals(this.links, completePortfolio.links);
   }
 
@@ -455,7 +489,7 @@ public class CompletePortfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, href, description, displayName, created, parentPortfolioId, isDerived, type, version, properties, baseCurrency, links);
+    return Objects.hash(id, href, description, displayName, created, parentPortfolioId, isDerived, type, version, properties, baseCurrency, subHoldingKeys, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -480,6 +514,7 @@ public class CompletePortfolio {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
+    sb.append("    subHoldingKeys: ").append(toIndentedString(subHoldingKeys)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -514,6 +549,7 @@ public class CompletePortfolio {
     openapiFields.add("version");
     openapiFields.add("properties");
     openapiFields.add("baseCurrency");
+    openapiFields.add("subHoldingKeys");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -578,6 +614,10 @@ public class CompletePortfolio {
       }
       if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("subHoldingKeys") != null && !jsonObj.get("subHoldingKeys").isJsonNull() && !jsonObj.get("subHoldingKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subHoldingKeys` to be an array in the JSON string but got `%s`", jsonObj.get("subHoldingKeys").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

@@ -85,7 +85,7 @@ public class ComplianceSummaryRuleResult {
 
   public static final String SERIALIZED_NAME_RULE_BREAKDOWN = "ruleBreakdown";
   @SerializedName(SERIALIZED_NAME_RULE_BREAKDOWN)
-  private Map<String, ComplianceRuleBreakdown> ruleBreakdown = new HashMap<>();
+  private List<ComplianceRuleBreakdown> ruleBreakdown = new ArrayList<>();
 
   public ComplianceSummaryRuleResult() {
   }
@@ -261,17 +261,17 @@ public class ComplianceSummaryRuleResult {
   }
 
 
-  public ComplianceSummaryRuleResult ruleBreakdown(Map<String, ComplianceRuleBreakdown> ruleBreakdown) {
+  public ComplianceSummaryRuleResult ruleBreakdown(List<ComplianceRuleBreakdown> ruleBreakdown) {
     
     this.ruleBreakdown = ruleBreakdown;
     return this;
   }
 
-  public ComplianceSummaryRuleResult putRuleBreakdownItem(String key, ComplianceRuleBreakdown ruleBreakdownItem) {
+  public ComplianceSummaryRuleResult addRuleBreakdownItem(ComplianceRuleBreakdown ruleBreakdownItem) {
     if (this.ruleBreakdown == null) {
-      this.ruleBreakdown = new HashMap<>();
+      this.ruleBreakdown = new ArrayList<>();
     }
-    this.ruleBreakdown.put(key, ruleBreakdownItem);
+    this.ruleBreakdown.add(ruleBreakdownItem);
     return this;
   }
 
@@ -280,12 +280,12 @@ public class ComplianceSummaryRuleResult {
    * @return ruleBreakdown
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ComplianceRuleBreakdown> getRuleBreakdown() {
+  public List<ComplianceRuleBreakdown> getRuleBreakdown() {
     return ruleBreakdown;
   }
 
 
-  public void setRuleBreakdown(Map<String, ComplianceRuleBreakdown> ruleBreakdown) {
+  public void setRuleBreakdown(List<ComplianceRuleBreakdown> ruleBreakdown) {
     this.ruleBreakdown = ruleBreakdown;
   }
 
@@ -419,6 +419,16 @@ public class ComplianceSummaryRuleResult {
       // validate the required field `affectedOrders` (array)
       for (int i = 0; i < jsonArrayaffectedOrders.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayaffectedOrders.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("ruleBreakdown").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ruleBreakdown` to be an array in the JSON string but got `%s`", jsonObj.get("ruleBreakdown").toString()));
+      }
+
+      JsonArray jsonArrayruleBreakdown = jsonObj.getAsJsonArray("ruleBreakdown");
+      // validate the required field `ruleBreakdown` (array)
+      for (int i = 0; i < jsonArrayruleBreakdown.size(); i++) {
+        ComplianceRuleBreakdown.validateJsonElement(jsonArrayruleBreakdown.get(i));
       };
   }
 

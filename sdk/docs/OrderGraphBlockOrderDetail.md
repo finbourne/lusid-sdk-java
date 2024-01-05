@@ -12,6 +12,7 @@
 |**approvalState** | **String** | The approval state of this order. Possible values are &#39;Pending&#39;, &#39;Rejected&#39; and &#39;Approved&#39;. |  |
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**portfolioName** | **String** | The name of the order&#39;s referenced Portfolio. |  [optional] |
+|**orderApprovalTaskId** | **String** | The task id associated with the approval state of the order. |  [optional] |
 
 
 

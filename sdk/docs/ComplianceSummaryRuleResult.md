@@ -14,7 +14,7 @@
 |**affectedPortfolios** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  |
 |**affectedOrders** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  |
 |**parametersUsed** | **Map&lt;String, String&gt;** |  |  |
-|**ruleBreakdown** | [**Map&lt;String, ComplianceRuleBreakdown&gt;**](ComplianceRuleBreakdown.md) |  |  |
+|**ruleBreakdown** | [**List&lt;ComplianceRuleBreakdown&gt;**](ComplianceRuleBreakdown.md) |  |  |
 
 
 

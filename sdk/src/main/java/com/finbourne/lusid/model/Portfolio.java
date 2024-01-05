@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
@@ -232,6 +233,10 @@ public class Portfolio {
   public static final String SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE = "cashGainLossCalculationDate";
   @SerializedName(SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE)
   private String cashGainLossCalculationDate;
+
+  public static final String SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION = "instrumentEventConfiguration";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION)
+  private InstrumentEventConfiguration instrumentEventConfiguration;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -621,6 +626,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio instrumentEventConfiguration(InstrumentEventConfiguration instrumentEventConfiguration) {
+    
+    this.instrumentEventConfiguration = instrumentEventConfiguration;
+    return this;
+  }
+
+   /**
+   * Get instrumentEventConfiguration
+   * @return instrumentEventConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public InstrumentEventConfiguration getInstrumentEventConfiguration() {
+    return instrumentEventConfiguration;
+  }
+
+
+  public void setInstrumentEventConfiguration(InstrumentEventConfiguration instrumentEventConfiguration) {
+    this.instrumentEventConfiguration = instrumentEventConfiguration;
+  }
+
+
   public Portfolio links(List<Link> links) {
     
     this.links = links;
@@ -677,6 +703,7 @@ public class Portfolio {
         Objects.equals(this.amortisationMethod, portfolio.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, portfolio.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, portfolio.cashGainLossCalculationDate) &&
+        Objects.equals(this.instrumentEventConfiguration, portfolio.instrumentEventConfiguration) &&
         Objects.equals(this.links, portfolio.links);
   }
 
@@ -686,7 +713,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, links);
+    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -717,6 +744,7 @@ public class Portfolio {
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
+    sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -757,6 +785,7 @@ public class Portfolio {
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
+    openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -841,6 +870,10 @@ public class Portfolio {
       }
       if ((jsonObj.get("cashGainLossCalculationDate") != null && !jsonObj.get("cashGainLossCalculationDate").isJsonNull()) && !jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
+      }
+      // validate the optional field `instrumentEventConfiguration`
+      if (jsonObj.get("instrumentEventConfiguration") != null && !jsonObj.get("instrumentEventConfiguration").isJsonNull()) {
+        InstrumentEventConfiguration.validateJsonElement(jsonObj.get("instrumentEventConfiguration"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
