@@ -9,6 +9,7 @@ A definition for the period you wish to lock
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**diaryEntryCode** | **String** | Unique code assigned to a period. When left blank last closed period will be located. |  [optional] |
+|**closingOptions** | **List&lt;String&gt;** | The options which will be executed once a period is closed or locked. |  [optional] |
 
 
 

@@ -19,8 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -77,6 +79,10 @@ public class ClosePeriodDiaryEntryRequest {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
+
+  public static final String SERIALIZED_NAME_CLOSING_OPTIONS = "closingOptions";
+  @SerializedName(SERIALIZED_NAME_CLOSING_OPTIONS)
+  private List<String> closingOptions;
 
   public ClosePeriodDiaryEntryRequest() {
   }
@@ -215,6 +221,35 @@ public class ClosePeriodDiaryEntryRequest {
   }
 
 
+  public ClosePeriodDiaryEntryRequest closingOptions(List<String> closingOptions) {
+    
+    this.closingOptions = closingOptions;
+    return this;
+  }
+
+  public ClosePeriodDiaryEntryRequest addClosingOptionsItem(String closingOptionsItem) {
+    if (this.closingOptions == null) {
+      this.closingOptions = new ArrayList<>();
+    }
+    this.closingOptions.add(closingOptionsItem);
+    return this;
+  }
+
+   /**
+   * The options which will be executed once a period is closed or locked.
+   * @return closingOptions
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getClosingOptions() {
+    return closingOptions;
+  }
+
+
+  public void setClosingOptions(List<String> closingOptions) {
+    this.closingOptions = closingOptions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -230,7 +265,8 @@ public class ClosePeriodDiaryEntryRequest {
         Objects.equals(this.effectiveAt, closePeriodDiaryEntryRequest.effectiveAt) &&
         Objects.equals(this.queryAsAt, closePeriodDiaryEntryRequest.queryAsAt) &&
         Objects.equals(this.status, closePeriodDiaryEntryRequest.status) &&
-        Objects.equals(this.properties, closePeriodDiaryEntryRequest.properties);
+        Objects.equals(this.properties, closePeriodDiaryEntryRequest.properties) &&
+        Objects.equals(this.closingOptions, closePeriodDiaryEntryRequest.closingOptions);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -239,7 +275,7 @@ public class ClosePeriodDiaryEntryRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode, name, effectiveAt, queryAsAt, status, properties);
+    return Objects.hash(diaryEntryCode, name, effectiveAt, queryAsAt, status, properties, closingOptions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -259,6 +295,7 @@ public class ClosePeriodDiaryEntryRequest {
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    closingOptions: ").append(toIndentedString(closingOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -287,6 +324,7 @@ public class ClosePeriodDiaryEntryRequest {
     openapiFields.add("queryAsAt");
     openapiFields.add("status");
     openapiFields.add("properties");
+    openapiFields.add("closingOptions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -313,6 +351,10 @@ public class ClosePeriodDiaryEntryRequest {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("closingOptions") != null && !jsonObj.get("closingOptions").isJsonNull() && !jsonObj.get("closingOptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `closingOptions` to be an array in the JSON string but got `%s`", jsonObj.get("closingOptions").toString()));
       }
   }
 

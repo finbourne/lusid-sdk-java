@@ -17,7 +17,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -54,6 +56,10 @@ public class LockPeriodDiaryEntryRequest {
   @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_CODE)
   private String diaryEntryCode;
 
+  public static final String SERIALIZED_NAME_CLOSING_OPTIONS = "closingOptions";
+  @SerializedName(SERIALIZED_NAME_CLOSING_OPTIONS)
+  private List<String> closingOptions;
+
   public LockPeriodDiaryEntryRequest() {
   }
 
@@ -78,6 +84,35 @@ public class LockPeriodDiaryEntryRequest {
   }
 
 
+  public LockPeriodDiaryEntryRequest closingOptions(List<String> closingOptions) {
+    
+    this.closingOptions = closingOptions;
+    return this;
+  }
+
+  public LockPeriodDiaryEntryRequest addClosingOptionsItem(String closingOptionsItem) {
+    if (this.closingOptions == null) {
+      this.closingOptions = new ArrayList<>();
+    }
+    this.closingOptions.add(closingOptionsItem);
+    return this;
+  }
+
+   /**
+   * The options which will be executed once a period is closed or locked.
+   * @return closingOptions
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getClosingOptions() {
+    return closingOptions;
+  }
+
+
+  public void setClosingOptions(List<String> closingOptions) {
+    this.closingOptions = closingOptions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,7 +123,8 @@ public class LockPeriodDiaryEntryRequest {
       return false;
     }
     LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest = (LockPeriodDiaryEntryRequest) o;
-    return Objects.equals(this.diaryEntryCode, lockPeriodDiaryEntryRequest.diaryEntryCode);
+    return Objects.equals(this.diaryEntryCode, lockPeriodDiaryEntryRequest.diaryEntryCode) &&
+        Objects.equals(this.closingOptions, lockPeriodDiaryEntryRequest.closingOptions);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -97,7 +133,7 @@ public class LockPeriodDiaryEntryRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode);
+    return Objects.hash(diaryEntryCode, closingOptions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -112,6 +148,7 @@ public class LockPeriodDiaryEntryRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class LockPeriodDiaryEntryRequest {\n");
     sb.append("    diaryEntryCode: ").append(toIndentedString(diaryEntryCode)).append("\n");
+    sb.append("    closingOptions: ").append(toIndentedString(closingOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,6 +172,7 @@ public class LockPeriodDiaryEntryRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("diaryEntryCode");
+    openapiFields.add("closingOptions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -155,6 +193,10 @@ public class LockPeriodDiaryEntryRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("diaryEntryCode") != null && !jsonObj.get("diaryEntryCode").isJsonNull()) && !jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `diaryEntryCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryCode").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("closingOptions") != null && !jsonObj.get("closingOptions").isJsonNull() && !jsonObj.get("closingOptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `closingOptions` to be an array in the JSON string but got `%s`", jsonObj.get("closingOptions").toString()));
       }
   }
 

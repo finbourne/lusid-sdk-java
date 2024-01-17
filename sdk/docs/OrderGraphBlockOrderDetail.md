@@ -13,6 +13,7 @@
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**portfolioName** | **String** | The name of the order&#39;s referenced Portfolio. |  [optional] |
 |**orderApprovalTaskId** | **String** | The task id associated with the approval state of the order. |  [optional] |
+|**orderApprovalTaskDefinitionId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

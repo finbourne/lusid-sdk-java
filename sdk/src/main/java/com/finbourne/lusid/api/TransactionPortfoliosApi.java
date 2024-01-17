@@ -653,7 +653,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set preserveProperties
-         * @param preserveProperties If set to true, only the properties provided will be updated, if not specified or set to false, the entire property set will be overwritten by the provided properties. (optional, default to false)
+         * @param preserveProperties If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. (optional, default to true)
          * @return APIbatchUpsertTransactionsRequest
          */
         public APIbatchUpsertTransactionsRequest preserveProperties(Boolean preserveProperties) {
@@ -8636,7 +8636,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set preserveProperties
-         * @param preserveProperties If set to true, only the properties provided will be updated, if not specified or set to false, the entire property set will be overwritten by the provided properties. (optional, default to false)
+         * @param preserveProperties If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. (optional, default to true)
          * @return APIupsertTransactionsRequest
          */
         public APIupsertTransactionsRequest preserveProperties(Boolean preserveProperties) {

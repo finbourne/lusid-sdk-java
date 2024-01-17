@@ -43,5 +43,7 @@
 
 * `DIVIDENDOPTIONEVENT` (value: `"DividendOptionEvent"`)
 
+* `MATURITYEVENT` (value: `"MaturityEvent"`)
+
 
 

@@ -61,7 +61,9 @@ public enum InstrumentEventType {
   
   BONDPRINCIPALEVENT("BondPrincipalEvent"),
   
-  DIVIDENDOPTIONEVENT("DividendOptionEvent");
+  DIVIDENDOPTIONEVENT("DividendOptionEvent"),
+  
+  MATURITYEVENT("MaturityEvent");
 
   private String value;
 
