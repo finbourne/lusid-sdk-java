@@ -98,6 +98,10 @@ public class InstrumentEventHolder {
   @SerializedName(SERIALIZED_NAME_SEQUENCE_NUMBER)
   private Integer sequenceNumber;
 
+  public static final String SERIALIZED_NAME_PARTICIPATION_TYPE = "participationType";
+  @SerializedName(SERIALIZED_NAME_PARTICIPATION_TYPE)
+  private String participationType = "Mandatory";
+
   public InstrumentEventHolder() {
   }
 
@@ -327,6 +331,27 @@ public class InstrumentEventHolder {
   }
 
 
+  public InstrumentEventHolder participationType(String participationType) {
+    
+    this.participationType = participationType;
+    return this;
+  }
+
+   /**
+   * Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
+   * @return participationType
+  **/
+  @jakarta.annotation.Nullable
+  public String getParticipationType() {
+    return participationType;
+  }
+
+
+  public void setParticipationType(String participationType) {
+    this.participationType = participationType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -346,7 +371,8 @@ public class InstrumentEventHolder {
         Objects.equals(this.eventDateRange, instrumentEventHolder.eventDateRange) &&
         Objects.equals(this.instrumentEvent, instrumentEventHolder.instrumentEvent) &&
         Objects.equals(this.properties, instrumentEventHolder.properties) &&
-        Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber);
+        Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber) &&
+        Objects.equals(this.participationType, instrumentEventHolder.participationType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -355,7 +381,7 @@ public class InstrumentEventHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, instrumentEvent, properties, sequenceNumber);
+    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, instrumentEvent, properties, sequenceNumber, participationType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -379,6 +405,7 @@ public class InstrumentEventHolder {
     sb.append("    instrumentEvent: ").append(toIndentedString(instrumentEvent)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    sequenceNumber: ").append(toIndentedString(sequenceNumber)).append("\n");
+    sb.append("    participationType: ").append(toIndentedString(participationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -411,6 +438,7 @@ public class InstrumentEventHolder {
     openapiFields.add("instrumentEvent");
     openapiFields.add("properties");
     openapiFields.add("sequenceNumber");
+    openapiFields.add("participationType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -476,6 +504,9 @@ public class InstrumentEventHolder {
             PerpetualProperty.validateJsonElement(jsonArrayproperties.get(i));
           };
         }
+      }
+      if ((jsonObj.get("participationType") != null && !jsonObj.get("participationType").isJsonNull()) && !jsonObj.get("participationType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `participationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("participationType").toString()));
       }
   }
 

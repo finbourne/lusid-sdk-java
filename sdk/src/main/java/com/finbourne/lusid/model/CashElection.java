@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -132,7 +133,7 @@ public class CashElection {
    * The payment rate for this CashElection.
    * @return dividendRate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getDividendRate() {
     return dividendRate;
   }
@@ -246,9 +247,20 @@ public class CashElection {
         Objects.equals(this.dividendCurrency, cashElection.dividendCurrency);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(electionKey, exchangeRate, dividendRate, isChosen, isDeclared, isDefault, dividendCurrency);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -295,7 +307,6 @@ public class CashElection {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("electionKey");
-    openapiRequiredFields.add("dividendRate");
     openapiRequiredFields.add("dividendCurrency");
   }
 

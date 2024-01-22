@@ -53,6 +53,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionTemplateSpecification {
+  public static final String SERIALIZED_NAME_INSTRUMENT_TYPE = "instrumentType";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_TYPE)
+  private String instrumentType;
+
   public static final String SERIALIZED_NAME_INSTRUMENT_EVENT_TYPE = "instrumentEventType";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_TYPE)
   private String instrumentEventType;
@@ -71,6 +75,27 @@ public class TransactionTemplateSpecification {
 
   public TransactionTemplateSpecification() {
   }
+
+  public TransactionTemplateSpecification instrumentType(String instrumentType) {
+    
+    this.instrumentType = instrumentType;
+    return this;
+  }
+
+   /**
+   * Get instrumentType
+   * @return instrumentType
+  **/
+  @jakarta.annotation.Nonnull
+  public String getInstrumentType() {
+    return instrumentType;
+  }
+
+
+  public void setInstrumentType(String instrumentType) {
+    this.instrumentType = instrumentType;
+  }
+
 
   public TransactionTemplateSpecification instrumentEventType(String instrumentEventType) {
     
@@ -190,7 +215,8 @@ public class TransactionTemplateSpecification {
       return false;
     }
     TransactionTemplateSpecification transactionTemplateSpecification = (TransactionTemplateSpecification) o;
-    return Objects.equals(this.instrumentEventType, transactionTemplateSpecification.instrumentEventType) &&
+    return Objects.equals(this.instrumentType, transactionTemplateSpecification.instrumentType) &&
+        Objects.equals(this.instrumentEventType, transactionTemplateSpecification.instrumentEventType) &&
         Objects.equals(this.supportedParticipationTypes, transactionTemplateSpecification.supportedParticipationTypes) &&
         Objects.equals(this.supportedElectionTypes, transactionTemplateSpecification.supportedElectionTypes) &&
         Objects.equals(this.supportedTemplateFields, transactionTemplateSpecification.supportedTemplateFields);
@@ -198,13 +224,14 @@ public class TransactionTemplateSpecification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventType, supportedParticipationTypes, supportedElectionTypes, supportedTemplateFields);
+    return Objects.hash(instrumentType, instrumentEventType, supportedParticipationTypes, supportedElectionTypes, supportedTemplateFields);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionTemplateSpecification {\n");
+    sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
     sb.append("    instrumentEventType: ").append(toIndentedString(instrumentEventType)).append("\n");
     sb.append("    supportedParticipationTypes: ").append(toIndentedString(supportedParticipationTypes)).append("\n");
     sb.append("    supportedElectionTypes: ").append(toIndentedString(supportedElectionTypes)).append("\n");
@@ -231,6 +258,7 @@ public class TransactionTemplateSpecification {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("instrumentType");
     openapiFields.add("instrumentEventType");
     openapiFields.add("supportedParticipationTypes");
     openapiFields.add("supportedElectionTypes");
@@ -238,6 +266,7 @@ public class TransactionTemplateSpecification {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("instrumentType");
     openapiRequiredFields.add("instrumentEventType");
     openapiRequiredFields.add("supportedParticipationTypes");
     openapiRequiredFields.add("supportedElectionTypes");
@@ -264,6 +293,9 @@ public class TransactionTemplateSpecification {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("instrumentType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentType").toString()));
+      }
       if (!jsonObj.get("instrumentEventType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentEventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentEventType").toString()));
       }

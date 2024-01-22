@@ -18,6 +18,7 @@ An instrument event equipped with additional metadata.
 |**instrumentEvent** | [**InstrumentEvent**](InstrumentEvent.md) |  |  |
 |**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. |  [optional] |
 |**sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |  [optional] |
+|**participationType** | **String** | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. |  [optional] |
 
 
 

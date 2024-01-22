@@ -5,8 +5,8 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createTransactionTemplate**](InstrumentEventTypesApi.md#createTransactionTemplate) | **POST** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EXPERIMENTAL] CreateTransactionTemplate: Create Transaction Template |
-| [**getTransactionTemplate**](InstrumentEventTypesApi.md#getTransactionTemplate) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates | [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template |
-| [**getTransactionTemplateSpecification**](InstrumentEventTypesApi.md#getTransactionTemplateSpecification) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplatespecification | [EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification. |
+| [**getTransactionTemplate**](InstrumentEventTypesApi.md#getTransactionTemplate) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template |
+| [**getTransactionTemplateSpecification**](InstrumentEventTypesApi.md#getTransactionTemplateSpecification) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplatespecification/{instrumentType} | [EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification. |
 
 
 <a id="createTransactionTemplate"></a>
@@ -38,7 +38,7 @@ public class Example {
 
     InstrumentEventTypesApi apiInstance = new InstrumentEventTypesApi(defaultClient);
     String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
-    String instrumentType = "instrumentType_example"; // String | The template is applied to events which originate from instruments of this type
+    String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
     String scope = "scope_example"; // String | The scope in which the template lies.
     TransactionTemplateRequest transactionTemplateRequest = new TransactionTemplateRequest(); // TransactionTemplateRequest | A request defining a new transaction template to be created.
     try {
@@ -61,7 +61,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **instrumentEventType** | **String**| The type of instrument events that the template is applied to. | |
-| **instrumentType** | **String**| The template is applied to events which originate from instruments of this type | |
+| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template | |
 | **scope** | **String**| The scope in which the template lies. | |
 | **transactionTemplateRequest** | [**TransactionTemplateRequest**](TransactionTemplateRequest.md)| A request defining a new transaction template to be created. | |
 
@@ -87,7 +87,7 @@ public class Example {
 
 <a id="getTransactionTemplate"></a>
 # **getTransactionTemplate**
-> TransactionTemplate getTransactionTemplate(instrumentEventType).scope(scope).asAt(asAt).execute();
+> TransactionTemplate getTransactionTemplate(instrumentEventType, instrumentType, scope).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template
 
@@ -114,11 +114,11 @@ public class Example {
 
     InstrumentEventTypesApi apiInstance = new InstrumentEventTypesApi(defaultClient);
     String instrumentEventType = "instrumentEventType_example"; // String | The instrument event type of the transaction template
+    String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
     String scope = "scope_example"; // String | The scope in which the template lies. When not supplied the scope is 'default'.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt time of the requested Transaction Template
     try {
-      TransactionTemplate result = apiInstance.getTransactionTemplate(instrumentEventType)
-            .scope(scope)
+      TransactionTemplate result = apiInstance.getTransactionTemplate(instrumentEventType, instrumentType, scope)
             .asAt(asAt)
             .execute();
       System.out.println(result);
@@ -138,7 +138,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **instrumentEventType** | **String**| The instrument event type of the transaction template | |
-| **scope** | **String**| The scope in which the template lies. When not supplied the scope is &#39;default&#39;. | [optional] |
+| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template | |
+| **scope** | **String**| The scope in which the template lies. When not supplied the scope is &#39;default&#39;. | |
 | **asAt** | **OffsetDateTime**| The AsAt time of the requested Transaction Template | [optional] |
 
 ### Return type
@@ -163,7 +164,7 @@ public class Example {
 
 <a id="getTransactionTemplateSpecification"></a>
 # **getTransactionTemplateSpecification**
-> TransactionTemplateSpecification getTransactionTemplateSpecification(instrumentEventType).execute();
+> TransactionTemplateSpecification getTransactionTemplateSpecification(instrumentType, instrumentEventType).execute();
 
 [EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification.
 
@@ -189,9 +190,10 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentEventTypesApi apiInstance = new InstrumentEventTypesApi(defaultClient);
+    String instrumentType = "instrumentType_example"; // String | The requested instrument type.
     String instrumentEventType = "instrumentEventType_example"; // String | The requested instrument event type.
     try {
-      TransactionTemplateSpecification result = apiInstance.getTransactionTemplateSpecification(instrumentEventType)
+      TransactionTemplateSpecification result = apiInstance.getTransactionTemplateSpecification(instrumentType, instrumentEventType)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -209,6 +211,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **instrumentType** | **String**| The requested instrument type. | |
 | **instrumentEventType** | **String**| The requested instrument event type. | |
 
 ### Return type

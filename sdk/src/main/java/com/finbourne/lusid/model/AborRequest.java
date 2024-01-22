@@ -162,7 +162,7 @@ public class AborRequest {
   }
 
    /**
-   * The list with the portfolio ids which are part of the Abor.
+   * The list with the portfolio ids which are part of the Abor. Note: These must all have the same base currency.
    * @return portfolioIds
   **/
   @jakarta.annotation.Nonnull

@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,14 @@ public class LineageMember {
   public static final String SERIALIZED_NAME_SUB_LABEL = "subLabel";
   @SerializedName(SERIALIZED_NAME_SUB_LABEL)
   private String subLabel;
+
+  public static final String SERIALIZED_NAME_INFO_TYPE = "infoType";
+  @SerializedName(SERIALIZED_NAME_INFO_TYPE)
+  private String infoType;
+
+  public static final String SERIALIZED_NAME_INFORMATION = "information";
+  @SerializedName(SERIALIZED_NAME_INFORMATION)
+  private String information;
 
   public LineageMember() {
   }
@@ -127,6 +136,48 @@ public class LineageMember {
   }
 
 
+  public LineageMember infoType(String infoType) {
+    
+    this.infoType = infoType;
+    return this;
+  }
+
+   /**
+   * Optional. Type of Information
+   * @return infoType
+  **/
+  @jakarta.annotation.Nullable
+  public String getInfoType() {
+    return infoType;
+  }
+
+
+  public void setInfoType(String infoType) {
+    this.infoType = infoType;
+  }
+
+
+  public LineageMember information(String information) {
+    
+    this.information = information;
+    return this;
+  }
+
+   /**
+   * Optional. Information for the step corresponding to this lineage member, of type InfoType
+   * @return information
+  **/
+  @jakarta.annotation.Nullable
+  public String getInformation() {
+    return information;
+  }
+
+
+  public void setInformation(String information) {
+    this.information = information;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +190,25 @@ public class LineageMember {
     LineageMember lineageMember = (LineageMember) o;
     return Objects.equals(this.index, lineageMember.index) &&
         Objects.equals(this.label, lineageMember.label) &&
-        Objects.equals(this.subLabel, lineageMember.subLabel);
+        Objects.equals(this.subLabel, lineageMember.subLabel) &&
+        Objects.equals(this.infoType, lineageMember.infoType) &&
+        Objects.equals(this.information, lineageMember.information);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(index, label, subLabel);
+    return Objects.hash(index, label, subLabel, infoType, information);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +218,8 @@ public class LineageMember {
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    subLabel: ").append(toIndentedString(subLabel)).append("\n");
+    sb.append("    infoType: ").append(toIndentedString(infoType)).append("\n");
+    sb.append("    information: ").append(toIndentedString(information)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +245,8 @@ public class LineageMember {
     openapiFields.add("index");
     openapiFields.add("label");
     openapiFields.add("subLabel");
+    openapiFields.add("infoType");
+    openapiFields.add("information");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -212,6 +280,12 @@ public class LineageMember {
       }
       if (!jsonObj.get("subLabel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subLabel").toString()));
+      }
+      if ((jsonObj.get("infoType") != null && !jsonObj.get("infoType").isJsonNull()) && !jsonObj.get("infoType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `infoType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("infoType").toString()));
+      }
+      if ((jsonObj.get("information") != null && !jsonObj.get("information").isJsonNull()) && !jsonObj.get("information").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `information` to be a primitive type in the JSON string but got `%s`", jsonObj.get("information").toString()));
       }
   }
 

@@ -92,6 +92,10 @@ public class Abor {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
+  public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
+  @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
+  private String baseCurrency;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -198,7 +202,7 @@ public class Abor {
   }
 
    /**
-   * The list with the portfolio ids which are part of the Abor.
+   * The list with the portfolio ids which are part of the Abor. Note: These must all have the same base currency.
    * @return portfolioIds
   **/
   @jakarta.annotation.Nonnull
@@ -283,6 +287,27 @@ public class Abor {
   }
 
 
+  public Abor baseCurrency(String baseCurrency) {
+    
+    this.baseCurrency = baseCurrency;
+    return this;
+  }
+
+   /**
+   * The base currency of the abor based on contained portfolio base currencies.
+   * @return baseCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getBaseCurrency() {
+    return baseCurrency;
+  }
+
+
+  public void setBaseCurrency(String baseCurrency) {
+    this.baseCurrency = baseCurrency;
+  }
+
+
   public Abor links(List<Link> links) {
     
     this.links = links;
@@ -330,6 +355,7 @@ public class Abor {
         Objects.equals(this.aborConfigurationId, abor.aborConfigurationId) &&
         Objects.equals(this.properties, abor.properties) &&
         Objects.equals(this.version, abor.version) &&
+        Objects.equals(this.baseCurrency, abor.baseCurrency) &&
         Objects.equals(this.links, abor.links);
   }
 
@@ -339,7 +365,7 @@ public class Abor {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, portfolioIds, aborConfigurationId, properties, version, links);
+    return Objects.hash(href, id, displayName, description, portfolioIds, aborConfigurationId, properties, version, baseCurrency, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -361,6 +387,7 @@ public class Abor {
     sb.append("    aborConfigurationId: ").append(toIndentedString(aborConfigurationId)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -392,6 +419,7 @@ public class Abor {
     openapiFields.add("aborConfigurationId");
     openapiFields.add("properties");
     openapiFields.add("version");
+    openapiFields.add("baseCurrency");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -448,6 +476,9 @@ public class Abor {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

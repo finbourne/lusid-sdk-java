@@ -253,7 +253,7 @@ public class InstrumentEventTypesApi {
      * [EXPERIMENTAL] CreateTransactionTemplate: Create Transaction Template
      * Create a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
-     * @param instrumentType The template is applied to events which originate from instruments of this type (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
      * @param scope The scope in which the template lies. (required)
      * @param transactionTemplateRequest A request defining a new transaction template to be created. (required)
      * @return APIcreateTransactionTemplateRequest
@@ -268,7 +268,7 @@ public class InstrumentEventTypesApi {
     public APIcreateTransactionTemplateRequest createTransactionTemplate(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) {
         return new APIcreateTransactionTemplateRequest(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
     }
-    private okhttp3.Call getTransactionTemplateCall(String instrumentEventType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -285,18 +285,16 @@ public class InstrumentEventTypesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/instrumenteventtypes/{instrumentEventType}/transactiontemplates"
-            .replace("{" + "instrumentEventType" + "}", localVarApiClient.escapeString(instrumentEventType.toString()));
+        String localVarPath = "/api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope}"
+            .replace("{" + "instrumentEventType" + "}", localVarApiClient.escapeString(instrumentEventType.toString()))
+            .replace("{" + "instrumentType" + "}", localVarApiClient.escapeString(instrumentType.toString()))
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (scope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
-        }
 
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
@@ -324,26 +322,36 @@ public class InstrumentEventTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionTemplateValidateBeforeCall(String instrumentEventType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling getTransactionTemplate(Async)");
         }
 
-        return getTransactionTemplateCall(instrumentEventType, scope, asAt, _callback);
+        // verify the required parameter 'instrumentType' is set
+        if (instrumentType == null) {
+            throw new ApiException("Missing the required parameter 'instrumentType' when calling getTransactionTemplate(Async)");
+        }
+
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getTransactionTemplate(Async)");
+        }
+
+        return getTransactionTemplateCall(instrumentEventType, instrumentType, scope, asAt, _callback);
 
     }
 
 
-    private ApiResponse<TransactionTemplate> getTransactionTemplateWithHttpInfo(String instrumentEventType, String scope, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, scope, asAt, null);
+    private ApiResponse<TransactionTemplate> getTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, null);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransactionTemplateAsync(String instrumentEventType, String scope, OffsetDateTime asAt, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, scope, asAt, _callback);
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, _callback);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -351,21 +359,14 @@ public class InstrumentEventTypesApi {
 
     public class APIgetTransactionTemplateRequest {
         private final String instrumentEventType;
-        private String scope;
+        private final String instrumentType;
+        private final String scope;
         private OffsetDateTime asAt;
 
-        private APIgetTransactionTemplateRequest(String instrumentEventType) {
+        private APIgetTransactionTemplateRequest(String instrumentEventType, String instrumentType, String scope) {
             this.instrumentEventType = instrumentEventType;
-        }
-
-        /**
-         * Set scope
-         * @param scope The scope in which the template lies. When not supplied the scope is &#39;default&#39;. (optional)
-         * @return APIgetTransactionTemplateRequest
-         */
-        public APIgetTransactionTemplateRequest scope(String scope) {
+            this.instrumentType = instrumentType;
             this.scope = scope;
-            return this;
         }
 
         /**
@@ -392,7 +393,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getTransactionTemplateCall(instrumentEventType, scope, asAt, _callback);
+            return getTransactionTemplateCall(instrumentEventType, instrumentType, scope, asAt, _callback);
         }
 
         /**
@@ -408,7 +409,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public TransactionTemplate execute() throws ApiException {
-            ApiResponse<TransactionTemplate> localVarResp = getTransactionTemplateWithHttpInfo(instrumentEventType, scope, asAt);
+            ApiResponse<TransactionTemplate> localVarResp = getTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, asAt);
             return localVarResp.getData();
         }
 
@@ -425,7 +426,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public ApiResponse<TransactionTemplate> executeWithHttpInfo() throws ApiException {
-            return getTransactionTemplateWithHttpInfo(instrumentEventType, scope, asAt);
+            return getTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, asAt);
         }
 
         /**
@@ -442,7 +443,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback) throws ApiException {
-            return getTransactionTemplateAsync(instrumentEventType, scope, asAt, _callback);
+            return getTransactionTemplateAsync(instrumentEventType, instrumentType, scope, asAt, _callback);
         }
     }
 
@@ -450,6 +451,8 @@ public class InstrumentEventTypesApi {
      * [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template
      * Gets the Transaction Template that for the instrument event type within the scope specified.
      * @param instrumentEventType The instrument event type of the transaction template (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
+     * @param scope The scope in which the template lies. When not supplied the scope is &#39;default&#39;. (required)
      * @return APIgetTransactionTemplateRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -459,10 +462,10 @@ public class InstrumentEventTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetTransactionTemplateRequest getTransactionTemplate(String instrumentEventType) {
-        return new APIgetTransactionTemplateRequest(instrumentEventType);
+    public APIgetTransactionTemplateRequest getTransactionTemplate(String instrumentEventType, String instrumentType, String scope) {
+        return new APIgetTransactionTemplateRequest(instrumentEventType, instrumentType, scope);
     }
-    private okhttp3.Call getTransactionTemplateSpecificationCall(String instrumentEventType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateSpecificationCall(String instrumentType, String instrumentEventType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -479,7 +482,8 @@ public class InstrumentEventTypesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/instrumenteventtypes/{instrumentEventType}/transactiontemplatespecification"
+        String localVarPath = "/api/instrumenteventtypes/{instrumentEventType}/transactiontemplatespecification/{instrumentType}"
+            .replace("{" + "instrumentType" + "}", localVarApiClient.escapeString(instrumentType.toString()))
             .replace("{" + "instrumentEventType" + "}", localVarApiClient.escapeString(instrumentEventType.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -510,35 +514,42 @@ public class InstrumentEventTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionTemplateSpecificationValidateBeforeCall(String instrumentEventType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateSpecificationValidateBeforeCall(String instrumentType, String instrumentEventType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'instrumentType' is set
+        if (instrumentType == null) {
+            throw new ApiException("Missing the required parameter 'instrumentType' when calling getTransactionTemplateSpecification(Async)");
+        }
+
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling getTransactionTemplateSpecification(Async)");
         }
 
-        return getTransactionTemplateSpecificationCall(instrumentEventType, _callback);
+        return getTransactionTemplateSpecificationCall(instrumentType, instrumentEventType, _callback);
 
     }
 
 
-    private ApiResponse<TransactionTemplateSpecification> getTransactionTemplateSpecificationWithHttpInfo(String instrumentEventType) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, null);
+    private ApiResponse<TransactionTemplateSpecification> getTransactionTemplateSpecificationWithHttpInfo(String instrumentType, String instrumentEventType) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentType, instrumentEventType, null);
         Type localVarReturnType = new TypeToken<TransactionTemplateSpecification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransactionTemplateSpecificationAsync(String instrumentEventType, final ApiCallback<TransactionTemplateSpecification> _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateSpecificationAsync(String instrumentType, String instrumentEventType, final ApiCallback<TransactionTemplateSpecification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, _callback);
+        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentType, instrumentEventType, _callback);
         Type localVarReturnType = new TypeToken<TransactionTemplateSpecification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIgetTransactionTemplateSpecificationRequest {
+        private final String instrumentType;
         private final String instrumentEventType;
 
-        private APIgetTransactionTemplateSpecificationRequest(String instrumentEventType) {
+        private APIgetTransactionTemplateSpecificationRequest(String instrumentType, String instrumentEventType) {
+            this.instrumentType = instrumentType;
             this.instrumentEventType = instrumentEventType;
         }
 
@@ -556,7 +567,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getTransactionTemplateSpecificationCall(instrumentEventType, _callback);
+            return getTransactionTemplateSpecificationCall(instrumentType, instrumentEventType, _callback);
         }
 
         /**
@@ -572,7 +583,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public TransactionTemplateSpecification execute() throws ApiException {
-            ApiResponse<TransactionTemplateSpecification> localVarResp = getTransactionTemplateSpecificationWithHttpInfo(instrumentEventType);
+            ApiResponse<TransactionTemplateSpecification> localVarResp = getTransactionTemplateSpecificationWithHttpInfo(instrumentType, instrumentEventType);
             return localVarResp.getData();
         }
 
@@ -589,7 +600,7 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public ApiResponse<TransactionTemplateSpecification> executeWithHttpInfo() throws ApiException {
-            return getTransactionTemplateSpecificationWithHttpInfo(instrumentEventType);
+            return getTransactionTemplateSpecificationWithHttpInfo(instrumentType, instrumentEventType);
         }
 
         /**
@@ -606,13 +617,14 @@ public class InstrumentEventTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplateSpecification> _callback) throws ApiException {
-            return getTransactionTemplateSpecificationAsync(instrumentEventType, _callback);
+            return getTransactionTemplateSpecificationAsync(instrumentType, instrumentEventType, _callback);
         }
     }
 
     /**
      * [EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification.
      * Retrieve the transaction template specification for a particular event type.
+     * @param instrumentType The requested instrument type. (required)
      * @param instrumentEventType The requested instrument event type. (required)
      * @return APIgetTransactionTemplateSpecificationRequest
      * @http.response.details
@@ -623,7 +635,7 @@ public class InstrumentEventTypesApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetTransactionTemplateSpecificationRequest getTransactionTemplateSpecification(String instrumentEventType) {
-        return new APIgetTransactionTemplateSpecificationRequest(instrumentEventType);
+    public APIgetTransactionTemplateSpecificationRequest getTransactionTemplateSpecification(String instrumentType, String instrumentEventType) {
+        return new APIgetTransactionTemplateSpecificationRequest(instrumentType, instrumentEventType);
     }
 }

@@ -54,6 +54,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionTemplate {
+  public static final String SERIALIZED_NAME_INSTRUMENT_TYPE = "instrumentType";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_TYPE)
+  private String instrumentType;
+
   public static final String SERIALIZED_NAME_INSTRUMENT_EVENT_TYPE = "instrumentEventType";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_TYPE)
   private String instrumentEventType;
@@ -76,6 +80,27 @@ public class TransactionTemplate {
 
   public TransactionTemplate() {
   }
+
+  public TransactionTemplate instrumentType(String instrumentType) {
+    
+    this.instrumentType = instrumentType;
+    return this;
+  }
+
+   /**
+   * A value that represents the instrument type.
+   * @return instrumentType
+  **/
+  @jakarta.annotation.Nonnull
+  public String getInstrumentType() {
+    return instrumentType;
+  }
+
+
+  public void setInstrumentType(String instrumentType) {
+    this.instrumentType = instrumentType;
+  }
+
 
   public TransactionTemplate instrumentEventType(String instrumentEventType) {
     
@@ -208,7 +233,8 @@ public class TransactionTemplate {
       return false;
     }
     TransactionTemplate transactionTemplate = (TransactionTemplate) o;
-    return Objects.equals(this.instrumentEventType, transactionTemplate.instrumentEventType) &&
+    return Objects.equals(this.instrumentType, transactionTemplate.instrumentType) &&
+        Objects.equals(this.instrumentEventType, transactionTemplate.instrumentEventType) &&
         Objects.equals(this.description, transactionTemplate.description) &&
         Objects.equals(this.scope, transactionTemplate.scope) &&
         Objects.equals(this.componentTransactions, transactionTemplate.componentTransactions) &&
@@ -221,7 +247,7 @@ public class TransactionTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventType, description, scope, componentTransactions, links);
+    return Objects.hash(instrumentType, instrumentEventType, description, scope, componentTransactions, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,6 +261,7 @@ public class TransactionTemplate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionTemplate {\n");
+    sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
     sb.append("    instrumentEventType: ").append(toIndentedString(instrumentEventType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
@@ -262,6 +289,7 @@ public class TransactionTemplate {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("instrumentType");
     openapiFields.add("instrumentEventType");
     openapiFields.add("description");
     openapiFields.add("scope");
@@ -270,6 +298,7 @@ public class TransactionTemplate {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("instrumentType");
     openapiRequiredFields.add("instrumentEventType");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("scope");
@@ -296,6 +325,9 @@ public class TransactionTemplate {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("instrumentType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentType").toString()));
+      }
       if (!jsonObj.get("instrumentEventType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentEventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentEventType").toString()));
       }
