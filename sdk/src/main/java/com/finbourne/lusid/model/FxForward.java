@@ -92,6 +92,10 @@ public class FxForward extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_CCY)
   private String settlementCcy;
 
+  public static final String SERIALIZED_NAME_BOOKED_AS_SPOT = "bookedAsSpot";
+  @SerializedName(SERIALIZED_NAME_BOOKED_AS_SPOT)
+  private Boolean bookedAsSpot;
+
   public FxForward() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -306,6 +310,27 @@ public class FxForward extends LusidInstrument {
   }
 
 
+  public FxForward bookedAsSpot(Boolean bookedAsSpot) {
+    
+    this.bookedAsSpot = bookedAsSpot;
+    return this;
+  }
+
+   /**
+   * Boolean flag for FX Forward transactions booked with Spot settlement. This will default to False if not provided.  For information purposes only, this is not used by LUSID and does not impact any valuation, analytics, cashflows or events.
+   * @return bookedAsSpot
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getBookedAsSpot() {
+    return bookedAsSpot;
+  }
+
+
+  public void setBookedAsSpot(Boolean bookedAsSpot) {
+    this.bookedAsSpot = bookedAsSpot;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -326,6 +351,7 @@ public class FxForward extends LusidInstrument {
         Objects.equals(this.isNdf, fxForward.isNdf) &&
         Objects.equals(this.fixingDate, fxForward.fixingDate) &&
         Objects.equals(this.settlementCcy, fxForward.settlementCcy) &&
+        Objects.equals(this.bookedAsSpot, fxForward.bookedAsSpot) &&
         super.equals(o);
   }
 
@@ -335,7 +361,7 @@ public class FxForward extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domAmount, domCcy, fgnAmount, fgnCcy, refSpotRate, isNdf, fixingDate, settlementCcy, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domAmount, domCcy, fgnAmount, fgnCcy, refSpotRate, isNdf, fixingDate, settlementCcy, bookedAsSpot, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -360,6 +386,7 @@ public class FxForward extends LusidInstrument {
     sb.append("    isNdf: ").append(toIndentedString(isNdf)).append("\n");
     sb.append("    fixingDate: ").append(toIndentedString(fixingDate)).append("\n");
     sb.append("    settlementCcy: ").append(toIndentedString(settlementCcy)).append("\n");
+    sb.append("    bookedAsSpot: ").append(toIndentedString(bookedAsSpot)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -393,6 +420,7 @@ public class FxForward extends LusidInstrument {
     openapiFields.add("isNdf");
     openapiFields.add("fixingDate");
     openapiFields.add("settlementCcy");
+    openapiFields.add("bookedAsSpot");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
