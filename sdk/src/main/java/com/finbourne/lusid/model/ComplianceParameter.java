@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceParameter {
   /**
-   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter
+   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter
    */
   @JsonAdapter(ComplianceParameterTypeEnum.Adapter.class)
   public enum ComplianceParameterTypeEnum {
@@ -88,7 +88,9 @@ public class ComplianceParameter {
     
     INSTRUMENTLISTCOMPLIANCEPARAMETER("InstrumentListComplianceParameter"),
     
-    FILTERPREDICATECOMPLIANCEPARAMETER("FilterPredicateComplianceParameter");
+    FILTERPREDICATECOMPLIANCEPARAMETER("FilterPredicateComplianceParameter"),
+    
+    GROUPFILTERPREDICATECOMPLIANCEPARAMETER("GroupFilterPredicateComplianceParameter");
 
     private String value;
 
@@ -142,7 +144,7 @@ public class ComplianceParameter {
   }
 
    /**
-   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter
+   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter
    * @return complianceParameterType
   **/
   @jakarta.annotation.Nonnull
@@ -249,6 +251,9 @@ public class ComplianceParameter {
           break;
         case "FilterPredicateComplianceParameter":
           FilterPredicateComplianceParameter.validateJsonElement(jsonElement);
+          break;
+        case "GroupFilterPredicateComplianceParameter":
+          GroupFilterPredicateComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "InstrumentListComplianceParameter":
           InstrumentListComplianceParameter.validateJsonElement(jsonElement);

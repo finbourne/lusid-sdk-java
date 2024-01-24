@@ -41,5 +41,7 @@
 
 * `FILTERPREDICATECOMPLIANCEPARAMETER` (value: `"FilterPredicateComplianceParameter"`)
 
+* `GROUPFILTERPREDICATECOMPLIANCEPARAMETER` (value: `"GroupFilterPredicateComplianceParameter"`)
+
 
 

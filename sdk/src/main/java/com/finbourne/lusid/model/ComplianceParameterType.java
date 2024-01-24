@@ -59,7 +59,9 @@ public enum ComplianceParameterType {
   
   INSTRUMENTLISTCOMPLIANCEPARAMETER("InstrumentListComplianceParameter"),
   
-  FILTERPREDICATECOMPLIANCEPARAMETER("FilterPredicateComplianceParameter");
+  FILTERPREDICATECOMPLIANCEPARAMETER("FilterPredicateComplianceParameter"),
+  
+  GROUPFILTERPREDICATECOMPLIANCEPARAMETER("GroupFilterPredicateComplianceParameter");
 
   private String value;
 

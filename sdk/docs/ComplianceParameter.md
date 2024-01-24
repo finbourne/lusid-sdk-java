@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**complianceParameterType** | [**ComplianceParameterTypeEnum**](#ComplianceParameterTypeEnum) | The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter |  |
+|**complianceParameterType** | [**ComplianceParameterTypeEnum**](#ComplianceParameterTypeEnum) | The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter |  |
 
 
 
@@ -33,6 +33,7 @@
 | PORTFOLIOGROUPIDLISTCOMPLIANCEPARAMETER | &quot;PortfolioGroupIdListComplianceParameter&quot; |
 | INSTRUMENTLISTCOMPLIANCEPARAMETER | &quot;InstrumentListComplianceParameter&quot; |
 | FILTERPREDICATECOMPLIANCEPARAMETER | &quot;FilterPredicateComplianceParameter&quot; |
+| GROUPFILTERPREDICATECOMPLIANCEPARAMETER | &quot;GroupFilterPredicateComplianceParameter&quot; |
 
 
 

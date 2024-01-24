@@ -298,6 +298,7 @@ public class JSON {
                         classByDiscriminatorValue.put("DecimalComplianceParameter", com.finbourne.lusid.model.DecimalComplianceParameter.class);
                         classByDiscriminatorValue.put("DecimalListComplianceParameter", com.finbourne.lusid.model.DecimalListComplianceParameter.class);
                         classByDiscriminatorValue.put("FilterPredicateComplianceParameter", com.finbourne.lusid.model.FilterPredicateComplianceParameter.class);
+                        classByDiscriminatorValue.put("GroupFilterPredicateComplianceParameter", com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.class);
                         classByDiscriminatorValue.put("InstrumentListComplianceParameter", com.finbourne.lusid.model.InstrumentListComplianceParameter.class);
                         classByDiscriminatorValue.put("PortfolioGroupIdComplianceParameter", com.finbourne.lusid.model.PortfolioGroupIdComplianceParameter.class);
                         classByDiscriminatorValue.put("PortfolioGroupIdListComplianceParameter", com.finbourne.lusid.model.PortfolioGroupIdListComplianceParameter.class);
@@ -774,6 +775,15 @@ public class JSON {
                         classByDiscriminatorValue.put("FxVolSurfaceData", com.finbourne.lusid.model.FxVolSurfaceData.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.class, new TypeSelector<com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("GroupFilterPredicateComplianceParameter", com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceParameterType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.IndexModelOptions.class, new TypeSelector<com.finbourne.lusid.model.IndexModelOptions>() {
@@ -1881,6 +1891,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GetReferencePortfolioConstituentsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GetStructuredResultDataResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GetVirtualDocumentResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupOfMarketDataKeyRules.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupedResultOfAddressKey.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.HoldingAdjustment.CustomTypeAdapterFactory());
