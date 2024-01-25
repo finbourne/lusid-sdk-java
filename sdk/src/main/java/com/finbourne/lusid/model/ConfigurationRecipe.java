@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.HoldingContext;
 import com.finbourne.lusid.model.MarketContext;
 import com.finbourne.lusid.model.PricingContext;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.TranslationContext;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -88,6 +89,10 @@ public class ConfigurationRecipe {
   public static final String SERIALIZED_NAME_HOLDING = "holding";
   @SerializedName(SERIALIZED_NAME_HOLDING)
   private HoldingContext holding;
+
+  public static final String SERIALIZED_NAME_TRANSLATION = "translation";
+  @SerializedName(SERIALIZED_NAME_TRANSLATION)
+  private TranslationContext translation;
 
   public ConfigurationRecipe() {
   }
@@ -268,6 +273,27 @@ public class ConfigurationRecipe {
   }
 
 
+  public ConfigurationRecipe translation(TranslationContext translation) {
+    
+    this.translation = translation;
+    return this;
+  }
+
+   /**
+   * Get translation
+   * @return translation
+  **/
+  @jakarta.annotation.Nullable
+  public TranslationContext getTranslation() {
+    return translation;
+  }
+
+
+  public void setTranslation(TranslationContext translation) {
+    this.translation = translation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -285,7 +311,8 @@ public class ConfigurationRecipe {
         Objects.equals(this.aggregation, configurationRecipe.aggregation) &&
         Objects.equals(this.inheritedRecipes, configurationRecipe.inheritedRecipes) &&
         Objects.equals(this.description, configurationRecipe.description) &&
-        Objects.equals(this.holding, configurationRecipe.holding);
+        Objects.equals(this.holding, configurationRecipe.holding) &&
+        Objects.equals(this.translation, configurationRecipe.translation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -294,7 +321,7 @@ public class ConfigurationRecipe {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, market, pricing, aggregation, inheritedRecipes, description, holding);
+    return Objects.hash(scope, code, market, pricing, aggregation, inheritedRecipes, description, holding, translation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -316,6 +343,7 @@ public class ConfigurationRecipe {
     sb.append("    inheritedRecipes: ").append(toIndentedString(inheritedRecipes)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    holding: ").append(toIndentedString(holding)).append("\n");
+    sb.append("    translation: ").append(toIndentedString(translation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -346,6 +374,7 @@ public class ConfigurationRecipe {
     openapiFields.add("inheritedRecipes");
     openapiFields.add("description");
     openapiFields.add("holding");
+    openapiFields.add("translation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -411,6 +440,10 @@ public class ConfigurationRecipe {
       // validate the optional field `holding`
       if (jsonObj.get("holding") != null && !jsonObj.get("holding").isJsonNull()) {
         HoldingContext.validateJsonElement(jsonObj.get("holding"));
+      }
+      // validate the optional field `translation`
+      if (jsonObj.get("translation") != null && !jsonObj.get("translation").isJsonNull()) {
+        TranslationContext.validateJsonElement(jsonObj.get("translation"));
       }
   }
 
