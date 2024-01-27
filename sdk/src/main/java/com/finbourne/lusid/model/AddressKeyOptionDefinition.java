@@ -60,6 +60,10 @@ public class AddressKeyOptionDefinition {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_OPTIONAL = "optional";
   @SerializedName(SERIALIZED_NAME_OPTIONAL)
   private Boolean optional;
@@ -114,6 +118,27 @@ public class AddressKeyOptionDefinition {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+
+  public AddressKeyOptionDefinition description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The description of the option
+   * @return description
+  **/
+  @jakarta.annotation.Nonnull
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -200,6 +225,7 @@ public class AddressKeyOptionDefinition {
     AddressKeyOptionDefinition addressKeyOptionDefinition = (AddressKeyOptionDefinition) o;
     return Objects.equals(this.name, addressKeyOptionDefinition.name) &&
         Objects.equals(this.type, addressKeyOptionDefinition.type) &&
+        Objects.equals(this.description, addressKeyOptionDefinition.description) &&
         Objects.equals(this.optional, addressKeyOptionDefinition.optional) &&
         Objects.equals(this.allowedValueSet, addressKeyOptionDefinition.allowedValueSet) &&
         Objects.equals(this.defaultValue, addressKeyOptionDefinition.defaultValue);
@@ -211,7 +237,7 @@ public class AddressKeyOptionDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, optional, allowedValueSet, defaultValue);
+    return Objects.hash(name, type, description, optional, allowedValueSet, defaultValue);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,6 +253,7 @@ public class AddressKeyOptionDefinition {
     sb.append("class AddressKeyOptionDefinition {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    optional: ").append(toIndentedString(optional)).append("\n");
     sb.append("    allowedValueSet: ").append(toIndentedString(allowedValueSet)).append("\n");
     sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
@@ -254,6 +281,7 @@ public class AddressKeyOptionDefinition {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("type");
+    openapiFields.add("description");
     openapiFields.add("optional");
     openapiFields.add("allowedValueSet");
     openapiFields.add("defaultValue");
@@ -262,6 +290,7 @@ public class AddressKeyOptionDefinition {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("description");
     openapiRequiredFields.add("optional");
   }
 
@@ -290,6 +319,9 @@ public class AddressKeyOptionDefinition {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("allowedValueSet") != null && !jsonObj.get("allowedValueSet").isJsonNull() && !jsonObj.get("allowedValueSet").isJsonArray()) {

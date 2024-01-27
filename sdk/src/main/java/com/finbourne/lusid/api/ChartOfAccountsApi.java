@@ -2195,7 +2195,7 @@ public class ChartOfAccountsApi {
     public APIgetChartOfAccountsRequest getChartOfAccounts(String scope, String code) {
         return new APIgetChartOfAccountsRequest(scope, code);
     }
-    private okhttp3.Call getCleardownModuleCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCleardownModuleCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2223,6 +2223,10 @@ public class ChartOfAccountsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2245,7 +2249,7 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCleardownModule(Async)");
@@ -2261,20 +2265,20 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling getCleardownModule(Async)");
         }
 
-        return getCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+        return getCleardownModuleCall(scope, code, cleardownModuleCode, asAt, _callback);
 
     }
 
 
-    private ApiResponse<CleardownModuleResponse> getCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode) throws ApiException {
-        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, null);
+    private ApiResponse<CleardownModuleResponse> getCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, null);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getCleardownModuleAsync(String scope, String code, String cleardownModuleCode, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call getCleardownModuleAsync(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, _callback);
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, _callback);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2284,11 +2288,22 @@ public class ChartOfAccountsApi {
         private final String scope;
         private final String code;
         private final String cleardownModuleCode;
+        private OffsetDateTime asAt;
 
         private APIgetCleardownModuleRequest(String scope, String code, String cleardownModuleCode) {
             this.scope = scope;
             this.code = code;
             this.cleardownModuleCode = cleardownModuleCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Cleardown Module. Defaults to return the latest version of the Cleardown Module if not specified. (optional)
+         * @return APIgetCleardownModuleRequest
+         */
+        public APIgetCleardownModuleRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
         }
 
         /**
@@ -2305,7 +2320,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+            return getCleardownModuleCall(scope, code, cleardownModuleCode, asAt, _callback);
         }
 
         /**
@@ -2321,7 +2336,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public CleardownModuleResponse execute() throws ApiException {
-            ApiResponse<CleardownModuleResponse> localVarResp = getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+            ApiResponse<CleardownModuleResponse> localVarResp = getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, asAt);
             return localVarResp.getData();
         }
 
@@ -2338,7 +2353,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
-            return getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+            return getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, asAt);
         }
 
         /**
@@ -2355,7 +2370,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
-            return getCleardownModuleAsync(scope, code, cleardownModuleCode, _callback);
+            return getCleardownModuleAsync(scope, code, cleardownModuleCode, asAt, _callback);
         }
     }
 
@@ -2377,7 +2392,7 @@ public class ChartOfAccountsApi {
     public APIgetCleardownModuleRequest getCleardownModule(String scope, String code, String cleardownModuleCode) {
         return new APIgetCleardownModuleRequest(scope, code, cleardownModuleCode);
     }
-    private okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2405,6 +2420,10 @@ public class ChartOfAccountsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2427,7 +2446,7 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getGeneralLedgerProfile(Async)");
@@ -2443,20 +2462,20 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'generalLedgerProfileCode' when calling getGeneralLedgerProfile(Async)");
         }
 
-        return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+        return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, asAt, _callback);
 
     }
 
 
-    private ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
-        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null);
+    private ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, null);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+    private okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback);
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, _callback);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2466,11 +2485,22 @@ public class ChartOfAccountsApi {
         private final String scope;
         private final String code;
         private final String generalLedgerProfileCode;
+        private OffsetDateTime asAt;
 
         private APIgetGeneralLedgerProfileRequest(String scope, String code, String generalLedgerProfileCode) {
             this.scope = scope;
             this.code = code;
             this.generalLedgerProfileCode = generalLedgerProfileCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the General Ledger Profile. Defaults to return the latest version of the General Ledger Profile if not specified. (optional)
+         * @return APIgetGeneralLedgerProfileRequest
+         */
+        public APIgetGeneralLedgerProfileRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
         }
 
         /**
@@ -2487,7 +2517,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+            return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, asAt, _callback);
         }
 
         /**
@@ -2503,7 +2533,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public GeneralLedgerProfileResponse execute() throws ApiException {
-            ApiResponse<GeneralLedgerProfileResponse> localVarResp = getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, asAt);
             return localVarResp.getData();
         }
 
@@ -2520,7 +2550,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
-            return getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+            return getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, asAt);
         }
 
         /**
@@ -2537,7 +2567,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
-            return getGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, _callback);
+            return getGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, asAt, _callback);
         }
     }
 
@@ -2559,7 +2589,7 @@ public class ChartOfAccountsApi {
     public APIgetGeneralLedgerProfileRequest getGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) {
         return new APIgetGeneralLedgerProfileRequest(scope, code, generalLedgerProfileCode);
     }
-    private okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2587,6 +2617,10 @@ public class ChartOfAccountsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2609,7 +2643,7 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPostingModule(Async)");
@@ -2625,20 +2659,20 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleCode' when calling getPostingModule(Async)");
         }
 
-        return getPostingModuleCall(scope, code, postingModuleCode, _callback);
+        return getPostingModuleCall(scope, code, postingModuleCode, asAt, _callback);
 
     }
 
 
-    private ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
-        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, null);
+    private ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, null);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback);
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, _callback);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2648,11 +2682,22 @@ public class ChartOfAccountsApi {
         private final String scope;
         private final String code;
         private final String postingModuleCode;
+        private OffsetDateTime asAt;
 
         private APIgetPostingModuleRequest(String scope, String code, String postingModuleCode) {
             this.scope = scope;
             this.code = code;
             this.postingModuleCode = postingModuleCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Posting Module. Defaults to return the latest version of the Posting Module if not specified. (optional)
+         * @return APIgetPostingModuleRequest
+         */
+        public APIgetPostingModuleRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
         }
 
         /**
@@ -2669,7 +2714,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPostingModuleCall(scope, code, postingModuleCode, _callback);
+            return getPostingModuleCall(scope, code, postingModuleCode, asAt, _callback);
         }
 
         /**
@@ -2685,7 +2730,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public PostingModuleResponse execute() throws ApiException {
-            ApiResponse<PostingModuleResponse> localVarResp = getPostingModuleWithHttpInfo(scope, code, postingModuleCode);
+            ApiResponse<PostingModuleResponse> localVarResp = getPostingModuleWithHttpInfo(scope, code, postingModuleCode, asAt);
             return localVarResp.getData();
         }
 
@@ -2702,7 +2747,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
-            return getPostingModuleWithHttpInfo(scope, code, postingModuleCode);
+            return getPostingModuleWithHttpInfo(scope, code, postingModuleCode, asAt);
         }
 
         /**
@@ -2719,7 +2764,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
-            return getPostingModuleAsync(scope, code, postingModuleCode, _callback);
+            return getPostingModuleAsync(scope, code, postingModuleCode, asAt, _callback);
         }
     }
 

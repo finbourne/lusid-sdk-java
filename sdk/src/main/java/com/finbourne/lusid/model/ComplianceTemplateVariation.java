@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ComplianceStep;
 import com.finbourne.lusid.model.ComplianceTemplateParameter;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -75,6 +76,10 @@ public class ComplianceTemplateVariation {
   public static final String SERIALIZED_NAME_ACCEPTED_ADDRESS_KEYS = "acceptedAddressKeys";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_ADDRESS_KEYS)
   private ResourceId acceptedAddressKeys;
+
+  public static final String SERIALIZED_NAME_STEPS = "steps";
+  @SerializedName(SERIALIZED_NAME_STEPS)
+  private List<ComplianceStep> steps = new ArrayList<>();
 
   public ComplianceTemplateVariation() {
   }
@@ -200,6 +205,35 @@ public class ComplianceTemplateVariation {
   }
 
 
+  public ComplianceTemplateVariation steps(List<ComplianceStep> steps) {
+    
+    this.steps = steps;
+    return this;
+  }
+
+  public ComplianceTemplateVariation addStepsItem(ComplianceStep stepsItem) {
+    if (this.steps == null) {
+      this.steps = new ArrayList<>();
+    }
+    this.steps.add(stepsItem);
+    return this;
+  }
+
+   /**
+   * The steps expressed in this template, with their required parameters
+   * @return steps
+  **/
+  @jakarta.annotation.Nonnull
+  public List<ComplianceStep> getSteps() {
+    return steps;
+  }
+
+
+  public void setSteps(List<ComplianceStep> steps) {
+    this.steps = steps;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -214,12 +248,13 @@ public class ComplianceTemplateVariation {
         Objects.equals(this.description, complianceTemplateVariation.description) &&
         Objects.equals(this.requiredParameters, complianceTemplateVariation.requiredParameters) &&
         Objects.equals(this.properties, complianceTemplateVariation.properties) &&
-        Objects.equals(this.acceptedAddressKeys, complianceTemplateVariation.acceptedAddressKeys);
+        Objects.equals(this.acceptedAddressKeys, complianceTemplateVariation.acceptedAddressKeys) &&
+        Objects.equals(this.steps, complianceTemplateVariation.steps);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, description, requiredParameters, properties, acceptedAddressKeys);
+    return Objects.hash(label, description, requiredParameters, properties, acceptedAddressKeys, steps);
   }
 
   @Override
@@ -231,6 +266,7 @@ public class ComplianceTemplateVariation {
     sb.append("    requiredParameters: ").append(toIndentedString(requiredParameters)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    acceptedAddressKeys: ").append(toIndentedString(acceptedAddressKeys)).append("\n");
+    sb.append("    steps: ").append(toIndentedString(steps)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -258,6 +294,7 @@ public class ComplianceTemplateVariation {
     openapiFields.add("requiredParameters");
     openapiFields.add("properties");
     openapiFields.add("acceptedAddressKeys");
+    openapiFields.add("steps");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -266,6 +303,7 @@ public class ComplianceTemplateVariation {
     openapiRequiredFields.add("requiredParameters");
     openapiRequiredFields.add("properties");
     openapiRequiredFields.add("acceptedAddressKeys");
+    openapiRequiredFields.add("steps");
   }
 
  /**
@@ -306,6 +344,16 @@ public class ComplianceTemplateVariation {
       };
       // validate the required field `acceptedAddressKeys`
       ResourceId.validateJsonElement(jsonObj.get("acceptedAddressKeys"));
+      // ensure the json data is an array
+      if (!jsonObj.get("steps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `steps` to be an array in the JSON string but got `%s`", jsonObj.get("steps").toString()));
+      }
+
+      JsonArray jsonArraysteps = jsonObj.getAsJsonArray("steps");
+      // validate the required field `steps` (array)
+      for (int i = 0; i < jsonArraysteps.size(); i++) {
+        ComplianceStep.validateJsonElement(jsonArraysteps.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -866,7 +866,7 @@ public class Example {
 
 <a id="getCleardownModule"></a>
 # **getCleardownModule**
-> CleardownModuleResponse getCleardownModule(scope, code, cleardownModuleCode).execute();
+> CleardownModuleResponse getCleardownModule(scope, code, cleardownModuleCode).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
 
@@ -895,8 +895,10 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Chart of Accounts.
     String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
     String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Cleardown Module. Defaults to return the latest version of the Cleardown Module if not specified.
     try {
       CleardownModuleResponse result = apiInstance.getCleardownModule(scope, code, cleardownModuleCode)
+            .asAt(asAt)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -917,6 +919,7 @@ public class Example {
 | **scope** | **String**| The scope of the Chart of Accounts. | |
 | **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **cleardownModuleCode** | **String**| The code of the Cleardown Module. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Cleardown Module. Defaults to return the latest version of the Cleardown Module if not specified. | [optional] |
 
 ### Return type
 
@@ -940,7 +943,7 @@ public class Example {
 
 <a id="getGeneralLedgerProfile"></a>
 # **getGeneralLedgerProfile**
-> GeneralLedgerProfileResponse getGeneralLedgerProfile(scope, code, generalLedgerProfileCode).execute();
+> GeneralLedgerProfileResponse getGeneralLedgerProfile(scope, code, generalLedgerProfileCode).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
 
@@ -969,8 +972,10 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Chart of Accounts for the General Ledger Profile.
     String code = "code_example"; // String | The code of the Chart of Accounts for the General Ledger Profile.
     String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The General Ledger Profile Code of the General Ledger Profile.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the General Ledger Profile. Defaults to return the latest version of the General Ledger Profile if not specified.
     try {
       GeneralLedgerProfileResponse result = apiInstance.getGeneralLedgerProfile(scope, code, generalLedgerProfileCode)
+            .asAt(asAt)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -991,6 +996,7 @@ public class Example {
 | **scope** | **String**| The scope of the Chart of Accounts for the General Ledger Profile. | |
 | **code** | **String**| The code of the Chart of Accounts for the General Ledger Profile. | |
 | **generalLedgerProfileCode** | **String**| The General Ledger Profile Code of the General Ledger Profile. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the General Ledger Profile. Defaults to return the latest version of the General Ledger Profile if not specified. | [optional] |
 
 ### Return type
 
@@ -1014,7 +1020,7 @@ public class Example {
 
 <a id="getPostingModule"></a>
 # **getPostingModule**
-> PostingModuleResponse getPostingModule(scope, code, postingModuleCode).execute();
+> PostingModuleResponse getPostingModule(scope, code, postingModuleCode).asAt(asAt).execute();
 
 [EXPERIMENTAL] GetPostingModule: Get a Posting Module
 
@@ -1043,8 +1049,10 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the Chart of Accounts.
     String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
     String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Posting Module. Defaults to return the latest version of the Posting Module if not specified.
     try {
       PostingModuleResponse result = apiInstance.getPostingModule(scope, code, postingModuleCode)
+            .asAt(asAt)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1065,6 +1073,7 @@ public class Example {
 | **scope** | **String**| The scope of the Chart of Accounts. | |
 | **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **postingModuleCode** | **String**| The code of the Posting Module. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Posting Module. Defaults to return the latest version of the Posting Module if not specified. | [optional] |
 
 ### Return type
 
