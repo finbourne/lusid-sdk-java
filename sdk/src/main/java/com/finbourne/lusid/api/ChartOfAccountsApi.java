@@ -3049,7 +3049,7 @@ public class ChartOfAccountsApi {
     public APIlistAccountsRequest listAccounts(String scope, String code) {
         return new APIlistAccountsRequest(scope, code);
     }
-    private okhttp3.Call listChartsOfAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listChartsOfAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3094,6 +3094,10 @@ public class ChartOfAccountsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         if (propertyKeys != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
@@ -3120,21 +3124,21 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listChartsOfAccountsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listChartsOfAccountsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfChartOfAccounts> listChartsOfAccountsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfChartOfAccounts> listChartsOfAccountsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listChartsOfAccountsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
+    private okhttp3.Call listChartsOfAccountsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3146,6 +3150,7 @@ public class ChartOfAccountsApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
         private List<String> propertyKeys;
 
         private APIlistChartsOfAccountsRequest() {
@@ -3202,6 +3207,16 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistChartsOfAccountsRequest
+         */
+        public APIlistChartsOfAccountsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Set propertyKeys
          * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
          * @return APIlistChartsOfAccountsRequest
@@ -3225,7 +3240,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -3241,7 +3256,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public PagedResourceListOfChartOfAccounts execute() throws ApiException {
-            ApiResponse<PagedResourceListOfChartOfAccounts> localVarResp = listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfChartOfAccounts> localVarResp = listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -3258,7 +3273,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfChartOfAccounts> executeWithHttpInfo() throws ApiException {
-            return listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+            return listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
@@ -3275,7 +3290,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
-            return listChartsOfAccountsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listChartsOfAccountsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
     }
 
@@ -3536,7 +3551,7 @@ public class ChartOfAccountsApi {
     public APIlistCleardownModuleRulesRequest listCleardownModuleRules(String scope, String code, String cleardownModuleCode) {
         return new APIlistCleardownModuleRulesRequest(scope, code, cleardownModuleCode);
     }
-    private okhttp3.Call listCleardownModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCleardownModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3579,6 +3594,10 @@ public class ChartOfAccountsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3601,7 +3620,7 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCleardownModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCleardownModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCleardownModules(Async)");
@@ -3612,20 +3631,20 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listCleardownModules(Async)");
         }
 
-        return listCleardownModulesCall(scope, code, asAt, page, limit, filter, _callback);
+        return listCleardownModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfCleardownModuleResponse> listCleardownModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, null);
+    private ApiResponse<PagedResourceListOfCleardownModuleResponse> listCleardownModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listCleardownModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call listCleardownModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3638,6 +3657,7 @@ public class ChartOfAccountsApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
 
         private APIlistCleardownModulesRequest(String scope, String code) {
             this.scope = scope;
@@ -3685,6 +3705,16 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistCleardownModulesRequest
+         */
+        public APIlistCleardownModulesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Build call for listCleardownModules
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3698,7 +3728,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listCleardownModulesCall(scope, code, asAt, page, limit, filter, _callback);
+            return listCleardownModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
         }
 
         /**
@@ -3714,7 +3744,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public PagedResourceListOfCleardownModuleResponse execute() throws ApiException {
-            ApiResponse<PagedResourceListOfCleardownModuleResponse> localVarResp = listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter);
+            ApiResponse<PagedResourceListOfCleardownModuleResponse> localVarResp = listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
             return localVarResp.getData();
         }
 
@@ -3731,7 +3761,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfCleardownModuleResponse> executeWithHttpInfo() throws ApiException {
-            return listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter);
+            return listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
         }
 
         /**
@@ -3748,7 +3778,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
-            return listCleardownModulesAsync(scope, code, asAt, page, limit, filter, _callback);
+            return listCleardownModulesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
         }
     }
 
@@ -3769,7 +3799,7 @@ public class ChartOfAccountsApi {
     public APIlistCleardownModulesRequest listCleardownModules(String scope, String code) {
         return new APIlistCleardownModulesRequest(scope, code);
     }
-    private okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3812,6 +3842,10 @@ public class ChartOfAccountsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3834,7 +3868,7 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listGeneralLedgerProfilesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listGeneralLedgerProfilesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listGeneralLedgerProfiles(Async)");
@@ -3845,20 +3879,20 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listGeneralLedgerProfiles(Async)");
         }
 
-        return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, _callback);
+        return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, null);
+    private ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
+    private okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3871,6 +3905,7 @@ public class ChartOfAccountsApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
 
         private APIlistGeneralLedgerProfilesRequest(String scope, String code) {
             this.scope = scope;
@@ -3918,6 +3953,16 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistGeneralLedgerProfilesRequest
+         */
+        public APIlistGeneralLedgerProfilesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Build call for listGeneralLedgerProfiles
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3931,7 +3976,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, _callback);
+            return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
         }
 
         /**
@@ -3947,7 +3992,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public PagedResourceListOfGeneralLedgerProfileResponse execute() throws ApiException {
-            ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> localVarResp = listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter);
+            ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> localVarResp = listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
             return localVarResp.getData();
         }
 
@@ -3964,7 +4009,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
-            return listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter);
+            return listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
         }
 
         /**
@@ -3981,7 +4026,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
-            return listGeneralLedgerProfilesAsync(scope, code, asAt, page, limit, filter, _callback);
+            return listGeneralLedgerProfilesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
         }
     }
 
@@ -4244,7 +4289,7 @@ public class ChartOfAccountsApi {
     public APIlistPostingModuleRulesRequest listPostingModuleRules(String scope, String code, String postingModuleCode) {
         return new APIlistPostingModuleRulesRequest(scope, code, postingModuleCode);
     }
-    private okhttp3.Call listPostingModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPostingModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4287,6 +4332,10 @@ public class ChartOfAccountsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -4309,7 +4358,7 @@ public class ChartOfAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPostingModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPostingModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPostingModules(Async)");
@@ -4320,20 +4369,20 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listPostingModules(Async)");
         }
 
-        return listPostingModulesCall(scope, code, asAt, page, limit, filter, _callback);
+        return listPostingModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfPostingModuleResponse> listPostingModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, null);
+    private ApiResponse<PagedResourceListOfPostingModuleResponse> listPostingModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPostingModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
+    private okhttp3.Call listPostingModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4346,6 +4395,7 @@ public class ChartOfAccountsApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
 
         private APIlistPostingModulesRequest(String scope, String code) {
             this.scope = scope;
@@ -4393,6 +4443,16 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistPostingModulesRequest
+         */
+        public APIlistPostingModulesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Build call for listPostingModules
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -4406,7 +4466,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPostingModulesCall(scope, code, asAt, page, limit, filter, _callback);
+            return listPostingModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
         }
 
         /**
@@ -4422,7 +4482,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public PagedResourceListOfPostingModuleResponse execute() throws ApiException {
-            ApiResponse<PagedResourceListOfPostingModuleResponse> localVarResp = listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter);
+            ApiResponse<PagedResourceListOfPostingModuleResponse> localVarResp = listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
             return localVarResp.getData();
         }
 
@@ -4439,7 +4499,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfPostingModuleResponse> executeWithHttpInfo() throws ApiException {
-            return listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter);
+            return listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
         }
 
         /**
@@ -4456,7 +4516,7 @@ public class ChartOfAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
-            return listPostingModulesAsync(scope, code, asAt, page, limit, filter, _callback);
+            return listPostingModulesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
         }
     }
 

@@ -71,6 +71,170 @@ public class ScopesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call listEntityScopesCall(String entityType, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/scopes/{entityType}"
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listEntityScopesValidateBeforeCall(String entityType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling listEntityScopes(Async)");
+        }
+
+        return listEntityScopesCall(entityType, _callback);
+
+    }
+
+
+    private ApiResponse<ResourceListOfScopeDefinition> listEntityScopesWithHttpInfo(String entityType) throws ApiException {
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, null);
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listEntityScopesAsync(String entityType, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistEntityScopesRequest {
+        private final String entityType;
+
+        private APIlistEntityScopesRequest(String entityType) {
+            this.entityType = entityType;
+        }
+
+        /**
+         * Build call for listEntityScopes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listEntityScopesCall(entityType, _callback);
+        }
+
+        /**
+         * Execute listEntityScopes request
+         * @return ResourceListOfScopeDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfScopeDefinition execute() throws ApiException {
+            ApiResponse<ResourceListOfScopeDefinition> localVarResp = listEntityScopesWithHttpInfo(entityType);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listEntityScopes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo() throws ApiException {
+            return listEntityScopesWithHttpInfo(entityType);
+        }
+
+        /**
+         * Execute listEntityScopes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
+            return listEntityScopesAsync(entityType, _callback);
+        }
+    }
+
+    /**
+     * ListEntityScopes: List Entity Scopes
+     * List all the scopes for a given entity type that contain data.
+     * @param entityType The entity type to list scopes for. (required)
+     * @return APIlistEntityScopesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistEntityScopesRequest listEntityScopes(String entityType) {
+        return new APIlistEntityScopesRequest(entityType);
+    }
     private okhttp3.Call listScopesCall(String filter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers

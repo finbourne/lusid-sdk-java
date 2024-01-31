@@ -102,7 +102,7 @@ public class IntermediateComplianceStep extends ComplianceStep {
   }
 
    /**
-   * Parameters required for the step. Some step types group parameters to differentiate between, for example, hard limit and warning threshold parameters
+   * Parameters required for the step
    * @return groupedParameters
   **/
   @jakarta.annotation.Nonnull

@@ -644,7 +644,7 @@ public class AborConfigurationApi {
     public APIgetAborConfigurationRequest getAborConfiguration(String scope, String code) {
         return new APIgetAborConfigurationRequest(scope, code);
     }
-    private okhttp3.Call listAborConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAborConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -689,6 +689,10 @@ public class AborConfigurationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         if (propertyKeys != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
@@ -715,21 +719,21 @@ public class AborConfigurationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAborConfigurationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listAborConfigurationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfAborConfiguration> listAborConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfAborConfiguration> listAborConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAborConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
+    private okhttp3.Call listAborConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -741,6 +745,7 @@ public class AborConfigurationApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
         private List<String> propertyKeys;
 
         private APIlistAborConfigurationsRequest() {
@@ -797,6 +802,16 @@ public class AborConfigurationApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistAborConfigurationsRequest
+         */
+        public APIlistAborConfigurationsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Set propertyKeys
          * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
          * @return APIlistAborConfigurationsRequest
@@ -820,7 +835,7 @@ public class AborConfigurationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -836,7 +851,7 @@ public class AborConfigurationApi {
          </table>
          */
         public PagedResourceListOfAborConfiguration execute() throws ApiException {
-            ApiResponse<PagedResourceListOfAborConfiguration> localVarResp = listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfAborConfiguration> localVarResp = listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -853,7 +868,7 @@ public class AborConfigurationApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfAborConfiguration> executeWithHttpInfo() throws ApiException {
-            return listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+            return listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
@@ -870,7 +885,7 @@ public class AborConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
-            return listAborConfigurationsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listAborConfigurationsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
     }
 

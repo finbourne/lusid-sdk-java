@@ -1187,7 +1187,7 @@ public class Example {
 
 <a id="listChartsOfAccounts"></a>
 # **listChartsOfAccounts**
-> PagedResourceListOfChartOfAccounts listChartsOfAccounts().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
+> PagedResourceListOfChartOfAccounts listChartsOfAccounts().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
 
@@ -1218,6 +1218,7 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing charts of accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Chart of Accounts type, specify \"id.Code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto each Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'.
     try {
       PagedResourceListOfChartOfAccounts result = apiInstance.listChartsOfAccounts()
@@ -1226,6 +1227,7 @@ public class Example {
             .page(page)
             .limit(limit)
             .filter(filter)
+            .sortBy(sortBy)
             .propertyKeys(propertyKeys)
             .execute();
       System.out.println(result);
@@ -1249,6 +1251,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing charts of accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. | [optional] |
 
 ### Return type
@@ -1359,7 +1362,7 @@ public class Example {
 
 <a id="listCleardownModules"></a>
 # **listCleardownModules**
-> PagedResourceListOfCleardownModuleResponse listCleardownModules(scope, code).asAt(asAt).page(page).limit(limit).filter(filter).execute();
+> PagedResourceListOfCleardownModuleResponse listCleardownModules(scope, code).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).execute();
 
 [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
 
@@ -1391,12 +1394,14 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing Cleardown Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \"status eq 'Active'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     try {
       PagedResourceListOfCleardownModuleResponse result = apiInstance.listCleardownModules(scope, code)
             .asAt(asAt)
             .page(page)
             .limit(limit)
             .filter(filter)
+            .sortBy(sortBy)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1420,6 +1425,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing Cleardown Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
 
@@ -1443,7 +1449,7 @@ public class Example {
 
 <a id="listGeneralLedgerProfiles"></a>
 # **listGeneralLedgerProfiles**
-> PagedResourceListOfGeneralLedgerProfileResponse listGeneralLedgerProfiles(scope, code).asAt(asAt).page(page).limit(limit).filter(filter).execute();
+> PagedResourceListOfGeneralLedgerProfileResponse listGeneralLedgerProfiles(scope, code).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).execute();
 
 [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
 
@@ -1475,12 +1481,14 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing General Ledger Profiles; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \"type eq 'PeriodBoundary'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     try {
       PagedResourceListOfGeneralLedgerProfileResponse result = apiInstance.listGeneralLedgerProfiles(scope, code)
             .asAt(asAt)
             .page(page)
             .limit(limit)
             .filter(filter)
+            .sortBy(sortBy)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1504,6 +1512,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing General Ledger Profiles; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
 
@@ -1613,7 +1622,7 @@ public class Example {
 
 <a id="listPostingModules"></a>
 # **listPostingModules**
-> PagedResourceListOfPostingModuleResponse listPostingModules(scope, code).asAt(asAt).page(page).limit(limit).filter(filter).execute();
+> PagedResourceListOfPostingModuleResponse listPostingModules(scope, code).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).execute();
 
 [EXPERIMENTAL] ListPostingModules: List Posting Modules
 
@@ -1645,12 +1654,14 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing Posting Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Posting Module status, specify \"status eq 'Active'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     try {
       PagedResourceListOfPostingModuleResponse result = apiInstance.listPostingModules(scope, code)
             .asAt(asAt)
             .page(page)
             .limit(limit)
             .filter(filter)
+            .sortBy(sortBy)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1674,6 +1685,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing Posting Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
 

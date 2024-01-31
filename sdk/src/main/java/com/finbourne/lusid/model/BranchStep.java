@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ComplianceStep;
 import com.finbourne.lusid.model.ComplianceTemplateParameter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -18,10 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,73 +52,17 @@ import com.finbourne.lusid.JSON;
  * BranchStep
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BranchStep {
+public class BranchStep extends ComplianceStep {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
   private String label;
 
-  public static final String SERIALIZED_NAME_GROUPED_PARAMETERS = "groupedParameters";
-  @SerializedName(SERIALIZED_NAME_GROUPED_PARAMETERS)
-  private Map<String, List<ComplianceTemplateParameter>> groupedParameters = new HashMap<>();
-
-  /**
-   * . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep
-   */
-  @JsonAdapter(ComplianceStepTypeEnum.Adapter.class)
-  public enum ComplianceStepTypeEnum {
-    FILTERSTEP("FilterStep"),
-    
-    GROUPBYSTEP("GroupByStep"),
-    
-    GROUPFILTERSTEP("GroupFilterStep"),
-    
-    BRANCHSTEP("BranchStep"),
-    
-    RECOMBINESTEP("RecombineStep");
-
-    private String value;
-
-    ComplianceStepTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ComplianceStepTypeEnum fromValue(String value) {
-      for (ComplianceStepTypeEnum b : ComplianceStepTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ComplianceStepTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ComplianceStepTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ComplianceStepTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ComplianceStepTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_COMPLIANCE_STEP_TYPE = "complianceStepType";
-  @SerializedName(SERIALIZED_NAME_COMPLIANCE_STEP_TYPE)
-  private ComplianceStepTypeEnum complianceStepType;
+  public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
+  @SerializedName(SERIALIZED_NAME_PARAMETERS)
+  private List<ComplianceTemplateParameter> parameters = new ArrayList<>();
 
   public BranchStep() {
+    // this.complianceStepType = this.getClass().getSimpleName();
   }
 
   public BranchStep label(String label) {
@@ -142,53 +86,32 @@ public class BranchStep {
   }
 
 
-  public BranchStep groupedParameters(Map<String, List<ComplianceTemplateParameter>> groupedParameters) {
+  public BranchStep parameters(List<ComplianceTemplateParameter> parameters) {
     
-    this.groupedParameters = groupedParameters;
+    this.parameters = parameters;
     return this;
   }
 
-  public BranchStep putGroupedParametersItem(String key, List<ComplianceTemplateParameter> groupedParametersItem) {
-    if (this.groupedParameters == null) {
-      this.groupedParameters = new HashMap<>();
+  public BranchStep addParametersItem(ComplianceTemplateParameter parametersItem) {
+    if (this.parameters == null) {
+      this.parameters = new ArrayList<>();
     }
-    this.groupedParameters.put(key, groupedParametersItem);
+    this.parameters.add(parametersItem);
     return this;
   }
 
    /**
-   * Parameters required for the step. Some step types group parameters to differentiate between, for example, hard limit and warning threshold parameters
-   * @return groupedParameters
+   * Parameters required for the step
+   * @return parameters
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, List<ComplianceTemplateParameter>> getGroupedParameters() {
-    return groupedParameters;
+  public List<ComplianceTemplateParameter> getParameters() {
+    return parameters;
   }
 
 
-  public void setGroupedParameters(Map<String, List<ComplianceTemplateParameter>> groupedParameters) {
-    this.groupedParameters = groupedParameters;
-  }
-
-
-  public BranchStep complianceStepType(ComplianceStepTypeEnum complianceStepType) {
-    
-    this.complianceStepType = complianceStepType;
-    return this;
-  }
-
-   /**
-   * . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep
-   * @return complianceStepType
-  **/
-  @jakarta.annotation.Nonnull
-  public ComplianceStepTypeEnum getComplianceStepType() {
-    return complianceStepType;
-  }
-
-
-  public void setComplianceStepType(ComplianceStepTypeEnum complianceStepType) {
-    this.complianceStepType = complianceStepType;
+  public void setParameters(List<ComplianceTemplateParameter> parameters) {
+    this.parameters = parameters;
   }
 
 
@@ -203,22 +126,22 @@ public class BranchStep {
     }
     BranchStep branchStep = (BranchStep) o;
     return Objects.equals(this.label, branchStep.label) &&
-        Objects.equals(this.groupedParameters, branchStep.groupedParameters) &&
-        Objects.equals(this.complianceStepType, branchStep.complianceStepType);
+        Objects.equals(this.parameters, branchStep.parameters) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, groupedParameters, complianceStepType);
+    return Objects.hash(label, parameters, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BranchStep {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
-    sb.append("    groupedParameters: ").append(toIndentedString(groupedParameters)).append("\n");
-    sb.append("    complianceStepType: ").append(toIndentedString(complianceStepType)).append("\n");
+    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -241,14 +164,14 @@ public class BranchStep {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("label");
-    openapiFields.add("groupedParameters");
     openapiFields.add("complianceStepType");
+    openapiFields.add("label");
+    openapiFields.add("parameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("label");
-    openapiRequiredFields.add("groupedParameters");
+    openapiRequiredFields.add("parameters");
     openapiRequiredFields.add("complianceStepType");
   }
 
@@ -270,13 +193,6 @@ public class BranchStep {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("label").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("label").toString()));
-      }
-      if (!jsonObj.get("complianceStepType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `complianceStepType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("complianceStepType").toString()));
       }
   }
 

@@ -197,8 +197,23 @@ public class ComplianceStep {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("complianceStepType").getAsString();
       switch (discriminatorValue) {
+        case "BranchStep":
+          BranchStep.validateJsonElement(jsonElement);
+          break;
+        case "FilterStep":
+          FilterStep.validateJsonElement(jsonElement);
+          break;
+        case "GroupByStep":
+          GroupByStep.validateJsonElement(jsonElement);
+          break;
+        case "GroupFilterStep":
+          GroupFilterStep.validateJsonElement(jsonElement);
+          break;
         case "IntermediateComplianceStep":
           IntermediateComplianceStep.validateJsonElement(jsonElement);
+          break;
+        case "RecombineStep":
+          RecombineStep.validateJsonElement(jsonElement);
           break;
         default:
           throw new IllegalArgumentException(String.format("The value of the `complianceStepType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));

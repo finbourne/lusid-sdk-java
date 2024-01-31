@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ComplianceStep;
 import com.finbourne.lusid.model.ComplianceTemplateParameter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -18,10 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,73 +52,21 @@ import com.finbourne.lusid.JSON;
  * GroupFilterStep
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class GroupFilterStep {
+public class GroupFilterStep extends ComplianceStep {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
   private String label;
 
-  public static final String SERIALIZED_NAME_GROUPED_PARAMETERS = "groupedParameters";
-  @SerializedName(SERIALIZED_NAME_GROUPED_PARAMETERS)
-  private Map<String, List<ComplianceTemplateParameter>> groupedParameters = new HashMap<>();
+  public static final String SERIALIZED_NAME_LIMIT_CHECK_PARAMETERS = "limitCheckParameters";
+  @SerializedName(SERIALIZED_NAME_LIMIT_CHECK_PARAMETERS)
+  private List<ComplianceTemplateParameter> limitCheckParameters = new ArrayList<>();
 
-  /**
-   * . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep
-   */
-  @JsonAdapter(ComplianceStepTypeEnum.Adapter.class)
-  public enum ComplianceStepTypeEnum {
-    FILTERSTEP("FilterStep"),
-    
-    GROUPBYSTEP("GroupByStep"),
-    
-    GROUPFILTERSTEP("GroupFilterStep"),
-    
-    BRANCHSTEP("BranchStep"),
-    
-    RECOMBINESTEP("RecombineStep");
-
-    private String value;
-
-    ComplianceStepTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ComplianceStepTypeEnum fromValue(String value) {
-      for (ComplianceStepTypeEnum b : ComplianceStepTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ComplianceStepTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ComplianceStepTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ComplianceStepTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ComplianceStepTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_COMPLIANCE_STEP_TYPE = "complianceStepType";
-  @SerializedName(SERIALIZED_NAME_COMPLIANCE_STEP_TYPE)
-  private ComplianceStepTypeEnum complianceStepType;
+  public static final String SERIALIZED_NAME_WARNING_CHECK_PARAMETERS = "warningCheckParameters";
+  @SerializedName(SERIALIZED_NAME_WARNING_CHECK_PARAMETERS)
+  private List<ComplianceTemplateParameter> warningCheckParameters = new ArrayList<>();
 
   public GroupFilterStep() {
+    // this.complianceStepType = this.getClass().getSimpleName();
   }
 
   public GroupFilterStep label(String label) {
@@ -142,53 +90,61 @@ public class GroupFilterStep {
   }
 
 
-  public GroupFilterStep groupedParameters(Map<String, List<ComplianceTemplateParameter>> groupedParameters) {
+  public GroupFilterStep limitCheckParameters(List<ComplianceTemplateParameter> limitCheckParameters) {
     
-    this.groupedParameters = groupedParameters;
+    this.limitCheckParameters = limitCheckParameters;
     return this;
   }
 
-  public GroupFilterStep putGroupedParametersItem(String key, List<ComplianceTemplateParameter> groupedParametersItem) {
-    if (this.groupedParameters == null) {
-      this.groupedParameters = new HashMap<>();
+  public GroupFilterStep addLimitCheckParametersItem(ComplianceTemplateParameter limitCheckParametersItem) {
+    if (this.limitCheckParameters == null) {
+      this.limitCheckParameters = new ArrayList<>();
     }
-    this.groupedParameters.put(key, groupedParametersItem);
+    this.limitCheckParameters.add(limitCheckParametersItem);
     return this;
   }
 
    /**
-   * Parameters required for the step. Some step types group parameters to differentiate between, for example, hard limit and warning threshold parameters
-   * @return groupedParameters
+   * Parameters required for an absolute limit check
+   * @return limitCheckParameters
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, List<ComplianceTemplateParameter>> getGroupedParameters() {
-    return groupedParameters;
+  public List<ComplianceTemplateParameter> getLimitCheckParameters() {
+    return limitCheckParameters;
   }
 
 
-  public void setGroupedParameters(Map<String, List<ComplianceTemplateParameter>> groupedParameters) {
-    this.groupedParameters = groupedParameters;
+  public void setLimitCheckParameters(List<ComplianceTemplateParameter> limitCheckParameters) {
+    this.limitCheckParameters = limitCheckParameters;
   }
 
 
-  public GroupFilterStep complianceStepType(ComplianceStepTypeEnum complianceStepType) {
+  public GroupFilterStep warningCheckParameters(List<ComplianceTemplateParameter> warningCheckParameters) {
     
-    this.complianceStepType = complianceStepType;
+    this.warningCheckParameters = warningCheckParameters;
+    return this;
+  }
+
+  public GroupFilterStep addWarningCheckParametersItem(ComplianceTemplateParameter warningCheckParametersItem) {
+    if (this.warningCheckParameters == null) {
+      this.warningCheckParameters = new ArrayList<>();
+    }
+    this.warningCheckParameters.add(warningCheckParametersItem);
     return this;
   }
 
    /**
-   * . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep
-   * @return complianceStepType
+   * Parameters required for a warning limit check
+   * @return warningCheckParameters
   **/
   @jakarta.annotation.Nonnull
-  public ComplianceStepTypeEnum getComplianceStepType() {
-    return complianceStepType;
+  public List<ComplianceTemplateParameter> getWarningCheckParameters() {
+    return warningCheckParameters;
   }
 
 
-  public void setComplianceStepType(ComplianceStepTypeEnum complianceStepType) {
-    this.complianceStepType = complianceStepType;
+  public void setWarningCheckParameters(List<ComplianceTemplateParameter> warningCheckParameters) {
+    this.warningCheckParameters = warningCheckParameters;
   }
 
 
@@ -203,22 +159,24 @@ public class GroupFilterStep {
     }
     GroupFilterStep groupFilterStep = (GroupFilterStep) o;
     return Objects.equals(this.label, groupFilterStep.label) &&
-        Objects.equals(this.groupedParameters, groupFilterStep.groupedParameters) &&
-        Objects.equals(this.complianceStepType, groupFilterStep.complianceStepType);
+        Objects.equals(this.limitCheckParameters, groupFilterStep.limitCheckParameters) &&
+        Objects.equals(this.warningCheckParameters, groupFilterStep.warningCheckParameters) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, groupedParameters, complianceStepType);
+    return Objects.hash(label, limitCheckParameters, warningCheckParameters, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GroupFilterStep {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
-    sb.append("    groupedParameters: ").append(toIndentedString(groupedParameters)).append("\n");
-    sb.append("    complianceStepType: ").append(toIndentedString(complianceStepType)).append("\n");
+    sb.append("    limitCheckParameters: ").append(toIndentedString(limitCheckParameters)).append("\n");
+    sb.append("    warningCheckParameters: ").append(toIndentedString(warningCheckParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -241,14 +199,16 @@ public class GroupFilterStep {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("label");
-    openapiFields.add("groupedParameters");
     openapiFields.add("complianceStepType");
+    openapiFields.add("label");
+    openapiFields.add("limitCheckParameters");
+    openapiFields.add("warningCheckParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("label");
-    openapiRequiredFields.add("groupedParameters");
+    openapiRequiredFields.add("limitCheckParameters");
+    openapiRequiredFields.add("warningCheckParameters");
     openapiRequiredFields.add("complianceStepType");
   }
 
@@ -270,13 +230,6 @@ public class GroupFilterStep {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("label").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("label").toString()));
-      }
-      if (!jsonObj.get("complianceStepType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `complianceStepType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("complianceStepType").toString()));
       }
   }
 

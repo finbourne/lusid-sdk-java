@@ -4,8 +4,79 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**listEntityScopes**](ScopesApi.md#listEntityScopes) | **GET** /api/scopes/{entityType} | ListEntityScopes: List Entity Scopes |
 | [**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | ListScopes: List Scopes |
 
+
+<a id="listEntityScopes"></a>
+# **listEntityScopes**
+> ResourceListOfScopeDefinition listEntityScopes(entityType).execute();
+
+ListEntityScopes: List Entity Scopes
+
+List all the scopes for a given entity type that contain data.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ScopesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ScopesApi apiInstance = new ScopesApi(defaultClient);
+    String entityType = "entityType_example"; // String | The entity type to list scopes for.
+    try {
+      ResourceListOfScopeDefinition result = apiInstance.listEntityScopes(entityType)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ScopesApi#listEntityScopes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The entity type to list scopes for. | |
+
+### Return type
+
+[**ResourceListOfScopeDefinition**](ResourceListOfScopeDefinition.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of scopes |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
 <a id="listScopes"></a>
 # **listScopes**

@@ -9,7 +9,6 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
-| [**getJELines**](AborApi.md#getJELines) | **POST** /api/abor/{scope}/{code}/JELines/$query/$deprecated | [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor. |
 | [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
 | [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor. |
 | [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
@@ -394,89 +393,6 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getJELines"></a>
-# **getJELines**
-> VersionedResourceListOfJournalEntryLine getJELines(scope, code, jeLinesQueryParameters).asAt(asAt).limit(limit).page(page).execute();
-
-[DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
-
-DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor     The JE Lines have been generated from transactions and translated via posting rules
-
-### Example
-```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
-import com.finbourne.lusid.api.AborApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-    AborApi apiInstance = new AborApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the Abor.
-    String code = "code_example"; // String | The code of the Abor. Together with the scope is creating the unique identifier for the given Abor.
-    JELinesQueryParameters jeLinesQueryParameters = new JELinesQueryParameters(); // JELinesQueryParameters | The query parameters used in running the generation of the JELines.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve JELines. Defaults to returning the latest version   of each transaction if not specified.
-    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing JELines from a previous call to GetJELines.
-    try {
-      VersionedResourceListOfJournalEntryLine result = apiInstance.getJELines(scope, code, jeLinesQueryParameters)
-            .asAt(asAt)
-            .limit(limit)
-            .page(page)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AborApi#getJELines");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the Abor. | |
-| **code** | **String**| The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. | |
-| **jeLinesQueryParameters** | [**JELinesQueryParameters**](JELinesQueryParameters.md)| The query parameters used in running the generation of the JELines. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve JELines. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
-| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing JELines from a previous call to GetJELines. | [optional] |
-
-### Return type
-
-[**VersionedResourceListOfJournalEntryLine**](VersionedResourceListOfJournalEntryLine.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The requested JELines for the specified Abor. |  -  |
-| **400** | The details of the input related failure |  -  |
-| **0** | Error response |  -  |
-
 <a id="getJournalEntryLines"></a>
 # **getJournalEntryLines**
 > VersionedResourceListOfJournalEntryLine getJournalEntryLines(scope, code, journalEntryLinesQueryParameters).asAt(asAt).filter(filter).limit(limit).page(page).execute();
@@ -651,7 +567,7 @@ public class Example {
 
 <a id="listAbors"></a>
 # **listAbors**
-> PagedResourceListOfAbor listAbors().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
+> PagedResourceListOfAbor listAbors().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListAbors: List Abors.
 
@@ -682,6 +598,7 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Abor type, specify \"id.Code eq 'Abor1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'.
     try {
       PagedResourceListOfAbor result = apiInstance.listAbors()
@@ -690,6 +607,7 @@ public class Example {
             .page(page)
             .limit(limit)
             .filter(filter)
+            .sortBy(sortBy)
             .propertyKeys(propertyKeys)
             .execute();
       System.out.println(result);
@@ -713,6 +631,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing Abor; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. | [optional] |
 
 ### Return type
@@ -737,7 +656,7 @@ public class Example {
 
 <a id="listDiaryEntries"></a>
 # **listDiaryEntries**
-> PagedResourceListOfDiaryEntry listDiaryEntries(scope, code).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
+> PagedResourceListOfDiaryEntry listDiaryEntries(scope, code).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).execute();
 
 [EXPERIMENTAL] ListDiaryEntries: List diary entries.
 
@@ -770,6 +689,7 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
     String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the DiaryEntry type, specify \"type eq 'PeriodBoundary'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/Report/Id'.
     try {
       PagedResourceListOfDiaryEntry result = apiInstance.listDiaryEntries(scope, code)
@@ -778,6 +698,7 @@ public class Example {
             .page(page)
             .limit(limit)
             .filter(filter)
+            .sortBy(sortBy)
             .propertyKeys(propertyKeys)
             .execute();
       System.out.println(result);
@@ -803,6 +724,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing diary entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. | [optional] |
 
 ### Return type

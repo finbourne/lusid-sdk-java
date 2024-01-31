@@ -31,7 +31,6 @@ import com.finbourne.lusid.model.ClosePeriodDiaryEntryRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.DiaryEntryRequest;
-import com.finbourne.lusid.model.JELinesQueryParameters;
 import com.finbourne.lusid.model.JournalEntryLinesQueryParameters;
 import com.finbourne.lusid.model.LockPeriodDiaryEntryRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -1035,236 +1034,6 @@ public class AborApi {
     public APIgetAborRequest getAbor(String scope, String code) {
         return new APIgetAborRequest(scope, code);
     }
-    private okhttp3.Call getJELinesCall(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = jeLinesQueryParameters;
-
-        // create path and map variables
-        String localVarPath = "/api/abor/{scope}/{code}/JELines/$query/$deprecated"
-            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (asAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getJELinesValidateBeforeCall(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'scope' is set
-        if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling getJELines(Async)");
-        }
-
-        // verify the required parameter 'code' is set
-        if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getJELines(Async)");
-        }
-
-        // verify the required parameter 'jeLinesQueryParameters' is set
-        if (jeLinesQueryParameters == null) {
-            throw new ApiException("Missing the required parameter 'jeLinesQueryParameters' when calling getJELines(Async)");
-        }
-
-        return getJELinesCall(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
-
-    }
-
-
-    private ApiResponse<VersionedResourceListOfJournalEntryLine> getJELinesWithHttpInfo(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = getJELinesValidateBeforeCall(scope, code, jeLinesQueryParameters, asAt, limit, page, null);
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call getJELinesAsync(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getJELinesValidateBeforeCall(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIgetJELinesRequest {
-        private final String scope;
-        private final String code;
-        private final JELinesQueryParameters jeLinesQueryParameters;
-        private OffsetDateTime asAt;
-        private Integer limit;
-        private String page;
-
-        private APIgetJELinesRequest(String scope, String code, JELinesQueryParameters jeLinesQueryParameters) {
-            this.scope = scope;
-            this.code = code;
-            this.jeLinesQueryParameters = jeLinesQueryParameters;
-        }
-
-        /**
-         * Set asAt
-         * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version   of each transaction if not specified. (optional)
-         * @return APIgetJELinesRequest
-         */
-        public APIgetJELinesRequest asAt(OffsetDateTime asAt) {
-            this.asAt = asAt;
-            return this;
-        }
-
-        /**
-         * Set limit
-         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-         * @return APIgetJELinesRequest
-         */
-        public APIgetJELinesRequest limit(Integer limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        /**
-         * Set page
-         * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-         * @return APIgetJELinesRequest
-         */
-        public APIgetJELinesRequest page(String page) {
-            this.page = page;
-            return this;
-        }
-
-        /**
-         * Build call for getJELines
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getJELinesCall(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
-        }
-
-        /**
-         * Execute getJELines request
-         * @return VersionedResourceListOfJournalEntryLine
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public VersionedResourceListOfJournalEntryLine execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getJELines request with HTTP info returned
-         * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<VersionedResourceListOfJournalEntryLine> executeWithHttpInfo() throws ApiException {
-            return getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
-        }
-
-        /**
-         * Execute getJELines request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
-            return getJELinesAsync(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
-        }
-    }
-
-    /**
-     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
-     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor     The JE Lines have been generated from transactions and translated via posting rules
-     * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
-     * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
-     * @return APIgetJELinesRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested JELines for the specified Abor. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIgetJELinesRequest getJELines(String scope, String code, JELinesQueryParameters jeLinesQueryParameters) {
-        return new APIgetJELinesRequest(scope, code, jeLinesQueryParameters);
-    }
     private okhttp3.Call getJournalEntryLinesCall(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1755,7 +1524,7 @@ public class AborApi {
     public APIgetTrialBalanceRequest getTrialBalance(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters) {
         return new APIgetTrialBalanceRequest(scope, code, trialBalanceQueryParameters);
     }
-    private okhttp3.Call listAborsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAborsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1800,6 +1569,10 @@ public class AborApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         if (propertyKeys != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
@@ -1826,21 +1599,21 @@ public class AborApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAborsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listAborsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listAborsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAborsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfAbor> listAborsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfAbor> listAborsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAbor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAborsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
+    private okhttp3.Call listAborsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listAborsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAbor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1852,6 +1625,7 @@ public class AborApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
         private List<String> propertyKeys;
 
         private APIlistAborsRequest() {
@@ -1908,6 +1682,16 @@ public class AborApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistAborsRequest
+         */
+        public APIlistAborsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Set propertyKeys
          * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. (optional)
          * @return APIlistAborsRequest
@@ -1931,7 +1715,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAborsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listAborsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -1947,7 +1731,7 @@ public class AborApi {
          </table>
          */
         public PagedResourceListOfAbor execute() throws ApiException {
-            ApiResponse<PagedResourceListOfAbor> localVarResp = listAborsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfAbor> localVarResp = listAborsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -1964,7 +1748,7 @@ public class AborApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfAbor> executeWithHttpInfo() throws ApiException {
-            return listAborsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+            return listAborsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
@@ -1981,7 +1765,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAbor> _callback) throws ApiException {
-            return listAborsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listAborsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
     }
 
@@ -2000,7 +1784,7 @@ public class AborApi {
     public APIlistAborsRequest listAbors() {
         return new APIlistAborsRequest();
     }
-    private okhttp3.Call listDiaryEntriesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDiaryEntriesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2047,6 +1831,10 @@ public class AborApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         if (propertyKeys != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
@@ -2073,7 +1861,7 @@ public class AborApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDiaryEntriesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDiaryEntriesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listDiaryEntries(Async)");
@@ -2084,20 +1872,20 @@ public class AborApi {
             throw new ApiException("Missing the required parameter 'code' when calling listDiaryEntries(Async)");
         }
 
-        return listDiaryEntriesCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        return listDiaryEntriesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfDiaryEntry> listDiaryEntriesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listDiaryEntriesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+    private ApiResponse<PagedResourceListOfDiaryEntry> listDiaryEntriesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listDiaryEntriesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDiaryEntriesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfDiaryEntry> _callback) throws ApiException {
+    private okhttp3.Call listDiaryEntriesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfDiaryEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDiaryEntriesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listDiaryEntriesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2111,6 +1899,7 @@ public class AborApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> sortBy;
         private List<String> propertyKeys;
 
         private APIlistDiaryEntriesRequest(String scope, String code) {
@@ -2169,6 +1958,16 @@ public class AborApi {
         }
 
         /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistDiaryEntriesRequest
+         */
+        public APIlistDiaryEntriesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
          * Set propertyKeys
          * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. (optional)
          * @return APIlistDiaryEntriesRequest
@@ -2192,7 +1991,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDiaryEntriesCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listDiaryEntriesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -2208,7 +2007,7 @@ public class AborApi {
          </table>
          */
         public PagedResourceListOfDiaryEntry execute() throws ApiException {
-            ApiResponse<PagedResourceListOfDiaryEntry> localVarResp = listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfDiaryEntry> localVarResp = listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -2225,7 +2024,7 @@ public class AborApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfDiaryEntry> executeWithHttpInfo() throws ApiException {
-            return listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+            return listDiaryEntriesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
@@ -2242,7 +2041,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDiaryEntry> _callback) throws ApiException {
-            return listDiaryEntriesAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listDiaryEntriesAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
     }
 
