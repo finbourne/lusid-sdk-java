@@ -134,7 +134,7 @@ public class IndexConvention {
   }
 
    /**
-   * The tenor of the payment. For an OIS index this is always 1 day. For other indices, e.g. LIBOR it will have a variable tenor typically between 1 day and 1 year.
+   * The tenor of the payment. For an OIS index this is always 1 day. For other indices, e.g. LIBOR it will have a variable tenor typically between 1 day and 1 year.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return paymentTenor
   **/
   @jakarta.annotation.Nonnull

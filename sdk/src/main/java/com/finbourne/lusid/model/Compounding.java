@@ -147,7 +147,7 @@ public class Compounding {
   }
 
    /**
-   * The interest payment frequency.
+   * The interest payment frequency.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return resetFrequency
   **/
   @jakarta.annotation.Nonnull

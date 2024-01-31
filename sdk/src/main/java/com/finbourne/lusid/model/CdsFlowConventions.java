@@ -110,7 +110,7 @@ public class CdsFlowConventions {
   }
 
    /**
-   * The frequency at which the reference bonds are updated, this defaults to 6M, but can be 3M, exp for historically issued products
+   * The frequency at which the reference bonds are updated, this defaults to 6M, but can be 3M, exp for historically issued products.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return rollFrequency
   **/
   @jakarta.annotation.Nullable

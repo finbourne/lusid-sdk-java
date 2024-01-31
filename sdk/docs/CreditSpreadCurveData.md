@@ -10,7 +10,7 @@ A credit spread curve matching tenors against par spread quotes
 |------------ | ------------- | ------------- | -------------|
 |**baseDate** | **OffsetDateTime** | EffectiveAt date of the quoted rates |  |
 |**domCcy** | **String** | Domestic currency of the curve |  |
-|**tenors** | **List&lt;String&gt;** | The tenors for which the rates apply |  |
+|**tenors** | **List&lt;String&gt;** | The tenors for which the rates apply  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) |  |
 |**spreads** | **List&lt;java.math.BigDecimal&gt;** | Par spread quotes corresponding to the tenors. |  |
 |**recoveryRate** | **java.math.BigDecimal** | The recovery rate in default. |  |
 |**referenceDate** | **OffsetDateTime** | If tenors are provided, this is the date against which the tenors will be resolved.  This is of importance to CDX spread quotes, which are usually quoted in tenors relative to the CDX start date.  In this case, the ReferenceDate would be equal to the CDX start date, and the BaseDate would be the date for which the spreads are valid.  If not provided, this defaults to the BaseDate of the curve. |  [optional] |

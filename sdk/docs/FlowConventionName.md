@@ -10,7 +10,7 @@ Representation of an abstract definition of a flow convention set consisting of 
 |------------ | ------------- | ------------- | -------------|
 |**currency** | **String** | Currency of the flow convention name. |  |
 |**indexName** | **String** | The index, if present, that is required. e.g. \&quot;IBOR\&quot;, \&quot;OIS\&quot; or \&quot;SONIA\&quot;. |  [optional] |
-|**tenor** | **String** | Tenor for the convention name. |  |
+|**tenor** | **String** | Tenor for the convention name.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) |  |
 
 
 

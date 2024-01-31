@@ -114,7 +114,7 @@ public class FlowConventionName {
   }
 
    /**
-   * Tenor for the convention name.
+   * Tenor for the convention name.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return tenor
   **/
   @jakarta.annotation.Nonnull
