@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.Compounding;
 import com.finbourne.lusid.model.FlowConventionName;
 import com.finbourne.lusid.model.FlowConventions;
+import com.finbourne.lusid.model.FxLinkedNotionalSchedule;
 import com.finbourne.lusid.model.IndexConvention;
 import com.finbourne.lusid.model.StepSchedule;
 import com.google.gson.TypeAdapter;
@@ -115,6 +116,14 @@ public class LegDefinition {
   public static final String SERIALIZED_NAME_LAST_COUPON_TYPE = "lastCouponType";
   @SerializedName(SERIALIZED_NAME_LAST_COUPON_TYPE)
   private String lastCouponType;
+
+  public static final String SERIALIZED_NAME_FX_LINKED_NOTIONAL_SCHEDULE = "fxLinkedNotionalSchedule";
+  @SerializedName(SERIALIZED_NAME_FX_LINKED_NOTIONAL_SCHEDULE)
+  private FxLinkedNotionalSchedule fxLinkedNotionalSchedule;
+
+  public static final String SERIALIZED_NAME_INTERMEDIATE_NOTIONAL_EXCHANGE = "intermediateNotionalExchange";
+  @SerializedName(SERIALIZED_NAME_INTERMEDIATE_NOTIONAL_EXCHANGE)
+  private Boolean intermediateNotionalExchange;
 
   public LegDefinition() {
   }
@@ -434,6 +443,48 @@ public class LegDefinition {
   }
 
 
+  public LegDefinition fxLinkedNotionalSchedule(FxLinkedNotionalSchedule fxLinkedNotionalSchedule) {
+    
+    this.fxLinkedNotionalSchedule = fxLinkedNotionalSchedule;
+    return this;
+  }
+
+   /**
+   * Get fxLinkedNotionalSchedule
+   * @return fxLinkedNotionalSchedule
+  **/
+  @jakarta.annotation.Nullable
+  public FxLinkedNotionalSchedule getFxLinkedNotionalSchedule() {
+    return fxLinkedNotionalSchedule;
+  }
+
+
+  public void setFxLinkedNotionalSchedule(FxLinkedNotionalSchedule fxLinkedNotionalSchedule) {
+    this.fxLinkedNotionalSchedule = fxLinkedNotionalSchedule;
+  }
+
+
+  public LegDefinition intermediateNotionalExchange(Boolean intermediateNotionalExchange) {
+    
+    this.intermediateNotionalExchange = intermediateNotionalExchange;
+    return this;
+  }
+
+   /**
+   * Indicates whether there are intermediate notional exchanges.
+   * @return intermediateNotionalExchange
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIntermediateNotionalExchange() {
+    return intermediateNotionalExchange;
+  }
+
+
+  public void setIntermediateNotionalExchange(Boolean intermediateNotionalExchange) {
+    this.intermediateNotionalExchange = intermediateNotionalExchange;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -458,7 +509,9 @@ public class LegDefinition {
         Objects.equals(this.firstRegularPaymentDate, legDefinition.firstRegularPaymentDate) &&
         Objects.equals(this.firstCouponType, legDefinition.firstCouponType) &&
         Objects.equals(this.lastRegularPaymentDate, legDefinition.lastRegularPaymentDate) &&
-        Objects.equals(this.lastCouponType, legDefinition.lastCouponType);
+        Objects.equals(this.lastCouponType, legDefinition.lastCouponType) &&
+        Objects.equals(this.fxLinkedNotionalSchedule, legDefinition.fxLinkedNotionalSchedule) &&
+        Objects.equals(this.intermediateNotionalExchange, legDefinition.intermediateNotionalExchange);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -467,7 +520,7 @@ public class LegDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(conventionName, conventions, indexConvention, indexConventionName, notionalExchangeType, payReceive, rateOrSpread, resetConvention, stubType, compounding, amortisation, firstRegularPaymentDate, firstCouponType, lastRegularPaymentDate, lastCouponType);
+    return Objects.hash(conventionName, conventions, indexConvention, indexConventionName, notionalExchangeType, payReceive, rateOrSpread, resetConvention, stubType, compounding, amortisation, firstRegularPaymentDate, firstCouponType, lastRegularPaymentDate, lastCouponType, fxLinkedNotionalSchedule, intermediateNotionalExchange);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -496,6 +549,8 @@ public class LegDefinition {
     sb.append("    firstCouponType: ").append(toIndentedString(firstCouponType)).append("\n");
     sb.append("    lastRegularPaymentDate: ").append(toIndentedString(lastRegularPaymentDate)).append("\n");
     sb.append("    lastCouponType: ").append(toIndentedString(lastCouponType)).append("\n");
+    sb.append("    fxLinkedNotionalSchedule: ").append(toIndentedString(fxLinkedNotionalSchedule)).append("\n");
+    sb.append("    intermediateNotionalExchange: ").append(toIndentedString(intermediateNotionalExchange)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -533,6 +588,8 @@ public class LegDefinition {
     openapiFields.add("firstCouponType");
     openapiFields.add("lastRegularPaymentDate");
     openapiFields.add("lastCouponType");
+    openapiFields.add("fxLinkedNotionalSchedule");
+    openapiFields.add("intermediateNotionalExchange");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -603,6 +660,10 @@ public class LegDefinition {
       }
       if ((jsonObj.get("lastCouponType") != null && !jsonObj.get("lastCouponType").isJsonNull()) && !jsonObj.get("lastCouponType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lastCouponType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastCouponType").toString()));
+      }
+      // validate the optional field `fxLinkedNotionalSchedule`
+      if (jsonObj.get("fxLinkedNotionalSchedule") != null && !jsonObj.get("fxLinkedNotionalSchedule").isJsonNull()) {
+        FxLinkedNotionalSchedule.validateJsonElement(jsonObj.get("fxLinkedNotionalSchedule"));
       }
   }
 

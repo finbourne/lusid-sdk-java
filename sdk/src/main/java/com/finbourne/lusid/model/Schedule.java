@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Schedule {
   /**
-   * The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, Invalid
+   * The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, Invalid
    */
   @JsonAdapter(ScheduleTypeEnum.Adapter.class)
   public enum ScheduleTypeEnum {
@@ -65,6 +65,8 @@ public class Schedule {
     EXERCISE("Exercise"),
     
     FXRATESCHEDULE("FxRateSchedule"),
+    
+    FXLINKEDNOTIONALSCHEDULE("FxLinkedNotionalSchedule"),
     
     INVALID("Invalid");
 
@@ -120,7 +122,7 @@ public class Schedule {
   }
 
    /**
-   * The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, Invalid
+   * The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, Invalid
    * @return scheduleType
   **/
   @jakarta.annotation.Nonnull
@@ -206,6 +208,9 @@ public class Schedule {
           break;
         case "FloatSchedule":
           FloatSchedule.validateJsonElement(jsonElement);
+          break;
+        case "FxLinkedNotionalSchedule":
+          FxLinkedNotionalSchedule.validateJsonElement(jsonElement);
           break;
         case "FxRateSchedule":
           FxRateSchedule.validateJsonElement(jsonElement);

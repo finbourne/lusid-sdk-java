@@ -17,6 +17,8 @@
 
 * `FXRATESCHEDULE` (value: `"FxRateSchedule"`)
 
+* `FXLINKEDNOTIONALSCHEDULE` (value: `"FxLinkedNotionalSchedule"`)
+
 * `INVALID` (value: `"Invalid"`)
 
 

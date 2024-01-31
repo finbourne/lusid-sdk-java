@@ -37,6 +37,8 @@ public enum ScheduleType {
   
   FXRATESCHEDULE("FxRateSchedule"),
   
+  FXLINKEDNOTIONALSCHEDULE("FxLinkedNotionalSchedule"),
+  
   INVALID("Invalid");
 
   private String value;
