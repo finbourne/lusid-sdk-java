@@ -223,7 +223,7 @@ public class Account {
    * This allows users to specify whether this a protected Account that prevents direct manual journal adjustment. Can have the values: System/ManualIt will default to “Manual”.
    * @return control
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getControl() {
     return control;
   }
@@ -341,7 +341,6 @@ public class Account {
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("control");
   }
 
  /**
@@ -376,7 +375,7 @@ public class Account {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if (!jsonObj.get("control").isJsonPrimitive()) {
+      if ((jsonObj.get("control") != null && !jsonObj.get("control").isJsonNull()) && !jsonObj.get("control").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `control` to be a primitive type in the JSON string but got `%s`", jsonObj.get("control").toString()));
       }
   }
