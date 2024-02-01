@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,6 +62,10 @@ public class PostingModuleRule {
   @SerializedName(SERIALIZED_NAME_RULE_FILTER)
   private String ruleFilter;
 
+  public static final String SERIALIZED_NAME_GENERAL_LEDGER_ACCOUNT_CODE = "generalLedgerAccountCode";
+  @SerializedName(SERIALIZED_NAME_GENERAL_LEDGER_ACCOUNT_CODE)
+  private String generalLedgerAccountCode;
+
   public PostingModuleRule() {
   }
 
@@ -92,10 +97,10 @@ public class PostingModuleRule {
   }
 
    /**
-   * The account to post the Activity credit or debit to.
+   * The general ledger account to post the Activity credit or debit to.
    * @return account
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getAccount() {
     return account;
   }
@@ -127,6 +132,27 @@ public class PostingModuleRule {
   }
 
 
+  public PostingModuleRule generalLedgerAccountCode(String generalLedgerAccountCode) {
+    
+    this.generalLedgerAccountCode = generalLedgerAccountCode;
+    return this;
+  }
+
+   /**
+   * The general ledger account to post the Activity credit or debit to.
+   * @return generalLedgerAccountCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getGeneralLedgerAccountCode() {
+    return generalLedgerAccountCode;
+  }
+
+
+  public void setGeneralLedgerAccountCode(String generalLedgerAccountCode) {
+    this.generalLedgerAccountCode = generalLedgerAccountCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +165,24 @@ public class PostingModuleRule {
     PostingModuleRule postingModuleRule = (PostingModuleRule) o;
     return Objects.equals(this.ruleId, postingModuleRule.ruleId) &&
         Objects.equals(this.account, postingModuleRule.account) &&
-        Objects.equals(this.ruleFilter, postingModuleRule.ruleFilter);
+        Objects.equals(this.ruleFilter, postingModuleRule.ruleFilter) &&
+        Objects.equals(this.generalLedgerAccountCode, postingModuleRule.generalLedgerAccountCode);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, account, ruleFilter);
+    return Objects.hash(ruleId, account, ruleFilter, generalLedgerAccountCode);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +192,7 @@ public class PostingModuleRule {
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    account: ").append(toIndentedString(account)).append("\n");
     sb.append("    ruleFilter: ").append(toIndentedString(ruleFilter)).append("\n");
+    sb.append("    generalLedgerAccountCode: ").append(toIndentedString(generalLedgerAccountCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,11 +218,11 @@ public class PostingModuleRule {
     openapiFields.add("ruleId");
     openapiFields.add("account");
     openapiFields.add("ruleFilter");
+    openapiFields.add("generalLedgerAccountCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("ruleId");
-    openapiRequiredFields.add("account");
     openapiRequiredFields.add("ruleFilter");
   }
 
@@ -210,11 +249,14 @@ public class PostingModuleRule {
       if (!jsonObj.get("ruleId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ruleId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleId").toString()));
       }
-      if (!jsonObj.get("account").isJsonPrimitive()) {
+      if ((jsonObj.get("account") != null && !jsonObj.get("account").isJsonNull()) && !jsonObj.get("account").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account").toString()));
       }
       if (!jsonObj.get("ruleFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ruleFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleFilter").toString()));
+      }
+      if ((jsonObj.get("generalLedgerAccountCode") != null && !jsonObj.get("generalLedgerAccountCode").isJsonNull()) && !jsonObj.get("generalLedgerAccountCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `generalLedgerAccountCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("generalLedgerAccountCode").toString()));
       }
   }
 
