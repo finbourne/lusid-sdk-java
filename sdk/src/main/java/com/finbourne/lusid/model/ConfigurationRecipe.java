@@ -15,7 +15,6 @@ import com.finbourne.lusid.model.AggregationContext;
 import com.finbourne.lusid.model.HoldingContext;
 import com.finbourne.lusid.model.MarketContext;
 import com.finbourne.lusid.model.PricingContext;
-import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TranslationContext;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,9 +22,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -77,10 +74,6 @@ public class ConfigurationRecipe {
   public static final String SERIALIZED_NAME_AGGREGATION = "aggregation";
   @SerializedName(SERIALIZED_NAME_AGGREGATION)
   private AggregationContext aggregation;
-
-  public static final String SERIALIZED_NAME_INHERITED_RECIPES = "inheritedRecipes";
-  @SerializedName(SERIALIZED_NAME_INHERITED_RECIPES)
-  private List<ResourceId> inheritedRecipes;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -202,35 +195,6 @@ public class ConfigurationRecipe {
   }
 
 
-  public ConfigurationRecipe inheritedRecipes(List<ResourceId> inheritedRecipes) {
-    
-    this.inheritedRecipes = inheritedRecipes;
-    return this;
-  }
-
-  public ConfigurationRecipe addInheritedRecipesItem(ResourceId inheritedRecipesItem) {
-    if (this.inheritedRecipes == null) {
-      this.inheritedRecipes = new ArrayList<>();
-    }
-    this.inheritedRecipes.add(inheritedRecipesItem);
-    return this;
-  }
-
-   /**
-   * A list of parent recipes (scope,code) that can be used to share functionality between recipes. For instance one might use common recipes to set up  pricing for individual asset classes, e.g. rates or credit, and then combine them into a single recipe to be used by an exotics desk in conjunction with  some overrides that it requires for models or other pricing options.
-   * @return inheritedRecipes
-  **/
-  @jakarta.annotation.Nullable
-  public List<ResourceId> getInheritedRecipes() {
-    return inheritedRecipes;
-  }
-
-
-  public void setInheritedRecipes(List<ResourceId> inheritedRecipes) {
-    this.inheritedRecipes = inheritedRecipes;
-  }
-
-
   public ConfigurationRecipe description(String description) {
     
     this.description = description;
@@ -309,7 +273,6 @@ public class ConfigurationRecipe {
         Objects.equals(this.market, configurationRecipe.market) &&
         Objects.equals(this.pricing, configurationRecipe.pricing) &&
         Objects.equals(this.aggregation, configurationRecipe.aggregation) &&
-        Objects.equals(this.inheritedRecipes, configurationRecipe.inheritedRecipes) &&
         Objects.equals(this.description, configurationRecipe.description) &&
         Objects.equals(this.holding, configurationRecipe.holding) &&
         Objects.equals(this.translation, configurationRecipe.translation);
@@ -321,7 +284,7 @@ public class ConfigurationRecipe {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, market, pricing, aggregation, inheritedRecipes, description, holding, translation);
+    return Objects.hash(scope, code, market, pricing, aggregation, description, holding, translation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -340,7 +303,6 @@ public class ConfigurationRecipe {
     sb.append("    market: ").append(toIndentedString(market)).append("\n");
     sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
     sb.append("    aggregation: ").append(toIndentedString(aggregation)).append("\n");
-    sb.append("    inheritedRecipes: ").append(toIndentedString(inheritedRecipes)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    holding: ").append(toIndentedString(holding)).append("\n");
     sb.append("    translation: ").append(toIndentedString(translation)).append("\n");
@@ -371,7 +333,6 @@ public class ConfigurationRecipe {
     openapiFields.add("market");
     openapiFields.add("pricing");
     openapiFields.add("aggregation");
-    openapiFields.add("inheritedRecipes");
     openapiFields.add("description");
     openapiFields.add("holding");
     openapiFields.add("translation");
@@ -419,20 +380,6 @@ public class ConfigurationRecipe {
       // validate the optional field `aggregation`
       if (jsonObj.get("aggregation") != null && !jsonObj.get("aggregation").isJsonNull()) {
         AggregationContext.validateJsonElement(jsonObj.get("aggregation"));
-      }
-      if (jsonObj.get("inheritedRecipes") != null && !jsonObj.get("inheritedRecipes").isJsonNull()) {
-        JsonArray jsonArrayinheritedRecipes = jsonObj.getAsJsonArray("inheritedRecipes");
-        if (jsonArrayinheritedRecipes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("inheritedRecipes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `inheritedRecipes` to be an array in the JSON string but got `%s`", jsonObj.get("inheritedRecipes").toString()));
-          }
-
-          // validate the optional field `inheritedRecipes` (array)
-          for (int i = 0; i < jsonArrayinheritedRecipes.size(); i++) {
-            ResourceId.validateJsonElement(jsonArrayinheritedRecipes.get(i));
-          };
-        }
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
