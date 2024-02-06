@@ -15,9 +15,9 @@ An AborConfiguration entity.
 |**recipeId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
 |**postingModuleCodes** | **List&lt;String&gt;** | The Posting Module Codes from which the rules to be applied are retrieved. |  [optional] |
+|**cleardownModuleCodes** | **List&lt;String&gt;** | The Cleardown Module Codes from which the rules to be applied are retrieved. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Abor Configuration. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
-|**cleardownModuleCodes** | **List&lt;String&gt;** | The Cleardown Module Codes from which the rules to be applied are retrieved. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

@@ -87,6 +87,10 @@ public class AborConfiguration {
   @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODES)
   private List<String> postingModuleCodes;
 
+  public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
+  @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
+  private List<String> cleardownModuleCodes;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -94,10 +98,6 @@ public class AborConfiguration {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
-
-  public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
-  @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
-  private List<String> cleardownModuleCodes;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -261,6 +261,35 @@ public class AborConfiguration {
   }
 
 
+  public AborConfiguration cleardownModuleCodes(List<String> cleardownModuleCodes) {
+    
+    this.cleardownModuleCodes = cleardownModuleCodes;
+    return this;
+  }
+
+  public AborConfiguration addCleardownModuleCodesItem(String cleardownModuleCodesItem) {
+    if (this.cleardownModuleCodes == null) {
+      this.cleardownModuleCodes = new ArrayList<>();
+    }
+    this.cleardownModuleCodes.add(cleardownModuleCodesItem);
+    return this;
+  }
+
+   /**
+   * The Cleardown Module Codes from which the rules to be applied are retrieved.
+   * @return cleardownModuleCodes
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getCleardownModuleCodes() {
+    return cleardownModuleCodes;
+  }
+
+
+  public void setCleardownModuleCodes(List<String> cleardownModuleCodes) {
+    this.cleardownModuleCodes = cleardownModuleCodes;
+  }
+
+
   public AborConfiguration properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -311,35 +340,6 @@ public class AborConfiguration {
   }
 
 
-  public AborConfiguration cleardownModuleCodes(List<String> cleardownModuleCodes) {
-    
-    this.cleardownModuleCodes = cleardownModuleCodes;
-    return this;
-  }
-
-  public AborConfiguration addCleardownModuleCodesItem(String cleardownModuleCodesItem) {
-    if (this.cleardownModuleCodes == null) {
-      this.cleardownModuleCodes = new ArrayList<>();
-    }
-    this.cleardownModuleCodes.add(cleardownModuleCodesItem);
-    return this;
-  }
-
-   /**
-   * The Cleardown Module Codes from which the rules to be applied are retrieved.
-   * @return cleardownModuleCodes
-  **/
-  @jakarta.annotation.Nullable
-  public List<String> getCleardownModuleCodes() {
-    return cleardownModuleCodes;
-  }
-
-
-  public void setCleardownModuleCodes(List<String> cleardownModuleCodes) {
-    this.cleardownModuleCodes = cleardownModuleCodes;
-  }
-
-
   public AborConfiguration links(List<Link> links) {
     
     this.links = links;
@@ -386,9 +386,9 @@ public class AborConfiguration {
         Objects.equals(this.recipeId, aborConfiguration.recipeId) &&
         Objects.equals(this.chartOfAccountsId, aborConfiguration.chartOfAccountsId) &&
         Objects.equals(this.postingModuleCodes, aborConfiguration.postingModuleCodes) &&
+        Objects.equals(this.cleardownModuleCodes, aborConfiguration.cleardownModuleCodes) &&
         Objects.equals(this.properties, aborConfiguration.properties) &&
         Objects.equals(this.version, aborConfiguration.version) &&
-        Objects.equals(this.cleardownModuleCodes, aborConfiguration.cleardownModuleCodes) &&
         Objects.equals(this.links, aborConfiguration.links);
   }
 
@@ -398,7 +398,7 @@ public class AborConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, properties, version, cleardownModuleCodes, links);
+    return Objects.hash(href, id, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -419,9 +419,9 @@ public class AborConfiguration {
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
+    sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -452,9 +452,9 @@ public class AborConfiguration {
     openapiFields.add("recipeId");
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("postingModuleCodes");
+    openapiFields.add("cleardownModuleCodes");
     openapiFields.add("properties");
     openapiFields.add("version");
-    openapiFields.add("cleardownModuleCodes");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -504,13 +504,13 @@ public class AborConfiguration {
       if (jsonObj.get("postingModuleCodes") != null && !jsonObj.get("postingModuleCodes").isJsonNull() && !jsonObj.get("postingModuleCodes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `postingModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("postingModuleCodes").toString()));
       }
-      // validate the optional field `version`
-      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
-        Version.validateJsonElement(jsonObj.get("version"));
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("cleardownModuleCodes") != null && !jsonObj.get("cleardownModuleCodes").isJsonNull() && !jsonObj.get("cleardownModuleCodes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `cleardownModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("cleardownModuleCodes").toString()));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

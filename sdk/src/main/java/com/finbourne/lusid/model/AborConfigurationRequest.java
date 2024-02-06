@@ -80,13 +80,13 @@ public class AborConfigurationRequest {
   @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODES)
   private List<String> postingModuleCodes;
 
-  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
-  @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties;
-
   public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
   @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
   private List<String> cleardownModuleCodes;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public AborConfigurationRequest() {
   }
@@ -225,35 +225,6 @@ public class AborConfigurationRequest {
   }
 
 
-  public AborConfigurationRequest properties(Map<String, Property> properties) {
-    
-    this.properties = properties;
-    return this;
-  }
-
-  public AborConfigurationRequest putPropertiesItem(String key, Property propertiesItem) {
-    if (this.properties == null) {
-      this.properties = new HashMap<>();
-    }
-    this.properties.put(key, propertiesItem);
-    return this;
-  }
-
-   /**
-   * A set of properties for the Abor Configuration.
-   * @return properties
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, Property> getProperties() {
-    return properties;
-  }
-
-
-  public void setProperties(Map<String, Property> properties) {
-    this.properties = properties;
-  }
-
-
   public AborConfigurationRequest cleardownModuleCodes(List<String> cleardownModuleCodes) {
     
     this.cleardownModuleCodes = cleardownModuleCodes;
@@ -283,6 +254,35 @@ public class AborConfigurationRequest {
   }
 
 
+  public AborConfigurationRequest properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public AborConfigurationRequest putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * A set of properties for the Abor Configuration.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -299,8 +299,8 @@ public class AborConfigurationRequest {
         Objects.equals(this.recipeId, aborConfigurationRequest.recipeId) &&
         Objects.equals(this.chartOfAccountsId, aborConfigurationRequest.chartOfAccountsId) &&
         Objects.equals(this.postingModuleCodes, aborConfigurationRequest.postingModuleCodes) &&
-        Objects.equals(this.properties, aborConfigurationRequest.properties) &&
-        Objects.equals(this.cleardownModuleCodes, aborConfigurationRequest.cleardownModuleCodes);
+        Objects.equals(this.cleardownModuleCodes, aborConfigurationRequest.cleardownModuleCodes) &&
+        Objects.equals(this.properties, aborConfigurationRequest.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -309,7 +309,7 @@ public class AborConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, properties, cleardownModuleCodes);
+    return Objects.hash(code, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -329,8 +329,8 @@ public class AborConfigurationRequest {
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -359,8 +359,8 @@ public class AborConfigurationRequest {
     openapiFields.add("recipeId");
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("postingModuleCodes");
-    openapiFields.add("properties");
     openapiFields.add("cleardownModuleCodes");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

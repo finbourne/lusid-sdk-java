@@ -76,6 +76,10 @@ public class ValuationSchedule {
   @SerializedName(SERIALIZED_NAME_VALUATION_DATE_TIMES)
   private List<String> valuationDateTimes;
 
+  public static final String SERIALIZED_NAME_BUSINESS_DAY_CONVENTION = "businessDayConvention";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_DAY_CONVENTION)
+  private String businessDayConvention;
+
   public ValuationSchedule() {
   }
 
@@ -149,7 +153,7 @@ public class ValuationSchedule {
   }
 
    /**
-   * When Tenor is given and is not equal to \&quot;1D\&quot;, there may be cases where \&quot;date + tenor\&quot; land on non-business days around month end.  In that case, the RollConvention, e.g. modified following \&quot;MF\&quot; would be applied to determine the next GBD.
+   * When Tenor is given and is \&quot;1M\&quot; or longer, this specifies the rule which should be used to generate the date schedule.   For example, \&quot;EndOfMonth\&quot; to generate end of month dates, or \&quot;1\&quot; to specify the first day of the applicable month.
    * @return rollConvention
   **/
   @jakarta.annotation.Nullable
@@ -221,6 +225,27 @@ public class ValuationSchedule {
   }
 
 
+  public ValuationSchedule businessDayConvention(String businessDayConvention) {
+    
+    this.businessDayConvention = businessDayConvention;
+    return this;
+  }
+
+   /**
+   * When Tenor is given and is not equal to \&quot;1D\&quot;, there may be cases where \&quot;date + tenor\&quot; land on non-business days around month end.  In that case, the BusinessDayConvention, e.g. modified following \&quot;MF\&quot; would be applied to determine the next GBD.
+   * @return businessDayConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getBusinessDayConvention() {
+    return businessDayConvention;
+  }
+
+
+  public void setBusinessDayConvention(String businessDayConvention) {
+    this.businessDayConvention = businessDayConvention;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -236,7 +261,8 @@ public class ValuationSchedule {
         Objects.equals(this.tenor, valuationSchedule.tenor) &&
         Objects.equals(this.rollConvention, valuationSchedule.rollConvention) &&
         Objects.equals(this.holidayCalendars, valuationSchedule.holidayCalendars) &&
-        Objects.equals(this.valuationDateTimes, valuationSchedule.valuationDateTimes);
+        Objects.equals(this.valuationDateTimes, valuationSchedule.valuationDateTimes) &&
+        Objects.equals(this.businessDayConvention, valuationSchedule.businessDayConvention);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -245,7 +271,7 @@ public class ValuationSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, effectiveAt, tenor, rollConvention, holidayCalendars, valuationDateTimes);
+    return Objects.hash(effectiveFrom, effectiveAt, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -265,6 +291,7 @@ public class ValuationSchedule {
     sb.append("    rollConvention: ").append(toIndentedString(rollConvention)).append("\n");
     sb.append("    holidayCalendars: ").append(toIndentedString(holidayCalendars)).append("\n");
     sb.append("    valuationDateTimes: ").append(toIndentedString(valuationDateTimes)).append("\n");
+    sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -293,6 +320,7 @@ public class ValuationSchedule {
     openapiFields.add("rollConvention");
     openapiFields.add("holidayCalendars");
     openapiFields.add("valuationDateTimes");
+    openapiFields.add("businessDayConvention");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -338,6 +366,9 @@ public class ValuationSchedule {
       // ensure the optional json data is an array if present
       if (jsonObj.get("valuationDateTimes") != null && !jsonObj.get("valuationDateTimes").isJsonNull() && !jsonObj.get("valuationDateTimes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `valuationDateTimes` to be an array in the JSON string but got `%s`", jsonObj.get("valuationDateTimes").toString()));
+      }
+      if ((jsonObj.get("businessDayConvention") != null && !jsonObj.get("businessDayConvention").isJsonNull()) && !jsonObj.get("businessDayConvention").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `businessDayConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDayConvention").toString()));
       }
   }
 
