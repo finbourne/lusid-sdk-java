@@ -53,13 +53,13 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecipeComposer {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
-
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
+
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
 
   public static final String SERIALIZED_NAME_OPERATIONS = "operations";
   @SerializedName(SERIALIZED_NAME_OPERATIONS)
@@ -67,27 +67,6 @@ public class RecipeComposer {
 
   public RecipeComposer() {
   }
-
-  public RecipeComposer code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * User given string name (code) to identify the recipe.
-   * @return code
-  **/
-  @jakarta.annotation.Nonnull
-  public String getCode() {
-    return code;
-  }
-
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
 
   public RecipeComposer scope(String scope) {
     
@@ -107,6 +86,27 @@ public class RecipeComposer {
 
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+
+  public RecipeComposer code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * User given string name (code) to identify the recipe.
+   * @return code
+  **/
+  @jakarta.annotation.Nonnull
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
   }
 
 
@@ -149,8 +149,8 @@ public class RecipeComposer {
       return false;
     }
     RecipeComposer recipeComposer = (RecipeComposer) o;
-    return Objects.equals(this.code, recipeComposer.code) &&
-        Objects.equals(this.scope, recipeComposer.scope) &&
+    return Objects.equals(this.scope, recipeComposer.scope) &&
+        Objects.equals(this.code, recipeComposer.code) &&
         Objects.equals(this.operations, recipeComposer.operations);
   }
 
@@ -160,7 +160,7 @@ public class RecipeComposer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, scope, operations);
+    return Objects.hash(scope, code, operations);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -174,8 +174,8 @@ public class RecipeComposer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecipeComposer {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    operations: ").append(toIndentedString(operations)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -199,14 +199,14 @@ public class RecipeComposer {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("code");
     openapiFields.add("scope");
+    openapiFields.add("code");
     openapiFields.add("operations");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
     openapiRequiredFields.add("scope");
+    openapiRequiredFields.add("code");
   }
 
  /**
@@ -229,11 +229,11 @@ public class RecipeComposer {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
       if (!jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
+      if (!jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if (jsonObj.get("operations") != null && !jsonObj.get("operations").isJsonNull()) {
         JsonArray jsonArrayoperations = jsonObj.getAsJsonArray("operations");

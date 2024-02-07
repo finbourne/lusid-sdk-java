@@ -25,13 +25,13 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.AllocationServiceRunResponse;
-import com.finbourne.lusid.model.BlockAndOrderCreateRequest;
+import com.finbourne.lusid.model.BlockAndOrdersCreateRequest;
 import com.finbourne.lusid.model.BookTransactionsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.PlaceBlocksRequest;
 import com.finbourne.lusid.model.ResourceId;
-import com.finbourne.lusid.model.ResourceListOfBlockAndOrder;
+import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
 
 import java.lang.reflect.Type;
@@ -259,7 +259,7 @@ public class OrderManagementApi {
     public APIbookTransactionsRequest bookTransactions(List<ResourceId> resourceId) {
         return new APIbookTransactionsRequest(resourceId);
     }
-    private okhttp3.Call createOrdersCall(BlockAndOrderCreateRequest blockAndOrderCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createOrdersCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -273,7 +273,7 @@ public class OrderManagementApi {
             basePath = null;
         }
 
-        Object localVarPostBody = blockAndOrderCreateRequest;
+        Object localVarPostBody = blockAndOrdersCreateRequest;
 
         // create path and map variables
         String localVarPath = "/api/ordermanagement/createorders";
@@ -310,36 +310,36 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createOrdersValidateBeforeCall(BlockAndOrderCreateRequest blockAndOrderCreateRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'blockAndOrderCreateRequest' is set
-        if (blockAndOrderCreateRequest == null) {
-            throw new ApiException("Missing the required parameter 'blockAndOrderCreateRequest' when calling createOrders(Async)");
+    private okhttp3.Call createOrdersValidateBeforeCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'blockAndOrdersCreateRequest' is set
+        if (blockAndOrdersCreateRequest == null) {
+            throw new ApiException("Missing the required parameter 'blockAndOrdersCreateRequest' when calling createOrders(Async)");
         }
 
-        return createOrdersCall(blockAndOrderCreateRequest, _callback);
+        return createOrdersCall(blockAndOrdersCreateRequest, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfBlockAndOrder> createOrdersWithHttpInfo(BlockAndOrderCreateRequest blockAndOrderCreateRequest) throws ApiException {
-        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrderCreateRequest, null);
-        Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrder>(){}.getType();
+    private ApiResponse<ResourceListOfBlockAndOrders> createOrdersWithHttpInfo(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, null);
+        Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrders>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createOrdersAsync(BlockAndOrderCreateRequest blockAndOrderCreateRequest, final ApiCallback<ResourceListOfBlockAndOrder> _callback) throws ApiException {
+    private okhttp3.Call createOrdersAsync(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback<ResourceListOfBlockAndOrders> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrderCreateRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrder>(){}.getType();
+        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrders>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIcreateOrdersRequest {
-        private final BlockAndOrderCreateRequest blockAndOrderCreateRequest;
+        private final BlockAndOrdersCreateRequest blockAndOrdersCreateRequest;
 
-        private APIcreateOrdersRequest(BlockAndOrderCreateRequest blockAndOrderCreateRequest) {
-            this.blockAndOrderCreateRequest = blockAndOrderCreateRequest;
+        private APIcreateOrdersRequest(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) {
+            this.blockAndOrdersCreateRequest = blockAndOrdersCreateRequest;
         }
 
         /**
@@ -350,46 +350,46 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> A collection of block and order pairs. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createOrdersCall(blockAndOrderCreateRequest, _callback);
+            return createOrdersCall(blockAndOrdersCreateRequest, _callback);
         }
 
         /**
          * Execute createOrders request
-         * @return ResourceListOfBlockAndOrder
+         * @return ResourceListOfBlockAndOrders
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> A collection of block and order pairs. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfBlockAndOrder execute() throws ApiException {
-            ApiResponse<ResourceListOfBlockAndOrder> localVarResp = createOrdersWithHttpInfo(blockAndOrderCreateRequest);
+        public ResourceListOfBlockAndOrders execute() throws ApiException {
+            ApiResponse<ResourceListOfBlockAndOrders> localVarResp = createOrdersWithHttpInfo(blockAndOrdersCreateRequest);
             return localVarResp.getData();
         }
 
         /**
          * Execute createOrders request with HTTP info returned
-         * @return ApiResponse&lt;ResourceListOfBlockAndOrder&gt;
+         * @return ApiResponse&lt;ResourceListOfBlockAndOrders&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> A collection of block and order pairs. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfBlockAndOrder> executeWithHttpInfo() throws ApiException {
-            return createOrdersWithHttpInfo(blockAndOrderCreateRequest);
+        public ApiResponse<ResourceListOfBlockAndOrders> executeWithHttpInfo() throws ApiException {
+            return createOrdersWithHttpInfo(blockAndOrdersCreateRequest);
         }
 
         /**
@@ -400,31 +400,31 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> A collection of block and order pairs. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfBlockAndOrder> _callback) throws ApiException {
-            return createOrdersAsync(blockAndOrderCreateRequest, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfBlockAndOrders> _callback) throws ApiException {
+            return createOrdersAsync(blockAndOrdersCreateRequest, _callback);
         }
     }
 
     /**
-     * [EARLY ACCESS] CreateOrders: Create Block and Order pairs
-     * Create new block and order pairs.
-     * @param blockAndOrderCreateRequest The collection of block and order requests. (required)
+     * [EARLY ACCESS] CreateOrders: Upsert a Block and associated orders
+     * Upsert a Block and create associated orders.  This will fail if the block exists and already references orders with differing fields to the upsert request.
+     * @param blockAndOrdersCreateRequest The collection of block and orders requests. (required)
      * @return APIcreateOrdersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> A collection of block and order pairs. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreateOrdersRequest createOrders(BlockAndOrderCreateRequest blockAndOrderCreateRequest) {
-        return new APIcreateOrdersRequest(blockAndOrderCreateRequest);
+    public APIcreateOrdersRequest createOrders(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) {
+        return new APIcreateOrdersRequest(blockAndOrdersCreateRequest);
     }
     private okhttp3.Call placeBlocksCall(PlaceBlocksRequest placeBlocksRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

@@ -5,7 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**bookTransactions**](OrderManagementApi.md#bookTransactions) | **POST** /api/ordermanagement/booktransactions | [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source. |
-| [**createOrders**](OrderManagementApi.md#createOrders) | **POST** /api/ordermanagement/createorders | [EARLY ACCESS] CreateOrders: Create Block and Order pairs |
+| [**createOrders**](OrderManagementApi.md#createOrders) | **POST** /api/ordermanagement/createorders | [EARLY ACCESS] CreateOrders: Upsert a Block and associated orders |
 | [**placeBlocks**](OrderManagementApi.md#placeBlocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
 | [**runAllocationService**](OrderManagementApi.md#runAllocationService) | **POST** /api/ordermanagement/allocate | [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service |
 
@@ -85,11 +85,11 @@ public class Example {
 
 <a id="createOrders"></a>
 # **createOrders**
-> ResourceListOfBlockAndOrder createOrders(blockAndOrderCreateRequest).execute();
+> ResourceListOfBlockAndOrders createOrders(blockAndOrdersCreateRequest).execute();
 
-[EARLY ACCESS] CreateOrders: Create Block and Order pairs
+[EARLY ACCESS] CreateOrders: Upsert a Block and associated orders
 
-Create new block and order pairs.
+Upsert a Block and create associated orders.  This will fail if the block exists and already references orders with differing fields to the upsert request.
 
 ### Example
 ```java
@@ -111,9 +111,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     OrderManagementApi apiInstance = new OrderManagementApi(defaultClient);
-    BlockAndOrderCreateRequest blockAndOrderCreateRequest = new BlockAndOrderCreateRequest(); // BlockAndOrderCreateRequest | The collection of block and order requests.
+    BlockAndOrdersCreateRequest blockAndOrdersCreateRequest = new BlockAndOrdersCreateRequest(); // BlockAndOrdersCreateRequest | The collection of block and orders requests.
     try {
-      ResourceListOfBlockAndOrder result = apiInstance.createOrders(blockAndOrderCreateRequest)
+      ResourceListOfBlockAndOrders result = apiInstance.createOrders(blockAndOrdersCreateRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -131,11 +131,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **blockAndOrderCreateRequest** | [**BlockAndOrderCreateRequest**](BlockAndOrderCreateRequest.md)| The collection of block and order requests. | |
+| **blockAndOrdersCreateRequest** | [**BlockAndOrdersCreateRequest**](BlockAndOrdersCreateRequest.md)| The collection of block and orders requests. | |
 
 ### Return type
 
-[**ResourceListOfBlockAndOrder**](ResourceListOfBlockAndOrder.md)
+[**ResourceListOfBlockAndOrders**](ResourceListOfBlockAndOrders.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | A collection of block and order pairs. |  -  |
+| **201** | A collection of block and associated orders. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
