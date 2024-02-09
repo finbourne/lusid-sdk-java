@@ -10,6 +10,7 @@ LUSID representation of an Equity.
 |------------ | ------------- | ------------- | -------------|
 |**identifiers** | [**EquityAllOfIdentifiers**](EquityAllOfIdentifiers.md) |  |  [optional] |
 |**domCcy** | **String** | The domestic currency of the instrument. |  |
+|**lotSize** | **Integer** | Equity LotSize, the minimum number of shares that can be bought at once.  Optional, if set must be non-negative, if not set defaults to 1.    Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational. |  [optional] |
 
 
 

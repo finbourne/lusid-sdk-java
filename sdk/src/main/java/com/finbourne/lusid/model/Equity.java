@@ -60,6 +60,10 @@ public class Equity extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
 
+  public static final String SERIALIZED_NAME_LOT_SIZE = "lotSize";
+  @SerializedName(SERIALIZED_NAME_LOT_SIZE)
+  private Integer lotSize;
+
   public Equity() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -106,6 +110,27 @@ public class Equity extends LusidInstrument {
   }
 
 
+  public Equity lotSize(Integer lotSize) {
+    
+    this.lotSize = lotSize;
+    return this;
+  }
+
+   /**
+   * Equity LotSize, the minimum number of shares that can be bought at once.  Optional, if set must be non-negative, if not set defaults to 1.    Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational.
+   * @return lotSize
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getLotSize() {
+    return lotSize;
+  }
+
+
+  public void setLotSize(Integer lotSize) {
+    this.lotSize = lotSize;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -118,6 +143,7 @@ public class Equity extends LusidInstrument {
     Equity equity = (Equity) o;
     return Objects.equals(this.identifiers, equity.identifiers) &&
         Objects.equals(this.domCcy, equity.domCcy) &&
+        Objects.equals(this.lotSize, equity.lotSize) &&
         super.equals(o);
   }
 
@@ -127,7 +153,7 @@ public class Equity extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, domCcy, super.hashCode());
+    return Objects.hash(identifiers, domCcy, lotSize, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -144,6 +170,7 @@ public class Equity extends LusidInstrument {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    lotSize: ").append(toIndentedString(lotSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -169,6 +196,7 @@ public class Equity extends LusidInstrument {
     openapiFields.add("instrumentType");
     openapiFields.add("identifiers");
     openapiFields.add("domCcy");
+    openapiFields.add("lotSize");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
