@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**complianceParameterType** | [**ComplianceParameterTypeEnum**](#ComplianceParameterTypeEnum) | The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter |  |
+|**complianceParameterType** | [**ComplianceParameterTypeEnum**](#ComplianceParameterTypeEnum) | The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter, GroupBySelectorComplianceParameter |  |
 
 
 
@@ -34,6 +34,7 @@
 | INSTRUMENTLISTCOMPLIANCEPARAMETER | &quot;InstrumentListComplianceParameter&quot; |
 | FILTERPREDICATECOMPLIANCEPARAMETER | &quot;FilterPredicateComplianceParameter&quot; |
 | GROUPFILTERPREDICATECOMPLIANCEPARAMETER | &quot;GroupFilterPredicateComplianceParameter&quot; |
+| GROUPBYSELECTORCOMPLIANCEPARAMETER | &quot;GroupBySelectorComplianceParameter&quot; |
 
 
 

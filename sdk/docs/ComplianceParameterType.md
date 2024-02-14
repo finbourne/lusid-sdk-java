@@ -43,5 +43,7 @@
 
 * `GROUPFILTERPREDICATECOMPLIANCEPARAMETER` (value: `"GroupFilterPredicateComplianceParameter"`)
 
+* `GROUPBYSELECTORCOMPLIANCEPARAMETER` (value: `"GroupBySelectorComplianceParameter"`)
+
 
 

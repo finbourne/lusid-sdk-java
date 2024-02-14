@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceParameter {
   /**
-   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter
+   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter, GroupBySelectorComplianceParameter
    */
   @JsonAdapter(ComplianceParameterTypeEnum.Adapter.class)
   public enum ComplianceParameterTypeEnum {
@@ -90,7 +90,9 @@ public class ComplianceParameter {
     
     FILTERPREDICATECOMPLIANCEPARAMETER("FilterPredicateComplianceParameter"),
     
-    GROUPFILTERPREDICATECOMPLIANCEPARAMETER("GroupFilterPredicateComplianceParameter");
+    GROUPFILTERPREDICATECOMPLIANCEPARAMETER("GroupFilterPredicateComplianceParameter"),
+    
+    GROUPBYSELECTORCOMPLIANCEPARAMETER("GroupBySelectorComplianceParameter");
 
     private String value;
 
@@ -144,7 +146,7 @@ public class ComplianceParameter {
   }
 
    /**
-   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter
+   * The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter, GroupBySelectorComplianceParameter
    * @return complianceParameterType
   **/
   @jakarta.annotation.Nonnull
@@ -251,6 +253,9 @@ public class ComplianceParameter {
           break;
         case "FilterPredicateComplianceParameter":
           FilterPredicateComplianceParameter.validateJsonElement(jsonElement);
+          break;
+        case "GroupBySelectorComplianceParameter":
+          GroupBySelectorComplianceParameter.validateJsonElement(jsonElement);
           break;
         case "GroupFilterPredicateComplianceParameter":
           GroupFilterPredicateComplianceParameter.validateJsonElement(jsonElement);
