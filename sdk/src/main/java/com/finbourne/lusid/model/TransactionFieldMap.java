@@ -63,17 +63,13 @@ public class TransactionFieldMap {
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private String source;
 
-  public static final String SERIALIZED_NAME_LUSID_INSTRUMENT_ID = "lusidInstrumentId";
-  @SerializedName(SERIALIZED_NAME_LUSID_INSTRUMENT_ID)
-  private String lusidInstrumentId;
+  public static final String SERIALIZED_NAME_INSTRUMENT = "instrument";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT)
+  private String instrument;
 
-  public static final String SERIALIZED_NAME_INSTRUMENT_SCOPE = "instrumentScope";
-  @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
-  private String instrumentScope;
-
-  public static final String SERIALIZED_NAME_TRADE_DATE = "tradeDate";
-  @SerializedName(SERIALIZED_NAME_TRADE_DATE)
-  private String tradeDate;
+  public static final String SERIALIZED_NAME_TRANSACTION_DATE = "transactionDate";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_DATE)
+  private String transactionDate;
 
   public static final String SERIALIZED_NAME_SETTLEMENT_DATE = "settlementDate";
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_DATE)
@@ -98,10 +94,6 @@ public class TransactionFieldMap {
   public static final String SERIALIZED_NAME_TOTAL_CONSIDERATION = "totalConsideration";
   @SerializedName(SERIALIZED_NAME_TOTAL_CONSIDERATION)
   private TransactionCurrencyAndAmount totalConsideration;
-
-  public static final String SERIALIZED_NAME_SETTLEMENT_CURRENCY = "settlementCurrency";
-  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CURRENCY)
-  private String settlementCurrency;
 
   public TransactionFieldMap() {
   }
@@ -169,66 +161,45 @@ public class TransactionFieldMap {
   }
 
 
-  public TransactionFieldMap lusidInstrumentId(String lusidInstrumentId) {
+  public TransactionFieldMap instrument(String instrument) {
     
-    this.lusidInstrumentId = lusidInstrumentId;
+    this.instrument = instrument;
     return this;
   }
 
    /**
-   * Get lusidInstrumentId
-   * @return lusidInstrumentId
+   * Get instrument
+   * @return instrument
   **/
   @jakarta.annotation.Nonnull
-  public String getLusidInstrumentId() {
-    return lusidInstrumentId;
+  public String getInstrument() {
+    return instrument;
   }
 
 
-  public void setLusidInstrumentId(String lusidInstrumentId) {
-    this.lusidInstrumentId = lusidInstrumentId;
+  public void setInstrument(String instrument) {
+    this.instrument = instrument;
   }
 
 
-  public TransactionFieldMap instrumentScope(String instrumentScope) {
+  public TransactionFieldMap transactionDate(String transactionDate) {
     
-    this.instrumentScope = instrumentScope;
+    this.transactionDate = transactionDate;
     return this;
   }
 
    /**
-   * Get instrumentScope
-   * @return instrumentScope
+   * Get transactionDate
+   * @return transactionDate
   **/
   @jakarta.annotation.Nonnull
-  public String getInstrumentScope() {
-    return instrumentScope;
+  public String getTransactionDate() {
+    return transactionDate;
   }
 
 
-  public void setInstrumentScope(String instrumentScope) {
-    this.instrumentScope = instrumentScope;
-  }
-
-
-  public TransactionFieldMap tradeDate(String tradeDate) {
-    
-    this.tradeDate = tradeDate;
-    return this;
-  }
-
-   /**
-   * Get tradeDate
-   * @return tradeDate
-  **/
-  @jakarta.annotation.Nonnull
-  public String getTradeDate() {
-    return tradeDate;
-  }
-
-
-  public void setTradeDate(String tradeDate) {
-    this.tradeDate = tradeDate;
+  public void setTransactionDate(String transactionDate) {
+    this.transactionDate = transactionDate;
   }
 
 
@@ -358,27 +329,6 @@ public class TransactionFieldMap {
   }
 
 
-  public TransactionFieldMap settlementCurrency(String settlementCurrency) {
-    
-    this.settlementCurrency = settlementCurrency;
-    return this;
-  }
-
-   /**
-   * Get settlementCurrency
-   * @return settlementCurrency
-  **/
-  @jakarta.annotation.Nonnull
-  public String getSettlementCurrency() {
-    return settlementCurrency;
-  }
-
-
-  public void setSettlementCurrency(String settlementCurrency) {
-    this.settlementCurrency = settlementCurrency;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -392,21 +342,19 @@ public class TransactionFieldMap {
     return Objects.equals(this.transactionId, transactionFieldMap.transactionId) &&
         Objects.equals(this.type, transactionFieldMap.type) &&
         Objects.equals(this.source, transactionFieldMap.source) &&
-        Objects.equals(this.lusidInstrumentId, transactionFieldMap.lusidInstrumentId) &&
-        Objects.equals(this.instrumentScope, transactionFieldMap.instrumentScope) &&
-        Objects.equals(this.tradeDate, transactionFieldMap.tradeDate) &&
+        Objects.equals(this.instrument, transactionFieldMap.instrument) &&
+        Objects.equals(this.transactionDate, transactionFieldMap.transactionDate) &&
         Objects.equals(this.settlementDate, transactionFieldMap.settlementDate) &&
         Objects.equals(this.units, transactionFieldMap.units) &&
         Objects.equals(this.transactionPrice, transactionFieldMap.transactionPrice) &&
         Objects.equals(this.transactionCurrency, transactionFieldMap.transactionCurrency) &&
         Objects.equals(this.exchangeRate, transactionFieldMap.exchangeRate) &&
-        Objects.equals(this.totalConsideration, transactionFieldMap.totalConsideration) &&
-        Objects.equals(this.settlementCurrency, transactionFieldMap.settlementCurrency);
+        Objects.equals(this.totalConsideration, transactionFieldMap.totalConsideration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, source, lusidInstrumentId, instrumentScope, tradeDate, settlementDate, units, transactionPrice, transactionCurrency, exchangeRate, totalConsideration, settlementCurrency);
+    return Objects.hash(transactionId, type, source, instrument, transactionDate, settlementDate, units, transactionPrice, transactionCurrency, exchangeRate, totalConsideration);
   }
 
   @Override
@@ -416,16 +364,14 @@ public class TransactionFieldMap {
     sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
-    sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
-    sb.append("    tradeDate: ").append(toIndentedString(tradeDate)).append("\n");
+    sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
+    sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
     sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    transactionPrice: ").append(toIndentedString(transactionPrice)).append("\n");
     sb.append("    transactionCurrency: ").append(toIndentedString(transactionCurrency)).append("\n");
     sb.append("    exchangeRate: ").append(toIndentedString(exchangeRate)).append("\n");
     sb.append("    totalConsideration: ").append(toIndentedString(totalConsideration)).append("\n");
-    sb.append("    settlementCurrency: ").append(toIndentedString(settlementCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -451,32 +397,28 @@ public class TransactionFieldMap {
     openapiFields.add("transactionId");
     openapiFields.add("type");
     openapiFields.add("source");
-    openapiFields.add("lusidInstrumentId");
-    openapiFields.add("instrumentScope");
-    openapiFields.add("tradeDate");
+    openapiFields.add("instrument");
+    openapiFields.add("transactionDate");
     openapiFields.add("settlementDate");
     openapiFields.add("units");
     openapiFields.add("transactionPrice");
     openapiFields.add("transactionCurrency");
     openapiFields.add("exchangeRate");
     openapiFields.add("totalConsideration");
-    openapiFields.add("settlementCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("transactionId");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("source");
-    openapiRequiredFields.add("lusidInstrumentId");
-    openapiRequiredFields.add("instrumentScope");
-    openapiRequiredFields.add("tradeDate");
+    openapiRequiredFields.add("instrument");
+    openapiRequiredFields.add("transactionDate");
     openapiRequiredFields.add("settlementDate");
     openapiRequiredFields.add("units");
     openapiRequiredFields.add("transactionPrice");
     openapiRequiredFields.add("transactionCurrency");
     openapiRequiredFields.add("exchangeRate");
     openapiRequiredFields.add("totalConsideration");
-    openapiRequiredFields.add("settlementCurrency");
   }
 
  /**
@@ -508,14 +450,11 @@ public class TransactionFieldMap {
       if (!jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
       }
-      if (!jsonObj.get("lusidInstrumentId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lusidInstrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lusidInstrumentId").toString()));
+      if (!jsonObj.get("instrument").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrument` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrument").toString()));
       }
-      if (!jsonObj.get("instrumentScope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
-      }
-      if (!jsonObj.get("tradeDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tradeDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tradeDate").toString()));
+      if (!jsonObj.get("transactionDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionDate").toString()));
       }
       if (!jsonObj.get("settlementDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `settlementDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementDate").toString()));
@@ -533,9 +472,6 @@ public class TransactionFieldMap {
       }
       // validate the required field `totalConsideration`
       TransactionCurrencyAndAmount.validateJsonElement(jsonObj.get("totalConsideration"));
-      if (!jsonObj.get("settlementCurrency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `settlementCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementCurrency").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

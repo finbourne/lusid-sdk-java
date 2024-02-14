@@ -130,7 +130,7 @@ public class PerformanceReturnsMetric {
   }
 
    /**
-   * Bool if the metric is allowed partial results. Deafult to false.
+   * Bool if the metric is allowed partial results. Default to false.
    * @return allowPartial
   **/
   @jakarta.annotation.Nullable
