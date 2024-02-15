@@ -658,6 +658,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.FundShareClass.class, new TypeSelector<com.finbourne.lusid.model.FundShareClass>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FundShareClass> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FundShareClass", com.finbourne.lusid.model.FundShareClass.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.FundingLeg.class, new TypeSelector<com.finbourne.lusid.model.FundingLeg>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FundingLeg> getClassForElement(JsonElement readElement) {
@@ -1070,6 +1079,7 @@ public class JSON {
                         classByDiscriminatorValue.put("FixedLeg", com.finbourne.lusid.model.FixedLeg.class);
                         classByDiscriminatorValue.put("FloatingLeg", com.finbourne.lusid.model.FloatingLeg.class);
                         classByDiscriminatorValue.put("ForwardRateAgreement", com.finbourne.lusid.model.ForwardRateAgreement.class);
+                        classByDiscriminatorValue.put("FundShareClass", com.finbourne.lusid.model.FundShareClass.class);
                         classByDiscriminatorValue.put("FundingLeg", com.finbourne.lusid.model.FundingLeg.class);
                         classByDiscriminatorValue.put("Future", com.finbourne.lusid.model.Future.class);
                         classByDiscriminatorValue.put("FxForward", com.finbourne.lusid.model.FxForward.class);
@@ -1951,6 +1961,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlowConventions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ForwardRateAgreement.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FromRecipe.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundShareClass.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundingLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundingLegOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Future.CustomTypeAdapterFactory());

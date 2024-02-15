@@ -9,7 +9,7 @@ The combination of a library to use and a model in that library that defines whi
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**library** | [**LibraryEnum**](#LibraryEnum) | The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc |  |
-|**model** | [**ModelEnum**](#ModelEnum) | The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, LookUpPricing |  |
+|**model** | [**ModelEnum**](#ModelEnum) | The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, LookUpPricing, BondLookupPricer |  |
 
 
 
@@ -49,6 +49,7 @@ The combination of a library to use and a model in that library that defines whi
 | BLACKSCHOLESDIGITAL | &quot;BlackScholesDigital&quot; |
 | BJERKSUNDSTENSLAND1993 | &quot;BjerksundStensland1993&quot; |
 | LOOKUPPRICING | &quot;LookUpPricing&quot; |
+| BONDLOOKUPPRICER | &quot;BondLookupPricer&quot; |
 
 
 

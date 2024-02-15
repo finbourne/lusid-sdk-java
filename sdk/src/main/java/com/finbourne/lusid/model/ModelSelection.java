@@ -111,7 +111,7 @@ public class ModelSelection {
   private LibraryEnum library;
 
   /**
-   * The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, LookUpPricing
+   * The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, LookUpPricing, BondLookupPricer
    */
   @JsonAdapter(ModelEnum.Adapter.class)
   public enum ModelEnum {
@@ -149,7 +149,9 @@ public class ModelSelection {
     
     BJERKSUNDSTENSLAND1993("BjerksundStensland1993"),
     
-    LOOKUPPRICING("LookUpPricing");
+    LOOKUPPRICING("LookUpPricing"),
+    
+    BONDLOOKUPPRICER("BondLookupPricer");
 
     private String value;
 
@@ -224,7 +226,7 @@ public class ModelSelection {
   }
 
    /**
-   * The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, LookUpPricing
+   * The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, LookUpPricing, BondLookupPricer
    * @return model
   **/
   @jakarta.annotation.Nonnull

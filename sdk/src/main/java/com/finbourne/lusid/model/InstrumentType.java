@@ -95,7 +95,9 @@ public enum InstrumentType {
   
   TOTALRETURNSWAP("TotalReturnSwap"),
   
-  INFLATIONLEG("InflationLeg");
+  INFLATIONLEG("InflationLeg"),
+  
+  FUNDSHARECLASS("FundShareClass");
 
   private String value;
 

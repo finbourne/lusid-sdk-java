@@ -41,5 +41,7 @@
 
 * `LOOKUPPRICING` (value: `"LookUpPricing"`)
 
+* `BONDLOOKUPPRICER` (value: `"BondLookupPricer"`)
+
 
 

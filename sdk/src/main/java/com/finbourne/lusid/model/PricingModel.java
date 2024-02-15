@@ -59,7 +59,9 @@ public enum PricingModel {
   
   BJERKSUNDSTENSLAND1993("BjerksundStensland1993"),
   
-  LOOKUPPRICING("LookUpPricing");
+  LOOKUPPRICING("LookUpPricing"),
+  
+  BONDLOOKUPPRICER("BondLookupPricer");
 
   private String value;
 

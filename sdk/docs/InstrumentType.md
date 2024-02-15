@@ -77,5 +77,7 @@
 
 * `INFLATIONLEG` (value: `"InflationLeg"`)
 
+* `FUNDSHARECLASS` (value: `"FundShareClass"`)
+
 
 
