@@ -45,5 +45,7 @@
 
 * `MATURITYEVENT` (value: `"MaturityEvent"`)
 
+* `FXFORWARDSETTLEMENTEVENT` (value: `"FxForwardSettlementEvent"`)
+
 
 

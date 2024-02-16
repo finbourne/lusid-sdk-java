@@ -748,6 +748,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "marketDataType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.FxForwardSettlementEvent.class, new TypeSelector<com.finbourne.lusid.model.FxForwardSettlementEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FxForwardSettlementEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardSettlementEvent", com.finbourne.lusid.model.FxForwardSettlementEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.FxForwardTenorCurveData.class, new TypeSelector<com.finbourne.lusid.model.FxForwardTenorCurveData>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FxForwardTenorCurveData> getClassForElement(JsonElement readElement) {
@@ -952,6 +961,7 @@ public class JSON {
                         classByDiscriminatorValue.put("DividendOptionEvent", com.finbourne.lusid.model.DividendOptionEvent.class);
                         classByDiscriminatorValue.put("DividendReinvestmentEvent", com.finbourne.lusid.model.DividendReinvestmentEvent.class);
                         classByDiscriminatorValue.put("ExerciseEvent", com.finbourne.lusid.model.ExerciseEvent.class);
+                        classByDiscriminatorValue.put("FxForwardSettlementEvent", com.finbourne.lusid.model.FxForwardSettlementEvent.class);
                         classByDiscriminatorValue.put("InformationalErrorEvent", com.finbourne.lusid.model.InformationalErrorEvent.class);
                         classByDiscriminatorValue.put("InformationalEvent", com.finbourne.lusid.model.InformationalEvent.class);
                         classByDiscriminatorValue.put("MaturityEvent", com.finbourne.lusid.model.MaturityEvent.class);
@@ -1973,6 +1983,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardCurveData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardPipsCurveData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardSettlementEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardTenorCurveData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardTenorPipsCurveData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FxForwardsDependency.CustomTypeAdapterFactory());

@@ -63,7 +63,9 @@ public enum InstrumentEventType {
   
   DIVIDENDOPTIONEVENT("DividendOptionEvent"),
   
-  MATURITYEVENT("MaturityEvent");
+  MATURITYEVENT("MaturityEvent"),
+  
+  FXFORWARDSETTLEMENTEVENT("FxForwardSettlementEvent");
 
   private String value;
 
