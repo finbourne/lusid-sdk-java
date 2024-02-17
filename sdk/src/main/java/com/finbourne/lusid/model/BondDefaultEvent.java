@@ -51,157 +51,32 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BondDefaultEvent extends InstrumentEvent {
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private java.math.BigDecimal amount;
-
-  public static final String SERIALIZED_NAME_COUPON_PAID_DATE = "couponPaidDate";
-  @SerializedName(SERIALIZED_NAME_COUPON_PAID_DATE)
-  private OffsetDateTime couponPaidDate;
-
-  public static final String SERIALIZED_NAME_DEFAULT_STATUS = "defaultStatus";
-  @SerializedName(SERIALIZED_NAME_DEFAULT_STATUS)
-  private String defaultStatus;
-
-  public static final String SERIALIZED_NAME_DEFAULT_TYPE = "defaultType";
-  @SerializedName(SERIALIZED_NAME_DEFAULT_TYPE)
-  private String defaultType;
-
-  public static final String SERIALIZED_NAME_GRACE_END_DATE = "graceEndDate";
-  @SerializedName(SERIALIZED_NAME_GRACE_END_DATE)
-  private OffsetDateTime graceEndDate;
-
-  public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
-  @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
-  private OffsetDateTime paymentDate;
+  public static final String SERIALIZED_NAME_EFFECTIVE_DATE = "effectiveDate";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_DATE)
+  private OffsetDateTime effectiveDate;
 
   public BondDefaultEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
 
-  public BondDefaultEvent amount(java.math.BigDecimal amount) {
+  public BondDefaultEvent effectiveDate(OffsetDateTime effectiveDate) {
     
-    this.amount = amount;
+    this.effectiveDate = effectiveDate;
     return this;
   }
 
    /**
-   * Percentage or amount of each share held to be given to shareholders.
-   * @return amount
+   * The date the bond default occurred.
+   * @return effectiveDate
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getAmount() {
-    return amount;
+  public OffsetDateTime getEffectiveDate() {
+    return effectiveDate;
   }
 
 
-  public void setAmount(java.math.BigDecimal amount) {
-    this.amount = amount;
-  }
-
-
-  public BondDefaultEvent couponPaidDate(OffsetDateTime couponPaidDate) {
-    
-    this.couponPaidDate = couponPaidDate;
-    return this;
-  }
-
-   /**
-   * Date that the missed coupon is paid if payment is made within grace period.
-   * @return couponPaidDate
-  **/
-  @jakarta.annotation.Nonnull
-  public OffsetDateTime getCouponPaidDate() {
-    return couponPaidDate;
-  }
-
-
-  public void setCouponPaidDate(OffsetDateTime couponPaidDate) {
-    this.couponPaidDate = couponPaidDate;
-  }
-
-
-  public BondDefaultEvent defaultStatus(String defaultStatus) {
-    
-    this.defaultStatus = defaultStatus;
-    return this;
-  }
-
-   /**
-   * The status of the bond default (i.e., technical or default)    Supported string (enumeration) values are: [Technical, Default].
-   * @return defaultStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getDefaultStatus() {
-    return defaultStatus;
-  }
-
-
-  public void setDefaultStatus(String defaultStatus) {
-    this.defaultStatus = defaultStatus;
-  }
-
-
-  public BondDefaultEvent defaultType(String defaultType) {
-    
-    this.defaultType = defaultType;
-    return this;
-  }
-
-   /**
-   * The type of the default. (coupon payment, principal payment, covenant ...)    Supported string (enumeration) values are: [CouponPayment, CouponAndPrincipalPayment, PrincipalPayment, Covenant, Bankruptcy, BuyBackOption].
-   * @return defaultType
-  **/
-  @jakarta.annotation.Nonnull
-  public String getDefaultType() {
-    return defaultType;
-  }
-
-
-  public void setDefaultType(String defaultType) {
-    this.defaultType = defaultType;
-  }
-
-
-  public BondDefaultEvent graceEndDate(OffsetDateTime graceEndDate) {
-    
-    this.graceEndDate = graceEndDate;
-    return this;
-  }
-
-   /**
-   * Date the grace period for making coupon payment ends.
-   * @return graceEndDate
-  **/
-  @jakarta.annotation.Nonnull
-  public OffsetDateTime getGraceEndDate() {
-    return graceEndDate;
-  }
-
-
-  public void setGraceEndDate(OffsetDateTime graceEndDate) {
-    this.graceEndDate = graceEndDate;
-  }
-
-
-  public BondDefaultEvent paymentDate(OffsetDateTime paymentDate) {
-    
-    this.paymentDate = paymentDate;
-    return this;
-  }
-
-   /**
-   * The date the coupon payment was missed.
-   * @return paymentDate
-  **/
-  @jakarta.annotation.Nonnull
-  public OffsetDateTime getPaymentDate() {
-    return paymentDate;
-  }
-
-
-  public void setPaymentDate(OffsetDateTime paymentDate) {
-    this.paymentDate = paymentDate;
+  public void setEffectiveDate(OffsetDateTime effectiveDate) {
+    this.effectiveDate = effectiveDate;
   }
 
 
@@ -215,18 +90,13 @@ public class BondDefaultEvent extends InstrumentEvent {
       return false;
     }
     BondDefaultEvent bondDefaultEvent = (BondDefaultEvent) o;
-    return (this.amount.compareTo(bondDefaultEvent.getAmount()) == 0) &&
-        Objects.equals(this.couponPaidDate, bondDefaultEvent.couponPaidDate) &&
-        Objects.equals(this.defaultStatus, bondDefaultEvent.defaultStatus) &&
-        Objects.equals(this.defaultType, bondDefaultEvent.defaultType) &&
-        Objects.equals(this.graceEndDate, bondDefaultEvent.graceEndDate) &&
-        Objects.equals(this.paymentDate, bondDefaultEvent.paymentDate) &&
+    return Objects.equals(this.effectiveDate, bondDefaultEvent.effectiveDate) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, couponPaidDate, defaultStatus, defaultType, graceEndDate, paymentDate, super.hashCode());
+    return Objects.hash(effectiveDate, super.hashCode());
   }
 
   @Override
@@ -234,12 +104,7 @@ public class BondDefaultEvent extends InstrumentEvent {
     StringBuilder sb = new StringBuilder();
     sb.append("class BondDefaultEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    couponPaidDate: ").append(toIndentedString(couponPaidDate)).append("\n");
-    sb.append("    defaultStatus: ").append(toIndentedString(defaultStatus)).append("\n");
-    sb.append("    defaultType: ").append(toIndentedString(defaultType)).append("\n");
-    sb.append("    graceEndDate: ").append(toIndentedString(graceEndDate)).append("\n");
-    sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
+    sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -263,21 +128,11 @@ public class BondDefaultEvent extends InstrumentEvent {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
-    openapiFields.add("amount");
-    openapiFields.add("couponPaidDate");
-    openapiFields.add("defaultStatus");
-    openapiFields.add("defaultType");
-    openapiFields.add("graceEndDate");
-    openapiFields.add("paymentDate");
+    openapiFields.add("effectiveDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("amount");
-    openapiRequiredFields.add("couponPaidDate");
-    openapiRequiredFields.add("defaultStatus");
-    openapiRequiredFields.add("defaultType");
-    openapiRequiredFields.add("graceEndDate");
-    openapiRequiredFields.add("paymentDate");
+    openapiRequiredFields.add("effectiveDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 
