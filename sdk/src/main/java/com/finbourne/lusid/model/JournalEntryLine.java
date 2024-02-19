@@ -311,7 +311,7 @@ public class JournalEntryLine {
    * The tax lot Id that the Journal Entry Line is impacting.
    * @return taxLotId
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getTaxLotId() {
     return taxLotId;
   }
@@ -550,7 +550,7 @@ public class JournalEntryLine {
    * The name of the movement.
    * @return movementName
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getMovementName() {
     return movementName;
   }
@@ -893,7 +893,6 @@ public class JournalEntryLine {
     openapiRequiredFields.add("portfolioId");
     openapiRequiredFields.add("instrumentId");
     openapiRequiredFields.add("instrumentScope");
-    openapiRequiredFields.add("taxLotId");
     openapiRequiredFields.add("generalLedgerAccountCode");
     openapiRequiredFields.add("local");
     openapiRequiredFields.add("base");
@@ -901,7 +900,6 @@ public class JournalEntryLine {
     openapiRequiredFields.add("asAtDate");
     openapiRequiredFields.add("sourceType");
     openapiRequiredFields.add("sourceId");
-    openapiRequiredFields.add("movementName");
     openapiRequiredFields.add("holdingType");
     openapiRequiredFields.add("economicBucket");
   }
@@ -934,7 +932,7 @@ public class JournalEntryLine {
       if (!jsonObj.get("instrumentScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
       }
-      if (!jsonObj.get("taxLotId").isJsonPrimitive()) {
+      if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
       }
       if (!jsonObj.get("generalLedgerAccountCode").isJsonPrimitive()) {
@@ -959,7 +957,7 @@ public class JournalEntryLine {
       if (!jsonObj.get("sourceId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceId").toString()));
       }
-      if (!jsonObj.get("movementName").isJsonPrimitive()) {
+      if ((jsonObj.get("movementName") != null && !jsonObj.get("movementName").isJsonNull()) && !jsonObj.get("movementName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `movementName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementName").toString()));
       }
       if (!jsonObj.get("holdingType").isJsonPrimitive()) {

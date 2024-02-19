@@ -14,7 +14,7 @@ A Journal Entry line entity.
 |**instrumentId** | **String** | To indicate the instrument of the transaction that the Journal Entry Line posted for, if applicable. |  |
 |**instrumentScope** | **String** | The scope in which the Journal Entry Line instrument is in. |  |
 |**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding properties which are part of the AccountingKey. |  [optional] |
-|**taxLotId** | **String** | The tax lot Id that the Journal Entry Line is impacting. |  |
+|**taxLotId** | **String** | The tax lot Id that the Journal Entry Line is impacting. |  [optional] |
 |**generalLedgerAccountCode** | **String** | The code of the account in the general ledger the Journal Entry was posted to. |  |
 |**local** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
 |**base** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
@@ -25,7 +25,7 @@ A Journal Entry line entity.
 |**sourceType** | **String** | So far are 4 types: LusidTxn, LusidValuation, Manual and External. |  |
 |**sourceId** | **String** | For the Lusid Source Type this will be the txn Id. For the rest will be what the user populates. |  |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Abor. |  [optional] |
-|**movementName** | **String** | The name of the movement. |  |
+|**movementName** | **String** | The name of the movement. |  [optional] |
 |**holdingType** | **String** | Defines the broad category holding within the portfolio. |  |
 |**economicBucket** | **String** | Raw Journal Entry Line details of the economic bucket for the Journal Entry Line. |  |
 |**economicBucketComponent** | **String** | Sub bucket of the economic bucket. |  [optional] |
