@@ -15,5 +15,7 @@
 
 * `RECOMBINESTEP` (value: `"RecombineStep"`)
 
+* `CHECKSTEP` (value: `"CheckStep"`)
+
 
 

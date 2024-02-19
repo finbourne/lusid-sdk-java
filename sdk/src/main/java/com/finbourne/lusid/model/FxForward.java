@@ -317,7 +317,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * Boolean flag for FX Forward transactions booked with Spot settlement. This will default to False if not provided.  For information purposes only, this is not used by LUSID and does not impact any valuation, analytics, cashflows or events.
+   * Boolean flag for FX Forward transactions booked with Spot settlement. This will default to False if not provided.  For information purposes only, this does not impact LUSID valuation, analytics, cashflows or events, but may be used by third party vendors.
    * @return bookedAsSpot
   **/
   @jakarta.annotation.Nullable

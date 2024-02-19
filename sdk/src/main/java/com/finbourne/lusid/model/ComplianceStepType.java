@@ -33,7 +33,9 @@ public enum ComplianceStepType {
   
   BRANCHSTEP("BranchStep"),
   
-  RECOMBINESTEP("RecombineStep");
+  RECOMBINESTEP("RecombineStep"),
+  
+  CHECKSTEP("CheckStep");
 
   private String value;
 

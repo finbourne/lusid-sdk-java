@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**complianceStepType** | [**ComplianceStepTypeEnum**](#ComplianceStepTypeEnum) | . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep |  |
+|**complianceStepType** | [**ComplianceStepTypeEnum**](#ComplianceStepTypeEnum) | . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep |  |
 
 
 
@@ -20,6 +20,7 @@
 | GROUPFILTERSTEP | &quot;GroupFilterStep&quot; |
 | BRANCHSTEP | &quot;BranchStep&quot; |
 | RECOMBINESTEP | &quot;RecombineStep&quot; |
+| CHECKSTEP | &quot;CheckStep&quot; |
 
 
 
