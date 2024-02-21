@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -143,10 +144,10 @@ public class SecurityElection {
   }
 
    /**
-   * Price per unit of the security. At least one of UnitsRatio or Price must be provided.
+   * Price per unit of the security. At least one of UnitsRatio or Price must be provided.  Price must non-zero.
    * @return price
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getPrice() {
     return price;
   }
@@ -195,9 +196,20 @@ public class SecurityElection {
         Objects.equals(this.unitsRatio, securityElection.unitsRatio);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(electionKey, isChosen, isDefault, price, unitsRatio);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -240,7 +252,6 @@ public class SecurityElection {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("electionKey");
-    openapiRequiredFields.add("price");
   }
 
  /**

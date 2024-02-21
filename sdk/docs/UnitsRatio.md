@@ -2,7 +2,7 @@
 
 # UnitsRatio
 
-todo: what even is this
+The number of units you have after the event (output) for a given number of units you have prior to the event (input).
 
 ## Properties
 

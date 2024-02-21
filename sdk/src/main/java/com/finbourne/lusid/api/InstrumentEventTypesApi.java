@@ -268,6 +268,188 @@ public class InstrumentEventTypesApi {
     public APIcreateTransactionTemplateRequest createTransactionTemplate(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) {
         return new APIcreateTransactionTemplateRequest(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
     }
+    private okhttp3.Call deleteTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope}"
+            .replace("{" + "instrumentEventType" + "}", localVarApiClient.escapeString(instrumentEventType.toString()))
+            .replace("{" + "instrumentType" + "}", localVarApiClient.escapeString(instrumentType.toString()))
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'instrumentEventType' is set
+        if (instrumentEventType == null) {
+            throw new ApiException("Missing the required parameter 'instrumentEventType' when calling deleteTransactionTemplate(Async)");
+        }
+
+        // verify the required parameter 'instrumentType' is set
+        if (instrumentType == null) {
+            throw new ApiException("Missing the required parameter 'instrumentType' when calling deleteTransactionTemplate(Async)");
+        }
+
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteTransactionTemplate(Async)");
+        }
+
+        return deleteTransactionTemplateCall(instrumentEventType, instrumentType, scope, _callback);
+
+    }
+
+
+    private ApiResponse<OffsetDateTime> deleteTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, null);
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, _callback);
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteTransactionTemplateRequest {
+        private final String instrumentEventType;
+        private final String instrumentType;
+        private final String scope;
+
+        private APIdeleteTransactionTemplateRequest(String instrumentEventType, String instrumentType, String scope) {
+            this.instrumentEventType = instrumentEventType;
+            this.instrumentType = instrumentType;
+            this.scope = scope;
+        }
+
+        /**
+         * Build call for deleteTransactionTemplate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTransactionTemplateCall(instrumentEventType, instrumentType, scope, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionTemplate request
+         * @return OffsetDateTime
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffsetDateTime execute() throws ApiException {
+            ApiResponse<OffsetDateTime> localVarResp = deleteTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTransactionTemplate request with HTTP info returned
+         * @return ApiResponse&lt;OffsetDateTime&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffsetDateTime> executeWithHttpInfo() throws ApiException {
+            return deleteTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope);
+        }
+
+        /**
+         * Execute deleteTransactionTemplate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+            return deleteTransactionTemplateAsync(instrumentEventType, instrumentType, scope, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteTransactionTemplate: Delete Transaction Template
+     * Delete a transaction template for a particular instrument event type in a scope.
+     * @param instrumentEventType The type of instrument events that the template is applied to. (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
+     * @param scope The scope of the template. (required)
+     * @return APIdeleteTransactionTemplateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteTransactionTemplateRequest deleteTransactionTemplate(String instrumentEventType, String instrumentType, String scope) {
+        return new APIdeleteTransactionTemplateRequest(instrumentEventType, instrumentType, scope);
+    }
     private okhttp3.Call getTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -387,7 +569,7 @@ public class InstrumentEventTypesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -403,7 +585,7 @@ public class InstrumentEventTypesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -420,7 +602,7 @@ public class InstrumentEventTypesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -437,7 +619,7 @@ public class InstrumentEventTypesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -457,7 +639,7 @@ public class InstrumentEventTypesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The asAt datetime at which the transaction template was created. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
