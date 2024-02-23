@@ -26,6 +26,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.AllocationServiceRunResponse;
 import com.finbourne.lusid.model.BlockAndOrdersCreateRequest;
+import com.finbourne.lusid.model.BookTransactionsRequest;
 import com.finbourne.lusid.model.BookTransactionsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -77,7 +78,7 @@ public class OrderManagementApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call bookTransactionsCall(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -91,7 +92,7 @@ public class OrderManagementApi {
             basePath = null;
         }
 
-        Object localVarPostBody = resourceId;
+        Object localVarPostBody = bookTransactionsRequest;
 
         // create path and map variables
         String localVarPath = "/api/ordermanagement/booktransactions";
@@ -132,37 +133,37 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bookTransactionsValidateBeforeCall(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'resourceId' is set
-        if (resourceId == null) {
-            throw new ApiException("Missing the required parameter 'resourceId' when calling bookTransactions(Async)");
+    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bookTransactionsRequest' is set
+        if (bookTransactionsRequest == null) {
+            throw new ApiException("Missing the required parameter 'bookTransactionsRequest' when calling bookTransactions(Async)");
         }
 
-        return bookTransactionsCall(resourceId, applyFeesAndCommission, _callback);
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, _callback);
 
     }
 
 
-    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(List<ResourceId> resourceId, Boolean applyFeesAndCommission) throws ApiException {
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(resourceId, applyFeesAndCommission, null);
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission) throws ApiException {
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, null);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call bookTransactionsAsync(List<ResourceId> resourceId, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(resourceId, applyFeesAndCommission, _callback);
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, _callback);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIbookTransactionsRequest {
-        private final List<ResourceId> resourceId;
+        private final BookTransactionsRequest bookTransactionsRequest;
         private Boolean applyFeesAndCommission;
 
-        private APIbookTransactionsRequest(List<ResourceId> resourceId) {
-            this.resourceId = resourceId;
+        private APIbookTransactionsRequest(BookTransactionsRequest bookTransactionsRequest) {
+            this.bookTransactionsRequest = bookTransactionsRequest;
         }
 
         /**
@@ -189,7 +190,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return bookTransactionsCall(resourceId, applyFeesAndCommission, _callback);
+            return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, _callback);
         }
 
         /**
@@ -205,7 +206,7 @@ public class OrderManagementApi {
          </table>
          */
         public BookTransactionsResponse execute() throws ApiException {
-            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(resourceId, applyFeesAndCommission);
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission);
             return localVarResp.getData();
         }
 
@@ -222,7 +223,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<BookTransactionsResponse> executeWithHttpInfo() throws ApiException {
-            return bookTransactionsWithHttpInfo(resourceId, applyFeesAndCommission);
+            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission);
         }
 
         /**
@@ -239,14 +240,14 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
-            return bookTransactionsAsync(resourceId, applyFeesAndCommission, _callback);
+            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, _callback);
         }
     }
 
     /**
      * [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
      * Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
-     * @param resourceId The allocations to create transactions for (required)
+     * @param bookTransactionsRequest The allocations to create transactions for (required)
      * @return APIbookTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -256,8 +257,8 @@ public class OrderManagementApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIbookTransactionsRequest bookTransactions(List<ResourceId> resourceId) {
-        return new APIbookTransactionsRequest(resourceId);
+    public APIbookTransactionsRequest bookTransactions(BookTransactionsRequest bookTransactionsRequest) {
+        return new APIbookTransactionsRequest(bookTransactionsRequest);
     }
     private okhttp3.Call createOrdersCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

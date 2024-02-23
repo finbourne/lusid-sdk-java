@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="bookTransactions"></a>
 # **bookTransactions**
-> BookTransactionsResponse bookTransactions(resourceId).applyFeesAndCommission(applyFeesAndCommission).execute();
+> BookTransactionsResponse bookTransactions(bookTransactionsRequest).applyFeesAndCommission(applyFeesAndCommission).execute();
 
 [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
 
@@ -38,10 +38,10 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     OrderManagementApi apiInstance = new OrderManagementApi(defaultClient);
-    List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The allocations to create transactions for
+    BookTransactionsRequest bookTransactionsRequest = new BookTransactionsRequest(); // BookTransactionsRequest | The allocations to create transactions for
     Boolean applyFeesAndCommission = true; // Boolean | Whether to apply fees and commissions to transactions (default: true)
     try {
-      BookTransactionsResponse result = apiInstance.bookTransactions(resourceId)
+      BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest)
             .applyFeesAndCommission(applyFeesAndCommission)
             .execute();
       System.out.println(result);
@@ -60,7 +60,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The allocations to create transactions for | |
+| **bookTransactionsRequest** | [**BookTransactionsRequest**](BookTransactionsRequest.md)| The allocations to create transactions for | |
 | **applyFeesAndCommission** | **Boolean**| Whether to apply fees and commissions to transactions (default: true) | [optional] [default to true] |
 
 ### Return type
