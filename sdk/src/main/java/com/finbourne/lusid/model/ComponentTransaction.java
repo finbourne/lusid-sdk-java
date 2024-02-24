@@ -12,13 +12,16 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.TransactionFieldMap;
+import com.finbourne.lusid.model.TransactionPropertyMap;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -62,6 +65,10 @@ public class ComponentTransaction {
   public static final String SERIALIZED_NAME_TRANSACTION_FIELD_MAP = "transactionFieldMap";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_FIELD_MAP)
   private TransactionFieldMap transactionFieldMap;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_PROPERTY_MAP = "transactionPropertyMap";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_PROPERTY_MAP)
+  private List<TransactionPropertyMap> transactionPropertyMap = new ArrayList<>();
 
   public ComponentTransaction() {
   }
@@ -129,6 +136,35 @@ public class ComponentTransaction {
   }
 
 
+  public ComponentTransaction transactionPropertyMap(List<TransactionPropertyMap> transactionPropertyMap) {
+    
+    this.transactionPropertyMap = transactionPropertyMap;
+    return this;
+  }
+
+  public ComponentTransaction addTransactionPropertyMapItem(TransactionPropertyMap transactionPropertyMapItem) {
+    if (this.transactionPropertyMap == null) {
+      this.transactionPropertyMap = new ArrayList<>();
+    }
+    this.transactionPropertyMap.add(transactionPropertyMapItem);
+    return this;
+  }
+
+   /**
+   * Get transactionPropertyMap
+   * @return transactionPropertyMap
+  **/
+  @jakarta.annotation.Nonnull
+  public List<TransactionPropertyMap> getTransactionPropertyMap() {
+    return transactionPropertyMap;
+  }
+
+
+  public void setTransactionPropertyMap(List<TransactionPropertyMap> transactionPropertyMap) {
+    this.transactionPropertyMap = transactionPropertyMap;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +177,8 @@ public class ComponentTransaction {
     ComponentTransaction componentTransaction = (ComponentTransaction) o;
     return Objects.equals(this.displayName, componentTransaction.displayName) &&
         Objects.equals(this.condition, componentTransaction.condition) &&
-        Objects.equals(this.transactionFieldMap, componentTransaction.transactionFieldMap);
+        Objects.equals(this.transactionFieldMap, componentTransaction.transactionFieldMap) &&
+        Objects.equals(this.transactionPropertyMap, componentTransaction.transactionPropertyMap);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +187,7 @@ public class ComponentTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, condition, transactionFieldMap);
+    return Objects.hash(displayName, condition, transactionFieldMap, transactionPropertyMap);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +204,7 @@ public class ComponentTransaction {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    transactionFieldMap: ").append(toIndentedString(transactionFieldMap)).append("\n");
+    sb.append("    transactionPropertyMap: ").append(toIndentedString(transactionPropertyMap)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,11 +230,13 @@ public class ComponentTransaction {
     openapiFields.add("displayName");
     openapiFields.add("condition");
     openapiFields.add("transactionFieldMap");
+    openapiFields.add("transactionPropertyMap");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("transactionFieldMap");
+    openapiRequiredFields.add("transactionPropertyMap");
   }
 
  /**
@@ -227,6 +267,16 @@ public class ComponentTransaction {
       }
       // validate the required field `transactionFieldMap`
       TransactionFieldMap.validateJsonElement(jsonObj.get("transactionFieldMap"));
+      // ensure the json data is an array
+      if (!jsonObj.get("transactionPropertyMap").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionPropertyMap` to be an array in the JSON string but got `%s`", jsonObj.get("transactionPropertyMap").toString()));
+      }
+
+      JsonArray jsonArraytransactionPropertyMap = jsonObj.getAsJsonArray("transactionPropertyMap");
+      // validate the required field `transactionPropertyMap` (array)
+      for (int i = 0; i < jsonArraytransactionPropertyMap.size(); i++) {
+        TransactionPropertyMap.validateJsonElement(jsonArraytransactionPropertyMap.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
