@@ -30,9 +30,11 @@ import com.finbourne.lusid.model.BookTransactionsRequest;
 import com.finbourne.lusid.model.BookTransactionsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import com.finbourne.lusid.model.MoveOrdersToDifferentBlocksRequest;
 import com.finbourne.lusid.model.PlaceBlocksRequest;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
+import com.finbourne.lusid.model.ResourceListOfMovedOrderToDifferentBlockResponse;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
 
 import java.lang.reflect.Type;
@@ -426,6 +428,173 @@ public class OrderManagementApi {
      */
     public APIcreateOrdersRequest createOrders(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) {
         return new APIcreateOrdersRequest(blockAndOrdersCreateRequest);
+    }
+    private okhttp3.Call moveOrdersCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = moveOrdersToDifferentBlocksRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/moveorders";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call moveOrdersValidateBeforeCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'moveOrdersToDifferentBlocksRequest' is set
+        if (moveOrdersToDifferentBlocksRequest == null) {
+            throw new ApiException("Missing the required parameter 'moveOrdersToDifferentBlocksRequest' when calling moveOrders(Async)");
+        }
+
+        return moveOrdersCall(moveOrdersToDifferentBlocksRequest, _callback);
+
+    }
+
+
+    private ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> moveOrdersWithHttpInfo(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest) throws ApiException {
+        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, null);
+        Type localVarReturnType = new TypeToken<ResourceListOfMovedOrderToDifferentBlockResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call moveOrdersAsync(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback<ResourceListOfMovedOrderToDifferentBlockResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfMovedOrderToDifferentBlockResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APImoveOrdersRequest {
+        private final MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest;
+
+        private APImoveOrdersRequest(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest) {
+            this.moveOrdersToDifferentBlocksRequest = moveOrdersToDifferentBlocksRequest;
+        }
+
+        /**
+         * Build call for moveOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return moveOrdersCall(moveOrdersToDifferentBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute moveOrders request
+         * @return ResourceListOfMovedOrderToDifferentBlockResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfMovedOrderToDifferentBlockResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> localVarResp = moveOrdersWithHttpInfo(moveOrdersToDifferentBlocksRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute moveOrders request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfMovedOrderToDifferentBlockResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> executeWithHttpInfo() throws ApiException {
+            return moveOrdersWithHttpInfo(moveOrdersToDifferentBlocksRequest);
+        }
+
+        /**
+         * Execute moveOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfMovedOrderToDifferentBlockResponse> _callback) throws ApiException {
+            return moveOrdersAsync(moveOrdersToDifferentBlocksRequest, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] MoveOrders: Move orders to new or existing block
+     * Move an order to a block, creating the block if it does not already exist.   This will fail if the block exists and already references orders with differing fields to the upsert request.
+     * @param moveOrdersToDifferentBlocksRequest The collection of order and destination block ids. (required)
+     * @return APImoveOrdersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APImoveOrdersRequest moveOrders(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest) {
+        return new APImoveOrdersRequest(moveOrdersToDifferentBlocksRequest);
     }
     private okhttp3.Call placeBlocksCall(PlaceBlocksRequest placeBlocksRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
