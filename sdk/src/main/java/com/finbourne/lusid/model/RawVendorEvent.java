@@ -64,10 +64,6 @@ public class RawVendorEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   private String eventType;
 
-  public static final String SERIALIZED_NAME_EVENT_STATUS = "eventStatus";
-  @SerializedName(SERIALIZED_NAME_EVENT_STATUS)
-  private String eventStatus;
-
   public RawVendorEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -135,27 +131,6 @@ public class RawVendorEvent extends InstrumentEvent {
   }
 
 
-  public RawVendorEvent eventStatus(String eventStatus) {
-    
-    this.eventStatus = eventStatus;
-    return this;
-  }
-
-   /**
-   * What is the event status, is it a known (ie historic) or unknown (ie projected) event?
-   * @return eventStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEventStatus() {
-    return eventStatus;
-  }
-
-
-  public void setEventStatus(String eventStatus) {
-    this.eventStatus = eventStatus;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -169,13 +144,12 @@ public class RawVendorEvent extends InstrumentEvent {
     return Objects.equals(this.effectiveAt, rawVendorEvent.effectiveAt) &&
         Objects.equals(this.eventValue, rawVendorEvent.eventValue) &&
         Objects.equals(this.eventType, rawVendorEvent.eventType) &&
-        Objects.equals(this.eventStatus, rawVendorEvent.eventStatus) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, eventValue, eventType, eventStatus, super.hashCode());
+    return Objects.hash(effectiveAt, eventValue, eventType, super.hashCode());
   }
 
   @Override
@@ -186,7 +160,6 @@ public class RawVendorEvent extends InstrumentEvent {
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    eventValue: ").append(toIndentedString(eventValue)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    eventStatus: ").append(toIndentedString(eventStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -213,14 +186,12 @@ public class RawVendorEvent extends InstrumentEvent {
     openapiFields.add("effectiveAt");
     openapiFields.add("eventValue");
     openapiFields.add("eventType");
-    openapiFields.add("eventStatus");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("effectiveAt");
     openapiRequiredFields.add("eventValue");
     openapiRequiredFields.add("eventType");
-    openapiRequiredFields.add("eventStatus");
     openapiRequiredFields.add("instrumentEventType");
   }
 

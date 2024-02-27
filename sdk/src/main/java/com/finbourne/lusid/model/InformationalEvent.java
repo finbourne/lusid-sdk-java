@@ -56,10 +56,6 @@ public class InformationalEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   private String eventType;
 
-  public static final String SERIALIZED_NAME_EVENT_STATUS = "eventStatus";
-  @SerializedName(SERIALIZED_NAME_EVENT_STATUS)
-  private String eventStatus;
-
   public static final String SERIALIZED_NAME_ANCHOR_DATE = "anchorDate";
   @SerializedName(SERIALIZED_NAME_ANCHOR_DATE)
   private OffsetDateTime anchorDate;
@@ -96,27 +92,6 @@ public class InformationalEvent extends InstrumentEvent {
   }
 
 
-
-
-  public InformationalEvent eventStatus(String eventStatus) {
-    
-    this.eventStatus = eventStatus;
-    return this;
-  }
-
-   /**
-   * What is the event status, is it a known (ie historic) or unknown (ie projected) event?
-   * @return eventStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEventStatus() {
-    return eventStatus;
-  }
-
-
-  public void setEventStatus(String eventStatus) {
-    this.eventStatus = eventStatus;
-  }
 
 
   public InformationalEvent anchorDate(OffsetDateTime anchorDate) {
@@ -184,7 +159,6 @@ public class InformationalEvent extends InstrumentEvent {
     }
     InformationalEvent informationalEvent = (InformationalEvent) o;
     return Objects.equals(this.eventType, informationalEvent.eventType) &&
-        Objects.equals(this.eventStatus, informationalEvent.eventStatus) &&
         Objects.equals(this.anchorDate, informationalEvent.anchorDate) &&
         Objects.equals(this.eventWindowEnd, informationalEvent.eventWindowEnd) &&
         Objects.equals(this.diagnostics, informationalEvent.diagnostics) &&
@@ -193,7 +167,7 @@ public class InformationalEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventStatus, anchorDate, eventWindowEnd, diagnostics, super.hashCode());
+    return Objects.hash(eventType, anchorDate, eventWindowEnd, diagnostics, super.hashCode());
   }
 
   @Override
@@ -202,7 +176,6 @@ public class InformationalEvent extends InstrumentEvent {
     sb.append("class InformationalEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    eventStatus: ").append(toIndentedString(eventStatus)).append("\n");
     sb.append("    anchorDate: ").append(toIndentedString(anchorDate)).append("\n");
     sb.append("    eventWindowEnd: ").append(toIndentedString(eventWindowEnd)).append("\n");
     sb.append("    diagnostics: ").append(toIndentedString(diagnostics)).append("\n");
@@ -230,7 +203,6 @@ public class InformationalEvent extends InstrumentEvent {
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
     openapiFields.add("eventType");
-    openapiFields.add("eventStatus");
     openapiFields.add("anchorDate");
     openapiFields.add("eventWindowEnd");
     openapiFields.add("diagnostics");
@@ -238,7 +210,6 @@ public class InformationalEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("eventType");
-    openapiRequiredFields.add("eventStatus");
     openapiRequiredFields.add("anchorDate");
     openapiRequiredFields.add("instrumentEventType");
   }

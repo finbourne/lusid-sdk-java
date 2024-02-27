@@ -59,10 +59,6 @@ public class CashFlowEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   private String eventType;
 
-  public static final String SERIALIZED_NAME_EVENT_STATUS = "eventStatus";
-  @SerializedName(SERIALIZED_NAME_EVENT_STATUS)
-  private String eventStatus;
-
   public CashFlowEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -108,27 +104,6 @@ public class CashFlowEvent extends InstrumentEvent {
 
 
 
-  public CashFlowEvent eventStatus(String eventStatus) {
-    
-    this.eventStatus = eventStatus;
-    return this;
-  }
-
-   /**
-   * What is the event status, is it a known (ie historic) or unknown (ie projected) event?
-   * @return eventStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEventStatus() {
-    return eventStatus;
-  }
-
-
-  public void setEventStatus(String eventStatus) {
-    this.eventStatus = eventStatus;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -141,13 +116,12 @@ public class CashFlowEvent extends InstrumentEvent {
     CashFlowEvent cashFlowEvent = (CashFlowEvent) o;
     return Objects.equals(this.cashFlowValue, cashFlowEvent.cashFlowValue) &&
         Objects.equals(this.eventType, cashFlowEvent.eventType) &&
-        Objects.equals(this.eventStatus, cashFlowEvent.eventStatus) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cashFlowValue, eventType, eventStatus, super.hashCode());
+    return Objects.hash(cashFlowValue, eventType, super.hashCode());
   }
 
   @Override
@@ -157,7 +131,6 @@ public class CashFlowEvent extends InstrumentEvent {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    cashFlowValue: ").append(toIndentedString(cashFlowValue)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    eventStatus: ").append(toIndentedString(eventStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -183,13 +156,11 @@ public class CashFlowEvent extends InstrumentEvent {
     openapiFields.add("instrumentEventType");
     openapiFields.add("cashFlowValue");
     openapiFields.add("eventType");
-    openapiFields.add("eventStatus");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("cashFlowValue");
     openapiRequiredFields.add("eventType");
-    openapiRequiredFields.add("eventStatus");
     openapiRequiredFields.add("instrumentEventType");
   }
 

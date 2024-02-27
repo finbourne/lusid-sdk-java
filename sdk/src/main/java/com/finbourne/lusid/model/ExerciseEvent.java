@@ -56,10 +56,6 @@ public class ExerciseEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT)
   private LusidInstrument instrument;
 
-  public static final String SERIALIZED_NAME_EVENT_STATUS = "eventStatus";
-  @SerializedName(SERIALIZED_NAME_EVENT_STATUS)
-  private String eventStatus;
-
   public static final String SERIALIZED_NAME_ANCHOR_DATE = "anchorDate";
   @SerializedName(SERIALIZED_NAME_ANCHOR_DATE)
   private OffsetDateTime anchorDate;
@@ -98,27 +94,6 @@ public class ExerciseEvent extends InstrumentEvent {
 
   public void setInstrument(LusidInstrument instrument) {
     this.instrument = instrument;
-  }
-
-
-  public ExerciseEvent eventStatus(String eventStatus) {
-    
-    this.eventStatus = eventStatus;
-    return this;
-  }
-
-   /**
-   * What is the event status, is it a known (ie historic) or unknown (ie projected) event?
-   * @return eventStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEventStatus() {
-    return eventStatus;
-  }
-
-
-  public void setEventStatus(String eventStatus) {
-    this.eventStatus = eventStatus;
   }
 
 
@@ -166,7 +141,6 @@ public class ExerciseEvent extends InstrumentEvent {
     }
     ExerciseEvent exerciseEvent = (ExerciseEvent) o;
     return Objects.equals(this.instrument, exerciseEvent.instrument) &&
-        Objects.equals(this.eventStatus, exerciseEvent.eventStatus) &&
         Objects.equals(this.anchorDate, exerciseEvent.anchorDate) &&
         Objects.equals(this.eventWindowEnd, exerciseEvent.eventWindowEnd) &&
         super.equals(o);
@@ -174,7 +148,7 @@ public class ExerciseEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrument, eventStatus, anchorDate, eventWindowEnd, super.hashCode());
+    return Objects.hash(instrument, anchorDate, eventWindowEnd, super.hashCode());
   }
 
   @Override
@@ -183,7 +157,6 @@ public class ExerciseEvent extends InstrumentEvent {
     sb.append("class ExerciseEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
-    sb.append("    eventStatus: ").append(toIndentedString(eventStatus)).append("\n");
     sb.append("    anchorDate: ").append(toIndentedString(anchorDate)).append("\n");
     sb.append("    eventWindowEnd: ").append(toIndentedString(eventWindowEnd)).append("\n");
     sb.append("}");
@@ -210,14 +183,12 @@ public class ExerciseEvent extends InstrumentEvent {
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
     openapiFields.add("instrument");
-    openapiFields.add("eventStatus");
     openapiFields.add("anchorDate");
     openapiFields.add("eventWindowEnd");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrument");
-    openapiRequiredFields.add("eventStatus");
     openapiRequiredFields.add("anchorDate");
     openapiRequiredFields.add("instrumentEventType");
   }

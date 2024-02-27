@@ -64,10 +64,6 @@ public class ResetEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_FIXING_SOURCE)
   private String fixingSource;
 
-  public static final String SERIALIZED_NAME_EVENT_STATUS = "eventStatus";
-  @SerializedName(SERIALIZED_NAME_EVENT_STATUS)
-  private String eventStatus;
-
   public static final String SERIALIZED_NAME_FIXING_DATE = "fixingDate";
   @SerializedName(SERIALIZED_NAME_FIXING_DATE)
   private OffsetDateTime fixingDate;
@@ -139,27 +135,6 @@ public class ResetEvent extends InstrumentEvent {
   }
 
 
-  public ResetEvent eventStatus(String eventStatus) {
-    
-    this.eventStatus = eventStatus;
-    return this;
-  }
-
-   /**
-   * What is the event status, is it a known (ie historic) or unknown (ie projected) event?
-   * @return eventStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEventStatus() {
-    return eventStatus;
-  }
-
-
-  public void setEventStatus(String eventStatus) {
-    this.eventStatus = eventStatus;
-  }
-
-
   public ResetEvent fixingDate(OffsetDateTime fixingDate) {
     
     this.fixingDate = fixingDate;
@@ -194,7 +169,6 @@ public class ResetEvent extends InstrumentEvent {
     return (this.value.compareTo(resetEvent.getValue()) == 0) &&
         Objects.equals(this.resetType, resetEvent.resetType) &&
         Objects.equals(this.fixingSource, resetEvent.fixingSource) &&
-        Objects.equals(this.eventStatus, resetEvent.eventStatus) &&
         Objects.equals(this.fixingDate, resetEvent.fixingDate) &&
         super.equals(o);
   }
@@ -205,7 +179,7 @@ public class ResetEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, resetType, fixingSource, eventStatus, fixingDate, super.hashCode());
+    return Objects.hash(value, resetType, fixingSource, fixingDate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,7 +197,6 @@ public class ResetEvent extends InstrumentEvent {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    resetType: ").append(toIndentedString(resetType)).append("\n");
     sb.append("    fixingSource: ").append(toIndentedString(fixingSource)).append("\n");
-    sb.append("    eventStatus: ").append(toIndentedString(eventStatus)).append("\n");
     sb.append("    fixingDate: ").append(toIndentedString(fixingDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -251,13 +224,11 @@ public class ResetEvent extends InstrumentEvent {
     openapiFields.add("value");
     openapiFields.add("resetType");
     openapiFields.add("fixingSource");
-    openapiFields.add("eventStatus");
     openapiFields.add("fixingDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("resetType");
-    openapiRequiredFields.add("eventStatus");
     openapiRequiredFields.add("fixingDate");
     openapiRequiredFields.add("instrumentEventType");
   }

@@ -63,10 +63,6 @@ public class AmortisationEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_PAY_RECEIVE)
   private String payReceive;
 
-  public static final String SERIALIZED_NAME_EVENT_STATUS = "eventStatus";
-  @SerializedName(SERIALIZED_NAME_EVENT_STATUS)
-  private String eventStatus;
-
   public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
   @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
   private OffsetDateTime paymentDate;
@@ -138,27 +134,6 @@ public class AmortisationEvent extends InstrumentEvent {
   }
 
 
-  public AmortisationEvent eventStatus(String eventStatus) {
-    
-    this.eventStatus = eventStatus;
-    return this;
-  }
-
-   /**
-   * What is the event status, is it a known (ie historic) or unknown (ie projected) event?
-   * @return eventStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEventStatus() {
-    return eventStatus;
-  }
-
-
-  public void setEventStatus(String eventStatus) {
-    this.eventStatus = eventStatus;
-  }
-
-
   public AmortisationEvent paymentDate(OffsetDateTime paymentDate) {
     
     this.paymentDate = paymentDate;
@@ -193,14 +168,13 @@ public class AmortisationEvent extends InstrumentEvent {
     return (this.amountReduced.compareTo(amortisationEvent.getAmountReduced()) == 0) &&
         Objects.equals(this.domCcy, amortisationEvent.domCcy) &&
         Objects.equals(this.payReceive, amortisationEvent.payReceive) &&
-        Objects.equals(this.eventStatus, amortisationEvent.eventStatus) &&
         Objects.equals(this.paymentDate, amortisationEvent.paymentDate) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amountReduced, domCcy, payReceive, eventStatus, paymentDate, super.hashCode());
+    return Objects.hash(amountReduced, domCcy, payReceive, paymentDate, super.hashCode());
   }
 
   @Override
@@ -211,7 +185,6 @@ public class AmortisationEvent extends InstrumentEvent {
     sb.append("    amountReduced: ").append(toIndentedString(amountReduced)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
-    sb.append("    eventStatus: ").append(toIndentedString(eventStatus)).append("\n");
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -239,7 +212,6 @@ public class AmortisationEvent extends InstrumentEvent {
     openapiFields.add("amountReduced");
     openapiFields.add("domCcy");
     openapiFields.add("payReceive");
-    openapiFields.add("eventStatus");
     openapiFields.add("paymentDate");
 
     // a set of required properties/fields (JSON key names)
@@ -247,7 +219,6 @@ public class AmortisationEvent extends InstrumentEvent {
     openapiRequiredFields.add("amountReduced");
     openapiRequiredFields.add("domCcy");
     openapiRequiredFields.add("payReceive");
-    openapiRequiredFields.add("eventStatus");
     openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("instrumentEventType");
   }
