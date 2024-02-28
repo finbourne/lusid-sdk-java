@@ -6,12 +6,13 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**adjustHoldings**](TransactionPortfoliosApi.md#adjustHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings | AdjustHoldings: Adjust holdings |
 | [**batchAdjustHoldings**](TransactionPortfoliosApi.md#batchAdjustHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchAdjust | [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings |
+| [**batchCreateTradeTickets**](TransactionPortfoliosApi.md#batchCreateTradeTickets) | **POST** /api/transactionportfolios/{scope}/{code}/$batchtradetickets | [EARLY ACCESS] BatchCreateTradeTickets: Batch Create Trade Tickets |
 | [**batchUpsertTransactions**](TransactionPortfoliosApi.md#batchUpsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$batchUpsert | [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions |
 | [**buildTransactions**](TransactionPortfoliosApi.md#buildTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$build | BuildTransactions: Build transactions |
 | [**cancelAdjustHoldings**](TransactionPortfoliosApi.md#cancelAdjustHoldings) | **DELETE** /api/transactionportfolios/{scope}/{code}/holdings | CancelAdjustHoldings: Cancel adjust holdings |
 | [**cancelTransactions**](TransactionPortfoliosApi.md#cancelTransactions) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions | CancelTransactions: Cancel transactions |
 | [**createPortfolio**](TransactionPortfoliosApi.md#createPortfolio) | **POST** /api/transactionportfolios/{scope} | CreatePortfolio: Create portfolio |
-| [**createTradeTicket**](TransactionPortfoliosApi.md#createTradeTicket) | **POST** /api/transactionportfolios/{scope}/{code}/$tradeticket | [EXPERIMENTAL] CreateTradeTicket: Create Trade Ticket |
+| [**createTradeTicket**](TransactionPortfoliosApi.md#createTradeTicket) | **POST** /api/transactionportfolios/{scope}/{code}/$tradeticket | [EARLY ACCESS] CreateTradeTicket: Create Trade Ticket |
 | [**deleteCustodianAccounts**](TransactionPortfoliosApi.md#deleteCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/$delete | [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts |
 | [**deletePropertiesFromTransaction**](TransactionPortfoliosApi.md#deletePropertiesFromTransaction) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | DeletePropertiesFromTransaction: Delete properties from transaction |
 | [**getA2BData**](TransactionPortfoliosApi.md#getA2BData) | **GET** /api/transactionportfolios/{scope}/{code}/a2b | GetA2BData: Get A2B data |
@@ -196,6 +197,80 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The successful AdjustHolding requests along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="batchCreateTradeTickets"></a>
+# **batchCreateTradeTickets**
+> CreateTradeTicketsResponse batchCreateTradeTickets(scope, code, lusidTradeTicket).execute();
+
+[EARLY ACCESS] BatchCreateTradeTickets: Batch Create Trade Tickets
+
+Batch create trade tickets. Each ticket is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the transaction portfolio.
+    String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
+    List<LusidTradeTicket> lusidTradeTicket = Arrays.asList(); // List<LusidTradeTicket> | the trade tickets to create
+    try {
+      CreateTradeTicketsResponse result = apiInstance.batchCreateTradeTickets(scope, code, lusidTradeTicket)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TransactionPortfoliosApi#batchCreateTradeTickets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the transaction portfolio. | |
+| **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
+| **lusidTradeTicket** | [**List&lt;LusidTradeTicket&gt;**](LusidTradeTicket.md)| the trade tickets to create | |
+
+### Return type
+
+[**CreateTradeTicketsResponse**](CreateTradeTicketsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The successfully created trade ticket requests along with any failures |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -591,7 +666,7 @@ public class Example {
 # **createTradeTicket**
 > LusidTradeTicket createTradeTicket(scope, code).lusidTradeTicket(lusidTradeTicket).execute();
 
-[EXPERIMENTAL] CreateTradeTicket: Create Trade Ticket
+[EARLY ACCESS] CreateTradeTicket: Create Trade Ticket
 
 Upsert a trade ticket. This is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
 
