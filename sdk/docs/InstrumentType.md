@@ -79,5 +79,7 @@
 
 * `FUNDSHARECLASS` (value: `"FundShareClass"`)
 
+* `FLEXIBLELOAN` (value: `"FlexibleLoan"`)
+
 
 

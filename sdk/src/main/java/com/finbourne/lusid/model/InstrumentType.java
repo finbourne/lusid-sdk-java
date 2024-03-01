@@ -97,7 +97,9 @@ public enum InstrumentType {
   
   INFLATIONLEG("InflationLeg"),
   
-  FUNDSHARECLASS("FundShareClass");
+  FUNDSHARECLASS("FundShareClass"),
+  
+  FLEXIBLELOAN("FlexibleLoan");
 
   private String value;
 
