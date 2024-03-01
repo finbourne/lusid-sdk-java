@@ -243,7 +243,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition
+     * DeleteSideDefinition: Delete the given side definition
      * Delete the side which user specify in the request.
      * @param side The label to uniquely identify the side. (required)
      * @return APIdeleteSideDefinitionRequest
@@ -430,7 +430,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type
+     * DeleteTransactionType: Delete a transaction type
      * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source that the type is in (required)
      * @param type One of the type&#39;s aliases (required)
@@ -610,7 +610,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
+     * DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
      * Delete all the types for the given source and scope.
      * @param source The source to set the transaction types for. (required)
      * @return APIdeleteTransactionTypeSourceRequest
@@ -804,7 +804,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label)
+     * GetSideDefinition: Get the side definition for a given side name( or label)
      * Get the side definition user requested.
      * @param side The label to uniquely identify the side. (required)
      * @return APIgetSideDefinitionRequest
@@ -1006,7 +1006,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type
+     * GetTransactionType: Get a single transaction configuration type
      * Get a single transaction type. Returns failure if not found
      * @param source The source that the type is in (required)
      * @param type One of the type&#39;s aliases (required)
@@ -1193,7 +1193,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListSideDefinitions: List the side definitions
+     * ListSideDefinitions: List the side definitions
      * List all the side definitions in the given scope
      * @return APIlistSideDefinitionsRequest
      * @http.response.details
@@ -1378,7 +1378,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListTransactionTypes: List transaction types
+     * ListTransactionTypes: List transaction types
      * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
      * @return APIlistTransactionTypesRequest
      * @http.response.details
@@ -1567,7 +1567,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetSideDefinition: Set a side definition
+     * SetSideDefinition: Set a side definition
      * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
      * @param side The label to uniquely identify the side. (required)
      * @param sideDefinitionRequest The side definition to create or replace. (required)
@@ -1750,7 +1750,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions
+     * SetSideDefinitions: Set the given side definitions
      * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
      * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
      * @return APIsetSideDefinitionsRequest
@@ -1948,7 +1948,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
+     * SetTransactionType: Set a specific transaction type
      * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to set the transaction configuration for (required)
      * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
@@ -2140,7 +2140,7 @@ public class TransactionConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope
+     * SetTransactionTypeSource: Set the transaction types for the given source and scope
      * The complete set of transaction types for the source.
      * @param source The source to set the transaction types for. (required)
      * @param transactionTypeRequest The set of transaction types. (required)

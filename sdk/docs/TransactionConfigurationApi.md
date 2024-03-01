@@ -4,24 +4,24 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteSideDefinition**](TransactionConfigurationApi.md#deleteSideDefinition) | **DELETE** /api/transactionconfiguration/sides/{side}/$delete | [EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition |
-| [**deleteTransactionType**](TransactionConfigurationApi.md#deleteTransactionType) | **DELETE** /api/transactionconfiguration/types/{source}/{type} | [EXPERIMENTAL] DeleteTransactionType: Delete a transaction type |
-| [**deleteTransactionTypeSource**](TransactionConfigurationApi.md#deleteTransactionTypeSource) | **DELETE** /api/transactionconfiguration/types/{source}/$delete | [EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope |
-| [**getSideDefinition**](TransactionConfigurationApi.md#getSideDefinition) | **GET** /api/transactionconfiguration/sides/{side} | [EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label) |
-| [**getTransactionType**](TransactionConfigurationApi.md#getTransactionType) | **GET** /api/transactionconfiguration/types/{source}/{type} | [EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type |
-| [**listSideDefinitions**](TransactionConfigurationApi.md#listSideDefinitions) | **GET** /api/transactionconfiguration/sides | [EXPERIMENTAL] ListSideDefinitions: List the side definitions |
-| [**listTransactionTypes**](TransactionConfigurationApi.md#listTransactionTypes) | **GET** /api/transactionconfiguration/types | [EXPERIMENTAL] ListTransactionTypes: List transaction types |
-| [**setSideDefinition**](TransactionConfigurationApi.md#setSideDefinition) | **PUT** /api/transactionconfiguration/sides/{side} | [EXPERIMENTAL] SetSideDefinition: Set a side definition |
-| [**setSideDefinitions**](TransactionConfigurationApi.md#setSideDefinitions) | **PUT** /api/transactionconfiguration/sides | [EXPERIMENTAL] SetSideDefinitions: Set the given side definitions |
-| [**setTransactionType**](TransactionConfigurationApi.md#setTransactionType) | **PUT** /api/transactionconfiguration/types/{source}/{type} | [EXPERIMENTAL] SetTransactionType: Set a specific transaction type |
-| [**setTransactionTypeSource**](TransactionConfigurationApi.md#setTransactionTypeSource) | **PUT** /api/transactionconfiguration/types/{source} | [EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope |
+| [**deleteSideDefinition**](TransactionConfigurationApi.md#deleteSideDefinition) | **DELETE** /api/transactionconfiguration/sides/{side}/$delete | DeleteSideDefinition: Delete the given side definition |
+| [**deleteTransactionType**](TransactionConfigurationApi.md#deleteTransactionType) | **DELETE** /api/transactionconfiguration/types/{source}/{type} | DeleteTransactionType: Delete a transaction type |
+| [**deleteTransactionTypeSource**](TransactionConfigurationApi.md#deleteTransactionTypeSource) | **DELETE** /api/transactionconfiguration/types/{source}/$delete | DeleteTransactionTypeSource: Delete all transaction types for the given source and scope |
+| [**getSideDefinition**](TransactionConfigurationApi.md#getSideDefinition) | **GET** /api/transactionconfiguration/sides/{side} | GetSideDefinition: Get the side definition for a given side name( or label) |
+| [**getTransactionType**](TransactionConfigurationApi.md#getTransactionType) | **GET** /api/transactionconfiguration/types/{source}/{type} | GetTransactionType: Get a single transaction configuration type |
+| [**listSideDefinitions**](TransactionConfigurationApi.md#listSideDefinitions) | **GET** /api/transactionconfiguration/sides | ListSideDefinitions: List the side definitions |
+| [**listTransactionTypes**](TransactionConfigurationApi.md#listTransactionTypes) | **GET** /api/transactionconfiguration/types | ListTransactionTypes: List transaction types |
+| [**setSideDefinition**](TransactionConfigurationApi.md#setSideDefinition) | **PUT** /api/transactionconfiguration/sides/{side} | SetSideDefinition: Set a side definition |
+| [**setSideDefinitions**](TransactionConfigurationApi.md#setSideDefinitions) | **PUT** /api/transactionconfiguration/sides | SetSideDefinitions: Set the given side definitions |
+| [**setTransactionType**](TransactionConfigurationApi.md#setTransactionType) | **PUT** /api/transactionconfiguration/types/{source}/{type} | SetTransactionType: Set a specific transaction type |
+| [**setTransactionTypeSource**](TransactionConfigurationApi.md#setTransactionTypeSource) | **PUT** /api/transactionconfiguration/types/{source} | SetTransactionTypeSource: Set the transaction types for the given source and scope |
 
 
 <a id="deleteSideDefinition"></a>
 # **deleteSideDefinition**
 > DeletedEntityResponse deleteSideDefinition(side).scope(scope).execute();
 
-[EXPERIMENTAL] DeleteSideDefinition: Delete the given side definition
+DeleteSideDefinition: Delete the given side definition
 
 Delete the side which user specify in the request.
 
@@ -94,7 +94,7 @@ public class Example {
 # **deleteTransactionType**
 > DeletedEntityResponse deleteTransactionType(source, type).scope(scope).execute();
 
-[EXPERIMENTAL] DeleteTransactionType: Delete a transaction type
+DeleteTransactionType: Delete a transaction type
 
 /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
@@ -169,7 +169,7 @@ public class Example {
 # **deleteTransactionTypeSource**
 > DeletedEntityResponse deleteTransactionTypeSource(source).scope(scope).execute();
 
-[EXPERIMENTAL] DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
+DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
 
 Delete all the types for the given source and scope.
 
@@ -242,7 +242,7 @@ public class Example {
 # **getSideDefinition**
 > SideDefinition getSideDefinition(side).scope(scope).asAt(asAt).execute();
 
-[EXPERIMENTAL] GetSideDefinition: Get the side definition for a given side name( or label)
+GetSideDefinition: Get the side definition for a given side name( or label)
 
 Get the side definition user requested.
 
@@ -318,7 +318,7 @@ public class Example {
 # **getTransactionType**
 > TransactionType getTransactionType(source, type).asAt(asAt).scope(scope).execute();
 
-[EXPERIMENTAL] GetTransactionType: Get a single transaction configuration type
+GetTransactionType: Get a single transaction configuration type
 
 Get a single transaction type. Returns failure if not found
 
@@ -396,7 +396,7 @@ public class Example {
 # **listSideDefinitions**
 > ResourceListOfSideDefinition listSideDefinitions().asAt(asAt).scope(scope).execute();
 
-[EXPERIMENTAL] ListSideDefinitions: List the side definitions
+ListSideDefinitions: List the side definitions
 
 List all the side definitions in the given scope
 
@@ -470,7 +470,7 @@ public class Example {
 # **listTransactionTypes**
 > Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes().asAt(asAt).scope(scope).execute();
 
-[EXPERIMENTAL] ListTransactionTypes: List transaction types
+ListTransactionTypes: List transaction types
 
 Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
 
@@ -544,7 +544,7 @@ public class Example {
 # **setSideDefinition**
 > SideDefinition setSideDefinition(side, sideDefinitionRequest).scope(scope).execute();
 
-[EXPERIMENTAL] SetSideDefinition: Set a side definition
+SetSideDefinition: Set a side definition
 
 Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
 
@@ -619,7 +619,7 @@ public class Example {
 # **setSideDefinitions**
 > ResourceListOfSideDefinition setSideDefinitions(sidesDefinitionRequest).scope(scope).execute();
 
-[EXPERIMENTAL] SetSideDefinitions: Set the given side definitions
+SetSideDefinitions: Set the given side definitions
 
 Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
 
@@ -692,7 +692,7 @@ public class Example {
 # **setTransactionType**
 > TransactionType setTransactionType(source, type, transactionTypeRequest).scope(scope).execute();
 
-[EXPERIMENTAL] SetTransactionType: Set a specific transaction type
+SetTransactionType: Set a specific transaction type
 
 Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
@@ -769,7 +769,7 @@ public class Example {
 # **setTransactionTypeSource**
 > ResourceListOfTransactionType setTransactionTypeSource(source, transactionTypeRequest).scope(scope).execute();
 
-[EXPERIMENTAL] SetTransactionTypeSource: Set the transaction types for the given source and scope
+SetTransactionTypeSource: Set the transaction types for the given source and scope
 
 The complete set of transaction types for the source.
 
