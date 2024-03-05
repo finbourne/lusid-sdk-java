@@ -73,6 +73,10 @@ public class TrialBalanceQueryParameters {
   @SerializedName(SERIALIZED_NAME_PROPERTY_KEYS)
   private List<String> propertyKeys;
 
+  public static final String SERIALIZED_NAME_EXCLUDE_CLEARDOWN_MODULE = "excludeCleardownModule";
+  @SerializedName(SERIALIZED_NAME_EXCLUDE_CLEARDOWN_MODULE)
+  private Boolean excludeCleardownModule;
+
   public TrialBalanceQueryParameters() {
   }
 
@@ -125,7 +129,7 @@ public class TrialBalanceQueryParameters {
   }
 
    /**
-   * The mode of calculation of the journal entry lines. The available values are: ActivityDate.
+   * The mode of calculation of the trial balance. The available values are: ActivityDate.
    * @return dateMode
   **/
   @jakarta.annotation.Nullable
@@ -146,7 +150,7 @@ public class TrialBalanceQueryParameters {
   }
 
    /**
-   * The optional code of a general ledger profile used to decorate journal entry lines with levels.
+   * The optional code of a general ledger profile used to decorate trial balance with levels.
    * @return generalLedgerProfileCode
   **/
   @jakarta.annotation.Nullable
@@ -175,7 +179,7 @@ public class TrialBalanceQueryParameters {
   }
 
    /**
-   * A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the journal entry lines.
+   * A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the trial balance.
    * @return propertyKeys
   **/
   @jakarta.annotation.Nullable
@@ -186,6 +190,27 @@ public class TrialBalanceQueryParameters {
 
   public void setPropertyKeys(List<String> propertyKeys) {
     this.propertyKeys = propertyKeys;
+  }
+
+
+  public TrialBalanceQueryParameters excludeCleardownModule(Boolean excludeCleardownModule) {
+    
+    this.excludeCleardownModule = excludeCleardownModule;
+    return this;
+  }
+
+   /**
+   * By deafult this flag is set to false, if this is set to true, no cleardown module will be applied to the trial balance.
+   * @return excludeCleardownModule
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExcludeCleardownModule() {
+    return excludeCleardownModule;
+  }
+
+
+  public void setExcludeCleardownModule(Boolean excludeCleardownModule) {
+    this.excludeCleardownModule = excludeCleardownModule;
   }
 
 
@@ -203,7 +228,8 @@ public class TrialBalanceQueryParameters {
         Objects.equals(this.end, trialBalanceQueryParameters.end) &&
         Objects.equals(this.dateMode, trialBalanceQueryParameters.dateMode) &&
         Objects.equals(this.generalLedgerProfileCode, trialBalanceQueryParameters.generalLedgerProfileCode) &&
-        Objects.equals(this.propertyKeys, trialBalanceQueryParameters.propertyKeys);
+        Objects.equals(this.propertyKeys, trialBalanceQueryParameters.propertyKeys) &&
+        Objects.equals(this.excludeCleardownModule, trialBalanceQueryParameters.excludeCleardownModule);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -212,7 +238,7 @@ public class TrialBalanceQueryParameters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end, dateMode, generalLedgerProfileCode, propertyKeys);
+    return Objects.hash(start, end, dateMode, generalLedgerProfileCode, propertyKeys, excludeCleardownModule);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -231,6 +257,7 @@ public class TrialBalanceQueryParameters {
     sb.append("    dateMode: ").append(toIndentedString(dateMode)).append("\n");
     sb.append("    generalLedgerProfileCode: ").append(toIndentedString(generalLedgerProfileCode)).append("\n");
     sb.append("    propertyKeys: ").append(toIndentedString(propertyKeys)).append("\n");
+    sb.append("    excludeCleardownModule: ").append(toIndentedString(excludeCleardownModule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -258,6 +285,7 @@ public class TrialBalanceQueryParameters {
     openapiFields.add("dateMode");
     openapiFields.add("generalLedgerProfileCode");
     openapiFields.add("propertyKeys");
+    openapiFields.add("excludeCleardownModule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
