@@ -108,6 +108,18 @@ public class PortfolioHolding {
   @SerializedName(SERIALIZED_NAME_HOLDING_ID)
   private Long holdingId;
 
+  public static final String SERIALIZED_NAME_NOTIONAL_COST = "notionalCost";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_COST)
+  private CurrencyAndAmount notionalCost;
+
+  public static final String SERIALIZED_NAME_AMORTISED_COST = "amortisedCost";
+  @SerializedName(SERIALIZED_NAME_AMORTISED_COST)
+  private CurrencyAndAmount amortisedCost;
+
+  public static final String SERIALIZED_NAME_AMORTISED_COST_PORTFOLIO_CCY = "amortisedCostPortfolioCcy";
+  @SerializedName(SERIALIZED_NAME_AMORTISED_COST_PORTFOLIO_CCY)
+  private CurrencyAndAmount amortisedCostPortfolioCcy;
+
   public PortfolioHolding() {
   }
 
@@ -400,6 +412,69 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding notionalCost(CurrencyAndAmount notionalCost) {
+    
+    this.notionalCost = notionalCost;
+    return this;
+  }
+
+   /**
+   * Get notionalCost
+   * @return notionalCost
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getNotionalCost() {
+    return notionalCost;
+  }
+
+
+  public void setNotionalCost(CurrencyAndAmount notionalCost) {
+    this.notionalCost = notionalCost;
+  }
+
+
+  public PortfolioHolding amortisedCost(CurrencyAndAmount amortisedCost) {
+    
+    this.amortisedCost = amortisedCost;
+    return this;
+  }
+
+   /**
+   * Get amortisedCost
+   * @return amortisedCost
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmortisedCost() {
+    return amortisedCost;
+  }
+
+
+  public void setAmortisedCost(CurrencyAndAmount amortisedCost) {
+    this.amortisedCost = amortisedCost;
+  }
+
+
+  public PortfolioHolding amortisedCostPortfolioCcy(CurrencyAndAmount amortisedCostPortfolioCcy) {
+    
+    this.amortisedCostPortfolioCcy = amortisedCostPortfolioCcy;
+    return this;
+  }
+
+   /**
+   * Get amortisedCostPortfolioCcy
+   * @return amortisedCostPortfolioCcy
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmortisedCostPortfolioCcy() {
+    return amortisedCostPortfolioCcy;
+  }
+
+
+  public void setAmortisedCostPortfolioCcy(CurrencyAndAmount amortisedCostPortfolioCcy) {
+    this.amortisedCostPortfolioCcy = amortisedCostPortfolioCcy;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -422,7 +497,10 @@ public class PortfolioHolding {
         Objects.equals(this.transaction, portfolioHolding.transaction) &&
         Objects.equals(this.currency, portfolioHolding.currency) &&
         Objects.equals(this.holdingTypeName, portfolioHolding.holdingTypeName) &&
-        Objects.equals(this.holdingId, portfolioHolding.holdingId);
+        Objects.equals(this.holdingId, portfolioHolding.holdingId) &&
+        Objects.equals(this.notionalCost, portfolioHolding.notionalCost) &&
+        Objects.equals(this.amortisedCost, portfolioHolding.amortisedCost) &&
+        Objects.equals(this.amortisedCostPortfolioCcy, portfolioHolding.amortisedCostPortfolioCcy);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -431,7 +509,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -458,6 +536,9 @@ public class PortfolioHolding {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    holdingTypeName: ").append(toIndentedString(holdingTypeName)).append("\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
+    sb.append("    notionalCost: ").append(toIndentedString(notionalCost)).append("\n");
+    sb.append("    amortisedCost: ").append(toIndentedString(amortisedCost)).append("\n");
+    sb.append("    amortisedCostPortfolioCcy: ").append(toIndentedString(amortisedCostPortfolioCcy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -493,6 +574,9 @@ public class PortfolioHolding {
     openapiFields.add("currency");
     openapiFields.add("holdingTypeName");
     openapiFields.add("holdingId");
+    openapiFields.add("notionalCost");
+    openapiFields.add("amortisedCost");
+    openapiFields.add("amortisedCostPortfolioCcy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -546,6 +630,18 @@ public class PortfolioHolding {
       }
       if ((jsonObj.get("holdingTypeName") != null && !jsonObj.get("holdingTypeName").isJsonNull()) && !jsonObj.get("holdingTypeName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingTypeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingTypeName").toString()));
+      }
+      // validate the optional field `notionalCost`
+      if (jsonObj.get("notionalCost") != null && !jsonObj.get("notionalCost").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("notionalCost"));
+      }
+      // validate the optional field `amortisedCost`
+      if (jsonObj.get("amortisedCost") != null && !jsonObj.get("amortisedCost").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amortisedCost"));
+      }
+      // validate the optional field `amortisedCostPortfolioCcy`
+      if (jsonObj.get("amortisedCostPortfolioCcy") != null && !jsonObj.get("amortisedCostPortfolioCcy").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amortisedCostPortfolioCcy"));
       }
   }
 
