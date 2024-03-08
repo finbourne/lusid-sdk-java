@@ -1683,7 +1683,7 @@ public class AborApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistAborsRequest
          */
         public APIlistAborsRequest sortBy(List<String> sortBy) {
@@ -1959,7 +1959,7 @@ public class AborApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistDiaryEntriesRequest
          */
         public APIlistDiaryEntriesRequest sortBy(List<String> sortBy) {

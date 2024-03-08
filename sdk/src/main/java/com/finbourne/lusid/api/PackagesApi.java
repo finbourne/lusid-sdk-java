@@ -576,7 +576,7 @@ public class PackagesApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistPackagesRequest
          */
         public APIlistPackagesRequest sortBy(List<String> sortBy) {

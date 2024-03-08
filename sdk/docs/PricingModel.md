@@ -43,5 +43,7 @@
 
 * `BONDLOOKUPPRICER` (value: `"BondLookupPricer"`)
 
+* `FLEXIBLELOANPRICER` (value: `"FlexibleLoanPricer"`)
+
 
 

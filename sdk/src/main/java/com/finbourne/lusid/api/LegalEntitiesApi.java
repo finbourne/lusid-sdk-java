@@ -2484,7 +2484,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest sortBy(List<String> sortBy) {
@@ -2775,7 +2775,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest sortBy(List<String> sortBy) {

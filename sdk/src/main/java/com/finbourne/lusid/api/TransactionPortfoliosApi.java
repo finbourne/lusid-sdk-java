@@ -5779,7 +5779,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest sortBy(List<String> sortBy) {

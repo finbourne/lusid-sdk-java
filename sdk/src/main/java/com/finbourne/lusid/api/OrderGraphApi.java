@@ -202,7 +202,7 @@ public class OrderGraphApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest sortBy(List<String> sortBy) {
@@ -705,7 +705,7 @@ public class OrderGraphApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistOrderGraphPlacementsRequest
          */
         public APIlistOrderGraphPlacementsRequest sortBy(List<String> sortBy) {

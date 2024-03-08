@@ -3208,7 +3208,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest sortBy(List<String> sortBy) {
@@ -3706,7 +3706,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistCleardownModulesRequest
          */
         public APIlistCleardownModulesRequest sortBy(List<String> sortBy) {
@@ -3954,7 +3954,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistGeneralLedgerProfilesRequest
          */
         public APIlistGeneralLedgerProfilesRequest sortBy(List<String> sortBy) {
@@ -4444,7 +4444,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistPostingModulesRequest
          */
         public APIlistPostingModulesRequest sortBy(List<String> sortBy) {

@@ -4392,7 +4392,7 @@ public class PortfoliosApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest sortBy(List<String> sortBy) {
@@ -4685,7 +4685,7 @@ public class PortfoliosApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest sortBy(List<String> sortBy) {

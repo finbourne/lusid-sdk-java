@@ -1634,7 +1634,7 @@ public class CustomEntitiesApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistCustomEntitiesRequest
          */
         public APIlistCustomEntitiesRequest sortBy(List<String> sortBy) {
