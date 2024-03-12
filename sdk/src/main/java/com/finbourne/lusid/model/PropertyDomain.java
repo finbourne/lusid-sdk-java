@@ -91,6 +91,8 @@ public enum PropertyDomain {
   
   ABORCONFIGURATION("AborConfiguration"),
   
+  FUND("Fund"),
+  
   RECONCILIATION("Reconciliation"),
   
   PROPERTYDEFINITION("PropertyDefinition"),

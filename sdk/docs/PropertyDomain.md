@@ -71,6 +71,8 @@
 
 * `ABORCONFIGURATION` (value: `"AborConfiguration"`)
 
+* `FUND` (value: `"Fund"`)
+
 * `RECONCILIATION` (value: `"Reconciliation"`)
 
 * `PROPERTYDEFINITION` (value: `"PropertyDefinition"`)

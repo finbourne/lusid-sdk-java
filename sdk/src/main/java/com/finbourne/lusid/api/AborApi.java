@@ -941,7 +941,7 @@ public class AborApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If not provided will return all the entitled properties for that Abor. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.   These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetAborRequest
          */
         public APIgetAborRequest propertyKeys(List<String> propertyKeys) {

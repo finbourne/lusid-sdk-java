@@ -2102,7 +2102,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
+         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetChartOfAccountsRequest
          */
         public APIgetChartOfAccountsRequest propertyKeys(List<String> propertyKeys) {

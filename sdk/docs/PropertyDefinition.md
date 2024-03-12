@@ -15,7 +15,7 @@ A list of property definitions.
 |**dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | The type of the property. The available values are: Label, Metric, Information |  [optional] |
 |**unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. The available values are: NoUnits, Basic, Iso4217Currency |  [optional] |
-|**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg |  [optional] |
+|**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Fund, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg |  [optional] |
 |**scope** | **String** | The scope that the property exists in. |  [optional] [readonly] |
 |**code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional] [readonly] |
 |**valueRequired** | **Boolean** | This field is not implemented and should be disregarded. |  [optional] |
@@ -116,6 +116,7 @@ A list of property definitions.
 | CUSTODIANACCOUNT | &quot;CustodianAccount&quot; |
 | ABOR | &quot;Abor&quot; |
 | ABORCONFIGURATION | &quot;AborConfiguration&quot; |
+| FUND | &quot;Fund&quot; |
 | RECONCILIATION | &quot;Reconciliation&quot; |
 | PROPERTYDEFINITION | &quot;PropertyDefinition&quot; |
 | COMPLIANCE | &quot;Compliance&quot; |
