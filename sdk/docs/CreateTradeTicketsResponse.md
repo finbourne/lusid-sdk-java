@@ -9,7 +9,7 @@ Batch trade ticket creation response
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**values** | [**List&lt;LusidTradeTicket&gt;**](LusidTradeTicket.md) |  |  |
-|**failures** | **List&lt;String&gt;** |  |  |
+|**failures** | [**List&lt;ErrorDetail&gt;**](ErrorDetail.md) |  |  |
 
 
 

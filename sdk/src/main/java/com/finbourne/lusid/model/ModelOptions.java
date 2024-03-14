@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ModelOptions {
   /**
-   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, LookUpPricingModelOptions
+   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions
    */
   @JsonAdapter(ModelOptionsTypeEnum.Adapter.class)
   public enum ModelOptionsTypeEnum {
@@ -66,9 +66,7 @@ public class ModelOptions {
     
     FUNDINGLEGMODELOPTIONS("FundingLegModelOptions"),
     
-    EQUITYMODELOPTIONS("EquityModelOptions"),
-    
-    LOOKUPPRICINGMODELOPTIONS("LookUpPricingModelOptions");
+    EQUITYMODELOPTIONS("EquityModelOptions");
 
     private String value;
 
@@ -122,7 +120,7 @@ public class ModelOptions {
   }
 
    /**
-   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, LookUpPricingModelOptions
+   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions
    * @return modelOptionsType
   **/
   @jakarta.annotation.Nonnull
@@ -217,9 +215,6 @@ public class ModelOptions {
           break;
         case "IndexModelOptions":
           IndexModelOptions.validateJsonElement(jsonElement);
-          break;
-        case "LookUpPricingModelOptions":
-          LookUpPricingModelOptions.validateJsonElement(jsonElement);
           break;
         case "OpaqueModelOptions":
           OpaqueModelOptions.validateJsonElement(jsonElement);

@@ -57,6 +57,10 @@ public class TransactionTemplateSpecification {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_TYPE)
   private String instrumentEventType;
 
+  public static final String SERIALIZED_NAME_SUPPORTED_INSTRUMENT_TYPES = "supportedInstrumentTypes";
+  @SerializedName(SERIALIZED_NAME_SUPPORTED_INSTRUMENT_TYPES)
+  private List<String> supportedInstrumentTypes = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_SUPPORTED_PARTICIPATION_TYPES = "supportedParticipationTypes";
   @SerializedName(SERIALIZED_NAME_SUPPORTED_PARTICIPATION_TYPES)
   private List<String> supportedParticipationTypes = new ArrayList<>();
@@ -90,6 +94,35 @@ public class TransactionTemplateSpecification {
 
   public void setInstrumentEventType(String instrumentEventType) {
     this.instrumentEventType = instrumentEventType;
+  }
+
+
+  public TransactionTemplateSpecification supportedInstrumentTypes(List<String> supportedInstrumentTypes) {
+    
+    this.supportedInstrumentTypes = supportedInstrumentTypes;
+    return this;
+  }
+
+  public TransactionTemplateSpecification addSupportedInstrumentTypesItem(String supportedInstrumentTypesItem) {
+    if (this.supportedInstrumentTypes == null) {
+      this.supportedInstrumentTypes = new ArrayList<>();
+    }
+    this.supportedInstrumentTypes.add(supportedInstrumentTypesItem);
+    return this;
+  }
+
+   /**
+   * Get supportedInstrumentTypes
+   * @return supportedInstrumentTypes
+  **/
+  @jakarta.annotation.Nonnull
+  public List<String> getSupportedInstrumentTypes() {
+    return supportedInstrumentTypes;
+  }
+
+
+  public void setSupportedInstrumentTypes(List<String> supportedInstrumentTypes) {
+    this.supportedInstrumentTypes = supportedInstrumentTypes;
   }
 
 
@@ -191,6 +224,7 @@ public class TransactionTemplateSpecification {
     }
     TransactionTemplateSpecification transactionTemplateSpecification = (TransactionTemplateSpecification) o;
     return Objects.equals(this.instrumentEventType, transactionTemplateSpecification.instrumentEventType) &&
+        Objects.equals(this.supportedInstrumentTypes, transactionTemplateSpecification.supportedInstrumentTypes) &&
         Objects.equals(this.supportedParticipationTypes, transactionTemplateSpecification.supportedParticipationTypes) &&
         Objects.equals(this.supportedElectionTypes, transactionTemplateSpecification.supportedElectionTypes) &&
         Objects.equals(this.supportedTemplateFields, transactionTemplateSpecification.supportedTemplateFields);
@@ -198,7 +232,7 @@ public class TransactionTemplateSpecification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventType, supportedParticipationTypes, supportedElectionTypes, supportedTemplateFields);
+    return Objects.hash(instrumentEventType, supportedInstrumentTypes, supportedParticipationTypes, supportedElectionTypes, supportedTemplateFields);
   }
 
   @Override
@@ -206,6 +240,7 @@ public class TransactionTemplateSpecification {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionTemplateSpecification {\n");
     sb.append("    instrumentEventType: ").append(toIndentedString(instrumentEventType)).append("\n");
+    sb.append("    supportedInstrumentTypes: ").append(toIndentedString(supportedInstrumentTypes)).append("\n");
     sb.append("    supportedParticipationTypes: ").append(toIndentedString(supportedParticipationTypes)).append("\n");
     sb.append("    supportedElectionTypes: ").append(toIndentedString(supportedElectionTypes)).append("\n");
     sb.append("    supportedTemplateFields: ").append(toIndentedString(supportedTemplateFields)).append("\n");
@@ -232,6 +267,7 @@ public class TransactionTemplateSpecification {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
+    openapiFields.add("supportedInstrumentTypes");
     openapiFields.add("supportedParticipationTypes");
     openapiFields.add("supportedElectionTypes");
     openapiFields.add("supportedTemplateFields");
@@ -239,6 +275,7 @@ public class TransactionTemplateSpecification {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrumentEventType");
+    openapiRequiredFields.add("supportedInstrumentTypes");
     openapiRequiredFields.add("supportedParticipationTypes");
     openapiRequiredFields.add("supportedElectionTypes");
     openapiRequiredFields.add("supportedTemplateFields");
@@ -266,6 +303,12 @@ public class TransactionTemplateSpecification {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("instrumentEventType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentEventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentEventType").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("supportedInstrumentTypes") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("supportedInstrumentTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `supportedInstrumentTypes` to be an array in the JSON string but got `%s`", jsonObj.get("supportedInstrumentTypes").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("supportedParticipationTypes") == null) {

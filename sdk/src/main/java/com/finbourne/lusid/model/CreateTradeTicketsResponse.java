@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.LusidTradeTicket;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,7 +59,7 @@ public class CreateTradeTicketsResponse {
 
   public static final String SERIALIZED_NAME_FAILURES = "failures";
   @SerializedName(SERIALIZED_NAME_FAILURES)
-  private List<String> failures = new ArrayList<>();
+  private List<ErrorDetail> failures = new ArrayList<>();
 
   public CreateTradeTicketsResponse() {
   }
@@ -92,13 +93,13 @@ public class CreateTradeTicketsResponse {
   }
 
 
-  public CreateTradeTicketsResponse failures(List<String> failures) {
+  public CreateTradeTicketsResponse failures(List<ErrorDetail> failures) {
     
     this.failures = failures;
     return this;
   }
 
-  public CreateTradeTicketsResponse addFailuresItem(String failuresItem) {
+  public CreateTradeTicketsResponse addFailuresItem(ErrorDetail failuresItem) {
     if (this.failures == null) {
       this.failures = new ArrayList<>();
     }
@@ -111,12 +112,12 @@ public class CreateTradeTicketsResponse {
    * @return failures
   **/
   @jakarta.annotation.Nonnull
-  public List<String> getFailures() {
+  public List<ErrorDetail> getFailures() {
     return failures;
   }
 
 
-  public void setFailures(List<String> failures) {
+  public void setFailures(List<ErrorDetail> failures) {
     this.failures = failures;
   }
 
@@ -207,12 +208,16 @@ public class CreateTradeTicketsResponse {
       for (int i = 0; i < jsonArrayvalues.size(); i++) {
         LusidTradeTicket.validateJsonElement(jsonArrayvalues.get(i));
       };
-      // ensure the required json array is present
-      if (jsonObj.get("failures") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("failures").isJsonArray()) {
+      // ensure the json data is an array
+      if (!jsonObj.get("failures").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `failures` to be an array in the JSON string but got `%s`", jsonObj.get("failures").toString()));
       }
+
+      JsonArray jsonArrayfailures = jsonObj.getAsJsonArray("failures");
+      // validate the required field `failures` (array)
+      for (int i = 0; i < jsonArrayfailures.size(); i++) {
+        ErrorDetail.validateJsonElement(jsonArrayfailures.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

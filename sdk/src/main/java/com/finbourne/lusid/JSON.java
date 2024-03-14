@@ -1079,15 +1079,6 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "resultValueType"));
                     }
           })
-                .registerTypeSelector(com.finbourne.lusid.model.LookUpPricingModelOptions.class, new TypeSelector<com.finbourne.lusid.model.LookUpPricingModelOptions>() {
-                    @Override
-                    public Class<? extends com.finbourne.lusid.model.LookUpPricingModelOptions> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("LookUpPricingModelOptions", com.finbourne.lusid.model.LookUpPricingModelOptions.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "modelOptionsType"));
-                    }
-          })
                 .registerTypeSelector(com.finbourne.lusid.model.LusidInstrument.class, new TypeSelector<com.finbourne.lusid.model.LusidInstrument>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.LusidInstrument> getClassForElement(JsonElement readElement) {
@@ -1172,7 +1163,6 @@ public class JSON {
                         classByDiscriminatorValue.put("FundingLegOptions", com.finbourne.lusid.model.FundingLegOptions.class);
                         classByDiscriminatorValue.put("FxForwardModelOptions", com.finbourne.lusid.model.FxForwardModelOptions.class);
                         classByDiscriminatorValue.put("IndexModelOptions", com.finbourne.lusid.model.IndexModelOptions.class);
-                        classByDiscriminatorValue.put("LookUpPricingModelOptions", com.finbourne.lusid.model.LookUpPricingModelOptions.class);
                         classByDiscriminatorValue.put("OpaqueModelOptions", com.finbourne.lusid.model.OpaqueModelOptions.class);
                         classByDiscriminatorValue.put("ModelOptions", com.finbourne.lusid.model.ModelOptions.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
@@ -2109,7 +2099,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ListComplexMarketDataWithMetaDataResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.LoanPeriod.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.LockPeriodDiaryEntryRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.LookUpPricingModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.LusidProblemDetails.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.LusidTradeTicket.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.LusidUniqueId.CustomTypeAdapterFactory());

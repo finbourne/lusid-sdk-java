@@ -39,8 +39,6 @@
 
 * `BJERKSUNDSTENSLAND1993` (value: `"BjerksundStensland1993"`)
 
-* `LOOKUPPRICING` (value: `"LookUpPricing"`)
-
 * `BONDLOOKUPPRICER` (value: `"BondLookupPricer"`)
 
 * `FLEXIBLELOANPRICER` (value: `"FlexibleLoanPricer"`)

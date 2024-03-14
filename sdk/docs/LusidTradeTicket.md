@@ -20,6 +20,7 @@ A LUSID Trade Ticket comprising an instrument, a transaction, and a counterparty
 |**instrumentName** | **String** | Name of instrument |  [optional] |
 |**instrumentDefinition** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional] |
 |**counterpartyAgreementId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**counterparty** | **String** | Counterparty |  [optional] |
 |**instrumentProperties** | [**List&lt;Property&gt;**](Property.md) | Set of instrument properties (as defined by client/user). |  [optional] |
 |**transactionProperties** | [**List&lt;Property&gt;**](Property.md) | Set of transaction properties (as defined by client/user). |  [optional] |
 |**tradeTicketType** | [**TradeTicketTypeEnum**](#TradeTicketTypeEnum) | The available values are: LusidTradeTicket, ExternalTradeTicket |  |

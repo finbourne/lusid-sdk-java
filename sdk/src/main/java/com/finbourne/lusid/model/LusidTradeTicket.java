@@ -106,6 +106,10 @@ public class LusidTradeTicket {
   @SerializedName(SERIALIZED_NAME_COUNTERPARTY_AGREEMENT_ID)
   private ResourceId counterpartyAgreementId;
 
+  public static final String SERIALIZED_NAME_COUNTERPARTY = "counterparty";
+  @SerializedName(SERIALIZED_NAME_COUNTERPARTY)
+  private String counterparty;
+
   public static final String SERIALIZED_NAME_INSTRUMENT_PROPERTIES = "instrumentProperties";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_PROPERTIES)
   private List<Property> instrumentProperties;
@@ -428,6 +432,27 @@ public class LusidTradeTicket {
   }
 
 
+  public LusidTradeTicket counterparty(String counterparty) {
+    
+    this.counterparty = counterparty;
+    return this;
+  }
+
+   /**
+   * Counterparty
+   * @return counterparty
+  **/
+  @jakarta.annotation.Nullable
+  public String getCounterparty() {
+    return counterparty;
+  }
+
+
+  public void setCounterparty(String counterparty) {
+    this.counterparty = counterparty;
+  }
+
+
   public LusidTradeTicket instrumentProperties(List<Property> instrumentProperties) {
     
     this.instrumentProperties = instrumentProperties;
@@ -529,6 +554,7 @@ public class LusidTradeTicket {
         Objects.equals(this.instrumentName, lusidTradeTicket.instrumentName) &&
         Objects.equals(this.instrumentDefinition, lusidTradeTicket.instrumentDefinition) &&
         Objects.equals(this.counterpartyAgreementId, lusidTradeTicket.counterpartyAgreementId) &&
+        Objects.equals(this.counterparty, lusidTradeTicket.counterparty) &&
         Objects.equals(this.instrumentProperties, lusidTradeTicket.instrumentProperties) &&
         Objects.equals(this.transactionProperties, lusidTradeTicket.transactionProperties) &&
         Objects.equals(this.tradeTicketType, lusidTradeTicket.tradeTicketType);
@@ -540,7 +566,7 @@ public class LusidTradeTicket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, transactionType, source, transactionDate, settlementDate, totalConsideration, units, instrumentIdentifiers, instrumentScope, instrumentName, instrumentDefinition, counterpartyAgreementId, instrumentProperties, transactionProperties, tradeTicketType);
+    return Objects.hash(transactionId, transactionType, source, transactionDate, settlementDate, totalConsideration, units, instrumentIdentifiers, instrumentScope, instrumentName, instrumentDefinition, counterpartyAgreementId, counterparty, instrumentProperties, transactionProperties, tradeTicketType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -566,6 +592,7 @@ public class LusidTradeTicket {
     sb.append("    instrumentName: ").append(toIndentedString(instrumentName)).append("\n");
     sb.append("    instrumentDefinition: ").append(toIndentedString(instrumentDefinition)).append("\n");
     sb.append("    counterpartyAgreementId: ").append(toIndentedString(counterpartyAgreementId)).append("\n");
+    sb.append("    counterparty: ").append(toIndentedString(counterparty)).append("\n");
     sb.append("    instrumentProperties: ").append(toIndentedString(instrumentProperties)).append("\n");
     sb.append("    transactionProperties: ").append(toIndentedString(transactionProperties)).append("\n");
     sb.append("    tradeTicketType: ").append(toIndentedString(tradeTicketType)).append("\n");
@@ -603,6 +630,7 @@ public class LusidTradeTicket {
     openapiFields.add("instrumentName");
     openapiFields.add("instrumentDefinition");
     openapiFields.add("counterpartyAgreementId");
+    openapiFields.add("counterparty");
     openapiFields.add("instrumentProperties");
     openapiFields.add("transactionProperties");
     openapiFields.add("tradeTicketType");
@@ -669,6 +697,9 @@ public class LusidTradeTicket {
       // validate the optional field `counterpartyAgreementId`
       if (jsonObj.get("counterpartyAgreementId") != null && !jsonObj.get("counterpartyAgreementId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("counterpartyAgreementId"));
+      }
+      if ((jsonObj.get("counterparty") != null && !jsonObj.get("counterparty").isJsonNull()) && !jsonObj.get("counterparty").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `counterparty` to be a primitive type in the JSON string but got `%s`", jsonObj.get("counterparty").toString()));
       }
       if (jsonObj.get("instrumentProperties") != null && !jsonObj.get("instrumentProperties").isJsonNull()) {
         JsonArray jsonArrayinstrumentProperties = jsonObj.getAsJsonArray("instrumentProperties");
