@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ElectionSpecification;
+import com.finbourne.lusid.model.EligibilityCalculation;
 import com.finbourne.lusid.model.TemplateField;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -72,6 +73,10 @@ public class TransactionTemplateSpecification {
   public static final String SERIALIZED_NAME_SUPPORTED_TEMPLATE_FIELDS = "supportedTemplateFields";
   @SerializedName(SERIALIZED_NAME_SUPPORTED_TEMPLATE_FIELDS)
   private List<TemplateField> supportedTemplateFields = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ELIGIBILITY_CALCULATION = "eligibilityCalculation";
+  @SerializedName(SERIALIZED_NAME_ELIGIBILITY_CALCULATION)
+  private EligibilityCalculation eligibilityCalculation;
 
   public TransactionTemplateSpecification() {
   }
@@ -213,6 +218,27 @@ public class TransactionTemplateSpecification {
   }
 
 
+  public TransactionTemplateSpecification eligibilityCalculation(EligibilityCalculation eligibilityCalculation) {
+    
+    this.eligibilityCalculation = eligibilityCalculation;
+    return this;
+  }
+
+   /**
+   * Get eligibilityCalculation
+   * @return eligibilityCalculation
+  **/
+  @jakarta.annotation.Nonnull
+  public EligibilityCalculation getEligibilityCalculation() {
+    return eligibilityCalculation;
+  }
+
+
+  public void setEligibilityCalculation(EligibilityCalculation eligibilityCalculation) {
+    this.eligibilityCalculation = eligibilityCalculation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -227,12 +253,13 @@ public class TransactionTemplateSpecification {
         Objects.equals(this.supportedInstrumentTypes, transactionTemplateSpecification.supportedInstrumentTypes) &&
         Objects.equals(this.supportedParticipationTypes, transactionTemplateSpecification.supportedParticipationTypes) &&
         Objects.equals(this.supportedElectionTypes, transactionTemplateSpecification.supportedElectionTypes) &&
-        Objects.equals(this.supportedTemplateFields, transactionTemplateSpecification.supportedTemplateFields);
+        Objects.equals(this.supportedTemplateFields, transactionTemplateSpecification.supportedTemplateFields) &&
+        Objects.equals(this.eligibilityCalculation, transactionTemplateSpecification.eligibilityCalculation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventType, supportedInstrumentTypes, supportedParticipationTypes, supportedElectionTypes, supportedTemplateFields);
+    return Objects.hash(instrumentEventType, supportedInstrumentTypes, supportedParticipationTypes, supportedElectionTypes, supportedTemplateFields, eligibilityCalculation);
   }
 
   @Override
@@ -244,6 +271,7 @@ public class TransactionTemplateSpecification {
     sb.append("    supportedParticipationTypes: ").append(toIndentedString(supportedParticipationTypes)).append("\n");
     sb.append("    supportedElectionTypes: ").append(toIndentedString(supportedElectionTypes)).append("\n");
     sb.append("    supportedTemplateFields: ").append(toIndentedString(supportedTemplateFields)).append("\n");
+    sb.append("    eligibilityCalculation: ").append(toIndentedString(eligibilityCalculation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -271,6 +299,7 @@ public class TransactionTemplateSpecification {
     openapiFields.add("supportedParticipationTypes");
     openapiFields.add("supportedElectionTypes");
     openapiFields.add("supportedTemplateFields");
+    openapiFields.add("eligibilityCalculation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -279,6 +308,7 @@ public class TransactionTemplateSpecification {
     openapiRequiredFields.add("supportedParticipationTypes");
     openapiRequiredFields.add("supportedElectionTypes");
     openapiRequiredFields.add("supportedTemplateFields");
+    openapiRequiredFields.add("eligibilityCalculation");
   }
 
  /**
@@ -336,6 +366,8 @@ public class TransactionTemplateSpecification {
       for (int i = 0; i < jsonArraysupportedTemplateFields.size(); i++) {
         TemplateField.validateJsonElement(jsonArraysupportedTemplateFields.get(i));
       };
+      // validate the required field `eligibilityCalculation`
+      EligibilityCalculation.validateJsonElement(jsonObj.get("eligibilityCalculation"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
