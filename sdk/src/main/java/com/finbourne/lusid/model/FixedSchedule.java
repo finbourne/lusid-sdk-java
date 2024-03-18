@@ -256,7 +256,7 @@ public class FixedSchedule extends Schedule {
    * Payment currency. This does not have to be the same as the nominal bond or observation/reset currency.
    * @return paymentCurrency
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getPaymentCurrency() {
     return paymentCurrency;
   }
@@ -401,6 +401,7 @@ public class FixedSchedule extends Schedule {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
+    openapiRequiredFields.add("paymentCurrency");
     openapiRequiredFields.add("scheduleType");
   }
 

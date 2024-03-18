@@ -120,6 +120,14 @@ public class PortfolioHolding {
   @SerializedName(SERIALIZED_NAME_AMORTISED_COST_PORTFOLIO_CCY)
   private CurrencyAndAmount amortisedCostPortfolioCcy;
 
+  public static final String SERIALIZED_NAME_VARIATION_MARGIN = "variationMargin";
+  @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN)
+  private CurrencyAndAmount variationMargin;
+
+  public static final String SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY = "variationMarginPortfolioCcy";
+  @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY)
+  private CurrencyAndAmount variationMarginPortfolioCcy;
+
   public PortfolioHolding() {
   }
 
@@ -475,6 +483,48 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding variationMargin(CurrencyAndAmount variationMargin) {
+    
+    this.variationMargin = variationMargin;
+    return this;
+  }
+
+   /**
+   * Get variationMargin
+   * @return variationMargin
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getVariationMargin() {
+    return variationMargin;
+  }
+
+
+  public void setVariationMargin(CurrencyAndAmount variationMargin) {
+    this.variationMargin = variationMargin;
+  }
+
+
+  public PortfolioHolding variationMarginPortfolioCcy(CurrencyAndAmount variationMarginPortfolioCcy) {
+    
+    this.variationMarginPortfolioCcy = variationMarginPortfolioCcy;
+    return this;
+  }
+
+   /**
+   * Get variationMarginPortfolioCcy
+   * @return variationMarginPortfolioCcy
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getVariationMarginPortfolioCcy() {
+    return variationMarginPortfolioCcy;
+  }
+
+
+  public void setVariationMarginPortfolioCcy(CurrencyAndAmount variationMarginPortfolioCcy) {
+    this.variationMarginPortfolioCcy = variationMarginPortfolioCcy;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -500,7 +550,9 @@ public class PortfolioHolding {
         Objects.equals(this.holdingId, portfolioHolding.holdingId) &&
         Objects.equals(this.notionalCost, portfolioHolding.notionalCost) &&
         Objects.equals(this.amortisedCost, portfolioHolding.amortisedCost) &&
-        Objects.equals(this.amortisedCostPortfolioCcy, portfolioHolding.amortisedCostPortfolioCcy);
+        Objects.equals(this.amortisedCostPortfolioCcy, portfolioHolding.amortisedCostPortfolioCcy) &&
+        Objects.equals(this.variationMargin, portfolioHolding.variationMargin) &&
+        Objects.equals(this.variationMarginPortfolioCcy, portfolioHolding.variationMarginPortfolioCcy);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -509,7 +561,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -539,6 +591,8 @@ public class PortfolioHolding {
     sb.append("    notionalCost: ").append(toIndentedString(notionalCost)).append("\n");
     sb.append("    amortisedCost: ").append(toIndentedString(amortisedCost)).append("\n");
     sb.append("    amortisedCostPortfolioCcy: ").append(toIndentedString(amortisedCostPortfolioCcy)).append("\n");
+    sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
+    sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -577,6 +631,8 @@ public class PortfolioHolding {
     openapiFields.add("notionalCost");
     openapiFields.add("amortisedCost");
     openapiFields.add("amortisedCostPortfolioCcy");
+    openapiFields.add("variationMargin");
+    openapiFields.add("variationMarginPortfolioCcy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -642,6 +698,14 @@ public class PortfolioHolding {
       // validate the optional field `amortisedCostPortfolioCcy`
       if (jsonObj.get("amortisedCostPortfolioCcy") != null && !jsonObj.get("amortisedCostPortfolioCcy").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("amortisedCostPortfolioCcy"));
+      }
+      // validate the optional field `variationMargin`
+      if (jsonObj.get("variationMargin") != null && !jsonObj.get("variationMargin").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("variationMargin"));
+      }
+      // validate the optional field `variationMarginPortfolioCcy`
+      if (jsonObj.get("variationMarginPortfolioCcy") != null && !jsonObj.get("variationMarginPortfolioCcy").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("variationMarginPortfolioCcy"));
       }
   }
 

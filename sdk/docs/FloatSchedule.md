@@ -16,7 +16,7 @@ Schedule for fixed coupon payments
 |**indexConventionName** | [**FlowConventionName**](FlowConventionName.md) |  |  [optional] |
 |**indexConventions** | [**IndexConvention**](IndexConvention.md) |  |  [optional] |
 |**notional** | **java.math.BigDecimal** | Scaling factor, the quantity outstanding on which the rate will be paid. |  [optional] |
-|**paymentCurrency** | **String** | Payment currency. This does not have to be the same as the nominal bond or observation/reset currency. |  [optional] |
+|**paymentCurrency** | **String** | Payment currency. This does not have to be the same as the nominal bond or observation/reset currency. |  |
 |**spread** | **java.math.BigDecimal** | Spread over floating rate given as a fraction. |  [optional] |
 |**stubType** | **String** | StubType required of the schedule    Supported string (enumeration) values are: [ShortFront, ShortBack, LongBack, LongFront, Both]. |  [optional] |
 |**exDividendConfiguration** | [**ExDividendConfiguration**](ExDividendConfiguration.md) |  |  [optional] |

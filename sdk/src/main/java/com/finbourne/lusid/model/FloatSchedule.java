@@ -295,7 +295,7 @@ public class FloatSchedule extends Schedule {
    * Payment currency. This does not have to be the same as the nominal bond or observation/reset currency.
    * @return paymentCurrency
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getPaymentCurrency() {
     return paymentCurrency;
   }
@@ -513,6 +513,7 @@ public class FloatSchedule extends Schedule {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("paymentCurrency");
     openapiRequiredFields.add("scheduleType");
   }
 

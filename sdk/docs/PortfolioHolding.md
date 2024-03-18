@@ -24,6 +24,8 @@ A list of holdings.
 |**notionalCost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**amortisedCost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**amortisedCostPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**variationMargin** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**variationMarginPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 
 
 
