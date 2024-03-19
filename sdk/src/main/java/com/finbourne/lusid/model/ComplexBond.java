@@ -221,7 +221,7 @@ public class ComplexBond extends LusidInstrument {
   }
 
    /**
-   * Identifier used to retrieve pool factor information about this bond from the quote store. This is expected to  be the bond&#39;s ISIN as the pricer for asset backed securities will specifically look for an identifier of  ISIN identifier type when searching for pool factor reset values in the quote store.
+   * Identifier used to retrieve pool factor information about this bond from the quote store. This is typically  the bond&#39;s ISIN, but can also be ClientInternal. Please ensure you align the MarketDataKeyRule with the  correct Quote (Quote.ClientInternal.* or Quote.Isin.*)
    * @return assetPoolIdentifier
   **/
   @jakarta.annotation.Nullable
