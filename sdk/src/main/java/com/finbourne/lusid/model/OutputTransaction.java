@@ -200,6 +200,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_HOLDING_IDS)
   private List<Long> holdingIds;
 
+  public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
+  @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  private String sourceType;
+
   public OutputTransaction() {
   }
 
@@ -718,6 +722,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction sourceType(String sourceType) {
+    
+    this.sourceType = sourceType;
+    return this;
+  }
+
+   /**
+   * The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment
+   * @return sourceType
+  **/
+  @jakarta.annotation.Nullable
+  public String getSourceType() {
+    return sourceType;
+  }
+
+
+  public void setSourceType(String sourceType) {
+    this.sourceType = sourceType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -750,7 +775,8 @@ public class OutputTransaction {
         Objects.equals(this.entryDateTime, outputTransaction.entryDateTime) &&
         Objects.equals(this.cancelDateTime, outputTransaction.cancelDateTime) &&
         Objects.equals(this.realisedGainLoss, outputTransaction.realisedGainLoss) &&
-        Objects.equals(this.holdingIds, outputTransaction.holdingIds);
+        Objects.equals(this.holdingIds, outputTransaction.holdingIds) &&
+        Objects.equals(this.sourceType, outputTransaction.sourceType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -759,7 +785,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -796,6 +822,7 @@ public class OutputTransaction {
     sb.append("    cancelDateTime: ").append(toIndentedString(cancelDateTime)).append("\n");
     sb.append("    realisedGainLoss: ").append(toIndentedString(realisedGainLoss)).append("\n");
     sb.append("    holdingIds: ").append(toIndentedString(holdingIds)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -841,6 +868,7 @@ public class OutputTransaction {
     openapiFields.add("cancelDateTime");
     openapiFields.add("realisedGainLoss");
     openapiFields.add("holdingIds");
+    openapiFields.add("sourceType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -924,6 +952,9 @@ public class OutputTransaction {
       // ensure the optional json data is an array if present
       if (jsonObj.get("holdingIds") != null && !jsonObj.get("holdingIds").isJsonNull() && !jsonObj.get("holdingIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingIds` to be an array in the JSON string but got `%s`", jsonObj.get("holdingIds").toString()));
+      }
+      if ((jsonObj.get("sourceType") != null && !jsonObj.get("sourceType").isJsonNull()) && !jsonObj.get("sourceType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
       }
   }
 

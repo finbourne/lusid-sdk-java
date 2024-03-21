@@ -237,7 +237,7 @@ public class DividendOptionEvent extends InstrumentEvent {
   }
 
    /**
-   * Date on which the dividend was the security settles. Equal to the PaymentDate if not provided.
+   * The settlement date of the additional units. Equal to the PaymentDate if not provided.
    * @return securitySettlementDate
   **/
   @jakarta.annotation.Nullable

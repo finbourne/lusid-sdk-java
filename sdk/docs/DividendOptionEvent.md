@@ -14,7 +14,7 @@ DVOP
 |**paymentDate** | **OffsetDateTime** | The date the company pays out dividends to shareholders. |  |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to participate in the tender. |  [optional] |
 |**securityElections** | [**List&lt;SecurityElection&gt;**](SecurityElection.md) | SecurityElection for this DividendReinvestmentEvent |  |
-|**securitySettlementDate** | **OffsetDateTime** | Date on which the dividend was the security settles. Equal to the PaymentDate if not provided. |  [optional] |
+|**securitySettlementDate** | **OffsetDateTime** | The settlement date of the additional units. Equal to the PaymentDate if not provided. |  [optional] |
 
 
 

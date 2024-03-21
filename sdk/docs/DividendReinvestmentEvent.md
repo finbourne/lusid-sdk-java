@@ -14,6 +14,7 @@ Event for dividend reinvestments. Elections for cash or the associated security.
 |**paymentDate** | **OffsetDateTime** | The date the company pays out dividends to shareholders. |  |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to participate in the tender. |  |
 |**securityElections** | [**List&lt;SecurityElection&gt;**](SecurityElection.md) | SecurityElection for this DividendReinvestmentEvent |  |
+|**securitySettlementDate** | **OffsetDateTime** | The settlement date of the additional units. Equal to the PaymentDate if not provided. |  [optional] |
 
 
 

@@ -80,6 +80,10 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_SECURITY_ELECTIONS)
   private List<SecurityElection> securityElections = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_SECURITY_SETTLEMENT_DATE = "securitySettlementDate";
+  @SerializedName(SERIALIZED_NAME_SECURITY_SETTLEMENT_DATE)
+  private OffsetDateTime securitySettlementDate;
+
   public DividendReinvestmentEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -226,6 +230,27 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
   }
 
 
+  public DividendReinvestmentEvent securitySettlementDate(OffsetDateTime securitySettlementDate) {
+    
+    this.securitySettlementDate = securitySettlementDate;
+    return this;
+  }
+
+   /**
+   * The settlement date of the additional units. Equal to the PaymentDate if not provided.
+   * @return securitySettlementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getSecuritySettlementDate() {
+    return securitySettlementDate;
+  }
+
+
+  public void setSecuritySettlementDate(OffsetDateTime securitySettlementDate) {
+    this.securitySettlementDate = securitySettlementDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -242,6 +267,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
         Objects.equals(this.paymentDate, dividendReinvestmentEvent.paymentDate) &&
         Objects.equals(this.recordDate, dividendReinvestmentEvent.recordDate) &&
         Objects.equals(this.securityElections, dividendReinvestmentEvent.securityElections) &&
+        Objects.equals(this.securitySettlementDate, dividendReinvestmentEvent.securitySettlementDate) &&
         super.equals(o);
   }
 
@@ -251,7 +277,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, cashElections, exDate, paymentDate, recordDate, securityElections, super.hashCode());
+    return Objects.hash(announcementDate, cashElections, exDate, paymentDate, recordDate, securityElections, securitySettlementDate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -272,6 +298,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
     sb.append("    securityElections: ").append(toIndentedString(securityElections)).append("\n");
+    sb.append("    securitySettlementDate: ").append(toIndentedString(securitySettlementDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -301,6 +328,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
     openapiFields.add("paymentDate");
     openapiFields.add("recordDate");
     openapiFields.add("securityElections");
+    openapiFields.add("securitySettlementDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
