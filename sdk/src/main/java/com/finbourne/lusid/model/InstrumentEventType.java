@@ -65,7 +65,9 @@ public enum InstrumentEventType {
   
   MATURITYEVENT("MaturityEvent"),
   
-  FXFORWARDSETTLEMENTEVENT("FxForwardSettlementEvent");
+  FXFORWARDSETTLEMENTEVENT("FxForwardSettlementEvent"),
+  
+  EXPIRYEVENT("ExpiryEvent");
 
   private String value;
 

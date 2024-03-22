@@ -47,5 +47,7 @@
 
 * `FXFORWARDSETTLEMENTEVENT` (value: `"FxForwardSettlementEvent"`)
 
+* `EXPIRYEVENT` (value: `"ExpiryEvent"`)
+
 
 
