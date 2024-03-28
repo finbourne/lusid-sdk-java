@@ -12,7 +12,7 @@ The request used to create a Fund.
 |**displayName** | **String** | The name of the Fund. |  [optional] |
 |**description** | **String** | A description for the Fund. |  [optional] |
 |**aborId** | [**ResourceId**](ResourceId.md) |  |  |
-|**shareClassInstrumentScopes** | **List&lt;String&gt;** | The scopes in which the instruments lie. |  [optional] |
+|**shareClassInstrumentScopes** | **List&lt;String&gt;** | The scopes in which the instruments lie, currently limited to one. |  [optional] |
 |**shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. |  [optional] |
 |**type** | **String** | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; |  |
 |**inceptionDate** | **OffsetDateTime** | Inception date of the Fund |  |

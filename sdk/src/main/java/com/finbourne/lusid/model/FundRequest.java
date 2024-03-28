@@ -205,7 +205,7 @@ public class FundRequest {
   }
 
    /**
-   * The scopes in which the instruments lie.
+   * The scopes in which the instruments lie, currently limited to one.
    * @return shareClassInstrumentScopes
   **/
   @jakarta.annotation.Nullable
