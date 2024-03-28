@@ -101,7 +101,9 @@ public enum PropertyDomain {
   
   DIARYENTRY("DiaryEntry"),
   
-  LEG("Leg");
+  LEG("Leg"),
+  
+  DERIVEDVALUATION("DerivedValuation");
 
   private String value;
 

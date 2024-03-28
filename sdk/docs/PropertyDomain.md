@@ -83,5 +83,7 @@
 
 * `LEG` (value: `"Leg"`)
 
+* `DERIVEDVALUATION` (value: `"DerivedValuation"`)
+
 
 
