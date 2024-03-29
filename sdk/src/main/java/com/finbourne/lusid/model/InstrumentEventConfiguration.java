@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,6 +57,10 @@ public class InstrumentEventConfiguration {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TEMPLATE_SCOPES)
   private List<String> transactionTemplateScopes;
 
+  public static final String SERIALIZED_NAME_RECIPE_ID = "recipeId";
+  @SerializedName(SERIALIZED_NAME_RECIPE_ID)
+  private ResourceId recipeId;
+
   public InstrumentEventConfiguration() {
   }
 
@@ -88,6 +93,27 @@ public class InstrumentEventConfiguration {
   }
 
 
+  public InstrumentEventConfiguration recipeId(ResourceId recipeId) {
+    
+    this.recipeId = recipeId;
+    return this;
+  }
+
+   /**
+   * Get recipeId
+   * @return recipeId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getRecipeId() {
+    return recipeId;
+  }
+
+
+  public void setRecipeId(ResourceId recipeId) {
+    this.recipeId = recipeId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -98,7 +124,8 @@ public class InstrumentEventConfiguration {
       return false;
     }
     InstrumentEventConfiguration instrumentEventConfiguration = (InstrumentEventConfiguration) o;
-    return Objects.equals(this.transactionTemplateScopes, instrumentEventConfiguration.transactionTemplateScopes);
+    return Objects.equals(this.transactionTemplateScopes, instrumentEventConfiguration.transactionTemplateScopes) &&
+        Objects.equals(this.recipeId, instrumentEventConfiguration.recipeId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -107,7 +134,7 @@ public class InstrumentEventConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionTemplateScopes);
+    return Objects.hash(transactionTemplateScopes, recipeId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -122,6 +149,7 @@ public class InstrumentEventConfiguration {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstrumentEventConfiguration {\n");
     sb.append("    transactionTemplateScopes: ").append(toIndentedString(transactionTemplateScopes)).append("\n");
+    sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -145,6 +173,7 @@ public class InstrumentEventConfiguration {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("transactionTemplateScopes");
+    openapiFields.add("recipeId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -166,6 +195,10 @@ public class InstrumentEventConfiguration {
       // ensure the optional json data is an array if present
       if (jsonObj.get("transactionTemplateScopes") != null && !jsonObj.get("transactionTemplateScopes").isJsonNull() && !jsonObj.get("transactionTemplateScopes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionTemplateScopes` to be an array in the JSON string but got `%s`", jsonObj.get("transactionTemplateScopes").toString()));
+      }
+      // validate the optional field `recipeId`
+      if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("recipeId"));
       }
   }
 
