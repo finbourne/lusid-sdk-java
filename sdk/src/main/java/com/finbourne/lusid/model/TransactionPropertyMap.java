@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.PropertyValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,9 +54,9 @@ public class TransactionPropertyMap {
   @SerializedName(SERIALIZED_NAME_PROPERTY_KEY)
   private String propertyKey;
 
-  public static final String SERIALIZED_NAME_PROPERTY_VALUE = "propertyValue";
-  @SerializedName(SERIALIZED_NAME_PROPERTY_VALUE)
-  private PropertyValue propertyValue;
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private String value;
 
   public TransactionPropertyMap() {
   }
@@ -83,24 +82,24 @@ public class TransactionPropertyMap {
   }
 
 
-  public TransactionPropertyMap propertyValue(PropertyValue propertyValue) {
+  public TransactionPropertyMap value(String value) {
     
-    this.propertyValue = propertyValue;
+    this.value = value;
     return this;
   }
 
    /**
-   * Get propertyValue
-   * @return propertyValue
+   * Get value
+   * @return value
   **/
   @jakarta.annotation.Nullable
-  public PropertyValue getPropertyValue() {
-    return propertyValue;
+  public String getValue() {
+    return value;
   }
 
 
-  public void setPropertyValue(PropertyValue propertyValue) {
-    this.propertyValue = propertyValue;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -115,7 +114,7 @@ public class TransactionPropertyMap {
     }
     TransactionPropertyMap transactionPropertyMap = (TransactionPropertyMap) o;
     return Objects.equals(this.propertyKey, transactionPropertyMap.propertyKey) &&
-        Objects.equals(this.propertyValue, transactionPropertyMap.propertyValue);
+        Objects.equals(this.value, transactionPropertyMap.value);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -124,7 +123,7 @@ public class TransactionPropertyMap {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyKey, propertyValue);
+    return Objects.hash(propertyKey, value);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,7 +138,7 @@ public class TransactionPropertyMap {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionPropertyMap {\n");
     sb.append("    propertyKey: ").append(toIndentedString(propertyKey)).append("\n");
-    sb.append("    propertyValue: ").append(toIndentedString(propertyValue)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,7 +162,7 @@ public class TransactionPropertyMap {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("propertyKey");
-    openapiFields.add("propertyValue");
+    openapiFields.add("value");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -185,9 +184,8 @@ public class TransactionPropertyMap {
       if ((jsonObj.get("propertyKey") != null && !jsonObj.get("propertyKey").isJsonNull()) && !jsonObj.get("propertyKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("propertyKey").toString()));
       }
-      // validate the optional field `propertyValue`
-      if (jsonObj.get("propertyValue") != null && !jsonObj.get("propertyValue").isJsonNull()) {
-        PropertyValue.validateJsonElement(jsonObj.get("propertyValue"));
+      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
       }
   }
 
