@@ -20,7 +20,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,6 +59,10 @@ public class OrderGraphBlockOrderSynopsis {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
 
+  public static final String SERIALIZED_NAME_QUANTITY_BY_STATE = "quantityByState";
+  @SerializedName(SERIALIZED_NAME_QUANTITY_BY_STATE)
+  private Map<String, java.math.BigDecimal> quantityByState;
+
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private List<OrderGraphBlockOrderDetail> details = new ArrayList<>();
@@ -81,6 +88,35 @@ public class OrderGraphBlockOrderSynopsis {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public OrderGraphBlockOrderSynopsis quantityByState(Map<String, java.math.BigDecimal> quantityByState) {
+    
+    this.quantityByState = quantityByState;
+    return this;
+  }
+
+  public OrderGraphBlockOrderSynopsis putQuantityByStateItem(String key, java.math.BigDecimal quantityByStateItem) {
+    if (this.quantityByState == null) {
+      this.quantityByState = new HashMap<>();
+    }
+    this.quantityByState.put(key, quantityByStateItem);
+    return this;
+  }
+
+   /**
+   * Total number of units placed.
+   * @return quantityByState
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, java.math.BigDecimal> getQuantityByState() {
+    return quantityByState;
+  }
+
+
+  public void setQuantityByState(Map<String, java.math.BigDecimal> quantityByState) {
+    this.quantityByState = quantityByState;
   }
 
 
@@ -124,12 +160,24 @@ public class OrderGraphBlockOrderSynopsis {
     }
     OrderGraphBlockOrderSynopsis orderGraphBlockOrderSynopsis = (OrderGraphBlockOrderSynopsis) o;
     return (this.quantity.compareTo(orderGraphBlockOrderSynopsis.getQuantity()) == 0) &&
+        Objects.equals(this.quantityByState, orderGraphBlockOrderSynopsis.quantityByState) &&
         Objects.equals(this.details, orderGraphBlockOrderSynopsis.details);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, details);
+    return Objects.hash(quantity, quantityByState, details);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -137,6 +185,7 @@ public class OrderGraphBlockOrderSynopsis {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderGraphBlockOrderSynopsis {\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    quantityByState: ").append(toIndentedString(quantityByState)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -161,6 +210,7 @@ public class OrderGraphBlockOrderSynopsis {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("quantity");
+    openapiFields.add("quantityByState");
     openapiFields.add("details");
 
     // a set of required properties/fields (JSON key names)
