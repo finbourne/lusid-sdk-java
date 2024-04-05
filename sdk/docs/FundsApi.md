@@ -4,13 +4,92 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**acceptEstimatePoint**](FundsApi.md#acceptEstimatePoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimatePoint: Accepts an Estimate Valuation Point. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund. |
 | [**deleteFund**](FundsApi.md#deleteFund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund. |
+| [**deleteValuationPoint**](FundsApi.md#deleteValuationPoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
+| [**finaliseCandidateValuation**](FundsApi.md#finaliseCandidateValuation) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuation: Finalise Candidate. |
 | [**getFund**](FundsApi.md#getFund) | **GET** /api/funds/{scope}/{code} | [EXPERIMENTAL] GetFund: Get a Fund. |
+| [**getValuationPointData**](FundsApi.md#getValuationPointData) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**listFunds**](FundsApi.md#listFunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds. |
 | [**setShareClassInstruments**](FundsApi.md#setShareClassInstruments) | **POST** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a fund. |
-| [**upsertFundProperties**](FundsApi.md#upsertFundProperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties |
+| [**upsertFundProperties**](FundsApi.md#upsertFundProperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties. |
+| [**upsertValuationPoint**](FundsApi.md#upsertValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$upsert | [EXPERIMENTAL] UpsertValuationPoint: Upsert Valuation Point. |
 
+
+<a id="acceptEstimatePoint"></a>
+# **acceptEstimatePoint**
+> ValuationPointDataResponse acceptEstimatePoint(scope, code, valuationPointDataRequest).execute();
+
+[EXPERIMENTAL] AcceptEstimatePoint: Accepts an Estimate Valuation Point.
+
+Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the valuation Point was last run, status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund.
+    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+    ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Final state.
+    try {
+      ValuationPointDataResponse result = apiInstance.acceptEstimatePoint(scope, code, valuationPointDataRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#acceptEstimatePoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Final state. | |
+
+### Return type
+
+[**ValuationPointDataResponse**](ValuationPointDataResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Accepted Estimate point and status after being Accepted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
 <a id="createFund"></a>
 # **createFund**
@@ -156,6 +235,154 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
+<a id="deleteValuationPoint"></a>
+# **deleteValuationPoint**
+> DeletedEntityResponse deleteValuationPoint(scope, code, diaryEntryCode).execute();
+
+[EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
+
+Deletes the given Valuation Point.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund for the valuation point to be deleted.
+    String code = "code_example"; // String | The code of the Fund containing the Valuation Point to be deleted. Together with the scope this uniquely identifies the Fund.
+    String diaryEntryCode = "diaryEntryCode_example"; // String | The diary entry code for the valuation Point to be deleted.
+    try {
+      DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#deleteValuationPoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund for the valuation point to be deleted. | |
+| **code** | **String**| The code of the Fund containing the Valuation Point to be deleted. Together with the scope this uniquely identifies the Fund. | |
+| **diaryEntryCode** | **String**| The diary entry code for the valuation Point to be deleted. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Valuation Point was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="finaliseCandidateValuation"></a>
+# **finaliseCandidateValuation**
+> ValuationPointDataResponse finaliseCandidateValuation(scope, code, valuationPointDataRequest).execute();
+
+[EXPERIMENTAL] FinaliseCandidateValuation: Finalise Candidate.
+
+Moves a &#39;Candidate&#39; status Valuation Point to status &#39;Final&#39;.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund.
+    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+    ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the diary entry code to mark as final.
+    try {
+      ValuationPointDataResponse result = apiInstance.finaliseCandidateValuation(scope, code, valuationPointDataRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#finaliseCandidateValuation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the diary entry code to mark as final. | |
+
+### Return type
+
+[**ValuationPointDataResponse**](ValuationPointDataResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated Valuation Point response as a result of it be marked as Final. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
 <a id="getFund"></a>
 # **getFund**
 > Fund getFund(scope, code).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).execute();
@@ -234,6 +461,83 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Fund definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getValuationPointData"></a>
+# **getValuationPointData**
+> ValuationPointDataResponse getValuationPointData(scope, code, valuationPointDataQueryParameters).asAt(asAt).execute();
+
+[EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
+
+Retrieves the Valuation Point data for a date or specified Diary Entry Id.  The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the related ABOR&#39;s Trial balance to produce a GAV.  Start date will be assumed from the last &#39;official&#39; DiaryEntry and EndDate will be as provided.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund.
+    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+    ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the Valuation Point data
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified.
+    try {
+      ValuationPointDataResponse result = apiInstance.getValuationPointData(scope, code, valuationPointDataQueryParameters)
+            .asAt(asAt)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#getValuationPointData");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the Valuation Point data | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified. | [optional] |
+
+### Return type
+
+[**ValuationPointDataResponse**](ValuationPointDataResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The specified Valuation Point for the Fund. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -404,7 +708,7 @@ public class Example {
 # **upsertFundProperties**
 > FundProperties upsertFundProperties(scope, code).requestBody(requestBody).execute();
 
-[EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties
+[EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
 
 Update or insert one or more properties onto a single Fund. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.     Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
@@ -472,6 +776,80 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated or inserted properties |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="upsertValuationPoint"></a>
+# **upsertValuationPoint**
+> DiaryEntry upsertValuationPoint(scope, code, upsertValuationPointRequest).execute();
+
+[EXPERIMENTAL] UpsertValuationPoint: Upsert Valuation Point.
+
+Update or insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund.
+    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+    UpsertValuationPointRequest upsertValuationPointRequest = new UpsertValuationPointRequest(); // UpsertValuationPointRequest | The Valuation Point Estimate definition to Upsert
+    try {
+      DiaryEntry result = apiInstance.upsertValuationPoint(scope, code, upsertValuationPointRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#upsertValuationPoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **upsertValuationPointRequest** | [**UpsertValuationPointRequest**](UpsertValuationPointRequest.md)| The Valuation Point Estimate definition to Upsert | |
+
+### Return type
+
+[**DiaryEntry**](DiaryEntry.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated or inserted estimated Valuation Point |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
