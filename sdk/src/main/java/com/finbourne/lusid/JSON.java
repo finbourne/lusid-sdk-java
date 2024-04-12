@@ -1305,6 +1305,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceParameterType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.PropertyList.class, new TypeSelector<com.finbourne.lusid.model.PropertyList>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.PropertyList> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PropertyList", com.finbourne.lusid.model.PropertyList.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "referenceListType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.PropertyValueEquals.class, new TypeSelector<com.finbourne.lusid.model.PropertyValueEquals>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.PropertyValueEquals> getClassForElement(JsonElement readElement) {
@@ -1407,6 +1416,7 @@ public class JSON {
                         classByDiscriminatorValue.put("InstrumentList", com.finbourne.lusid.model.InstrumentList.class);
                         classByDiscriminatorValue.put("PortfolioGroupIdList", com.finbourne.lusid.model.PortfolioGroupIdList.class);
                         classByDiscriminatorValue.put("PortfolioIdList", com.finbourne.lusid.model.PortfolioIdList.class);
+                        classByDiscriminatorValue.put("PropertyList", com.finbourne.lusid.model.PropertyList.class);
                         classByDiscriminatorValue.put("StringList", com.finbourne.lusid.model.StringList.class);
                         classByDiscriminatorValue.put("ReferenceList", com.finbourne.lusid.model.ReferenceList.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
@@ -2278,6 +2288,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertyInterval.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertyKeyComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertyKeyListComplianceParameter.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertyList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertySchema.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertyValue.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PropertyValueEquals.CustomTypeAdapterFactory());

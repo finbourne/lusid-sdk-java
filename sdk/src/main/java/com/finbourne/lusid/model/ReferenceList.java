@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReferenceList {
   /**
-   * The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList
+   * The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList
    */
   @JsonAdapter(ReferenceListTypeEnum.Adapter.class)
   public enum ReferenceListTypeEnum {
@@ -64,7 +64,9 @@ public class ReferenceList {
     
     INSTRUMENTLIST("InstrumentList"),
     
-    DECIMALLIST("DecimalList");
+    DECIMALLIST("DecimalList"),
+    
+    PROPERTYLIST("PropertyList");
 
     private String value;
 
@@ -118,7 +120,7 @@ public class ReferenceList {
   }
 
    /**
-   * The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList
+   * The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList
    * @return referenceListType
   **/
   @jakarta.annotation.Nonnull
@@ -213,6 +215,9 @@ public class ReferenceList {
           break;
         case "PortfolioIdList":
           PortfolioIdList.validateJsonElement(jsonElement);
+          break;
+        case "PropertyList":
+          PropertyList.validateJsonElement(jsonElement);
           break;
         case "StringList":
           StringList.validateJsonElement(jsonElement);

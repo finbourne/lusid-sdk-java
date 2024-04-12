@@ -17,5 +17,7 @@
 
 * `DECIMALLIST` (value: `"DecimalList"`)
 
+* `PROPERTYLIST` (value: `"PropertyList"`)
+
 
 
