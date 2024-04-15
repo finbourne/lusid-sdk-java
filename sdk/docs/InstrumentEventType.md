@@ -49,5 +49,7 @@
 
 * `EXPIRYEVENT` (value: `"ExpiryEvent"`)
 
+* `SCRIPDIVIDENDEVENT` (value: `"ScripDividendEvent"`)
+
 
 

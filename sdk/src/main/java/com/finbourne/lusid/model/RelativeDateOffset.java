@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,6 +58,10 @@ public class RelativeDateOffset {
   @SerializedName(SERIALIZED_NAME_BUSINESS_DAY_CONVENTION)
   private String businessDayConvention;
 
+  public static final String SERIALIZED_NAME_DAY_TYPE = "dayType";
+  @SerializedName(SERIALIZED_NAME_DAY_TYPE)
+  private String dayType;
+
   public RelativeDateOffset() {
   }
 
@@ -67,7 +72,7 @@ public class RelativeDateOffset {
   }
 
    /**
-   * The number of business days to add to the anchor date.
+   * The number of days to add to the anchor date.
    * @return days
   **/
   @jakarta.annotation.Nonnull
@@ -102,6 +107,27 @@ public class RelativeDateOffset {
   }
 
 
+  public RelativeDateOffset dayType(String dayType) {
+    
+    this.dayType = dayType;
+    return this;
+  }
+
+   /**
+   * Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Supported string (enumeration) values are: [Business, Calendar].
+   * @return dayType
+  **/
+  @jakarta.annotation.Nullable
+  public String getDayType() {
+    return dayType;
+  }
+
+
+  public void setDayType(String dayType) {
+    this.dayType = dayType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,12 +139,24 @@ public class RelativeDateOffset {
     }
     RelativeDateOffset relativeDateOffset = (RelativeDateOffset) o;
     return Objects.equals(this.days, relativeDateOffset.days) &&
-        Objects.equals(this.businessDayConvention, relativeDateOffset.businessDayConvention);
+        Objects.equals(this.businessDayConvention, relativeDateOffset.businessDayConvention) &&
+        Objects.equals(this.dayType, relativeDateOffset.dayType);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(days, businessDayConvention);
+    return Objects.hash(days, businessDayConvention, dayType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -127,6 +165,7 @@ public class RelativeDateOffset {
     sb.append("class RelativeDateOffset {\n");
     sb.append("    days: ").append(toIndentedString(days)).append("\n");
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
+    sb.append("    dayType: ").append(toIndentedString(dayType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -151,6 +190,7 @@ public class RelativeDateOffset {
     openapiFields = new HashSet<String>();
     openapiFields.add("days");
     openapiFields.add("businessDayConvention");
+    openapiFields.add("dayType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -180,6 +220,9 @@ public class RelativeDateOffset {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("businessDayConvention").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `businessDayConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDayConvention").toString()));
+      }
+      if ((jsonObj.get("dayType") != null && !jsonObj.get("dayType").isJsonNull()) && !jsonObj.get("dayType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dayType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dayType").toString()));
       }
   }
 

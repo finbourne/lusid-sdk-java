@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentEvent {
   /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent
    */
   @JsonAdapter(InstrumentEventTypeEnum.Adapter.class)
   public enum InstrumentEventTypeEnum {
@@ -96,7 +96,9 @@ public class InstrumentEvent {
     
     FXFORWARDSETTLEMENTEVENT("FxForwardSettlementEvent"),
     
-    EXPIRYEVENT("ExpiryEvent");
+    EXPIRYEVENT("ExpiryEvent"),
+    
+    SCRIPDIVIDENDEVENT("ScripDividendEvent");
 
     private String value;
 
@@ -150,7 +152,7 @@ public class InstrumentEvent {
   }
 
    /**
-   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent
+   * The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent
    * @return instrumentEventType
   **/
   @jakarta.annotation.Nonnull
@@ -287,6 +289,9 @@ public class InstrumentEvent {
           break;
         case "ResetEvent":
           ResetEvent.validateJsonElement(jsonElement);
+          break;
+        case "ScripDividendEvent":
+          ScripDividendEvent.validateJsonElement(jsonElement);
           break;
         case "StockSplitEvent":
           StockSplitEvent.validateJsonElement(jsonElement);
