@@ -160,6 +160,14 @@ public class JournalEntryLine {
   @SerializedName(SERIALIZED_NAME_HOLDING_SIGN)
   private String holdingSign;
 
+  public static final String SERIALIZED_NAME_LEDGER_COLUMN = "ledgerColumn";
+  @SerializedName(SERIALIZED_NAME_LEDGER_COLUMN)
+  private String ledgerColumn;
+
+  public static final String SERIALIZED_NAME_JOURNAL_ENTRY_LINE_TYPE = "journalEntryLineType";
+  @SerializedName(SERIALIZED_NAME_JOURNAL_ENTRY_LINE_TYPE)
+  private String journalEntryLineType;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -724,6 +732,48 @@ public class JournalEntryLine {
   }
 
 
+  public JournalEntryLine ledgerColumn(String ledgerColumn) {
+    
+    this.ledgerColumn = ledgerColumn;
+    return this;
+  }
+
+   /**
+   * Indicates if the Journal Entry Line is credit or debit.
+   * @return ledgerColumn
+  **/
+  @jakarta.annotation.Nullable
+  public String getLedgerColumn() {
+    return ledgerColumn;
+  }
+
+
+  public void setLedgerColumn(String ledgerColumn) {
+    this.ledgerColumn = ledgerColumn;
+  }
+
+
+  public JournalEntryLine journalEntryLineType(String journalEntryLineType) {
+    
+    this.journalEntryLineType = journalEntryLineType;
+    return this;
+  }
+
+   /**
+   * Indicates the Journal Entry Line type
+   * @return journalEntryLineType
+  **/
+  @jakarta.annotation.Nullable
+  public String getJournalEntryLineType() {
+    return journalEntryLineType;
+  }
+
+
+  public void setJournalEntryLineType(String journalEntryLineType) {
+    this.journalEntryLineType = journalEntryLineType;
+  }
+
+
   public JournalEntryLine links(List<Link> links) {
     
     this.links = links;
@@ -788,6 +838,8 @@ public class JournalEntryLine {
         Objects.equals(this.sourceLevels, journalEntryLine.sourceLevels) &&
         Objects.equals(this.movementSign, journalEntryLine.movementSign) &&
         Objects.equals(this.holdingSign, journalEntryLine.holdingSign) &&
+        Objects.equals(this.ledgerColumn, journalEntryLine.ledgerColumn) &&
+        Objects.equals(this.journalEntryLineType, journalEntryLine.journalEntryLineType) &&
         Objects.equals(this.links, journalEntryLine.links);
   }
 
@@ -797,7 +849,7 @@ public class JournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, levels, sourceLevels, movementSign, holdingSign, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -836,6 +888,8 @@ public class JournalEntryLine {
     sb.append("    sourceLevels: ").append(toIndentedString(sourceLevels)).append("\n");
     sb.append("    movementSign: ").append(toIndentedString(movementSign)).append("\n");
     sb.append("    holdingSign: ").append(toIndentedString(holdingSign)).append("\n");
+    sb.append("    ledgerColumn: ").append(toIndentedString(ledgerColumn)).append("\n");
+    sb.append("    journalEntryLineType: ").append(toIndentedString(journalEntryLineType)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -884,6 +938,8 @@ public class JournalEntryLine {
     openapiFields.add("sourceLevels");
     openapiFields.add("movementSign");
     openapiFields.add("holdingSign");
+    openapiFields.add("ledgerColumn");
+    openapiFields.add("journalEntryLineType");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -982,6 +1038,12 @@ public class JournalEntryLine {
       }
       if ((jsonObj.get("holdingSign") != null && !jsonObj.get("holdingSign").isJsonNull()) && !jsonObj.get("holdingSign").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingSign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingSign").toString()));
+      }
+      if ((jsonObj.get("ledgerColumn") != null && !jsonObj.get("ledgerColumn").isJsonNull()) && !jsonObj.get("ledgerColumn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ledgerColumn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ledgerColumn").toString()));
+      }
+      if ((jsonObj.get("journalEntryLineType") != null && !jsonObj.get("journalEntryLineType").isJsonNull()) && !jsonObj.get("journalEntryLineType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `journalEntryLineType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("journalEntryLineType").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

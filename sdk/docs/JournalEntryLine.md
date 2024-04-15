@@ -33,6 +33,8 @@ A Journal Entry line entity.
 |**sourceLevels** | **List&lt;String&gt;** | Source data from the general ledger profile where the GeneralLedgerProfileCode is specified in the GetJournalEntryLines request body. |  [optional] |
 |**movementSign** | **String** | Indicates if the Journal Entry Line corresponds to a Long or Short movement. |  [optional] |
 |**holdingSign** | **String** | Indicates if the Journal Entry Line is operating against a Long or Short holding. |  [optional] |
+|**ledgerColumn** | **String** | Indicates if the Journal Entry Line is credit or debit. |  [optional] |
+|**journalEntryLineType** | **String** | Indicates the Journal Entry Line type |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
