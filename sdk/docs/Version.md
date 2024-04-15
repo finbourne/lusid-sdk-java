@@ -17,6 +17,7 @@ The version metadata.
 |**userIdModified** | **String** | The unique id of the user who last updated the entity (including its properties) in LUSID. |  [optional] [readonly] |
 |**requestIdModified** | **String** | The unique request id of the command that last updated the entity (including its properties) in LUSID. |  [optional] [readonly] |
 |**asAtVersionNumber** | **Integer** | The integer version number for the entity (the entity was created at version 1) |  [optional] [readonly] |
+|**entityUniqueId** | **String** | The unique id of the entity |  [optional] [readonly] |
 
 
 

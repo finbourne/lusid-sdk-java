@@ -1341,9 +1341,9 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the transaction portfolio.
     String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
     Long holdingId = 56L; // Long | The unique holding identifier
-    OffsetDateTime effectiveDate = OffsetDateTime.now(); // OffsetDateTime | Effective date
-    OffsetDateTime fromTradeDate = OffsetDateTime.now(); // OffsetDateTime | The from trade date, defaults to first time this holding is opened, lower bound for transactions
-    OffsetDateTime toTradeDate = OffsetDateTime.now(); // OffsetDateTime | The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions
+    String effectiveDate = "effectiveDate_example"; // String | Effective date
+    String fromTradeDate = "fromTradeDate_example"; // String | The from trade date, defaults to first time this holding is opened, lower bound for transactions
+    String toTradeDate = "toTradeDate_example"; // String | The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions
     Boolean includeHistoric = false; // Boolean | If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened.
     String taxLotId = "taxLotId_example"; // String | Constrains the Holding Contributors to those which contributed to the specified tax lot.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
@@ -1379,9 +1379,9 @@ public class Example {
 | **scope** | **String**| The scope of the transaction portfolio. | |
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **holdingId** | **Long**| The unique holding identifier | |
-| **effectiveDate** | **OffsetDateTime**| Effective date | [optional] |
-| **fromTradeDate** | **OffsetDateTime**| The from trade date, defaults to first time this holding is opened, lower bound for transactions | [optional] |
-| **toTradeDate** | **OffsetDateTime**| The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions | [optional] |
+| **effectiveDate** | **String**| Effective date | [optional] |
+| **fromTradeDate** | **String**| The from trade date, defaults to first time this holding is opened, lower bound for transactions | [optional] |
+| **toTradeDate** | **String**| The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions | [optional] |
 | **includeHistoric** | **Boolean**| If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. | [optional] [default to false] |
 | **taxLotId** | **String**| Constrains the Holding Contributors to those which contributed to the specified tax lot. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |

@@ -3493,7 +3493,7 @@ public class TransactionPortfoliosApi {
     public APIgetDetailsRequest getDetails(String scope, String code) {
         return new APIgetDetailsRequest(scope, code);
     }
-    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, OffsetDateTime effectiveDate, OffsetDateTime fromTradeDate, OffsetDateTime toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3575,7 +3575,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingContributorsValidateBeforeCall(String scope, String code, Long holdingId, OffsetDateTime effectiveDate, OffsetDateTime fromTradeDate, OffsetDateTime toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingContributorsValidateBeforeCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingContributors(Async)");
@@ -3596,13 +3596,13 @@ public class TransactionPortfoliosApi {
     }
 
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, OffsetDateTime effectiveDate, OffsetDateTime fromTradeDate, OffsetDateTime toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
         okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, OffsetDateTime effectiveDate, OffsetDateTime fromTradeDate, OffsetDateTime toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
+    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
@@ -3614,9 +3614,9 @@ public class TransactionPortfoliosApi {
         private final String scope;
         private final String code;
         private final Long holdingId;
-        private OffsetDateTime effectiveDate;
-        private OffsetDateTime fromTradeDate;
-        private OffsetDateTime toTradeDate;
+        private String effectiveDate;
+        private String fromTradeDate;
+        private String toTradeDate;
         private Boolean includeHistoric;
         private String taxLotId;
         private Integer limit;
@@ -3634,7 +3634,7 @@ public class TransactionPortfoliosApi {
          * @param effectiveDate Effective date (optional)
          * @return APIgetHoldingContributorsRequest
          */
-        public APIgetHoldingContributorsRequest effectiveDate(OffsetDateTime effectiveDate) {
+        public APIgetHoldingContributorsRequest effectiveDate(String effectiveDate) {
             this.effectiveDate = effectiveDate;
             return this;
         }
@@ -3644,7 +3644,7 @@ public class TransactionPortfoliosApi {
          * @param fromTradeDate The from trade date, defaults to first time this holding is opened, lower bound for transactions (optional)
          * @return APIgetHoldingContributorsRequest
          */
-        public APIgetHoldingContributorsRequest fromTradeDate(OffsetDateTime fromTradeDate) {
+        public APIgetHoldingContributorsRequest fromTradeDate(String fromTradeDate) {
             this.fromTradeDate = fromTradeDate;
             return this;
         }
@@ -3654,7 +3654,7 @@ public class TransactionPortfoliosApi {
          * @param toTradeDate The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions (optional)
          * @return APIgetHoldingContributorsRequest
          */
-        public APIgetHoldingContributorsRequest toTradeDate(OffsetDateTime toTradeDate) {
+        public APIgetHoldingContributorsRequest toTradeDate(String toTradeDate) {
             this.toTradeDate = toTradeDate;
             return this;
         }
