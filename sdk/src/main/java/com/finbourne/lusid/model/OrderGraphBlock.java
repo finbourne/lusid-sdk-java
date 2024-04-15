@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.OrderGraphBlockAllocationSynopsis;
 import com.finbourne.lusid.model.OrderGraphBlockExecutionSynopsis;
 import com.finbourne.lusid.model.OrderGraphBlockOrderSynopsis;
 import com.finbourne.lusid.model.OrderGraphBlockPlacementSynopsis;
+import com.finbourne.lusid.model.OrderGraphBlockTransactionSynopsis;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -73,6 +74,10 @@ public class OrderGraphBlock {
   public static final String SERIALIZED_NAME_ALLOCATED = "allocated";
   @SerializedName(SERIALIZED_NAME_ALLOCATED)
   private OrderGraphBlockAllocationSynopsis allocated;
+
+  public static final String SERIALIZED_NAME_BOOKED = "booked";
+  @SerializedName(SERIALIZED_NAME_BOOKED)
+  private OrderGraphBlockTransactionSynopsis booked;
 
   public static final String SERIALIZED_NAME_DERIVED_STATE = "derivedState";
   @SerializedName(SERIALIZED_NAME_DERIVED_STATE)
@@ -194,6 +199,27 @@ public class OrderGraphBlock {
   }
 
 
+  public OrderGraphBlock booked(OrderGraphBlockTransactionSynopsis booked) {
+    
+    this.booked = booked;
+    return this;
+  }
+
+   /**
+   * Get booked
+   * @return booked
+  **/
+  @jakarta.annotation.Nonnull
+  public OrderGraphBlockTransactionSynopsis getBooked() {
+    return booked;
+  }
+
+
+  public void setBooked(OrderGraphBlockTransactionSynopsis booked) {
+    this.booked = booked;
+  }
+
+
   public OrderGraphBlock derivedState(String derivedState) {
     
     this.derivedState = derivedState;
@@ -272,6 +298,7 @@ public class OrderGraphBlock {
         Objects.equals(this.placed, orderGraphBlock.placed) &&
         Objects.equals(this.executed, orderGraphBlock.executed) &&
         Objects.equals(this.allocated, orderGraphBlock.allocated) &&
+        Objects.equals(this.booked, orderGraphBlock.booked) &&
         Objects.equals(this.derivedState, orderGraphBlock.derivedState) &&
         Objects.equals(this.derivedComplianceState, orderGraphBlock.derivedComplianceState) &&
         Objects.equals(this.derivedApprovalState, orderGraphBlock.derivedApprovalState);
@@ -279,7 +306,7 @@ public class OrderGraphBlock {
 
   @Override
   public int hashCode() {
-    return Objects.hash(block, ordered, placed, executed, allocated, derivedState, derivedComplianceState, derivedApprovalState);
+    return Objects.hash(block, ordered, placed, executed, allocated, booked, derivedState, derivedComplianceState, derivedApprovalState);
   }
 
   @Override
@@ -291,6 +318,7 @@ public class OrderGraphBlock {
     sb.append("    placed: ").append(toIndentedString(placed)).append("\n");
     sb.append("    executed: ").append(toIndentedString(executed)).append("\n");
     sb.append("    allocated: ").append(toIndentedString(allocated)).append("\n");
+    sb.append("    booked: ").append(toIndentedString(booked)).append("\n");
     sb.append("    derivedState: ").append(toIndentedString(derivedState)).append("\n");
     sb.append("    derivedComplianceState: ").append(toIndentedString(derivedComplianceState)).append("\n");
     sb.append("    derivedApprovalState: ").append(toIndentedString(derivedApprovalState)).append("\n");
@@ -321,6 +349,7 @@ public class OrderGraphBlock {
     openapiFields.add("placed");
     openapiFields.add("executed");
     openapiFields.add("allocated");
+    openapiFields.add("booked");
     openapiFields.add("derivedState");
     openapiFields.add("derivedComplianceState");
     openapiFields.add("derivedApprovalState");
@@ -332,6 +361,7 @@ public class OrderGraphBlock {
     openapiRequiredFields.add("placed");
     openapiRequiredFields.add("executed");
     openapiRequiredFields.add("allocated");
+    openapiRequiredFields.add("booked");
     openapiRequiredFields.add("derivedState");
     openapiRequiredFields.add("derivedComplianceState");
     openapiRequiredFields.add("derivedApprovalState");
@@ -367,6 +397,8 @@ public class OrderGraphBlock {
       OrderGraphBlockExecutionSynopsis.validateJsonElement(jsonObj.get("executed"));
       // validate the required field `allocated`
       OrderGraphBlockAllocationSynopsis.validateJsonElement(jsonObj.get("allocated"));
+      // validate the required field `booked`
+      OrderGraphBlockTransactionSynopsis.validateJsonElement(jsonObj.get("booked"));
       if (!jsonObj.get("derivedState").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `derivedState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivedState").toString()));
       }
