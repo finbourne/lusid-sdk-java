@@ -69,7 +69,9 @@ public enum InstrumentEventType {
   
   EXPIRYEVENT("ExpiryEvent"),
   
-  SCRIPDIVIDENDEVENT("ScripDividendEvent");
+  SCRIPDIVIDENDEVENT("ScripDividendEvent"),
+  
+  STOCKDIVIDENDEVENT("StockDividendEvent");
 
   private String value;
 

@@ -51,5 +51,7 @@
 
 * `SCRIPDIVIDENDEVENT` (value: `"ScripDividendEvent"`)
 
+* `STOCKDIVIDENDEVENT` (value: `"StockDividendEvent"`)
+
 
 

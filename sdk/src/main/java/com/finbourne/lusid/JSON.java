@@ -998,6 +998,7 @@ public class JSON {
                         classByDiscriminatorValue.put("RawVendorEvent", com.finbourne.lusid.model.RawVendorEvent.class);
                         classByDiscriminatorValue.put("ResetEvent", com.finbourne.lusid.model.ResetEvent.class);
                         classByDiscriminatorValue.put("ScripDividendEvent", com.finbourne.lusid.model.ScripDividendEvent.class);
+                        classByDiscriminatorValue.put("StockDividendEvent", com.finbourne.lusid.model.StockDividendEvent.class);
                         classByDiscriminatorValue.put("StockSplitEvent", com.finbourne.lusid.model.StockSplitEvent.class);
                         classByDiscriminatorValue.put("TransitionEvent", com.finbourne.lusid.model.TransitionEvent.class);
                         classByDiscriminatorValue.put("TriggerEvent", com.finbourne.lusid.model.TriggerEvent.class);
@@ -1603,6 +1604,15 @@ public class JSON {
                         classByDiscriminatorValue.put("StepSchedule", com.finbourne.lusid.model.StepSchedule.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "scheduleType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.StockDividendEvent.class, new TypeSelector<com.finbourne.lusid.model.StockDividendEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.StockDividendEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("StockDividendEvent", com.finbourne.lusid.model.StockDividendEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.StockSplitEvent.class, new TypeSelector<com.finbourne.lusid.model.StockSplitEvent>() {
@@ -2453,6 +2463,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.StagingRuleMatchCriteria.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.StagingRuleSet.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.StepSchedule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.StockDividendEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.StockSplitEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Stream.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.StringComplianceParameter.CustomTypeAdapterFactory());
