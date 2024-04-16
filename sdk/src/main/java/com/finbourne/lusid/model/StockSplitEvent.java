@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEvent;
+import com.finbourne.lusid.model.UnitsRatio;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,42 +53,29 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class StockSplitEvent extends InstrumentEvent {
-  public static final String SERIALIZED_NAME_EQUITY_SPLIT_RATIO = "equitySplitRatio";
-  @SerializedName(SERIALIZED_NAME_EQUITY_SPLIT_RATIO)
-  private java.math.BigDecimal equitySplitRatio;
-
   public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
   @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
   private OffsetDateTime paymentDate;
+
+  public static final String SERIALIZED_NAME_EX_DATE = "exDate";
+  @SerializedName(SERIALIZED_NAME_EX_DATE)
+  private OffsetDateTime exDate;
+
+  public static final String SERIALIZED_NAME_UNITS_RATIO = "unitsRatio";
+  @SerializedName(SERIALIZED_NAME_UNITS_RATIO)
+  private UnitsRatio unitsRatio;
 
   public static final String SERIALIZED_NAME_RECORD_DATE = "recordDate";
   @SerializedName(SERIALIZED_NAME_RECORD_DATE)
   private OffsetDateTime recordDate;
 
+  public static final String SERIALIZED_NAME_ANNOUNCEMENT_DATE = "announcementDate";
+  @SerializedName(SERIALIZED_NAME_ANNOUNCEMENT_DATE)
+  private OffsetDateTime announcementDate;
+
   public StockSplitEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
-
-  public StockSplitEvent equitySplitRatio(java.math.BigDecimal equitySplitRatio) {
-    
-    this.equitySplitRatio = equitySplitRatio;
-    return this;
-  }
-
-   /**
-   * This number describes the rate at which the company will be dividing their current shares outstanding. It is displayed as new shares per old.
-   * @return equitySplitRatio
-  **/
-  @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getEquitySplitRatio() {
-    return equitySplitRatio;
-  }
-
-
-  public void setEquitySplitRatio(java.math.BigDecimal equitySplitRatio) {
-    this.equitySplitRatio = equitySplitRatio;
-  }
-
 
   public StockSplitEvent paymentDate(OffsetDateTime paymentDate) {
     
@@ -95,7 +84,7 @@ public class StockSplitEvent extends InstrumentEvent {
   }
 
    /**
-   * Date on which the stock-split takes effect.
+   * Date on which the stock split takes effect.
    * @return paymentDate
   **/
   @jakarta.annotation.Nonnull
@@ -109,6 +98,48 @@ public class StockSplitEvent extends InstrumentEvent {
   }
 
 
+  public StockSplitEvent exDate(OffsetDateTime exDate) {
+    
+    this.exDate = exDate;
+    return this;
+  }
+
+   /**
+   * The first date on which the shares will trade at the post-split price.
+   * @return exDate
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getExDate() {
+    return exDate;
+  }
+
+
+  public void setExDate(OffsetDateTime exDate) {
+    this.exDate = exDate;
+  }
+
+
+  public StockSplitEvent unitsRatio(UnitsRatio unitsRatio) {
+    
+    this.unitsRatio = unitsRatio;
+    return this;
+  }
+
+   /**
+   * Get unitsRatio
+   * @return unitsRatio
+  **/
+  @jakarta.annotation.Nonnull
+  public UnitsRatio getUnitsRatio() {
+    return unitsRatio;
+  }
+
+
+  public void setUnitsRatio(UnitsRatio unitsRatio) {
+    this.unitsRatio = unitsRatio;
+  }
+
+
   public StockSplitEvent recordDate(OffsetDateTime recordDate) {
     
     this.recordDate = recordDate;
@@ -116,10 +147,10 @@ public class StockSplitEvent extends InstrumentEvent {
   }
 
    /**
-   * Date you have to be the holder of record in order to participate in the tender.
+   * Date you have to be the holder of record in order to receive the additional shares.
    * @return recordDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getRecordDate() {
     return recordDate;
   }
@@ -127,6 +158,27 @@ public class StockSplitEvent extends InstrumentEvent {
 
   public void setRecordDate(OffsetDateTime recordDate) {
     this.recordDate = recordDate;
+  }
+
+
+  public StockSplitEvent announcementDate(OffsetDateTime announcementDate) {
+    
+    this.announcementDate = announcementDate;
+    return this;
+  }
+
+   /**
+   * Date the stock split was announced.
+   * @return announcementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAnnouncementDate() {
+    return announcementDate;
+  }
+
+
+  public void setAnnouncementDate(OffsetDateTime announcementDate) {
+    this.announcementDate = announcementDate;
   }
 
 
@@ -140,15 +192,28 @@ public class StockSplitEvent extends InstrumentEvent {
       return false;
     }
     StockSplitEvent stockSplitEvent = (StockSplitEvent) o;
-    return (this.equitySplitRatio.compareTo(stockSplitEvent.getEquitySplitRatio()) == 0) &&
-        Objects.equals(this.paymentDate, stockSplitEvent.paymentDate) &&
+    return Objects.equals(this.paymentDate, stockSplitEvent.paymentDate) &&
+        Objects.equals(this.exDate, stockSplitEvent.exDate) &&
+        Objects.equals(this.unitsRatio, stockSplitEvent.unitsRatio) &&
         Objects.equals(this.recordDate, stockSplitEvent.recordDate) &&
+        Objects.equals(this.announcementDate, stockSplitEvent.announcementDate) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(equitySplitRatio, paymentDate, recordDate, super.hashCode());
+    return Objects.hash(paymentDate, exDate, unitsRatio, recordDate, announcementDate, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -156,9 +221,11 @@ public class StockSplitEvent extends InstrumentEvent {
     StringBuilder sb = new StringBuilder();
     sb.append("class StockSplitEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    equitySplitRatio: ").append(toIndentedString(equitySplitRatio)).append("\n");
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
+    sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
+    sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
     sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
+    sb.append("    announcementDate: ").append(toIndentedString(announcementDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -182,15 +249,17 @@ public class StockSplitEvent extends InstrumentEvent {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
-    openapiFields.add("equitySplitRatio");
     openapiFields.add("paymentDate");
+    openapiFields.add("exDate");
+    openapiFields.add("unitsRatio");
     openapiFields.add("recordDate");
+    openapiFields.add("announcementDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("equitySplitRatio");
     openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("recordDate");
+    openapiRequiredFields.add("exDate");
+    openapiRequiredFields.add("unitsRatio");
     openapiRequiredFields.add("instrumentEventType");
   }
 
