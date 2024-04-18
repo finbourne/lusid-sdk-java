@@ -1720,7 +1720,7 @@ public class Example {
 
 <a id="patchPortfolio"></a>
 # **patchPortfolio**
-> ActionResultOfPortfolio patchPortfolio(scope, code, operation).execute();
+> Portfolio patchPortfolio(scope, code, operation).execute();
 
 [EARLY ACCESS] PatchPortfolio: Patch portfolio.
 
@@ -1750,7 +1750,7 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio. Together with the   scope this uniquely identifies the portfolio.
     List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.
     try {
-      ActionResultOfPortfolio result = apiInstance.patchPortfolio(scope, code, operation)
+      Portfolio result = apiInstance.patchPortfolio(scope, code, operation)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1774,7 +1774,7 @@ public class Example {
 
 ### Return type
 
-[**ActionResultOfPortfolio**](ActionResultOfPortfolio.md)
+[**Portfolio**](Portfolio.md)
 
 ### Authorization
 

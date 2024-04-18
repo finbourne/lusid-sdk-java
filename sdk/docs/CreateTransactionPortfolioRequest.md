@@ -21,6 +21,7 @@
 |**transactionTypeScope** | **String** | The scope of the transaction types. |  [optional] |
 |**cashGainLossCalculationDate** | **String** | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. Defaults to SettlementDate. |  [optional] |
 |**instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  |  [optional] |
+|**amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

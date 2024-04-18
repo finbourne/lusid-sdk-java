@@ -238,6 +238,10 @@ public class Portfolio {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION)
   private InstrumentEventConfiguration instrumentEventConfiguration;
 
+  public static final String SERIALIZED_NAME_AMORTISATION_RULE_SET_ID = "amortisationRuleSetId";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
+  private ResourceId amortisationRuleSetId;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -647,6 +651,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio amortisationRuleSetId(ResourceId amortisationRuleSetId) {
+    
+    this.amortisationRuleSetId = amortisationRuleSetId;
+    return this;
+  }
+
+   /**
+   * Get amortisationRuleSetId
+   * @return amortisationRuleSetId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getAmortisationRuleSetId() {
+    return amortisationRuleSetId;
+  }
+
+
+  public void setAmortisationRuleSetId(ResourceId amortisationRuleSetId) {
+    this.amortisationRuleSetId = amortisationRuleSetId;
+  }
+
+
   public Portfolio links(List<Link> links) {
     
     this.links = links;
@@ -704,6 +729,7 @@ public class Portfolio {
         Objects.equals(this.transactionTypeScope, portfolio.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, portfolio.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, portfolio.instrumentEventConfiguration) &&
+        Objects.equals(this.amortisationRuleSetId, portfolio.amortisationRuleSetId) &&
         Objects.equals(this.links, portfolio.links);
   }
 
@@ -713,7 +739,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, links);
+    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -745,6 +771,7 @@ public class Portfolio {
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
+    sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -786,6 +813,7 @@ public class Portfolio {
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
+    openapiFields.add("amortisationRuleSetId");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -874,6 +902,10 @@ public class Portfolio {
       // validate the optional field `instrumentEventConfiguration`
       if (jsonObj.get("instrumentEventConfiguration") != null && !jsonObj.get("instrumentEventConfiguration").isJsonNull()) {
         InstrumentEventConfiguration.validateJsonElement(jsonObj.get("instrumentEventConfiguration"));
+      }
+      // validate the optional field `amortisationRuleSetId`
+      if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

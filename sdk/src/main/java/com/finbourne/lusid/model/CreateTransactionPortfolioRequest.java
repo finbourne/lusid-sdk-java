@@ -169,6 +169,10 @@ public class CreateTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION)
   private InstrumentEventConfiguration instrumentEventConfiguration;
 
+  public static final String SERIALIZED_NAME_AMORTISATION_RULE_SET_ID = "amortisationRuleSetId";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
+  private ResourceId amortisationRuleSetId;
+
   public CreateTransactionPortfolioRequest() {
   }
 
@@ -490,6 +494,27 @@ public class CreateTransactionPortfolioRequest {
   }
 
 
+  public CreateTransactionPortfolioRequest amortisationRuleSetId(ResourceId amortisationRuleSetId) {
+    
+    this.amortisationRuleSetId = amortisationRuleSetId;
+    return this;
+  }
+
+   /**
+   * Get amortisationRuleSetId
+   * @return amortisationRuleSetId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getAmortisationRuleSetId() {
+    return amortisationRuleSetId;
+  }
+
+
+  public void setAmortisationRuleSetId(ResourceId amortisationRuleSetId) {
+    this.amortisationRuleSetId = amortisationRuleSetId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -513,7 +538,8 @@ public class CreateTransactionPortfolioRequest {
         Objects.equals(this.amortisationMethod, createTransactionPortfolioRequest.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, createTransactionPortfolioRequest.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, createTransactionPortfolioRequest.cashGainLossCalculationDate) &&
-        Objects.equals(this.instrumentEventConfiguration, createTransactionPortfolioRequest.instrumentEventConfiguration);
+        Objects.equals(this.instrumentEventConfiguration, createTransactionPortfolioRequest.instrumentEventConfiguration) &&
+        Objects.equals(this.amortisationRuleSetId, createTransactionPortfolioRequest.amortisationRuleSetId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -522,7 +548,7 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration);
+    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -550,6 +576,7 @@ public class CreateTransactionPortfolioRequest {
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
+    sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -586,6 +613,7 @@ public class CreateTransactionPortfolioRequest {
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
+    openapiFields.add("amortisationRuleSetId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -653,6 +681,10 @@ public class CreateTransactionPortfolioRequest {
       // validate the optional field `instrumentEventConfiguration`
       if (jsonObj.get("instrumentEventConfiguration") != null && !jsonObj.get("instrumentEventConfiguration").isJsonNull()) {
         InstrumentEventConfiguration.validateJsonElement(jsonObj.get("instrumentEventConfiguration"));
+      }
+      // validate the optional field `amortisationRuleSetId`
+      if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
       }
   }
 

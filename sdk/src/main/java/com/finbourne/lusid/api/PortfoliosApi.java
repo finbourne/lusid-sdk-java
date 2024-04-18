@@ -26,7 +26,6 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.AccessMetadataOperation;
 import com.finbourne.lusid.model.AccessMetadataValue;
-import com.finbourne.lusid.model.ActionResultOfPortfolio;
 import com.finbourne.lusid.model.AggregatedReturnsDispersionRequest;
 import com.finbourne.lusid.model.AggregatedReturnsRequest;
 import com.finbourne.lusid.model.AggregatedReturnsResponse;
@@ -4871,16 +4870,16 @@ public class PortfoliosApi {
     }
 
 
-    private ApiResponse<ActionResultOfPortfolio> patchPortfolioWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
+    private ApiResponse<Portfolio> patchPortfolioWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
         okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, null);
-        Type localVarReturnType = new TypeToken<ActionResultOfPortfolio>(){}.getType();
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call patchPortfolioAsync(String scope, String code, List<Operation> operation, final ApiCallback<ActionResultOfPortfolio> _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioAsync(String scope, String code, List<Operation> operation, final ApiCallback<Portfolio> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, _callback);
-        Type localVarReturnType = new TypeToken<ActionResultOfPortfolio>(){}.getType();
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4915,7 +4914,7 @@ public class PortfoliosApi {
 
         /**
          * Execute patchPortfolio request
-         * @return ActionResultOfPortfolio
+         * @return Portfolio
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -4925,14 +4924,14 @@ public class PortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ActionResultOfPortfolio execute() throws ApiException {
-            ApiResponse<ActionResultOfPortfolio> localVarResp = patchPortfolioWithHttpInfo(scope, code, operation);
+        public Portfolio execute() throws ApiException {
+            ApiResponse<Portfolio> localVarResp = patchPortfolioWithHttpInfo(scope, code, operation);
             return localVarResp.getData();
         }
 
         /**
          * Execute patchPortfolio request with HTTP info returned
-         * @return ApiResponse&lt;ActionResultOfPortfolio&gt;
+         * @return ApiResponse&lt;Portfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -4942,7 +4941,7 @@ public class PortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ActionResultOfPortfolio> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
             return patchPortfolioWithHttpInfo(scope, code, operation);
         }
 
@@ -4959,7 +4958,7 @@ public class PortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ActionResultOfPortfolio> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
             return patchPortfolioAsync(scope, code, operation, _callback);
         }
     }
