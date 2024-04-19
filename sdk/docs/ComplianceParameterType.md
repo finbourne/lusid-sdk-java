@@ -45,5 +45,7 @@
 
 * `GROUPBYSELECTORCOMPLIANCEPARAMETER` (value: `"GroupBySelectorComplianceParameter"`)
 
+* `PROPERTYLISTCOMPLIANCEPARAMETER` (value: `"PropertyListComplianceParameter"`)
+
 
 

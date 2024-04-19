@@ -63,7 +63,9 @@ public enum ComplianceParameterType {
   
   GROUPFILTERPREDICATECOMPLIANCEPARAMETER("GroupFilterPredicateComplianceParameter"),
   
-  GROUPBYSELECTORCOMPLIANCEPARAMETER("GroupBySelectorComplianceParameter");
+  GROUPBYSELECTORCOMPLIANCEPARAMETER("GroupBySelectorComplianceParameter"),
+  
+  PROPERTYLISTCOMPLIANCEPARAMETER("PropertyListComplianceParameter");
 
   private String value;
 
