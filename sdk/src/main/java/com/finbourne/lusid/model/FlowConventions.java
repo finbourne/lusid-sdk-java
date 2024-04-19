@@ -96,6 +96,10 @@ public class FlowConventions {
   @SerializedName(SERIALIZED_NAME_BUSINESS_DAY_CONVENTION)
   private String businessDayConvention;
 
+  public static final String SERIALIZED_NAME_ACCRUAL_DAY_COUNT_CONVENTION = "accrualDayCountConvention";
+  @SerializedName(SERIALIZED_NAME_ACCRUAL_DAY_COUNT_CONVENTION)
+  private String accrualDayCountConvention;
+
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
@@ -354,6 +358,27 @@ public class FlowConventions {
   }
 
 
+  public FlowConventions accrualDayCountConvention(String accrualDayCountConvention) {
+    
+    this.accrualDayCountConvention = accrualDayCountConvention;
+    return this;
+  }
+
+   /**
+   * Optional, if not set the main DayCountConvention is used for all accrual calculations.  This only needs to be set when accrual uses a different day count to the coupon calculation.
+   * @return accrualDayCountConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getAccrualDayCountConvention() {
+    return accrualDayCountConvention;
+  }
+
+
+  public void setAccrualDayCountConvention(String accrualDayCountConvention) {
+    this.accrualDayCountConvention = accrualDayCountConvention;
+  }
+
+
   public FlowConventions scope(String scope) {
     
     this.scope = scope;
@@ -417,6 +442,7 @@ public class FlowConventions {
         Objects.equals(this.leapDaysIncluded, flowConventions.leapDaysIncluded) &&
         Objects.equals(this.accrualDateAdjustment, flowConventions.accrualDateAdjustment) &&
         Objects.equals(this.businessDayConvention, flowConventions.businessDayConvention) &&
+        Objects.equals(this.accrualDayCountConvention, flowConventions.accrualDayCountConvention) &&
         Objects.equals(this.scope, flowConventions.scope) &&
         Objects.equals(this.code, flowConventions.code);
   }
@@ -427,7 +453,7 @@ public class FlowConventions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, paymentFrequency, dayCountConvention, rollConvention, paymentCalendars, resetCalendars, settleDays, resetDays, leapDaysIncluded, accrualDateAdjustment, businessDayConvention, scope, code);
+    return Objects.hash(currency, paymentFrequency, dayCountConvention, rollConvention, paymentCalendars, resetCalendars, settleDays, resetDays, leapDaysIncluded, accrualDateAdjustment, businessDayConvention, accrualDayCountConvention, scope, code);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -452,6 +478,7 @@ public class FlowConventions {
     sb.append("    leapDaysIncluded: ").append(toIndentedString(leapDaysIncluded)).append("\n");
     sb.append("    accrualDateAdjustment: ").append(toIndentedString(accrualDateAdjustment)).append("\n");
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
+    sb.append("    accrualDayCountConvention: ").append(toIndentedString(accrualDayCountConvention)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
@@ -487,6 +514,7 @@ public class FlowConventions {
     openapiFields.add("leapDaysIncluded");
     openapiFields.add("accrualDateAdjustment");
     openapiFields.add("businessDayConvention");
+    openapiFields.add("accrualDayCountConvention");
     openapiFields.add("scope");
     openapiFields.add("code");
 
@@ -549,6 +577,9 @@ public class FlowConventions {
       }
       if ((jsonObj.get("businessDayConvention") != null && !jsonObj.get("businessDayConvention").isJsonNull()) && !jsonObj.get("businessDayConvention").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `businessDayConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDayConvention").toString()));
+      }
+      if ((jsonObj.get("accrualDayCountConvention") != null && !jsonObj.get("accrualDayCountConvention").isJsonNull()) && !jsonObj.get("accrualDayCountConvention").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accrualDayCountConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accrualDayCountConvention").toString()));
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
