@@ -53,5 +53,7 @@
 
 * `STOCKDIVIDENDEVENT` (value: `"StockDividendEvent"`)
 
+* `REVERSESTOCKSPLITEVENT` (value: `"ReverseStockSplitEvent"`)
+
 
 
