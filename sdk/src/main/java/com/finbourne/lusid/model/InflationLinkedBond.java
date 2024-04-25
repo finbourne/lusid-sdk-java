@@ -306,7 +306,7 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
    /**
-   * The calculation type applied to the bond coupon and principal amount.  The default CalculationType is &#x60;Standard&#x60;.    Supported string (enumeration) values are: [Standard, Quarterly, Ratio, Brazil].
+   * The calculation type applied to the bond coupon and principal amount.  The default CalculationType is &#x60;Standard&#x60;.    Supported string (enumeration) values are: [Standard, Quarterly, Ratio, Brazil, StandardAccruedOnly, RatioAccruedOnly, StandardWithCappedAccruedInterest].
    * @return calculationType
   **/
   @jakarta.annotation.Nullable

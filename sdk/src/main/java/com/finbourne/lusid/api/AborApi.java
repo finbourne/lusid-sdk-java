@@ -36,6 +36,7 @@ import com.finbourne.lusid.model.LockPeriodDiaryEntryRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfAbor;
 import com.finbourne.lusid.model.PagedResourceListOfDiaryEntry;
 import com.finbourne.lusid.model.PeriodDiaryEntriesReopenedResponse;
@@ -2249,6 +2250,191 @@ public class AborApi {
      */
     public APIlockPeriodRequest lockPeriod(String scope, String code) {
         return new APIlockPeriodRequest(scope, code);
+    }
+    private okhttp3.Call patchAborCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = operation;
+
+        // create path and map variables
+        String localVarPath = "/api/abor/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchAborValidateBeforeCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling patchAbor(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling patchAbor(Async)");
+        }
+
+        // verify the required parameter 'operation' is set
+        if (operation == null) {
+            throw new ApiException("Missing the required parameter 'operation' when calling patchAbor(Async)");
+        }
+
+        return patchAborCall(scope, code, operation, _callback);
+
+    }
+
+
+    private ApiResponse<Abor> patchAborWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
+        okhttp3.Call localVarCall = patchAborValidateBeforeCall(scope, code, operation, null);
+        Type localVarReturnType = new TypeToken<Abor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call patchAborAsync(String scope, String code, List<Operation> operation, final ApiCallback<Abor> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchAborValidateBeforeCall(scope, code, operation, _callback);
+        Type localVarReturnType = new TypeToken<Abor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpatchAborRequest {
+        private final String scope;
+        private final String code;
+        private final List<Operation> operation;
+
+        private APIpatchAborRequest(String scope, String code, List<Operation> operation) {
+            this.scope = scope;
+            this.code = code;
+            this.operation = operation;
+        }
+
+        /**
+         * Build call for patchAbor
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Abor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchAborCall(scope, code, operation, _callback);
+        }
+
+        /**
+         * Execute patchAbor request
+         * @return Abor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Abor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Abor execute() throws ApiException {
+            ApiResponse<Abor> localVarResp = patchAborWithHttpInfo(scope, code, operation);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchAbor request with HTTP info returned
+         * @return ApiResponse&lt;Abor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Abor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Abor> executeWithHttpInfo() throws ApiException {
+            return patchAborWithHttpInfo(scope, code, operation);
+        }
+
+        /**
+         * Execute patchAbor request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Abor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Abor> _callback) throws ApiException {
+            return patchAborAsync(scope, code, operation, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] PatchAbor: Patch Abor.
+     * Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: PortfolioIds.
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the   scope this uniquely identifies the Abor. (required)
+     * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
+     * @return APIpatchAborRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The newly patched Abor </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpatchAborRequest patchAbor(String scope, String code, List<Operation> operation) {
+        return new APIpatchAborRequest(scope, code, operation);
     }
     private okhttp3.Call reOpenPeriodsCall(String scope, String code, ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
