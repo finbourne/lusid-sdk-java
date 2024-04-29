@@ -11,7 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getAggregatedReturnsDispersionMetrics**](PortfoliosApi.md#getAggregatedReturnsDispersionMetrics) | **POST** /api/portfolios/{scope}/{code}/returns/dispersion/$aggregated | [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric |
 | [**getCompositeBreakdown**](PortfoliosApi.md#getCompositeBreakdown) | **POST** /api/portfolios/{scope}/{code}/returns/breakdown | [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated |
 | [**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /api/portfolios/{scope}/{code} | GetPortfolio: Get portfolio |
-| [**getPortfolioAggregateReturns**](PortfoliosApi.md#getPortfolioAggregateReturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/aggregated | [EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint). |
+| [**getPortfolioAggregateReturns**](PortfoliosApi.md#getPortfolioAggregateReturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/aggregated | [DEPRECATED] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint). |
 | [**getPortfolioAggregatedReturns**](PortfoliosApi.md#getPortfolioAggregatedReturns) | **POST** /api/portfolios/{scope}/{code}/returns/$aggregated | [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns |
 | [**getPortfolioCommands**](PortfoliosApi.md#getPortfolioCommands) | **GET** /api/portfolios/{scope}/{code}/commands | GetPortfolioCommands: Get portfolio commands |
 | [**getPortfolioMetadata**](PortfoliosApi.md#getPortfolioMetadata) | **GET** /api/portfolios/{scope}/{code}/metadata | [EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for a portfolio |
@@ -592,7 +592,7 @@ public class Example {
 # **getPortfolioAggregateReturns**
 > ResourceListOfAggregatedReturn getPortfolioAggregateReturns(scope, code, returnScope, returnCode).recipeIdScope(recipeIdScope).recipeIdCode(recipeIdCode).fromEffectiveAt(fromEffectiveAt).toEffectiveAt(toEffectiveAt).compositeMethod(compositeMethod).period(period).outputFrequency(outputFrequency).metrics(metrics).asAt(asAt).alternativeIncDate(alternativeIncDate).execute();
 
-[EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
+[DEPRECATED] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
 
 Aggregate Returns which are on the specified portfolio.
 

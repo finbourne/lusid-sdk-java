@@ -1898,7 +1898,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
+     * [DEPRECATED] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
      * Aggregate Returns which are on the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
      * @param code The code of the Portfolio. (required)
