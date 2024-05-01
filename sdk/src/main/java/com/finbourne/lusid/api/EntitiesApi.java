@@ -27,6 +27,7 @@ import java.io.IOException;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.PortfolioEntity;
 import com.finbourne.lusid.model.ResourceListOfChange;
 
 import java.lang.reflect.Type;
@@ -72,6 +73,200 @@ public class EntitiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call getPortfolioByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/entities/portfolios/{entityUniqueId}"
+            .replace("{" + "entityUniqueId" + "}", localVarApiClient.escapeString(entityUniqueId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPortfolioByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'entityUniqueId' is set
+        if (entityUniqueId == null) {
+            throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getPortfolioByEntityUniqueId(Async)");
+        }
+
+        return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, _callback);
+
+    }
+
+
+    private ApiResponse<PortfolioEntity> getPortfolioByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, null);
+        Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getPortfolioByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, _callback);
+        Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPortfolioByEntityUniqueIdRequest {
+        private final String entityUniqueId;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPortfolioByEntityUniqueIdRequest(String entityUniqueId) {
+            this.entityUniqueId = entityUniqueId;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioByEntityUniqueIdRequest
+         */
+        public APIgetPortfolioByEntityUniqueIdRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. (optional)
+         * @return APIgetPortfolioByEntityUniqueIdRequest
+         */
+        public APIgetPortfolioByEntityUniqueIdRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioByEntityUniqueId
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioByEntityUniqueId request
+         * @return PortfolioEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioEntity execute() throws ApiException {
+            ApiResponse<PortfolioEntity> localVarResp = getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioByEntityUniqueId request with HTTP info returned
+         * @return ApiResponse&lt;PortfolioEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioEntity> executeWithHttpInfo() throws ApiException {
+            return getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioByEntityUniqueId request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioEntity> _callback) throws ApiException {
+            return getPortfolioByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
+     * Retrieve the definition of a particular portfolio.  If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
+     * @param entityUniqueId The universally unique identifier of the portfolio definition. (required)
+     * @return APIgetPortfolioByEntityUniqueIdRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetPortfolioByEntityUniqueIdRequest getPortfolioByEntityUniqueId(String entityUniqueId) {
+        return new APIgetPortfolioByEntityUniqueIdRequest(entityUniqueId);
+    }
     private okhttp3.Call getPortfolioChangesCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
