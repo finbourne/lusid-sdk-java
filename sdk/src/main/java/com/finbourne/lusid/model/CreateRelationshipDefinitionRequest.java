@@ -138,7 +138,7 @@ public class CreateRelationshipDefinitionRequest {
   }
 
    /**
-   * The entity type of the source entity object. Allowed values are &#39;Portfolio&#39;, &#39;PortfolioGroup&#39;, &#39;Person&#39;, &#39;LegalEntity&#39; or a custom entity type prefixed with &#39;~&#39;.
+   * The entity type of the source entity object. Allowed values are &#39;Portfolio&#39;, &#39;PortfolioGroup&#39;, &#39;Person&#39;, &#39;LegalEntity&#39;, &#39;Instrument&#39; or a custom entity type prefixed with &#39;~&#39;.
    * @return sourceEntityType
   **/
   @jakarta.annotation.Nonnull
@@ -159,7 +159,7 @@ public class CreateRelationshipDefinitionRequest {
   }
 
    /**
-   * The entity type of the target entity object. Allowed values are &#39;Portfolio&#39;, &#39;PortfolioGroup&#39;, &#39;Person&#39;, &#39;LegalEntity&#39; or a custom entity type prefixed with &#39;~&#39;.
+   * The entity type of the target entity object. Allowed values are &#39;Portfolio&#39;, &#39;PortfolioGroup&#39;, &#39;Person&#39;, &#39;LegalEntity&#39;, &#39;Instrument&#39; or a custom entity type prefixed with &#39;~&#39;.
    * @return targetEntityType
   **/
   @jakarta.annotation.Nonnull
