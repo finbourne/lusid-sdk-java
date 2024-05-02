@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -66,6 +67,10 @@ public class PortfolioEntity {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_AT_CREATED = "effectiveAtCreated";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT_CREATED)
+  private OffsetDateTime effectiveAtCreated;
 
   public static final String SERIALIZED_NAME_PREVAILING_PORTFOLIO = "prevailingPortfolio";
   @SerializedName(SERIALIZED_NAME_PREVAILING_PORTFOLIO)
@@ -142,6 +147,27 @@ public class PortfolioEntity {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public PortfolioEntity effectiveAtCreated(OffsetDateTime effectiveAtCreated) {
+    
+    this.effectiveAtCreated = effectiveAtCreated;
+    return this;
+  }
+
+   /**
+   * The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt
+   * @return effectiveAtCreated
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveAtCreated() {
+    return effectiveAtCreated;
+  }
+
+
+  public void setEffectiveAtCreated(OffsetDateTime effectiveAtCreated) {
+    this.effectiveAtCreated = effectiveAtCreated;
   }
 
 
@@ -229,6 +255,7 @@ public class PortfolioEntity {
     return Objects.equals(this.href, portfolioEntity.href) &&
         Objects.equals(this.entityUniqueId, portfolioEntity.entityUniqueId) &&
         Objects.equals(this.status, portfolioEntity.status) &&
+        Objects.equals(this.effectiveAtCreated, portfolioEntity.effectiveAtCreated) &&
         Objects.equals(this.prevailingPortfolio, portfolioEntity.prevailingPortfolio) &&
         Objects.equals(this.deletedPortfolio, portfolioEntity.deletedPortfolio) &&
         Objects.equals(this.links, portfolioEntity.links);
@@ -240,7 +267,7 @@ public class PortfolioEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, entityUniqueId, status, prevailingPortfolio, deletedPortfolio, links);
+    return Objects.hash(href, entityUniqueId, status, effectiveAtCreated, prevailingPortfolio, deletedPortfolio, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -257,6 +284,7 @@ public class PortfolioEntity {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    effectiveAtCreated: ").append(toIndentedString(effectiveAtCreated)).append("\n");
     sb.append("    prevailingPortfolio: ").append(toIndentedString(prevailingPortfolio)).append("\n");
     sb.append("    deletedPortfolio: ").append(toIndentedString(deletedPortfolio)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -285,6 +313,7 @@ public class PortfolioEntity {
     openapiFields.add("href");
     openapiFields.add("entityUniqueId");
     openapiFields.add("status");
+    openapiFields.add("effectiveAtCreated");
     openapiFields.add("prevailingPortfolio");
     openapiFields.add("deletedPortfolio");
     openapiFields.add("links");

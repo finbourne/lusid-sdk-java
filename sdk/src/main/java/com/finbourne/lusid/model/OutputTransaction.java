@@ -204,6 +204,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
   private String sourceType;
 
+  public static final String SERIALIZED_NAME_SOURCE_INSTRUMENT_EVENT_ID = "sourceInstrumentEventId";
+  @SerializedName(SERIALIZED_NAME_SOURCE_INSTRUMENT_EVENT_ID)
+  private String sourceInstrumentEventId;
+
   public OutputTransaction() {
   }
 
@@ -743,6 +747,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction sourceInstrumentEventId(String sourceInstrumentEventId) {
+    
+    this.sourceInstrumentEventId = sourceInstrumentEventId;
+    return this;
+  }
+
+   /**
+   * The unique ID of the instrument event that the transaction is related to.
+   * @return sourceInstrumentEventId
+  **/
+  @jakarta.annotation.Nullable
+  public String getSourceInstrumentEventId() {
+    return sourceInstrumentEventId;
+  }
+
+
+  public void setSourceInstrumentEventId(String sourceInstrumentEventId) {
+    this.sourceInstrumentEventId = sourceInstrumentEventId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -776,7 +801,8 @@ public class OutputTransaction {
         Objects.equals(this.cancelDateTime, outputTransaction.cancelDateTime) &&
         Objects.equals(this.realisedGainLoss, outputTransaction.realisedGainLoss) &&
         Objects.equals(this.holdingIds, outputTransaction.holdingIds) &&
-        Objects.equals(this.sourceType, outputTransaction.sourceType);
+        Objects.equals(this.sourceType, outputTransaction.sourceType) &&
+        Objects.equals(this.sourceInstrumentEventId, outputTransaction.sourceInstrumentEventId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -785,7 +811,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -823,6 +849,7 @@ public class OutputTransaction {
     sb.append("    realisedGainLoss: ").append(toIndentedString(realisedGainLoss)).append("\n");
     sb.append("    holdingIds: ").append(toIndentedString(holdingIds)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
+    sb.append("    sourceInstrumentEventId: ").append(toIndentedString(sourceInstrumentEventId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -869,6 +896,7 @@ public class OutputTransaction {
     openapiFields.add("realisedGainLoss");
     openapiFields.add("holdingIds");
     openapiFields.add("sourceType");
+    openapiFields.add("sourceInstrumentEventId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -955,6 +983,9 @@ public class OutputTransaction {
       }
       if ((jsonObj.get("sourceType") != null && !jsonObj.get("sourceType").isJsonNull()) && !jsonObj.get("sourceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
+      }
+      if ((jsonObj.get("sourceInstrumentEventId") != null && !jsonObj.get("sourceInstrumentEventId").isJsonNull()) && !jsonObj.get("sourceInstrumentEventId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sourceInstrumentEventId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceInstrumentEventId").toString()));
       }
   }
 

@@ -94,28 +94,6 @@ public class Version {
   public Version() {
   }
 
-  
-  public Version(
-     OffsetDateTime asAtCreated, 
-     String userIdCreated, 
-     String requestIdCreated, 
-     OffsetDateTime asAtModified, 
-     String userIdModified, 
-     String requestIdModified, 
-     Integer asAtVersionNumber, 
-     String entityUniqueId
-  ) {
-    this();
-    this.asAtCreated = asAtCreated;
-    this.userIdCreated = userIdCreated;
-    this.requestIdCreated = requestIdCreated;
-    this.asAtModified = asAtModified;
-    this.userIdModified = userIdModified;
-    this.requestIdModified = requestIdModified;
-    this.asAtVersionNumber = asAtVersionNumber;
-    this.entityUniqueId = entityUniqueId;
-  }
-
   public Version effectiveFrom(OffsetDateTime effectiveFrom) {
     
     this.effectiveFrom = effectiveFrom;
@@ -158,6 +136,12 @@ public class Version {
   }
 
 
+  public Version asAtCreated(OffsetDateTime asAtCreated) {
+    
+    this.asAtCreated = asAtCreated;
+    return this;
+  }
+
    /**
    * The asAt datetime at which the entity was first created in LUSID.
    * @return asAtCreated
@@ -168,7 +152,16 @@ public class Version {
   }
 
 
+  public void setAsAtCreated(OffsetDateTime asAtCreated) {
+    this.asAtCreated = asAtCreated;
+  }
 
+
+  public Version userIdCreated(String userIdCreated) {
+    
+    this.userIdCreated = userIdCreated;
+    return this;
+  }
 
    /**
    * The unique id of the user who created the entity.
@@ -180,7 +173,16 @@ public class Version {
   }
 
 
+  public void setUserIdCreated(String userIdCreated) {
+    this.userIdCreated = userIdCreated;
+  }
 
+
+  public Version requestIdCreated(String requestIdCreated) {
+    
+    this.requestIdCreated = requestIdCreated;
+    return this;
+  }
 
    /**
    * The unique request id of the command that created the entity.
@@ -192,7 +194,16 @@ public class Version {
   }
 
 
+  public void setRequestIdCreated(String requestIdCreated) {
+    this.requestIdCreated = requestIdCreated;
+  }
 
+
+  public Version asAtModified(OffsetDateTime asAtModified) {
+    
+    this.asAtModified = asAtModified;
+    return this;
+  }
 
    /**
    * The asAt datetime at which the entity (including its properties) was last updated in LUSID.
@@ -204,7 +215,16 @@ public class Version {
   }
 
 
+  public void setAsAtModified(OffsetDateTime asAtModified) {
+    this.asAtModified = asAtModified;
+  }
 
+
+  public Version userIdModified(String userIdModified) {
+    
+    this.userIdModified = userIdModified;
+    return this;
+  }
 
    /**
    * The unique id of the user who last updated the entity (including its properties) in LUSID.
@@ -216,7 +236,16 @@ public class Version {
   }
 
 
+  public void setUserIdModified(String userIdModified) {
+    this.userIdModified = userIdModified;
+  }
 
+
+  public Version requestIdModified(String requestIdModified) {
+    
+    this.requestIdModified = requestIdModified;
+    return this;
+  }
 
    /**
    * The unique request id of the command that last updated the entity (including its properties) in LUSID.
@@ -228,7 +257,16 @@ public class Version {
   }
 
 
+  public void setRequestIdModified(String requestIdModified) {
+    this.requestIdModified = requestIdModified;
+  }
 
+
+  public Version asAtVersionNumber(Integer asAtVersionNumber) {
+    
+    this.asAtVersionNumber = asAtVersionNumber;
+    return this;
+  }
 
    /**
    * The integer version number for the entity (the entity was created at version 1)
@@ -240,7 +278,16 @@ public class Version {
   }
 
 
+  public void setAsAtVersionNumber(Integer asAtVersionNumber) {
+    this.asAtVersionNumber = asAtVersionNumber;
+  }
 
+
+  public Version entityUniqueId(String entityUniqueId) {
+    
+    this.entityUniqueId = entityUniqueId;
+    return this;
+  }
 
    /**
    * The unique id of the entity
@@ -252,6 +299,9 @@ public class Version {
   }
 
 
+  public void setEntityUniqueId(String entityUniqueId) {
+    this.entityUniqueId = entityUniqueId;
+  }
 
 
 

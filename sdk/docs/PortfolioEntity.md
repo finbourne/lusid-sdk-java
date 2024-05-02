@@ -11,6 +11,7 @@ A list of portfolios.
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  |
 |**entityUniqueId** | **String** | The unique id of the entity |  |
 |**status** | **String** | The status of the entity at the current time |  |
+|**effectiveAtCreated** | **OffsetDateTime** | The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt |  [optional] |
 |**prevailingPortfolio** | [**PortfolioWithoutHref**](PortfolioWithoutHref.md) |  |  [optional] |
 |**deletedPortfolio** | [**PortfolioWithoutHref**](PortfolioWithoutHref.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
