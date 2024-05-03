@@ -15,6 +15,7 @@ A list of portfolios.
 |**created** | **OffsetDateTime** | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. |  |
 |**parentPortfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
 |**isDerived** | **Boolean** | Whether or not this is a derived portfolio. |  [optional] |
 |**baseCurrency** | **String** | The base currency of the portfolio. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional] |

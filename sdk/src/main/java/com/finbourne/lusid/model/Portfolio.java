@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -142,6 +143,10 @@ public class Portfolio {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public static final String SERIALIZED_NAME_IS_DERIVED = "isDerived";
   @SerializedName(SERIALIZED_NAME_IS_DERIVED)
@@ -414,6 +419,27 @@ public class Portfolio {
 
   public void setVersion(Version version) {
     this.version = version;
+  }
+
+
+  public Portfolio stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
   }
 
 
@@ -719,6 +745,7 @@ public class Portfolio {
         Objects.equals(this.created, portfolio.created) &&
         Objects.equals(this.parentPortfolioId, portfolio.parentPortfolioId) &&
         Objects.equals(this.version, portfolio.version) &&
+        Objects.equals(this.stagedModifications, portfolio.stagedModifications) &&
         Objects.equals(this.isDerived, portfolio.isDerived) &&
         Objects.equals(this.baseCurrency, portfolio.baseCurrency) &&
         Objects.equals(this.properties, portfolio.properties) &&
@@ -739,7 +766,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, links);
+    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -761,6 +788,7 @@ public class Portfolio {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    isDerived: ").append(toIndentedString(isDerived)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
@@ -803,6 +831,7 @@ public class Portfolio {
     openapiFields.add("created");
     openapiFields.add("parentPortfolioId");
     openapiFields.add("version");
+    openapiFields.add("stagedModifications");
     openapiFields.add("isDerived");
     openapiFields.add("baseCurrency");
     openapiFields.add("properties");
@@ -865,6 +894,10 @@ public class Portfolio {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
       if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
