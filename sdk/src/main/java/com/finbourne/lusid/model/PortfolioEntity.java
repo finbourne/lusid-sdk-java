@@ -64,9 +64,25 @@ public class PortfolioEntity {
   @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
   private String entityUniqueId;
 
+  public static final String SERIALIZED_NAME_AS_AT_VERSION_NUMBER = "asAtVersionNumber";
+  @SerializedName(SERIALIZED_NAME_AS_AT_VERSION_NUMBER)
+  private Integer asAtVersionNumber;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_AS_AT_DELETED = "asAtDeleted";
+  @SerializedName(SERIALIZED_NAME_AS_AT_DELETED)
+  private OffsetDateTime asAtDeleted;
+
+  public static final String SERIALIZED_NAME_USER_ID_DELETED = "userIdDeleted";
+  @SerializedName(SERIALIZED_NAME_USER_ID_DELETED)
+  private String userIdDeleted;
+
+  public static final String SERIALIZED_NAME_REQUEST_ID_DELETED = "requestIdDeleted";
+  @SerializedName(SERIALIZED_NAME_REQUEST_ID_DELETED)
+  private String requestIdDeleted;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AT_CREATED = "effectiveAtCreated";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT_CREATED)
@@ -115,7 +131,7 @@ public class PortfolioEntity {
   }
 
    /**
-   * The unique id of the entity
+   * The unique id of the entity.
    * @return entityUniqueId
   **/
   @jakarta.annotation.Nonnull
@@ -129,6 +145,27 @@ public class PortfolioEntity {
   }
 
 
+  public PortfolioEntity asAtVersionNumber(Integer asAtVersionNumber) {
+    
+    this.asAtVersionNumber = asAtVersionNumber;
+    return this;
+  }
+
+   /**
+   * The integer version number for the entity (the entity was created at version 1)
+   * @return asAtVersionNumber
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getAsAtVersionNumber() {
+    return asAtVersionNumber;
+  }
+
+
+  public void setAsAtVersionNumber(Integer asAtVersionNumber) {
+    this.asAtVersionNumber = asAtVersionNumber;
+  }
+
+
   public PortfolioEntity status(String status) {
     
     this.status = status;
@@ -136,7 +173,7 @@ public class PortfolioEntity {
   }
 
    /**
-   * The status of the entity at the current time
+   * The status of the entity at the current time.
    * @return status
   **/
   @jakarta.annotation.Nonnull
@@ -150,6 +187,69 @@ public class PortfolioEntity {
   }
 
 
+  public PortfolioEntity asAtDeleted(OffsetDateTime asAtDeleted) {
+    
+    this.asAtDeleted = asAtDeleted;
+    return this;
+  }
+
+   /**
+   * The asAt datetime at which the entity was deleted.
+   * @return asAtDeleted
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAtDeleted() {
+    return asAtDeleted;
+  }
+
+
+  public void setAsAtDeleted(OffsetDateTime asAtDeleted) {
+    this.asAtDeleted = asAtDeleted;
+  }
+
+
+  public PortfolioEntity userIdDeleted(String userIdDeleted) {
+    
+    this.userIdDeleted = userIdDeleted;
+    return this;
+  }
+
+   /**
+   * The unique id of the user who deleted the entity.
+   * @return userIdDeleted
+  **/
+  @jakarta.annotation.Nullable
+  public String getUserIdDeleted() {
+    return userIdDeleted;
+  }
+
+
+  public void setUserIdDeleted(String userIdDeleted) {
+    this.userIdDeleted = userIdDeleted;
+  }
+
+
+  public PortfolioEntity requestIdDeleted(String requestIdDeleted) {
+    
+    this.requestIdDeleted = requestIdDeleted;
+    return this;
+  }
+
+   /**
+   * The unique request id of the command that deleted the entity.
+   * @return requestIdDeleted
+  **/
+  @jakarta.annotation.Nullable
+  public String getRequestIdDeleted() {
+    return requestIdDeleted;
+  }
+
+
+  public void setRequestIdDeleted(String requestIdDeleted) {
+    this.requestIdDeleted = requestIdDeleted;
+  }
+
+
   public PortfolioEntity effectiveAtCreated(OffsetDateTime effectiveAtCreated) {
     
     this.effectiveAtCreated = effectiveAtCreated;
@@ -157,7 +257,7 @@ public class PortfolioEntity {
   }
 
    /**
-   * The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt
+   * The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt.
    * @return effectiveAtCreated
   **/
   @jakarta.annotation.Nullable
@@ -254,7 +354,11 @@ public class PortfolioEntity {
     PortfolioEntity portfolioEntity = (PortfolioEntity) o;
     return Objects.equals(this.href, portfolioEntity.href) &&
         Objects.equals(this.entityUniqueId, portfolioEntity.entityUniqueId) &&
+        Objects.equals(this.asAtVersionNumber, portfolioEntity.asAtVersionNumber) &&
         Objects.equals(this.status, portfolioEntity.status) &&
+        Objects.equals(this.asAtDeleted, portfolioEntity.asAtDeleted) &&
+        Objects.equals(this.userIdDeleted, portfolioEntity.userIdDeleted) &&
+        Objects.equals(this.requestIdDeleted, portfolioEntity.requestIdDeleted) &&
         Objects.equals(this.effectiveAtCreated, portfolioEntity.effectiveAtCreated) &&
         Objects.equals(this.prevailingPortfolio, portfolioEntity.prevailingPortfolio) &&
         Objects.equals(this.deletedPortfolio, portfolioEntity.deletedPortfolio) &&
@@ -267,7 +371,7 @@ public class PortfolioEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, entityUniqueId, status, effectiveAtCreated, prevailingPortfolio, deletedPortfolio, links);
+    return Objects.hash(href, entityUniqueId, asAtVersionNumber, status, asAtDeleted, userIdDeleted, requestIdDeleted, effectiveAtCreated, prevailingPortfolio, deletedPortfolio, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -283,7 +387,11 @@ public class PortfolioEntity {
     sb.append("class PortfolioEntity {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
+    sb.append("    asAtVersionNumber: ").append(toIndentedString(asAtVersionNumber)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    asAtDeleted: ").append(toIndentedString(asAtDeleted)).append("\n");
+    sb.append("    userIdDeleted: ").append(toIndentedString(userIdDeleted)).append("\n");
+    sb.append("    requestIdDeleted: ").append(toIndentedString(requestIdDeleted)).append("\n");
     sb.append("    effectiveAtCreated: ").append(toIndentedString(effectiveAtCreated)).append("\n");
     sb.append("    prevailingPortfolio: ").append(toIndentedString(prevailingPortfolio)).append("\n");
     sb.append("    deletedPortfolio: ").append(toIndentedString(deletedPortfolio)).append("\n");
@@ -312,7 +420,11 @@ public class PortfolioEntity {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("entityUniqueId");
+    openapiFields.add("asAtVersionNumber");
     openapiFields.add("status");
+    openapiFields.add("asAtDeleted");
+    openapiFields.add("userIdDeleted");
+    openapiFields.add("requestIdDeleted");
     openapiFields.add("effectiveAtCreated");
     openapiFields.add("prevailingPortfolio");
     openapiFields.add("deletedPortfolio");
@@ -353,6 +465,12 @@ public class PortfolioEntity {
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("userIdDeleted") != null && !jsonObj.get("userIdDeleted").isJsonNull()) && !jsonObj.get("userIdDeleted").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userIdDeleted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userIdDeleted").toString()));
+      }
+      if ((jsonObj.get("requestIdDeleted") != null && !jsonObj.get("requestIdDeleted").isJsonNull()) && !jsonObj.get("requestIdDeleted").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `requestIdDeleted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestIdDeleted").toString()));
       }
       // validate the optional field `prevailingPortfolio`
       if (jsonObj.get("prevailingPortfolio") != null && !jsonObj.get("prevailingPortfolio").isJsonNull()) {

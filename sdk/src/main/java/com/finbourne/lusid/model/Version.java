@@ -91,7 +91,19 @@ public class Version {
   @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
   private String entityUniqueId;
 
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATION_ID_MODIFIED = "stagedModificationIdModified";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATION_ID_MODIFIED)
+  private String stagedModificationIdModified;
+
   public Version() {
+  }
+
+  
+  public Version(
+     String stagedModificationIdModified
+  ) {
+    this();
+    this.stagedModificationIdModified = stagedModificationIdModified;
   }
 
   public Version effectiveFrom(OffsetDateTime effectiveFrom) {
@@ -304,6 +316,18 @@ public class Version {
   }
 
 
+   /**
+   * The ID of the staged change that resulted in the most recent modification.
+   * @return stagedModificationIdModified
+  **/
+  @jakarta.annotation.Nullable
+  public String getStagedModificationIdModified() {
+    return stagedModificationIdModified;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -323,7 +347,8 @@ public class Version {
         Objects.equals(this.userIdModified, version.userIdModified) &&
         Objects.equals(this.requestIdModified, version.requestIdModified) &&
         Objects.equals(this.asAtVersionNumber, version.asAtVersionNumber) &&
-        Objects.equals(this.entityUniqueId, version.entityUniqueId);
+        Objects.equals(this.entityUniqueId, version.entityUniqueId) &&
+        Objects.equals(this.stagedModificationIdModified, version.stagedModificationIdModified);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -332,7 +357,7 @@ public class Version {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, asAtDate, asAtCreated, userIdCreated, requestIdCreated, asAtModified, userIdModified, requestIdModified, asAtVersionNumber, entityUniqueId);
+    return Objects.hash(effectiveFrom, asAtDate, asAtCreated, userIdCreated, requestIdCreated, asAtModified, userIdModified, requestIdModified, asAtVersionNumber, entityUniqueId, stagedModificationIdModified);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -356,6 +381,7 @@ public class Version {
     sb.append("    requestIdModified: ").append(toIndentedString(requestIdModified)).append("\n");
     sb.append("    asAtVersionNumber: ").append(toIndentedString(asAtVersionNumber)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
+    sb.append("    stagedModificationIdModified: ").append(toIndentedString(stagedModificationIdModified)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -388,6 +414,7 @@ public class Version {
     openapiFields.add("requestIdModified");
     openapiFields.add("asAtVersionNumber");
     openapiFields.add("entityUniqueId");
+    openapiFields.add("stagedModificationIdModified");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -429,6 +456,9 @@ public class Version {
       }
       if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));
+      }
+      if ((jsonObj.get("stagedModificationIdModified") != null && !jsonObj.get("stagedModificationIdModified").isJsonNull()) && !jsonObj.get("stagedModificationIdModified").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stagedModificationIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stagedModificationIdModified").toString()));
       }
   }
 
