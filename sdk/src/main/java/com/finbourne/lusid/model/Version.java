@@ -98,14 +98,6 @@ public class Version {
   public Version() {
   }
 
-  
-  public Version(
-     String stagedModificationIdModified
-  ) {
-    this();
-    this.stagedModificationIdModified = stagedModificationIdModified;
-  }
-
   public Version effectiveFrom(OffsetDateTime effectiveFrom) {
     
     this.effectiveFrom = effectiveFrom;
@@ -316,6 +308,12 @@ public class Version {
   }
 
 
+  public Version stagedModificationIdModified(String stagedModificationIdModified) {
+    
+    this.stagedModificationIdModified = stagedModificationIdModified;
+    return this;
+  }
+
    /**
    * The ID of the staged change that resulted in the most recent modification.
    * @return stagedModificationIdModified
@@ -326,6 +324,9 @@ public class Version {
   }
 
 
+  public void setStagedModificationIdModified(String stagedModificationIdModified) {
+    this.stagedModificationIdModified = stagedModificationIdModified;
+  }
 
 
 

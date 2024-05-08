@@ -33,6 +33,9 @@ import com.finbourne.lusid.model.CompositeBreakdownRequest;
 import com.finbourne.lusid.model.CompositeBreakdownResponse;
 import com.finbourne.lusid.model.CompositeDispersionResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.InstrumentEventInstruction;
+import com.finbourne.lusid.model.InstrumentEventInstructionRequest;
+import com.finbourne.lusid.model.InstrumentEventInstructionsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
@@ -97,6 +100,203 @@ public class PortfoliosApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call deleteInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "instrumentEventInstructionId" + "}", localVarApiClient.escapeString(instrumentEventInstructionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteInstrumentEventInstruction(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteInstrumentEventInstruction(Async)");
+        }
+
+        // verify the required parameter 'instrumentEventInstructionId' is set
+        if (instrumentEventInstructionId == null) {
+            throw new ApiException("Missing the required parameter 'instrumentEventInstructionId' when calling deleteInstrumentEventInstruction(Async)");
+        }
+
+        return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, null);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteInstrumentEventInstructionRequest {
+        private final String scope;
+        private final String code;
+        private final String instrumentEventInstructionId;
+        private String portfolioEffectiveAt;
+
+        private APIdeleteInstrumentEventInstructionRequest(String scope, String code, String instrumentEventInstructionId) {
+            this.scope = scope;
+            this.code = code;
+            this.instrumentEventInstructionId = instrumentEventInstructionId;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIdeleteInstrumentEventInstructionRequest
+         */
+        public APIdeleteInstrumentEventInstructionRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteInstrumentEventInstruction
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteInstrumentEventInstruction request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInstrumentEventInstruction request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt);
+        }
+
+        /**
+         * Execute deleteInstrumentEventInstruction request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] DeleteInstrumentEventInstruction: Delete Instrument Event Instruction
+     * Delete a particular instruction for a particular portfolio
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param instrumentEventInstructionId The id of the instruction to be deleted. (required)
+     * @return APIdeleteInstrumentEventInstructionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteInstrumentEventInstructionRequest deleteInstrumentEventInstruction(String scope, String code, String instrumentEventInstructionId) {
+        return new APIdeleteInstrumentEventInstructionRequest(scope, code, instrumentEventInstructionId);
+    }
     private okhttp3.Call deleteKeyFromPortfolioAccessMetadataCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1341,6 +1541,218 @@ public class PortfoliosApi {
      */
     public APIgetCompositeBreakdownRequest getCompositeBreakdown(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest) {
         return new APIgetCompositeBreakdownRequest(scope, code, compositeBreakdownRequest);
+    }
+    private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "instrumentEventInstructionId" + "}", localVarApiClient.escapeString(instrumentEventInstructionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getInstrumentEventInstruction(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getInstrumentEventInstruction(Async)");
+        }
+
+        // verify the required parameter 'instrumentEventInstructionId' is set
+        if (instrumentEventInstructionId == null) {
+            throw new ApiException("Missing the required parameter 'instrumentEventInstructionId' when calling getInstrumentEventInstruction(Async)");
+        }
+
+        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+
+    }
+
+
+    private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, null);
+        Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+        Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetInstrumentEventInstructionRequest {
+        private final String scope;
+        private final String code;
+        private final String instrumentEventInstructionId;
+        private String portfolioEffectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetInstrumentEventInstructionRequest(String scope, String code, String instrumentEventInstructionId) {
+            this.scope = scope;
+            this.code = code;
+            this.instrumentEventInstructionId = instrumentEventInstructionId;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIgetInstrumentEventInstructionRequest
+         */
+        public APIgetInstrumentEventInstructionRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instruction. Defaults to return the latest version of the instruction if not specified. (optional)
+         * @return APIgetInstrumentEventInstructionRequest
+         */
+        public APIgetInstrumentEventInstructionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getInstrumentEventInstruction
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getInstrumentEventInstruction request
+         * @return InstrumentEventInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentEventInstruction execute() throws ApiException {
+            ApiResponse<InstrumentEventInstruction> localVarResp = getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInstrumentEventInstruction request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentEventInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentEventInstruction> executeWithHttpInfo() throws ApiException {
+            return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute getInstrumentEventInstruction request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
+            return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetInstrumentEventInstruction: Get Instrument Event Instruction
+     * Get a particular instruction for a particular portfolio
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param instrumentEventInstructionId The id of the instruction to be retrieved. (required)
+     * @return APIgetInstrumentEventInstructionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetInstrumentEventInstructionRequest getInstrumentEventInstruction(String scope, String code, String instrumentEventInstructionId) {
+        return new APIgetInstrumentEventInstructionRequest(scope, code, instrumentEventInstructionId);
     }
     private okhttp3.Call getPortfolioCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -5395,6 +5807,218 @@ public class PortfoliosApi {
      */
     public APIupdatePortfolioRequest updatePortfolio(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest) {
         return new APIupdatePortfolioRequest(scope, code, updatePortfolioRequest);
+    }
+    private okhttp3.Call upsertInstrumentEventInstructionsCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/instrumenteventinstructions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertInstrumentEventInstructions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertInstrumentEventInstructions(Async)");
+        }
+
+        // verify the required parameter 'successMode' is set
+        if (successMode == null) {
+            throw new ApiException("Missing the required parameter 'successMode' when calling upsertInstrumentEventInstructions(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertInstrumentEventInstructions(Async)");
+        }
+
+        return upsertInstrumentEventInstructionsCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+
+    }
+
+
+    private ApiResponse<InstrumentEventInstructionsResponse> upsertInstrumentEventInstructionsWithHttpInfo(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, null);
+        Type localVarReturnType = new TypeToken<InstrumentEventInstructionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertInstrumentEventInstructionsAsync(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback<InstrumentEventInstructionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        Type localVarReturnType = new TypeToken<InstrumentEventInstructionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertInstrumentEventInstructionsRequest {
+        private final String scope;
+        private final String code;
+        private final String successMode;
+        private final Map<String, InstrumentEventInstructionRequest> requestBody;
+        private String portfolioEffectiveAt;
+
+        private APIupsertInstrumentEventInstructionsRequest(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIupsertInstrumentEventInstructionsRequest
+         */
+        public APIupsertInstrumentEventInstructionsRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for upsertInstrumentEventInstructions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertInstrumentEventInstructionsCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertInstrumentEventInstructions request
+         * @return InstrumentEventInstructionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentEventInstructionsResponse execute() throws ApiException {
+            ApiResponse<InstrumentEventInstructionsResponse> localVarResp = upsertInstrumentEventInstructionsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertInstrumentEventInstructions request with HTTP info returned
+         * @return ApiResponse&lt;InstrumentEventInstructionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentEventInstructionsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertInstrumentEventInstructionsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt);
+        }
+
+        /**
+         * Execute upsertInstrumentEventInstructions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstructionsResponse> _callback) throws ApiException {
+            return upsertInstrumentEventInstructionsAsync(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpsertInstrumentEventInstructions: Upsert Instrument Event Instructions
+     * Batch upsert for instrument event instructions, for the portfolio or individual holdings
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param successMode Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default) (required)
+     * @param requestBody The instructions to be upserted to the portfolio. (required)
+     * @return APIupsertInstrumentEventInstructionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertInstrumentEventInstructionsRequest upsertInstrumentEventInstructions(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody) {
+        return new APIupsertInstrumentEventInstructionsRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call upsertPortfolioAccessMetadataCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
         String basePath = null;

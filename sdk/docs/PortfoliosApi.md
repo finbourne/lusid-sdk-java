@@ -4,12 +4,14 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteInstrumentEventInstruction**](PortfoliosApi.md#deleteInstrumentEventInstruction) | **DELETE** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] DeleteInstrumentEventInstruction: Delete Instrument Event Instruction |
 | [**deleteKeyFromPortfolioAccessMetadata**](PortfoliosApi.md#deleteKeyFromPortfolioAccessMetadata) | **DELETE** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule |
 | [**deletePortfolio**](PortfoliosApi.md#deletePortfolio) | **DELETE** /api/portfolios/{scope}/{code} | DeletePortfolio: Delete portfolio |
 | [**deletePortfolioProperties**](PortfoliosApi.md#deletePortfolioProperties) | **DELETE** /api/portfolios/{scope}/{code}/properties | DeletePortfolioProperties: Delete portfolio properties |
 | [**deletePortfolioReturns**](PortfoliosApi.md#deletePortfolioReturns) | **DELETE** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/$delete | [EARLY ACCESS] DeletePortfolioReturns: Delete Returns |
 | [**getAggregatedReturnsDispersionMetrics**](PortfoliosApi.md#getAggregatedReturnsDispersionMetrics) | **POST** /api/portfolios/{scope}/{code}/returns/dispersion/$aggregated | [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric |
 | [**getCompositeBreakdown**](PortfoliosApi.md#getCompositeBreakdown) | **POST** /api/portfolios/{scope}/{code}/returns/breakdown | [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated |
+| [**getInstrumentEventInstruction**](PortfoliosApi.md#getInstrumentEventInstruction) | **GET** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] GetInstrumentEventInstruction: Get Instrument Event Instruction |
 | [**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /api/portfolios/{scope}/{code} | GetPortfolio: Get portfolio |
 | [**getPortfolioAggregateReturns**](PortfoliosApi.md#getPortfolioAggregateReturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/aggregated | [DEPRECATED] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint). |
 | [**getPortfolioAggregatedReturns**](PortfoliosApi.md#getPortfolioAggregatedReturns) | **POST** /api/portfolios/{scope}/{code}/returns/$aggregated | [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns |
@@ -27,10 +29,88 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**patchPortfolio**](PortfoliosApi.md#patchPortfolio) | **PATCH** /api/portfolios/{scope}/{code} | [EARLY ACCESS] PatchPortfolio: Patch portfolio. |
 | [**patchPortfolioAccessMetadata**](PortfoliosApi.md#patchPortfolioAccessMetadata) | **PATCH** /api/portfolios/{scope}/{code}/metadata | [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio. |
 | [**updatePortfolio**](PortfoliosApi.md#updatePortfolio) | **PUT** /api/portfolios/{scope}/{code} | UpdatePortfolio: Update portfolio |
+| [**upsertInstrumentEventInstructions**](PortfoliosApi.md#upsertInstrumentEventInstructions) | **POST** /api/portfolios/{scope}/{code}/instrumenteventinstructions | [EARLY ACCESS] UpsertInstrumentEventInstructions: Upsert Instrument Event Instructions |
 | [**upsertPortfolioAccessMetadata**](PortfoliosApi.md#upsertPortfolioAccessMetadata) | **PUT** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID. |
 | [**upsertPortfolioProperties**](PortfoliosApi.md#upsertPortfolioProperties) | **POST** /api/portfolios/{scope}/{code}/properties | UpsertPortfolioProperties: Upsert portfolio properties |
 | [**upsertPortfolioReturns**](PortfoliosApi.md#upsertPortfolioReturns) | **POST** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode} | [EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns |
 
+
+<a id="deleteInstrumentEventInstruction"></a>
+# **deleteInstrumentEventInstruction**
+> DeletedEntityResponse deleteInstrumentEventInstruction(scope, code, instrumentEventInstructionId).portfolioEffectiveAt(portfolioEffectiveAt).execute();
+
+[EARLY ACCESS] DeleteInstrumentEventInstruction: Delete Instrument Event Instruction
+
+Delete a particular instruction for a particular portfolio
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio.
+    String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+    String instrumentEventInstructionId = "instrumentEventInstructionId_example"; // String | The id of the instruction to be deleted.
+    String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+    try {
+      DeletedEntityResponse result = apiInstance.deleteInstrumentEventInstruction(scope, code, instrumentEventInstructionId)
+            .portfolioEffectiveAt(portfolioEffectiveAt)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#deleteInstrumentEventInstruction");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **instrumentEventInstructionId** | **String**| The id of the instruction to be deleted. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the instruction was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
 <a id="deleteKeyFromPortfolioAccessMetadata"></a>
 # **deleteKeyFromPortfolioAccessMetadata**
@@ -501,6 +581,86 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The aggregated returns grouped by return stream. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getInstrumentEventInstruction"></a>
+# **getInstrumentEventInstruction**
+> InstrumentEventInstruction getInstrumentEventInstruction(scope, code, instrumentEventInstructionId).portfolioEffectiveAt(portfolioEffectiveAt).asAt(asAt).execute();
+
+[EARLY ACCESS] GetInstrumentEventInstruction: Get Instrument Event Instruction
+
+Get a particular instruction for a particular portfolio
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio.
+    String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+    String instrumentEventInstructionId = "instrumentEventInstructionId_example"; // String | The id of the instruction to be retrieved.
+    String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instruction. Defaults to return the latest version of the instruction if not specified.
+    try {
+      InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId)
+            .portfolioEffectiveAt(portfolioEffectiveAt)
+            .asAt(asAt)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#getInstrumentEventInstruction");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **instrumentEventInstructionId** | **String**| The id of the instruction to be retrieved. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instruction. Defaults to return the latest version of the instruction if not specified. | [optional] |
+
+### Return type
+
+[**InstrumentEventInstruction**](InstrumentEventInstruction.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested instrument event instruction |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -1946,6 +2106,85 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated definition of the portfolio |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="upsertInstrumentEventInstructions"></a>
+# **upsertInstrumentEventInstructions**
+> InstrumentEventInstructionsResponse upsertInstrumentEventInstructions(scope, code, successMode, requestBody).portfolioEffectiveAt(portfolioEffectiveAt).execute();
+
+[EARLY ACCESS] UpsertInstrumentEventInstructions: Upsert Instrument Event Instructions
+
+Batch upsert for instrument event instructions, for the portfolio or individual holdings
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio.
+    String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+    String successMode = "Partial"; // String | Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default)
+    Map<String, InstrumentEventInstructionRequest> requestBody = new HashMap(); // Map<String, InstrumentEventInstructionRequest> | The instructions to be upserted to the portfolio.
+    String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+    try {
+      InstrumentEventInstructionsResponse result = apiInstance.upsertInstrumentEventInstructions(scope, code, successMode, requestBody)
+            .portfolioEffectiveAt(portfolioEffectiveAt)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#upsertInstrumentEventInstructions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **successMode** | **String**| Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default) | [default to Partial] |
+| **requestBody** | [**Map&lt;String, InstrumentEventInstructionRequest&gt;**](InstrumentEventInstructionRequest.md)| The instructions to be upserted to the portfolio. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+
+### Return type
+
+[**InstrumentEventInstructionsResponse**](InstrumentEventInstructionsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The newly inserted or updated instrument event instructions |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

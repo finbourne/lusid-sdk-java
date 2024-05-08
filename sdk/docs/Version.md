@@ -18,7 +18,7 @@ The version metadata.
 |**requestIdModified** | **String** | The unique request id of the command that last updated the entity (including its properties) in LUSID. |  [optional] |
 |**asAtVersionNumber** | **Integer** | The integer version number for the entity (the entity was created at version 1) |  [optional] |
 |**entityUniqueId** | **String** | The unique id of the entity |  [optional] |
-|**stagedModificationIdModified** | **String** | The ID of the staged change that resulted in the most recent modification. |  [optional] [readonly] |
+|**stagedModificationIdModified** | **String** | The ID of the staged change that resulted in the most recent modification. |  [optional] |
 
 
 
