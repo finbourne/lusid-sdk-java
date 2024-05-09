@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.RequestedChanges;
 import com.finbourne.lusid.model.StagedModificationDecision;
 import com.finbourne.lusid.model.StagedModificationStagingRule;
@@ -112,6 +113,10 @@ public class StagedModification {
   public static final String SERIALIZED_NAME_ENTITY_HREFS = "entityHrefs";
   @SerializedName(SERIALIZED_NAME_ENTITY_HREFS)
   private StagedModificationsEntityHrefs entityHrefs;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
 
   public StagedModification() {
   }
@@ -418,6 +423,35 @@ public class StagedModification {
   }
 
 
+  public StagedModification links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public StagedModification addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -441,7 +475,8 @@ public class StagedModification {
         Objects.equals(this.scope, stagedModification.scope) &&
         Objects.equals(this.entityUniqueId, stagedModification.entityUniqueId) &&
         Objects.equals(this.requestedChanges, stagedModification.requestedChanges) &&
-        Objects.equals(this.entityHrefs, stagedModification.entityHrefs);
+        Objects.equals(this.entityHrefs, stagedModification.entityHrefs) &&
+        Objects.equals(this.links, stagedModification.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -450,7 +485,7 @@ public class StagedModification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, entityType, scope, entityUniqueId, requestedChanges, entityHrefs);
+    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -478,6 +513,7 @@ public class StagedModification {
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    requestedChanges: ").append(toIndentedString(requestedChanges)).append("\n");
     sb.append("    entityHrefs: ").append(toIndentedString(entityHrefs)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -514,6 +550,7 @@ public class StagedModification {
     openapiFields.add("entityUniqueId");
     openapiFields.add("requestedChanges");
     openapiFields.add("entityHrefs");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -581,6 +618,20 @@ public class StagedModification {
       // validate the optional field `entityHrefs`
       if (jsonObj.get("entityHrefs") != null && !jsonObj.get("entityHrefs").isJsonNull()) {
         StagedModificationsEntityHrefs.validateJsonElement(jsonObj.get("entityHrefs"));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
   }
 

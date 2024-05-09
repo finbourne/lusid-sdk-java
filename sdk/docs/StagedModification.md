@@ -21,6 +21,7 @@
 |**entityUniqueId** | **String** | The unique Id of the entity the staged modification applies to. |  [optional] |
 |**requestedChanges** | [**RequestedChanges**](RequestedChanges.md) |  |  [optional] |
 |**entityHrefs** | [**StagedModificationsEntityHrefs**](StagedModificationsEntityHrefs.md) |  |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 

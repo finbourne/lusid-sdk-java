@@ -14,6 +14,7 @@
 |**rules** | [**List&lt;StagingRule&gt;**](StagingRule.md) | The list of staging rules that apply to a specific entity type. |  |
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 

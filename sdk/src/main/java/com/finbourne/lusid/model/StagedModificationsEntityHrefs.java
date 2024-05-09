@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +19,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -62,6 +65,10 @@ public class StagedModificationsEntityHrefs {
   public static final String SERIALIZED_NAME_LATEST = "latest";
   @SerializedName(SERIALIZED_NAME_LATEST)
   private URI latest;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
 
   public StagedModificationsEntityHrefs() {
   }
@@ -129,6 +136,35 @@ public class StagedModificationsEntityHrefs {
   }
 
 
+  public StagedModificationsEntityHrefs links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public StagedModificationsEntityHrefs addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +177,8 @@ public class StagedModificationsEntityHrefs {
     StagedModificationsEntityHrefs stagedModificationsEntityHrefs = (StagedModificationsEntityHrefs) o;
     return Objects.equals(this.whenStaged, stagedModificationsEntityHrefs.whenStaged) &&
         Objects.equals(this.preview, stagedModificationsEntityHrefs.preview) &&
-        Objects.equals(this.latest, stagedModificationsEntityHrefs.latest);
+        Objects.equals(this.latest, stagedModificationsEntityHrefs.latest) &&
+        Objects.equals(this.links, stagedModificationsEntityHrefs.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +187,7 @@ public class StagedModificationsEntityHrefs {
 
   @Override
   public int hashCode() {
-    return Objects.hash(whenStaged, preview, latest);
+    return Objects.hash(whenStaged, preview, latest, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +204,7 @@ public class StagedModificationsEntityHrefs {
     sb.append("    whenStaged: ").append(toIndentedString(whenStaged)).append("\n");
     sb.append("    preview: ").append(toIndentedString(preview)).append("\n");
     sb.append("    latest: ").append(toIndentedString(latest)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,6 +230,7 @@ public class StagedModificationsEntityHrefs {
     openapiFields.add("whenStaged");
     openapiFields.add("preview");
     openapiFields.add("latest");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -218,6 +257,20 @@ public class StagedModificationsEntityHrefs {
       }
       if ((jsonObj.get("latest") != null && !jsonObj.get("latest").isJsonNull()) && !jsonObj.get("latest").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `latest` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latest").toString()));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
   }
 

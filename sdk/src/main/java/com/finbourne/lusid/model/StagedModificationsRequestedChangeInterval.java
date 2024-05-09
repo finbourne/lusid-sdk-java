@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.StagedModificationEffectiveRange;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -18,7 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -70,6 +73,10 @@ public class StagedModificationsRequestedChangeInterval {
   public static final String SERIALIZED_NAME_AS_AT_BASIS = "asAtBasis";
   @SerializedName(SERIALIZED_NAME_AS_AT_BASIS)
   private String asAtBasis;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
 
   public StagedModificationsRequestedChangeInterval() {
   }
@@ -179,6 +186,35 @@ public class StagedModificationsRequestedChangeInterval {
   }
 
 
+  public StagedModificationsRequestedChangeInterval links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public StagedModificationsRequestedChangeInterval addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,7 +229,8 @@ public class StagedModificationsRequestedChangeInterval {
         Objects.equals(this.effectiveRange, stagedModificationsRequestedChangeInterval.effectiveRange) &&
         Objects.equals(this.previousValue, stagedModificationsRequestedChangeInterval.previousValue) &&
         Objects.equals(this.newValue, stagedModificationsRequestedChangeInterval.newValue) &&
-        Objects.equals(this.asAtBasis, stagedModificationsRequestedChangeInterval.asAtBasis);
+        Objects.equals(this.asAtBasis, stagedModificationsRequestedChangeInterval.asAtBasis) &&
+        Objects.equals(this.links, stagedModificationsRequestedChangeInterval.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -202,7 +239,7 @@ public class StagedModificationsRequestedChangeInterval {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributeName, effectiveRange, previousValue, newValue, asAtBasis);
+    return Objects.hash(attributeName, effectiveRange, previousValue, newValue, asAtBasis, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,6 +258,7 @@ public class StagedModificationsRequestedChangeInterval {
     sb.append("    previousValue: ").append(toIndentedString(previousValue)).append("\n");
     sb.append("    newValue: ").append(toIndentedString(newValue)).append("\n");
     sb.append("    asAtBasis: ").append(toIndentedString(asAtBasis)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -248,6 +286,7 @@ public class StagedModificationsRequestedChangeInterval {
     openapiFields.add("previousValue");
     openapiFields.add("newValue");
     openapiFields.add("asAtBasis");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -275,6 +314,20 @@ public class StagedModificationsRequestedChangeInterval {
       }
       if ((jsonObj.get("asAtBasis") != null && !jsonObj.get("asAtBasis").isJsonNull()) && !jsonObj.get("asAtBasis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `asAtBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asAtBasis").toString()));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
   }
 
