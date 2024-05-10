@@ -66,7 +66,7 @@ public class Account {
   private String type;
 
   /**
-   * The Account status. Can be Active, Inactive or Deleted. Defaults to Active. The available values are: Active, Inactive, Deleted
+   * The Account status. Can be Active, Inactive or Deleted. The available values are: Active, Inactive, Deleted
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -199,7 +199,7 @@ public class Account {
   }
 
    /**
-   * The Account status. Can be Active, Inactive or Deleted. Defaults to Active. The available values are: Active, Inactive, Deleted
+   * The Account status. Can be Active, Inactive or Deleted. The available values are: Active, Inactive, Deleted
    * @return status
   **/
   @jakarta.annotation.Nonnull
