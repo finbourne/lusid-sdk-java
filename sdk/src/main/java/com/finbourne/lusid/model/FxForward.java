@@ -212,7 +212,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * The foreign (other) currency of the instrument. In the NDF case, only payments are made in the domestic currency.  For the outright forward, currencies are exchanged. By domestic is then that of the portfolio.
+   * The foreign (other) currency of the instrument. In the NDF case, only payments are made in the domestic currency.  For the outright forward, currencies are exchanged.
    * @return fgnCcy
   **/
   @jakarta.annotation.Nonnull
