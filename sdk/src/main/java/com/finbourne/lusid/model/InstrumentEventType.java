@@ -73,7 +73,9 @@ public enum InstrumentEventType {
   
   STOCKDIVIDENDEVENT("StockDividendEvent"),
   
-  REVERSESTOCKSPLITEVENT("ReverseStockSplitEvent");
+  REVERSESTOCKSPLITEVENT("ReverseStockSplitEvent"),
+  
+  CAPITALDISTRIBUTIONEVENT("CapitalDistributionEvent");
 
   private String value;
 

@@ -55,5 +55,7 @@
 
 * `REVERSESTOCKSPLITEVENT` (value: `"ReverseStockSplitEvent"`)
 
+* `CAPITALDISTRIBUTIONEVENT` (value: `"CapitalDistributionEvent"`)
+
 
 
