@@ -73,6 +73,8 @@
 
 * `FUND` (value: `"Fund"`)
 
+* `FEE` (value: `"Fee"`)
+
 * `RECONCILIATION` (value: `"Reconciliation"`)
 
 * `PROPERTYDEFINITION` (value: `"PropertyDefinition"`)

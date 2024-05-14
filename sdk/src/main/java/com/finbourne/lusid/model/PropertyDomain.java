@@ -93,6 +93,8 @@ public enum PropertyDomain {
   
   FUND("Fund"),
   
+  FEE("Fee"),
+  
   RECONCILIATION("Reconciliation"),
   
   PROPERTYDEFINITION("PropertyDefinition"),
