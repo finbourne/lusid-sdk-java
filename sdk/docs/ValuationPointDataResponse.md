@@ -15,7 +15,7 @@ The Valuation Point Data Response for the Fund and specified date.
 |**dealing** | **Map&lt;String, java.math.BigDecimal&gt;** | Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period. |  |
 |**pnL** | **Map&lt;String, java.math.BigDecimal&gt;** | Bucket of detail for &#39;PnL&#39; that has occured inside the queried period. |  |
 |**gav** | **java.math.BigDecimal** | The Gross Asset Value of the Fund at the Period end. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;. |  |
-|**fees** | **Map&lt;String, java.math.BigDecimal&gt;** | Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period. |  |
+|**fees** | [**Map&lt;String, FeeAccrual&gt;**](FeeAccrual.md) | Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period. |  |
 |**nav** | **java.math.BigDecimal** | The Net Asset Value of the Fund at the Period end. This represents the GAV with any fees applied in the period. |  |
 |**previousNav** | **java.math.BigDecimal** | The Net Asset Value of the Fund at the End of the last Period. |  |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |

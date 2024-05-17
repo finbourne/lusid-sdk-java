@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -86,7 +87,7 @@ public class ValuationPointDataResponse {
 
   public static final String SERIALIZED_NAME_FEES = "fees";
   @SerializedName(SERIALIZED_NAME_FEES)
-  private Map<String, java.math.BigDecimal> fees = new HashMap<>();
+  private Map<String, FeeAccrual> fees = new HashMap<>();
 
   public static final String SERIALIZED_NAME_NAV = "nav";
   @SerializedName(SERIALIZED_NAME_NAV)
@@ -274,13 +275,13 @@ public class ValuationPointDataResponse {
   }
 
 
-  public ValuationPointDataResponse fees(Map<String, java.math.BigDecimal> fees) {
+  public ValuationPointDataResponse fees(Map<String, FeeAccrual> fees) {
     
     this.fees = fees;
     return this;
   }
 
-  public ValuationPointDataResponse putFeesItem(String key, java.math.BigDecimal feesItem) {
+  public ValuationPointDataResponse putFeesItem(String key, FeeAccrual feesItem) {
     if (this.fees == null) {
       this.fees = new HashMap<>();
     }
@@ -293,12 +294,12 @@ public class ValuationPointDataResponse {
    * @return fees
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, java.math.BigDecimal> getFees() {
+  public Map<String, FeeAccrual> getFees() {
     return fees;
   }
 
 
-  public void setFees(Map<String, java.math.BigDecimal> fees) {
+  public void setFees(Map<String, FeeAccrual> fees) {
     this.fees = fees;
   }
 

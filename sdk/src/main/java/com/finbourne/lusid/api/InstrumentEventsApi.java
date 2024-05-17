@@ -27,10 +27,13 @@ import java.io.IOException;
 import com.finbourne.lusid.model.BucketedCashFlowResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.QueryApplicableInstrumentEventsRequest;
 import com.finbourne.lusid.model.QueryBucketedCashFlowsRequest;
 import com.finbourne.lusid.model.QueryCashFlowsRequest;
 import com.finbourne.lusid.model.QueryInstrumentEventsRequest;
 import com.finbourne.lusid.model.QueryTradeTicketsRequest;
+import com.finbourne.lusid.model.ResourceListOfApplicableInstrumentEvent;
 import com.finbourne.lusid.model.ResourceListOfInstrumentCashFlow;
 import com.finbourne.lusid.model.ResourceListOfInstrumentEventHolder;
 import com.finbourne.lusid.model.ResourceListOfPortfolioTradeTicket;
@@ -78,6 +81,221 @@ public class InstrumentEventsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call queryApplicableInstrumentEventsCall(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = queryApplicableInstrumentEventsRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/instrumentevents/$queryApplicableInstrumentEvents";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call queryApplicableInstrumentEventsValidateBeforeCall(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
+        return queryApplicableInstrumentEventsCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+
+    }
+
+
+    private ApiResponse<ResourceListOfApplicableInstrumentEvent> queryApplicableInstrumentEventsWithHttpInfo(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest) throws ApiException {
+        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, null);
+        Type localVarReturnType = new TypeToken<ResourceListOfApplicableInstrumentEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call queryApplicableInstrumentEventsAsync(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback<ResourceListOfApplicableInstrumentEvent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceListOfApplicableInstrumentEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIqueryApplicableInstrumentEventsRequest {
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String page;
+        private QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest;
+
+        private APIqueryApplicableInstrumentEventsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The as at time to use. (optional)
+         * @return APIqueryApplicableInstrumentEventsRequest
+         */
+        public APIqueryApplicableInstrumentEventsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
+         * @return APIqueryApplicableInstrumentEventsRequest
+         */
+        public APIqueryApplicableInstrumentEventsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this (optional)
+         * @return APIqueryApplicableInstrumentEventsRequest
+         */
+        public APIqueryApplicableInstrumentEventsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set queryApplicableInstrumentEventsRequest
+         * @param queryApplicableInstrumentEventsRequest The filter parameters used to retrieve applicable instrument events. (optional)
+         * @return APIqueryApplicableInstrumentEventsRequest
+         */
+        public APIqueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest(QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest) {
+            this.queryApplicableInstrumentEventsRequest = queryApplicableInstrumentEventsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for queryApplicableInstrumentEvents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryApplicableInstrumentEventsCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+        }
+
+        /**
+         * Execute queryApplicableInstrumentEvents request
+         * @return ResourceListOfApplicableInstrumentEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfApplicableInstrumentEvent execute() throws ApiException {
+            ApiResponse<ResourceListOfApplicableInstrumentEvent> localVarResp = queryApplicableInstrumentEventsWithHttpInfo(asAt, limit, page, queryApplicableInstrumentEventsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryApplicableInstrumentEvents request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfApplicableInstrumentEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfApplicableInstrumentEvent> executeWithHttpInfo() throws ApiException {
+            return queryApplicableInstrumentEventsWithHttpInfo(asAt, limit, page, queryApplicableInstrumentEventsRequest);
+        }
+
+        /**
+         * Execute queryApplicableInstrumentEvents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfApplicableInstrumentEvent> _callback) throws ApiException {
+            return queryApplicableInstrumentEventsAsync(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
+     * Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
+     * @return APIqueryApplicableInstrumentEventsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIqueryApplicableInstrumentEventsRequest queryApplicableInstrumentEvents() {
+        return new APIqueryApplicableInstrumentEventsRequest();
+    }
     private okhttp3.Call queryBucketedCashFlowsCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers

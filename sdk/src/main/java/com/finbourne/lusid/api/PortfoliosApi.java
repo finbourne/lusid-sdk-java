@@ -40,6 +40,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
+import com.finbourne.lusid.model.PagedResourceListOfInstrumentEventInstruction;
 import com.finbourne.lusid.model.PerformanceReturn;
 import com.finbourne.lusid.model.Portfolio;
 import com.finbourne.lusid.model.PortfolioProperties;
@@ -4400,6 +4401,269 @@ public class PortfoliosApi {
      */
     public APIgetPortfoliosAccessMetadataByKeyRequest getPortfoliosAccessMetadataByKey(String scope, String code, String metadataKey) {
         return new APIgetPortfoliosAccessMetadataByKeyRequest(scope, code, metadataKey);
+    }
+    private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/instrumenteventinstructions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listInstrumentEventInstructions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listInstrumentEventInstructions(Async)");
+        }
+
+        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, null);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistInstrumentEventInstructionsRequest {
+        private final String scope;
+        private final String code;
+        private String portfolioEffectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistInstrumentEventInstructionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the instructions. Defaults to latest if not specified. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listInstrumentEventInstructions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listInstrumentEventInstructions request
+         * @return PagedResourceListOfInstrumentEventInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfInstrumentEventInstruction execute() throws ApiException {
+            ApiResponse<PagedResourceListOfInstrumentEventInstruction> localVarResp = listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listInstrumentEventInstructions request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfInstrumentEventInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfInstrumentEventInstruction> executeWithHttpInfo() throws ApiException {
+            return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listInstrumentEventInstructions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
+            return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ListInstrumentEventInstructions: List Instrument Event Instructions
+     * Lists all instructions for a particular portfolio
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIlistInstrumentEventInstructionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistInstrumentEventInstructionsRequest listInstrumentEventInstructions(String scope, String code) {
+        return new APIlistInstrumentEventInstructionsRequest(scope, code);
     }
     private okhttp3.Call listPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
