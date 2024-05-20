@@ -75,7 +75,7 @@ public class PortfolioEntityId {
    * The scope within which the portfolio or portfolio group lives.
    * @return scope
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getScope() {
     return scope;
   }
@@ -96,7 +96,7 @@ public class PortfolioEntityId {
    * Portfolio name or code.
    * @return code
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getCode() {
     return code;
   }
@@ -194,6 +194,8 @@ public class PortfolioEntityId {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("scope");
+    openapiRequiredFields.add("code");
   }
 
  /**
@@ -208,11 +210,18 @@ public class PortfolioEntityId {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortfolioEntityId is not found in the empty JSON string", PortfolioEntityId.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : PortfolioEntityId.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+      if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("portfolioEntityType") != null && !jsonObj.get("portfolioEntityType").isJsonNull()) && !jsonObj.get("portfolioEntityType").isJsonPrimitive()) {

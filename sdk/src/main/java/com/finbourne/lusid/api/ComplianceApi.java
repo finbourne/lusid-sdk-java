@@ -26,8 +26,10 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.ComplianceRuleResponse;
 import com.finbourne.lusid.model.ComplianceRuleResultV2;
+import com.finbourne.lusid.model.ComplianceRuleTemplate;
 import com.finbourne.lusid.model.ComplianceRunInfoV2;
 import com.finbourne.lusid.model.ComplianceTemplate;
+import com.finbourne.lusid.model.CreateComplianceTemplateRequest;
 import com.finbourne.lusid.model.DecoratedComplianceRunSummary;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -36,6 +38,7 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfComplianceRuleResponse;
 import com.finbourne.lusid.model.PagedResourceListOfComplianceRunInfoV2;
 import com.finbourne.lusid.model.PagedResourceListOfComplianceTemplate;
+import com.finbourne.lusid.model.UpdateComplianceTemplateRequest;
 import com.finbourne.lusid.model.UpsertComplianceRuleRequest;
 import com.finbourne.lusid.model.UpsertComplianceRunSummaryRequest;
 import com.finbourne.lusid.model.UpsertComplianceRunSummaryResult;
@@ -83,6 +86,182 @@ public class ComplianceApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call createComplianceTemplateCall(String scope, CreateComplianceTemplateRequest createComplianceTemplateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createComplianceTemplateRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/templates/{scope}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createComplianceTemplateValidateBeforeCall(String scope, CreateComplianceTemplateRequest createComplianceTemplateRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling createComplianceTemplate(Async)");
+        }
+
+        // verify the required parameter 'createComplianceTemplateRequest' is set
+        if (createComplianceTemplateRequest == null) {
+            throw new ApiException("Missing the required parameter 'createComplianceTemplateRequest' when calling createComplianceTemplate(Async)");
+        }
+
+        return createComplianceTemplateCall(scope, createComplianceTemplateRequest, _callback);
+
+    }
+
+
+    private ApiResponse<ComplianceRuleTemplate> createComplianceTemplateWithHttpInfo(String scope, CreateComplianceTemplateRequest createComplianceTemplateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createComplianceTemplateValidateBeforeCall(scope, createComplianceTemplateRequest, null);
+        Type localVarReturnType = new TypeToken<ComplianceRuleTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createComplianceTemplateAsync(String scope, CreateComplianceTemplateRequest createComplianceTemplateRequest, final ApiCallback<ComplianceRuleTemplate> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createComplianceTemplateValidateBeforeCall(scope, createComplianceTemplateRequest, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceRuleTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateComplianceTemplateRequest {
+        private final String scope;
+        private final CreateComplianceTemplateRequest createComplianceTemplateRequest;
+
+        private APIcreateComplianceTemplateRequest(String scope, CreateComplianceTemplateRequest createComplianceTemplateRequest) {
+            this.scope = scope;
+            this.createComplianceTemplateRequest = createComplianceTemplateRequest;
+        }
+
+        /**
+         * Build call for createComplianceTemplate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createComplianceTemplateCall(scope, createComplianceTemplateRequest, _callback);
+        }
+
+        /**
+         * Execute createComplianceTemplate request
+         * @return ComplianceRuleTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleTemplate execute() throws ApiException {
+            ApiResponse<ComplianceRuleTemplate> localVarResp = createComplianceTemplateWithHttpInfo(scope, createComplianceTemplateRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createComplianceTemplate request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRuleTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleTemplate> executeWithHttpInfo() throws ApiException {
+            return createComplianceTemplateWithHttpInfo(scope, createComplianceTemplateRequest);
+        }
+
+        /**
+         * Execute createComplianceTemplate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleTemplate> _callback) throws ApiException {
+            return createComplianceTemplateAsync(scope, createComplianceTemplateRequest, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CreateComplianceTemplate: Create a Compliance Rule Template
+     * Use this endpoint to create a compliance template.
+     * @param scope The scope of the Compliance Rule Template. (required)
+     * @param createComplianceTemplateRequest Request to create a compliance rule template. (required)
+     * @return APIcreateComplianceTemplateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created compliance rule template </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateComplianceTemplateRequest createComplianceTemplate(String scope, CreateComplianceTemplateRequest createComplianceTemplateRequest) {
+        return new APIcreateComplianceTemplateRequest(scope, createComplianceTemplateRequest);
+    }
     private okhttp3.Call deleteComplianceRuleCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -255,6 +434,179 @@ public class ComplianceApi {
      */
     public APIdeleteComplianceRuleRequest deleteComplianceRule(String scope, String code) {
         return new APIdeleteComplianceRuleRequest(scope, code);
+    }
+    private okhttp3.Call deleteComplianceTemplateCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/templates/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteComplianceTemplateValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteComplianceTemplate(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteComplianceTemplate(Async)");
+        }
+
+        return deleteComplianceTemplateCall(scope, code, _callback);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteComplianceTemplateWithHttpInfo(String scope, String code) throws ApiException {
+        okhttp3.Call localVarCall = deleteComplianceTemplateValidateBeforeCall(scope, code, null);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteComplianceTemplateAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteComplianceTemplateValidateBeforeCall(scope, code, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteComplianceTemplateRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteComplianceTemplateRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteComplianceTemplate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting a compliance rule template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteComplianceTemplateCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteComplianceTemplate request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting a compliance rule template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteComplianceTemplateWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteComplianceTemplate request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting a compliance rule template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteComplianceTemplateWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteComplianceTemplate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting a compliance rule template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteComplianceTemplateAsync(scope, code, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] DeleteComplianceTemplate: Delete a ComplianceRuleTemplate
+     * Delete the compliance rule template uniquely defined by the scope and code.
+     * @param scope The scope of the template to be deleted. (required)
+     * @param code The code of the template to be deleted. (required)
+     * @return APIdeleteComplianceTemplateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The response from deleting a compliance rule template. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteComplianceTemplateRequest deleteComplianceTemplate(String scope, String code) {
+        return new APIdeleteComplianceTemplateRequest(scope, code);
     }
     private okhttp3.Call getComplianceRuleCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1900,6 +2252,191 @@ public class ComplianceApi {
      */
     public APIrunComplianceRequest runCompliance(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) {
         return new APIrunComplianceRequest(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
+    }
+    private okhttp3.Call updateComplianceTemplateCall(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateComplianceTemplateRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/templates/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateComplianceTemplateValidateBeforeCall(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateComplianceTemplate(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateComplianceTemplate(Async)");
+        }
+
+        // verify the required parameter 'updateComplianceTemplateRequest' is set
+        if (updateComplianceTemplateRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateComplianceTemplateRequest' when calling updateComplianceTemplate(Async)");
+        }
+
+        return updateComplianceTemplateCall(scope, code, updateComplianceTemplateRequest, _callback);
+
+    }
+
+
+    private ApiResponse<ComplianceRuleTemplate> updateComplianceTemplateWithHttpInfo(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateComplianceTemplateValidateBeforeCall(scope, code, updateComplianceTemplateRequest, null);
+        Type localVarReturnType = new TypeToken<ComplianceRuleTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateComplianceTemplateAsync(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest, final ApiCallback<ComplianceRuleTemplate> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateComplianceTemplateValidateBeforeCall(scope, code, updateComplianceTemplateRequest, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceRuleTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateComplianceTemplateRequest {
+        private final String scope;
+        private final String code;
+        private final UpdateComplianceTemplateRequest updateComplianceTemplateRequest;
+
+        private APIupdateComplianceTemplateRequest(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updateComplianceTemplateRequest = updateComplianceTemplateRequest;
+        }
+
+        /**
+         * Build call for updateComplianceTemplate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateComplianceTemplateCall(scope, code, updateComplianceTemplateRequest, _callback);
+        }
+
+        /**
+         * Execute updateComplianceTemplate request
+         * @return ComplianceRuleTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleTemplate execute() throws ApiException {
+            ApiResponse<ComplianceRuleTemplate> localVarResp = updateComplianceTemplateWithHttpInfo(scope, code, updateComplianceTemplateRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateComplianceTemplate request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRuleTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleTemplate> executeWithHttpInfo() throws ApiException {
+            return updateComplianceTemplateWithHttpInfo(scope, code, updateComplianceTemplateRequest);
+        }
+
+        /**
+         * Execute updateComplianceTemplate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated compliance rule template </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleTemplate> _callback) throws ApiException {
+            return updateComplianceTemplateAsync(scope, code, updateComplianceTemplateRequest, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate
+     * Use this endpoint to update a specified compliance template.
+     * @param scope The scope of the Compliance Rule Template. (required)
+     * @param code The code of the Compliance Rule Template. (required)
+     * @param updateComplianceTemplateRequest Request to update a compliance rule template. (required)
+     * @return APIupdateComplianceTemplateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated compliance rule template </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateComplianceTemplateRequest updateComplianceTemplate(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest) {
+        return new APIupdateComplianceTemplateRequest(scope, code, updateComplianceTemplateRequest);
     }
     private okhttp3.Call upsertComplianceRuleCall(UpsertComplianceRuleRequest upsertComplianceRuleRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
