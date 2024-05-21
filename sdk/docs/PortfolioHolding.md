@@ -26,6 +26,7 @@ A list of holdings.
 |**amortisedCostPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**variationMargin** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**variationMarginPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**settlementSchedule** | [**List&lt;SettlementSchedule&gt;**](SettlementSchedule.md) | Where no. of days ahead has been specified, future dated settlements will be captured here. |  [optional] |
 
 
 

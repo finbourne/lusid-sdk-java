@@ -908,7 +908,7 @@ public class Example {
 
 <a id="getHoldingsForPortfolioGroup"></a>
 # **getHoldingsForPortfolioGroup**
-> VersionedResourceListOfPortfolioHolding getHoldingsForPortfolioGroup(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).execute();
+> VersionedResourceListOfPortfolioHolding getHoldingsForPortfolioGroup(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).includeSettlementEventsAfterDays(includeSettlementEventsAfterDays).execute();
 
 GetHoldingsForPortfolioGroup: Get holdings for transaction portfolios in portfolio group
 
@@ -941,6 +941,7 @@ public class Example {
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\" or \"Portfolio\" domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/Cost\".
     Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
+    Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
     try {
       VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldingsForPortfolioGroup(scope, code)
             .effectiveAt(effectiveAt)
@@ -948,6 +949,7 @@ public class Example {
             .filter(filter)
             .propertyKeys(propertyKeys)
             .byTaxlots(byTaxlots)
+            .includeSettlementEventsAfterDays(includeSettlementEventsAfterDays)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -972,6 +974,7 @@ public class Example {
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
 | **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
+| **includeSettlementEventsAfterDays** | **Integer**| Number of days ahead to bring back settlements from, in relation to the specified effectiveAt | [optional] |
 
 ### Return type
 

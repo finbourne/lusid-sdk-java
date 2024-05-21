@@ -1410,7 +1410,7 @@ public class Example {
 
 <a id="getHoldings"></a>
 # **getHoldings**
-> VersionedResourceListOfPortfolioHolding getHoldings(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).execute();
+> VersionedResourceListOfPortfolioHolding getHoldings(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).includeSettlementEventsAfterDays(includeSettlementEventsAfterDays).execute();
 
 GetHoldings: Get holdings
 
@@ -1443,6 +1443,7 @@ public class Example {
     String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Holding Type, use \"holdingType eq 'p'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\", \"Custodian Account\" or \"Portfolio\" domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \"Instrument/system/Name\" or \"Holding/system/Cost\".
     Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
+    Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
     try {
       VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code)
             .effectiveAt(effectiveAt)
@@ -1450,6 +1451,7 @@ public class Example {
             .filter(filter)
             .propertyKeys(propertyKeys)
             .byTaxlots(byTaxlots)
+            .includeSettlementEventsAfterDays(includeSettlementEventsAfterDays)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1474,6 +1476,7 @@ public class Example {
 | **filter** | **String**| Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
 | **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
+| **includeSettlementEventsAfterDays** | **Integer**| Number of days ahead to bring back settlements from, in relation to the specified effectiveAt | [optional] |
 
 ### Return type
 
@@ -1577,7 +1580,7 @@ public class Example {
 
 <a id="getHoldingsWithOrders"></a>
 # **getHoldingsWithOrders**
-> VersionedResourceListWithWarningsOfPortfolioHolding getHoldingsWithOrders(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).recipeIdScope(recipeIdScope).recipeIdCode(recipeIdCode).execute();
+> VersionedResourceListWithWarningsOfPortfolioHolding getHoldingsWithOrders(scope, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).propertyKeys(propertyKeys).byTaxlots(byTaxlots).recipeIdScope(recipeIdScope).recipeIdCode(recipeIdCode).includeSettlementEventsAfterDays(includeSettlementEventsAfterDays).execute();
 
 [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
 
@@ -1612,6 +1615,7 @@ public class Example {
     Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
     String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
     String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeId
+    Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
     try {
       VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.getHoldingsWithOrders(scope, code)
             .effectiveAt(effectiveAt)
@@ -1621,6 +1625,7 @@ public class Example {
             .byTaxlots(byTaxlots)
             .recipeIdScope(recipeIdScope)
             .recipeIdCode(recipeIdCode)
+            .includeSettlementEventsAfterDays(includeSettlementEventsAfterDays)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1647,6 +1652,7 @@ public class Example {
 | **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeId | [optional] |
+| **includeSettlementEventsAfterDays** | **Integer**| Number of days ahead to bring back settlements from, in relation to the specified effectiveAt | [optional] |
 
 ### Return type
 

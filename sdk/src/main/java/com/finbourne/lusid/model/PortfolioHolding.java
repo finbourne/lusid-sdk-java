@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.SettlementSchedule;
 import com.finbourne.lusid.model.Transaction;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,8 +22,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -127,6 +130,10 @@ public class PortfolioHolding {
   public static final String SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY = "variationMarginPortfolioCcy";
   @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY)
   private CurrencyAndAmount variationMarginPortfolioCcy;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_SCHEDULE = "settlementSchedule";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_SCHEDULE)
+  private List<SettlementSchedule> settlementSchedule;
 
   public PortfolioHolding() {
   }
@@ -525,6 +532,35 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding settlementSchedule(List<SettlementSchedule> settlementSchedule) {
+    
+    this.settlementSchedule = settlementSchedule;
+    return this;
+  }
+
+  public PortfolioHolding addSettlementScheduleItem(SettlementSchedule settlementScheduleItem) {
+    if (this.settlementSchedule == null) {
+      this.settlementSchedule = new ArrayList<>();
+    }
+    this.settlementSchedule.add(settlementScheduleItem);
+    return this;
+  }
+
+   /**
+   * Where no. of days ahead has been specified, future dated settlements will be captured here.
+   * @return settlementSchedule
+  **/
+  @jakarta.annotation.Nullable
+  public List<SettlementSchedule> getSettlementSchedule() {
+    return settlementSchedule;
+  }
+
+
+  public void setSettlementSchedule(List<SettlementSchedule> settlementSchedule) {
+    this.settlementSchedule = settlementSchedule;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -552,7 +588,8 @@ public class PortfolioHolding {
         Objects.equals(this.amortisedCost, portfolioHolding.amortisedCost) &&
         Objects.equals(this.amortisedCostPortfolioCcy, portfolioHolding.amortisedCostPortfolioCcy) &&
         Objects.equals(this.variationMargin, portfolioHolding.variationMargin) &&
-        Objects.equals(this.variationMarginPortfolioCcy, portfolioHolding.variationMarginPortfolioCcy);
+        Objects.equals(this.variationMarginPortfolioCcy, portfolioHolding.variationMarginPortfolioCcy) &&
+        Objects.equals(this.settlementSchedule, portfolioHolding.settlementSchedule);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -561,7 +598,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -593,6 +630,7 @@ public class PortfolioHolding {
     sb.append("    amortisedCostPortfolioCcy: ").append(toIndentedString(amortisedCostPortfolioCcy)).append("\n");
     sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
     sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
+    sb.append("    settlementSchedule: ").append(toIndentedString(settlementSchedule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -633,6 +671,7 @@ public class PortfolioHolding {
     openapiFields.add("amortisedCostPortfolioCcy");
     openapiFields.add("variationMargin");
     openapiFields.add("variationMarginPortfolioCcy");
+    openapiFields.add("settlementSchedule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -706,6 +745,20 @@ public class PortfolioHolding {
       // validate the optional field `variationMarginPortfolioCcy`
       if (jsonObj.get("variationMarginPortfolioCcy") != null && !jsonObj.get("variationMarginPortfolioCcy").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("variationMarginPortfolioCcy"));
+      }
+      if (jsonObj.get("settlementSchedule") != null && !jsonObj.get("settlementSchedule").isJsonNull()) {
+        JsonArray jsonArraysettlementSchedule = jsonObj.getAsJsonArray("settlementSchedule");
+        if (jsonArraysettlementSchedule != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("settlementSchedule").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `settlementSchedule` to be an array in the JSON string but got `%s`", jsonObj.get("settlementSchedule").toString()));
+          }
+
+          // validate the optional field `settlementSchedule` (array)
+          for (int i = 0; i < jsonArraysettlementSchedule.size(); i++) {
+            SettlementSchedule.validateJsonElement(jsonArraysettlementSchedule.get(i));
+          };
+        }
       }
   }
 

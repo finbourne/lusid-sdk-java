@@ -2410,7 +2410,7 @@ public class PortfolioGroupsApi {
     public APIgetGroupPropertiesRequest getGroupProperties(String scope, String code) {
         return new APIgetGroupPropertiesRequest(scope, code);
     }
-    private okhttp3.Call getHoldingsForPortfolioGroupCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingsForPortfolioGroupCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2457,6 +2457,10 @@ public class PortfolioGroupsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("byTaxlots", byTaxlots));
         }
 
+        if (includeSettlementEventsAfterDays != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeSettlementEventsAfterDays", includeSettlementEventsAfterDays));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2479,7 +2483,7 @@ public class PortfolioGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsForPortfolioGroupValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingsForPortfolioGroupValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingsForPortfolioGroup(Async)");
@@ -2490,20 +2494,20 @@ public class PortfolioGroupsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getHoldingsForPortfolioGroup(Async)");
         }
 
-        return getHoldingsForPortfolioGroupCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
+        return getHoldingsForPortfolioGroupCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsForPortfolioGroupWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsForPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, null);
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsForPortfolioGroupWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsForPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingsForPortfolioGroupAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsForPortfolioGroupAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsForPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
+        okhttp3.Call localVarCall = getHoldingsForPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2517,6 +2521,7 @@ public class PortfolioGroupsApi {
         private String filter;
         private List<String> propertyKeys;
         private Boolean byTaxlots;
+        private Integer includeSettlementEventsAfterDays;
 
         private APIgetHoldingsForPortfolioGroupRequest(String scope, String code) {
             this.scope = scope;
@@ -2574,6 +2579,16 @@ public class PortfolioGroupsApi {
         }
 
         /**
+         * Set includeSettlementEventsAfterDays
+         * @param includeSettlementEventsAfterDays Number of days ahead to bring back settlements from, in relation to the specified effectiveAt (optional)
+         * @return APIgetHoldingsForPortfolioGroupRequest
+         */
+        public APIgetHoldingsForPortfolioGroupRequest includeSettlementEventsAfterDays(Integer includeSettlementEventsAfterDays) {
+            this.includeSettlementEventsAfterDays = includeSettlementEventsAfterDays;
+            return this;
+        }
+
+        /**
          * Build call for getHoldingsForPortfolioGroup
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2587,7 +2602,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getHoldingsForPortfolioGroupCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
+            return getHoldingsForPortfolioGroupCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
         }
 
         /**
@@ -2603,7 +2618,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public VersionedResourceListOfPortfolioHolding execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsForPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots);
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsForPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays);
             return localVarResp.getData();
         }
 
@@ -2620,7 +2635,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
-            return getHoldingsForPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots);
+            return getHoldingsForPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays);
         }
 
         /**
@@ -2637,7 +2652,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
-            return getHoldingsForPortfolioGroupAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, _callback);
+            return getHoldingsForPortfolioGroupAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
         }
     }
 
