@@ -8,6 +8,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteAmortisationRuleset**](AmortisationRuleSetsApi.md#deleteAmortisationRuleset) | **DELETE** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set. |
 | [**getAmortisationRuleSet**](AmortisationRuleSetsApi.md#getAmortisationRuleSet) | **GET** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] GetAmortisationRuleSet: Retrieve the definition of a single amortisation rule set |
 | [**listAmortisationRuleSets**](AmortisationRuleSetsApi.md#listAmortisationRuleSets) | **GET** /api/amortisation/rulesets | [EXPERIMENTAL] ListAmortisationRuleSets: List amortisation rule sets. |
+| [**setAmortisationRules**](AmortisationRuleSetsApi.md#setAmortisationRules) | **PUT** /api/amortisation/rulesets/{scope}/{code}/rules | [EXPERIMENTAL] SetAmortisationRules: Set Amortisation Rules on an existing Amortisation Rule Set. |
 | [**updateAmortisationRuleSetDetails**](AmortisationRuleSetsApi.md#updateAmortisationRuleSetDetails) | **PUT** /api/amortisation/rulesets/{scope}/{code}/details | [EXPERIMENTAL] UpdateAmortisationRuleSetDetails: Update an amortisation rule set. |
 
 
@@ -316,6 +317,80 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | A list of rule sets available. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="setAmortisationRules"></a>
+# **setAmortisationRules**
+> AmortisationRuleSet setAmortisationRules(scope, code, setAmortisationRulesRequest).execute();
+
+[EXPERIMENTAL] SetAmortisationRules: Set Amortisation Rules on an existing Amortisation Rule Set.
+
+Sets the rules on the Amortisation Rule Set, replacing the existing rules with the set provided.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AmortisationRuleSetsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AmortisationRuleSetsApi apiInstance = new AmortisationRuleSetsApi(defaultClient);
+    String scope = "scope_example"; // String | The rule set scope.
+    String code = "code_example"; // String | The rule set code.
+    SetAmortisationRulesRequest setAmortisationRulesRequest = new SetAmortisationRulesRequest(); // SetAmortisationRulesRequest | The contents of the rules.
+    try {
+      AmortisationRuleSet result = apiInstance.setAmortisationRules(scope, code, setAmortisationRulesRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AmortisationRuleSetsApi#setAmortisationRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The rule set scope. | |
+| **code** | **String**| The rule set code. | |
+| **setAmortisationRulesRequest** | [**SetAmortisationRulesRequest**](SetAmortisationRulesRequest.md)| The contents of the rules. | |
+
+### Return type
+
+[**AmortisationRuleSet**](AmortisationRuleSet.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Update the rules for an amortisation rule set. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

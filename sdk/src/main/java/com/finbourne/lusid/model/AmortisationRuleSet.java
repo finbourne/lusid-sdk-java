@@ -11,9 +11,9 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.AmortisationRule;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.RulesInterval;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -73,9 +73,9 @@ public class AmortisationRuleSet {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_RULES = "rules";
-  @SerializedName(SERIALIZED_NAME_RULES)
-  private List<AmortisationRule> rules = new ArrayList<>();
+  public static final String SERIALIZED_NAME_RULES_INTERVAL = "rulesInterval";
+  @SerializedName(SERIALIZED_NAME_RULES_INTERVAL)
+  private RulesInterval rulesInterval;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -172,32 +172,24 @@ public class AmortisationRuleSet {
   }
 
 
-  public AmortisationRuleSet rules(List<AmortisationRule> rules) {
+  public AmortisationRuleSet rulesInterval(RulesInterval rulesInterval) {
     
-    this.rules = rules;
-    return this;
-  }
-
-  public AmortisationRuleSet addRulesItem(AmortisationRule rulesItem) {
-    if (this.rules == null) {
-      this.rules = new ArrayList<>();
-    }
-    this.rules.add(rulesItem);
+    this.rulesInterval = rulesInterval;
     return this;
   }
 
    /**
-   * The rules of this rule set.
-   * @return rules
+   * Get rulesInterval
+   * @return rulesInterval
   **/
   @jakarta.annotation.Nonnull
-  public List<AmortisationRule> getRules() {
-    return rules;
+  public RulesInterval getRulesInterval() {
+    return rulesInterval;
   }
 
 
-  public void setRules(List<AmortisationRule> rules) {
-    this.rules = rules;
+  public void setRulesInterval(RulesInterval rulesInterval) {
+    this.rulesInterval = rulesInterval;
   }
 
 
@@ -265,7 +257,7 @@ public class AmortisationRuleSet {
         Objects.equals(this.id, amortisationRuleSet.id) &&
         Objects.equals(this.displayName, amortisationRuleSet.displayName) &&
         Objects.equals(this.description, amortisationRuleSet.description) &&
-        Objects.equals(this.rules, amortisationRuleSet.rules) &&
+        Objects.equals(this.rulesInterval, amortisationRuleSet.rulesInterval) &&
         Objects.equals(this.version, amortisationRuleSet.version) &&
         Objects.equals(this.links, amortisationRuleSet.links);
   }
@@ -276,7 +268,7 @@ public class AmortisationRuleSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, rules, version, links);
+    return Objects.hash(href, id, displayName, description, rulesInterval, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -294,7 +286,7 @@ public class AmortisationRuleSet {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
+    sb.append("    rulesInterval: ").append(toIndentedString(rulesInterval)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -323,7 +315,7 @@ public class AmortisationRuleSet {
     openapiFields.add("id");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("rules");
+    openapiFields.add("rulesInterval");
     openapiFields.add("version");
     openapiFields.add("links");
 
@@ -331,7 +323,7 @@ public class AmortisationRuleSet {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("displayName");
-    openapiRequiredFields.add("rules");
+    openapiRequiredFields.add("rulesInterval");
   }
 
  /**
@@ -365,16 +357,8 @@ public class AmortisationRuleSet {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("rules").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
-      }
-
-      JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
-      // validate the required field `rules` (array)
-      for (int i = 0; i < jsonArrayrules.size(); i++) {
-        AmortisationRule.validateJsonElement(jsonArrayrules.get(i));
-      };
+      // validate the required field `rulesInterval`
+      RulesInterval.validateJsonElement(jsonObj.get("rulesInterval"));
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));

@@ -11,7 +11,7 @@
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** | A user-friendly name. |  |
 |**description** | **String** | A description of what this rule set is for. |  [optional] |
-|**rules** | [**List&lt;AmortisationRule&gt;**](AmortisationRule.md) | The rules of this rule set. |  |
+|**rulesInterval** | [**RulesInterval**](RulesInterval.md) |  |  |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
