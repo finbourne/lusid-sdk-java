@@ -50,10 +50,10 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceStepRequest {
   /**
-   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, RecombineStepRequest, CheckStepRequest
+   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest
    */
-  @JsonAdapter(ComplianceStepTypeEnum.Adapter.class)
-  public enum ComplianceStepTypeEnum {
+  @JsonAdapter(ComplianceStepTypeRequestEnum.Adapter.class)
+  public enum ComplianceStepTypeRequestEnum {
     FILTERSTEPREQUEST("FilterStepRequest"),
     
     GROUPBYSTEPREQUEST("GroupByStepRequest"),
@@ -62,13 +62,11 @@ public class ComplianceStepRequest {
     
     BRANCHSTEPREQUEST("BranchStepRequest"),
     
-    RECOMBINESTEPREQUEST("RecombineStepRequest"),
-    
     CHECKSTEPREQUEST("CheckStepRequest");
 
     private String value;
 
-    ComplianceStepTypeEnum(String value) {
+    ComplianceStepTypeRequestEnum(String value) {
       this.value = value;
     }
 
@@ -81,8 +79,8 @@ public class ComplianceStepRequest {
       return String.valueOf(value);
     }
 
-    public static ComplianceStepTypeEnum fromValue(String value) {
-      for (ComplianceStepTypeEnum b : ComplianceStepTypeEnum.values()) {
+    public static ComplianceStepTypeRequestEnum fromValue(String value) {
+      for (ComplianceStepTypeRequestEnum b : ComplianceStepTypeRequestEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -90,45 +88,45 @@ public class ComplianceStepRequest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<ComplianceStepTypeEnum> {
+    public static class Adapter extends TypeAdapter<ComplianceStepTypeRequestEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ComplianceStepTypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ComplianceStepTypeRequestEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ComplianceStepTypeEnum read(final JsonReader jsonReader) throws IOException {
+      public ComplianceStepTypeRequestEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ComplianceStepTypeEnum.fromValue(value);
+        return ComplianceStepTypeRequestEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_COMPLIANCE_STEP_TYPE = "complianceStepType";
-  @SerializedName(SERIALIZED_NAME_COMPLIANCE_STEP_TYPE)
-  private ComplianceStepTypeEnum complianceStepType;
+  public static final String SERIALIZED_NAME_COMPLIANCE_STEP_TYPE_REQUEST = "complianceStepTypeRequest";
+  @SerializedName(SERIALIZED_NAME_COMPLIANCE_STEP_TYPE_REQUEST)
+  protected ComplianceStepTypeRequestEnum complianceStepTypeRequest;
 
   public ComplianceStepRequest() {
   }
 
-  public ComplianceStepRequest complianceStepType(ComplianceStepTypeEnum complianceStepType) {
+  public ComplianceStepRequest complianceStepTypeRequest(ComplianceStepTypeRequestEnum complianceStepTypeRequest) {
     
-    this.complianceStepType = complianceStepType;
+    this.complianceStepTypeRequest = complianceStepTypeRequest;
     return this;
   }
 
    /**
-   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, RecombineStepRequest, CheckStepRequest
-   * @return complianceStepType
+   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest
+   * @return complianceStepTypeRequest
   **/
   @jakarta.annotation.Nonnull
-  public ComplianceStepTypeEnum getComplianceStepType() {
-    return complianceStepType;
+  public ComplianceStepTypeRequestEnum getComplianceStepTypeRequest() {
+    return complianceStepTypeRequest;
   }
 
 
-  public void setComplianceStepType(ComplianceStepTypeEnum complianceStepType) {
-    this.complianceStepType = complianceStepType;
+  public void setComplianceStepTypeRequest(ComplianceStepTypeRequestEnum complianceStepTypeRequest) {
+    this.complianceStepTypeRequest = complianceStepTypeRequest;
   }
 
 
@@ -142,19 +140,19 @@ public class ComplianceStepRequest {
       return false;
     }
     ComplianceStepRequest complianceStepRequest = (ComplianceStepRequest) o;
-    return Objects.equals(this.complianceStepType, complianceStepRequest.complianceStepType);
+    return Objects.equals(this.complianceStepTypeRequest, complianceStepRequest.complianceStepTypeRequest);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(complianceStepType);
+    return Objects.hash(complianceStepTypeRequest);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ComplianceStepRequest {\n");
-    sb.append("    complianceStepType: ").append(toIndentedString(complianceStepType)).append("\n");
+    sb.append("    complianceStepTypeRequest: ").append(toIndentedString(complianceStepTypeRequest)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,11 +175,11 @@ public class ComplianceStepRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("complianceStepType");
+    openapiFields.add("complianceStepTypeRequest");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("complianceStepType");
+    openapiRequiredFields.add("complianceStepTypeRequest");
   }
 
  /**
@@ -197,46 +195,31 @@ public class ComplianceStepRequest {
         }
       }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ComplianceStepRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("complianceStepType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `complianceStepType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("complianceStepType").toString()));
+      String discriminatorValue = jsonElement.getAsJsonObject().get("complianceStepTypeRequest").getAsString();
+      switch (discriminatorValue) {
+        case "BranchStepRequest":
+          BranchStepRequest.validateJsonElement(jsonElement);
+          break;
+        case "CheckStepRequest":
+          CheckStepRequest.validateJsonElement(jsonElement);
+          break;
+        case "FilterStepRequest":
+          FilterStepRequest.validateJsonElement(jsonElement);
+          break;
+        case "GroupByStepRequest":
+          GroupByStepRequest.validateJsonElement(jsonElement);
+          break;
+        case "GroupFilterStepRequest":
+          GroupFilterStepRequest.validateJsonElement(jsonElement);
+          break;
+        case "IntermediateComplianceStepRequest":
+          IntermediateComplianceStepRequest.validateJsonElement(jsonElement);
+          break;
+        default:
+          throw new IllegalArgumentException(String.format("The value of the `complianceStepTypeRequest` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ComplianceStepRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ComplianceStepRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ComplianceStepRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ComplianceStepRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ComplianceStepRequest>() {
-           @Override
-           public void write(JsonWriter out, ComplianceStepRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ComplianceStepRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
 
  /**
   * Create an instance of ComplianceStepRequest given an JSON string

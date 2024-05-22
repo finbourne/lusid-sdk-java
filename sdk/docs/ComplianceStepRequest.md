@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**complianceStepType** | [**ComplianceStepTypeEnum**](#ComplianceStepTypeEnum) | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, RecombineStepRequest, CheckStepRequest |  |
+|**complianceStepTypeRequest** | [**ComplianceStepTypeRequestEnum**](#ComplianceStepTypeRequestEnum) | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest |  |
 
 
 
-## Enum: ComplianceStepTypeEnum
+## Enum: ComplianceStepTypeRequestEnum
 
 | Name | Value |
 |---- | -----|
@@ -19,7 +19,6 @@
 | GROUPBYSTEPREQUEST | &quot;GroupByStepRequest&quot; |
 | GROUPFILTERSTEPREQUEST | &quot;GroupFilterStepRequest&quot; |
 | BRANCHSTEPREQUEST | &quot;BranchStepRequest&quot; |
-| RECOMBINESTEPREQUEST | &quot;RecombineStepRequest&quot; |
 | CHECKSTEPREQUEST | &quot;CheckStepRequest&quot; |
 
 

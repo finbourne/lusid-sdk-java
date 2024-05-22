@@ -13,8 +13,6 @@
 
 * `BRANCHSTEPREQUEST` (value: `"BranchStepRequest"`)
 
-* `RECOMBINESTEPREQUEST` (value: `"RecombineStepRequest"`)
-
 * `CHECKSTEPREQUEST` (value: `"CheckStepRequest"`)
 
 

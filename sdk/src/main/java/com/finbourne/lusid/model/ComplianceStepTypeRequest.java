@@ -33,8 +33,6 @@ public enum ComplianceStepTypeRequest {
   
   BRANCHSTEPREQUEST("BranchStepRequest"),
   
-  RECOMBINESTEPREQUEST("RecombineStepRequest"),
-  
   CHECKSTEPREQUEST("CheckStepRequest");
 
   private String value;

@@ -172,6 +172,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.BranchStepRequest.class, new TypeSelector<com.finbourne.lusid.model.BranchStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.BranchStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BranchStepRequest", com.finbourne.lusid.model.BranchStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CalendarDependency.class, new TypeSelector<com.finbourne.lusid.model.CalendarDependency>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CalendarDependency> getClassForElement(JsonElement readElement) {
@@ -271,6 +280,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.CheckStepRequest.class, new TypeSelector<com.finbourne.lusid.model.CheckStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.CheckStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CheckStepRequest", com.finbourne.lusid.model.CheckStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CloseEvent.class, new TypeSelector<com.finbourne.lusid.model.CloseEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CloseEvent> getClassForElement(JsonElement readElement) {
@@ -356,6 +374,21 @@ public class JSON {
                         classByDiscriminatorValue.put("ComplianceStep", com.finbourne.lusid.model.ComplianceStep.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "complianceStepType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.ComplianceStepRequest.class, new TypeSelector<com.finbourne.lusid.model.ComplianceStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.ComplianceStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BranchStepRequest", com.finbourne.lusid.model.BranchStepRequest.class);
+                        classByDiscriminatorValue.put("CheckStepRequest", com.finbourne.lusid.model.CheckStepRequest.class);
+                        classByDiscriminatorValue.put("FilterStepRequest", com.finbourne.lusid.model.FilterStepRequest.class);
+                        classByDiscriminatorValue.put("GroupByStepRequest", com.finbourne.lusid.model.GroupByStepRequest.class);
+                        classByDiscriminatorValue.put("GroupFilterStepRequest", com.finbourne.lusid.model.GroupFilterStepRequest.class);
+                        classByDiscriminatorValue.put("IntermediateComplianceStepRequest", com.finbourne.lusid.model.IntermediateComplianceStepRequest.class);
+                        classByDiscriminatorValue.put("ComplianceStepRequest", com.finbourne.lusid.model.ComplianceStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.ConstantVolatilitySurface.class, new TypeSelector<com.finbourne.lusid.model.ConstantVolatilitySurface>() {
@@ -642,6 +675,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.FilterStepRequest.class, new TypeSelector<com.finbourne.lusid.model.FilterStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FilterStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FilterStepRequest", com.finbourne.lusid.model.FilterStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.FixedLeg.class, new TypeSelector<com.finbourne.lusid.model.FixedLeg>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FixedLeg> getClassForElement(JsonElement readElement) {
@@ -894,6 +936,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.GroupByStepRequest.class, new TypeSelector<com.finbourne.lusid.model.GroupByStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.GroupByStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("GroupByStepRequest", com.finbourne.lusid.model.GroupByStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.class, new TypeSelector<com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter> getClassForElement(JsonElement readElement) {
@@ -910,6 +961,15 @@ public class JSON {
                         classByDiscriminatorValue.put("GroupFilterStep", com.finbourne.lusid.model.GroupFilterStep.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "complianceStepType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.GroupFilterStepRequest.class, new TypeSelector<com.finbourne.lusid.model.GroupFilterStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.GroupFilterStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("GroupFilterStepRequest", com.finbourne.lusid.model.GroupFilterStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.IndexModelOptions.class, new TypeSelector<com.finbourne.lusid.model.IndexModelOptions>() {
@@ -1074,6 +1134,15 @@ public class JSON {
                         classByDiscriminatorValue.put("IntermediateComplianceStep", com.finbourne.lusid.model.IntermediateComplianceStep.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "complianceStepType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.IntermediateComplianceStepRequest.class, new TypeSelector<com.finbourne.lusid.model.IntermediateComplianceStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.IntermediateComplianceStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("IntermediateComplianceStepRequest", com.finbourne.lusid.model.IntermediateComplianceStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.IrVolCubeData.class, new TypeSelector<com.finbourne.lusid.model.IrVolCubeData>() {
@@ -1857,6 +1926,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BoolComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BoolListComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BranchStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BranchStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketedCashFlowRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketedCashFlowResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketingSchedule.CustomTypeAdapterFactory());
@@ -1885,6 +1955,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChartOfAccountsProperties.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChartOfAccountsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CheckStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CheckStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CleardownModuleDetails.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CleardownModuleRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CleardownModuleResponse.CustomTypeAdapterFactory());
@@ -1912,7 +1983,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceRuleUpsertResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceRunInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceRunInfoV2.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceSummaryRuleResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceSummaryRuleResultRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComplianceTemplate.CustomTypeAdapterFactory());
@@ -2062,6 +2132,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FileResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilterPredicateComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilterStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilterStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedLegAllOfOverrides.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedSchedule.CustomTypeAdapterFactory());
@@ -2117,8 +2188,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GetVirtualDocumentResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupBySelectorComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupByStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupByStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupOfMarketDataKeyRules.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupedResultOfAddressKey.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.HoldingAdjustment.CustomTypeAdapterFactory());
@@ -2169,6 +2242,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InterestRateSwap.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InterestRateSwaption.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IntermediateComplianceStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IntermediateComplianceStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IrVolCubeData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IrVolDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IsBusinessDayResponse.CustomTypeAdapterFactory());
