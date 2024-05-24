@@ -251,7 +251,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
+     * DeleteLegalEntity: Delete Legal Entity
      * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param idTypeScope The scope of the legal entity identifier type. (required)
      * @param idTypeCode The code of the legal entity identifier type. (required)
@@ -1102,7 +1102,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
+     * GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
      * Pass the Scope and Code of the Legal Entity identifier along with the Legal Entity code parameter to retrieve the associated Access Metadata
      * @param idTypeScope Scope of the Legal Entity identifier. (required)
      * @param idTypeCode Code of the Legal Entity identifier. (required)
@@ -1344,7 +1344,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetLegalEntity: Get Legal Entity
+     * GetLegalEntity: Get Legal Entity
      * Retrieve the definition of a legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
@@ -1818,7 +1818,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
+     * GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
      * List the complete time series of a legal entity property.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
@@ -2061,7 +2061,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity
+     * GetLegalEntityRelations: Get Relations for Legal Entity
      * Get relations for the specified Legal Entity
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
@@ -2303,7 +2303,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity
+     * GetLegalEntityRelationships: Get Relationships for Legal Entity
      * Get Relationships for the specified Legal Entity
      * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
      * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
@@ -2581,7 +2581,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] ListAllLegalEntities: List Legal Entities
+     * ListAllLegalEntities: List Legal Entities
      * List all legal entities which the user is entitled to see.
      * @return APIlistAllLegalEntitiesRequest
      * @http.response.details
@@ -2872,7 +2872,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] ListLegalEntities: List Legal Entities
+     * ListLegalEntities: List Legal Entities
      * List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
@@ -3482,7 +3482,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties
+     * SetLegalEntityProperties: Set Legal Entity Properties
      * Set properties of the legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
@@ -3831,7 +3831,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
+     * UpsertLegalEntity: Upsert Legal Entity
      * Create or update a legal entity
      * @param upsertLegalEntityRequest Request to create or update a legal entity. (required)
      * @return APIupsertLegalEntityRequest

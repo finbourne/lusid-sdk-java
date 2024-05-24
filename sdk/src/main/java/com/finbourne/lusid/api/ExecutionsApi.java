@@ -683,7 +683,7 @@ public class ExecutionsApi {
     }
 
     /**
-     * [EARLY ACCESS] ListExecutions: List Executions
+     * ListExecutions: List Executions
      * Fetch the last pre-AsAt date version of each execution in scope (does not fetch the entire history).
      * @return APIlistExecutionsRequest
      * @http.response.details
@@ -853,7 +853,7 @@ public class ExecutionsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertExecutions: Upsert Execution
+     * UpsertExecutions: Upsert Execution
      * Upsert; update existing executions with given ids, or create new executions otherwise.
      * @return APIupsertExecutionsRequest
      * @http.response.details

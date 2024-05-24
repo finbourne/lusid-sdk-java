@@ -967,7 +967,7 @@ public class CustomEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.
+     * GetCustomEntity: Get a Custom Entity instance.
      * Retrieve a Custom Entity instance by a specific entity type at a point in AsAt time.
      * @param entityType The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)
@@ -1741,7 +1741,7 @@ public class CustomEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType.
+     * ListCustomEntities: List Custom Entities of the specified entityType.
      * List all the Custom Entities matching particular criteria.
      * @param entityType The type of Custom Entity to list. (required)
      * @return APIlistCustomEntitiesRequest
@@ -2340,7 +2340,7 @@ public class CustomEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance
+     * UpsertCustomEntity: Upsert a Custom Entity instance
      * Insert the Custom Entity if it does not exist or update the Custom Entity with the supplied state if it does exist.
      * @param entityType The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. (required)
      * @param customEntityRequest The payload describing the Custom Entity instance. (required)

@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createRelationship**](RelationshipsApi.md#createRelationship) | **POST** /api/relationshipdefinitions/{scope}/{code}/relationships | [EARLY ACCESS] CreateRelationship: Create Relationship |
+| [**createRelationship**](RelationshipsApi.md#createRelationship) | **POST** /api/relationshipdefinitions/{scope}/{code}/relationships | CreateRelationship: Create Relationship |
 | [**deleteRelationship**](RelationshipsApi.md#deleteRelationship) | **POST** /api/relationshipdefinitions/{scope}/{code}/relationships/$delete | [EARLY ACCESS] DeleteRelationship: Delete Relationship |
 
 
@@ -12,7 +12,7 @@ All URIs are relative to *https://www.lusid.com/api*
 # **createRelationship**
 > CompleteRelationship createRelationship(scope, code, createRelationshipRequest).execute();
 
-[EARLY ACCESS] CreateRelationship: Create Relationship
+CreateRelationship: Create Relationship
 
 Create a relationship between two entity objects by their identifiers
 

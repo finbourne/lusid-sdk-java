@@ -683,7 +683,7 @@ public class OrdersApi {
     }
 
     /**
-     * [EARLY ACCESS] ListOrders: List Orders
+     * ListOrders: List Orders
      * Fetch the last pre-AsAt date version of each order with optional filtering (does not fetch the entire history).
      * @return APIlistOrdersRequest
      * @http.response.details
@@ -853,7 +853,7 @@ public class OrdersApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertOrders: Upsert Order
+     * UpsertOrders: Upsert Order
      * Upsert; update existing orders with given ids, or create new orders otherwise.
      * @return APIupsertOrdersRequest
      * @http.response.details

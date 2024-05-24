@@ -5060,7 +5060,7 @@ public class PortfolioGroupsApi {
     }
 
     /**
-     * [EARLY ACCESS] ListPortfolioGroups: List portfolio groups
+     * ListPortfolioGroups: List portfolio groups
      * List all the portfolio groups in a single scope.
      * @param scope The scope to list the portfolio groups in. (required)
      * @return APIlistPortfolioGroupsRequest
@@ -5887,7 +5887,7 @@ public class PortfolioGroupsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertPortfolioGroupAccessMetadata: Upsert a Portfolio Group Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
+     * UpsertPortfolioGroupAccessMetadata: Upsert a Portfolio Group Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
      * Update or insert one Portfolio Group Access Metadata Entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Portfolio Group Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param scope The scope of the Portfolio Group (required)
      * @param code The Portfolio Group code (required)

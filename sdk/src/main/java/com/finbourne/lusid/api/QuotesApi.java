@@ -738,7 +738,7 @@ public class QuotesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetQuotes: Get quotes
+     * GetQuotes: Get quotes
      * Get one or more quotes from a single scope.     Each quote can be identified by its time invariant quote series id.     For each quote series id LUSID will return the most recent quote with respect to the provided (or default) effective datetime.      An optional maximum age range window can be specified which defines how far back to look back for a quote from the specified effective datetime.  LUSID will return the most recent quote within this window.     In the request each quote series id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return three collections. One, the successfully retrieved quotes. Two, those that had a  valid quote series id but could not be found. Three, those that failed because LUSID could not construct a valid quote series id from the request.    For the quotes that failed or could not be found a reason will be provided explaining why the quote could not be retrieved.     It is important to always check the failed and not found sets for any unsuccessful results.  The maximum number of quotes that this method can get per request is 2,000.
      * @param scope The scope of the quotes to retrieve. (required)
      * @return APIgetQuotesRequest

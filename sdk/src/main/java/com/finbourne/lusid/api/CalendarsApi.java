@@ -426,7 +426,7 @@ public class CalendarsApi {
     }
 
     /**
-     * [EARLY ACCESS] AddDateToCalendar: Add a date to a calendar
+     * AddDateToCalendar: Add a date to a calendar
      * Add an event to the calendar. These Events can be a maximum of 24 hours and must be specified in UTC.  A local date will be calculated by the system and applied to the calendar before processing.
      * @param scope Scope of the calendar (required)
      * @param code Code of the calendar (required)
@@ -1343,7 +1343,7 @@ public class CalendarsApi {
     }
 
     /**
-     * [EARLY ACCESS] GetCalendar: Get a calendar in its generic form
+     * GetCalendar: Get a calendar in its generic form
      * Retrieve a generic calendar by a specific ID at a point in AsAt time
      * @param scope Scope of the calendar identifier (required)
      * @param code Code of the calendar identifier (required)
@@ -2246,7 +2246,7 @@ public class CalendarsApi {
     }
 
     /**
-     * [EARLY ACCESS] ListCalendarsInScope: List all calenders in a specified scope
+     * ListCalendarsInScope: List all calenders in a specified scope
      * List calendars in a Scope at a point in AsAt time.
      * @param scope Scope of the calendars (required)
      * @return APIlistCalendarsInScopeRequest

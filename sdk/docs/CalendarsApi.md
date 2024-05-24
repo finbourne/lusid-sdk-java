@@ -5,16 +5,16 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addBusinessDaysToDate**](CalendarsApi.md#addBusinessDaysToDate) | **POST** /api/calendars/businessday/{scope}/add | [EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of Business Days to the provided date. |
-| [**addDateToCalendar**](CalendarsApi.md#addDateToCalendar) | **PUT** /api/calendars/generic/{scope}/{code}/dates | [EARLY ACCESS] AddDateToCalendar: Add a date to a calendar |
+| [**addDateToCalendar**](CalendarsApi.md#addDateToCalendar) | **PUT** /api/calendars/generic/{scope}/{code}/dates | AddDateToCalendar: Add a date to a calendar |
 | [**createCalendar**](CalendarsApi.md#createCalendar) | **POST** /api/calendars/generic | [EARLY ACCESS] CreateCalendar: Create a calendar in its generic form |
 | [**deleteCalendar**](CalendarsApi.md#deleteCalendar) | **DELETE** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] DeleteCalendar: Delete a calendar |
 | [**deleteDateFromCalendar**](CalendarsApi.md#deleteDateFromCalendar) | **DELETE** /api/calendars/generic/{scope}/{code}/dates/{dateId} | [EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar |
 | [**generateSchedule**](CalendarsApi.md#generateSchedule) | **POST** /api/calendars/schedule/{scope} | [EARLY ACCESS] GenerateSchedule: Generate an ordered schedule of dates. |
-| [**getCalendar**](CalendarsApi.md#getCalendar) | **GET** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] GetCalendar: Get a calendar in its generic form |
+| [**getCalendar**](CalendarsApi.md#getCalendar) | **GET** /api/calendars/generic/{scope}/{code} | GetCalendar: Get a calendar in its generic form |
 | [**getDates**](CalendarsApi.md#getDates) | **GET** /api/calendars/generic/{scope}/{code}/dates | [EARLY ACCESS] GetDates: Get dates for a specific calendar |
 | [**isBusinessDateTime**](CalendarsApi.md#isBusinessDateTime) | **GET** /api/calendars/businessday/{scope}/{code} | [EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a \&quot;Business DateTime\&quot; |
 | [**listCalendars**](CalendarsApi.md#listCalendars) | **GET** /api/calendars/generic | [EARLY ACCESS] ListCalendars: List Calendars |
-| [**listCalendarsInScope**](CalendarsApi.md#listCalendarsInScope) | **GET** /api/calendars/generic/{scope} | [EARLY ACCESS] ListCalendarsInScope: List all calenders in a specified scope |
+| [**listCalendarsInScope**](CalendarsApi.md#listCalendarsInScope) | **GET** /api/calendars/generic/{scope} | ListCalendarsInScope: List all calenders in a specified scope |
 | [**updateCalendar**](CalendarsApi.md#updateCalendar) | **POST** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] UpdateCalendar: Update a calendar |
 
 
@@ -94,7 +94,7 @@ public class Example {
 # **addDateToCalendar**
 > CalendarDate addDateToCalendar(scope, code, createDateRequest).execute();
 
-[EARLY ACCESS] AddDateToCalendar: Add a date to a calendar
+AddDateToCalendar: Add a date to a calendar
 
 Add an event to the calendar. These Events can be a maximum of 24 hours and must be specified in UTC.  A local date will be calculated by the system and applied to the calendar before processing.
 
@@ -459,7 +459,7 @@ public class Example {
 # **getCalendar**
 > Calendar getCalendar(scope, code).propertyKeys(propertyKeys).asAt(asAt).execute();
 
-[EARLY ACCESS] GetCalendar: Get a calendar in its generic form
+GetCalendar: Get a calendar in its generic form
 
 Retrieve a generic calendar by a specific ID at a point in AsAt time
 
@@ -781,7 +781,7 @@ public class Example {
 # **listCalendarsInScope**
 > PagedResourceListOfCalendar listCalendarsInScope(scope).asAt(asAt).page(page).limit(limit).propertyKeys(propertyKeys).filter(filter).execute();
 
-[EARLY ACCESS] ListCalendarsInScope: List all calenders in a specified scope
+ListCalendarsInScope: List all calenders in a specified scope
 
 List calendars in a Scope at a point in AsAt time.
 

@@ -493,7 +493,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule
+     * DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule
      * Delete the Portfolio Access Metadata Rule that exactly matches the provided identifier parts
      * @param scope The scope of the Quote Access Metadata Rule to retrieve. (required)
      * @param code Portfolio code (required)
@@ -2542,7 +2542,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns
+     * GetPortfolioAggregatedReturns: Aggregated Returns
      * Aggregate Returns which are on the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
      * @param code The code of the Portfolio. (required)
@@ -2994,7 +2994,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for a portfolio
+     * GetPortfolioMetadata: Get access metadata rules for a portfolio
      * Pass the scope and portfolio code parameters to retrieve the AccessMetadata associated with a portfolio
      * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
      * @param code Portfolio code (required)
@@ -3456,7 +3456,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPortfolioPropertyTimeSeries: Get portfolio property time series
+     * GetPortfolioPropertyTimeSeries: Get portfolio property time series
      * Show the complete time series (history) for a particular portfolio property.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
@@ -3923,7 +3923,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships
+     * GetPortfolioRelationships: Get portfolio relationships
      * Get relationships for a particular portfolio.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
@@ -4172,7 +4172,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPortfolioReturns: Get Returns
+     * GetPortfolioReturns: Get Returns
      * Get Returns which are on the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
      * @param code The code of the Portfolio. (required)
@@ -5640,7 +5640,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] PatchPortfolio: Patch portfolio.
+     * PatchPortfolio: Patch portfolio.
      * Create or update certain fields for a particular portfolio.  The behaviour is defined by the JSON Patch specification.     Currently supported are: CreationDate, InstrumentScopes.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the   scope this uniquely identifies the portfolio. (required)
@@ -6877,7 +6877,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns
+     * UpsertPortfolioReturns: Upsert Returns
      * Update or insert returns into the specified portfolio.
      * @param scope The scope of the Portfolio. (required)
      * @param code The code of the Portfolio. (required)

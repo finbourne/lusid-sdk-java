@@ -476,7 +476,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteInstrument: Soft delete a single instrument
+     * DeleteInstrument: Soft delete a single instrument
      * Soft delete a particular instrument, as identified by a particular instrument identifier.     Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
@@ -889,7 +889,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteInstruments: Soft or hard delete multiple instruments
+     * DeleteInstruments: Soft or hard delete multiple instruments
      * Deletes a number of instruments identified by LusidInstrumentId.     Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.     In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.     Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
      * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
      * @return APIdeleteInstrumentsRequest

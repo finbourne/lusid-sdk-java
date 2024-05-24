@@ -6,8 +6,8 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**deleteExecution**](ExecutionsApi.md#deleteExecution) | **DELETE** /api/executions/{scope}/{code} | [EARLY ACCESS] DeleteExecution: Delete execution |
 | [**getExecution**](ExecutionsApi.md#getExecution) | **GET** /api/executions/{scope}/{code} | [EARLY ACCESS] GetExecution: Get Execution |
-| [**listExecutions**](ExecutionsApi.md#listExecutions) | **GET** /api/executions | [EARLY ACCESS] ListExecutions: List Executions |
-| [**upsertExecutions**](ExecutionsApi.md#upsertExecutions) | **POST** /api/executions | [EARLY ACCESS] UpsertExecutions: Upsert Execution |
+| [**listExecutions**](ExecutionsApi.md#listExecutions) | **GET** /api/executions | ListExecutions: List Executions |
+| [**upsertExecutions**](ExecutionsApi.md#upsertExecutions) | **POST** /api/executions | UpsertExecutions: Upsert Execution |
 
 
 <a id="deleteExecution"></a>
@@ -164,7 +164,7 @@ public class Example {
 # **listExecutions**
 > PagedResourceListOfExecution listExecutions().asAt(asAt).page(page).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
-[EARLY ACCESS] ListExecutions: List Executions
+ListExecutions: List Executions
 
 Fetch the last pre-AsAt date version of each execution in scope (does not fetch the entire history).
 
@@ -250,7 +250,7 @@ public class Example {
 # **upsertExecutions**
 > ResourceListOfExecution upsertExecutions().executionSetRequest(executionSetRequest).execute();
 
-[EARLY ACCESS] UpsertExecutions: Upsert Execution
+UpsertExecutions: Upsert Execution
 
 Upsert; update existing executions with given ids, or create new executions otherwise.
 

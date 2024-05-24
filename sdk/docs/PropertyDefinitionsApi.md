@@ -14,7 +14,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listPropertyDefinitions**](PropertyDefinitionsApi.md#listPropertyDefinitions) | **GET** /api/propertydefinitions/$list | ListPropertyDefinitions: List property definitions |
 | [**updateDerivedPropertyDefinition**](PropertyDefinitionsApi.md#updateDerivedPropertyDefinition) | **PUT** /api/propertydefinitions/derived/{domain}/{scope}/{code} | [EARLY ACCESS] UpdateDerivedPropertyDefinition: Update a pre-existing derived property definition |
 | [**updatePropertyDefinition**](PropertyDefinitionsApi.md#updatePropertyDefinition) | **PUT** /api/propertydefinitions/{domain}/{scope}/{code} | UpdatePropertyDefinition: Update property definition |
-| [**upsertPropertyDefinitionProperties**](PropertyDefinitionsApi.md#upsertPropertyDefinitionProperties) | **POST** /api/propertydefinitions/{domain}/{scope}/{code}/properties | [EARLY ACCESS] UpsertPropertyDefinitionProperties: Upsert properties to a property definition |
+| [**upsertPropertyDefinitionProperties**](PropertyDefinitionsApi.md#upsertPropertyDefinitionProperties) | **POST** /api/propertydefinitions/{domain}/{scope}/{code}/properties | UpsertPropertyDefinitionProperties: Upsert properties to a property definition |
 
 
 <a id="createDerivedPropertyDefinition"></a>
@@ -802,7 +802,7 @@ public class Example {
 # **upsertPropertyDefinitionProperties**
 > BatchUpsertPropertyDefinitionPropertiesResponse upsertPropertyDefinitionProperties(domain, scope, code, requestBody).successMode(successMode).execute();
 
-[EARLY ACCESS] UpsertPropertyDefinitionProperties: Upsert properties to a property definition
+UpsertPropertyDefinitionProperties: Upsert properties to a property definition
 
 Create or update properties for a particular property definition
 

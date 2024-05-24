@@ -452,7 +452,7 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
+     * QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
      * Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
      * @return APIqueryBucketedCashFlowsRequest
      * @http.response.details

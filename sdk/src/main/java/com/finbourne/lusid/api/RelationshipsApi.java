@@ -242,7 +242,7 @@ public class RelationshipsApi {
     }
 
     /**
-     * [EARLY ACCESS] CreateRelationship: Create Relationship
+     * CreateRelationship: Create Relationship
      * Create a relationship between two entity objects by their identifiers
      * @param scope The scope of the relationship (required)
      * @param code The code of the relationship (required)

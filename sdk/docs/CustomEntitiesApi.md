@@ -7,13 +7,13 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteCustomEntity**](CustomEntitiesApi.md#deleteCustomEntity) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance. |
 | [**deleteCustomEntityAccessMetadata**](CustomEntitiesApi.md#deleteCustomEntityAccessMetadata) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry |
 | [**getAllCustomEntityAccessMetadata**](CustomEntitiesApi.md#getAllCustomEntityAccessMetadata) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity |
-| [**getCustomEntity**](CustomEntitiesApi.md#getCustomEntity) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance. |
+| [**getCustomEntity**](CustomEntitiesApi.md#getCustomEntity) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue} | GetCustomEntity: Get a Custom Entity instance. |
 | [**getCustomEntityAccessMetadataByKey**](CustomEntitiesApi.md#getCustomEntityAccessMetadataByKey) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity |
 | [**getCustomEntityRelationships**](CustomEntitiesApi.md#getCustomEntityRelationships) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity |
-| [**listCustomEntities**](CustomEntitiesApi.md#listCustomEntities) | **GET** /api/customentities/{entityType} | [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType. |
+| [**listCustomEntities**](CustomEntitiesApi.md#listCustomEntities) | **GET** /api/customentities/{entityType} | ListCustomEntities: List Custom Entities of the specified entityType. |
 | [**patchCustomEntityAccessMetadata**](CustomEntitiesApi.md#patchCustomEntityAccessMetadata) | **PATCH** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity. |
 | [**upsertCustomEntities**](CustomEntitiesApi.md#upsertCustomEntities) | **POST** /api/customentities/{entityType}/$batchUpsert | [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities |
-| [**upsertCustomEntity**](CustomEntitiesApi.md#upsertCustomEntity) | **POST** /api/customentities/{entityType} | [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance |
+| [**upsertCustomEntity**](CustomEntitiesApi.md#upsertCustomEntity) | **POST** /api/customentities/{entityType} | UpsertCustomEntity: Upsert a Custom Entity instance |
 | [**upsertCustomEntityAccessMetadata**](CustomEntitiesApi.md#upsertCustomEntityAccessMetadata) | **PUT** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
 
 
@@ -263,7 +263,7 @@ public class Example {
 # **getCustomEntity**
 > CustomEntityResponse getCustomEntity(entityType, identifierType, identifierValue, identifierScope).asAt(asAt).effectiveAt(effectiveAt).relatedEntityPropertyKeys(relatedEntityPropertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
-[EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.
+GetCustomEntity: Get a Custom Entity instance.
 
 Retrieve a Custom Entity instance by a specific entity type at a point in AsAt time.
 
@@ -523,7 +523,7 @@ public class Example {
 # **listCustomEntities**
 > PagedResourceListOfCustomEntityResponse listCustomEntities(entityType).effectiveAt(effectiveAt).asAt(asAt).limit(limit).filter(filter).sortBy(sortBy).page(page).relatedEntityPropertyKeys(relatedEntityPropertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
-[EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType.
+ListCustomEntities: List Custom Entities of the specified entityType.
 
 List all the Custom Entities matching particular criteria.
 
@@ -775,7 +775,7 @@ public class Example {
 # **upsertCustomEntity**
 > CustomEntityResponse upsertCustomEntity(entityType, customEntityRequest).execute();
 
-[EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance
+UpsertCustomEntity: Upsert a Custom Entity instance
 
 Insert the Custom Entity if it does not exist or update the Custom Entity with the supplied state if it does exist.
 

@@ -4,22 +4,22 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDataMap**](StructuredResultDataApi.md#createDataMap) | **POST** /api/unitresults/datamap/{scope} | [EXPERIMENTAL] CreateDataMap: Create data map |
+| [**createDataMap**](StructuredResultDataApi.md#createDataMap) | **POST** /api/unitresults/datamap/{scope} | CreateDataMap: Create data map |
 | [**deleteStructuredResultData**](StructuredResultDataApi.md#deleteStructuredResultData) | **POST** /api/unitresults/{scope}/$delete | [EXPERIMENTAL] DeleteStructuredResultData: Delete structured result data |
 | [**getAddressKeyDefinitionsForDocument**](StructuredResultDataApi.md#getAddressKeyDefinitionsForDocument) | **GET** /api/unitresults/virtualdocument/{scope}/{code}/{source}/{resultType}/addresskeydefinitions | [EARLY ACCESS] GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document. |
 | [**getDataMap**](StructuredResultDataApi.md#getDataMap) | **POST** /api/unitresults/datamap/{scope}/$get | [EXPERIMENTAL] GetDataMap: Get data map |
-| [**getStructuredResultData**](StructuredResultDataApi.md#getStructuredResultData) | **POST** /api/unitresults/{scope}/$get | [EXPERIMENTAL] GetStructuredResultData: Get structured result data |
+| [**getStructuredResultData**](StructuredResultDataApi.md#getStructuredResultData) | **POST** /api/unitresults/{scope}/$get | GetStructuredResultData: Get structured result data |
 | [**getVirtualDocument**](StructuredResultDataApi.md#getVirtualDocument) | **POST** /api/unitresults/virtualdocument/{scope}/$get | [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents |
 | [**getVirtualDocumentRows**](StructuredResultDataApi.md#getVirtualDocumentRows) | **GET** /api/unitresults/virtualdocument/{scope}/{code}/{source}/{resultType} | [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows |
 | [**upsertResultValue**](StructuredResultDataApi.md#upsertResultValue) | **POST** /api/unitresults/resultvalue/{scope} | [EXPERIMENTAL] UpsertResultValue: Upsert result value |
-| [**upsertStructuredResultData**](StructuredResultDataApi.md#upsertStructuredResultData) | **POST** /api/unitresults/{scope} | [BETA] UpsertStructuredResultData: Upsert structured result data |
+| [**upsertStructuredResultData**](StructuredResultDataApi.md#upsertStructuredResultData) | **POST** /api/unitresults/{scope} | UpsertStructuredResultData: Upsert structured result data |
 
 
 <a id="createDataMap"></a>
 # **createDataMap**
 > UpsertStructuredDataResponse createDataMap(scope, requestBody).execute();
 
-[EXPERIMENTAL] CreateDataMap: Create data map
+CreateDataMap: Create data map
 
 Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.     The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
 
@@ -317,7 +317,7 @@ public class Example {
 # **getStructuredResultData**
 > GetStructuredResultDataResponse getStructuredResultData(scope, requestBody).asAt(asAt).maxAge(maxAge).execute();
 
-[EXPERIMENTAL] GetStructuredResultData: Get structured result data
+GetStructuredResultData: Get structured result data
 
 Retrieve one or more structured result data items from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.      An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
 
@@ -632,7 +632,7 @@ public class Example {
 # **upsertStructuredResultData**
 > UpsertStructuredDataResponse upsertStructuredResultData(scope, requestBody).execute();
 
-[BETA] UpsertStructuredResultData: Upsert structured result data
+UpsertStructuredResultData: Upsert structured result data
 
 Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
 

@@ -243,7 +243,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateDataMap: Create data map
+     * CreateDataMap: Create data map
      * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.     The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to create or update data maps. (required)
      * @param requestBody Individual data map creation requests. (required)
@@ -1022,7 +1022,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetStructuredResultData: Get structured result data
+     * GetStructuredResultData: Get structured result data
      * Retrieve one or more structured result data items from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.      An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
      * @param scope The scope from which to retrieve data items. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
@@ -1828,7 +1828,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [BETA] UpsertStructuredResultData: Upsert structured result data
+     * UpsertStructuredResultData: Upsert structured result data
      * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to create or update data items. (required)
      * @param requestBody The set of data items to create or update, keyed by a unique, ephemeral correlation ID. (required)

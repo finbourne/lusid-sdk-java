@@ -7,7 +7,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteAllocation**](AllocationsApi.md#deleteAllocation) | **DELETE** /api/allocations/{scope}/{code} | [EARLY ACCESS] DeleteAllocation: Delete allocation |
 | [**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /api/allocations/{scope}/{code} | [EARLY ACCESS] GetAllocation: Get Allocation |
 | [**listAllocations**](AllocationsApi.md#listAllocations) | **GET** /api/allocations | [EARLY ACCESS] ListAllocations: List Allocations |
-| [**upsertAllocations**](AllocationsApi.md#upsertAllocations) | **POST** /api/allocations | [EARLY ACCESS] UpsertAllocations: Upsert Allocations |
+| [**upsertAllocations**](AllocationsApi.md#upsertAllocations) | **POST** /api/allocations | UpsertAllocations: Upsert Allocations |
 
 
 <a id="deleteAllocation"></a>
@@ -250,7 +250,7 @@ public class Example {
 # **upsertAllocations**
 > ResourceListOfAllocation upsertAllocations().allocationSetRequest(allocationSetRequest).execute();
 
-[EARLY ACCESS] UpsertAllocations: Upsert Allocations
+UpsertAllocations: Upsert Allocations
 
 Upsert; update existing allocations with given ids, or create new allocations otherwise.
 

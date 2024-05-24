@@ -4,23 +4,23 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteLegalEntity**](LegalEntitiesApi.md#deleteLegalEntity) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity |
+| [**deleteLegalEntity**](LegalEntitiesApi.md#deleteLegalEntity) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | DeleteLegalEntity: Delete Legal Entity |
 | [**deleteLegalEntityAccessMetadata**](LegalEntitiesApi.md#deleteLegalEntityAccessMetadata) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry |
 | [**deleteLegalEntityIdentifiers**](LegalEntitiesApi.md#deleteLegalEntityIdentifiers) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] DeleteLegalEntityIdentifiers: Delete Legal Entity Identifiers |
 | [**deleteLegalEntityProperties**](LegalEntitiesApi.md#deleteLegalEntityProperties) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] DeleteLegalEntityProperties: Delete Legal Entity Properties |
-| [**getAllLegalEntityAccessMetadata**](LegalEntitiesApi.md#getAllLegalEntityAccessMetadata) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity |
-| [**getLegalEntity**](LegalEntitiesApi.md#getLegalEntity) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetLegalEntity: Get Legal Entity |
+| [**getAllLegalEntityAccessMetadata**](LegalEntitiesApi.md#getAllLegalEntityAccessMetadata) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata | GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity |
+| [**getLegalEntity**](LegalEntitiesApi.md#getLegalEntity) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | GetLegalEntity: Get Legal Entity |
 | [**getLegalEntityAccessMetadataByKey**](LegalEntitiesApi.md#getLegalEntityAccessMetadataByKey) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity |
-| [**getLegalEntityPropertyTimeSeries**](LegalEntitiesApi.md#getLegalEntityPropertyTimeSeries) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties/time-series | [EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series |
-| [**getLegalEntityRelations**](LegalEntitiesApi.md#getLegalEntityRelations) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/relations | [EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity |
-| [**getLegalEntityRelationships**](LegalEntitiesApi.md#getLegalEntityRelationships) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/relationships | [EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity |
-| [**listAllLegalEntities**](LegalEntitiesApi.md#listAllLegalEntities) | **GET** /api/legalentities | [EARLY ACCESS] ListAllLegalEntities: List Legal Entities |
-| [**listLegalEntities**](LegalEntitiesApi.md#listLegalEntities) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode} | [EARLY ACCESS] ListLegalEntities: List Legal Entities |
+| [**getLegalEntityPropertyTimeSeries**](LegalEntitiesApi.md#getLegalEntityPropertyTimeSeries) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties/time-series | GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series |
+| [**getLegalEntityRelations**](LegalEntitiesApi.md#getLegalEntityRelations) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/relations | GetLegalEntityRelations: Get Relations for Legal Entity |
+| [**getLegalEntityRelationships**](LegalEntitiesApi.md#getLegalEntityRelationships) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/relationships | GetLegalEntityRelationships: Get Relationships for Legal Entity |
+| [**listAllLegalEntities**](LegalEntitiesApi.md#listAllLegalEntities) | **GET** /api/legalentities | ListAllLegalEntities: List Legal Entities |
+| [**listLegalEntities**](LegalEntitiesApi.md#listLegalEntities) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode} | ListLegalEntities: List Legal Entities |
 | [**patchLegalEntityAccessMetadata**](LegalEntitiesApi.md#patchLegalEntityAccessMetadata) | **PATCH** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity. |
 | [**setLegalEntityIdentifiers**](LegalEntitiesApi.md#setLegalEntityIdentifiers) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers |
-| [**setLegalEntityProperties**](LegalEntitiesApi.md#setLegalEntityProperties) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties |
+| [**setLegalEntityProperties**](LegalEntitiesApi.md#setLegalEntityProperties) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties | SetLegalEntityProperties: Set Legal Entity Properties |
 | [**upsertLegalEntities**](LegalEntitiesApi.md#upsertLegalEntities) | **POST** /api/legalentities/$batchUpsert | [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities |
-| [**upsertLegalEntity**](LegalEntitiesApi.md#upsertLegalEntity) | **POST** /api/legalentities | [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity |
+| [**upsertLegalEntity**](LegalEntitiesApi.md#upsertLegalEntity) | **POST** /api/legalentities | UpsertLegalEntity: Upsert Legal Entity |
 | [**upsertLegalEntityAccessMetadata**](LegalEntitiesApi.md#upsertLegalEntityAccessMetadata) | **PUT** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
 
 
@@ -28,7 +28,7 @@ All URIs are relative to *https://www.lusid.com/api*
 # **deleteLegalEntity**
 > DeletedEntityResponse deleteLegalEntity(idTypeScope, idTypeCode, code).execute();
 
-[EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
+DeleteLegalEntity: Delete Legal Entity
 
 Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -342,7 +342,7 @@ public class Example {
 # **getAllLegalEntityAccessMetadata**
 > Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; getAllLegalEntityAccessMetadata(idTypeScope, idTypeCode, code).effectiveAt(effectiveAt).asAt(asAt).execute();
 
-[EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
+GetAllLegalEntityAccessMetadata: Get Access Metadata rules for a Legal Entity
 
 Pass the Scope and Code of the Legal Entity identifier along with the Legal Entity code parameter to retrieve the associated Access Metadata
 
@@ -422,7 +422,7 @@ public class Example {
 # **getLegalEntity**
 > LegalEntity getLegalEntity(idTypeScope, idTypeCode, code).propertyKeys(propertyKeys).effectiveAt(effectiveAt).asAt(asAt).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
-[EARLY ACCESS] GetLegalEntity: Get Legal Entity
+GetLegalEntity: Get Legal Entity
 
 Retrieve the definition of a legal entity.
 
@@ -590,7 +590,7 @@ public class Example {
 # **getLegalEntityPropertyTimeSeries**
 > ResourceListOfPropertyInterval getLegalEntityPropertyTimeSeries(idTypeScope, idTypeCode, code, propertyKey).asAt(asAt).filter(filter).page(page).limit(limit).execute();
 
-[EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
+GetLegalEntityPropertyTimeSeries: Get Legal Entity Property Time Series
 
 List the complete time series of a legal entity property.
 
@@ -678,7 +678,7 @@ public class Example {
 # **getLegalEntityRelations**
 > ResourceListOfRelation getLegalEntityRelations(idTypeScope, idTypeCode, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).identifierTypes(identifierTypes).execute();
 
-[EXPERIMENTAL] GetLegalEntityRelations: Get Relations for Legal Entity
+GetLegalEntityRelations: Get Relations for Legal Entity
 
 Get relations for the specified Legal Entity
 
@@ -764,7 +764,7 @@ public class Example {
 # **getLegalEntityRelationships**
 > ResourceListOfRelationship getLegalEntityRelationships(idTypeScope, idTypeCode, code).effectiveAt(effectiveAt).asAt(asAt).filter(filter).identifierTypes(identifierTypes).execute();
 
-[EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity
+GetLegalEntityRelationships: Get Relationships for Legal Entity
 
 Get Relationships for the specified Legal Entity
 
@@ -850,7 +850,7 @@ public class Example {
 # **listAllLegalEntities**
 > ResourceListOfLegalEntity listAllLegalEntities().effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
-[EARLY ACCESS] ListAllLegalEntities: List Legal Entities
+ListAllLegalEntities: List Legal Entities
 
 List all legal entities which the user is entitled to see.
 
@@ -942,7 +942,7 @@ public class Example {
 # **listLegalEntities**
 > PagedResourceListOfLegalEntity listLegalEntities(idTypeScope, idTypeCode).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).filter(filter).sortBy(sortBy).propertyKeys(propertyKeys).relationshipDefinitionIds(relationshipDefinitionIds).execute();
 
-[EARLY ACCESS] ListLegalEntities: List Legal Entities
+ListLegalEntities: List Legal Entities
 
 List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
 
@@ -1196,7 +1196,7 @@ public class Example {
 # **setLegalEntityProperties**
 > LegalEntity setLegalEntityProperties(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest).execute();
 
-[EARLY ACCESS] SetLegalEntityProperties: Set Legal Entity Properties
+SetLegalEntityProperties: Set Legal Entity Properties
 
 Set properties of the legal entity.
 
@@ -1344,7 +1344,7 @@ public class Example {
 # **upsertLegalEntity**
 > LegalEntity upsertLegalEntity(upsertLegalEntityRequest).execute();
 
-[EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
+UpsertLegalEntity: Upsert Legal Entity
 
 Create or update a legal entity
 

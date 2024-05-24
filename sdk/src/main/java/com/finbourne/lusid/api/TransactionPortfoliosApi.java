@@ -4840,7 +4840,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [BETA] GetPortfolioCashFlows: Get portfolio cash flows
+     * GetPortfolioCashFlows: Get portfolio cash flows
      * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.     Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
@@ -6179,7 +6179,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [BETA] GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
+     * GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
      * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).     Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.     In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID.  There are a couple of important points:  (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.   These are therefore defaulted to a sensible option; the user will likely need to change these.  (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty.  (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
@@ -6859,7 +6859,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] PatchPortfolioDetails: Patch portfolio details
+     * PatchPortfolioDetails: Patch portfolio details
      * Create or update certain details for a particular transaction portfolio.  The behaviour is defined by the JSON Patch specification.     Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  Currently supported properties are: SubHoldingKeys, BaseCurrency, AmortisationMethod
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)

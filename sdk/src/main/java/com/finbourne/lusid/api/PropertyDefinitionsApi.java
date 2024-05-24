@@ -2324,7 +2324,7 @@ public class PropertyDefinitionsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertPropertyDefinitionProperties: Upsert properties to a property definition
+     * UpsertPropertyDefinitionProperties: Upsert properties to a property definition
      * Create or update properties for a particular property definition
      * @param domain The domain of the specified property. (required)
      * @param scope The scope of the specified property. (required)

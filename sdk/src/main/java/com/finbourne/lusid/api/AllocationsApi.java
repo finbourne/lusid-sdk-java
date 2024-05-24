@@ -853,7 +853,7 @@ public class AllocationsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertAllocations: Upsert Allocations
+     * UpsertAllocations: Upsert Allocations
      * Upsert; update existing allocations with given ids, or create new allocations otherwise.
      * @return APIupsertAllocationsRequest
      * @http.response.details

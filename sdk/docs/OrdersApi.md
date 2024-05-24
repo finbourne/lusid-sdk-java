@@ -6,8 +6,8 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /api/orders/{scope}/{code} | [EARLY ACCESS] DeleteOrder: Delete order |
 | [**getOrder**](OrdersApi.md#getOrder) | **GET** /api/orders/{scope}/{code} | [EARLY ACCESS] GetOrder: Get Order |
-| [**listOrders**](OrdersApi.md#listOrders) | **GET** /api/orders | [EARLY ACCESS] ListOrders: List Orders |
-| [**upsertOrders**](OrdersApi.md#upsertOrders) | **POST** /api/orders | [EARLY ACCESS] UpsertOrders: Upsert Order |
+| [**listOrders**](OrdersApi.md#listOrders) | **GET** /api/orders | ListOrders: List Orders |
+| [**upsertOrders**](OrdersApi.md#upsertOrders) | **POST** /api/orders | UpsertOrders: Upsert Order |
 
 
 <a id="deleteOrder"></a>
@@ -164,7 +164,7 @@ public class Example {
 # **listOrders**
 > PagedResourceListOfOrder listOrders().asAt(asAt).page(page).sortBy(sortBy).limit(limit).filter(filter).propertyKeys(propertyKeys).execute();
 
-[EARLY ACCESS] ListOrders: List Orders
+ListOrders: List Orders
 
 Fetch the last pre-AsAt date version of each order with optional filtering (does not fetch the entire history).
 
@@ -250,7 +250,7 @@ public class Example {
 # **upsertOrders**
 > ResourceListOfOrder upsertOrders().orderSetRequest(orderSetRequest).execute();
 
-[EARLY ACCESS] UpsertOrders: Upsert Order
+UpsertOrders: Upsert Order
 
 Upsert; update existing orders with given ids, or create new orders otherwise.
 
