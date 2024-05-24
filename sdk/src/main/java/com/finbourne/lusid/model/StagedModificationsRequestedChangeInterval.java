@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PropertyValue;
 import com.finbourne.lusid.model.StagedModificationEffectiveRange;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -64,11 +65,11 @@ public class StagedModificationsRequestedChangeInterval {
 
   public static final String SERIALIZED_NAME_PREVIOUS_VALUE = "previousValue";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_VALUE)
-  private Object previousValue = null;
+  private PropertyValue previousValue;
 
   public static final String SERIALIZED_NAME_NEW_VALUE = "newValue";
   @SerializedName(SERIALIZED_NAME_NEW_VALUE)
-  private Object newValue = null;
+  private PropertyValue newValue;
 
   public static final String SERIALIZED_NAME_AS_AT_BASIS = "asAtBasis";
   @SerializedName(SERIALIZED_NAME_AS_AT_BASIS)
@@ -123,44 +124,44 @@ public class StagedModificationsRequestedChangeInterval {
   }
 
 
-  public StagedModificationsRequestedChangeInterval previousValue(Object previousValue) {
+  public StagedModificationsRequestedChangeInterval previousValue(PropertyValue previousValue) {
     
     this.previousValue = previousValue;
     return this;
   }
 
    /**
-   * The previous value of the attribute before the requested change is applied.
+   * Get previousValue
    * @return previousValue
   **/
   @jakarta.annotation.Nullable
-  public Object getPreviousValue() {
+  public PropertyValue getPreviousValue() {
     return previousValue;
   }
 
 
-  public void setPreviousValue(Object previousValue) {
+  public void setPreviousValue(PropertyValue previousValue) {
     this.previousValue = previousValue;
   }
 
 
-  public StagedModificationsRequestedChangeInterval newValue(Object newValue) {
+  public StagedModificationsRequestedChangeInterval newValue(PropertyValue newValue) {
     
     this.newValue = newValue;
     return this;
   }
 
    /**
-   * The value of the attribute once the requested change is applied.
+   * Get newValue
    * @return newValue
   **/
   @jakarta.annotation.Nullable
-  public Object getNewValue() {
+  public PropertyValue getNewValue() {
     return newValue;
   }
 
 
-  public void setNewValue(Object newValue) {
+  public void setNewValue(PropertyValue newValue) {
     this.newValue = newValue;
   }
 
@@ -311,6 +312,14 @@ public class StagedModificationsRequestedChangeInterval {
       // validate the optional field `effectiveRange`
       if (jsonObj.get("effectiveRange") != null && !jsonObj.get("effectiveRange").isJsonNull()) {
         StagedModificationEffectiveRange.validateJsonElement(jsonObj.get("effectiveRange"));
+      }
+      // validate the optional field `previousValue`
+      if (jsonObj.get("previousValue") != null && !jsonObj.get("previousValue").isJsonNull()) {
+        PropertyValue.validateJsonElement(jsonObj.get("previousValue"));
+      }
+      // validate the optional field `newValue`
+      if (jsonObj.get("newValue") != null && !jsonObj.get("newValue").isJsonNull()) {
+        PropertyValue.validateJsonElement(jsonObj.get("newValue"));
       }
       if ((jsonObj.get("asAtBasis") != null && !jsonObj.get("asAtBasis").isJsonNull()) && !jsonObj.get("asAtBasis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `asAtBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asAtBasis").toString()));

@@ -90,6 +90,10 @@ public class ApplicableInstrumentEvent {
   @SerializedName(SERIALIZED_NAME_LOADED_EVENT)
   private InstrumentEventHolder loadedEvent;
 
+  public static final String SERIALIZED_NAME_APPLIED_INSTRUMENT_EVENT_INSTRUCTION_ID = "appliedInstrumentEventInstructionId";
+  @SerializedName(SERIALIZED_NAME_APPLIED_INSTRUMENT_EVENT_INSTRUCTION_ID)
+  private String appliedInstrumentEventInstructionId;
+
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   private List<Transaction> transactions = new ArrayList<>();
@@ -286,6 +290,27 @@ public class ApplicableInstrumentEvent {
   }
 
 
+  public ApplicableInstrumentEvent appliedInstrumentEventInstructionId(String appliedInstrumentEventInstructionId) {
+    
+    this.appliedInstrumentEventInstructionId = appliedInstrumentEventInstructionId;
+    return this;
+  }
+
+   /**
+   * Get appliedInstrumentEventInstructionId
+   * @return appliedInstrumentEventInstructionId
+  **/
+  @jakarta.annotation.Nonnull
+  public String getAppliedInstrumentEventInstructionId() {
+    return appliedInstrumentEventInstructionId;
+  }
+
+
+  public void setAppliedInstrumentEventInstructionId(String appliedInstrumentEventInstructionId) {
+    this.appliedInstrumentEventInstructionId = appliedInstrumentEventInstructionId;
+  }
+
+
   public ApplicableInstrumentEvent transactions(List<Transaction> transactions) {
     
     this.transactions = transactions;
@@ -334,12 +359,13 @@ public class ApplicableInstrumentEvent {
         Objects.equals(this.instrumentEventId, applicableInstrumentEvent.instrumentEventId) &&
         Objects.equals(this.generatedEvent, applicableInstrumentEvent.generatedEvent) &&
         Objects.equals(this.loadedEvent, applicableInstrumentEvent.loadedEvent) &&
+        Objects.equals(this.appliedInstrumentEventInstructionId, applicableInstrumentEvent.appliedInstrumentEventInstructionId) &&
         Objects.equals(this.transactions, applicableInstrumentEvent.transactions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, loadedEvent, transactions);
+    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, loadedEvent, appliedInstrumentEventInstructionId, transactions);
   }
 
   @Override
@@ -355,6 +381,7 @@ public class ApplicableInstrumentEvent {
     sb.append("    instrumentEventId: ").append(toIndentedString(instrumentEventId)).append("\n");
     sb.append("    generatedEvent: ").append(toIndentedString(generatedEvent)).append("\n");
     sb.append("    loadedEvent: ").append(toIndentedString(loadedEvent)).append("\n");
+    sb.append("    appliedInstrumentEventInstructionId: ").append(toIndentedString(appliedInstrumentEventInstructionId)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -387,6 +414,7 @@ public class ApplicableInstrumentEvent {
     openapiFields.add("instrumentEventId");
     openapiFields.add("generatedEvent");
     openapiFields.add("loadedEvent");
+    openapiFields.add("appliedInstrumentEventInstructionId");
     openapiFields.add("transactions");
 
     // a set of required properties/fields (JSON key names)
@@ -400,6 +428,7 @@ public class ApplicableInstrumentEvent {
     openapiRequiredFields.add("instrumentEventId");
     openapiRequiredFields.add("generatedEvent");
     openapiRequiredFields.add("loadedEvent");
+    openapiRequiredFields.add("appliedInstrumentEventInstructionId");
     openapiRequiredFields.add("transactions");
   }
 
@@ -444,6 +473,9 @@ public class ApplicableInstrumentEvent {
       InstrumentEventHolder.validateJsonElement(jsonObj.get("generatedEvent"));
       // validate the required field `loadedEvent`
       InstrumentEventHolder.validateJsonElement(jsonObj.get("loadedEvent"));
+      if (!jsonObj.get("appliedInstrumentEventInstructionId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `appliedInstrumentEventInstructionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appliedInstrumentEventInstructionId").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("transactions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactions` to be an array in the JSON string but got `%s`", jsonObj.get("transactions").toString()));
