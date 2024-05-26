@@ -67,6 +67,14 @@ public class DeletedEntityResponse {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+  public static final String SERIALIZED_NAME_ENTITY_TYPE = "entityType";
+  @SerializedName(SERIALIZED_NAME_ENTITY_TYPE)
+  private String entityType;
+
+  public static final String SERIALIZED_NAME_ENTITY_UNIQUE_ID = "entityUniqueId";
+  @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
+  private String entityUniqueId;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -137,6 +145,48 @@ public class DeletedEntityResponse {
   }
 
 
+  public DeletedEntityResponse entityType(String entityType) {
+    
+    this.entityType = entityType;
+    return this;
+  }
+
+   /**
+   * The type of the entity that the deleted response applies to.
+   * @return entityType
+  **/
+  @jakarta.annotation.Nullable
+  public String getEntityType() {
+    return entityType;
+  }
+
+
+  public void setEntityType(String entityType) {
+    this.entityType = entityType;
+  }
+
+
+  public DeletedEntityResponse entityUniqueId(String entityUniqueId) {
+    
+    this.entityUniqueId = entityUniqueId;
+    return this;
+  }
+
+   /**
+   * The unique Id of the entity that the deleted response applies to.
+   * @return entityUniqueId
+  **/
+  @jakarta.annotation.Nullable
+  public String getEntityUniqueId() {
+    return entityUniqueId;
+  }
+
+
+  public void setEntityUniqueId(String entityUniqueId) {
+    this.entityUniqueId = entityUniqueId;
+  }
+
+
   public DeletedEntityResponse links(List<Link> links) {
     
     this.links = links;
@@ -179,6 +229,8 @@ public class DeletedEntityResponse {
     return Objects.equals(this.href, deletedEntityResponse.href) &&
         Objects.equals(this.effectiveFrom, deletedEntityResponse.effectiveFrom) &&
         Objects.equals(this.asAt, deletedEntityResponse.asAt) &&
+        Objects.equals(this.entityType, deletedEntityResponse.entityType) &&
+        Objects.equals(this.entityUniqueId, deletedEntityResponse.entityUniqueId) &&
         Objects.equals(this.links, deletedEntityResponse.links);
   }
 
@@ -188,7 +240,7 @@ public class DeletedEntityResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, effectiveFrom, asAt, links);
+    return Objects.hash(href, effectiveFrom, asAt, entityType, entityUniqueId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,6 +257,8 @@ public class DeletedEntityResponse {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
+    sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -231,6 +285,8 @@ public class DeletedEntityResponse {
     openapiFields.add("href");
     openapiFields.add("effectiveFrom");
     openapiFields.add("asAt");
+    openapiFields.add("entityType");
+    openapiFields.add("entityUniqueId");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -260,6 +316,12 @@ public class DeletedEntityResponse {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      if ((jsonObj.get("entityType") != null && !jsonObj.get("entityType").isJsonNull()) && !jsonObj.get("entityType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `entityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityType").toString()));
+      }
+      if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

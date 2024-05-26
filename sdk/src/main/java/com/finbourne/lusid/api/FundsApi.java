@@ -289,7 +289,7 @@ public class FundsApi {
         Object localVarPostBody = feeRequest;
 
         // create path and map variables
-        String localVarPath = "/api/funds/{scope}/{code}/fee/{feeCode}"
+        String localVarPath = "/api/funds/{scope}/{code}/fees/{feeCode}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
             .replace("{" + "feeCode" + "}", localVarApiClient.escapeString(feeCode.toString()));
@@ -659,7 +659,7 @@ public class FundsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/funds/{scope}/{code}/fee/{feeCode}"
+        String localVarPath = "/api/funds/{scope}/{code}/fees/{feeCode}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
             .replace("{" + "feeCode" + "}", localVarApiClient.escapeString(feeCode.toString()));
@@ -1381,7 +1381,7 @@ public class FundsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/funds/{scope}/{code}/fee/{feeCode}"
+        String localVarPath = "/api/funds/{scope}/{code}/fees/{feeCode}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
             .replace("{" + "feeCode" + "}", localVarApiClient.escapeString(feeCode.toString()));
@@ -2026,7 +2026,7 @@ public class FundsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/funds/{scope}/{code}/fee"
+        String localVarPath = "/api/funds/{scope}/{code}/fees"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -2564,7 +2564,7 @@ public class FundsApi {
         Object localVarPostBody = operation;
 
         // create path and map variables
-        String localVarPath = "/api/funds/{scope}/{code}/fee/{feeCode}"
+        String localVarPath = "/api/funds/{scope}/{code}/fees/{feeCode}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
             .replace("{" + "feeCode" + "}", localVarApiClient.escapeString(feeCode.toString()));
