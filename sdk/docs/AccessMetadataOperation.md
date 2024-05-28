@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**value** | [**List&lt;AccessMetadataValue&gt;**](AccessMetadataValue.md) |  |  |
 |**path** | **String** |  |  |
-|**op** | [**OpEnum**](#OpEnum) | The available values are: add |  |
+|**op** | [**OpEnum**](#OpEnum) | The available values are: add, remove |  |
 |**from** | **String** |  |  [optional] |
 
 
@@ -19,6 +19,7 @@
 | Name | Value |
 |---- | -----|
 | ADD | &quot;add&quot; |
+| REMOVE | &quot;remove&quot; |
 
 
 

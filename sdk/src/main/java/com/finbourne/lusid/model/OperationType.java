@@ -25,7 +25,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(OperationType.Adapter.class)
 public enum OperationType {
   
-  ADD("add");
+  ADD("add"),
+  
+  REMOVE("remove");
 
   private String value;
 
