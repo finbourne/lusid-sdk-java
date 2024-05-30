@@ -57,5 +57,7 @@
 
 * `CAPITALDISTRIBUTIONEVENT` (value: `"CapitalDistributionEvent"`)
 
+* `SPINOFFEVENT` (value: `"SpinOffEvent"`)
+
 
 

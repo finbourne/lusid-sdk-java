@@ -8,7 +8,7 @@ Base class for representing instrument events in LUSID, such as dividends, stock
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**instrumentEventType** | [**InstrumentEventTypeEnum**](#InstrumentEventTypeEnum) | The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent |  |
+|**instrumentEventType** | [**InstrumentEventTypeEnum**](#InstrumentEventTypeEnum) | The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent |  |
 
 
 
@@ -42,6 +42,7 @@ Base class for representing instrument events in LUSID, such as dividends, stock
 | STOCKDIVIDENDEVENT | &quot;StockDividendEvent&quot; |
 | REVERSESTOCKSPLITEVENT | &quot;ReverseStockSplitEvent&quot; |
 | CAPITALDISTRIBUTIONEVENT | &quot;CapitalDistributionEvent&quot; |
+| SPINOFFEVENT | &quot;SpinOffEvent&quot; |
 
 
 
