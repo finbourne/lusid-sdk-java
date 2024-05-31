@@ -27,6 +27,7 @@
 |**anchorDate** | [**DayMonth**](DayMonth.md) |  |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The Fee properties. These will be from the &#39;Fee&#39; domain. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

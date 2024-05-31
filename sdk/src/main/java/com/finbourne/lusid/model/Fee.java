@@ -141,6 +141,10 @@ public class Fee {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
+  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
+  private ResourceId portfolioId;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -576,6 +580,27 @@ public class Fee {
   }
 
 
+  public Fee portfolioId(ResourceId portfolioId) {
+    
+    this.portfolioId = portfolioId;
+    return this;
+  }
+
+   /**
+   * Get portfolioId
+   * @return portfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPortfolioId() {
+    return portfolioId;
+  }
+
+
+  public void setPortfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+  }
+
+
   public Fee links(List<Link> links) {
     
     this.links = links;
@@ -635,6 +660,7 @@ public class Fee {
         Objects.equals(this.anchorDate, fee.anchorDate) &&
         Objects.equals(this.properties, fee.properties) &&
         Objects.equals(this.version, fee.version) &&
+        Objects.equals(this.portfolioId, fee.portfolioId) &&
         Objects.equals(this.links, fee.links);
   }
 
@@ -644,7 +670,7 @@ public class Fee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, feeCode, feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, monthlyAccrual, dailyAccrual, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, links);
+    return Objects.hash(href, feeCode, feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, monthlyAccrual, dailyAccrual, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -678,6 +704,7 @@ public class Fee {
     sb.append("    anchorDate: ").append(toIndentedString(anchorDate)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -721,6 +748,7 @@ public class Fee {
     openapiFields.add("anchorDate");
     openapiFields.add("properties");
     openapiFields.add("version");
+    openapiFields.add("portfolioId");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -793,6 +821,10 @@ public class Fee {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      // validate the optional field `portfolioId`
+      if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

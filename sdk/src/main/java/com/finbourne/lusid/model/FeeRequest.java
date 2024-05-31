@@ -116,6 +116,10 @@ public class FeeRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
+  private ResourceId portfolioId;
+
   public FeeRequest() {
   }
 
@@ -442,6 +446,27 @@ public class FeeRequest {
   }
 
 
+  public FeeRequest portfolioId(ResourceId portfolioId) {
+    
+    this.portfolioId = portfolioId;
+    return this;
+  }
+
+   /**
+   * Get portfolioId
+   * @return portfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPortfolioId() {
+    return portfolioId;
+  }
+
+
+  public void setPortfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -466,7 +491,8 @@ public class FeeRequest {
         Objects.equals(this.startDate, feeRequest.startDate) &&
         Objects.equals(this.endDate, feeRequest.endDate) &&
         Objects.equals(this.anchorDate, feeRequest.anchorDate) &&
-        Objects.equals(this.properties, feeRequest.properties);
+        Objects.equals(this.properties, feeRequest.properties) &&
+        Objects.equals(this.portfolioId, feeRequest.portfolioId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -475,7 +501,7 @@ public class FeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties);
+    return Objects.hash(feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, portfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -504,6 +530,7 @@ public class FeeRequest {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    anchorDate: ").append(toIndentedString(anchorDate)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -541,6 +568,7 @@ public class FeeRequest {
     openapiFields.add("endDate");
     openapiFields.add("anchorDate");
     openapiFields.add("properties");
+    openapiFields.add("portfolioId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -602,6 +630,10 @@ public class FeeRequest {
       // validate the optional field `anchorDate`
       if (jsonObj.get("anchorDate") != null && !jsonObj.get("anchorDate").isJsonNull()) {
         DayMonth.validateJsonElement(jsonObj.get("anchorDate"));
+      }
+      // validate the optional field `portfolioId`
+      if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       }
   }
 

@@ -22,6 +22,7 @@
 |**endDate** | **OffsetDateTime** | The end date of the Fee. |  [optional] |
 |**anchorDate** | [**DayMonth**](DayMonth.md) |  |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The Fee properties. These will be from the &#39;Fee&#39; domain. |  [optional] |
+|**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 
