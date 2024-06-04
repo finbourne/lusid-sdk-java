@@ -77,7 +77,9 @@ public enum InstrumentEventType {
   
   CAPITALDISTRIBUTIONEVENT("CapitalDistributionEvent"),
   
-  SPINOFFEVENT("SpinOffEvent");
+  SPINOFFEVENT("SpinOffEvent"),
+  
+  MERGEREVENT("MergerEvent");
 
   private String value;
 

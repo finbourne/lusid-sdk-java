@@ -59,5 +59,7 @@
 
 * `SPINOFFEVENT` (value: `"SpinOffEvent"`)
 
+* `MERGEREVENT` (value: `"MergerEvent"`)
+
 
 
