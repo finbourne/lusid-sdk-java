@@ -118,6 +118,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.BondConversionSchedule.class, new TypeSelector<com.finbourne.lusid.model.BondConversionSchedule>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.BondConversionSchedule> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BondConversionSchedule", com.finbourne.lusid.model.BondConversionSchedule.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "scheduleType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.BondCouponEvent.class, new TypeSelector<com.finbourne.lusid.model.BondCouponEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.BondCouponEvent> getClassForElement(JsonElement readElement) {
@@ -1659,6 +1668,7 @@ public class JSON {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.Schedule> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BondConversionSchedule", com.finbourne.lusid.model.BondConversionSchedule.class);
                         classByDiscriminatorValue.put("FixedSchedule", com.finbourne.lusid.model.FixedSchedule.class);
                         classByDiscriminatorValue.put("FloatSchedule", com.finbourne.lusid.model.FloatSchedule.class);
                         classByDiscriminatorValue.put("FxLinkedNotionalSchedule", com.finbourne.lusid.model.FxLinkedNotionalSchedule.class);
@@ -1928,6 +1938,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BlockSetRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BlockedOrderRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Bond.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondConversionEntry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondConversionSchedule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondCouponEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondDefaultEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondPrincipalEvent.CustomTypeAdapterFactory());

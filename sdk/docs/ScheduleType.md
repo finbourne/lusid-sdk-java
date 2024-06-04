@@ -19,6 +19,8 @@
 
 * `FXLINKEDNOTIONALSCHEDULE` (value: `"FxLinkedNotionalSchedule"`)
 
+* `BONDCONVERSIONSCHEDULE` (value: `"BondConversionSchedule"`)
+
 * `INVALID` (value: `"Invalid"`)
 
 

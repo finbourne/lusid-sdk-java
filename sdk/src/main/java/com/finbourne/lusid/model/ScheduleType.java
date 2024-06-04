@@ -39,6 +39,8 @@ public enum ScheduleType {
   
   FXLINKEDNOTIONALSCHEDULE("FxLinkedNotionalSchedule"),
   
+  BONDCONVERSIONSCHEDULE("BondConversionSchedule"),
+  
   INVALID("Invalid");
 
   private String value;
