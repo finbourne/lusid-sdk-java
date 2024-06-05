@@ -259,7 +259,7 @@ public class FundsApi {
      * Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the valuation Point was last run, status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param valuationPointDataRequest The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Final state. (required)
+     * @param valuationPointDataRequest The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. (required)
      * @return APIacceptEstimatePointRequest
      * @http.response.details
      <table summary="Response Details" border="1">

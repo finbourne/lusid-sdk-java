@@ -52,7 +52,7 @@ public class Example {
     FundsApi apiInstance = new FundsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Fund.
     String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
-    ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Final state.
+    ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state.
     try {
       ValuationPointDataResponse result = apiInstance.acceptEstimatePoint(scope, code, valuationPointDataRequest)
             .execute();
@@ -74,7 +74,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
-| **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Final state. | |
+| **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. | |
 
 ### Return type
 
