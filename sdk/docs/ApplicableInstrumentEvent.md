@@ -15,10 +15,10 @@ Represents applicable instrument event.
 |**instrumentType** | **String** |  |  |
 |**instrumentEventType** | **String** |  |  |
 |**instrumentEventId** | **String** |  |  |
-|**generatedEvent** | [**InstrumentEventHolder**](InstrumentEventHolder.md) |  |  |
-|**loadedEvent** | [**InstrumentEventHolder**](InstrumentEventHolder.md) |  |  |
+|**generatedEvent** | [**InstrumentEventHolder**](InstrumentEventHolder.md) |  |  [optional] |
+|**loadedEvent** | [**InstrumentEventHolder**](InstrumentEventHolder.md) |  |  [optional] |
 |**appliedInstrumentEventInstructionId** | **String** |  |  |
-|**transactions** | [**List&lt;Transaction&gt;**](Transaction.md) |  |  |
+|**transactions** | [**List&lt;Transaction&gt;**](Transaction.md) |  |  [optional] |
 
 
 

@@ -22,6 +22,7 @@ Schedule for fixed coupon payments
 |**exDividendConfiguration** | [**ExDividendConfiguration**](ExDividendConfiguration.md) |  |  [optional] |
 |**compounding** | [**Compounding**](Compounding.md) |  |  [optional] |
 |**resetConvention** | **String** | Control how resets are generated relative to payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears]. |  [optional] |
+|**useAnnualisedDirectRates** | **Boolean** | Flag indicating whether to use daily updated annualised interest  rates for calculating the accrued interest. Defaults to false. |  [optional] |
 
 
 

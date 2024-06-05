@@ -113,6 +113,10 @@ public class FloatSchedule extends Schedule {
   @SerializedName(SERIALIZED_NAME_RESET_CONVENTION)
   private String resetConvention;
 
+  public static final String SERIALIZED_NAME_USE_ANNUALISED_DIRECT_RATES = "useAnnualisedDirectRates";
+  @SerializedName(SERIALIZED_NAME_USE_ANNUALISED_DIRECT_RATES)
+  private Boolean useAnnualisedDirectRates;
+
   public FloatSchedule() {
     // this.scheduleType = this.getClass().getSimpleName();
   }
@@ -411,6 +415,27 @@ public class FloatSchedule extends Schedule {
   }
 
 
+  public FloatSchedule useAnnualisedDirectRates(Boolean useAnnualisedDirectRates) {
+    
+    this.useAnnualisedDirectRates = useAnnualisedDirectRates;
+    return this;
+  }
+
+   /**
+   * Flag indicating whether to use daily updated annualised interest  rates for calculating the accrued interest. Defaults to false.
+   * @return useAnnualisedDirectRates
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getUseAnnualisedDirectRates() {
+    return useAnnualisedDirectRates;
+  }
+
+
+  public void setUseAnnualisedDirectRates(Boolean useAnnualisedDirectRates) {
+    this.useAnnualisedDirectRates = useAnnualisedDirectRates;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -435,6 +460,7 @@ public class FloatSchedule extends Schedule {
         Objects.equals(this.exDividendConfiguration, floatSchedule.exDividendConfiguration) &&
         Objects.equals(this.compounding, floatSchedule.compounding) &&
         Objects.equals(this.resetConvention, floatSchedule.resetConvention) &&
+        Objects.equals(this.useAnnualisedDirectRates, floatSchedule.useAnnualisedDirectRates) &&
         super.equals(o);
   }
 
@@ -444,7 +470,7 @@ public class FloatSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, useAnnualisedDirectRates, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -473,6 +499,7 @@ public class FloatSchedule extends Schedule {
     sb.append("    exDividendConfiguration: ").append(toIndentedString(exDividendConfiguration)).append("\n");
     sb.append("    compounding: ").append(toIndentedString(compounding)).append("\n");
     sb.append("    resetConvention: ").append(toIndentedString(resetConvention)).append("\n");
+    sb.append("    useAnnualisedDirectRates: ").append(toIndentedString(useAnnualisedDirectRates)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -510,6 +537,7 @@ public class FloatSchedule extends Schedule {
     openapiFields.add("exDividendConfiguration");
     openapiFields.add("compounding");
     openapiFields.add("resetConvention");
+    openapiFields.add("useAnnualisedDirectRates");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

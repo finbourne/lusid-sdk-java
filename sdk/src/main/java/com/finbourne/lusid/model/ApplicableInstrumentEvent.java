@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -96,7 +97,7 @@ public class ApplicableInstrumentEvent {
 
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
-  private List<Transaction> transactions = new ArrayList<>();
+  private List<Transaction> transactions;
 
   public ApplicableInstrumentEvent() {
   }
@@ -258,7 +259,7 @@ public class ApplicableInstrumentEvent {
    * Get generatedEvent
    * @return generatedEvent
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public InstrumentEventHolder getGeneratedEvent() {
     return generatedEvent;
   }
@@ -279,7 +280,7 @@ public class ApplicableInstrumentEvent {
    * Get loadedEvent
    * @return loadedEvent
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public InstrumentEventHolder getLoadedEvent() {
     return loadedEvent;
   }
@@ -329,7 +330,7 @@ public class ApplicableInstrumentEvent {
    * Get transactions
    * @return transactions
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<Transaction> getTransactions() {
     return transactions;
   }
@@ -363,9 +364,20 @@ public class ApplicableInstrumentEvent {
         Objects.equals(this.transactions, applicableInstrumentEvent.transactions);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, loadedEvent, appliedInstrumentEventInstructionId, transactions);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -426,10 +438,7 @@ public class ApplicableInstrumentEvent {
     openapiRequiredFields.add("instrumentType");
     openapiRequiredFields.add("instrumentEventType");
     openapiRequiredFields.add("instrumentEventId");
-    openapiRequiredFields.add("generatedEvent");
-    openapiRequiredFields.add("loadedEvent");
     openapiRequiredFields.add("appliedInstrumentEventInstructionId");
-    openapiRequiredFields.add("transactions");
   }
 
  /**
@@ -469,23 +478,31 @@ public class ApplicableInstrumentEvent {
       if (!jsonObj.get("instrumentEventId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentEventId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentEventId").toString()));
       }
-      // validate the required field `generatedEvent`
-      InstrumentEventHolder.validateJsonElement(jsonObj.get("generatedEvent"));
-      // validate the required field `loadedEvent`
-      InstrumentEventHolder.validateJsonElement(jsonObj.get("loadedEvent"));
+      // validate the optional field `generatedEvent`
+      if (jsonObj.get("generatedEvent") != null && !jsonObj.get("generatedEvent").isJsonNull()) {
+        InstrumentEventHolder.validateJsonElement(jsonObj.get("generatedEvent"));
+      }
+      // validate the optional field `loadedEvent`
+      if (jsonObj.get("loadedEvent") != null && !jsonObj.get("loadedEvent").isJsonNull()) {
+        InstrumentEventHolder.validateJsonElement(jsonObj.get("loadedEvent"));
+      }
       if (!jsonObj.get("appliedInstrumentEventInstructionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appliedInstrumentEventInstructionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appliedInstrumentEventInstructionId").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("transactions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `transactions` to be an array in the JSON string but got `%s`", jsonObj.get("transactions").toString()));
-      }
+      if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {
+        JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
+        if (jsonArraytransactions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("transactions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `transactions` to be an array in the JSON string but got `%s`", jsonObj.get("transactions").toString()));
+          }
 
-      JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
-      // validate the required field `transactions` (array)
-      for (int i = 0; i < jsonArraytransactions.size(); i++) {
-        Transaction.validateJsonElement(jsonArraytransactions.get(i));
-      };
+          // validate the optional field `transactions` (array)
+          for (int i = 0; i < jsonArraytransactions.size(); i++) {
+            Transaction.validateJsonElement(jsonArraytransactions.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
