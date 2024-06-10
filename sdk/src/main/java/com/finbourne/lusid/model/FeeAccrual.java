@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -50,6 +51,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FeeAccrual {
+  public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
+  private OffsetDateTime effectiveAt;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -80,6 +85,27 @@ public class FeeAccrual {
     this();
     this.totalAccrual = totalAccrual;
   }
+
+  public FeeAccrual effectiveAt(OffsetDateTime effectiveAt) {
+    
+    this.effectiveAt = effectiveAt;
+    return this;
+  }
+
+   /**
+   * Get effectiveAt
+   * @return effectiveAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveAt() {
+    return effectiveAt;
+  }
+
+
+  public void setEffectiveAt(OffsetDateTime effectiveAt) {
+    this.effectiveAt = effectiveAt;
+  }
+
 
   public FeeAccrual name(String name) {
     
@@ -187,7 +213,8 @@ public class FeeAccrual {
       return false;
     }
     FeeAccrual feeAccrual = (FeeAccrual) o;
-    return Objects.equals(this.name, feeAccrual.name) &&
+    return Objects.equals(this.effectiveAt, feeAccrual.effectiveAt) &&
+        Objects.equals(this.name, feeAccrual.name) &&
         (this.calculationBase.compareTo(feeAccrual.getCalculationBase()) == 0) &&
         (this.amount.compareTo(feeAccrual.getAmount()) == 0) &&
         (this.previousAccrual.compareTo(feeAccrual.getPreviousAccrual()) == 0) &&
@@ -200,7 +227,7 @@ public class FeeAccrual {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, calculationBase, amount, previousAccrual, totalAccrual);
+    return Objects.hash(effectiveAt, name, calculationBase, amount, previousAccrual, totalAccrual);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -214,6 +241,7 @@ public class FeeAccrual {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeeAccrual {\n");
+    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    calculationBase: ").append(toIndentedString(calculationBase)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
@@ -241,6 +269,7 @@ public class FeeAccrual {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("effectiveAt");
     openapiFields.add("name");
     openapiFields.add("calculationBase");
     openapiFields.add("amount");

@@ -285,7 +285,7 @@ public class Fee {
   }
 
    /**
-   * The calculation base for the Fee that is calculated using a percentage.
+   * The calculation base for the Fee that is calculated using a percentage. (TotalAnnualAccrualAmount and CalculationBase cannot both be present)
    * @return calculationBase
   **/
   @jakarta.annotation.Nullable
@@ -348,7 +348,7 @@ public class Fee {
   }
 
    /**
-   * The total accrued amount for the Fee.
+   * The total annual accrued amount for the Fee. (TotalAnnualAccrualAmount and CalculationBase cannot both be present)
    * @return totalAnnualAccrualAmount
   **/
   @jakarta.annotation.Nullable
@@ -369,7 +369,7 @@ public class Fee {
   }
 
    /**
-   * The fee rate percentage.
+   * The fee rate percentage. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount)
    * @return feeRatePercentage
   **/
   @jakarta.annotation.Nullable

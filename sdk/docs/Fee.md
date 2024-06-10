@@ -13,11 +13,11 @@
 |**name** | **String** | The name of the Fee. |  |
 |**description** | **String** | A description for the Fee. |  [optional] |
 |**origin** | **String** | The origin or source of the Fee accrual. |  [optional] |
-|**calculationBase** | **String** | The calculation base for the Fee that is calculated using a percentage. |  [optional] |
+|**calculationBase** | **String** | The calculation base for the Fee that is calculated using a percentage. (TotalAnnualAccrualAmount and CalculationBase cannot both be present) |  [optional] |
 |**accrualCurrency** | **String** | The accrual currency. |  |
 |**treatment** | **String** | The accrual period of the Fee; &#39;Monthly&#39; or &#39;Daily&#39;. |  |
-|**totalAnnualAccrualAmount** | **java.math.BigDecimal** | The total accrued amount for the Fee. |  [optional] |
-|**feeRatePercentage** | **java.math.BigDecimal** | The fee rate percentage. |  [optional] |
+|**totalAnnualAccrualAmount** | **java.math.BigDecimal** | The total annual accrued amount for the Fee. (TotalAnnualAccrualAmount and CalculationBase cannot both be present) |  [optional] |
+|**feeRatePercentage** | **java.math.BigDecimal** | The fee rate percentage. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount) |  [optional] |
 |**monthlyAccrual** | **java.math.BigDecimal** | The monthly accrual amount. |  [optional] |
 |**dailyAccrual** | **java.math.BigDecimal** | The daily accrual amount. |  [optional] |
 |**payableFrequency** | **String** | The payable frequency for the Fee; &#39;Annually&#39;, &#39;Quarterly&#39; or &#39;Monthly&#39;. |  |
