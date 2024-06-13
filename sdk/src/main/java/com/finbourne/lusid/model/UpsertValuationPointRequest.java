@@ -87,7 +87,7 @@ public class UpsertValuationPointRequest {
    * Unique code for the Valuation Point.
    * @return diaryEntryCode
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getDiaryEntryCode() {
     return diaryEntryCode;
   }
@@ -129,7 +129,7 @@ public class UpsertValuationPointRequest {
    * The effective time of the diary entry.
    * @return effectiveAt
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public OffsetDateTime getEffectiveAt() {
     return effectiveAt;
   }
@@ -262,6 +262,8 @@ public class UpsertValuationPointRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("diaryEntryCode");
+    openapiRequiredFields.add("effectiveAt");
   }
 
  /**
@@ -276,8 +278,15 @@ public class UpsertValuationPointRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertValuationPointRequest is not found in the empty JSON string", UpsertValuationPointRequest.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpsertValuationPointRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("diaryEntryCode") != null && !jsonObj.get("diaryEntryCode").isJsonNull()) && !jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
+      if (!jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `diaryEntryCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryCode").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {

@@ -73,6 +73,8 @@
 
 * `FUND` (value: `"Fund"`)
 
+* `FUNDCONFIGURATION` (value: `"FundConfiguration"`)
+
 * `FEE` (value: `"Fee"`)
 
 * `RECONCILIATION` (value: `"Reconciliation"`)

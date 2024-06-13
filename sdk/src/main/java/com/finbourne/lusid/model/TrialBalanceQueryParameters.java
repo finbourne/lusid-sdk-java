@@ -129,7 +129,7 @@ public class TrialBalanceQueryParameters {
   }
 
    /**
-   * The mode of calculation of the trial balance. The available values are: ActivityDate.
+   * The mode of calculation of the trial balance. The available values are: ActivityDate, AccountingDate.
    * @return dateMode
   **/
   @jakarta.annotation.Nullable

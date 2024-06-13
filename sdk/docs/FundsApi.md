@@ -4,29 +4,30 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**acceptEstimatePoint**](FundsApi.md#acceptEstimatePoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimatePoint: Accepts an Estimate Valuation Point. |
+| [**acceptEstimateValuationPoint**](FundsApi.md#acceptEstimateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
 | [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] CreateFee: Create a Fee. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund. |
 | [**deleteFee**](FundsApi.md#deleteFee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
 | [**deleteFund**](FundsApi.md#deleteFund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund. |
 | [**deleteValuationPoint**](FundsApi.md#deleteValuationPoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
-| [**finaliseCandidateValuation**](FundsApi.md#finaliseCandidateValuation) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuation: Finalise Candidate. |
+| [**finaliseCandidateValuationPoint**](FundsApi.md#finaliseCandidateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise Candidate. |
 | [**getFee**](FundsApi.md#getFee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund. |
 | [**getFund**](FundsApi.md#getFund) | **GET** /api/funds/{scope}/{code} | [EXPERIMENTAL] GetFund: Get a Fund. |
-| [**getValuationPointData**](FundsApi.md#getValuationPointData) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
+| [**getValuationPointData**](FundsApi.md#getValuationPointData) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**listFees**](FundsApi.md#listFees) | **GET** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] ListFees: List Fees for a specified Fund. |
 | [**listFunds**](FundsApi.md#listFunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds. |
 | [**patchFee**](FundsApi.md#patchFee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**setShareClassInstruments**](FundsApi.md#setShareClassInstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a fund. |
+| [**upsertDiaryEntryTypeValuationPoint**](FundsApi.md#upsertDiaryEntryTypeValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$upsert | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point. |
+| [**upsertFeeProperties**](FundsApi.md#upsertFeeProperties) | **POST** /api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert | [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties. |
 | [**upsertFundProperties**](FundsApi.md#upsertFundProperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties. |
-| [**upsertValuationPoint**](FundsApi.md#upsertValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$upsert | [EXPERIMENTAL] UpsertValuationPoint: Upsert Valuation Point. |
 
 
-<a id="acceptEstimatePoint"></a>
-# **acceptEstimatePoint**
-> ValuationPointDataResponse acceptEstimatePoint(scope, code, valuationPointDataRequest).execute();
+<a id="acceptEstimateValuationPoint"></a>
+# **acceptEstimateValuationPoint**
+> ValuationPointDataResponse acceptEstimateValuationPoint(scope, code, valuationPointDataRequest).execute();
 
-[EXPERIMENTAL] AcceptEstimatePoint: Accepts an Estimate Valuation Point.
+[EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 
 Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the valuation Point was last run, status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;
 
@@ -54,11 +55,11 @@ public class Example {
     String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
     ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state.
     try {
-      ValuationPointDataResponse result = apiInstance.acceptEstimatePoint(scope, code, valuationPointDataRequest)
+      ValuationPointDataResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling FundsApi#acceptEstimatePoint");
+      System.err.println("Exception when calling FundsApi#acceptEstimateValuationPoint");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -464,11 +465,11 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="finaliseCandidateValuation"></a>
-# **finaliseCandidateValuation**
-> ValuationPointDataResponse finaliseCandidateValuation(scope, code, valuationPointDataRequest).execute();
+<a id="finaliseCandidateValuationPoint"></a>
+# **finaliseCandidateValuationPoint**
+> ValuationPointDataResponse finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest).execute();
 
-[EXPERIMENTAL] FinaliseCandidateValuation: Finalise Candidate.
+[EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise Candidate.
 
 Moves a &#39;Candidate&#39; status Valuation Point to status &#39;Final&#39;.
 
@@ -496,11 +497,11 @@ public class Example {
     String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
     ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the diary entry code to mark as final.
     try {
-      ValuationPointDataResponse result = apiInstance.finaliseCandidateValuation(scope, code, valuationPointDataRequest)
+      ValuationPointDataResponse result = apiInstance.finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling FundsApi#finaliseCandidateValuation");
+      System.err.println("Exception when calling FundsApi#finaliseCandidateValuationPoint");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1111,6 +1112,157 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
+<a id="upsertDiaryEntryTypeValuationPoint"></a>
+# **upsertDiaryEntryTypeValuationPoint**
+> DiaryEntry upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest).execute();
+
+[EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
+
+Update or insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund.
+    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+    UpsertValuationPointRequest upsertValuationPointRequest = new UpsertValuationPointRequest(); // UpsertValuationPointRequest | The Valuation Point Estimate definition to Upsert
+    try {
+      DiaryEntry result = apiInstance.upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#upsertDiaryEntryTypeValuationPoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **upsertValuationPointRequest** | [**UpsertValuationPointRequest**](UpsertValuationPointRequest.md)| The Valuation Point Estimate definition to Upsert | |
+
+### Return type
+
+[**DiaryEntry**](DiaryEntry.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated or inserted estimated Valuation Point |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="upsertFeeProperties"></a>
+# **upsertFeeProperties**
+> FeeProperties upsertFeeProperties(scope, code, feeCode).requestBody(requestBody).execute();
+
+[EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
+
+Update or insert one or more properties onto a single Fee. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fee&#39;.     Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FundsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FundsApi apiInstance = new FundsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Fund.
+    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+    String feeCode = "feeCode_example"; // String | The code of the Fee to update or insert the properties onto.
+    Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fee. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Fee/Manager/Id\".
+    try {
+      FeeProperties result = apiInstance.upsertFeeProperties(scope, code, feeCode)
+            .requestBody(requestBody)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FundsApi#upsertFeeProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **feeCode** | **String**| The code of the Fee to update or insert the properties onto. | |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Fee. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. | [optional] |
+
+### Return type
+
+[**FeeProperties**](FeeProperties.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated or inserted properties |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
 <a id="upsertFundProperties"></a>
 # **upsertFundProperties**
 > FundProperties upsertFundProperties(scope, code).requestBody(requestBody).execute();
@@ -1183,80 +1335,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated or inserted properties |  -  |
-| **400** | The details of the input related failure |  -  |
-| **0** | Error response |  -  |
-
-<a id="upsertValuationPoint"></a>
-# **upsertValuationPoint**
-> DiaryEntry upsertValuationPoint(scope, code, upsertValuationPointRequest).execute();
-
-[EXPERIMENTAL] UpsertValuationPoint: Upsert Valuation Point.
-
-Update or insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
-
-### Example
-```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
-import com.finbourne.lusid.api.FundsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-    FundsApi apiInstance = new FundsApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the Fund.
-    String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
-    UpsertValuationPointRequest upsertValuationPointRequest = new UpsertValuationPointRequest(); // UpsertValuationPointRequest | The Valuation Point Estimate definition to Upsert
-    try {
-      DiaryEntry result = apiInstance.upsertValuationPoint(scope, code, upsertValuationPointRequest)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FundsApi#upsertValuationPoint");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the Fund. | |
-| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
-| **upsertValuationPointRequest** | [**UpsertValuationPointRequest**](UpsertValuationPointRequest.md)| The Valuation Point Estimate definition to Upsert | |
-
-### Return type
-
-[**DiaryEntry**](DiaryEntry.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The updated or inserted estimated Valuation Point |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
