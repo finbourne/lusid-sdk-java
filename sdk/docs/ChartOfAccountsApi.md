@@ -25,6 +25,8 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listGeneralLedgerProfiles**](ChartOfAccountsApi.md#listGeneralLedgerProfiles) | **GET** /api/chartofaccounts/{scope}/{code}/generalledgerprofile | [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. |
 | [**listPostingModuleRules**](ChartOfAccountsApi.md#listPostingModuleRules) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules | [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules |
 | [**listPostingModules**](ChartOfAccountsApi.md#listPostingModules) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules | [EXPERIMENTAL] ListPostingModules: List Posting Modules |
+| [**patchCleardownModule**](ChartOfAccountsApi.md#patchCleardownModule) | **PATCH** /api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode} | [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module |
+| [**patchPostingModule**](ChartOfAccountsApi.md#patchPostingModule) | **PATCH** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module |
 | [**setCleardownModuleDetails**](ChartOfAccountsApi.md#setCleardownModuleDetails) | **PUT** /api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode} | [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module |
 | [**setCleardownModuleRules**](ChartOfAccountsApi.md#setCleardownModuleRules) | **PUT** /api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules | [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module |
 | [**setGeneralLedgerProfileMappings**](ChartOfAccountsApi.md#setGeneralLedgerProfileMappings) | **PUT** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings | [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. |
@@ -1704,6 +1706,158 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Posting Modules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="patchCleardownModule"></a>
+# **patchCleardownModule**
+> CleardownModuleResponse patchCleardownModule(scope, code, cleardownModuleCode, operation).execute();
+
+[EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+
+Update fields on a Cleardown Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+    String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module to be updated.
+    List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
+    try {
+      CleardownModuleResponse result = apiInstance.patchCleardownModule(scope, code, cleardownModuleCode, operation)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#patchCleardownModule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **cleardownModuleCode** | **String**| The code of the Cleardown Module to be updated. | |
+| **operation** | [**List&lt;Operation&gt;**](Operation.md)| The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. | |
+
+### Return type
+
+[**CleardownModuleResponse**](CleardownModuleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated Cleardown Module. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="patchPostingModule"></a>
+# **patchPostingModule**
+> PostingModuleResponse patchPostingModule(scope, code, postingModuleCode, operation).execute();
+
+[EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+
+Update fields on a Posting Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+    String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
+    List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
+    try {
+      PostingModuleResponse result = apiInstance.patchPostingModule(scope, code, postingModuleCode, operation)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#patchPostingModule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **postingModuleCode** | **String**| The code of the Posting Module to be updated. | |
+| **operation** | [**List&lt;Operation&gt;**](Operation.md)| The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. | |
+
+### Return type
+
+[**PostingModuleResponse**](PostingModuleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated Posting Module. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

@@ -96,6 +96,14 @@ public class PortfolioEntity {
   @SerializedName(SERIALIZED_NAME_DELETED_PORTFOLIO)
   private PortfolioWithoutHref deletedPortfolio;
 
+  public static final String SERIALIZED_NAME_PREVIEWED_STATUS = "previewedStatus";
+  @SerializedName(SERIALIZED_NAME_PREVIEWED_STATUS)
+  private String previewedStatus;
+
+  public static final String SERIALIZED_NAME_PREVIEWED_PORTFOLIO = "previewedPortfolio";
+  @SerializedName(SERIALIZED_NAME_PREVIEWED_PORTFOLIO)
+  private PortfolioWithoutHref previewedPortfolio;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -313,6 +321,48 @@ public class PortfolioEntity {
   }
 
 
+  public PortfolioEntity previewedStatus(String previewedStatus) {
+    
+    this.previewedStatus = previewedStatus;
+    return this;
+  }
+
+   /**
+   * The status of the previewed entity.
+   * @return previewedStatus
+  **/
+  @jakarta.annotation.Nullable
+  public String getPreviewedStatus() {
+    return previewedStatus;
+  }
+
+
+  public void setPreviewedStatus(String previewedStatus) {
+    this.previewedStatus = previewedStatus;
+  }
+
+
+  public PortfolioEntity previewedPortfolio(PortfolioWithoutHref previewedPortfolio) {
+    
+    this.previewedPortfolio = previewedPortfolio;
+    return this;
+  }
+
+   /**
+   * Get previewedPortfolio
+   * @return previewedPortfolio
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioWithoutHref getPreviewedPortfolio() {
+    return previewedPortfolio;
+  }
+
+
+  public void setPreviewedPortfolio(PortfolioWithoutHref previewedPortfolio) {
+    this.previewedPortfolio = previewedPortfolio;
+  }
+
+
   public PortfolioEntity links(List<Link> links) {
     
     this.links = links;
@@ -362,6 +412,8 @@ public class PortfolioEntity {
         Objects.equals(this.effectiveAtCreated, portfolioEntity.effectiveAtCreated) &&
         Objects.equals(this.prevailingPortfolio, portfolioEntity.prevailingPortfolio) &&
         Objects.equals(this.deletedPortfolio, portfolioEntity.deletedPortfolio) &&
+        Objects.equals(this.previewedStatus, portfolioEntity.previewedStatus) &&
+        Objects.equals(this.previewedPortfolio, portfolioEntity.previewedPortfolio) &&
         Objects.equals(this.links, portfolioEntity.links);
   }
 
@@ -371,7 +423,7 @@ public class PortfolioEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, entityUniqueId, asAtVersionNumber, status, asAtDeleted, userIdDeleted, requestIdDeleted, effectiveAtCreated, prevailingPortfolio, deletedPortfolio, links);
+    return Objects.hash(href, entityUniqueId, asAtVersionNumber, status, asAtDeleted, userIdDeleted, requestIdDeleted, effectiveAtCreated, prevailingPortfolio, deletedPortfolio, previewedStatus, previewedPortfolio, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -395,6 +447,8 @@ public class PortfolioEntity {
     sb.append("    effectiveAtCreated: ").append(toIndentedString(effectiveAtCreated)).append("\n");
     sb.append("    prevailingPortfolio: ").append(toIndentedString(prevailingPortfolio)).append("\n");
     sb.append("    deletedPortfolio: ").append(toIndentedString(deletedPortfolio)).append("\n");
+    sb.append("    previewedStatus: ").append(toIndentedString(previewedStatus)).append("\n");
+    sb.append("    previewedPortfolio: ").append(toIndentedString(previewedPortfolio)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -428,6 +482,8 @@ public class PortfolioEntity {
     openapiFields.add("effectiveAtCreated");
     openapiFields.add("prevailingPortfolio");
     openapiFields.add("deletedPortfolio");
+    openapiFields.add("previewedStatus");
+    openapiFields.add("previewedPortfolio");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -479,6 +535,13 @@ public class PortfolioEntity {
       // validate the optional field `deletedPortfolio`
       if (jsonObj.get("deletedPortfolio") != null && !jsonObj.get("deletedPortfolio").isJsonNull()) {
         PortfolioWithoutHref.validateJsonElement(jsonObj.get("deletedPortfolio"));
+      }
+      if ((jsonObj.get("previewedStatus") != null && !jsonObj.get("previewedStatus").isJsonNull()) && !jsonObj.get("previewedStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `previewedStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previewedStatus").toString()));
+      }
+      // validate the optional field `previewedPortfolio`
+      if (jsonObj.get("previewedPortfolio") != null && !jsonObj.get("previewedPortfolio").isJsonNull()) {
+        PortfolioWithoutHref.validateJsonElement(jsonObj.get("previewedPortfolio"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

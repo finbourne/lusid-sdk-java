@@ -73,7 +73,7 @@ public class EntitiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call getPortfolioByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,6 +107,10 @@ public class EntitiesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (previews != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "previews", previews));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -129,26 +133,26 @@ public class EntitiesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'entityUniqueId' is set
         if (entityUniqueId == null) {
             throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getPortfolioByEntityUniqueId(Async)");
         }
 
-        return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, _callback);
+        return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
 
     }
 
 
-    private ApiResponse<PortfolioEntity> getPortfolioByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, null);
+    private ApiResponse<PortfolioEntity> getPortfolioByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null);
         Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPortfolioByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioEntity> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<PortfolioEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
         Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -158,6 +162,7 @@ public class EntitiesApi {
         private final String entityUniqueId;
         private String effectiveAt;
         private OffsetDateTime asAt;
+        private List<String> previews;
 
         private APIgetPortfolioByEntityUniqueIdRequest(String entityUniqueId) {
             this.entityUniqueId = entityUniqueId;
@@ -184,6 +189,16 @@ public class EntitiesApi {
         }
 
         /**
+         * Set previews
+         * @param previews The ids of the staged modifications to be previewed in the response. (optional)
+         * @return APIgetPortfolioByEntityUniqueIdRequest
+         */
+        public APIgetPortfolioByEntityUniqueIdRequest previews(List<String> previews) {
+            this.previews = previews;
+            return this;
+        }
+
+        /**
          * Build call for getPortfolioByEntityUniqueId
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -197,7 +212,7 @@ public class EntitiesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, _callback);
+            return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
         }
 
         /**
@@ -213,7 +228,7 @@ public class EntitiesApi {
          </table>
          */
         public PortfolioEntity execute() throws ApiException {
-            ApiResponse<PortfolioEntity> localVarResp = getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt);
+            ApiResponse<PortfolioEntity> localVarResp = getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
             return localVarResp.getData();
         }
 
@@ -230,7 +245,7 @@ public class EntitiesApi {
          </table>
          */
         public ApiResponse<PortfolioEntity> executeWithHttpInfo() throws ApiException {
-            return getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt);
+            return getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
         }
 
         /**
@@ -247,7 +262,7 @@ public class EntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioEntity> _callback) throws ApiException {
-            return getPortfolioByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, _callback);
+            return getPortfolioByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
         }
     }
 

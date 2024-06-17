@@ -43,6 +43,7 @@ import com.finbourne.lusid.model.GeneralLedgerProfileResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfAccount;
 import com.finbourne.lusid.model.PagedResourceListOfChartOfAccounts;
 import com.finbourne.lusid.model.PagedResourceListOfCleardownModuleResponse;
@@ -4536,6 +4537,394 @@ public class ChartOfAccountsApi {
      */
     public APIlistPostingModulesRequest listPostingModules(String scope, String code) {
         return new APIlistPostingModulesRequest(scope, code);
+    }
+    private okhttp3.Call patchCleardownModuleCall(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = operation;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "cleardownModuleCode" + "}", localVarApiClient.escapeString(cleardownModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling patchCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling patchCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'cleardownModuleCode' is set
+        if (cleardownModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling patchCleardownModule(Async)");
+        }
+
+        // verify the required parameter 'operation' is set
+        if (operation == null) {
+            throw new ApiException("Missing the required parameter 'operation' when calling patchCleardownModule(Async)");
+        }
+
+        return patchCleardownModuleCall(scope, code, cleardownModuleCode, operation, _callback);
+
+    }
+
+
+    private ApiResponse<CleardownModuleResponse> patchCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, List<Operation> operation) throws ApiException {
+        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, null);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call patchCleardownModuleAsync(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, _callback);
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpatchCleardownModuleRequest {
+        private final String scope;
+        private final String code;
+        private final String cleardownModuleCode;
+        private final List<Operation> operation;
+
+        private APIpatchCleardownModuleRequest(String scope, String code, String cleardownModuleCode, List<Operation> operation) {
+            this.scope = scope;
+            this.code = code;
+            this.cleardownModuleCode = cleardownModuleCode;
+            this.operation = operation;
+        }
+
+        /**
+         * Build call for patchCleardownModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchCleardownModuleCall(scope, code, cleardownModuleCode, operation, _callback);
+        }
+
+        /**
+         * Execute patchCleardownModule request
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute() throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = patchCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, operation);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchCleardownModule request with HTTP info returned
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
+            return patchCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, operation);
+        }
+
+        /**
+         * Execute patchCleardownModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
+            return patchCleardownModuleAsync(scope, code, cleardownModuleCode, operation, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+     * Update fields on a Cleardown Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param cleardownModuleCode The code of the Cleardown Module to be updated. (required)
+     * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
+     * @return APIpatchCleardownModuleRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpatchCleardownModuleRequest patchCleardownModule(String scope, String code, String cleardownModuleCode, List<Operation> operation) {
+        return new APIpatchCleardownModuleRequest(scope, code, cleardownModuleCode, operation);
+    }
+    private okhttp3.Call patchPostingModuleCall(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = operation;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "postingModuleCode" + "}", localVarApiClient.escapeString(postingModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling patchPostingModule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling patchPostingModule(Async)");
+        }
+
+        // verify the required parameter 'postingModuleCode' is set
+        if (postingModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'postingModuleCode' when calling patchPostingModule(Async)");
+        }
+
+        // verify the required parameter 'operation' is set
+        if (operation == null) {
+            throw new ApiException("Missing the required parameter 'operation' when calling patchPostingModule(Async)");
+        }
+
+        return patchPostingModuleCall(scope, code, postingModuleCode, operation, _callback);
+
+    }
+
+
+    private ApiResponse<PostingModuleResponse> patchPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, List<Operation> operation) throws ApiException {
+        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, null);
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call patchPostingModuleAsync(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, _callback);
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpatchPostingModuleRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+        private final List<Operation> operation;
+
+        private APIpatchPostingModuleRequest(String scope, String code, String postingModuleCode, List<Operation> operation) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+            this.operation = operation;
+        }
+
+        /**
+         * Build call for patchPostingModule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchPostingModuleCall(scope, code, postingModuleCode, operation, _callback);
+        }
+
+        /**
+         * Execute patchPostingModule request
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute() throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = patchPostingModuleWithHttpInfo(scope, code, postingModuleCode, operation);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchPostingModule request with HTTP info returned
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
+            return patchPostingModuleWithHttpInfo(scope, code, postingModuleCode, operation);
+        }
+
+        /**
+         * Execute patchPostingModule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+            return patchPostingModuleAsync(scope, code, postingModuleCode, operation, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+     * Update fields on a Posting Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module to be updated. (required)
+     * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
+     * @return APIpatchPostingModuleRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpatchPostingModuleRequest patchPostingModule(String scope, String code, String postingModuleCode, List<Operation> operation) {
+        return new APIpatchPostingModuleRequest(scope, code, postingModuleCode, operation);
     }
     private okhttp3.Call setCleardownModuleDetailsCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback) throws ApiException {
         String basePath = null;

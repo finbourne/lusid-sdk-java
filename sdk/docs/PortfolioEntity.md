@@ -18,6 +18,8 @@ A list of portfolios.
 |**effectiveAtCreated** | **OffsetDateTime** | The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt. |  [optional] |
 |**prevailingPortfolio** | [**PortfolioWithoutHref**](PortfolioWithoutHref.md) |  |  [optional] |
 |**deletedPortfolio** | [**PortfolioWithoutHref**](PortfolioWithoutHref.md) |  |  [optional] |
+|**previewedStatus** | **String** | The status of the previewed entity. |  [optional] |
+|**previewedPortfolio** | [**PortfolioWithoutHref**](PortfolioWithoutHref.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

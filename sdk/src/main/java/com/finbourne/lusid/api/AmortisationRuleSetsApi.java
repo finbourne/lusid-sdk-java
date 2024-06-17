@@ -176,7 +176,7 @@ public class AmortisationRuleSetsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -192,7 +192,7 @@ public class AmortisationRuleSetsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -209,7 +209,7 @@ public class AmortisationRuleSetsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -226,7 +226,7 @@ public class AmortisationRuleSetsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -245,7 +245,7 @@ public class AmortisationRuleSetsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

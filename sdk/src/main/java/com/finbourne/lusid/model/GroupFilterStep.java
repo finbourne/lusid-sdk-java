@@ -61,10 +61,6 @@ public class GroupFilterStep extends ComplianceStep {
   @SerializedName(SERIALIZED_NAME_LIMIT_CHECK_PARAMETERS)
   private List<ComplianceTemplateParameter> limitCheckParameters = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_WARNING_CHECK_PARAMETERS = "warningCheckParameters";
-  @SerializedName(SERIALIZED_NAME_WARNING_CHECK_PARAMETERS)
-  private List<ComplianceTemplateParameter> warningCheckParameters = new ArrayList<>();
-
   public GroupFilterStep() {
     // this.complianceStepType = this.getClass().getSimpleName();
   }
@@ -119,35 +115,6 @@ public class GroupFilterStep extends ComplianceStep {
   }
 
 
-  public GroupFilterStep warningCheckParameters(List<ComplianceTemplateParameter> warningCheckParameters) {
-    
-    this.warningCheckParameters = warningCheckParameters;
-    return this;
-  }
-
-  public GroupFilterStep addWarningCheckParametersItem(ComplianceTemplateParameter warningCheckParametersItem) {
-    if (this.warningCheckParameters == null) {
-      this.warningCheckParameters = new ArrayList<>();
-    }
-    this.warningCheckParameters.add(warningCheckParametersItem);
-    return this;
-  }
-
-   /**
-   * Parameters required for a warning limit check
-   * @return warningCheckParameters
-  **/
-  @jakarta.annotation.Nonnull
-  public List<ComplianceTemplateParameter> getWarningCheckParameters() {
-    return warningCheckParameters;
-  }
-
-
-  public void setWarningCheckParameters(List<ComplianceTemplateParameter> warningCheckParameters) {
-    this.warningCheckParameters = warningCheckParameters;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -160,13 +127,12 @@ public class GroupFilterStep extends ComplianceStep {
     GroupFilterStep groupFilterStep = (GroupFilterStep) o;
     return Objects.equals(this.label, groupFilterStep.label) &&
         Objects.equals(this.limitCheckParameters, groupFilterStep.limitCheckParameters) &&
-        Objects.equals(this.warningCheckParameters, groupFilterStep.warningCheckParameters) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, limitCheckParameters, warningCheckParameters, super.hashCode());
+    return Objects.hash(label, limitCheckParameters, super.hashCode());
   }
 
   @Override
@@ -176,7 +142,6 @@ public class GroupFilterStep extends ComplianceStep {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    limitCheckParameters: ").append(toIndentedString(limitCheckParameters)).append("\n");
-    sb.append("    warningCheckParameters: ").append(toIndentedString(warningCheckParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -202,13 +167,11 @@ public class GroupFilterStep extends ComplianceStep {
     openapiFields.add("complianceStepType");
     openapiFields.add("label");
     openapiFields.add("limitCheckParameters");
-    openapiFields.add("warningCheckParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("label");
     openapiRequiredFields.add("limitCheckParameters");
-    openapiRequiredFields.add("warningCheckParameters");
     openapiRequiredFields.add("complianceStepType");
   }
 

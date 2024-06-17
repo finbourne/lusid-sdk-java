@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="getPortfolioByEntityUniqueId"></a>
 # **getPortfolioByEntityUniqueId**
-> PortfolioEntity getPortfolioByEntityUniqueId(entityUniqueId).effectiveAt(effectiveAt).asAt(asAt).execute();
+> PortfolioEntity getPortfolioByEntityUniqueId(entityUniqueId).effectiveAt(effectiveAt).asAt(asAt).previews(previews).execute();
 
 [EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
 
@@ -39,10 +39,12 @@ public class Example {
     String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the portfolio definition.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified.
+    List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
     try {
       PortfolioEntity result = apiInstance.getPortfolioByEntityUniqueId(entityUniqueId)
             .effectiveAt(effectiveAt)
             .asAt(asAt)
+            .previews(previews)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -63,6 +65,7 @@ public class Example {
 | **entityUniqueId** | **String**| The universally unique identifier of the portfolio definition. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. | [optional] |
+| **previews** | [**List&lt;String&gt;**](String.md)| The ids of the staged modifications to be previewed in the response. | [optional] |
 
 ### Return type
 
