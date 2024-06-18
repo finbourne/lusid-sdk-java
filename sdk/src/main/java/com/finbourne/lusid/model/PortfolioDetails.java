@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -163,6 +164,10 @@ public class PortfolioDetails {
   public static final String SERIALIZED_NAME_AMORTISATION_RULE_SET_ID = "amortisationRuleSetId";
   @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
   private ResourceId amortisationRuleSetId;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -460,6 +465,27 @@ public class PortfolioDetails {
   }
 
 
+  public PortfolioDetails stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
   public PortfolioDetails links(List<Link> links) {
     
     this.links = links;
@@ -512,6 +538,7 @@ public class PortfolioDetails {
         Objects.equals(this.cashGainLossCalculationDate, portfolioDetails.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, portfolioDetails.instrumentEventConfiguration) &&
         Objects.equals(this.amortisationRuleSetId, portfolioDetails.amortisationRuleSetId) &&
+        Objects.equals(this.stagedModifications, portfolioDetails.stagedModifications) &&
         Objects.equals(this.links, portfolioDetails.links);
   }
 
@@ -521,7 +548,7 @@ public class PortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, links);
+    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -548,6 +575,7 @@ public class PortfolioDetails {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -584,6 +612,7 @@ public class PortfolioDetails {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
+    openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -654,6 +683,10 @@ public class PortfolioDetails {
       // validate the optional field `amortisationRuleSetId`
       if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
