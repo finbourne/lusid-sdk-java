@@ -18,8 +18,6 @@
 |**treatment** | **String** | The accrual period of the Fee; &#39;Monthly&#39; or &#39;Daily&#39;. |  |
 |**totalAnnualAccrualAmount** | **java.math.BigDecimal** | The total annual accrued amount for the Fee. (TotalAnnualAccrualAmount and CalculationBase cannot both be present) |  [optional] |
 |**feeRatePercentage** | **java.math.BigDecimal** | The fee rate percentage. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount) |  [optional] |
-|**monthlyAccrual** | **java.math.BigDecimal** | The monthly accrual amount. |  [optional] |
-|**dailyAccrual** | **java.math.BigDecimal** | The daily accrual amount. |  [optional] |
 |**payableFrequency** | **String** | The payable frequency for the Fee; &#39;Annually&#39;, &#39;Quarterly&#39; or &#39;Monthly&#39;. |  |
 |**businessDayConvention** | **String** | The business day convention to use for Fee calculations on weekends. |  |
 |**startDate** | **OffsetDateTime** | The start date of the Fee. |  |

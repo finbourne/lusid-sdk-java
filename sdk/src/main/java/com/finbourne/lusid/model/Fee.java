@@ -105,14 +105,6 @@ public class Fee {
   @SerializedName(SERIALIZED_NAME_FEE_RATE_PERCENTAGE)
   private java.math.BigDecimal feeRatePercentage;
 
-  public static final String SERIALIZED_NAME_MONTHLY_ACCRUAL = "monthlyAccrual";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_ACCRUAL)
-  private java.math.BigDecimal monthlyAccrual;
-
-  public static final String SERIALIZED_NAME_DAILY_ACCRUAL = "dailyAccrual";
-  @SerializedName(SERIALIZED_NAME_DAILY_ACCRUAL)
-  private java.math.BigDecimal dailyAccrual;
-
   public static final String SERIALIZED_NAME_PAYABLE_FREQUENCY = "payableFrequency";
   @SerializedName(SERIALIZED_NAME_PAYABLE_FREQUENCY)
   private String payableFrequency;
@@ -383,48 +375,6 @@ public class Fee {
   }
 
 
-  public Fee monthlyAccrual(java.math.BigDecimal monthlyAccrual) {
-    
-    this.monthlyAccrual = monthlyAccrual;
-    return this;
-  }
-
-   /**
-   * The monthly accrual amount.
-   * @return monthlyAccrual
-  **/
-  @jakarta.annotation.Nullable
-  public java.math.BigDecimal getMonthlyAccrual() {
-    return monthlyAccrual;
-  }
-
-
-  public void setMonthlyAccrual(java.math.BigDecimal monthlyAccrual) {
-    this.monthlyAccrual = monthlyAccrual;
-  }
-
-
-  public Fee dailyAccrual(java.math.BigDecimal dailyAccrual) {
-    
-    this.dailyAccrual = dailyAccrual;
-    return this;
-  }
-
-   /**
-   * The daily accrual amount.
-   * @return dailyAccrual
-  **/
-  @jakarta.annotation.Nullable
-  public java.math.BigDecimal getDailyAccrual() {
-    return dailyAccrual;
-  }
-
-
-  public void setDailyAccrual(java.math.BigDecimal dailyAccrual) {
-    this.dailyAccrual = dailyAccrual;
-  }
-
-
   public Fee payableFrequency(String payableFrequency) {
     
     this.payableFrequency = payableFrequency;
@@ -651,8 +601,6 @@ public class Fee {
         Objects.equals(this.treatment, fee.treatment) &&
         (this.totalAnnualAccrualAmount.compareTo(fee.getTotalAnnualAccrualAmount()) == 0) &&
         (this.feeRatePercentage.compareTo(fee.getFeeRatePercentage()) == 0) &&
-        (this.monthlyAccrual.compareTo(fee.getMonthlyAccrual()) == 0) &&
-        (this.dailyAccrual.compareTo(fee.getDailyAccrual()) == 0) &&
         Objects.equals(this.payableFrequency, fee.payableFrequency) &&
         Objects.equals(this.businessDayConvention, fee.businessDayConvention) &&
         Objects.equals(this.startDate, fee.startDate) &&
@@ -670,7 +618,7 @@ public class Fee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, feeCode, feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, monthlyAccrual, dailyAccrual, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, links);
+    return Objects.hash(href, feeCode, feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -695,8 +643,6 @@ public class Fee {
     sb.append("    treatment: ").append(toIndentedString(treatment)).append("\n");
     sb.append("    totalAnnualAccrualAmount: ").append(toIndentedString(totalAnnualAccrualAmount)).append("\n");
     sb.append("    feeRatePercentage: ").append(toIndentedString(feeRatePercentage)).append("\n");
-    sb.append("    monthlyAccrual: ").append(toIndentedString(monthlyAccrual)).append("\n");
-    sb.append("    dailyAccrual: ").append(toIndentedString(dailyAccrual)).append("\n");
     sb.append("    payableFrequency: ").append(toIndentedString(payableFrequency)).append("\n");
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
@@ -739,8 +685,6 @@ public class Fee {
     openapiFields.add("treatment");
     openapiFields.add("totalAnnualAccrualAmount");
     openapiFields.add("feeRatePercentage");
-    openapiFields.add("monthlyAccrual");
-    openapiFields.add("dailyAccrual");
     openapiFields.add("payableFrequency");
     openapiFields.add("businessDayConvention");
     openapiFields.add("startDate");
