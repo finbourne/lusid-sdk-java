@@ -177,7 +177,7 @@ public class RealisedGainLoss {
 
 
    /**
-   * The effective datetime that the units associated with this gain or loss where originally purchased.
+   * The effective datetime at which the units associated with this gain or loss were originally purchased.
    * @return purchaseTradeDate
   **/
   @jakarta.annotation.Nullable
@@ -189,7 +189,7 @@ public class RealisedGainLoss {
 
 
    /**
-   * The effective datetime that the units associated with this gain or loss where originally settled.
+   * The effective datetime at which the units associated with this gain or loss were originally settled.
    * @return purchaseSettlementDate
   **/
   @jakarta.annotation.Nullable
