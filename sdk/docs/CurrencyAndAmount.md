@@ -9,7 +9,7 @@ An amount of a specific currency, specifying a value and an associated unit
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**amount** | **java.math.BigDecimal** |  |  [optional] |
-|**currency** | **String** |  |  [optional] |
+|**currency** | **String** |  |  |
 
 
 
