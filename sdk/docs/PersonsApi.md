@@ -21,6 +21,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**setPersonProperties**](PersonsApi.md#setPersonProperties) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetPersonProperties: Set Person Properties |
 | [**upsertPerson**](PersonsApi.md#upsertPerson) | **POST** /api/persons | [EARLY ACCESS] UpsertPerson: Upsert Person |
 | [**upsertPersonAccessMetadata**](PersonsApi.md#upsertPersonAccessMetadata) | **PUT** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
+| [**upsertPersons**](PersonsApi.md#upsertPersons) | **POST** /api/persons/$batchUpsert | [EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons |
 
 
 <a id="deletePerson"></a>
@@ -1412,6 +1413,78 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The successfully updated or inserted item or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="upsertPersons"></a>
+# **upsertPersons**
+> UpsertPersonsResponse upsertPersons(successMode, requestBody).execute();
+
+[EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons
+
+Create or updates a collection of person(s).
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PersonsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PersonsApi apiInstance = new PersonsApi(defaultClient);
+    String successMode = "successMode_example"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
+    Map<String, UpsertPersonRequest> requestBody = new HashMap(); // Map<String, UpsertPersonRequest> | A collection of requests to create or update Person(s).
+    try {
+      UpsertPersonsResponse result = apiInstance.upsertPersons(successMode, requestBody)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PersonsApi#upsertPersons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial | |
+| **requestBody** | [**Map&lt;String, UpsertPersonRequest&gt;**](UpsertPersonRequest.md)| A collection of requests to create or update Person(s). | |
+
+### Return type
+
+[**UpsertPersonsResponse**](UpsertPersonsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created or updated person(s) |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
