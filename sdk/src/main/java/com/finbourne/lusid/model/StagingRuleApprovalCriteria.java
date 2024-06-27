@@ -58,6 +58,10 @@ public class StagingRuleApprovalCriteria {
   @SerializedName(SERIALIZED_NAME_DECIDING_USER)
   private String decidingUser;
 
+  public static final String SERIALIZED_NAME_STAGING_USER_CAN_DECIDE = "stagingUserCanDecide";
+  @SerializedName(SERIALIZED_NAME_STAGING_USER_CAN_DECIDE)
+  private Boolean stagingUserCanDecide;
+
   public StagingRuleApprovalCriteria() {
   }
 
@@ -103,6 +107,27 @@ public class StagingRuleApprovalCriteria {
   }
 
 
+  public StagingRuleApprovalCriteria stagingUserCanDecide(Boolean stagingUserCanDecide) {
+    
+    this.stagingUserCanDecide = stagingUserCanDecide;
+    return this;
+  }
+
+   /**
+   * Get stagingUserCanDecide
+   * @return stagingUserCanDecide
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getStagingUserCanDecide() {
+    return stagingUserCanDecide;
+  }
+
+
+  public void setStagingUserCanDecide(Boolean stagingUserCanDecide) {
+    this.stagingUserCanDecide = stagingUserCanDecide;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,7 +139,8 @@ public class StagingRuleApprovalCriteria {
     }
     StagingRuleApprovalCriteria stagingRuleApprovalCriteria = (StagingRuleApprovalCriteria) o;
     return Objects.equals(this.requiredApprovals, stagingRuleApprovalCriteria.requiredApprovals) &&
-        Objects.equals(this.decidingUser, stagingRuleApprovalCriteria.decidingUser);
+        Objects.equals(this.decidingUser, stagingRuleApprovalCriteria.decidingUser) &&
+        Objects.equals(this.stagingUserCanDecide, stagingRuleApprovalCriteria.stagingUserCanDecide);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -123,7 +149,7 @@ public class StagingRuleApprovalCriteria {
 
   @Override
   public int hashCode() {
-    return Objects.hash(requiredApprovals, decidingUser);
+    return Objects.hash(requiredApprovals, decidingUser, stagingUserCanDecide);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,6 +165,7 @@ public class StagingRuleApprovalCriteria {
     sb.append("class StagingRuleApprovalCriteria {\n");
     sb.append("    requiredApprovals: ").append(toIndentedString(requiredApprovals)).append("\n");
     sb.append("    decidingUser: ").append(toIndentedString(decidingUser)).append("\n");
+    sb.append("    stagingUserCanDecide: ").append(toIndentedString(stagingUserCanDecide)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,6 +190,7 @@ public class StagingRuleApprovalCriteria {
     openapiFields = new HashSet<String>();
     openapiFields.add("requiredApprovals");
     openapiFields.add("decidingUser");
+    openapiFields.add("stagingUserCanDecide");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

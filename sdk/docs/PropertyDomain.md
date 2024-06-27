@@ -89,5 +89,73 @@
 
 * `DERIVEDVALUATION` (value: `"DerivedValuation"`)
 
+* `ADDRESSKEYDEFINITION` (value: `"AddressKeyDefinition"`)
+
+* `AMORTISATIONRULESET` (value: `"AmortisationRuleSet"`)
+
+* `ANALYTICSSETINVENTORY` (value: `"AnalyticsSetInventory"`)
+
+* `ATOMUNITRESULT` (value: `"AtomUnitResult"`)
+
+* `CLEARDOWNMODULE` (value: `"CleardownModule"`)
+
+* `COMPLEXMARKETDATA` (value: `"ComplexMarketData"`)
+
+* `COMPLIANCERUNSUMMARY` (value: `"ComplianceRunSummary"`)
+
+* `COMPLIANCERULE` (value: `"ComplianceRule"`)
+
+* `COMPLIANCERUNINFO` (value: `"ComplianceRunInfo"`)
+
+* `CORPORATEACTIONSOURCE` (value: `"CorporateActionSource"`)
+
+* `COUNTERPARTYAGREEMENT` (value: `"CounterpartyAgreement"`)
+
+* `CUSTOMENTITYDEFINITION` (value: `"CustomEntityDefinition"`)
+
+* `DATATYPE` (value: `"DataType"`)
+
+* `DIALECT` (value: `"Dialect"`)
+
+* `EVENTHANDLER` (value: `"EventHandler"`)
+
+* `GENERALLEDGERPROFILE` (value: `"GeneralLedgerProfile"`)
+
+* `POSTINGMODULE` (value: `"PostingModule"`)
+
+* `QUOTE` (value: `"Quote"`)
+
+* `RECIPECOMPOSER` (value: `"RecipeComposer"`)
+
+* `RECONCILIATIONRUNBREAK` (value: `"ReconciliationRunBreak"`)
+
+* `REFERENCELIST` (value: `"ReferenceList"`)
+
+* `RELATIONDEFINITION` (value: `"RelationDefinition"`)
+
+* `RETURNBLOCKINDEX` (value: `"ReturnBlockIndex"`)
+
+* `SRSDOCUMENT` (value: `"SRSDocument"`)
+
+* `SRSINDEX` (value: `"SRSIndex"`)
+
+* `TRANSACTIONTEMPLATE` (value: `"TransactionTemplate"`)
+
+* `TRANSACTIONTEMPLATESCOPE` (value: `"TransactionTemplateScope"`)
+
+* `TRANSACTIONTYPE` (value: `"TransactionType"`)
+
+* `TRANSACTIONTYPECONFIG` (value: `"TransactionTypeConfig"`)
+
+* `TRANSLATIONSCRIPT` (value: `"TranslationScript"`)
+
+* `TASKDEFINITION` (value: `"TaskDefinition"`)
+
+* `TASKINSTANCE` (value: `"TaskInstance"`)
+
+* `WORKER` (value: `"Worker"`)
+
+* `STAGINGRULESET` (value: `"StagingRuleSet"`)
+
 
 

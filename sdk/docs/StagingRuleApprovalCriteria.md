@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**requiredApprovals** | **Integer** |  |  [optional] |
 |**decidingUser** | **String** |  |  [optional] |
+|**stagingUserCanDecide** | **Boolean** |  |  [optional] |
 
 
 
