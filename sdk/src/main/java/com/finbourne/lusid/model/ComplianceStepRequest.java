@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceStepRequest {
   /**
-   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest
+   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest
    */
   @JsonAdapter(ComplianceStepTypeRequestEnum.Adapter.class)
   public enum ComplianceStepTypeRequestEnum {
@@ -62,7 +62,9 @@ public class ComplianceStepRequest {
     
     BRANCHSTEPREQUEST("BranchStepRequest"),
     
-    CHECKSTEPREQUEST("CheckStepRequest");
+    CHECKSTEPREQUEST("CheckStepRequest"),
+    
+    PERCENTCHECKSTEPREQUEST("PercentCheckStepRequest");
 
     private String value;
 
@@ -116,7 +118,7 @@ public class ComplianceStepRequest {
   }
 
    /**
-   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest
+   * . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest
    * @return complianceStepTypeRequest
   **/
   @jakarta.annotation.Nonnull
@@ -214,6 +216,9 @@ public class ComplianceStepRequest {
           break;
         case "IntermediateComplianceStepRequest":
           IntermediateComplianceStepRequest.validateJsonElement(jsonElement);
+          break;
+        case "PercentCheckStepRequest":
+          PercentCheckStepRequest.validateJsonElement(jsonElement);
           break;
         default:
           throw new IllegalArgumentException(String.format("The value of the `complianceStepTypeRequest` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));

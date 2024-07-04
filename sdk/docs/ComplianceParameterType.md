@@ -47,5 +47,7 @@
 
 * `PROPERTYLISTCOMPLIANCEPARAMETER` (value: `"PropertyListComplianceParameter"`)
 
+* `GROUPCALCULATIONCOMPLIANCEPARAMETER` (value: `"GroupCalculationComplianceParameter"`)
+
 
 

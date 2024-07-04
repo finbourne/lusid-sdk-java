@@ -5,7 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**acceptEstimateValuationPoint**](FundsApi.md#acceptEstimateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
-| [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] CreateFee: Create a Fee. |
+| [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund. |
 | [**deleteFee**](FundsApi.md#deleteFee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
 | [**deleteFund**](FundsApi.md#deleteFund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund. |
@@ -99,7 +99,7 @@ public class Example {
 
 <a id="createFee"></a>
 # **createFee**
-> Fee createFee(scope, code, feeCode, feeRequest).execute();
+> Fee createFee(scope, code, feeRequest).execute();
 
 [EXPERIMENTAL] CreateFee: Create a Fee.
 
@@ -127,10 +127,9 @@ public class Example {
     FundsApi apiInstance = new FundsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Fund.
     String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
-    String feeCode = "feeCode_example"; // String | The code of the Fee.
     FeeRequest feeRequest = new FeeRequest(); // FeeRequest | The Fee to create.
     try {
-      Fee result = apiInstance.createFee(scope, code, feeCode, feeRequest)
+      Fee result = apiInstance.createFee(scope, code, feeRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -150,7 +149,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
-| **feeCode** | **String**| The code of the Fee. | |
 | **feeRequest** | [**FeeRequest**](FeeRequest.md)| The Fee to create. | |
 
 ### Return type

@@ -33,7 +33,9 @@ public enum ComplianceStepTypeRequest {
   
   BRANCHSTEPREQUEST("BranchStepRequest"),
   
-  CHECKSTEPREQUEST("CheckStepRequest");
+  CHECKSTEPREQUEST("CheckStepRequest"),
+  
+  PERCENTCHECKSTEPREQUEST("PercentCheckStepRequest");
 
   private String value;
 

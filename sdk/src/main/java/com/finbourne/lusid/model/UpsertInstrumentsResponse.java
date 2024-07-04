@@ -67,6 +67,10 @@ public class UpsertInstrumentsResponse {
   @SerializedName(SERIALIZED_NAME_VALUES)
   private Map<String, Instrument> values;
 
+  public static final String SERIALIZED_NAME_STAGED = "staged";
+  @SerializedName(SERIALIZED_NAME_STAGED)
+  private Map<String, Instrument> staged;
+
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   private Map<String, ErrorDetail> failed;
@@ -129,6 +133,35 @@ public class UpsertInstrumentsResponse {
 
   public void setValues(Map<String, Instrument> values) {
     this.values = values;
+  }
+
+
+  public UpsertInstrumentsResponse staged(Map<String, Instrument> staged) {
+    
+    this.staged = staged;
+    return this;
+  }
+
+  public UpsertInstrumentsResponse putStagedItem(String key, Instrument stagedItem) {
+    if (this.staged == null) {
+      this.staged = new HashMap<>();
+    }
+    this.staged.put(key, stagedItem);
+    return this;
+  }
+
+   /**
+   * The instruments that have been staged for updation or creation.
+   * @return staged
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Instrument> getStaged() {
+    return staged;
+  }
+
+
+  public void setStaged(Map<String, Instrument> staged) {
+    this.staged = staged;
   }
 
 
@@ -231,6 +264,7 @@ public class UpsertInstrumentsResponse {
     UpsertInstrumentsResponse upsertInstrumentsResponse = (UpsertInstrumentsResponse) o;
     return Objects.equals(this.href, upsertInstrumentsResponse.href) &&
         Objects.equals(this.values, upsertInstrumentsResponse.values) &&
+        Objects.equals(this.staged, upsertInstrumentsResponse.staged) &&
         Objects.equals(this.failed, upsertInstrumentsResponse.failed) &&
         Objects.equals(this.metadata, upsertInstrumentsResponse.metadata) &&
         Objects.equals(this.links, upsertInstrumentsResponse.links);
@@ -242,7 +276,7 @@ public class UpsertInstrumentsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, values, failed, metadata, links);
+    return Objects.hash(href, values, staged, failed, metadata, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -258,6 +292,7 @@ public class UpsertInstrumentsResponse {
     sb.append("class UpsertInstrumentsResponse {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("    staged: ").append(toIndentedString(staged)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -285,6 +320,7 @@ public class UpsertInstrumentsResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("values");
+    openapiFields.add("staged");
     openapiFields.add("failed");
     openapiFields.add("metadata");
     openapiFields.add("links");

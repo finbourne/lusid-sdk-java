@@ -7,6 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**code** | **String** | The code of the Fee. |  |
 |**feeType** | [**ResourceId**](ResourceId.md) |  |  |
 |**name** | **String** | The name of the Fee. |  |
 |**description** | **String** | A description for the Fee. |  [optional] |

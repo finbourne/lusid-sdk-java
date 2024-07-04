@@ -56,6 +56,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FeeRequest {
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_FEE_TYPE = "feeType";
   @SerializedName(SERIALIZED_NAME_FEE_TYPE)
   private ResourceId feeType;
@@ -122,6 +126,27 @@ public class FeeRequest {
 
   public FeeRequest() {
   }
+
+  public FeeRequest code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * The code of the Fee.
+   * @return code
+  **/
+  @jakarta.annotation.Nonnull
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
 
   public FeeRequest feeType(ResourceId feeType) {
     
@@ -477,7 +502,8 @@ public class FeeRequest {
       return false;
     }
     FeeRequest feeRequest = (FeeRequest) o;
-    return Objects.equals(this.feeType, feeRequest.feeType) &&
+    return Objects.equals(this.code, feeRequest.code) &&
+        Objects.equals(this.feeType, feeRequest.feeType) &&
         Objects.equals(this.name, feeRequest.name) &&
         Objects.equals(this.description, feeRequest.description) &&
         Objects.equals(this.origin, feeRequest.origin) &&
@@ -501,7 +527,7 @@ public class FeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, portfolioId);
+    return Objects.hash(code, feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, portfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -515,6 +541,7 @@ public class FeeRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeeRequest {\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    feeType: ").append(toIndentedString(feeType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -553,6 +580,7 @@ public class FeeRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("code");
     openapiFields.add("feeType");
     openapiFields.add("name");
     openapiFields.add("description");
@@ -572,6 +600,7 @@ public class FeeRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("code");
     openapiRequiredFields.add("feeType");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("accrualCurrency");
@@ -601,6 +630,9 @@ public class FeeRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
       // validate the required field `feeType`
       ResourceId.validateJsonElement(jsonObj.get("feeType"));
       if (!jsonObj.get("name").isJsonPrimitive()) {

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +19,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -55,6 +58,10 @@ public class FeeAccrual {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private OffsetDateTime effectiveAt;
 
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -75,15 +82,11 @@ public class FeeAccrual {
   @SerializedName(SERIALIZED_NAME_TOTAL_ACCRUAL)
   private java.math.BigDecimal totalAccrual;
 
-  public FeeAccrual() {
-  }
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
 
-  
-  public FeeAccrual(
-     java.math.BigDecimal totalAccrual
-  ) {
-    this();
-    this.totalAccrual = totalAccrual;
+  public FeeAccrual() {
   }
 
   public FeeAccrual effectiveAt(OffsetDateTime effectiveAt) {
@@ -93,10 +96,10 @@ public class FeeAccrual {
   }
 
    /**
-   * Get effectiveAt
+   * The effective date for which the fee accrual has been calculated.
    * @return effectiveAt
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public OffsetDateTime getEffectiveAt() {
     return effectiveAt;
   }
@@ -107,6 +110,27 @@ public class FeeAccrual {
   }
 
 
+  public FeeAccrual code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * The code of the fee for which the accrual has been calculated.
+   * @return code
+  **/
+  @jakarta.annotation.Nonnull
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+
   public FeeAccrual name(String name) {
     
     this.name = name;
@@ -114,10 +138,10 @@ public class FeeAccrual {
   }
 
    /**
-   * Get name
+   * The name of the fee for which the accrual has been calculated.
    * @return name
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -135,7 +159,7 @@ public class FeeAccrual {
   }
 
    /**
-   * Get calculationBase
+   * The result of the evaluating the fee&#39;s calculation base expression.
    * @return calculationBase
   **/
   @jakarta.annotation.Nullable
@@ -156,7 +180,7 @@ public class FeeAccrual {
   }
 
    /**
-   * Get amount
+   * The result of applying the fee to the calculation base, and scaled down to a day.
    * @return amount
   **/
   @jakarta.annotation.Nullable
@@ -177,7 +201,7 @@ public class FeeAccrual {
   }
 
    /**
-   * Get previousAccrual
+   * The previous valuation point&#39;s total accrual.
    * @return previousAccrual
   **/
   @jakarta.annotation.Nullable
@@ -191,8 +215,14 @@ public class FeeAccrual {
   }
 
 
+  public FeeAccrual totalAccrual(java.math.BigDecimal totalAccrual) {
+    
+    this.totalAccrual = totalAccrual;
+    return this;
+  }
+
    /**
-   * Get totalAccrual
+   * The sum of the PreviousAccrual and Amount.
    * @return totalAccrual
   **/
   @jakarta.annotation.Nullable
@@ -201,6 +231,38 @@ public class FeeAccrual {
   }
 
 
+  public void setTotalAccrual(java.math.BigDecimal totalAccrual) {
+    this.totalAccrual = totalAccrual;
+  }
+
+
+  public FeeAccrual links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public FeeAccrual addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
 
 
 
@@ -214,11 +276,13 @@ public class FeeAccrual {
     }
     FeeAccrual feeAccrual = (FeeAccrual) o;
     return Objects.equals(this.effectiveAt, feeAccrual.effectiveAt) &&
+        Objects.equals(this.code, feeAccrual.code) &&
         Objects.equals(this.name, feeAccrual.name) &&
         (this.calculationBase.compareTo(feeAccrual.getCalculationBase()) == 0) &&
         (this.amount.compareTo(feeAccrual.getAmount()) == 0) &&
         (this.previousAccrual.compareTo(feeAccrual.getPreviousAccrual()) == 0) &&
-        (this.totalAccrual.compareTo(feeAccrual.getTotalAccrual()) == 0);
+        (this.totalAccrual.compareTo(feeAccrual.getTotalAccrual()) == 0) &&
+        Objects.equals(this.links, feeAccrual.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -227,7 +291,7 @@ public class FeeAccrual {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, name, calculationBase, amount, previousAccrual, totalAccrual);
+    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, totalAccrual, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -242,11 +306,13 @@ public class FeeAccrual {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeeAccrual {\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    calculationBase: ").append(toIndentedString(calculationBase)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    previousAccrual: ").append(toIndentedString(previousAccrual)).append("\n");
     sb.append("    totalAccrual: ").append(toIndentedString(totalAccrual)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -270,14 +336,19 @@ public class FeeAccrual {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("effectiveAt");
+    openapiFields.add("code");
     openapiFields.add("name");
     openapiFields.add("calculationBase");
     openapiFields.add("amount");
     openapiFields.add("previousAccrual");
     openapiFields.add("totalAccrual");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("effectiveAt");
+    openapiRequiredFields.add("code");
+    openapiRequiredFields.add("name");
   }
 
  /**
@@ -292,9 +363,33 @@ public class FeeAccrual {
           throw new IllegalArgumentException(String.format("The required field(s) %s in FeeAccrual is not found in the empty JSON string", FeeAccrual.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : FeeAccrual.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
   }
 

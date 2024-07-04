@@ -81,5 +81,9 @@
 
 * `FLEXIBLELOAN` (value: `"FlexibleLoan"`)
 
+* `UNSETTLEDCASH` (value: `"UnsettledCash"`)
+
+* `CASH` (value: `"Cash"`)
+
 
 

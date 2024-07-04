@@ -58,6 +58,10 @@ public class TransactionTypeCalculation {
   @SerializedName(SERIALIZED_NAME_SIDE)
   private String side;
 
+  public static final String SERIALIZED_NAME_FORMULA = "formula";
+  @SerializedName(SERIALIZED_NAME_FORMULA)
+  private String formula;
+
   public TransactionTypeCalculation() {
   }
 
@@ -103,6 +107,27 @@ public class TransactionTypeCalculation {
   }
 
 
+  public TransactionTypeCalculation formula(String formula) {
+    
+    this.formula = formula;
+    return this;
+  }
+
+   /**
+   * The formula used to derive the total consideration amount when it is not provided on the transaction
+   * @return formula
+  **/
+  @jakarta.annotation.Nullable
+  public String getFormula() {
+    return formula;
+  }
+
+
+  public void setFormula(String formula) {
+    this.formula = formula;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,7 +139,8 @@ public class TransactionTypeCalculation {
     }
     TransactionTypeCalculation transactionTypeCalculation = (TransactionTypeCalculation) o;
     return Objects.equals(this.type, transactionTypeCalculation.type) &&
-        Objects.equals(this.side, transactionTypeCalculation.side);
+        Objects.equals(this.side, transactionTypeCalculation.side) &&
+        Objects.equals(this.formula, transactionTypeCalculation.formula);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -123,7 +149,7 @@ public class TransactionTypeCalculation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, side);
+    return Objects.hash(type, side, formula);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,6 +165,7 @@ public class TransactionTypeCalculation {
     sb.append("class TransactionTypeCalculation {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
+    sb.append("    formula: ").append(toIndentedString(formula)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,6 +190,7 @@ public class TransactionTypeCalculation {
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
     openapiFields.add("side");
+    openapiFields.add("formula");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -194,6 +222,9 @@ public class TransactionTypeCalculation {
       }
       if ((jsonObj.get("side") != null && !jsonObj.get("side").isJsonNull()) && !jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
+      }
+      if ((jsonObj.get("formula") != null && !jsonObj.get("formula").isJsonNull()) && !jsonObj.get("formula").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("formula").toString()));
       }
   }
 

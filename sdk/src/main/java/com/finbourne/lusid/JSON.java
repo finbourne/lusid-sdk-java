@@ -353,6 +353,7 @@ public class JSON {
                         classByDiscriminatorValue.put("DecimalListComplianceParameter", com.finbourne.lusid.model.DecimalListComplianceParameter.class);
                         classByDiscriminatorValue.put("FilterPredicateComplianceParameter", com.finbourne.lusid.model.FilterPredicateComplianceParameter.class);
                         classByDiscriminatorValue.put("GroupBySelectorComplianceParameter", com.finbourne.lusid.model.GroupBySelectorComplianceParameter.class);
+                        classByDiscriminatorValue.put("GroupCalculationComplianceParameter", com.finbourne.lusid.model.GroupCalculationComplianceParameter.class);
                         classByDiscriminatorValue.put("GroupFilterPredicateComplianceParameter", com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.class);
                         classByDiscriminatorValue.put("InstrumentListComplianceParameter", com.finbourne.lusid.model.InstrumentListComplianceParameter.class);
                         classByDiscriminatorValue.put("PortfolioGroupIdComplianceParameter", com.finbourne.lusid.model.PortfolioGroupIdComplianceParameter.class);
@@ -379,6 +380,7 @@ public class JSON {
                         classByDiscriminatorValue.put("GroupByStep", com.finbourne.lusid.model.GroupByStep.class);
                         classByDiscriminatorValue.put("GroupFilterStep", com.finbourne.lusid.model.GroupFilterStep.class);
                         classByDiscriminatorValue.put("IntermediateComplianceStep", com.finbourne.lusid.model.IntermediateComplianceStep.class);
+                        classByDiscriminatorValue.put("PercentCheckStep", com.finbourne.lusid.model.PercentCheckStep.class);
                         classByDiscriminatorValue.put("RecombineStep", com.finbourne.lusid.model.RecombineStep.class);
                         classByDiscriminatorValue.put("ComplianceStep", com.finbourne.lusid.model.ComplianceStep.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
@@ -395,6 +397,7 @@ public class JSON {
                         classByDiscriminatorValue.put("GroupByStepRequest", com.finbourne.lusid.model.GroupByStepRequest.class);
                         classByDiscriminatorValue.put("GroupFilterStepRequest", com.finbourne.lusid.model.GroupFilterStepRequest.class);
                         classByDiscriminatorValue.put("IntermediateComplianceStepRequest", com.finbourne.lusid.model.IntermediateComplianceStepRequest.class);
+                        classByDiscriminatorValue.put("PercentCheckStepRequest", com.finbourne.lusid.model.PercentCheckStepRequest.class);
                         classByDiscriminatorValue.put("ComplianceStepRequest", com.finbourne.lusid.model.ComplianceStepRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
@@ -954,6 +957,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.GroupCalculationComplianceParameter.class, new TypeSelector<com.finbourne.lusid.model.GroupCalculationComplianceParameter>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.GroupCalculationComplianceParameter> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("GroupCalculationComplianceParameter", com.finbourne.lusid.model.GroupCalculationComplianceParameter.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceParameterType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.class, new TypeSelector<com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter> getClassForElement(JsonElement readElement) {
@@ -1325,6 +1337,24 @@ public class JSON {
                         classByDiscriminatorValue.put("OptionalitySchedule", com.finbourne.lusid.model.OptionalitySchedule.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "scheduleType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.PercentCheckStep.class, new TypeSelector<com.finbourne.lusid.model.PercentCheckStep>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.PercentCheckStep> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PercentCheckStep", com.finbourne.lusid.model.PercentCheckStep.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.PercentCheckStepRequest.class, new TypeSelector<com.finbourne.lusid.model.PercentCheckStepRequest>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.PercentCheckStepRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PercentCheckStepRequest", com.finbourne.lusid.model.PercentCheckStepRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.PortfolioGroupIdComplianceParameter.class, new TypeSelector<com.finbourne.lusid.model.PortfolioGroupIdComplianceParameter>() {
@@ -2226,6 +2256,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupBySelectorComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupByStep.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupByStepRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupCalculationComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterPredicateComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterStep.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.GroupFilterStepRequest.CustomTypeAdapterFactory());
@@ -2423,6 +2454,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Participation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ParticipationRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ParticipationSetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PercentCheckStep.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PercentCheckStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PerformanceReturn.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PerformanceReturnsMetric.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PeriodDiaryEntriesReopenedResponse.CustomTypeAdapterFactory());

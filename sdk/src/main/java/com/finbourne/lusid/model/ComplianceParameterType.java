@@ -65,7 +65,9 @@ public enum ComplianceParameterType {
   
   GROUPBYSELECTORCOMPLIANCEPARAMETER("GroupBySelectorComplianceParameter"),
   
-  PROPERTYLISTCOMPLIANCEPARAMETER("PropertyListComplianceParameter");
+  PROPERTYLISTCOMPLIANCEPARAMETER("PropertyListComplianceParameter"),
+  
+  GROUPCALCULATIONCOMPLIANCEPARAMETER("GroupCalculationComplianceParameter");
 
   private String value;
 

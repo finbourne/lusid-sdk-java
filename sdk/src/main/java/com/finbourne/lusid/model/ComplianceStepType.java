@@ -35,7 +35,9 @@ public enum ComplianceStepType {
   
   RECOMBINESTEP("RecombineStep"),
   
-  CHECKSTEP("CheckStep");
+  CHECKSTEP("CheckStep"),
+  
+  PERCENTCHECKSTEP("PercentCheckStep");
 
   private String value;
 

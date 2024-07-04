@@ -17,5 +17,7 @@
 
 * `CHECKSTEP` (value: `"CheckStep"`)
 
+* `PERCENTCHECKSTEP` (value: `"PercentCheckStep"`)
+
 
 

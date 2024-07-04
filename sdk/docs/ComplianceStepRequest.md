@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**complianceStepTypeRequest** | [**ComplianceStepTypeRequestEnum**](#ComplianceStepTypeRequestEnum) | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest |  |
+|**complianceStepTypeRequest** | [**ComplianceStepTypeRequestEnum**](#ComplianceStepTypeRequestEnum) | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest |  |
 
 
 
@@ -20,6 +20,7 @@
 | GROUPFILTERSTEPREQUEST | &quot;GroupFilterStepRequest&quot; |
 | BRANCHSTEPREQUEST | &quot;BranchStepRequest&quot; |
 | CHECKSTEPREQUEST | &quot;CheckStepRequest&quot; |
+| PERCENTCHECKSTEPREQUEST | &quot;PercentCheckStepRequest&quot; |
 
 
 

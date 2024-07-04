@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -76,6 +77,10 @@ public class Instrument {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -309,6 +314,27 @@ public class Instrument {
 
   public void setVersion(Version version) {
     this.version = version;
+  }
+
+
+  public Instrument stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
   }
 
 
@@ -568,6 +594,7 @@ public class Instrument {
         Objects.equals(this.scope, instrument.scope) &&
         Objects.equals(this.lusidInstrumentId, instrument.lusidInstrumentId) &&
         Objects.equals(this.version, instrument.version) &&
+        Objects.equals(this.stagedModifications, instrument.stagedModifications) &&
         Objects.equals(this.name, instrument.name) &&
         Objects.equals(this.identifiers, instrument.identifiers) &&
         Objects.equals(this.properties, instrument.properties) &&
@@ -586,7 +613,7 @@ public class Instrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, scope, lusidInstrumentId, version, name, identifiers, properties, lookthroughPortfolio, instrumentDefinition, state, assetClass, domCcy, relationships, links);
+    return Objects.hash(href, scope, lusidInstrumentId, version, stagedModifications, name, identifiers, properties, lookthroughPortfolio, instrumentDefinition, state, assetClass, domCcy, relationships, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -604,6 +631,7 @@ public class Instrument {
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
@@ -640,6 +668,7 @@ public class Instrument {
     openapiFields.add("scope");
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("version");
+    openapiFields.add("stagedModifications");
     openapiFields.add("name");
     openapiFields.add("identifiers");
     openapiFields.add("properties");
@@ -691,6 +720,10 @@ public class Instrument {
       }
       // validate the required field `version`
       Version.validateJsonElement(jsonObj.get("version"));
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }

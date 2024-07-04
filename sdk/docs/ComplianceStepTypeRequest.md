@@ -15,5 +15,7 @@
 
 * `CHECKSTEPREQUEST` (value: `"CheckStepRequest"`)
 
+* `PERCENTCHECKSTEPREQUEST` (value: `"PercentCheckStepRequest"`)
+
 
 

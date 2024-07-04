@@ -99,7 +99,11 @@ public enum InstrumentType {
   
   FUNDSHARECLASS("FundShareClass"),
   
-  FLEXIBLELOAN("FlexibleLoan");
+  FLEXIBLELOAN("FlexibleLoan"),
+  
+  UNSETTLEDCASH("UnsettledCash"),
+  
+  CASH("Cash");
 
   private String value;
 
