@@ -28,6 +28,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PortfolioEntity;
+import com.finbourne.lusid.model.PropertyDefinitionEntity;
 import com.finbourne.lusid.model.ResourceListOfChange;
 
 import java.lang.reflect.Type;
@@ -475,5 +476,214 @@ public class EntitiesApi {
      */
     public APIgetPortfolioChangesRequest getPortfolioChanges(String scope, String effectiveAt) {
         return new APIgetPortfolioChangesRequest(scope, effectiveAt);
+    }
+    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/entities/propertydefinitions/{entityUniqueId}"
+            .replace("{" + "entityUniqueId" + "}", localVarApiClient.escapeString(entityUniqueId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (previews != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "previews", previews));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'entityUniqueId' is set
+        if (entityUniqueId == null) {
+            throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getPropertyDefinitionByEntityUniqueId(Async)");
+        }
+
+        return getPropertyDefinitionByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+
+    }
+
+
+    private ApiResponse<PropertyDefinitionEntity> getPropertyDefinitionByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
+        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null);
+        Type localVarReturnType = new TypeToken<PropertyDefinitionEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<PropertyDefinitionEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        Type localVarReturnType = new TypeToken<PropertyDefinitionEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPropertyDefinitionByEntityUniqueIdRequest {
+        private final String entityUniqueId;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> previews;
+
+        private APIgetPropertyDefinitionByEntityUniqueIdRequest(String entityUniqueId) {
+            this.entityUniqueId = entityUniqueId;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime at which to retrieve the property definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPropertyDefinitionByEntityUniqueIdRequest
+         */
+        public APIgetPropertyDefinitionByEntityUniqueIdRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the property definition. Defaults to returning the latest version of the property definition if not specified. (optional)
+         * @return APIgetPropertyDefinitionByEntityUniqueIdRequest
+         */
+        public APIgetPropertyDefinitionByEntityUniqueIdRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set previews
+         * @param previews The ids of the staged modifications to be previewed in the response. (optional)
+         * @return APIgetPropertyDefinitionByEntityUniqueIdRequest
+         */
+        public APIgetPropertyDefinitionByEntityUniqueIdRequest previews(List<String> previews) {
+            this.previews = previews;
+            return this;
+        }
+
+        /**
+         * Build call for getPropertyDefinitionByEntityUniqueId
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPropertyDefinitionByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getPropertyDefinitionByEntityUniqueId request
+         * @return PropertyDefinitionEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinitionEntity execute() throws ApiException {
+            ApiResponse<PropertyDefinitionEntity> localVarResp = getPropertyDefinitionByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPropertyDefinitionByEntityUniqueId request with HTTP info returned
+         * @return ApiResponse&lt;PropertyDefinitionEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinitionEntity> executeWithHttpInfo() throws ApiException {
+            return getPropertyDefinitionByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+        }
+
+        /**
+         * Execute getPropertyDefinitionByEntityUniqueId request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinitionEntity> _callback) throws ApiException {
+            return getPropertyDefinitionByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
+     * Retrieve a particular property definition.  If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
+     * @param entityUniqueId The universally unique identifier of the property definition. (required)
+     * @return APIgetPropertyDefinitionByEntityUniqueIdRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetPropertyDefinitionByEntityUniqueIdRequest getPropertyDefinitionByEntityUniqueId(String entityUniqueId) {
+        return new APIgetPropertyDefinitionByEntityUniqueIdRequest(entityUniqueId);
     }
 }
