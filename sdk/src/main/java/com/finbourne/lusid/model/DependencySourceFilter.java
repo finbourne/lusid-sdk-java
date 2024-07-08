@@ -62,6 +62,10 @@ public class DependencySourceFilter {
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
 
+  public static final String SERIALIZED_NAME_LONG_OR_SHORT_INDICATOR = "longOrShortIndicator";
+  @SerializedName(SERIALIZED_NAME_LONG_OR_SHORT_INDICATOR)
+  private String longOrShortIndicator;
+
   public DependencySourceFilter() {
   }
 
@@ -128,6 +132,27 @@ public class DependencySourceFilter {
   }
 
 
+  public DependencySourceFilter longOrShortIndicator(String longOrShortIndicator) {
+    
+    this.longOrShortIndicator = longOrShortIndicator;
+    return this;
+  }
+
+   /**
+   * Specify that a rule should apply if the market data is requested by a model with a given long or short indicator.  If none, then no filtering on LongOrShortIndicator is applied.
+   * @return longOrShortIndicator
+  **/
+  @jakarta.annotation.Nullable
+  public String getLongOrShortIndicator() {
+    return longOrShortIndicator;
+  }
+
+
+  public void setLongOrShortIndicator(String longOrShortIndicator) {
+    this.longOrShortIndicator = longOrShortIndicator;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +165,8 @@ public class DependencySourceFilter {
     DependencySourceFilter dependencySourceFilter = (DependencySourceFilter) o;
     return Objects.equals(this.instrumentType, dependencySourceFilter.instrumentType) &&
         Objects.equals(this.assetClass, dependencySourceFilter.assetClass) &&
-        Objects.equals(this.domCcy, dependencySourceFilter.domCcy);
+        Objects.equals(this.domCcy, dependencySourceFilter.domCcy) &&
+        Objects.equals(this.longOrShortIndicator, dependencySourceFilter.longOrShortIndicator);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +175,7 @@ public class DependencySourceFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentType, assetClass, domCcy);
+    return Objects.hash(instrumentType, assetClass, domCcy, longOrShortIndicator);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +192,7 @@ public class DependencySourceFilter {
     sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
     sb.append("    assetClass: ").append(toIndentedString(assetClass)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    longOrShortIndicator: ").append(toIndentedString(longOrShortIndicator)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +218,7 @@ public class DependencySourceFilter {
     openapiFields.add("instrumentType");
     openapiFields.add("assetClass");
     openapiFields.add("domCcy");
+    openapiFields.add("longOrShortIndicator");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -217,6 +245,9 @@ public class DependencySourceFilter {
       }
       if ((jsonObj.get("domCcy") != null && !jsonObj.get("domCcy").isJsonNull()) && !jsonObj.get("domCcy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `domCcy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domCcy").toString()));
+      }
+      if ((jsonObj.get("longOrShortIndicator") != null && !jsonObj.get("longOrShortIndicator").isJsonNull()) && !jsonObj.get("longOrShortIndicator").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `longOrShortIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("longOrShortIndicator").toString()));
       }
   }
 
