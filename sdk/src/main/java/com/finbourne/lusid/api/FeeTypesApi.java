@@ -25,6 +25,7 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.FeeTransactionTemplateSpecification;
 import com.finbourne.lusid.model.FeeType;
 import com.finbourne.lusid.model.FeeTypeRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -424,6 +425,156 @@ public class FeeTypesApi {
      */
     public APIdeleteFeeTypeRequest deleteFeeType(String scope, String code) {
         return new APIdeleteFeeTypeRequest(scope, code);
+    }
+    private okhttp3.Call getFeeTemplateSpecificationsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/feetypes/feetransactiontemplatespecification";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFeeTemplateSpecificationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFeeTemplateSpecificationsCall(_callback);
+
+    }
+
+
+    private ApiResponse<FeeTransactionTemplateSpecification> getFeeTemplateSpecificationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<FeeTransactionTemplateSpecification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getFeeTemplateSpecificationsAsync(final ApiCallback<FeeTransactionTemplateSpecification> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<FeeTransactionTemplateSpecification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetFeeTemplateSpecificationsRequest {
+
+        private APIgetFeeTemplateSpecificationsRequest() {
+        }
+
+        /**
+         * Build call for getFeeTemplateSpecifications
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getFeeTemplateSpecificationsCall(_callback);
+        }
+
+        /**
+         * Execute getFeeTemplateSpecifications request
+         * @return FeeTransactionTemplateSpecification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeTransactionTemplateSpecification execute() throws ApiException {
+            ApiResponse<FeeTransactionTemplateSpecification> localVarResp = getFeeTemplateSpecificationsWithHttpInfo();
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFeeTemplateSpecifications request with HTTP info returned
+         * @return ApiResponse&lt;FeeTransactionTemplateSpecification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeTransactionTemplateSpecification> executeWithHttpInfo() throws ApiException {
+            return getFeeTemplateSpecificationsWithHttpInfo();
+        }
+
+        /**
+         * Execute getFeeTemplateSpecifications request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeTransactionTemplateSpecification> _callback) throws ApiException {
+            return getFeeTemplateSpecificationsAsync(_callback);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+     * Get FeeTemplateSpecifications used in the FeeType.
+     * @return APIgetFeeTemplateSpecificationsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetFeeTemplateSpecificationsRequest getFeeTemplateSpecifications() {
+        return new APIgetFeeTemplateSpecificationsRequest();
     }
     private okhttp3.Call getFeeTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;

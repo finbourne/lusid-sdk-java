@@ -6,6 +6,7 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**createFeeType**](FeeTypesApi.md#createFeeType) | **POST** /api/feetypes/{scope} | [EXPERIMENTAL] CreateFeeType: Create a FeeType. |
 | [**deleteFeeType**](FeeTypesApi.md#deleteFeeType) | **DELETE** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. |
+| [**getFeeTemplateSpecifications**](FeeTypesApi.md#getFeeTemplateSpecifications) | **GET** /api/feetypes/feetransactiontemplatespecification | [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. |
 | [**getFeeType**](FeeTypesApi.md#getFeeType) | **GET** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] GetFeeType: Get a FeeType |
 | [**listFeeTypes**](FeeTypesApi.md#listFeeTypes) | **GET** /api/feetypes | [EXPERIMENTAL] ListFeeTypes: List FeeTypes |
 | [**updateFeeType**](FeeTypesApi.md#updateFeeType) | **PUT** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] UpdateFeeType: Update a FeeType. |
@@ -153,6 +154,71 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Delete a FeeType. |  -  |
 | **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getFeeTemplateSpecifications"></a>
+# **getFeeTemplateSpecifications**
+> FeeTransactionTemplateSpecification getFeeTemplateSpecifications().execute();
+
+[EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+
+Get FeeTemplateSpecifications used in the FeeType.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.FeeTypesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    FeeTypesApi apiInstance = new FeeTypesApi(defaultClient);
+    try {
+      FeeTransactionTemplateSpecification result = apiInstance.getFeeTemplateSpecifications()
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FeeTypesApi#getFeeTemplateSpecifications");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FeeTransactionTemplateSpecification**](FeeTransactionTemplateSpecification.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Fee template specifications used with a FeeType. |  -  |
 | **0** | Error response |  -  |
 
 <a id="getFeeType"></a>
