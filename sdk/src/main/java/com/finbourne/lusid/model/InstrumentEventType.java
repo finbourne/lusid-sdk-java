@@ -79,7 +79,9 @@ public enum InstrumentEventType {
   
   SPINOFFEVENT("SpinOffEvent"),
   
-  MERGEREVENT("MergerEvent");
+  MERGEREVENT("MergerEvent"),
+  
+  FUTUREEXPIRYEVENT("FutureExpiryEvent");
 
   private String value;
 

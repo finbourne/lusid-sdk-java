@@ -28,6 +28,7 @@ import com.finbourne.lusid.model.AllocationServiceRunResponse;
 import com.finbourne.lusid.model.BlockAndOrdersCreateRequest;
 import com.finbourne.lusid.model.BookTransactionsRequest;
 import com.finbourne.lusid.model.BookTransactionsResponse;
+import com.finbourne.lusid.model.CancelPlacementsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.MoveOrdersToDifferentBlocksRequest;
@@ -263,6 +264,173 @@ public class OrderManagementApi {
      */
     public APIbookTransactionsRequest bookTransactions(BookTransactionsRequest bookTransactionsRequest) {
         return new APIbookTransactionsRequest(bookTransactionsRequest);
+    }
+    private okhttp3.Call cancelPlacementsCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/$cancelplacements";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelPlacementsValidateBeforeCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling cancelPlacements(Async)");
+        }
+
+        return cancelPlacementsCall(requestBody, _callback);
+
+    }
+
+
+    private ApiResponse<CancelPlacementsResponse> cancelPlacementsWithHttpInfo(Map<String, ResourceId> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, null);
+        Type localVarReturnType = new TypeToken<CancelPlacementsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call cancelPlacementsAsync(Map<String, ResourceId> requestBody, final ApiCallback<CancelPlacementsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, _callback);
+        Type localVarReturnType = new TypeToken<CancelPlacementsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcancelPlacementsRequest {
+        private final Map<String, ResourceId> requestBody;
+
+        private APIcancelPlacementsRequest(Map<String, ResourceId> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for cancelPlacements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelPlacementsCall(requestBody, _callback);
+        }
+
+        /**
+         * Execute cancelPlacements request
+         * @return CancelPlacementsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelPlacementsResponse execute() throws ApiException {
+            ApiResponse<CancelPlacementsResponse> localVarResp = cancelPlacementsWithHttpInfo(requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelPlacements request with HTTP info returned
+         * @return ApiResponse&lt;CancelPlacementsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelPlacementsResponse> executeWithHttpInfo() throws ApiException {
+            return cancelPlacementsWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute cancelPlacements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelPlacementsResponse> _callback) throws ApiException {
+            return cancelPlacementsAsync(requestBody, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CancelPlacements: Cancel existing placements
+     * The response returns both the collection of successfully canceled placements, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
+     * @param requestBody The request containing the ids of the placements to be cancelled. (required)
+     * @return APIcancelPlacementsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcancelPlacementsRequest cancelPlacements(Map<String, ResourceId> requestBody) {
+        return new APIcancelPlacementsRequest(requestBody);
     }
     private okhttp3.Call createOrdersCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1103,7 +1271,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] UpdatePlacements: Update existing placements
-     * The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
+     * The response returns both the collection of successfully updated placements, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
      * @param requestBody The request containing the placements to be updated. (required)
      * @return APIupdatePlacementsRequest
      * @http.response.details

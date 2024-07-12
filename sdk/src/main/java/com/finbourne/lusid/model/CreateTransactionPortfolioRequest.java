@@ -83,7 +83,7 @@ public class CreateTransactionPortfolioRequest {
   private ResourceId corporateActionSourceId;
 
   /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst
+   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency
    */
   @JsonAdapter(AccountingMethodEnum.Adapter.class)
   public enum AccountingMethodEnum {
@@ -97,7 +97,13 @@ public class CreateTransactionPortfolioRequest {
     
     HIGHESTCOSTFIRST("HighestCostFirst"),
     
-    LOWESTCOSTFIRST("LowestCostFirst");
+    LOWESTCOSTFIRST("LowestCostFirst"),
+    
+    PRORATEBYUNITS("ProRateByUnits"),
+    
+    PRORATEBYCOST("ProRateByCost"),
+    
+    PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency");
 
     private String value;
 
@@ -309,7 +315,7 @@ public class CreateTransactionPortfolioRequest {
   }
 
    /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst
+   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency
    * @return accountingMethod
   **/
   @jakarta.annotation.Nullable

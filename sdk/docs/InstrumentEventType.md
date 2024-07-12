@@ -61,5 +61,7 @@
 
 * `MERGEREVENT` (value: `"MergerEvent"`)
 
+* `FUTUREEXPIRYEVENT` (value: `"FutureExpiryEvent"`)
+
 
 

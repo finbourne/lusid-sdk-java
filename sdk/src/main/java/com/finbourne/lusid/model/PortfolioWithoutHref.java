@@ -164,7 +164,7 @@ public class PortfolioWithoutHref {
   private List<String> instrumentScopes;
 
   /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst
+   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency
    */
   @JsonAdapter(AccountingMethodEnum.Adapter.class)
   public enum AccountingMethodEnum {
@@ -178,7 +178,13 @@ public class PortfolioWithoutHref {
     
     HIGHESTCOSTFIRST("HighestCostFirst"),
     
-    LOWESTCOSTFIRST("LowestCostFirst");
+    LOWESTCOSTFIRST("LowestCostFirst"),
+    
+    PRORATEBYUNITS("ProRateByUnits"),
+    
+    PRORATEBYCOST("ProRateByCost"),
+    
+    PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency");
 
     private String value;
 
@@ -553,7 +559,7 @@ public class PortfolioWithoutHref {
   }
 
    /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst
+   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency
    * @return accountingMethod
   **/
   @jakarta.annotation.Nullable

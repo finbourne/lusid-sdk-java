@@ -35,7 +35,13 @@ public enum AccountingMethod {
   
   HIGHESTCOSTFIRST("HighestCostFirst"),
   
-  LOWESTCOSTFIRST("LowestCostFirst");
+  LOWESTCOSTFIRST("LowestCostFirst"),
+  
+  PRORATEBYUNITS("ProRateByUnits"),
+  
+  PRORATEBYCOST("ProRateByCost"),
+  
+  PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency");
 
   private String value;
 

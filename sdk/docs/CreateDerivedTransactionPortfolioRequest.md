@@ -13,7 +13,7 @@
 |**parentPortfolioId** | [**ResourceId**](ResourceId.md) |  |  |
 |**created** | **OffsetDateTime** | This will be auto-populated to be the parent portfolio creation date. |  [optional] |
 |**corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
-|**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional] |
+|**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency |  [optional] |
 |**subHoldingKeys** | **List&lt;String&gt;** | A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information. |  [optional] |
 |**instrumentScopes** | **List&lt;String&gt;** | The resolution strategy used to resolve instruments of transactions/holdings upserted to this derived portfolio. |  [optional] |
 |**amortisationMethod** | **String** | The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate |  [optional] |
@@ -33,6 +33,9 @@
 | LASTINFIRSTOUT | &quot;LastInFirstOut&quot; |
 | HIGHESTCOSTFIRST | &quot;HighestCostFirst&quot; |
 | LOWESTCOSTFIRST | &quot;LowestCostFirst&quot; |
+| PRORATEBYUNITS | &quot;ProRateByUnits&quot; |
+| PRORATEBYCOST | &quot;ProRateByCost&quot; |
+| PRORATEBYCOSTPORTFOLIOCURRENCY | &quot;ProRateByCostPortfolioCurrency&quot; |
 
 
 

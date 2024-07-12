@@ -17,5 +17,11 @@
 
 * `LOWESTCOSTFIRST` (value: `"LowestCostFirst"`)
 
+* `PRORATEBYUNITS` (value: `"ProRateByUnits"`)
+
+* `PRORATEBYCOST` (value: `"ProRateByCost"`)
+
+* `PRORATEBYCOSTPORTFOLIOCURRENCY` (value: `"ProRateByCostPortfolioCurrency"`)
+
 
 
