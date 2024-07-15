@@ -16,7 +16,7 @@
 |**units** | **String** |  |  |
 |**transactionPrice** | [**TransactionPriceAndType**](TransactionPriceAndType.md) |  |  |
 |**transactionCurrency** | **String** |  |  |
-|**exchangeRate** | **String** |  |  |
+|**exchangeRate** | **String** |  |  [optional] |
 |**totalConsideration** | [**TransactionCurrencyAndAmount**](TransactionCurrencyAndAmount.md) |  |  |
 
 

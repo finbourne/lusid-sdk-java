@@ -27,6 +27,7 @@ A list of property definitions.
 |**collectionType** | **String** | Describes whether a collection property should behave as a set or as an array. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique property definition properties and associated values to store with the property definition. Each property must be from the &#39;PropertyDefinition&#39; domain. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

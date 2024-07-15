@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -297,7 +298,7 @@ public class TransactionFieldMap {
    * Get exchangeRate
    * @return exchangeRate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getExchangeRate() {
     return exchangeRate;
   }
@@ -352,9 +353,20 @@ public class TransactionFieldMap {
         Objects.equals(this.totalConsideration, transactionFieldMap.totalConsideration);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(transactionId, type, source, instrument, transactionDate, settlementDate, units, transactionPrice, transactionCurrency, exchangeRate, totalConsideration);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -417,7 +429,6 @@ public class TransactionFieldMap {
     openapiRequiredFields.add("units");
     openapiRequiredFields.add("transactionPrice");
     openapiRequiredFields.add("transactionCurrency");
-    openapiRequiredFields.add("exchangeRate");
     openapiRequiredFields.add("totalConsideration");
   }
 
@@ -467,7 +478,7 @@ public class TransactionFieldMap {
       if (!jsonObj.get("transactionCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionCurrency").toString()));
       }
-      if (!jsonObj.get("exchangeRate").isJsonPrimitive()) {
+      if ((jsonObj.get("exchangeRate") != null && !jsonObj.get("exchangeRate").isJsonNull()) && !jsonObj.get("exchangeRate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exchangeRate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchangeRate").toString()));
       }
       // validate the required field `totalConsideration`
