@@ -256,7 +256,7 @@ public class TransactionFieldMap {
    * Get transactionPrice
    * @return transactionPrice
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public TransactionPriceAndType getTransactionPrice() {
     return transactionPrice;
   }
@@ -427,7 +427,6 @@ public class TransactionFieldMap {
     openapiRequiredFields.add("transactionDate");
     openapiRequiredFields.add("settlementDate");
     openapiRequiredFields.add("units");
-    openapiRequiredFields.add("transactionPrice");
     openapiRequiredFields.add("transactionCurrency");
     openapiRequiredFields.add("totalConsideration");
   }
@@ -473,8 +472,10 @@ public class TransactionFieldMap {
       if (!jsonObj.get("units").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `units` to be a primitive type in the JSON string but got `%s`", jsonObj.get("units").toString()));
       }
-      // validate the required field `transactionPrice`
-      TransactionPriceAndType.validateJsonElement(jsonObj.get("transactionPrice"));
+      // validate the optional field `transactionPrice`
+      if (jsonObj.get("transactionPrice") != null && !jsonObj.get("transactionPrice").isJsonNull()) {
+        TransactionPriceAndType.validateJsonElement(jsonObj.get("transactionPrice"));
+      }
       if (!jsonObj.get("transactionCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionCurrency").toString()));
       }

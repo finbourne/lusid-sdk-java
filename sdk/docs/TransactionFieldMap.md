@@ -14,7 +14,7 @@
 |**transactionDate** | **String** |  |  |
 |**settlementDate** | **String** |  |  |
 |**units** | **String** |  |  |
-|**transactionPrice** | [**TransactionPriceAndType**](TransactionPriceAndType.md) |  |  |
+|**transactionPrice** | [**TransactionPriceAndType**](TransactionPriceAndType.md) |  |  [optional] |
 |**transactionCurrency** | **String** |  |  |
 |**exchangeRate** | **String** |  |  [optional] |
 |**totalConsideration** | [**TransactionCurrencyAndAmount**](TransactionCurrencyAndAmount.md) |  |  |
