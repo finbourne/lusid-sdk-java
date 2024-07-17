@@ -43,5 +43,7 @@
 
 * `FLEXIBLELOANPRICER` (value: `"FlexibleLoanPricer"`)
 
+* `CDSLOOKUPPRICER` (value: `"CdsLookupPricer"`)
+
 
 

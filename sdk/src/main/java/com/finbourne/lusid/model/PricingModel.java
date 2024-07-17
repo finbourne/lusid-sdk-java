@@ -61,7 +61,9 @@ public enum PricingModel {
   
   BONDLOOKUPPRICER("BondLookupPricer"),
   
-  FLEXIBLELOANPRICER("FlexibleLoanPricer");
+  FLEXIBLELOANPRICER("FlexibleLoanPricer"),
+  
+  CDSLOOKUPPRICER("CdsLookupPricer");
 
   private String value;
 
