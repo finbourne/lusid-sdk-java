@@ -70,9 +70,9 @@ public class FundConfigurationRequest {
   @SerializedName(SERIALIZED_NAME_DEALING_RULE)
   private ComponentRule dealingRule;
 
-  public static final String SERIALIZED_NAME_FUND_PNL_EXCLUSION_RULE = "fundPnlExclusionRule";
-  @SerializedName(SERIALIZED_NAME_FUND_PNL_EXCLUSION_RULE)
-  private ComponentRule fundPnlExclusionRule;
+  public static final String SERIALIZED_NAME_FUND_PNL_RULE = "fundPnlRule";
+  @SerializedName(SERIALIZED_NAME_FUND_PNL_RULE)
+  private ComponentRule fundPnlRule;
 
   public static final String SERIALIZED_NAME_BACK_OUT_RULE = "backOutRule";
   @SerializedName(SERIALIZED_NAME_BACK_OUT_RULE)
@@ -169,24 +169,24 @@ public class FundConfigurationRequest {
   }
 
 
-  public FundConfigurationRequest fundPnlExclusionRule(ComponentRule fundPnlExclusionRule) {
+  public FundConfigurationRequest fundPnlRule(ComponentRule fundPnlRule) {
     
-    this.fundPnlExclusionRule = fundPnlExclusionRule;
+    this.fundPnlRule = fundPnlRule;
     return this;
   }
 
    /**
-   * Get fundPnlExclusionRule
-   * @return fundPnlExclusionRule
+   * Get fundPnlRule
+   * @return fundPnlRule
   **/
-  @jakarta.annotation.Nullable
-  public ComponentRule getFundPnlExclusionRule() {
-    return fundPnlExclusionRule;
+  @jakarta.annotation.Nonnull
+  public ComponentRule getFundPnlRule() {
+    return fundPnlRule;
   }
 
 
-  public void setFundPnlExclusionRule(ComponentRule fundPnlExclusionRule) {
-    this.fundPnlExclusionRule = fundPnlExclusionRule;
+  public void setFundPnlRule(ComponentRule fundPnlRule) {
+    this.fundPnlRule = fundPnlRule;
   }
 
 
@@ -254,7 +254,7 @@ public class FundConfigurationRequest {
         Objects.equals(this.displayName, fundConfigurationRequest.displayName) &&
         Objects.equals(this.description, fundConfigurationRequest.description) &&
         Objects.equals(this.dealingRule, fundConfigurationRequest.dealingRule) &&
-        Objects.equals(this.fundPnlExclusionRule, fundConfigurationRequest.fundPnlExclusionRule) &&
+        Objects.equals(this.fundPnlRule, fundConfigurationRequest.fundPnlRule) &&
         Objects.equals(this.backOutRule, fundConfigurationRequest.backOutRule) &&
         Objects.equals(this.properties, fundConfigurationRequest.properties);
   }
@@ -265,7 +265,7 @@ public class FundConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, dealingRule, fundPnlExclusionRule, backOutRule, properties);
+    return Objects.hash(code, displayName, description, dealingRule, fundPnlRule, backOutRule, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -283,7 +283,7 @@ public class FundConfigurationRequest {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    dealingRule: ").append(toIndentedString(dealingRule)).append("\n");
-    sb.append("    fundPnlExclusionRule: ").append(toIndentedString(fundPnlExclusionRule)).append("\n");
+    sb.append("    fundPnlRule: ").append(toIndentedString(fundPnlRule)).append("\n");
     sb.append("    backOutRule: ").append(toIndentedString(backOutRule)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
@@ -312,7 +312,7 @@ public class FundConfigurationRequest {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("dealingRule");
-    openapiFields.add("fundPnlExclusionRule");
+    openapiFields.add("fundPnlRule");
     openapiFields.add("backOutRule");
     openapiFields.add("properties");
 
@@ -320,6 +320,7 @@ public class FundConfigurationRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("dealingRule");
+    openapiRequiredFields.add("fundPnlRule");
     openapiRequiredFields.add("backOutRule");
   }
 
@@ -354,10 +355,8 @@ public class FundConfigurationRequest {
       }
       // validate the required field `dealingRule`
       ComponentRule.validateJsonElement(jsonObj.get("dealingRule"));
-      // validate the optional field `fundPnlExclusionRule`
-      if (jsonObj.get("fundPnlExclusionRule") != null && !jsonObj.get("fundPnlExclusionRule").isJsonNull()) {
-        ComponentRule.validateJsonElement(jsonObj.get("fundPnlExclusionRule"));
-      }
+      // validate the required field `fundPnlRule`
+      ComponentRule.validateJsonElement(jsonObj.get("fundPnlRule"));
       // validate the required field `backOutRule`
       ComponentRule.validateJsonElement(jsonObj.get("backOutRule"));
   }
