@@ -27,6 +27,7 @@ import java.io.IOException;
 import com.finbourne.lusid.model.ComplianceRuleResponse;
 import com.finbourne.lusid.model.ComplianceRuleResultV2;
 import com.finbourne.lusid.model.ComplianceRuleTemplate;
+import com.finbourne.lusid.model.ComplianceRunConfiguration;
 import com.finbourne.lusid.model.ComplianceRunInfoV2;
 import com.finbourne.lusid.model.ComplianceTemplate;
 import com.finbourne.lusid.model.CreateComplianceTemplateRequest;
@@ -2252,6 +2253,224 @@ public class ComplianceApi {
      */
     public APIrunComplianceRequest runCompliance(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode) {
         return new APIrunComplianceRequest(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode);
+    }
+    private okhttp3.Call runCompliancePreviewCall(String runScope, String ruleScope, String recipeIdScope, String recipeIdCode, ComplianceRunConfiguration complianceRunConfiguration, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = complianceRunConfiguration;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/preview/runs";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (runScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("runScope", runScope));
+        }
+
+        if (ruleScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ruleScope", ruleScope));
+        }
+
+        if (recipeIdScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recipeIdScope", recipeIdScope));
+        }
+
+        if (recipeIdCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recipeIdCode", recipeIdCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call runCompliancePreviewValidateBeforeCall(String runScope, String ruleScope, String recipeIdScope, String recipeIdCode, ComplianceRunConfiguration complianceRunConfiguration, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'runScope' is set
+        if (runScope == null) {
+            throw new ApiException("Missing the required parameter 'runScope' when calling runCompliancePreview(Async)");
+        }
+
+        // verify the required parameter 'ruleScope' is set
+        if (ruleScope == null) {
+            throw new ApiException("Missing the required parameter 'ruleScope' when calling runCompliancePreview(Async)");
+        }
+
+        // verify the required parameter 'recipeIdScope' is set
+        if (recipeIdScope == null) {
+            throw new ApiException("Missing the required parameter 'recipeIdScope' when calling runCompliancePreview(Async)");
+        }
+
+        // verify the required parameter 'recipeIdCode' is set
+        if (recipeIdCode == null) {
+            throw new ApiException("Missing the required parameter 'recipeIdCode' when calling runCompliancePreview(Async)");
+        }
+
+        return runCompliancePreviewCall(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration, _callback);
+
+    }
+
+
+    private ApiResponse<ComplianceRunInfoV2> runCompliancePreviewWithHttpInfo(String runScope, String ruleScope, String recipeIdScope, String recipeIdCode, ComplianceRunConfiguration complianceRunConfiguration) throws ApiException {
+        okhttp3.Call localVarCall = runCompliancePreviewValidateBeforeCall(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration, null);
+        Type localVarReturnType = new TypeToken<ComplianceRunInfoV2>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call runCompliancePreviewAsync(String runScope, String ruleScope, String recipeIdScope, String recipeIdCode, ComplianceRunConfiguration complianceRunConfiguration, final ApiCallback<ComplianceRunInfoV2> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = runCompliancePreviewValidateBeforeCall(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceRunInfoV2>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIrunCompliancePreviewRequest {
+        private final String runScope;
+        private final String ruleScope;
+        private final String recipeIdScope;
+        private final String recipeIdCode;
+        private ComplianceRunConfiguration complianceRunConfiguration;
+
+        private APIrunCompliancePreviewRequest(String runScope, String ruleScope, String recipeIdScope, String recipeIdCode) {
+            this.runScope = runScope;
+            this.ruleScope = ruleScope;
+            this.recipeIdScope = recipeIdScope;
+            this.recipeIdCode = recipeIdCode;
+        }
+
+        /**
+         * Set complianceRunConfiguration
+         * @param complianceRunConfiguration Configuration options for the compliance run. (optional)
+         * @return APIrunCompliancePreviewRequest
+         */
+        public APIrunCompliancePreviewRequest complianceRunConfiguration(ComplianceRunConfiguration complianceRunConfiguration) {
+            this.complianceRunConfiguration = complianceRunConfiguration;
+            return this;
+        }
+
+        /**
+         * Build call for runCompliancePreview
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return runCompliancePreviewCall(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration, _callback);
+        }
+
+        /**
+         * Execute runCompliancePreview request
+         * @return ComplianceRunInfoV2
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunInfoV2 execute() throws ApiException {
+            ApiResponse<ComplianceRunInfoV2> localVarResp = runCompliancePreviewWithHttpInfo(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runCompliancePreview request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunInfoV2&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunInfoV2> executeWithHttpInfo() throws ApiException {
+            return runCompliancePreviewWithHttpInfo(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration);
+        }
+
+        /**
+         * Execute runCompliancePreview request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunInfoV2> _callback) throws ApiException {
+            return runCompliancePreviewAsync(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] RunCompliancePreview: Run a compliance check.
+     * Use this endpoint to run a compliance check using rules from a specific scope.
+     * @param runScope Required: Scope to save the run results in. (required)
+     * @param ruleScope Required: Scope from which to select rules to be run. (required)
+     * @param recipeIdScope Required: the scope of the recipe to be used (required)
+     * @param recipeIdCode Required: The code of the recipe to be used. If left blank, the default recipe will be used. (required)
+     * @return APIrunCompliancePreviewRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIrunCompliancePreviewRequest runCompliancePreview(String runScope, String ruleScope, String recipeIdScope, String recipeIdCode) {
+        return new APIrunCompliancePreviewRequest(runScope, ruleScope, recipeIdScope, recipeIdCode);
     }
     private okhttp3.Call updateComplianceTemplateCall(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

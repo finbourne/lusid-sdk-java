@@ -11,16 +11,16 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ComponentFilter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,49 +52,24 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComponentRule {
-  public static final String SERIALIZED_NAME_MATCH_CRITERIA = "matchCriteria";
-  @SerializedName(SERIALIZED_NAME_MATCH_CRITERIA)
-  private String matchCriteria;
-
   public static final String SERIALIZED_NAME_COMPONENTS = "components";
   @SerializedName(SERIALIZED_NAME_COMPONENTS)
-  private Map<String, String> components;
+  private List<ComponentFilter> components;
 
   public ComponentRule() {
   }
 
-  public ComponentRule matchCriteria(String matchCriteria) {
-    
-    this.matchCriteria = matchCriteria;
-    return this;
-  }
-
-   /**
-   * Get matchCriteria
-   * @return matchCriteria
-  **/
-  @jakarta.annotation.Nonnull
-  public String getMatchCriteria() {
-    return matchCriteria;
-  }
-
-
-  public void setMatchCriteria(String matchCriteria) {
-    this.matchCriteria = matchCriteria;
-  }
-
-
-  public ComponentRule components(Map<String, String> components) {
+  public ComponentRule components(List<ComponentFilter> components) {
     
     this.components = components;
     return this;
   }
 
-  public ComponentRule putComponentsItem(String key, String componentsItem) {
+  public ComponentRule addComponentsItem(ComponentFilter componentsItem) {
     if (this.components == null) {
-      this.components = new HashMap<>();
+      this.components = new ArrayList<>();
     }
-    this.components.put(key, componentsItem);
+    this.components.add(componentsItem);
     return this;
   }
 
@@ -103,12 +78,12 @@ public class ComponentRule {
    * @return components
   **/
   @jakarta.annotation.Nullable
-  public Map<String, String> getComponents() {
+  public List<ComponentFilter> getComponents() {
     return components;
   }
 
 
-  public void setComponents(Map<String, String> components) {
+  public void setComponents(List<ComponentFilter> components) {
     this.components = components;
   }
 
@@ -123,31 +98,18 @@ public class ComponentRule {
       return false;
     }
     ComponentRule componentRule = (ComponentRule) o;
-    return Objects.equals(this.matchCriteria, componentRule.matchCriteria) &&
-        Objects.equals(this.components, componentRule.components);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    return Objects.equals(this.components, componentRule.components);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(matchCriteria, components);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(components);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ComponentRule {\n");
-    sb.append("    matchCriteria: ").append(toIndentedString(matchCriteria)).append("\n");
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -171,12 +133,10 @@ public class ComponentRule {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("matchCriteria");
     openapiFields.add("components");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("matchCriteria");
   }
 
  /**
@@ -191,16 +151,20 @@ public class ComponentRule {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ComponentRule is not found in the empty JSON string", ComponentRule.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ComponentRule.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("matchCriteria").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `matchCriteria` to be a primitive type in the JSON string but got `%s`", jsonObj.get("matchCriteria").toString()));
+      if (jsonObj.get("components") != null && !jsonObj.get("components").isJsonNull()) {
+        JsonArray jsonArraycomponents = jsonObj.getAsJsonArray("components");
+        if (jsonArraycomponents != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("components").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `components` to be an array in the JSON string but got `%s`", jsonObj.get("components").toString()));
+          }
+
+          // validate the optional field `components` (array)
+          for (int i = 0; i < jsonArraycomponents.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraycomponents.get(i));
+          };
+        }
       }
   }
 

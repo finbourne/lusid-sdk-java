@@ -12,7 +12,9 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FeeAccrual;
+import com.finbourne.lusid.model.FundValuationPointData;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.ShareClassData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -97,6 +99,14 @@ public class ValuationPointDataResponse {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_NAV)
   private java.math.BigDecimal previousNav;
 
+  public static final String SERIALIZED_NAME_FUND_VALUATION_POINT_DATA = "fundValuationPointData";
+  @SerializedName(SERIALIZED_NAME_FUND_VALUATION_POINT_DATA)
+  private FundValuationPointData fundValuationPointData;
+
+  public static final String SERIALIZED_NAME_SHARE_CLASS_DATA = "shareClassData";
+  @SerializedName(SERIALIZED_NAME_SHARE_CLASS_DATA)
+  private Map<String, ShareClassData> shareClassData = new HashMap<>();
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -132,7 +142,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The Type of the associated Diary Entry (&#39;PeriodBoundary&#39;,&#39;ValuationPoint&#39;,&#39;Other&#39; or &#39;Adhoc&#39; when a diary Entry wasn&#39;t used).
+   * The Type of the associated Diary Entry (&#39;PeriodBoundary&#39;,&#39;ValuationPoint&#39;,&#39;Other&#39; or &#39;Adhoc&#39; when a diary entry wasn&#39;t used).
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -182,7 +192,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * Bucket of detail for the Valuation Point, where data points have been &#39;backed out&#39;.
+   * DEPRECATED. Bucket of detail for the Valuation Point, where data points have been &#39;backed out&#39;.
    * @return backout
   **/
   @jakarta.annotation.Nonnull
@@ -211,7 +221,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.
+   * DEPRECATED. Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.
    * @return dealing
   **/
   @jakarta.annotation.Nonnull
@@ -240,7 +250,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * Bucket of detail for &#39;PnL&#39; that has occured inside the queried period.
+   * DEPRECATED. Bucket of detail for &#39;PnL&#39; that has occured inside the queried period.
    * @return pnL
   **/
   @jakarta.annotation.Nonnull
@@ -261,7 +271,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The Gross Asset Value of the Fund at the Period end. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;.
+   * DEPRECATED. The Gross Asset Value of the Fund at the Period end. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;.
    * @return gav
   **/
   @jakarta.annotation.Nonnull
@@ -290,7 +300,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period.
+   * DEPRECATED. Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period.
    * @return fees
   **/
   @jakarta.annotation.Nonnull
@@ -311,7 +321,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The Net Asset Value of the Fund at the Period end. This represents the GAV with any fees applied in the period.
+   * DEPRECATED. The Net Asset Value of the Fund at the Period end. This represents the GAV with any fees applied in the period.
    * @return nav
   **/
   @jakarta.annotation.Nonnull
@@ -332,7 +342,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The Net Asset Value of the Fund at the End of the last Period.
+   * DEPRECATED. The Net Asset Value of the Fund at the End of the last Period.
    * @return previousNav
   **/
   @jakarta.annotation.Nonnull
@@ -343,6 +353,56 @@ public class ValuationPointDataResponse {
 
   public void setPreviousNav(java.math.BigDecimal previousNav) {
     this.previousNav = previousNav;
+  }
+
+
+  public ValuationPointDataResponse fundValuationPointData(FundValuationPointData fundValuationPointData) {
+    
+    this.fundValuationPointData = fundValuationPointData;
+    return this;
+  }
+
+   /**
+   * Get fundValuationPointData
+   * @return fundValuationPointData
+  **/
+  @jakarta.annotation.Nonnull
+  public FundValuationPointData getFundValuationPointData() {
+    return fundValuationPointData;
+  }
+
+
+  public void setFundValuationPointData(FundValuationPointData fundValuationPointData) {
+    this.fundValuationPointData = fundValuationPointData;
+  }
+
+
+  public ValuationPointDataResponse shareClassData(Map<String, ShareClassData> shareClassData) {
+    
+    this.shareClassData = shareClassData;
+    return this;
+  }
+
+  public ValuationPointDataResponse putShareClassDataItem(String key, ShareClassData shareClassDataItem) {
+    if (this.shareClassData == null) {
+      this.shareClassData = new HashMap<>();
+    }
+    this.shareClassData.put(key, shareClassDataItem);
+    return this;
+  }
+
+   /**
+   * The data for all share classes in fund. Share classes are identified by their short codes.
+   * @return shareClassData
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, ShareClassData> getShareClassData() {
+    return shareClassData;
+  }
+
+
+  public void setShareClassData(Map<String, ShareClassData> shareClassData) {
+    this.shareClassData = shareClassData;
   }
 
 
@@ -395,6 +455,8 @@ public class ValuationPointDataResponse {
         Objects.equals(this.fees, valuationPointDataResponse.fees) &&
         (this.nav.compareTo(valuationPointDataResponse.getNav()) == 0) &&
         (this.previousNav.compareTo(valuationPointDataResponse.getPreviousNav()) == 0) &&
+        Objects.equals(this.fundValuationPointData, valuationPointDataResponse.fundValuationPointData) &&
+        Objects.equals(this.shareClassData, valuationPointDataResponse.shareClassData) &&
         Objects.equals(this.links, valuationPointDataResponse.links);
   }
 
@@ -404,7 +466,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, links);
+    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, fundValuationPointData, shareClassData, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -428,6 +490,8 @@ public class ValuationPointDataResponse {
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
     sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
     sb.append("    previousNav: ").append(toIndentedString(previousNav)).append("\n");
+    sb.append("    fundValuationPointData: ").append(toIndentedString(fundValuationPointData)).append("\n");
+    sb.append("    shareClassData: ").append(toIndentedString(shareClassData)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -461,6 +525,8 @@ public class ValuationPointDataResponse {
     openapiFields.add("fees");
     openapiFields.add("nav");
     openapiFields.add("previousNav");
+    openapiFields.add("fundValuationPointData");
+    openapiFields.add("shareClassData");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -474,6 +540,8 @@ public class ValuationPointDataResponse {
     openapiRequiredFields.add("fees");
     openapiRequiredFields.add("nav");
     openapiRequiredFields.add("previousNav");
+    openapiRequiredFields.add("fundValuationPointData");
+    openapiRequiredFields.add("shareClassData");
   }
 
  /**
@@ -505,6 +573,8 @@ public class ValuationPointDataResponse {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
+      // validate the required field `fundValuationPointData`
+      FundValuationPointData.validateJsonElement(jsonObj.get("fundValuationPointData"));
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

@@ -106,7 +106,7 @@ public class QuoteSeriesId {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InstrumentIdTypeEnum> {
@@ -128,7 +128,7 @@ public class QuoteSeriesId {
   private InstrumentIdTypeEnum instrumentIdType;
 
   /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -158,7 +158,13 @@ public class QuoteSeriesId {
     
     INFLATIONASSUMPTION("InflationAssumption"),
     
-    DIRTYPRICE("DirtyPrice");
+    DIRTYPRICE("DirtyPrice"),
+    
+    PRINCIPALWRITEOFF("PrincipalWriteOff"),
+    
+    INTERESTDEFERRED("InterestDeferred"),
+    
+    INTERESTSHORTFALL("InterestShortfall");
 
     private String value;
 
@@ -181,7 +187,7 @@ public class QuoteSeriesId {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<QuoteTypeEnum> {
@@ -282,7 +288,7 @@ public class QuoteSeriesId {
    * The type of instrument identifier used to uniquely identify the instrument that the quote is for, e.g. &#39;Figi&#39;. The available values are: LusidInstrumentId, Figi, RIC, QuotePermId, Isin, CurrencyPair, ClientInternal, Sedol, Cusip
    * @return instrumentIdType
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public InstrumentIdTypeEnum getInstrumentIdType() {
     return instrumentIdType;
   }
@@ -300,10 +306,10 @@ public class QuoteSeriesId {
   }
 
    /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall
    * @return quoteType
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public QuoteTypeEnum getQuoteType() {
     return quoteType;
   }
@@ -446,10 +452,10 @@ public class QuoteSeriesId {
       if (!jsonObj.get("instrumentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentId").toString()));
       }
-      if ((jsonObj.get("instrumentIdType") != null && !jsonObj.get("instrumentIdType").isJsonNull()) && !jsonObj.get("instrumentIdType").isJsonPrimitive()) {
+      if (!jsonObj.get("instrumentIdType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentIdType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentIdType").toString()));
       }
-      if ((jsonObj.get("quoteType") != null && !jsonObj.get("quoteType").isJsonNull()) && !jsonObj.get("quoteType").isJsonPrimitive()) {
+      if (!jsonObj.get("quoteType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `quoteType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("quoteType").toString()));
       }
       if (!jsonObj.get("field").isJsonPrimitive()) {

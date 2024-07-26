@@ -33,5 +33,11 @@
 
 * `DIRTYPRICE` (value: `"DirtyPrice"`)
 
+* `PRINCIPALWRITEOFF` (value: `"PrincipalWriteOff"`)
+
+* `INTERESTDEFERRED` (value: `"InterestDeferred"`)
+
+* `INTERESTSHORTFALL` (value: `"InterestShortfall"`)
+
 
 

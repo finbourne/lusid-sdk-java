@@ -19,10 +19,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -68,9 +66,17 @@ public class FundConfigurationRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_COMPONENT_RULES = "componentRules";
-  @SerializedName(SERIALIZED_NAME_COMPONENT_RULES)
-  private List<ComponentRule> componentRules = new ArrayList<>();
+  public static final String SERIALIZED_NAME_DEALING_RULE = "dealingRule";
+  @SerializedName(SERIALIZED_NAME_DEALING_RULE)
+  private ComponentRule dealingRule;
+
+  public static final String SERIALIZED_NAME_FUND_PNL_EXCLUSION_RULE = "fundPnlExclusionRule";
+  @SerializedName(SERIALIZED_NAME_FUND_PNL_EXCLUSION_RULE)
+  private ComponentRule fundPnlExclusionRule;
+
+  public static final String SERIALIZED_NAME_BACK_OUT_RULE = "backOutRule";
+  @SerializedName(SERIALIZED_NAME_BACK_OUT_RULE)
+  private ComponentRule backOutRule;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -142,32 +148,66 @@ public class FundConfigurationRequest {
   }
 
 
-  public FundConfigurationRequest componentRules(List<ComponentRule> componentRules) {
+  public FundConfigurationRequest dealingRule(ComponentRule dealingRule) {
     
-    this.componentRules = componentRules;
-    return this;
-  }
-
-  public FundConfigurationRequest addComponentRulesItem(ComponentRule componentRulesItem) {
-    if (this.componentRules == null) {
-      this.componentRules = new ArrayList<>();
-    }
-    this.componentRules.add(componentRulesItem);
+    this.dealingRule = dealingRule;
     return this;
   }
 
    /**
-   * 
-   * @return componentRules
+   * Get dealingRule
+   * @return dealingRule
   **/
   @jakarta.annotation.Nonnull
-  public List<ComponentRule> getComponentRules() {
-    return componentRules;
+  public ComponentRule getDealingRule() {
+    return dealingRule;
   }
 
 
-  public void setComponentRules(List<ComponentRule> componentRules) {
-    this.componentRules = componentRules;
+  public void setDealingRule(ComponentRule dealingRule) {
+    this.dealingRule = dealingRule;
+  }
+
+
+  public FundConfigurationRequest fundPnlExclusionRule(ComponentRule fundPnlExclusionRule) {
+    
+    this.fundPnlExclusionRule = fundPnlExclusionRule;
+    return this;
+  }
+
+   /**
+   * Get fundPnlExclusionRule
+   * @return fundPnlExclusionRule
+  **/
+  @jakarta.annotation.Nullable
+  public ComponentRule getFundPnlExclusionRule() {
+    return fundPnlExclusionRule;
+  }
+
+
+  public void setFundPnlExclusionRule(ComponentRule fundPnlExclusionRule) {
+    this.fundPnlExclusionRule = fundPnlExclusionRule;
+  }
+
+
+  public FundConfigurationRequest backOutRule(ComponentRule backOutRule) {
+    
+    this.backOutRule = backOutRule;
+    return this;
+  }
+
+   /**
+   * Get backOutRule
+   * @return backOutRule
+  **/
+  @jakarta.annotation.Nonnull
+  public ComponentRule getBackOutRule() {
+    return backOutRule;
+  }
+
+
+  public void setBackOutRule(ComponentRule backOutRule) {
+    this.backOutRule = backOutRule;
   }
 
 
@@ -213,7 +253,9 @@ public class FundConfigurationRequest {
     return Objects.equals(this.code, fundConfigurationRequest.code) &&
         Objects.equals(this.displayName, fundConfigurationRequest.displayName) &&
         Objects.equals(this.description, fundConfigurationRequest.description) &&
-        Objects.equals(this.componentRules, fundConfigurationRequest.componentRules) &&
+        Objects.equals(this.dealingRule, fundConfigurationRequest.dealingRule) &&
+        Objects.equals(this.fundPnlExclusionRule, fundConfigurationRequest.fundPnlExclusionRule) &&
+        Objects.equals(this.backOutRule, fundConfigurationRequest.backOutRule) &&
         Objects.equals(this.properties, fundConfigurationRequest.properties);
   }
 
@@ -223,7 +265,7 @@ public class FundConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, componentRules, properties);
+    return Objects.hash(code, displayName, description, dealingRule, fundPnlExclusionRule, backOutRule, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -240,7 +282,9 @@ public class FundConfigurationRequest {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    componentRules: ").append(toIndentedString(componentRules)).append("\n");
+    sb.append("    dealingRule: ").append(toIndentedString(dealingRule)).append("\n");
+    sb.append("    fundPnlExclusionRule: ").append(toIndentedString(fundPnlExclusionRule)).append("\n");
+    sb.append("    backOutRule: ").append(toIndentedString(backOutRule)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -267,13 +311,16 @@ public class FundConfigurationRequest {
     openapiFields.add("code");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("componentRules");
+    openapiFields.add("dealingRule");
+    openapiFields.add("fundPnlExclusionRule");
+    openapiFields.add("backOutRule");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
-    openapiRequiredFields.add("componentRules");
+    openapiRequiredFields.add("dealingRule");
+    openapiRequiredFields.add("backOutRule");
   }
 
  /**
@@ -305,16 +352,14 @@ public class FundConfigurationRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("componentRules").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `componentRules` to be an array in the JSON string but got `%s`", jsonObj.get("componentRules").toString()));
+      // validate the required field `dealingRule`
+      ComponentRule.validateJsonElement(jsonObj.get("dealingRule"));
+      // validate the optional field `fundPnlExclusionRule`
+      if (jsonObj.get("fundPnlExclusionRule") != null && !jsonObj.get("fundPnlExclusionRule").isJsonNull()) {
+        ComponentRule.validateJsonElement(jsonObj.get("fundPnlExclusionRule"));
       }
-
-      JsonArray jsonArraycomponentRules = jsonObj.getAsJsonArray("componentRules");
-      // validate the required field `componentRules` (array)
-      for (int i = 0; i < jsonArraycomponentRules.size(); i++) {
-        ComponentRule.validateJsonElement(jsonArraycomponentRules.get(i));
-      };
+      // validate the required field `backOutRule`
+      ComponentRule.validateJsonElement(jsonObj.get("backOutRule"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

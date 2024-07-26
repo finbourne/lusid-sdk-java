@@ -2935,7 +2935,7 @@ public class FundsApi {
         Object localVarPostBody = upsertValuationPointRequest;
 
         // create path and map variables
-        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/$upsert"
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 

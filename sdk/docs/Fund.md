@@ -12,6 +12,7 @@ A Fund entity.
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** | The name of the Fund. |  [optional] |
 |**description** | **String** | A description for the Fund. |  [optional] |
+|**fundConfigurationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**aborId** | [**ResourceId**](ResourceId.md) |  |  |
 |**shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. |  [optional] |
 |**type** | **String** | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; |  |

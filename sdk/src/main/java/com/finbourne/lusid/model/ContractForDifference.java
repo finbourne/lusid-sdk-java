@@ -87,6 +87,10 @@ public class ContractForDifference extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_UNDERLYING_IDENTIFIER)
   private String underlyingIdentifier;
 
+  public static final String SERIALIZED_NAME_LOT_SIZE = "lotSize";
+  @SerializedName(SERIALIZED_NAME_LOT_SIZE)
+  private Integer lotSize;
+
   public ContractForDifference() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -280,6 +284,27 @@ public class ContractForDifference extends LusidInstrument {
   }
 
 
+  public ContractForDifference lotSize(Integer lotSize) {
+    
+    this.lotSize = lotSize;
+    return this;
+  }
+
+   /**
+   * CFD LotSize, the minimum number of shares that can be bought or sold at once.  Optional, if set must be non-negative, if not set defaults to 1.
+   * @return lotSize
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getLotSize() {
+    return lotSize;
+  }
+
+
+  public void setLotSize(Integer lotSize) {
+    this.lotSize = lotSize;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -299,12 +324,13 @@ public class ContractForDifference extends LusidInstrument {
         Objects.equals(this.type, contractForDifference.type) &&
         Objects.equals(this.underlyingCcy, contractForDifference.underlyingCcy) &&
         Objects.equals(this.underlyingIdentifier, contractForDifference.underlyingIdentifier) &&
+        Objects.equals(this.lotSize, contractForDifference.lotSize) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, code, contractSize, payCcy, referenceRate, type, underlyingCcy, underlyingIdentifier, super.hashCode());
+    return Objects.hash(startDate, maturityDate, code, contractSize, payCcy, referenceRate, type, underlyingCcy, underlyingIdentifier, lotSize, super.hashCode());
   }
 
   @Override
@@ -321,6 +347,7 @@ public class ContractForDifference extends LusidInstrument {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    underlyingCcy: ").append(toIndentedString(underlyingCcy)).append("\n");
     sb.append("    underlyingIdentifier: ").append(toIndentedString(underlyingIdentifier)).append("\n");
+    sb.append("    lotSize: ").append(toIndentedString(lotSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,6 +380,7 @@ public class ContractForDifference extends LusidInstrument {
     openapiFields.add("type");
     openapiFields.add("underlyingCcy");
     openapiFields.add("underlyingIdentifier");
+    openapiFields.add("lotSize");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

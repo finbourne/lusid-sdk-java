@@ -11,7 +11,7 @@ Extends market data key rules to be able to catch dependencies depending on wher
 |**key** | **String** | The market data key pattern which this is a rule for. A dot separated string (A.B.C.D.*) |  |
 |**supplier** | **String** | The market data supplier (where the data comes from) |  |
 |**dataScope** | **String** | The scope in which the data should be found when using this rule. |  |
-|**quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice |  |
+|**quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall |  |
 |**field** | **String** | The conceptual qualification for the field, such as bid, mid, or ask.  The field must be one of a defined set for the given supplier, in the same way as it  is for the Finbourne.WebApi.Interface.Dto.Quotes.QuoteSeriesId |  |
 |**quoteInterval** | **String** | Shorthand for the time interval used to select market data. This must be a dot-separated string   nominating a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago). The syntax   is &lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;.&lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;, where &lt;i&gt;char&lt;/i&gt; is one of D(ay), W(eek), M(onth) or Y(ear). |  [optional] |
 |**asAt** | **OffsetDateTime** | The AsAt predicate specification. |  [optional] |
@@ -40,6 +40,9 @@ Extends market data key rules to be able to catch dependencies depending on wher
 | POOLFACTOR | &quot;PoolFactor&quot; |
 | INFLATIONASSUMPTION | &quot;InflationAssumption&quot; |
 | DIRTYPRICE | &quot;DirtyPrice&quot; |
+| PRINCIPALWRITEOFF | &quot;PrincipalWriteOff&quot; |
+| INTERESTDEFERRED | &quot;InterestDeferred&quot; |
+| INTERESTSHORTFALL | &quot;InterestShortfall&quot; |
 
 
 

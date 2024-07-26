@@ -71,6 +71,10 @@ public class FundRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_FUND_CONFIGURATION_ID = "fundConfigurationId";
+  @SerializedName(SERIALIZED_NAME_FUND_CONFIGURATION_ID)
+  private ResourceId fundConfigurationId;
+
   public static final String SERIALIZED_NAME_ABOR_ID = "aborId";
   @SerializedName(SERIALIZED_NAME_ABOR_ID)
   private ResourceId aborId;
@@ -166,6 +170,27 @@ public class FundRequest {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public FundRequest fundConfigurationId(ResourceId fundConfigurationId) {
+    
+    this.fundConfigurationId = fundConfigurationId;
+    return this;
+  }
+
+   /**
+   * Get fundConfigurationId
+   * @return fundConfigurationId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getFundConfigurationId() {
+    return fundConfigurationId;
+  }
+
+
+  public void setFundConfigurationId(ResourceId fundConfigurationId) {
+    this.fundConfigurationId = fundConfigurationId;
   }
 
 
@@ -376,6 +401,7 @@ public class FundRequest {
     return Objects.equals(this.code, fundRequest.code) &&
         Objects.equals(this.displayName, fundRequest.displayName) &&
         Objects.equals(this.description, fundRequest.description) &&
+        Objects.equals(this.fundConfigurationId, fundRequest.fundConfigurationId) &&
         Objects.equals(this.aborId, fundRequest.aborId) &&
         Objects.equals(this.shareClassInstrumentScopes, fundRequest.shareClassInstrumentScopes) &&
         Objects.equals(this.shareClassInstruments, fundRequest.shareClassInstruments) &&
@@ -392,7 +418,7 @@ public class FundRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, aborId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, properties);
+    return Objects.hash(code, displayName, description, fundConfigurationId, aborId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -409,6 +435,7 @@ public class FundRequest {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    fundConfigurationId: ").append(toIndentedString(fundConfigurationId)).append("\n");
     sb.append("    aborId: ").append(toIndentedString(aborId)).append("\n");
     sb.append("    shareClassInstrumentScopes: ").append(toIndentedString(shareClassInstrumentScopes)).append("\n");
     sb.append("    shareClassInstruments: ").append(toIndentedString(shareClassInstruments)).append("\n");
@@ -442,6 +469,7 @@ public class FundRequest {
     openapiFields.add("code");
     openapiFields.add("displayName");
     openapiFields.add("description");
+    openapiFields.add("fundConfigurationId");
     openapiFields.add("aborId");
     openapiFields.add("shareClassInstrumentScopes");
     openapiFields.add("shareClassInstruments");
@@ -488,6 +516,10 @@ public class FundRequest {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `fundConfigurationId`
+      if (jsonObj.get("fundConfigurationId") != null && !jsonObj.get("fundConfigurationId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("fundConfigurationId"));
       }
       // validate the required field `aborId`
       ResourceId.validateJsonElement(jsonObj.get("aborId"));

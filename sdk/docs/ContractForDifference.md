@@ -17,6 +17,7 @@ LUSID representation of a Contract for Difference.
 |**type** | **String** | The type of CFD.    Supported string (enumeration) values are: [Cash, Futures]. |  |
 |**underlyingCcy** | **String** | The currency of the underlying |  |
 |**underlyingIdentifier** | **String** | External market codes and identifiers for the CFD, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. |  |
+|**lotSize** | **Integer** | CFD LotSize, the minimum number of shares that can be bought or sold at once.  Optional, if set must be non-negative, if not set defaults to 1. |  [optional] |
 
 
 

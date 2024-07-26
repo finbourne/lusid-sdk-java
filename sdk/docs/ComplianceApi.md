@@ -15,6 +15,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listComplianceRuns**](ComplianceApi.md#listComplianceRuns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. |
 | [**listComplianceTemplates**](ComplianceApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
 | [**runCompliance**](ComplianceApi.md#runCompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check. |
+| [**runCompliancePreview**](ComplianceApi.md#runCompliancePreview) | **POST** /api/compliance/preview/runs | [EARLY ACCESS] RunCompliancePreview: Run a compliance check. |
 | [**updateComplianceTemplate**](ComplianceApi.md#updateComplianceTemplate) | **PUT** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate |
 | [**upsertComplianceRule**](ComplianceApi.md#upsertComplianceRule) | **POST** /api/compliance/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule. |
 | [**upsertComplianceRunSummary**](ComplianceApi.md#upsertComplianceRunSummary) | **POST** /api/compliance/runs/summary | [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary. |
@@ -852,6 +853,85 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The identifying information of a compliance run |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="runCompliancePreview"></a>
+# **runCompliancePreview**
+> ComplianceRunInfoV2 runCompliancePreview(runScope, ruleScope, recipeIdScope, recipeIdCode).complianceRunConfiguration(complianceRunConfiguration).execute();
+
+[EARLY ACCESS] RunCompliancePreview: Run a compliance check.
+
+Use this endpoint to run a compliance check using rules from a specific scope.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceApi apiInstance = new ComplianceApi(defaultClient);
+    String runScope = "runScope_example"; // String | Required: Scope to save the run results in.
+    String ruleScope = "ruleScope_example"; // String | Required: Scope from which to select rules to be run.
+    String recipeIdScope = "recipeIdScope_example"; // String | Required: the scope of the recipe to be used
+    String recipeIdCode = "recipeIdCode_example"; // String | Required: The code of the recipe to be used. If left blank, the default recipe will be used.
+    ComplianceRunConfiguration complianceRunConfiguration = new ComplianceRunConfiguration(); // ComplianceRunConfiguration | Configuration options for the compliance run.
+    try {
+      ComplianceRunInfoV2 result = apiInstance.runCompliancePreview(runScope, ruleScope, recipeIdScope, recipeIdCode)
+            .complianceRunConfiguration(complianceRunConfiguration)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceApi#runCompliancePreview");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runScope** | **String**| Required: Scope to save the run results in. | |
+| **ruleScope** | **String**| Required: Scope from which to select rules to be run. | |
+| **recipeIdScope** | **String**| Required: the scope of the recipe to be used | |
+| **recipeIdCode** | **String**| Required: The code of the recipe to be used. If left blank, the default recipe will be used. | |
+| **complianceRunConfiguration** | [**ComplianceRunConfiguration**](ComplianceRunConfiguration.md)| Configuration options for the compliance run. | [optional] |
+
+### Return type
+
+[**ComplianceRunInfoV2**](ComplianceRunInfoV2.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details

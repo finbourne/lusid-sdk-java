@@ -114,6 +114,10 @@ public class StagedModification {
   @SerializedName(SERIALIZED_NAME_ENTITY_HREFS)
   private StagedModificationsEntityHrefs entityHrefs;
 
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -423,6 +427,27 @@ public class StagedModification {
   }
 
 
+  public StagedModification displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The display name of the entity the staged modification applies to.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
   public StagedModification links(List<Link> links) {
     
     this.links = links;
@@ -476,6 +501,7 @@ public class StagedModification {
         Objects.equals(this.entityUniqueId, stagedModification.entityUniqueId) &&
         Objects.equals(this.requestedChanges, stagedModification.requestedChanges) &&
         Objects.equals(this.entityHrefs, stagedModification.entityHrefs) &&
+        Objects.equals(this.displayName, stagedModification.displayName) &&
         Objects.equals(this.links, stagedModification.links);
   }
 
@@ -485,7 +511,7 @@ public class StagedModification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, links);
+    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -513,6 +539,7 @@ public class StagedModification {
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    requestedChanges: ").append(toIndentedString(requestedChanges)).append("\n");
     sb.append("    entityHrefs: ").append(toIndentedString(entityHrefs)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -550,6 +577,7 @@ public class StagedModification {
     openapiFields.add("entityUniqueId");
     openapiFields.add("requestedChanges");
     openapiFields.add("entityHrefs");
+    openapiFields.add("displayName");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -618,6 +646,9 @@ public class StagedModification {
       // validate the optional field `entityHrefs`
       if (jsonObj.get("entityHrefs") != null && !jsonObj.get("entityHrefs").isJsonNull()) {
         StagedModificationsEntityHrefs.validateJsonElement(jsonObj.get("entityHrefs"));
+      }
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

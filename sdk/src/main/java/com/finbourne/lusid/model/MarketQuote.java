@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketQuote {
   /**
-   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
+   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -80,7 +80,13 @@ public class MarketQuote {
     
     INFLATIONASSUMPTION("InflationAssumption"),
     
-    DIRTYPRICE("DirtyPrice");
+    DIRTYPRICE("DirtyPrice"),
+    
+    PRINCIPALWRITEOFF("PrincipalWriteOff"),
+    
+    INTERESTDEFERRED("InterestDeferred"),
+    
+    INTERESTSHORTFALL("InterestShortfall");
 
     private String value;
 
@@ -138,7 +144,7 @@ public class MarketQuote {
   }
 
    /**
-   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
+   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

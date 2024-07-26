@@ -276,6 +276,9 @@ public class LusidInstrument {
         case "CapFloor":
           CapFloor.validateJsonElement(jsonElement);
           break;
+        case "Cash":
+          Cash.validateJsonElement(jsonElement);
+          break;
         case "CashPerpetual":
           CashPerpetual.validateJsonElement(jsonElement);
           break;

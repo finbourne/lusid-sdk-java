@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listFunds**](FundsApi.md#listFunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds. |
 | [**patchFee**](FundsApi.md#patchFee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**setShareClassInstruments**](FundsApi.md#setShareClassInstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a fund. |
-| [**upsertDiaryEntryTypeValuationPoint**](FundsApi.md#upsertDiaryEntryTypeValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$upsert | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point. |
+| [**upsertDiaryEntryTypeValuationPoint**](FundsApi.md#upsertDiaryEntryTypeValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point. |
 | [**upsertFeeProperties**](FundsApi.md#upsertFeeProperties) | **POST** /api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert | [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties. |
 | [**upsertFundProperties**](FundsApi.md#upsertFundProperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties. |
 

@@ -11,7 +11,9 @@
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** | The name of the FundConfiguration. |  [optional] |
 |**description** | **String** | A description for the FundConfiguration. |  [optional] |
-|**componentRules** | [**List&lt;ComponentRule&gt;**](ComponentRule.md) | The first matching rule decides the set of filters used. |  [optional] |
+|**dealingRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
+|**fundPnlExclusionRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
+|**backOutRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund Configuration. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |

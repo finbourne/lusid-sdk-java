@@ -51,7 +51,13 @@ public enum QuoteType {
   
   INFLATIONASSUMPTION("InflationAssumption"),
   
-  DIRTYPRICE("DirtyPrice");
+  DIRTYPRICE("DirtyPrice"),
+  
+  PRINCIPALWRITEOFF("PrincipalWriteOff"),
+  
+  INTERESTDEFERRED("InterestDeferred"),
+  
+  INTERESTSHORTFALL("InterestShortfall");
 
   private String value;
 

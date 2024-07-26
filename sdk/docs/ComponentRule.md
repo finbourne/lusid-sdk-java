@@ -7,8 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**matchCriteria** | **String** |  |  |
-|**components** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**components** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) |  |  [optional] |
 
 
 

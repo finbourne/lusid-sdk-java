@@ -108,6 +108,10 @@ public class FuturesContractDetails {
   @SerializedName(SERIALIZED_NAME_CALENDARS)
   private List<String> calendars;
 
+  public static final String SERIALIZED_NAME_DELIVERY_TYPE = "deliveryType";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_TYPE)
+  private String deliveryType;
+
   public FuturesContractDetails() {
   }
 
@@ -413,6 +417,27 @@ public class FuturesContractDetails {
   }
 
 
+  public FuturesContractDetails deliveryType(String deliveryType) {
+    
+    this.deliveryType = deliveryType;
+    return this;
+  }
+
+   /**
+   * Delivery type to be used on settling the contract.  Optional: Defaults to DeliveryType.Physical if not provided.    Supported string (enumeration) values are: [Cash, Physical].
+   * @return deliveryType
+  **/
+  @jakarta.annotation.Nullable
+  public String getDeliveryType() {
+    return deliveryType;
+  }
+
+
+  public void setDeliveryType(String deliveryType) {
+    this.deliveryType = deliveryType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -436,7 +461,8 @@ public class FuturesContractDetails {
         Objects.equals(this.exchangeName, futuresContractDetails.exchangeName) &&
         (this.tickerStep.compareTo(futuresContractDetails.getTickerStep()) == 0) &&
         (this.unitValue.compareTo(futuresContractDetails.getUnitValue()) == 0) &&
-        Objects.equals(this.calendars, futuresContractDetails.calendars);
+        Objects.equals(this.calendars, futuresContractDetails.calendars) &&
+        Objects.equals(this.deliveryType, futuresContractDetails.deliveryType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -445,7 +471,7 @@ public class FuturesContractDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domCcy, fgnCcy, assetClass, contractCode, contractMonth, contractSize, convention, country, description, exchangeCode, exchangeName, tickerStep, unitValue, calendars);
+    return Objects.hash(domCcy, fgnCcy, assetClass, contractCode, contractMonth, contractSize, convention, country, description, exchangeCode, exchangeName, tickerStep, unitValue, calendars, deliveryType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -473,6 +499,7 @@ public class FuturesContractDetails {
     sb.append("    tickerStep: ").append(toIndentedString(tickerStep)).append("\n");
     sb.append("    unitValue: ").append(toIndentedString(unitValue)).append("\n");
     sb.append("    calendars: ").append(toIndentedString(calendars)).append("\n");
+    sb.append("    deliveryType: ").append(toIndentedString(deliveryType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -509,6 +536,7 @@ public class FuturesContractDetails {
     openapiFields.add("tickerStep");
     openapiFields.add("unitValue");
     openapiFields.add("calendars");
+    openapiFields.add("deliveryType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -572,6 +600,9 @@ public class FuturesContractDetails {
       // ensure the optional json data is an array if present
       if (jsonObj.get("calendars") != null && !jsonObj.get("calendars").isJsonNull() && !jsonObj.get("calendars").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `calendars` to be an array in the JSON string but got `%s`", jsonObj.get("calendars").toString()));
+      }
+      if ((jsonObj.get("deliveryType") != null && !jsonObj.get("deliveryType").isJsonNull()) && !jsonObj.get("deliveryType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `deliveryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryType").toString()));
       }
   }
 
