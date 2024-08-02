@@ -26,6 +26,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.ResourceListOfScopeDefinition;
 
 import java.lang.reflect.Type;
@@ -71,7 +72,7 @@ public class ScopesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call listEntityScopesCall(String entityType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listEntityScopesCall(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -97,6 +98,18 @@ public class ScopesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -119,26 +132,26 @@ public class ScopesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listEntityScopesValidateBeforeCall(String entityType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listEntityScopesValidateBeforeCall(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling listEntityScopes(Async)");
         }
 
-        return listEntityScopesCall(entityType, _callback);
+        return listEntityScopesCall(entityType, asAt, page, limit, _callback);
 
     }
 
 
-    private ApiResponse<ResourceListOfScopeDefinition> listEntityScopesWithHttpInfo(String entityType) throws ApiException {
-        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, null);
+    private ApiResponse<ResourceListOfScopeDefinition> listEntityScopesWithHttpInfo(String entityType, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, null);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listEntityScopesAsync(String entityType, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
+    private okhttp3.Call listEntityScopesAsync(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, _callback);
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -146,9 +159,42 @@ public class ScopesApi {
 
     public class APIlistEntityScopesRequest {
         private final String entityType;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
 
         private APIlistEntityScopesRequest(String entityType) {
             this.entityType = entityType;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve scopes. Defaults to latest datetime if not specified. (optional)
+         * @return APIlistEntityScopesRequest
+         */
+        public APIlistEntityScopesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing scopes from a previous call to list scopes.   This value is returned from the previous call. If a pagination token is provided, the limit and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistEntityScopesRequest
+         */
+        public APIlistEntityScopesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistEntityScopesRequest
+         */
+        public APIlistEntityScopesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
         }
 
         /**
@@ -165,7 +211,7 @@ public class ScopesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listEntityScopesCall(entityType, _callback);
+            return listEntityScopesCall(entityType, asAt, page, limit, _callback);
         }
 
         /**
@@ -181,7 +227,7 @@ public class ScopesApi {
          </table>
          */
         public ResourceListOfScopeDefinition execute() throws ApiException {
-            ApiResponse<ResourceListOfScopeDefinition> localVarResp = listEntityScopesWithHttpInfo(entityType);
+            ApiResponse<ResourceListOfScopeDefinition> localVarResp = listEntityScopesWithHttpInfo(entityType, asAt, page, limit);
             return localVarResp.getData();
         }
 
@@ -198,7 +244,7 @@ public class ScopesApi {
          </table>
          */
         public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo() throws ApiException {
-            return listEntityScopesWithHttpInfo(entityType);
+            return listEntityScopesWithHttpInfo(entityType, asAt, page, limit);
         }
 
         /**
@@ -215,7 +261,7 @@ public class ScopesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
-            return listEntityScopesAsync(entityType, _callback);
+            return listEntityScopesAsync(entityType, asAt, page, limit, _callback);
         }
     }
 

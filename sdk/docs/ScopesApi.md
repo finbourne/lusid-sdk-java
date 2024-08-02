@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 <a id="listEntityScopes"></a>
 # **listEntityScopes**
-> ResourceListOfScopeDefinition listEntityScopes(entityType).execute();
+> ResourceListOfScopeDefinition listEntityScopes(entityType).asAt(asAt).page(page).limit(limit).execute();
 
 ListEntityScopes: List Entity Scopes
 
@@ -37,8 +37,14 @@ public class Example {
 
     ScopesApi apiInstance = new ScopesApi(defaultClient);
     String entityType = "entityType_example"; // String | The entity type to list scopes for.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve scopes. Defaults to latest datetime if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing scopes from a previous call to list scopes.   This value is returned from the previous call. If a pagination token is provided, the limit and asAt fields   must not have changed since the original request.
+    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number. Defaults to 100 if not specified.
     try {
       ResourceListOfScopeDefinition result = apiInstance.listEntityScopes(entityType)
+            .asAt(asAt)
+            .page(page)
+            .limit(limit)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -57,6 +63,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityType** | **String**| The entity type to list scopes for. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve scopes. Defaults to latest datetime if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing scopes from a previous call to list scopes.   This value is returned from the previous call. If a pagination token is provided, the limit and asAt fields   must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this number. Defaults to 100 if not specified. | [optional] |
 
 ### Return type
 
