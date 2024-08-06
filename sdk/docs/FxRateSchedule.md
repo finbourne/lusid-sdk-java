@@ -15,3 +15,6 @@ Schedule to define fx conversion of cashflows on complex bonds. If an fx schedul
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

@@ -10,52 +10,63 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**upsertComplexMarketData**](ComplexMarketDataApi.md#upsertComplexMarketData) | **POST** /api/complexmarketdata/{scope} | UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid. |
 
 
-<a id="deleteComplexMarketData"></a>
-# **deleteComplexMarketData**
-> AnnulStructuredDataResponse deleteComplexMarketData(scope, requestBody).execute();
+
+## deleteComplexMarketData
+
+> AnnulStructuredDataResponse deleteComplexMarketData(scope, requestBody)
 
 [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
 
 Delete one or more specified complex market data items from a single scope. Each item is identified by a unique id which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).     In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return both the collection of successfully deleted complex market data items, as well as those that failed.  For the failures a reason will be provided explaining why the it could not be deleted.     It is important to always check the failed set for any unsuccessful results.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.ComplexMarketDataApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    ComplexMarketDataApi apiInstance = new ComplexMarketDataApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the complex market data to delete.
-    Map<String, ComplexMarketDataId> requestBody = new HashMap(); // Map<String, ComplexMarketDataId> | The complex market data Ids to delete, each keyed by a unique correlation id.
-    try {
-      AnnulStructuredDataResponse result = apiInstance.deleteComplexMarketData(scope, requestBody)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ComplexMarketDataApi#deleteComplexMarketData");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class ComplexMarketDataApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
+        String scope = "scope_example"; // String | The scope of the complex market data to delete.
+        Map<String, ComplexMarketDataId> requestBody = new HashMap(); // Map<String, ComplexMarketDataId> | The complex market data Ids to delete, each keyed by a unique correlation id.
+        try {
+            AnnulStructuredDataResponse result = apiInstance.deleteComplexMarketData(scope, requestBody).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplexMarketDataApi#deleteComplexMarketData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -66,14 +77,11 @@ public class Example {
 
 [**AnnulStructuredDataResponse**](AnnulStructuredDataResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -82,58 +90,68 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getComplexMarketData"></a>
-# **getComplexMarketData**
-> GetComplexMarketDataResponse getComplexMarketData(scope, requestBody).effectiveAt(effectiveAt).asAt(asAt).maxAge(maxAge).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getComplexMarketData
+
+> GetComplexMarketDataResponse getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge)
 
 [EARLY ACCESS] GetComplexMarketData: Get complex market data
 
 Get one or more items of complex market data from a single scope.     Each item can be identified by its time invariant complex market data identifier.     For each id LUSID will return the most recent matched item with respect to the provided (or default) effective datetime.     An optional maximum age range window can be specified which defines how far back to look back for data from the specified effective datetime.  LUSID will return the most recent item within this window.     In the request each complex market data id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each item in the response.     The response will return three collections. One, the successfully retrieved complex market data. Two, those that had a  valid identifier but could not be found. Three, those that failed because LUSID could not construct a valid identifier from the request.     For the ids that failed to resolve or could not be found a reason will be provided explaining why that is the case.     It is important to always check the failed and not found sets for any unsuccessful results.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.ComplexMarketDataApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    ComplexMarketDataApi apiInstance = new ComplexMarketDataApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the complex market data to retrieve.
-    Map<String, ComplexMarketDataId> requestBody = new HashMap(); // Map<String, ComplexMarketDataId> | The time invariant set of complex data identifiers to retrieve the data for. These need to be   keyed by a unique correlation id allowing the retrieved item to be identified in the response.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the Effective at of each ComplexMarketDataId given in the request body.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified.
-    String maxAge = "maxAge_example"; // String | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved.
-    try {
-      GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .maxAge(maxAge)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ComplexMarketDataApi#getComplexMarketData");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class ComplexMarketDataApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
+        String scope = "scope_example"; // String | The scope of the complex market data to retrieve.
+        Map<String, ComplexMarketDataId> requestBody = new HashMap(); // Map<String, ComplexMarketDataId> | The time invariant set of complex data identifiers to retrieve the data for. These need to be   keyed by a unique correlation id allowing the retrieved item to be identified in the response.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the Effective at of each ComplexMarketDataId given in the request body.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified.
+        String maxAge = "maxAge_example"; // String | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved.
+        try {
+            GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplexMarketDataApi#getComplexMarketData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -147,14 +165,11 @@ public class Example {
 
 [**GetComplexMarketDataResponse**](GetComplexMarketDataResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -163,52 +178,64 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="listComplexMarketData"></a>
-# **listComplexMarketData**
-> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData().asAt(asAt).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listComplexMarketData
+
+> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt)
 
 [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData
 
 List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.ComplexMarketDataApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    ComplexMarketDataApi apiInstance = new ComplexMarketDataApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified.
-    try {
-      ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData()
-            .asAt(asAt)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ComplexMarketDataApi#listComplexMarketData");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class ComplexMarketDataApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified.
+        try {
+            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplexMarketDataApi#listComplexMarketData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -218,14 +245,11 @@ public class Example {
 
 [**ResourceListOfListComplexMarketDataWithMetaDataResponse**](ResourceListOfListComplexMarketDataWithMetaDataResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -234,52 +258,65 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="upsertComplexMarketData"></a>
-# **upsertComplexMarketData**
-> UpsertStructuredDataResponse upsertComplexMarketData(scope, requestBody).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertComplexMarketData
+
+> UpsertStructuredDataResponse upsertComplexMarketData(scope, requestBody)
 
 UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid.
 
 Update or insert one or more complex market data items in a single scope. An item will be updated if it already exists  and inserted if it does not.     In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each complex market data in the response.     The response will return both the collection of successfully updated or inserted complex market data, as well as those that failed.  For the failures a reason will be provided explaining why the item could not be updated or inserted.     It is important to always check the failed set for any unsuccessful results.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.ComplexMarketDataApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    ComplexMarketDataApi apiInstance = new ComplexMarketDataApi(defaultClient);
-    String scope = "scope_example"; // String | The scope to use when updating or inserting the complex market data.
-    Map<String, UpsertComplexMarketDataRequest> requestBody = new HashMap(); // Map<String, UpsertComplexMarketDataRequest> | The set of complex market data items to update or insert keyed by a unique correlation id.
-    try {
-      UpsertStructuredDataResponse result = apiInstance.upsertComplexMarketData(scope, requestBody)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ComplexMarketDataApi#upsertComplexMarketData");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class ComplexMarketDataApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
+        String scope = "scope_example"; // String | The scope to use when updating or inserting the complex market data.
+        Map<String, UpsertComplexMarketDataRequest> requestBody = new HashMap(); // Map<String, UpsertComplexMarketDataRequest> | The set of complex market data items to update or insert keyed by a unique correlation id.
+        try {
+            UpsertStructuredDataResponse result = apiInstance.upsertComplexMarketData(scope, requestBody).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplexMarketDataApi#upsertComplexMarketData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -290,14 +327,11 @@ public class Example {
 
 [**UpsertStructuredDataResponse**](UpsertStructuredDataResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -305,4 +339,6 @@ public class Example {
 | **200** | The successfully updated or inserted ComplexMarketData along with any failures |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 

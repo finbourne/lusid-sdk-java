@@ -32,3 +32,6 @@ A rule that identifies the set of preferences to be used for a given library, mo
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

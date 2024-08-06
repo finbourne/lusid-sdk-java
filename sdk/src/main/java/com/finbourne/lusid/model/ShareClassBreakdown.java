@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.MultiCurrencyAmounts;
 import com.finbourne.lusid.model.PreviousShareClassBreakdown;
 import com.finbourne.lusid.model.ShareClassAmount;
+import com.finbourne.lusid.model.ShareClassPnlBreakdown;
 import com.finbourne.lusid.model.UnitisationData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -67,7 +68,7 @@ public class ShareClassBreakdown {
 
   public static final String SERIALIZED_NAME_PN_L = "pnL";
   @SerializedName(SERIALIZED_NAME_PN_L)
-  private Map<String, ShareClassAmount> pnL = new HashMap<>();
+  private ShareClassPnlBreakdown pnL;
 
   public static final String SERIALIZED_NAME_GAV = "gav";
   @SerializedName(SERIALIZED_NAME_GAV)
@@ -162,31 +163,23 @@ public class ShareClassBreakdown {
   }
 
 
-  public ShareClassBreakdown pnL(Map<String, ShareClassAmount> pnL) {
+  public ShareClassBreakdown pnL(ShareClassPnlBreakdown pnL) {
     
     this.pnL = pnL;
     return this;
   }
 
-  public ShareClassBreakdown putPnLItem(String key, ShareClassAmount pnLItem) {
-    if (this.pnL == null) {
-      this.pnL = new HashMap<>();
-    }
-    this.pnL.put(key, pnLItem);
-    return this;
-  }
-
    /**
-   * Bucket of detail for &#39;PnL&#39; that has occured inside the queried period.
+   * Get pnL
    * @return pnL
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ShareClassAmount> getPnL() {
+  public ShareClassPnlBreakdown getPnL() {
     return pnL;
   }
 
 
-  public void setPnL(Map<String, ShareClassAmount> pnL) {
+  public void setPnL(ShareClassPnlBreakdown pnL) {
     this.pnL = pnL;
   }
 
@@ -496,6 +489,8 @@ public class ShareClassBreakdown {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `pnL`
+      ShareClassPnlBreakdown.validateJsonElement(jsonObj.get("pnL"));
       // validate the required field `gav`
       MultiCurrencyAmounts.validateJsonElement(jsonObj.get("gav"));
       // validate the required field `nav`

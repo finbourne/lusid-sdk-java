@@ -22,3 +22,6 @@ A condition to be evaluated.  Each supported CriterionType has a corresponding s
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

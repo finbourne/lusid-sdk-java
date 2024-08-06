@@ -15,3 +15,6 @@ LUSID representation of an Inflation Swap.  The implementation supports the foll
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

@@ -26,57 +26,65 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | UpsertInstrumentsProperties: Upsert instruments properties |
 
 
-<a id="batchUpsertInstrumentProperties"></a>
-# **batchUpsertInstrumentProperties**
-> BatchUpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(requestBody).scope(scope).identifierEffectiveAt(identifierEffectiveAt).successMode(successMode).execute();
+
+## batchUpsertInstrumentProperties
+
+> BatchUpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode)
 
 [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties
 
 Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    Map<String, UpsertInstrumentPropertyRequest> requestBody = new HashMap(); // Map<String, UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified.
-    String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
-    try {
-      BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody)
-            .scope(scope)
-            .identifierEffectiveAt(identifierEffectiveAt)
-            .successMode(successMode)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#batchUpsertInstrumentProperties");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        Map<String, UpsertInstrumentPropertyRequest> requestBody = new HashMap(); // Map<String, UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified.
+        String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
+        try {
+            BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#batchUpsertInstrumentProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -89,14 +97,11 @@ public class Example {
 
 [**BatchUpsertInstrumentPropertiesResponse**](BatchUpsertInstrumentPropertiesResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -105,54 +110,66 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="deleteInstrument"></a>
-# **deleteInstrument**
-> DeleteInstrumentResponse deleteInstrument(identifierType, identifier).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteInstrument
+
+> DeleteInstrumentResponse deleteInstrument(identifierType, identifier, scope)
 
 DeleteInstrument: Soft delete a single instrument
 
 Soft delete a particular instrument, as identified by a particular instrument identifier.     Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#deleteInstrument");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#deleteInstrument");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -164,14 +181,11 @@ public class Example {
 
 [**DeleteInstrumentResponse**](DeleteInstrumentResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -180,57 +194,68 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="deleteInstrumentProperties"></a>
-# **deleteInstrumentProperties**
-> DeleteInstrumentPropertiesResponse deleteInstrumentProperties(identifierType, identifier, requestBody).effectiveAt(effectiveAt).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteInstrumentProperties
+
+> DeleteInstrumentPropertiesResponse deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope)
 
 [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
 
 Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    List<String> requestBody = ["Instrument/scope/market-sector","Instrument/scope/tenor"]; // List<String> | A list of property keys from the 'Instruments' domain whose properties to delete.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody)
-            .effectiveAt(effectiveAt)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#deleteInstrumentProperties");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        List<String> requestBody = ["Instrument/scope/market-sector","Instrument/scope/tenor"]; // List<String> | A list of property keys from the 'Instruments' domain whose properties to delete.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#deleteInstrumentProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -244,14 +269,11 @@ public class Example {
 
 [**DeleteInstrumentPropertiesResponse**](DeleteInstrumentPropertiesResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -260,55 +282,66 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="deleteInstruments"></a>
-# **deleteInstruments**
-> DeleteInstrumentsResponse deleteInstruments(requestBody).deleteMode(deleteMode).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteInstruments
+
+> DeleteInstrumentsResponse deleteInstruments(requestBody, deleteMode, scope)
 
 DeleteInstruments: Soft or hard delete multiple instruments
 
 Deletes a number of instruments identified by LusidInstrumentId.     Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.     In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.     Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    List<String> requestBody = ["LUID_12345678","LUID_87654321"]; // List<String> | The list of lusidInstrumentId's to delete.
-    String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
-    String scope = "default"; // String | The scope in which the instruments lie. When not supplied the scope is 'default'.
-    try {
-      DeleteInstrumentsResponse result = apiInstance.deleteInstruments(requestBody)
-            .deleteMode(deleteMode)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#deleteInstruments");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        List<String> requestBody = ["LUID_12345678","LUID_87654321"]; // List<String> | The list of lusidInstrumentId's to delete.
+        String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
+        String scope = "default"; // String | The scope in which the instruments lie. When not supplied the scope is 'default'.
+        try {
+            DeleteInstrumentsResponse result = apiInstance.deleteInstruments(requestBody, deleteMode, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#deleteInstruments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -320,14 +353,11 @@ public class Example {
 
 [**DeleteInstrumentsResponse**](DeleteInstrumentsResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -336,51 +366,64 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getAllPossibleFeatures"></a>
-# **getAllPossibleFeatures**
-> Map&lt;String, List&lt;String&gt;&gt; getAllPossibleFeatures(instrumentType).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getAllPossibleFeatures
+
+> Map&lt;String, List&lt;String&gt;&gt; getAllPossibleFeatures(instrumentType)
 
 [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type.
 
 Provides all possible instrument features an instrument of a given type can provide.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String instrumentType = "instrumentType_example"; // String | A lusid instrument type e.g. Bond, FxOption.
-    try {
-      Map<String, List<String>> result = apiInstance.getAllPossibleFeatures(instrumentType)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getAllPossibleFeatures");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String instrumentType = "instrumentType_example"; // String | A lusid instrument type e.g. Bond, FxOption.
+        try {
+            Map<String, List<String>> result = apiInstance.getAllPossibleFeatures(instrumentType).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getAllPossibleFeatures");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -390,14 +433,11 @@ public class Example {
 
 [**Map&lt;String, List&lt;String&gt;&gt;**](List.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -406,63 +446,70 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getExistingInstrumentCapabilities"></a>
-# **getExistingInstrumentCapabilities**
-> InstrumentCapabilities getExistingInstrumentCapabilities(identifier).model(model).effectiveAt(effectiveAt).asAt(asAt).instrumentScope(instrumentScope).recipeScope(recipeScope).recipeCode(recipeCode).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getExistingInstrumentCapabilities
+
+> InstrumentCapabilities getExistingInstrumentCapabilities(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode)
 
 [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
 
 Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
-    String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
-    String instrumentScope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
-    String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
-    try {
-      InstrumentCapabilities result = apiInstance.getExistingInstrumentCapabilities(identifier)
-            .model(model)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .instrumentScope(instrumentScope)
-            .recipeScope(recipeScope)
-            .recipeCode(recipeCode)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getExistingInstrumentCapabilities");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
+        String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
+        String instrumentScope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
+        String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
+        try {
+            InstrumentCapabilities result = apiInstance.getExistingInstrumentCapabilities(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getExistingInstrumentCapabilities");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -478,14 +525,11 @@ public class Example {
 
 [**InstrumentCapabilities**](InstrumentCapabilities.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -494,61 +538,69 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getExistingInstrumentModels"></a>
-# **getExistingInstrumentModels**
-> InstrumentModels getExistingInstrumentModels(identifier).effectiveAt(effectiveAt).asAt(asAt).instrumentScope(instrumentScope).recipeScope(recipeScope).recipeCode(recipeCode).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getExistingInstrumentModels
+
+> InstrumentModels getExistingInstrumentModels(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode)
 
 GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID.
 
 Get the supported pricing models of a single instrument.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
-    String instrumentScope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
-    String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
-    try {
-      InstrumentModels result = apiInstance.getExistingInstrumentModels(identifier)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .instrumentScope(instrumentScope)
-            .recipeScope(recipeScope)
-            .recipeCode(recipeCode)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getExistingInstrumentModels");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
+        String instrumentScope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
+        String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
+        try {
+            InstrumentModels result = apiInstance.getExistingInstrumentModels(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getExistingInstrumentModels");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -563,14 +615,11 @@ public class Example {
 
 [**InstrumentModels**](InstrumentModels.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -579,62 +628,70 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstrument"></a>
-# **getInstrument**
-> Instrument getInstrument(identifierType, identifier).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).scope(scope).relationshipDefinitionIds(relationshipDefinitionIds).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstrument
+
+> Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds)
 
 GetInstrument: Get instrument
 
 Retrieve the definition of a particular instrument, as identified by a particular unique identifier.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   the instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
-    try {
-      Instrument result = apiInstance.getInstrument(identifierType, identifier)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .propertyKeys(propertyKeys)
-            .scope(scope)
-            .relationshipDefinitionIds(relationshipDefinitionIds)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrument");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   the instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        try {
+            Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstrument");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -650,14 +707,11 @@ public class Example {
 
 [**Instrument**](Instrument.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -666,64 +720,74 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstrumentIdentifierTypes"></a>
-# **getInstrumentIdentifierTypes**
-> ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifierTypes().execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstrumentIdentifierTypes
+
+> ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifierTypes()
 
 GetInstrumentIdentifierTypes: Get instrument identifier types
 
 Retrieve a list of all valid instrument identifier types and whether they are unique or not.     An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.     An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    try {
-      ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifierTypes()
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifierTypes");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        try {
+            ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifierTypes().execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifierTypes");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
 [**ResourceListOfInstrumentIdTypeDescriptor**](ResourceListOfInstrumentIdTypeDescriptor.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -731,60 +795,70 @@ This endpoint does not need any parameter.
 | **200** | A list of valid instrument identifier types. |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstrumentPaymentDiary"></a>
-# **getInstrumentPaymentDiary**
-> InstrumentPaymentDiary getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode).effectiveAt(effectiveAt).asAt(asAt).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstrumentPaymentDiary
+
+> InstrumentPaymentDiary getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope)
 
 [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary
 
 Get the payment diary of a single instrument.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
-    String identifier = "identifier_example"; // String | The value of the identifier for the requested instrument.
-    String recipeScope = "recipeScope_example"; // String | The scope of the valuation recipe being used to generate the payment diary
-    String recipeCode = "recipeCode_example"; // String | The code of the valuation recipe being used to generate the payment diary
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to return the latest version of each property if not specified.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      InstrumentPaymentDiary result = apiInstance.getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrumentPaymentDiary");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
+        String identifier = "identifier_example"; // String | The value of the identifier for the requested instrument.
+        String recipeScope = "recipeScope_example"; // String | The scope of the valuation recipe being used to generate the payment diary
+        String recipeCode = "recipeCode_example"; // String | The code of the valuation recipe being used to generate the payment diary
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to return the latest version of each property if not specified.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            InstrumentPaymentDiary result = apiInstance.getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstrumentPaymentDiary");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -800,14 +874,11 @@ public class Example {
 
 [**InstrumentPaymentDiary**](InstrumentPaymentDiary.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -816,58 +887,68 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstrumentProperties"></a>
-# **getInstrumentProperties**
-> InstrumentProperties getInstrumentProperties(identifierType, identifier).effectiveAt(effectiveAt).asAt(asAt).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstrumentProperties
+
+> InstrumentProperties getInstrumentProperties(identifierType, identifier, effectiveAt, asAt, scope)
 
 [EARLY ACCESS] GetInstrumentProperties: Get instrument properties
 
 List all the properties of a particular instrument, as identified by a particular unique identifier.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      InstrumentProperties result = apiInstance.getInstrumentProperties(identifierType, identifier)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrumentProperties");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            InstrumentProperties result = apiInstance.getInstrumentProperties(identifierType, identifier, effectiveAt, asAt, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstrumentProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -881,14 +962,11 @@ public class Example {
 
 [**InstrumentProperties**](InstrumentProperties.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -897,65 +975,72 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstrumentPropertyTimeSeries"></a>
-# **getInstrumentPropertyTimeSeries**
-> ResourceListOfPropertyInterval getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey).identifierEffectiveAt(identifierEffectiveAt).asAt(asAt).filter(filter).page(page).limit(limit).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstrumentPropertyTimeSeries
+
+> ResourceListOfPropertyInterval getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope)
 
 [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
 
 Retrieve the complete time series (history) for a particular property of an instrument.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    String propertyKey = "propertyKey_example"; // String | The property key of a property from the 'Instrument' domain whose history to retrieve.   This must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
-    String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve the instrument from the identifier.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument's property history. Defaults to   returning the current datetime if not supplied.
-    String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914.
-    String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the <i>filter</i>, <i>effectiveAt</i> and   <i>asAt</i> fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915.
-    Integer limit = 56; // Integer | When paginating, limit the results to this number.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      ResourceListOfPropertyInterval result = apiInstance.getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey)
-            .identifierEffectiveAt(identifierEffectiveAt)
-            .asAt(asAt)
-            .filter(filter)
-            .page(page)
-            .limit(limit)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrumentPropertyTimeSeries");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        String propertyKey = "propertyKey_example"; // String | The property key of a property from the 'Instrument' domain whose history to retrieve.   This must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve the instrument from the identifier.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument's property history. Defaults to   returning the current datetime if not supplied.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the <i>filter</i>, <i>effectiveAt</i> and   <i>asAt</i> fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915.
+        Integer limit = 56; // Integer | When paginating, limit the results to this number.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            ResourceListOfPropertyInterval result = apiInstance.getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstrumentPropertyTimeSeries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -973,14 +1058,11 @@ public class Example {
 
 [**ResourceListOfPropertyInterval**](ResourceListOfPropertyInterval.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -989,62 +1071,70 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstrumentRelationships"></a>
-# **getInstrumentRelationships**
-> ResourceListOfRelationship getInstrumentRelationships(identifierType, identifier).effectiveAt(effectiveAt).asAt(asAt).filter(filter).identifierTypes(identifierTypes).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstrumentRelationships
+
+> ResourceListOfRelationship getInstrumentRelationships(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope)
 
 [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships
 
 Get relationships for a particular Instrument.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | An identifier type attached to the Instrument.
-    String identifier = "identifier_example"; // String | The identifier value.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
-    String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
-    List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
-    String scope = "default"; // String | The entity scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      ResourceListOfRelationship result = apiInstance.getInstrumentRelationships(identifierType, identifier)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .filter(filter)
-            .identifierTypes(identifierTypes)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrumentRelationships");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | An identifier type attached to the Instrument.
+        String identifier = "identifier_example"; // String | The identifier value.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
+        String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+        String scope = "default"; // String | The entity scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            ResourceListOfRelationship result = apiInstance.getInstrumentRelationships(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstrumentRelationships");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1060,14 +1150,11 @@ public class Example {
 
 [**ResourceListOfRelationship**](ResourceListOfRelationship.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1076,62 +1163,70 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="getInstruments"></a>
-# **getInstruments**
-> GetInstrumentsResponse getInstruments(identifierType, requestBody).effectiveAt(effectiveAt).asAt(asAt).propertyKeys(propertyKeys).scope(scope).relationshipDefinitionIds(relationshipDefinitionIds).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInstruments
+
+> GetInstrumentsResponse getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds)
 
 GetInstruments: Get instruments
 
 Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.     Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
-    List<String> requestBody = ["instrument-identifier-1","instrument-identifier-2"]; // List<String> | A list of one or more <i>identifierType</i> values to use to identify instruments.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.   Defaults to returning the latest version of each instrument definition if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   each instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
-    try {
-      GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, requestBody)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .propertyKeys(propertyKeys)
-            .scope(scope)
-            .relationshipDefinitionIds(relationshipDefinitionIds)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstruments");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
+        List<String> requestBody = ["instrument-identifier-1","instrument-identifier-2"]; // List<String> | A list of one or more <i>identifierType</i> values to use to identify instruments.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.   Defaults to returning the latest version of each instrument definition if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   each instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        try {
+            GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#getInstruments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1147,14 +1242,11 @@ public class Example {
 
 [**GetInstrumentsResponse**](GetInstrumentsResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1163,62 +1255,70 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="listInstrumentProperties"></a>
-# **listInstrumentProperties**
-> ResourceListOfProperty listInstrumentProperties(identifierType, identifier).effectiveAt(effectiveAt).asAt(asAt).page(page).limit(limit).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listInstrumentProperties
+
+> ResourceListOfProperty listInstrumentProperties(identifierType, identifier, effectiveAt, asAt, page, limit, scope)
 
 [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination)
 
 List all the properties of a particular instrument, as identified by a particular unique identifier.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.   Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing commands; this value is returned from the previous call.
-    Integer limit = 56; // Integer | When paginating, limit the results per page to this number.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      ResourceListOfProperty result = apiInstance.listInstrumentProperties(identifierType, identifier)
-            .effectiveAt(effectiveAt)
-            .asAt(asAt)
-            .page(page)
-            .limit(limit)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#listInstrumentProperties");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.   Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing commands; this value is returned from the previous call.
+        Integer limit = 56; // Integer | When paginating, limit the results per page to this number.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            ResourceListOfProperty result = apiInstance.listInstrumentProperties(identifierType, identifier, effectiveAt, asAt, page, limit, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#listInstrumentProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1234,14 +1334,11 @@ public class Example {
 
 [**ResourceListOfProperty**](ResourceListOfProperty.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1250,68 +1347,72 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="listInstruments"></a>
-# **listInstruments**
-> PagedResourceListOfInstrument listInstruments().asAt(asAt).effectiveAt(effectiveAt).page(page).sortBy(sortBy).limit(limit).filter(filter).instrumentPropertyKeys(instrumentPropertyKeys).scope(scope).relationshipDefinitionIds(relationshipDefinitionIds).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listInstruments
+
+> PagedResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds)
 
 ListInstruments: List instruments
 
 List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified.
-    String page = "page_example"; // String | The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i> and   <i>asAt</i> fields must not have changed since the original request.   For more information, see https://support.lusid.com/knowledgebase/article/KA-01915.
-    List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-    Integer limit = 56; // Integer | When paginating, limit the results to this number.
-    String filter = "State eq 'Active'"; // String | Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914.
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
-    try {
-      PagedResourceListOfInstrument result = apiInstance.listInstruments()
-            .asAt(asAt)
-            .effectiveAt(effectiveAt)
-            .page(page)
-            .sortBy(sortBy)
-            .limit(limit)
-            .filter(filter)
-            .instrumentPropertyKeys(instrumentPropertyKeys)
-            .scope(scope)
-            .relationshipDefinitionIds(relationshipDefinitionIds)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#listInstruments");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i> and   <i>asAt</i> fields must not have changed since the original request.   For more information, see https://support.lusid.com/knowledgebase/article/KA-01915.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
+        Integer limit = 56; // Integer | When paginating, limit the results to this number.
+        String filter = "State eq 'Active'"; // String | Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914.
+        List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        try {
+            PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#listInstruments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1329,14 +1430,11 @@ public class Example {
 
 [**PagedResourceListOfInstrument**](PagedResourceListOfInstrument.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1345,53 +1443,65 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="queryInstrumentCapabilities"></a>
-# **queryInstrumentCapabilities**
-> InstrumentCapabilities queryInstrumentCapabilities(lusidInstrument).model(model).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## queryInstrumentCapabilities
+
+> InstrumentCapabilities queryInstrumentCapabilities(lusidInstrument, model)
 
 [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
 
 Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    LusidInstrument lusidInstrument = new LusidInstrument(); // LusidInstrument | The definition of the instrument.
-    String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
-    try {
-      InstrumentCapabilities result = apiInstance.queryInstrumentCapabilities(lusidInstrument)
-            .model(model)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#queryInstrumentCapabilities");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        LusidInstrument lusidInstrument = new LusidInstrument(); // LusidInstrument | The definition of the instrument.
+        String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
+        try {
+            InstrumentCapabilities result = apiInstance.queryInstrumentCapabilities(lusidInstrument, model).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#queryInstrumentCapabilities");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1402,14 +1512,11 @@ public class Example {
 
 [**InstrumentCapabilities**](InstrumentCapabilities.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1418,55 +1525,67 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="updateInstrumentIdentifier"></a>
-# **updateInstrumentIdentifier**
-> Instrument updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## updateInstrumentIdentifier
+
+> Instrument updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope)
 
 UpdateInstrumentIdentifier: Update instrument identifier
 
 Create, update or delete a particular instrument identifier for an instrument.     To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
-    String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the   'identifier' parameter used to retrieve the instrument.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#updateInstrumentIdentifier");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
+        String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
+        UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the   'identifier' parameter used to retrieve the instrument.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#updateInstrumentIdentifier");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1479,14 +1598,11 @@ public class Example {
 
 [**Instrument**](Instrument.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1495,53 +1611,65 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="upsertInstruments"></a>
-# **upsertInstruments**
-> UpsertInstrumentsResponse upsertInstruments(requestBody).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertInstruments
+
+> UpsertInstrumentsResponse upsertInstruments(requestBody, scope)
 
 UpsertInstruments: Upsert instruments
 
 Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.     In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.     Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.     The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    Map<String, InstrumentDefinition> requestBody = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#upsertInstruments");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        Map<String, InstrumentDefinition> requestBody = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#upsertInstruments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1552,14 +1680,11 @@ public class Example {
 
 [**UpsertInstrumentsResponse**](UpsertInstrumentsResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1568,53 +1693,65 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
-<a id="upsertInstrumentsProperties"></a>
-# **upsertInstrumentsProperties**
-> UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(upsertInstrumentPropertyRequest).scope(scope).execute();
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertInstrumentsProperties
+
+> UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope)
 
 UpsertInstrumentsProperties: Upsert instruments properties
 
 Create or update one or more properties for particular instruments.     Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
+
 ```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
-    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
-    String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-    try {
-      UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest)
-            .scope(scope)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#upsertInstrumentsProperties");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        try {
+            UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#upsertInstrumentsProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -1625,14 +1762,11 @@ public class Example {
 
 [**UpsertInstrumentPropertiesResponse**](UpsertInstrumentPropertiesResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1640,4 +1774,6 @@ public class Example {
 | **201** | The asAt datetime at which the properties were created or updated. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 

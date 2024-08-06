@@ -10,7 +10,7 @@ The Valuation Point Data for a Share Class on a specified date.
 |------------ | ------------- | ------------- | -------------|
 |**backOut** | [**Map&lt;String, ShareClassAmount&gt;**](ShareClassAmount.md) | Bucket of detail for the Valuation Point where data points have been &#39;backed out&#39;. |  |
 |**dealing** | [**Map&lt;String, ShareClassAmount&gt;**](ShareClassAmount.md) | Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period. |  |
-|**pnL** | [**Map&lt;String, ShareClassAmount&gt;**](ShareClassAmount.md) | Bucket of detail for &#39;PnL&#39; that has occured inside the queried period. |  |
+|**pnL** | [**ShareClassPnlBreakdown**](ShareClassPnlBreakdown.md) |  |  |
 |**gav** | [**MultiCurrencyAmounts**](MultiCurrencyAmounts.md) |  |  |
 |**fees** | [**Map&lt;String, FeeAccrual&gt;**](FeeAccrual.md) | Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period. |  |
 |**nav** | [**MultiCurrencyAmounts**](MultiCurrencyAmounts.md) |  |  |
@@ -20,5 +20,8 @@ The Valuation Point Data for a Share Class on a specified date.
 |**capitalRatio** | **java.math.BigDecimal** | The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class. |  |
 |**previousShareClassBreakdown** | [**PreviousShareClassBreakdown**](PreviousShareClassBreakdown.md) |  |  |
 
+
+
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

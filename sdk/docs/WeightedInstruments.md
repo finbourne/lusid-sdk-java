@@ -12,3 +12,6 @@ Class that models a set of instruments of which each has some quantity and can b
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

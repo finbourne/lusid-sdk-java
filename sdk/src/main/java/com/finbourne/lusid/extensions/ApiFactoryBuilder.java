@@ -31,13 +31,14 @@ public class ApiFactoryBuilder {
     }
 
     private static boolean areRequiredEnvironmentVariablesSet(){
+        boolean urlIsSet = System.getenv("FBN_LUSID_URL") != null || 
+            System.getenv("FBN_LUSID_API_URL") != null;
         return ((System.getenv("FBN_TOKEN_URL") != null &&
                 System.getenv("FBN_USERNAME") != null &&
                 System.getenv("FBN_PASSWORD") != null &&
                 System.getenv("FBN_CLIENT_ID") != null &&
                 System.getenv("FBN_CLIENT_SECRET") != null &&
-                System.getenv("FBN_LUSID_API_URL") != null) ||
-                (System.getenv("FBN_LUSID_API_URL") != null &&
-                System.getenv("FBN_ACCESS_TOKEN") != null));
+                urlIsSet) ||
+                (urlIsSet && System.getenv("FBN_ACCESS_TOKEN") != null));
     }
 }

@@ -14,3 +14,6 @@ Schedule that steps at known dated points in time.  Used in representation of a 
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

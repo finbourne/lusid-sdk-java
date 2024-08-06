@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.FundAmount;
+import com.finbourne.lusid.model.FundPnlBreakdown;
 import com.finbourne.lusid.model.PreviousFundValuationPointData;
 import com.finbourne.lusid.model.UnitisationData;
 import com.google.gson.TypeAdapter;
@@ -66,7 +67,7 @@ public class FundValuationPointData {
 
   public static final String SERIALIZED_NAME_PN_L = "pnL";
   @SerializedName(SERIALIZED_NAME_PN_L)
-  private Map<String, FundAmount> pnL = new HashMap<>();
+  private FundPnlBreakdown pnL;
 
   public static final String SERIALIZED_NAME_GAV = "gav";
   @SerializedName(SERIALIZED_NAME_GAV)
@@ -153,31 +154,23 @@ public class FundValuationPointData {
   }
 
 
-  public FundValuationPointData pnL(Map<String, FundAmount> pnL) {
+  public FundValuationPointData pnL(FundPnlBreakdown pnL) {
     
     this.pnL = pnL;
     return this;
   }
 
-  public FundValuationPointData putPnLItem(String key, FundAmount pnLItem) {
-    if (this.pnL == null) {
-      this.pnL = new HashMap<>();
-    }
-    this.pnL.put(key, pnLItem);
-    return this;
-  }
-
    /**
-   * Bucket of detail for &#39;PnL&#39; that has occured inside the queried period.
+   * Get pnL
    * @return pnL
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, FundAmount> getPnL() {
+  public FundPnlBreakdown getPnL() {
     return pnL;
   }
 
 
-  public void setPnL(Map<String, FundAmount> pnL) {
+  public void setPnL(FundPnlBreakdown pnL) {
     this.pnL = pnL;
   }
 
@@ -436,6 +429,8 @@ public class FundValuationPointData {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `pnL`
+      FundPnlBreakdown.validateJsonElement(jsonObj.get("pnL"));
       // validate the optional field `unitisation`
       if (jsonObj.get("unitisation") != null && !jsonObj.get("unitisation").isJsonNull()) {
         UnitisationData.validateJsonElement(jsonObj.get("unitisation"));

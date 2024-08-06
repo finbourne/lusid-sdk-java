@@ -17,3 +17,6 @@ Used to specify holdings target amounts at the tax-lot level
 
 
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
+
+

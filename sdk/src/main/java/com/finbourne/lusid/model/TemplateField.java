@@ -67,6 +67,10 @@ public class TemplateField {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY)
+  private String availability;
+
   public static final String SERIALIZED_NAME_USAGE = "usage";
   @SerializedName(SERIALIZED_NAME_USAGE)
   private List<String> usage = new ArrayList<>();
@@ -158,6 +162,27 @@ public class TemplateField {
   }
 
 
+  public TemplateField availability(String availability) {
+    
+    this.availability = availability;
+    return this;
+  }
+
+   /**
+   * Get availability
+   * @return availability
+  **/
+  @jakarta.annotation.Nonnull
+  public String getAvailability() {
+    return availability;
+  }
+
+
+  public void setAvailability(String availability) {
+    this.availability = availability;
+  }
+
+
   public TemplateField usage(List<String> usage) {
     
     this.usage = usage;
@@ -201,12 +226,13 @@ public class TemplateField {
         Objects.equals(this.specificity, templateField.specificity) &&
         Objects.equals(this.description, templateField.description) &&
         Objects.equals(this.type, templateField.type) &&
+        Objects.equals(this.availability, templateField.availability) &&
         Objects.equals(this.usage, templateField.usage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fieldName, specificity, description, type, usage);
+    return Objects.hash(fieldName, specificity, description, type, availability, usage);
   }
 
   @Override
@@ -217,6 +243,7 @@ public class TemplateField {
     sb.append("    specificity: ").append(toIndentedString(specificity)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
     sb.append("    usage: ").append(toIndentedString(usage)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -244,6 +271,7 @@ public class TemplateField {
     openapiFields.add("specificity");
     openapiFields.add("description");
     openapiFields.add("type");
+    openapiFields.add("availability");
     openapiFields.add("usage");
 
     // a set of required properties/fields (JSON key names)
@@ -252,6 +280,7 @@ public class TemplateField {
     openapiRequiredFields.add("specificity");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("availability");
     openapiRequiredFields.add("usage");
   }
 
@@ -286,6 +315,9 @@ public class TemplateField {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if (!jsonObj.get("availability").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `availability` to be a primitive type in the JSON string but got `%s`", jsonObj.get("availability").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("usage") == null) {
