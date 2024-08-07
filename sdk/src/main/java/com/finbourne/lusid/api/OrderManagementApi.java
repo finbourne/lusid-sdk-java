@@ -28,6 +28,7 @@ import com.finbourne.lusid.model.AllocationServiceRunResponse;
 import com.finbourne.lusid.model.BlockAndOrdersCreateRequest;
 import com.finbourne.lusid.model.BookTransactionsRequest;
 import com.finbourne.lusid.model.BookTransactionsResponse;
+import com.finbourne.lusid.model.CancelOrdersResponse;
 import com.finbourne.lusid.model.CancelPlacementsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -264,6 +265,173 @@ public class OrderManagementApi {
      */
     public APIbookTransactionsRequest bookTransactions(BookTransactionsRequest bookTransactionsRequest) {
         return new APIbookTransactionsRequest(bookTransactionsRequest);
+    }
+    private okhttp3.Call cancelOrdersCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/cancelorders";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelOrdersValidateBeforeCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling cancelOrders(Async)");
+        }
+
+        return cancelOrdersCall(requestBody, _callback);
+
+    }
+
+
+    private ApiResponse<CancelOrdersResponse> cancelOrdersWithHttpInfo(Map<String, ResourceId> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, null);
+        Type localVarReturnType = new TypeToken<CancelOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call cancelOrdersAsync(Map<String, ResourceId> requestBody, final ApiCallback<CancelOrdersResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, _callback);
+        Type localVarReturnType = new TypeToken<CancelOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcancelOrdersRequest {
+        private final Map<String, ResourceId> requestBody;
+
+        private APIcancelOrdersRequest(Map<String, ResourceId> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for cancelOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelOrdersCall(requestBody, _callback);
+        }
+
+        /**
+         * Execute cancelOrders request
+         * @return CancelOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelOrdersResponse execute() throws ApiException {
+            ApiResponse<CancelOrdersResponse> localVarResp = cancelOrdersWithHttpInfo(requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelOrders request with HTTP info returned
+         * @return ApiResponse&lt;CancelOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelOrdersResponse> executeWithHttpInfo() throws ApiException {
+            return cancelOrdersWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute cancelOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelOrdersResponse> _callback) throws ApiException {
+            return cancelOrdersAsync(requestBody, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CancelOrders: Cancel existing orders
+     * The response returns both the collection of successfully canceled orders, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
+     * @param requestBody The request containing the ids of the orders to be cancelled. (required)
+     * @return APIcancelOrdersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcancelOrdersRequest cancelOrders(Map<String, ResourceId> requestBody) {
+        return new APIcancelOrdersRequest(requestBody);
     }
     private okhttp3.Call cancelPlacementsCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;

@@ -284,6 +284,7 @@ Class | Method | HTTP request | Description
 *OrderInstructionsApi* | [**listOrderInstructions**](docs/OrderInstructionsApi.md#listorderinstructions) | **GET** /api/orderinstructions | [EXPERIMENTAL] ListOrderInstructions: List OrderInstructions
 *OrderInstructionsApi* | [**upsertOrderInstructions**](docs/OrderInstructionsApi.md#upsertorderinstructions) | **POST** /api/orderinstructions | [EXPERIMENTAL] UpsertOrderInstructions: Upsert OrderInstruction
 *OrderManagementApi* | [**bookTransactions**](docs/OrderManagementApi.md#booktransactions) | **POST** /api/ordermanagement/booktransactions | [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
+*OrderManagementApi* | [**cancelOrders**](docs/OrderManagementApi.md#cancelorders) | **POST** /api/ordermanagement/cancelorders | [EARLY ACCESS] CancelOrders: Cancel existing orders
 *OrderManagementApi* | [**cancelPlacements**](docs/OrderManagementApi.md#cancelplacements) | **POST** /api/ordermanagement/$cancelplacements | [EARLY ACCESS] CancelPlacements: Cancel existing placements
 *OrderManagementApi* | [**createOrders**](docs/OrderManagementApi.md#createorders) | **POST** /api/ordermanagement/createorders | [EARLY ACCESS] CreateOrders: Upsert a Block and associated orders
 *OrderManagementApi* | [**moveOrders**](docs/OrderManagementApi.md#moveorders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block
@@ -639,7 +640,9 @@ Class | Method | HTTP request | Description
  - [Calendar](docs/Calendar.md)
  - [CalendarDate](docs/CalendarDate.md)
  - [CalendarDependency](docs/CalendarDependency.md)
+ - [CancelOrdersResponse](docs/CancelOrdersResponse.md)
  - [CancelPlacementsResponse](docs/CancelPlacementsResponse.md)
+ - [CancelledOrderResult](docs/CancelledOrderResult.md)
  - [CancelledPlacementResult](docs/CancelledPlacementResult.md)
  - [CapFloor](docs/CapFloor.md)
  - [CapitalDistributionEvent](docs/CapitalDistributionEvent.md)
