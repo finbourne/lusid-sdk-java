@@ -7,7 +7,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**href** | **URI** |  |  [optional] |
 |**typeValueRange** | [**TypeValueRangeEnum**](#TypeValueRangeEnum) | The available values are: Open, Closed |  |
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** |  |  |
@@ -18,6 +17,7 @@
 |**acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional] |
 |**referenceData** | [**ReferenceData**](ReferenceData.md) |  |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

@@ -18,6 +18,7 @@ A Journal Entry line entity.
 |**generalLedgerAccountCode** | **String** | The code of the account in the general ledger the Journal Entry was posted to. |  |
 |**local** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
 |**base** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
+|**units** | **java.math.BigDecimal** | Units held for the Journal Entry Line. |  |
 |**postingModuleCode** | **String** | The code of the posting module where the posting rules derived the Journal Entry lines. |  [optional] |
 |**postingRule** | **String** | The rule generating the Journal Entry Line. |  |
 |**asAtDate** | **OffsetDateTime** | The corresponding input date and time of the Transaction generating the Journal Entry Line. |  |

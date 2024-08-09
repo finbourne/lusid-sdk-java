@@ -62,6 +62,10 @@ public class ShareClassDetails {
   @SerializedName(SERIALIZED_NAME_DOM_CURRENCY)
   private String domCurrency;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_ACTIVE = "instrumentActive";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_ACTIVE)
+  private Boolean instrumentActive;
+
   public ShareClassDetails() {
   }
 
@@ -128,6 +132,27 @@ public class ShareClassDetails {
   }
 
 
+  public ShareClassDetails instrumentActive(Boolean instrumentActive) {
+    
+    this.instrumentActive = instrumentActive;
+    return this;
+  }
+
+   /**
+   * If the instrument of the share class is active.
+   * @return instrumentActive
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getInstrumentActive() {
+    return instrumentActive;
+  }
+
+
+  public void setInstrumentActive(Boolean instrumentActive) {
+    this.instrumentActive = instrumentActive;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +165,8 @@ public class ShareClassDetails {
     ShareClassDetails shareClassDetails = (ShareClassDetails) o;
     return Objects.equals(this.lusidInstrumentId, shareClassDetails.lusidInstrumentId) &&
         Objects.equals(this.instrumentScope, shareClassDetails.instrumentScope) &&
-        Objects.equals(this.domCurrency, shareClassDetails.domCurrency);
+        Objects.equals(this.domCurrency, shareClassDetails.domCurrency) &&
+        Objects.equals(this.instrumentActive, shareClassDetails.instrumentActive);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +175,7 @@ public class ShareClassDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lusidInstrumentId, instrumentScope, domCurrency);
+    return Objects.hash(lusidInstrumentId, instrumentScope, domCurrency, instrumentActive);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +192,7 @@ public class ShareClassDetails {
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
     sb.append("    domCurrency: ").append(toIndentedString(domCurrency)).append("\n");
+    sb.append("    instrumentActive: ").append(toIndentedString(instrumentActive)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +218,7 @@ public class ShareClassDetails {
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("instrumentScope");
     openapiFields.add("domCurrency");
+    openapiFields.add("instrumentActive");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

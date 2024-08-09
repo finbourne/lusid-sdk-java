@@ -58,10 +58,6 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DataType {
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
-
   /**
    * The available values are: Open, Closed
    */
@@ -283,33 +279,16 @@ public class DataType {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
   public DataType() {
   }
-
-  public DataType href(URI href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @jakarta.annotation.Nullable
-  public URI getHref() {
-    return href;
-  }
-
-
-  public void setHref(URI href) {
-    this.href = href;
-  }
-
 
   public DataType typeValueRange(TypeValueRangeEnum typeValueRange) {
     
@@ -537,6 +516,27 @@ public class DataType {
   }
 
 
+  public DataType href(URI href) {
+    
+    this.href = href;
+    return this;
+  }
+
+   /**
+   * The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
+   * @return href
+  **/
+  @jakarta.annotation.Nullable
+  public URI getHref() {
+    return href;
+  }
+
+
+  public void setHref(URI href) {
+    this.href = href;
+  }
+
+
   public DataType links(List<Link> links) {
     
     this.links = links;
@@ -576,8 +576,7 @@ public class DataType {
       return false;
     }
     DataType dataType = (DataType) o;
-    return Objects.equals(this.href, dataType.href) &&
-        Objects.equals(this.typeValueRange, dataType.typeValueRange) &&
+    return Objects.equals(this.typeValueRange, dataType.typeValueRange) &&
         Objects.equals(this.id, dataType.id) &&
         Objects.equals(this.displayName, dataType.displayName) &&
         Objects.equals(this.description, dataType.description) &&
@@ -587,6 +586,7 @@ public class DataType {
         Objects.equals(this.acceptableUnits, dataType.acceptableUnits) &&
         Objects.equals(this.referenceData, dataType.referenceData) &&
         Objects.equals(this.version, dataType.version) &&
+        Objects.equals(this.href, dataType.href) &&
         Objects.equals(this.links, dataType.links);
   }
 
@@ -596,7 +596,7 @@ public class DataType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, referenceData, version, links);
+    return Objects.hash(typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, referenceData, version, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -610,7 +610,6 @@ public class DataType {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DataType {\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    typeValueRange: ").append(toIndentedString(typeValueRange)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
@@ -621,6 +620,7 @@ public class DataType {
     sb.append("    acceptableUnits: ").append(toIndentedString(acceptableUnits)).append("\n");
     sb.append("    referenceData: ").append(toIndentedString(referenceData)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -644,7 +644,6 @@ public class DataType {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("href");
     openapiFields.add("typeValueRange");
     openapiFields.add("id");
     openapiFields.add("displayName");
@@ -655,6 +654,7 @@ public class DataType {
     openapiFields.add("acceptableUnits");
     openapiFields.add("referenceData");
     openapiFields.add("version");
+    openapiFields.add("href");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -686,9 +686,6 @@ public class DataType {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
-      }
       if (!jsonObj.get("typeValueRange").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `typeValueRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("typeValueRange").toString()));
       }
@@ -731,6 +728,9 @@ public class DataType {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

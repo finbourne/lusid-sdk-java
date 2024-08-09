@@ -100,6 +100,10 @@ public class JournalEntryLine {
   @SerializedName(SERIALIZED_NAME_BASE)
   private CurrencyAndAmount base;
 
+  public static final String SERIALIZED_NAME_UNITS = "units";
+  @SerializedName(SERIALIZED_NAME_UNITS)
+  private java.math.BigDecimal units;
+
   public static final String SERIALIZED_NAME_POSTING_MODULE_CODE = "postingModuleCode";
   @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODE)
   private String postingModuleCode;
@@ -390,6 +394,27 @@ public class JournalEntryLine {
 
   public void setBase(CurrencyAndAmount base) {
     this.base = base;
+  }
+
+
+  public JournalEntryLine units(java.math.BigDecimal units) {
+    
+    this.units = units;
+    return this;
+  }
+
+   /**
+   * Units held for the Journal Entry Line.
+   * @return units
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getUnits() {
+    return units;
+  }
+
+
+  public void setUnits(java.math.BigDecimal units) {
+    this.units = units;
   }
 
 
@@ -823,6 +848,7 @@ public class JournalEntryLine {
         Objects.equals(this.generalLedgerAccountCode, journalEntryLine.generalLedgerAccountCode) &&
         Objects.equals(this.local, journalEntryLine.local) &&
         Objects.equals(this.base, journalEntryLine.base) &&
+        (this.units.compareTo(journalEntryLine.getUnits()) == 0) &&
         Objects.equals(this.postingModuleCode, journalEntryLine.postingModuleCode) &&
         Objects.equals(this.postingRule, journalEntryLine.postingRule) &&
         Objects.equals(this.asAtDate, journalEntryLine.asAtDate) &&
@@ -849,7 +875,7 @@ public class JournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -873,6 +899,7 @@ public class JournalEntryLine {
     sb.append("    generalLedgerAccountCode: ").append(toIndentedString(generalLedgerAccountCode)).append("\n");
     sb.append("    local: ").append(toIndentedString(local)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
+    sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    postingModuleCode: ").append(toIndentedString(postingModuleCode)).append("\n");
     sb.append("    postingRule: ").append(toIndentedString(postingRule)).append("\n");
     sb.append("    asAtDate: ").append(toIndentedString(asAtDate)).append("\n");
@@ -923,6 +950,7 @@ public class JournalEntryLine {
     openapiFields.add("generalLedgerAccountCode");
     openapiFields.add("local");
     openapiFields.add("base");
+    openapiFields.add("units");
     openapiFields.add("postingModuleCode");
     openapiFields.add("postingRule");
     openapiFields.add("asAtDate");
@@ -952,6 +980,7 @@ public class JournalEntryLine {
     openapiRequiredFields.add("generalLedgerAccountCode");
     openapiRequiredFields.add("local");
     openapiRequiredFields.add("base");
+    openapiRequiredFields.add("units");
     openapiRequiredFields.add("postingRule");
     openapiRequiredFields.add("asAtDate");
     openapiRequiredFields.add("sourceType");
