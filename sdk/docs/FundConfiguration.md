@@ -12,7 +12,7 @@
 |**displayName** | **String** | The name of the FundConfiguration. |  [optional] |
 |**description** | **String** | A description for the FundConfiguration. |  [optional] |
 |**dealingRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
-|**fundPnlRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
+|**pnlRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
 |**backOutRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund Configuration. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |

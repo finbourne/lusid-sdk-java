@@ -69,6 +69,14 @@ public class ScripDividendEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
   private OffsetDateTime paymentDate;
 
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE = "fractionalUnitsCashPrice";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE)
+  private java.math.BigDecimal fractionalUnitsCashPrice;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY = "fractionalUnitsCashCurrency";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
+  private String fractionalUnitsCashCurrency;
+
   public static final String SERIALIZED_NAME_UNITS_RATIO = "unitsRatio";
   @SerializedName(SERIALIZED_NAME_UNITS_RATIO)
   private UnitsRatio unitsRatio;
@@ -161,6 +169,48 @@ public class ScripDividendEvent extends InstrumentEvent {
   }
 
 
+  public ScripDividendEvent fractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+    return this;
+  }
+
+   /**
+   * The cash price per unit paid in lieu when fractional units can not be distributed.
+   * @return fractionalUnitsCashPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFractionalUnitsCashPrice() {
+    return fractionalUnitsCashPrice;
+  }
+
+
+  public void setFractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+  }
+
+
+  public ScripDividendEvent fractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+    return this;
+  }
+
+   /**
+   * The currency of the cash paid in lieu of fractional units.
+   * @return fractionalUnitsCashCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsCashCurrency() {
+    return fractionalUnitsCashCurrency;
+  }
+
+
+  public void setFractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+  }
+
+
   public ScripDividendEvent unitsRatio(UnitsRatio unitsRatio) {
     
     this.unitsRatio = unitsRatio;
@@ -196,6 +246,8 @@ public class ScripDividendEvent extends InstrumentEvent {
         Objects.equals(this.exDate, scripDividendEvent.exDate) &&
         Objects.equals(this.recordDate, scripDividendEvent.recordDate) &&
         Objects.equals(this.paymentDate, scripDividendEvent.paymentDate) &&
+        (this.fractionalUnitsCashPrice.compareTo(scripDividendEvent.getFractionalUnitsCashPrice()) == 0) &&
+        Objects.equals(this.fractionalUnitsCashCurrency, scripDividendEvent.fractionalUnitsCashCurrency) &&
         Objects.equals(this.unitsRatio, scripDividendEvent.unitsRatio) &&
         super.equals(o);
   }
@@ -206,7 +258,7 @@ public class ScripDividendEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, exDate, recordDate, paymentDate, unitsRatio, super.hashCode());
+    return Objects.hash(announcementDate, exDate, recordDate, paymentDate, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, unitsRatio, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -225,6 +277,8 @@ public class ScripDividendEvent extends InstrumentEvent {
     sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
     sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
+    sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
+    sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
     sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -253,6 +307,8 @@ public class ScripDividendEvent extends InstrumentEvent {
     openapiFields.add("exDate");
     openapiFields.add("recordDate");
     openapiFields.add("paymentDate");
+    openapiFields.add("fractionalUnitsCashPrice");
+    openapiFields.add("fractionalUnitsCashCurrency");
     openapiFields.add("unitsRatio");
 
     // a set of required properties/fields (JSON key names)

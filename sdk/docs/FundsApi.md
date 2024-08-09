@@ -16,6 +16,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getValuationPointData**](FundsApi.md#getValuationPointData) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**listFees**](FundsApi.md#listFees) | **GET** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] ListFees: List Fees for a specified Fund. |
 | [**listFunds**](FundsApi.md#listFunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds. |
+| [**listValuationPointOverview**](FundsApi.md#listValuationPointOverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**patchFee**](FundsApi.md#patchFee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**setShareClassInstruments**](FundsApi.md#setShareClassInstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a fund. |
 | [**upsertDiaryEntryTypeValuationPoint**](FundsApi.md#upsertDiaryEntryTypeValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point. |
@@ -1054,6 +1055,100 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Funds. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listValuationPointOverview
+
+> PagedResourceListOfValuationPointOverview listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys)
+
+[EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
+
+List all the Valuation Points that match the given criteria for a given Fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID   system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ValuationPoints. Defaults to returning the latest version of each ValuationPoint if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing ValuationPoints; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+        String filter = "filter_example"; // String | Expression to filter the results by.   For example, to filter on the NAV, specify \"NAV gt 300\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/ValuationPoint/Id'.
+        try {
+            PagedResourceListOfValuationPointOverview result = apiInstance.listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#listValuationPointOverview");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the ValuationPoints. Defaults to returning the latest version of each ValuationPoint if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing ValuationPoints; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfValuationPointOverview**](PagedResourceListOfValuationPointOverview.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested ValuationPointOverview. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

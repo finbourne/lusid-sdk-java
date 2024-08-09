@@ -213,6 +213,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**getValuationPointData**](docs/FundsApi.md#getvaluationpointdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
 *FundsApi* | [**listFees**](docs/FundsApi.md#listfees) | **GET** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] ListFees: List Fees for a specified Fund.
 *FundsApi* | [**listFunds**](docs/FundsApi.md#listfunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds.
+*FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
 *FundsApi* | [**patchFee**](docs/FundsApi.md#patchfee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee.
 *FundsApi* | [**setShareClassInstruments**](docs/FundsApi.md#setshareclassinstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a fund.
 *FundsApi* | [**upsertDiaryEntryTypeValuationPoint**](docs/FundsApi.md#upsertdiaryentrytypevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
@@ -1147,6 +1148,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfTransactionTemplate](docs/PagedResourceListOfTransactionTemplate.md)
  - [PagedResourceListOfTransactionTemplateSpecification](docs/PagedResourceListOfTransactionTemplateSpecification.md)
  - [PagedResourceListOfTranslationScriptId](docs/PagedResourceListOfTranslationScriptId.md)
+ - [PagedResourceListOfValuationPointOverview](docs/PagedResourceListOfValuationPointOverview.md)
  - [PagedResourceListOfVirtualRow](docs/PagedResourceListOfVirtualRow.md)
  - [Participation](docs/Participation.md)
  - [ParticipationRequest](docs/ParticipationRequest.md)
@@ -1549,6 +1551,7 @@ Class | Method | HTTP request | Description
  - [ValuationPointDataQueryParameters](docs/ValuationPointDataQueryParameters.md)
  - [ValuationPointDataRequest](docs/ValuationPointDataRequest.md)
  - [ValuationPointDataResponse](docs/ValuationPointDataResponse.md)
+ - [ValuationPointOverview](docs/ValuationPointOverview.md)
  - [ValuationRequest](docs/ValuationRequest.md)
  - [ValuationSchedule](docs/ValuationSchedule.md)
  - [ValuationsReconciliationRequest](docs/ValuationsReconciliationRequest.md)

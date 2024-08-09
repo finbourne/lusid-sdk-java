@@ -80,9 +80,9 @@ public class FundConfiguration {
   @SerializedName(SERIALIZED_NAME_DEALING_RULE)
   private ComponentRule dealingRule;
 
-  public static final String SERIALIZED_NAME_FUND_PNL_RULE = "fundPnlRule";
-  @SerializedName(SERIALIZED_NAME_FUND_PNL_RULE)
-  private ComponentRule fundPnlRule;
+  public static final String SERIALIZED_NAME_PNL_RULE = "pnlRule";
+  @SerializedName(SERIALIZED_NAME_PNL_RULE)
+  private ComponentRule pnlRule;
 
   public static final String SERIALIZED_NAME_BACK_OUT_RULE = "backOutRule";
   @SerializedName(SERIALIZED_NAME_BACK_OUT_RULE)
@@ -208,24 +208,24 @@ public class FundConfiguration {
   }
 
 
-  public FundConfiguration fundPnlRule(ComponentRule fundPnlRule) {
+  public FundConfiguration pnlRule(ComponentRule pnlRule) {
     
-    this.fundPnlRule = fundPnlRule;
+    this.pnlRule = pnlRule;
     return this;
   }
 
    /**
-   * Get fundPnlRule
-   * @return fundPnlRule
+   * Get pnlRule
+   * @return pnlRule
   **/
   @jakarta.annotation.Nullable
-  public ComponentRule getFundPnlRule() {
-    return fundPnlRule;
+  public ComponentRule getPnlRule() {
+    return pnlRule;
   }
 
 
-  public void setFundPnlRule(ComponentRule fundPnlRule) {
-    this.fundPnlRule = fundPnlRule;
+  public void setPnlRule(ComponentRule pnlRule) {
+    this.pnlRule = pnlRule;
   }
 
 
@@ -344,7 +344,7 @@ public class FundConfiguration {
         Objects.equals(this.displayName, fundConfiguration.displayName) &&
         Objects.equals(this.description, fundConfiguration.description) &&
         Objects.equals(this.dealingRule, fundConfiguration.dealingRule) &&
-        Objects.equals(this.fundPnlRule, fundConfiguration.fundPnlRule) &&
+        Objects.equals(this.pnlRule, fundConfiguration.pnlRule) &&
         Objects.equals(this.backOutRule, fundConfiguration.backOutRule) &&
         Objects.equals(this.properties, fundConfiguration.properties) &&
         Objects.equals(this.version, fundConfiguration.version) &&
@@ -357,7 +357,7 @@ public class FundConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, dealingRule, fundPnlRule, backOutRule, properties, version, links);
+    return Objects.hash(href, id, displayName, description, dealingRule, pnlRule, backOutRule, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -376,7 +376,7 @@ public class FundConfiguration {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    dealingRule: ").append(toIndentedString(dealingRule)).append("\n");
-    sb.append("    fundPnlRule: ").append(toIndentedString(fundPnlRule)).append("\n");
+    sb.append("    pnlRule: ").append(toIndentedString(pnlRule)).append("\n");
     sb.append("    backOutRule: ").append(toIndentedString(backOutRule)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -408,7 +408,7 @@ public class FundConfiguration {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("dealingRule");
-    openapiFields.add("fundPnlRule");
+    openapiFields.add("pnlRule");
     openapiFields.add("backOutRule");
     openapiFields.add("properties");
     openapiFields.add("version");
@@ -454,9 +454,9 @@ public class FundConfiguration {
       if (jsonObj.get("dealingRule") != null && !jsonObj.get("dealingRule").isJsonNull()) {
         ComponentRule.validateJsonElement(jsonObj.get("dealingRule"));
       }
-      // validate the optional field `fundPnlRule`
-      if (jsonObj.get("fundPnlRule") != null && !jsonObj.get("fundPnlRule").isJsonNull()) {
-        ComponentRule.validateJsonElement(jsonObj.get("fundPnlRule"));
+      // validate the optional field `pnlRule`
+      if (jsonObj.get("pnlRule") != null && !jsonObj.get("pnlRule").isJsonNull()) {
+        ComponentRule.validateJsonElement(jsonObj.get("pnlRule"));
       }
       // validate the optional field `backOutRule`
       if (jsonObj.get("backOutRule") != null && !jsonObj.get("backOutRule").isJsonNull()) {

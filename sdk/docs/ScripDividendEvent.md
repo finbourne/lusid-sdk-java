@@ -12,6 +12,8 @@ A scrip dividend issued to shareholders.
 |**exDate** | **OffsetDateTime** | The first business day on which the dividend is not owed to the buying party.  Typically this is T-1 from the RecordDate. |  |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to participate in the tender. |  [optional] |
 |**paymentDate** | **OffsetDateTime** | The date the company pays out dividends to shareholders. |  |
+|**fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price per unit paid in lieu when fractional units can not be distributed. |  [optional] |
+|**fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractional units. |  [optional] |
 |**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  |
 
 
