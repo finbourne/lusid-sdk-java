@@ -292,6 +292,7 @@ Class | Method | HTTP request | Description
 *OrderManagementApi* | [**moveOrders**](docs/OrderManagementApi.md#moveorders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block
 *OrderManagementApi* | [**placeBlocks**](docs/OrderManagementApi.md#placeblocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests.
 *OrderManagementApi* | [**runAllocationService**](docs/OrderManagementApi.md#runallocationservice) | **POST** /api/ordermanagement/allocate | [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
+*OrderManagementApi* | [**updateOrders**](docs/OrderManagementApi.md#updateorders) | **POST** /api/ordermanagement/updateorders | [EARLY ACCESS] UpdateOrders: Update existing orders
 *OrderManagementApi* | [**updatePlacements**](docs/OrderManagementApi.md#updateplacements) | **POST** /api/ordermanagement/$updateplacements | [EARLY ACCESS] UpdatePlacements: Update existing placements
 *OrdersApi* | [**deleteOrder**](docs/OrdersApi.md#deleteorder) | **DELETE** /api/orders/{scope}/{code} | [EARLY ACCESS] DeleteOrder: Delete order
 *OrdersApi* | [**getOrder**](docs/OrdersApi.md#getorder) | **GET** /api/orders/{scope}/{code} | [EARLY ACCESS] GetOrder: Get Order
@@ -1087,6 +1088,7 @@ Class | Method | HTTP request | Description
  - [OrderInstructionSetRequest](docs/OrderInstructionSetRequest.md)
  - [OrderRequest](docs/OrderRequest.md)
  - [OrderSetRequest](docs/OrderSetRequest.md)
+ - [OrderUpdateRequest](docs/OrderUpdateRequest.md)
  - [OtcConfirmation](docs/OtcConfirmation.md)
  - [OutputTransaction](docs/OutputTransaction.md)
  - [OutputTransition](docs/OutputTransition.md)
@@ -1497,6 +1499,7 @@ Class | Method | HTTP request | Description
  - [UpdateDerivedPropertyDefinitionRequest](docs/UpdateDerivedPropertyDefinitionRequest.md)
  - [UpdateFeeTypeRequest](docs/UpdateFeeTypeRequest.md)
  - [UpdateInstrumentIdentifierRequest](docs/UpdateInstrumentIdentifierRequest.md)
+ - [UpdateOrdersResponse](docs/UpdateOrdersResponse.md)
  - [UpdatePlacementsResponse](docs/UpdatePlacementsResponse.md)
  - [UpdatePortfolioGroupRequest](docs/UpdatePortfolioGroupRequest.md)
  - [UpdatePortfolioRequest](docs/UpdatePortfolioRequest.md)

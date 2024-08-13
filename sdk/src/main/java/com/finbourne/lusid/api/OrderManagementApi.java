@@ -33,12 +33,14 @@ import com.finbourne.lusid.model.CancelPlacementsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.MoveOrdersToDifferentBlocksRequest;
+import com.finbourne.lusid.model.OrderUpdateRequest;
 import com.finbourne.lusid.model.PlaceBlocksRequest;
 import com.finbourne.lusid.model.PlacementUpdateRequest;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
 import com.finbourne.lusid.model.ResourceListOfMovedOrderToDifferentBlockResponse;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
+import com.finbourne.lusid.model.UpdateOrdersResponse;
 import com.finbourne.lusid.model.UpdatePlacementsResponse;
 
 import java.lang.reflect.Type;
@@ -1285,6 +1287,173 @@ public class OrderManagementApi {
      */
     public APIrunAllocationServiceRequest runAllocationService(List<ResourceId> resourceId) {
         return new APIrunAllocationServiceRequest(resourceId);
+    }
+    private okhttp3.Call updateOrdersCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/updateorders";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateOrdersValidateBeforeCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling updateOrders(Async)");
+        }
+
+        return updateOrdersCall(requestBody, _callback);
+
+    }
+
+
+    private ApiResponse<UpdateOrdersResponse> updateOrdersWithHttpInfo(Map<String, OrderUpdateRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, null);
+        Type localVarReturnType = new TypeToken<UpdateOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateOrdersAsync(Map<String, OrderUpdateRequest> requestBody, final ApiCallback<UpdateOrdersResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, _callback);
+        Type localVarReturnType = new TypeToken<UpdateOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateOrdersRequest {
+        private final Map<String, OrderUpdateRequest> requestBody;
+
+        private APIupdateOrdersRequest(Map<String, OrderUpdateRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for updateOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateOrdersCall(requestBody, _callback);
+        }
+
+        /**
+         * Execute updateOrders request
+         * @return UpdateOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpdateOrdersResponse execute() throws ApiException {
+            ApiResponse<UpdateOrdersResponse> localVarResp = updateOrdersWithHttpInfo(requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateOrders request with HTTP info returned
+         * @return ApiResponse&lt;UpdateOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpdateOrdersResponse> executeWithHttpInfo() throws ApiException {
+            return updateOrdersWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute updateOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpdateOrdersResponse> _callback) throws ApiException {
+            return updateOrdersAsync(requestBody, _callback);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpdateOrders: Update existing orders
+     * The response returns both the collection of successfully updated orders, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
+     * @param requestBody The request containing the orders to be updated. (required)
+     * @return APIupdateOrdersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateOrdersRequest updateOrders(Map<String, OrderUpdateRequest> requestBody) {
+        return new APIupdateOrdersRequest(requestBody);
     }
     private okhttp3.Call updatePlacementsCall(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
