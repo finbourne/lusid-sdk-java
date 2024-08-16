@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.MultiCurrencyAmounts;
 import com.finbourne.lusid.model.PreviousShareClassBreakdown;
 import com.finbourne.lusid.model.ShareClassAmount;
+import com.finbourne.lusid.model.ShareClassDealingBreakdown;
 import com.finbourne.lusid.model.ShareClassPnlBreakdown;
 import com.finbourne.lusid.model.UnitisationData;
 import com.google.gson.TypeAdapter;
@@ -64,7 +65,7 @@ public class ShareClassBreakdown {
 
   public static final String SERIALIZED_NAME_DEALING = "dealing";
   @SerializedName(SERIALIZED_NAME_DEALING)
-  private Map<String, ShareClassAmount> dealing = new HashMap<>();
+  private ShareClassDealingBreakdown dealing;
 
   public static final String SERIALIZED_NAME_PN_L = "pnL";
   @SerializedName(SERIALIZED_NAME_PN_L)
@@ -134,31 +135,23 @@ public class ShareClassBreakdown {
   }
 
 
-  public ShareClassBreakdown dealing(Map<String, ShareClassAmount> dealing) {
+  public ShareClassBreakdown dealing(ShareClassDealingBreakdown dealing) {
     
     this.dealing = dealing;
     return this;
   }
 
-  public ShareClassBreakdown putDealingItem(String key, ShareClassAmount dealingItem) {
-    if (this.dealing == null) {
-      this.dealing = new HashMap<>();
-    }
-    this.dealing.put(key, dealingItem);
-    return this;
-  }
-
    /**
-   * Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.
+   * Get dealing
    * @return dealing
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ShareClassAmount> getDealing() {
+  public ShareClassDealingBreakdown getDealing() {
     return dealing;
   }
 
 
-  public void setDealing(Map<String, ShareClassAmount> dealing) {
+  public void setDealing(ShareClassDealingBreakdown dealing) {
     this.dealing = dealing;
   }
 
@@ -489,6 +482,8 @@ public class ShareClassBreakdown {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `dealing`
+      ShareClassDealingBreakdown.validateJsonElement(jsonObj.get("dealing"));
       // validate the required field `pnL`
       ShareClassPnlBreakdown.validateJsonElement(jsonObj.get("pnL"));
       // validate the required field `gav`

@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *CutLabelDefinitionsApi* | [**listCutLabelDefinitions**](docs/CutLabelDefinitionsApi.md#listcutlabeldefinitions) | **GET** /api/systemconfiguration/cutlabels | ListCutLabelDefinitions: List Existing Cut Labels
 *CutLabelDefinitionsApi* | [**updateCutLabelDefinition**](docs/CutLabelDefinitionsApi.md#updatecutlabeldefinition) | **PUT** /api/systemconfiguration/cutlabels/{code} | UpdateCutLabelDefinition: Update a Cut Label
 *DataTypesApi* | [**createDataType**](docs/DataTypesApi.md#createdatatype) | **POST** /api/datatypes | [EARLY ACCESS] CreateDataType: Create data type definition
+*DataTypesApi* | [**deleteDataType**](docs/DataTypesApi.md#deletedatatype) | **DELETE** /api/datatypes/{scope}/{code} | DeleteDataType: Delete a data type definition.
 *DataTypesApi* | [**getDataType**](docs/DataTypesApi.md#getdatatype) | **GET** /api/datatypes/{scope}/{code} | GetDataType: Get data type definition
 *DataTypesApi* | [**getUnitsFromDataType**](docs/DataTypesApi.md#getunitsfromdatatype) | **GET** /api/datatypes/{scope}/{code}/units | [EARLY ACCESS] GetUnitsFromDataType: Get units from data type
 *DataTypesApi* | [**listDataTypeSummaries**](docs/DataTypesApi.md#listdatatypesummaries) | **GET** /api/datatypes | [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
@@ -546,6 +547,26 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**upsertTransactions**](docs/TransactionPortfoliosApi.md#upserttransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | UpsertTransactions: Upsert transactions
 *TranslationApi* | [**translateInstrumentDefinitions**](docs/TranslationApi.md#translateinstrumentdefinitions) | **POST** /api/translation/instrumentdefinitions | [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
 *TranslationApi* | [**translateTradeTickets**](docs/TranslationApi.md#translatetradetickets) | **POST** /api/translation/tradetickets | [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
+*WorkspaceApi* | [**createPersonalItem**](docs/WorkspaceApi.md#createpersonalitem) | **POST** /api/workspaces/personal/{workspaceName}/items | [EARLY ACCESS] CreatePersonalItem: Create a new item in a personal workspace.
+*WorkspaceApi* | [**createPersonalWorkspace**](docs/WorkspaceApi.md#createpersonalworkspace) | **POST** /api/workspaces/personal | [EARLY ACCESS] CreatePersonalWorkspace: Create a new personal workspace.
+*WorkspaceApi* | [**createSharedItem**](docs/WorkspaceApi.md#createshareditem) | **POST** /api/workspaces/shared/{workspaceName}/items | [EARLY ACCESS] CreateSharedItem: Create a new item in a shared workspace.
+*WorkspaceApi* | [**createSharedWorkspace**](docs/WorkspaceApi.md#createsharedworkspace) | **POST** /api/workspaces/shared | [EARLY ACCESS] CreateSharedWorkspace: Create a new shared workspace.
+*WorkspaceApi* | [**deletePersonalItem**](docs/WorkspaceApi.md#deletepersonalitem) | **DELETE** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EARLY ACCESS] DeletePersonalItem: Delete an item from a personal workspace.
+*WorkspaceApi* | [**deletePersonalWorkspace**](docs/WorkspaceApi.md#deletepersonalworkspace) | **DELETE** /api/workspaces/personal/{workspaceName} | [EARLY ACCESS] DeletePersonalWorkspace: Delete a personal workspace.
+*WorkspaceApi* | [**deleteSharedItem**](docs/WorkspaceApi.md#deleteshareditem) | **DELETE** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EARLY ACCESS] DeleteSharedItem: Delete an item from a shared workspace.
+*WorkspaceApi* | [**deleteSharedWorkspace**](docs/WorkspaceApi.md#deletesharedworkspace) | **DELETE** /api/workspaces/shared/{workspaceName} | [EARLY ACCESS] DeleteSharedWorkspace: Delete a shared workspace.
+*WorkspaceApi* | [**getPersonalItem**](docs/WorkspaceApi.md#getpersonalitem) | **GET** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EARLY ACCESS] GetPersonalItem: Get a single personal workspace item.
+*WorkspaceApi* | [**getPersonalWorkspace**](docs/WorkspaceApi.md#getpersonalworkspace) | **GET** /api/workspaces/personal/{workspaceName} | [EARLY ACCESS] GetPersonalWorkspace: Get a personal workspace.
+*WorkspaceApi* | [**getSharedItem**](docs/WorkspaceApi.md#getshareditem) | **GET** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EARLY ACCESS] GetSharedItem: Get a single shared workspace item.
+*WorkspaceApi* | [**getSharedWorkspace**](docs/WorkspaceApi.md#getsharedworkspace) | **GET** /api/workspaces/shared/{workspaceName} | [EARLY ACCESS] GetSharedWorkspace: Get a shared workspace.
+*WorkspaceApi* | [**listPersonalItems**](docs/WorkspaceApi.md#listpersonalitems) | **GET** /api/workspaces/personal/{workspaceName}/items | [EARLY ACCESS] ListPersonalItems: List the items in a personal workspace.
+*WorkspaceApi* | [**listPersonalWorkspaces**](docs/WorkspaceApi.md#listpersonalworkspaces) | **GET** /api/workspaces/personal | [EARLY ACCESS] ListPersonalWorkspaces: List personal workspaces.
+*WorkspaceApi* | [**listSharedItems**](docs/WorkspaceApi.md#listshareditems) | **GET** /api/workspaces/shared/{workspaceName}/items | [EARLY ACCESS] ListSharedItems: List the items in a shared workspace.
+*WorkspaceApi* | [**listSharedWorkspaces**](docs/WorkspaceApi.md#listsharedworkspaces) | **GET** /api/workspaces/shared | [EARLY ACCESS] ListSharedWorkspaces: List shared workspaces.
+*WorkspaceApi* | [**updatePersonalItem**](docs/WorkspaceApi.md#updatepersonalitem) | **PUT** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EARLY ACCESS] UpdatePersonalItem: Update an item in a personal workspace.
+*WorkspaceApi* | [**updatePersonalWorkspace**](docs/WorkspaceApi.md#updatepersonalworkspace) | **PUT** /api/workspaces/personal/{workspaceName} | [EARLY ACCESS] UpdatePersonalWorkspace: Update a personal workspace.
+*WorkspaceApi* | [**updateSharedItem**](docs/WorkspaceApi.md#updateshareditem) | **PUT** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EARLY ACCESS] UpdateSharedItem: Update an item in a shared workspace.
+*WorkspaceApi* | [**updateSharedWorkspace**](docs/WorkspaceApi.md#updatesharedworkspace) | **PUT** /api/workspaces/shared/{workspaceName} | [EARLY ACCESS] UpdateSharedWorkspace: Update a shared workspace.
 
 
 <a id="documentation-for-models"></a>
@@ -1154,6 +1175,8 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfTranslationScriptId](docs/PagedResourceListOfTranslationScriptId.md)
  - [PagedResourceListOfValuationPointOverview](docs/PagedResourceListOfValuationPointOverview.md)
  - [PagedResourceListOfVirtualRow](docs/PagedResourceListOfVirtualRow.md)
+ - [PagedResourceListOfWorkspace](docs/PagedResourceListOfWorkspace.md)
+ - [PagedResourceListOfWorkspaceItem](docs/PagedResourceListOfWorkspaceItem.md)
  - [Participation](docs/Participation.md)
  - [ParticipationRequest](docs/ParticipationRequest.md)
  - [ParticipationSetRequest](docs/ParticipationSetRequest.md)
@@ -1391,6 +1414,7 @@ Class | Method | HTTP request | Description
  - [ShareClassAmount](docs/ShareClassAmount.md)
  - [ShareClassBreakdown](docs/ShareClassBreakdown.md)
  - [ShareClassData](docs/ShareClassData.md)
+ - [ShareClassDealingBreakdown](docs/ShareClassDealingBreakdown.md)
  - [ShareClassDetails](docs/ShareClassDetails.md)
  - [ShareClassPnlBreakdown](docs/ShareClassPnlBreakdown.md)
  - [SideConfigurationData](docs/SideConfigurationData.md)
@@ -1583,5 +1607,11 @@ Class | Method | HTTP request | Description
  - [WeightedInstrument](docs/WeightedInstrument.md)
  - [WeightedInstrumentInLineLookupIdentifiers](docs/WeightedInstrumentInLineLookupIdentifiers.md)
  - [WeightedInstruments](docs/WeightedInstruments.md)
+ - [Workspace](docs/Workspace.md)
+ - [WorkspaceCreationRequest](docs/WorkspaceCreationRequest.md)
+ - [WorkspaceItem](docs/WorkspaceItem.md)
+ - [WorkspaceItemCreationRequest](docs/WorkspaceItemCreationRequest.md)
+ - [WorkspaceItemUpdateRequest](docs/WorkspaceItemUpdateRequest.md)
+ - [WorkspaceUpdateRequest](docs/WorkspaceUpdateRequest.md)
  - [YieldCurveData](docs/YieldCurveData.md)
 

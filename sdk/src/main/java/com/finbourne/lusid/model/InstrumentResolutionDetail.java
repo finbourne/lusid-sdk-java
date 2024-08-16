@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +64,14 @@ public class InstrumentResolutionDetail {
   public static final String SERIALIZED_NAME_INSTRUMENT_SCOPE = "instrumentScope";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
   private String instrumentScope;
+
+  public static final String SERIALIZED_NAME_LAUNCH_PRICE = "launchPrice";
+  @SerializedName(SERIALIZED_NAME_LAUNCH_PRICE)
+  private java.math.BigDecimal launchPrice;
+
+  public static final String SERIALIZED_NAME_LAUNCH_DATE = "launchDate";
+  @SerializedName(SERIALIZED_NAME_LAUNCH_DATE)
+  private OffsetDateTime launchDate;
 
   public InstrumentResolutionDetail() {
   }
@@ -130,6 +139,48 @@ public class InstrumentResolutionDetail {
 
 
 
+  public InstrumentResolutionDetail launchPrice(java.math.BigDecimal launchPrice) {
+    
+    this.launchPrice = launchPrice;
+    return this;
+  }
+
+   /**
+   * The launch price set when a shareclass is added to the fund. Defaults to 1.
+   * @return launchPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getLaunchPrice() {
+    return launchPrice;
+  }
+
+
+  public void setLaunchPrice(java.math.BigDecimal launchPrice) {
+    this.launchPrice = launchPrice;
+  }
+
+
+  public InstrumentResolutionDetail launchDate(OffsetDateTime launchDate) {
+    
+    this.launchDate = launchDate;
+    return this;
+  }
+
+   /**
+   * The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date.
+   * @return launchDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getLaunchDate() {
+    return launchDate;
+  }
+
+
+  public void setLaunchDate(OffsetDateTime launchDate) {
+    this.launchDate = launchDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,7 +193,9 @@ public class InstrumentResolutionDetail {
     InstrumentResolutionDetail instrumentResolutionDetail = (InstrumentResolutionDetail) o;
     return Objects.equals(this.instrumentIdentifiers, instrumentResolutionDetail.instrumentIdentifiers) &&
         Objects.equals(this.lusidInstrumentId, instrumentResolutionDetail.lusidInstrumentId) &&
-        Objects.equals(this.instrumentScope, instrumentResolutionDetail.instrumentScope);
+        Objects.equals(this.instrumentScope, instrumentResolutionDetail.instrumentScope) &&
+        (this.launchPrice.compareTo(instrumentResolutionDetail.getLaunchPrice()) == 0) &&
+        Objects.equals(this.launchDate, instrumentResolutionDetail.launchDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -151,7 +204,7 @@ public class InstrumentResolutionDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, lusidInstrumentId, instrumentScope);
+    return Objects.hash(instrumentIdentifiers, lusidInstrumentId, instrumentScope, launchPrice, launchDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -168,6 +221,8 @@ public class InstrumentResolutionDetail {
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
+    sb.append("    launchPrice: ").append(toIndentedString(launchPrice)).append("\n");
+    sb.append("    launchDate: ").append(toIndentedString(launchDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -193,6 +248,8 @@ public class InstrumentResolutionDetail {
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("instrumentScope");
+    openapiFields.add("launchPrice");
+    openapiFields.add("launchDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

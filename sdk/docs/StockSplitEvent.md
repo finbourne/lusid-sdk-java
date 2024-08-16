@@ -13,6 +13,8 @@ A split in the company's shares. Shareholders are given additional company share
 |**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to receive the additional shares. |  [optional] |
 |**announcementDate** | **OffsetDateTime** | Date the stock split was announced. |  [optional] |
+|**fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price per unit paid in lieu when fractional units can not be distributed. |  [optional] |
+|**fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractional units. |  [optional] |
 
 
 
