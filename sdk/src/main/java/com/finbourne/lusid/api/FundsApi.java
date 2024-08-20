@@ -24,6 +24,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.AcceptEstimateValuationPointResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.Fee;
@@ -163,16 +164,16 @@ public class FundsApi {
     }
 
 
-    private ApiResponse<ValuationPointDataResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) throws ApiException {
+    private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) throws ApiException {
         okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null);
-        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -207,7 +208,7 @@ public class FundsApi {
 
         /**
          * Execute acceptEstimateValuationPoint request
-         * @return ValuationPointDataResponse
+         * @return AcceptEstimateValuationPointResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -217,14 +218,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ValuationPointDataResponse execute() throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+        public AcceptEstimateValuationPointResponse execute() throws ApiException {
+            ApiResponse<AcceptEstimateValuationPointResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
             return localVarResp.getData();
         }
 
         /**
          * Execute acceptEstimateValuationPoint request with HTTP info returned
-         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @return ApiResponse&lt;AcceptEstimateValuationPointResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -234,7 +235,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<AcceptEstimateValuationPointResponse> executeWithHttpInfo() throws ApiException {
             return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
         }
 
@@ -251,14 +252,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
             return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, _callback);
         }
     }
 
     /**
      * [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
-     * Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the valuation Point was last run, status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;
+     * Accepts the specified estimate Valuation Point.  Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;,  otherwise it will be marked as &#39;Final&#39;.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataRequest The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. (required)

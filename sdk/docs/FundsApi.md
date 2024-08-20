@@ -27,11 +27,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## acceptEstimateValuationPoint
 
-> ValuationPointDataResponse acceptEstimateValuationPoint(scope, code, valuationPointDataRequest)
+> AcceptEstimateValuationPointResponse acceptEstimateValuationPoint(scope, code, valuationPointDataRequest)
 
 [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 
-Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the valuation Point was last run, status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;
+Accepts the specified estimate Valuation Point.  Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;,  otherwise it will be marked as &#39;Final&#39;.
 
 ### Example
 
@@ -68,7 +68,7 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state.
         try {
-            ValuationPointDataResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest).execute();
+            AcceptEstimateValuationPointResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#acceptEstimateValuationPoint");
@@ -91,7 +91,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**ValuationPointDataResponse**](ValuationPointDataResponse.md)
+[**AcceptEstimateValuationPointResponse**](AcceptEstimateValuationPointResponse.md)
 
 ### HTTP request headers
 

@@ -81,7 +81,11 @@ public enum InstrumentEventType {
   
   MERGEREVENT("MergerEvent"),
   
-  FUTUREEXPIRYEVENT("FutureExpiryEvent");
+  FUTUREEXPIRYEVENT("FutureExpiryEvent"),
+  
+  SWAPCASHFLOWEVENT("SwapCashFlowEvent"),
+  
+  SWAPPRINCIPALEVENT("SwapPrincipalEvent");
 
   private String value;
 
