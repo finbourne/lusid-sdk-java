@@ -18,6 +18,7 @@
 |**referenceData** | [**ReferenceData**](ReferenceData.md) |  |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
+|**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

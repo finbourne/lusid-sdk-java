@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
@@ -84,6 +85,10 @@ public class Calendar {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
 
   public Calendar() {
   }
@@ -243,6 +248,35 @@ public class Calendar {
   }
 
 
+  public Calendar links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public Calendar addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -259,7 +293,8 @@ public class Calendar {
         Objects.equals(this.weekendMask, calendar.weekendMask) &&
         Objects.equals(this.sourceProvider, calendar.sourceProvider) &&
         Objects.equals(this.properties, calendar.properties) &&
-        Objects.equals(this.version, calendar.version);
+        Objects.equals(this.version, calendar.version) &&
+        Objects.equals(this.links, calendar.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -268,7 +303,7 @@ public class Calendar {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, weekendMask, sourceProvider, properties, version);
+    return Objects.hash(href, id, type, weekendMask, sourceProvider, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -289,6 +324,7 @@ public class Calendar {
     sb.append("    sourceProvider: ").append(toIndentedString(sourceProvider)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -318,6 +354,7 @@ public class Calendar {
     openapiFields.add("sourceProvider");
     openapiFields.add("properties");
     openapiFields.add("version");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -374,6 +411,20 @@ public class Calendar {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
   }
 

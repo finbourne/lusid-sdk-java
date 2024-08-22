@@ -14,6 +14,7 @@
 |**sourceProvider** | **String** |  |  |
 |**properties** | [**List&lt;Property&gt;**](Property.md) |  |  |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 

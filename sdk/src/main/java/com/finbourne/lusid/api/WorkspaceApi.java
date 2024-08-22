@@ -244,7 +244,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] CreatePersonalItem: Create a new item in a personal workspace.
+     * [EXPERIMENTAL] CreatePersonalItem: Create a new item in a personal workspace.
      * Create a new item in a personal workspace.
      * @param workspaceName The item&#39;s workspace name. (required)
      * @return APIcreatePersonalItemRequest
@@ -415,7 +415,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] CreatePersonalWorkspace: Create a new personal workspace.
+     * [EXPERIMENTAL] CreatePersonalWorkspace: Create a new personal workspace.
      * Create a new personal workspace.
      * @return APIcreatePersonalWorkspaceRequest
      * @http.response.details
@@ -593,7 +593,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] CreateSharedItem: Create a new item in a shared workspace.
+     * [EXPERIMENTAL] CreateSharedItem: Create a new item in a shared workspace.
      * Create a new item in a shared workspace.
      * @param workspaceName The item&#39;s workspace name. (required)
      * @return APIcreateSharedItemRequest
@@ -764,7 +764,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] CreateSharedWorkspace: Create a new shared workspace.
+     * [EXPERIMENTAL] CreateSharedWorkspace: Create a new shared workspace.
      * Create a new shared workspace.
      * @return APIcreateSharedWorkspaceRequest
      * @http.response.details
@@ -935,7 +935,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] DeletePersonalItem: Delete an item from a personal workspace.
+     * [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace.
      * Delete an item from a personal workspace.
      * @param workspaceName The name of the personal workspace. (required)
      * @param itemName The name of the item. (required)
@@ -1100,7 +1100,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] DeletePersonalWorkspace: Delete a personal workspace.
+     * [EXPERIMENTAL] DeletePersonalWorkspace: Delete a personal workspace.
      * Delete a personal workspace.
      * @param workspaceName The name of the personal workspace. (required)
      * @return APIdeletePersonalWorkspaceRequest
@@ -1272,7 +1272,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteSharedItem: Delete an item from a shared workspace.
+     * [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace.
      * Delete an item from a shared workspace.
      * @param workspaceName The name of the shared workspace. (required)
      * @param itemName The name of the item. (required)
@@ -1437,7 +1437,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteSharedWorkspace: Delete a shared workspace.
+     * [EXPERIMENTAL] DeleteSharedWorkspace: Delete a shared workspace.
      * Delete a shared workspace.
      * @param workspaceName The name of the shared workspace. (required)
      * @return APIdeleteSharedWorkspaceRequest
@@ -1624,7 +1624,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPersonalItem: Get a single personal workspace item.
+     * [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item.
      * Get a single personal workspace item.
      * @param workspaceName The name of the personal workspace. (required)
      * @param itemName The name of the item. (required)
@@ -1804,7 +1804,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] GetPersonalWorkspace: Get a personal workspace.
+     * [EXPERIMENTAL] GetPersonalWorkspace: Get a personal workspace.
      * Get a personal workspace.
      * @param workspaceName The personal workspace name. (required)
      * @return APIgetPersonalWorkspaceRequest
@@ -1991,7 +1991,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] GetSharedItem: Get a single shared workspace item.
+     * [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item.
      * Get a single shared workspace item.
      * @param workspaceName The name of the shared workspace. (required)
      * @param itemName The name of the item. (required)
@@ -2171,7 +2171,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] GetSharedWorkspace: Get a shared workspace.
+     * [EXPERIMENTAL] GetSharedWorkspace: Get a shared workspace.
      * Get a shared workspace.
      * @param workspaceName The shared workspace name. (required)
      * @return APIgetSharedWorkspaceRequest
@@ -2410,7 +2410,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] ListPersonalItems: List the items in a personal workspace.
+     * [EXPERIMENTAL] ListPersonalItems: List the items in a personal workspace.
      * List the items in a personal workspace.
      * @param workspaceName The item&#39;s workspace name. (required)
      * @return APIlistPersonalItemsRequest
@@ -2641,7 +2641,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] ListPersonalWorkspaces: List personal workspaces.
+     * [EXPERIMENTAL] ListPersonalWorkspaces: List personal workspaces.
      * List personal workspaces.
      * @return APIlistPersonalWorkspacesRequest
      * @http.response.details
@@ -2879,7 +2879,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] ListSharedItems: List the items in a shared workspace.
+     * [EXPERIMENTAL] ListSharedItems: List the items in a shared workspace.
      * List the items in a shared workspace.
      * @param workspaceName The item&#39;s workspace name. (required)
      * @return APIlistSharedItemsRequest
@@ -3110,7 +3110,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] ListSharedWorkspaces: List shared workspaces.
+     * [EXPERIMENTAL] ListSharedWorkspaces: List shared workspaces.
      * List shared workspaces.
      * @return APIlistSharedWorkspacesRequest
      * @http.response.details
@@ -3296,7 +3296,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdatePersonalItem: Update an item in a personal workspace.
+     * [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace.
      * Update an item in a personal workspace.
      * @param workspaceName The personal workspace name. (required)
      * @param itemName The item name. (required)
@@ -3476,7 +3476,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdatePersonalWorkspace: Update a personal workspace.
+     * [EXPERIMENTAL] UpdatePersonalWorkspace: Update a personal workspace.
      * Update a personal workspace.
      * @param workspaceName The personal workspace name. (required)
      * @return APIupdatePersonalWorkspaceRequest
@@ -3663,7 +3663,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdateSharedItem: Update an item in a shared workspace.
+     * [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace.
      * Update an item in a shared workspace.
      * @param workspaceName The shared workspace name. (required)
      * @param itemName The item name. (required)
@@ -3843,7 +3843,7 @@ public class WorkspaceApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdateSharedWorkspace: Update a shared workspace.
+     * [EXPERIMENTAL] UpdateSharedWorkspace: Update a shared workspace.
      * Update a shared workspace.
      * @param workspaceName The shared workspace name. (required)
      * @return APIupdateSharedWorkspaceRequest

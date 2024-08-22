@@ -4,26 +4,26 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPersonalItem**](WorkspaceApi.md#createPersonalItem) | **POST** /api/workspaces/personal/{workspaceName}/items | [EARLY ACCESS] CreatePersonalItem: Create a new item in a personal workspace. |
-| [**createPersonalWorkspace**](WorkspaceApi.md#createPersonalWorkspace) | **POST** /api/workspaces/personal | [EARLY ACCESS] CreatePersonalWorkspace: Create a new personal workspace. |
-| [**createSharedItem**](WorkspaceApi.md#createSharedItem) | **POST** /api/workspaces/shared/{workspaceName}/items | [EARLY ACCESS] CreateSharedItem: Create a new item in a shared workspace. |
-| [**createSharedWorkspace**](WorkspaceApi.md#createSharedWorkspace) | **POST** /api/workspaces/shared | [EARLY ACCESS] CreateSharedWorkspace: Create a new shared workspace. |
-| [**deletePersonalItem**](WorkspaceApi.md#deletePersonalItem) | **DELETE** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EARLY ACCESS] DeletePersonalItem: Delete an item from a personal workspace. |
-| [**deletePersonalWorkspace**](WorkspaceApi.md#deletePersonalWorkspace) | **DELETE** /api/workspaces/personal/{workspaceName} | [EARLY ACCESS] DeletePersonalWorkspace: Delete a personal workspace. |
-| [**deleteSharedItem**](WorkspaceApi.md#deleteSharedItem) | **DELETE** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EARLY ACCESS] DeleteSharedItem: Delete an item from a shared workspace. |
-| [**deleteSharedWorkspace**](WorkspaceApi.md#deleteSharedWorkspace) | **DELETE** /api/workspaces/shared/{workspaceName} | [EARLY ACCESS] DeleteSharedWorkspace: Delete a shared workspace. |
-| [**getPersonalItem**](WorkspaceApi.md#getPersonalItem) | **GET** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EARLY ACCESS] GetPersonalItem: Get a single personal workspace item. |
-| [**getPersonalWorkspace**](WorkspaceApi.md#getPersonalWorkspace) | **GET** /api/workspaces/personal/{workspaceName} | [EARLY ACCESS] GetPersonalWorkspace: Get a personal workspace. |
-| [**getSharedItem**](WorkspaceApi.md#getSharedItem) | **GET** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EARLY ACCESS] GetSharedItem: Get a single shared workspace item. |
-| [**getSharedWorkspace**](WorkspaceApi.md#getSharedWorkspace) | **GET** /api/workspaces/shared/{workspaceName} | [EARLY ACCESS] GetSharedWorkspace: Get a shared workspace. |
-| [**listPersonalItems**](WorkspaceApi.md#listPersonalItems) | **GET** /api/workspaces/personal/{workspaceName}/items | [EARLY ACCESS] ListPersonalItems: List the items in a personal workspace. |
-| [**listPersonalWorkspaces**](WorkspaceApi.md#listPersonalWorkspaces) | **GET** /api/workspaces/personal | [EARLY ACCESS] ListPersonalWorkspaces: List personal workspaces. |
-| [**listSharedItems**](WorkspaceApi.md#listSharedItems) | **GET** /api/workspaces/shared/{workspaceName}/items | [EARLY ACCESS] ListSharedItems: List the items in a shared workspace. |
-| [**listSharedWorkspaces**](WorkspaceApi.md#listSharedWorkspaces) | **GET** /api/workspaces/shared | [EARLY ACCESS] ListSharedWorkspaces: List shared workspaces. |
-| [**updatePersonalItem**](WorkspaceApi.md#updatePersonalItem) | **PUT** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EARLY ACCESS] UpdatePersonalItem: Update an item in a personal workspace. |
-| [**updatePersonalWorkspace**](WorkspaceApi.md#updatePersonalWorkspace) | **PUT** /api/workspaces/personal/{workspaceName} | [EARLY ACCESS] UpdatePersonalWorkspace: Update a personal workspace. |
-| [**updateSharedItem**](WorkspaceApi.md#updateSharedItem) | **PUT** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EARLY ACCESS] UpdateSharedItem: Update an item in a shared workspace. |
-| [**updateSharedWorkspace**](WorkspaceApi.md#updateSharedWorkspace) | **PUT** /api/workspaces/shared/{workspaceName} | [EARLY ACCESS] UpdateSharedWorkspace: Update a shared workspace. |
+| [**createPersonalItem**](WorkspaceApi.md#createPersonalItem) | **POST** /api/workspaces/personal/{workspaceName}/items | [EXPERIMENTAL] CreatePersonalItem: Create a new item in a personal workspace. |
+| [**createPersonalWorkspace**](WorkspaceApi.md#createPersonalWorkspace) | **POST** /api/workspaces/personal | [EXPERIMENTAL] CreatePersonalWorkspace: Create a new personal workspace. |
+| [**createSharedItem**](WorkspaceApi.md#createSharedItem) | **POST** /api/workspaces/shared/{workspaceName}/items | [EXPERIMENTAL] CreateSharedItem: Create a new item in a shared workspace. |
+| [**createSharedWorkspace**](WorkspaceApi.md#createSharedWorkspace) | **POST** /api/workspaces/shared | [EXPERIMENTAL] CreateSharedWorkspace: Create a new shared workspace. |
+| [**deletePersonalItem**](WorkspaceApi.md#deletePersonalItem) | **DELETE** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace. |
+| [**deletePersonalWorkspace**](WorkspaceApi.md#deletePersonalWorkspace) | **DELETE** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] DeletePersonalWorkspace: Delete a personal workspace. |
+| [**deleteSharedItem**](WorkspaceApi.md#deleteSharedItem) | **DELETE** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace. |
+| [**deleteSharedWorkspace**](WorkspaceApi.md#deleteSharedWorkspace) | **DELETE** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] DeleteSharedWorkspace: Delete a shared workspace. |
+| [**getPersonalItem**](WorkspaceApi.md#getPersonalItem) | **GET** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item. |
+| [**getPersonalWorkspace**](WorkspaceApi.md#getPersonalWorkspace) | **GET** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] GetPersonalWorkspace: Get a personal workspace. |
+| [**getSharedItem**](WorkspaceApi.md#getSharedItem) | **GET** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item. |
+| [**getSharedWorkspace**](WorkspaceApi.md#getSharedWorkspace) | **GET** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] GetSharedWorkspace: Get a shared workspace. |
+| [**listPersonalItems**](WorkspaceApi.md#listPersonalItems) | **GET** /api/workspaces/personal/{workspaceName}/items | [EXPERIMENTAL] ListPersonalItems: List the items in a personal workspace. |
+| [**listPersonalWorkspaces**](WorkspaceApi.md#listPersonalWorkspaces) | **GET** /api/workspaces/personal | [EXPERIMENTAL] ListPersonalWorkspaces: List personal workspaces. |
+| [**listSharedItems**](WorkspaceApi.md#listSharedItems) | **GET** /api/workspaces/shared/{workspaceName}/items | [EXPERIMENTAL] ListSharedItems: List the items in a shared workspace. |
+| [**listSharedWorkspaces**](WorkspaceApi.md#listSharedWorkspaces) | **GET** /api/workspaces/shared | [EXPERIMENTAL] ListSharedWorkspaces: List shared workspaces. |
+| [**updatePersonalItem**](WorkspaceApi.md#updatePersonalItem) | **PUT** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace. |
+| [**updatePersonalWorkspace**](WorkspaceApi.md#updatePersonalWorkspace) | **PUT** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] UpdatePersonalWorkspace: Update a personal workspace. |
+| [**updateSharedItem**](WorkspaceApi.md#updateSharedItem) | **PUT** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace. |
+| [**updateSharedWorkspace**](WorkspaceApi.md#updateSharedWorkspace) | **PUT** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] UpdateSharedWorkspace: Update a shared workspace. |
 
 
 
@@ -31,7 +31,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > WorkspaceItem createPersonalItem(workspaceName, workspaceItemCreationRequest)
 
-[EARLY ACCESS] CreatePersonalItem: Create a new item in a personal workspace.
+[EXPERIMENTAL] CreatePersonalItem: Create a new item in a personal workspace.
 
 Create a new item in a personal workspace.
 
@@ -113,7 +113,7 @@ public class WorkspaceApiExample {
 
 > Workspace createPersonalWorkspace(workspaceCreationRequest)
 
-[EARLY ACCESS] CreatePersonalWorkspace: Create a new personal workspace.
+[EXPERIMENTAL] CreatePersonalWorkspace: Create a new personal workspace.
 
 Create a new personal workspace.
 
@@ -193,7 +193,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem createSharedItem(workspaceName, workspaceItemCreationRequest)
 
-[EARLY ACCESS] CreateSharedItem: Create a new item in a shared workspace.
+[EXPERIMENTAL] CreateSharedItem: Create a new item in a shared workspace.
 
 Create a new item in a shared workspace.
 
@@ -275,7 +275,7 @@ public class WorkspaceApiExample {
 
 > Workspace createSharedWorkspace(workspaceCreationRequest)
 
-[EARLY ACCESS] CreateSharedWorkspace: Create a new shared workspace.
+[EXPERIMENTAL] CreateSharedWorkspace: Create a new shared workspace.
 
 Create a new shared workspace.
 
@@ -355,7 +355,7 @@ public class WorkspaceApiExample {
 
 > DeletedEntityResponse deletePersonalItem(workspaceName, itemName)
 
-[EARLY ACCESS] DeletePersonalItem: Delete an item from a personal workspace.
+[EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace.
 
 Delete an item from a personal workspace.
 
@@ -437,7 +437,7 @@ public class WorkspaceApiExample {
 
 > DeletedEntityResponse deletePersonalWorkspace(workspaceName)
 
-[EARLY ACCESS] DeletePersonalWorkspace: Delete a personal workspace.
+[EXPERIMENTAL] DeletePersonalWorkspace: Delete a personal workspace.
 
 Delete a personal workspace.
 
@@ -517,7 +517,7 @@ public class WorkspaceApiExample {
 
 > DeletedEntityResponse deleteSharedItem(workspaceName, itemName)
 
-[EARLY ACCESS] DeleteSharedItem: Delete an item from a shared workspace.
+[EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace.
 
 Delete an item from a shared workspace.
 
@@ -599,7 +599,7 @@ public class WorkspaceApiExample {
 
 > DeletedEntityResponse deleteSharedWorkspace(workspaceName)
 
-[EARLY ACCESS] DeleteSharedWorkspace: Delete a shared workspace.
+[EXPERIMENTAL] DeleteSharedWorkspace: Delete a shared workspace.
 
 Delete a shared workspace.
 
@@ -679,7 +679,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem getPersonalItem(workspaceName, itemName, asAt)
 
-[EARLY ACCESS] GetPersonalItem: Get a single personal workspace item.
+[EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item.
 
 Get a single personal workspace item.
 
@@ -763,7 +763,7 @@ public class WorkspaceApiExample {
 
 > Workspace getPersonalWorkspace(workspaceName, asAt)
 
-[EARLY ACCESS] GetPersonalWorkspace: Get a personal workspace.
+[EXPERIMENTAL] GetPersonalWorkspace: Get a personal workspace.
 
 Get a personal workspace.
 
@@ -845,7 +845,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem getSharedItem(workspaceName, itemName, asAt)
 
-[EARLY ACCESS] GetSharedItem: Get a single shared workspace item.
+[EXPERIMENTAL] GetSharedItem: Get a single shared workspace item.
 
 Get a single shared workspace item.
 
@@ -929,7 +929,7 @@ public class WorkspaceApiExample {
 
 > Workspace getSharedWorkspace(workspaceName, asAt)
 
-[EARLY ACCESS] GetSharedWorkspace: Get a shared workspace.
+[EXPERIMENTAL] GetSharedWorkspace: Get a shared workspace.
 
 Get a shared workspace.
 
@@ -1011,7 +1011,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfWorkspaceItem listPersonalItems(workspaceName, asAt, page, sortBy, limit, filter)
 
-[EARLY ACCESS] ListPersonalItems: List the items in a personal workspace.
+[EXPERIMENTAL] ListPersonalItems: List the items in a personal workspace.
 
 List the items in a personal workspace.
 
@@ -1101,7 +1101,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfWorkspace listPersonalWorkspaces(asAt, page, sortBy, limit, filter)
 
-[EARLY ACCESS] ListPersonalWorkspaces: List personal workspaces.
+[EXPERIMENTAL] ListPersonalWorkspaces: List personal workspaces.
 
 List personal workspaces.
 
@@ -1189,7 +1189,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfWorkspaceItem listSharedItems(workspaceName, asAt, page, sortBy, limit, filter)
 
-[EARLY ACCESS] ListSharedItems: List the items in a shared workspace.
+[EXPERIMENTAL] ListSharedItems: List the items in a shared workspace.
 
 List the items in a shared workspace.
 
@@ -1279,7 +1279,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfWorkspace listSharedWorkspaces(asAt, page, sortBy, limit, filter)
 
-[EARLY ACCESS] ListSharedWorkspaces: List shared workspaces.
+[EXPERIMENTAL] ListSharedWorkspaces: List shared workspaces.
 
 List shared workspaces.
 
@@ -1367,7 +1367,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem updatePersonalItem(workspaceName, itemName, workspaceItemUpdateRequest)
 
-[EARLY ACCESS] UpdatePersonalItem: Update an item in a personal workspace.
+[EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace.
 
 Update an item in a personal workspace.
 
@@ -1451,7 +1451,7 @@ public class WorkspaceApiExample {
 
 > Workspace updatePersonalWorkspace(workspaceName, workspaceUpdateRequest)
 
-[EARLY ACCESS] UpdatePersonalWorkspace: Update a personal workspace.
+[EXPERIMENTAL] UpdatePersonalWorkspace: Update a personal workspace.
 
 Update a personal workspace.
 
@@ -1533,7 +1533,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem updateSharedItem(workspaceName, itemName, workspaceItemUpdateRequest)
 
-[EARLY ACCESS] UpdateSharedItem: Update an item in a shared workspace.
+[EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace.
 
 Update an item in a shared workspace.
 
@@ -1617,7 +1617,7 @@ public class WorkspaceApiExample {
 
 > Workspace updateSharedWorkspace(workspaceName, workspaceUpdateRequest)
 
-[EARLY ACCESS] UpdateSharedWorkspace: Update a shared workspace.
+[EXPERIMENTAL] UpdateSharedWorkspace: Update a shared workspace.
 
 Update a shared workspace.
 

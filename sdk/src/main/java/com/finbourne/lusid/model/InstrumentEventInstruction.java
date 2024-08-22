@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -20,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -84,6 +87,10 @@ public class InstrumentEventInstruction {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
 
   public InstrumentEventInstruction() {
   }
@@ -256,6 +263,35 @@ public class InstrumentEventInstruction {
   }
 
 
+  public InstrumentEventInstruction links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public InstrumentEventInstruction addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -273,7 +309,8 @@ public class InstrumentEventInstruction {
         Objects.equals(this.electionKey, instrumentEventInstruction.electionKey) &&
         Objects.equals(this.holdingId, instrumentEventInstruction.holdingId) &&
         Objects.equals(this.version, instrumentEventInstruction.version) &&
-        Objects.equals(this.href, instrumentEventInstruction.href);
+        Objects.equals(this.href, instrumentEventInstruction.href) &&
+        Objects.equals(this.links, instrumentEventInstruction.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -282,7 +319,7 @@ public class InstrumentEventInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href);
+    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -304,6 +341,7 @@ public class InstrumentEventInstruction {
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -334,6 +372,7 @@ public class InstrumentEventInstruction {
     openapiFields.add("holdingId");
     openapiFields.add("version");
     openapiFields.add("href");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -374,6 +413,20 @@ public class InstrumentEventInstruction {
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
   }
 

@@ -107,6 +107,14 @@ public class ValuationPointDataResponse {
   @SerializedName(SERIALIZED_NAME_SHARE_CLASS_DATA)
   private Map<String, ShareClassData> shareClassData = new HashMap<>();
 
+  public static final String SERIALIZED_NAME_VALUATION_POINT_CODE = "valuationPointCode";
+  @SerializedName(SERIALIZED_NAME_VALUATION_POINT_CODE)
+  private String valuationPointCode;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_VALUATION_POINT_CODE = "previousValuationPointCode";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_VALUATION_POINT_CODE)
+  private String previousValuationPointCode;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -406,6 +414,48 @@ public class ValuationPointDataResponse {
   }
 
 
+  public ValuationPointDataResponse valuationPointCode(String valuationPointCode) {
+    
+    this.valuationPointCode = valuationPointCode;
+    return this;
+  }
+
+   /**
+   * The code of the valuation point.
+   * @return valuationPointCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getValuationPointCode() {
+    return valuationPointCode;
+  }
+
+
+  public void setValuationPointCode(String valuationPointCode) {
+    this.valuationPointCode = valuationPointCode;
+  }
+
+
+  public ValuationPointDataResponse previousValuationPointCode(String previousValuationPointCode) {
+    
+    this.previousValuationPointCode = previousValuationPointCode;
+    return this;
+  }
+
+   /**
+   * The code of the previous valuation point.
+   * @return previousValuationPointCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getPreviousValuationPointCode() {
+    return previousValuationPointCode;
+  }
+
+
+  public void setPreviousValuationPointCode(String previousValuationPointCode) {
+    this.previousValuationPointCode = previousValuationPointCode;
+  }
+
+
   public ValuationPointDataResponse links(List<Link> links) {
     
     this.links = links;
@@ -457,6 +507,8 @@ public class ValuationPointDataResponse {
         (this.previousNav.compareTo(valuationPointDataResponse.getPreviousNav()) == 0) &&
         Objects.equals(this.fundValuationPointData, valuationPointDataResponse.fundValuationPointData) &&
         Objects.equals(this.shareClassData, valuationPointDataResponse.shareClassData) &&
+        Objects.equals(this.valuationPointCode, valuationPointDataResponse.valuationPointCode) &&
+        Objects.equals(this.previousValuationPointCode, valuationPointDataResponse.previousValuationPointCode) &&
         Objects.equals(this.links, valuationPointDataResponse.links);
   }
 
@@ -466,7 +518,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, fundValuationPointData, shareClassData, links);
+    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -492,6 +544,8 @@ public class ValuationPointDataResponse {
     sb.append("    previousNav: ").append(toIndentedString(previousNav)).append("\n");
     sb.append("    fundValuationPointData: ").append(toIndentedString(fundValuationPointData)).append("\n");
     sb.append("    shareClassData: ").append(toIndentedString(shareClassData)).append("\n");
+    sb.append("    valuationPointCode: ").append(toIndentedString(valuationPointCode)).append("\n");
+    sb.append("    previousValuationPointCode: ").append(toIndentedString(previousValuationPointCode)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -527,6 +581,8 @@ public class ValuationPointDataResponse {
     openapiFields.add("previousNav");
     openapiFields.add("fundValuationPointData");
     openapiFields.add("shareClassData");
+    openapiFields.add("valuationPointCode");
+    openapiFields.add("previousValuationPointCode");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -575,6 +631,12 @@ public class ValuationPointDataResponse {
       }
       // validate the required field `fundValuationPointData`
       FundValuationPointData.validateJsonElement(jsonObj.get("fundValuationPointData"));
+      if ((jsonObj.get("valuationPointCode") != null && !jsonObj.get("valuationPointCode").isJsonNull()) && !jsonObj.get("valuationPointCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valuationPointCode").toString()));
+      }
+      if ((jsonObj.get("previousValuationPointCode") != null && !jsonObj.get("previousValuationPointCode").isJsonNull()) && !jsonObj.get("previousValuationPointCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `previousValuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousValuationPointCode").toString()));
+      }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

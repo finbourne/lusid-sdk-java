@@ -15,6 +15,7 @@
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties associated to the Person. There can be multiple properties associated with a property key. |  [optional] |
 |**relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the Person. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 

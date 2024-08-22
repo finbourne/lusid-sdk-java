@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.IUnitDefinitionDto;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ReferenceData;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -283,6 +284,10 @@ public class DataType {
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
 
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -537,6 +542,27 @@ public class DataType {
   }
 
 
+  public DataType stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
   public DataType links(List<Link> links) {
     
     this.links = links;
@@ -587,6 +613,7 @@ public class DataType {
         Objects.equals(this.referenceData, dataType.referenceData) &&
         Objects.equals(this.version, dataType.version) &&
         Objects.equals(this.href, dataType.href) &&
+        Objects.equals(this.stagedModifications, dataType.stagedModifications) &&
         Objects.equals(this.links, dataType.links);
   }
 
@@ -596,7 +623,7 @@ public class DataType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, referenceData, version, href, links);
+    return Objects.hash(typeValueRange, id, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits, referenceData, version, href, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -621,6 +648,7 @@ public class DataType {
     sb.append("    referenceData: ").append(toIndentedString(referenceData)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -655,6 +683,7 @@ public class DataType {
     openapiFields.add("referenceData");
     openapiFields.add("version");
     openapiFields.add("href");
+    openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -731,6 +760,10 @@ public class DataType {
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
